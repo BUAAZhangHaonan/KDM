@@ -92,18 +92,22 @@ class ExpModel:
     # ---------------- single-branch greedy with optional LCD ----------------
     @torch.no_grad()
     def decode_single(self, inputs, max_new_tokens, lcd=False, seed_pos=None):
-        """Greedy decode from given prefilled inputs. If lcd, adjust each step's
-        logits with the early-layer contrast. Returns dict(text, tokens, first_probs,
-        first_entropy, first_maxp, n_forwards, n_prefill_tokens, wall_s)."""
+        """Greedy decode from given prefilled inputs. If lcd, apply DoLa-style
+        layer-contrastive decoding with the original dynamic premature-layer
+        selection: at each step pick l* = argmax_l JSD(p_l, p_{l+1}) among
+        premature layers and use logits' = (1+a)*logit_final - a*logit_l*
+        (each premature hidden state passes the final RMSNorm first, as in DoLa).
+        Returns dict(text, tokens, first_probs, first_entropy, first_maxp,
+        n_forwards, n_prefill_tokens, wall_s)."""
         t0 = time.time()
         n_fw = 0
         out = self.model(**inputs, output_hidden_states=lcd)
         n_fw += 1
         n_prefill = inputs['input_ids'].shape[1]
         logits = out.logits[:, -1, :].float()
+        lcd_layer = None
         if lcd:
-            early = self.lm_head(out.hidden_states[self.lcd_layer][:, -1, :]).float()
-            logits = (1 + HP['lcd_alpha']) * logits - HP['lcd_alpha'] * early
+            logits, lcd_layer = self._lcd_adjust(out)
         probs = F.softmax(logits, -1)
         first = {'entropy': float(-(probs * (probs + 1e-12).log()).sum()),
                  'maxp': float(probs.max())}
@@ -119,13 +123,48 @@ class ExpModel:
             n_fw += 1
             logits = out.logits[:, -1, :].float()
             if lcd:
-                early = self.lm_head(out.hidden_states[self.lcd_layer][:, -1, :]).float()
-                logits = (1 + HP['lcd_alpha']) * logits - HP['lcd_alpha'] * early
+                logits, lcd_layer = self._lcd_adjust(out)
         text = self.proc.tokenizer.decode(tokens, skip_special_tokens=True)
         return {'text': text, 'tokens': tokens, 'first_entropy': first['entropy'],
                 'first_maxp': first['maxp'], 'first_probs': first_probs,
                 'n_forwards': n_fw, 'n_prefill_tokens': n_prefill,
                 'wall_s': time.time() - t0}
+
+    def _lcd_adjust(self, out):
+        """DoLa dynamic layer contrast on the last position. Returns adjusted
+        logits (log-space) and the selected premature layer index."""
+        hss = out.hidden_states  # tuple(len L+1); [0]=embed, [i]=after layer i
+        L = len(hss) - 1
+        final_logits = out.logits[:, -1, :].float()
+        log_probs_final = F.log_softmax(final_logits, -1)
+        logps = []
+        with torch.no_grad():
+            norm = self.model.model.language_model.norm
+            for l in range(1, L):  # premature layers: outputs of layers 1..L-1
+                h = norm(hss[l][:, -1, :])
+                lg = self.lm_head(h).float()
+                logps.append(F.log_softmax(lg, -1))
+        if len(logps) < 2:
+            return final_logits, None
+        best_idx, best_jsd = 0, -1.0
+        for idx in range(len(logps) - 1):
+            jsd = self._jsd_logp(logps[idx], logps[idx + 1])
+            if jsd > best_jsd:
+                best_jsd, best_idx = jsd, idx
+        # DoLa form with alpha=1: log p_adj = 2*logp_final - logp_l*
+        adj = 2 * log_probs_final - logps[best_idx]
+        return adj, best_idx + 1
+
+    @staticmethod
+    def _jsd_logp(lp1, lp2, base=2):
+        p1, p2 = lp1.exp(), lp2.exp()
+        m = 0.5 * (p1 + p2)
+        lm = 0.5 * (lp1 + lp2)  # log of geometric mean of p's = not exactly log m; compute properly
+        lm = torch.log(m + 1e-12)
+        kl1 = (p1 * (lp1 - lm)).sum()
+        kl2 = (p2 * (lp2 - lm)).sum()
+        v = float(0.5 * kl1 + 0.5 * kl2)
+        return v if v == v else -1.0
 
     # ---------------- two-branch contrastive greedy (VCD / MIB) ----------------
     @torch.no_grad()

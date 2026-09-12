@@ -144,7 +144,7 @@ def build_main(recs_by_task, model):
                     row['mean_forwards'] = round(np.mean([r['n_forwards'] for r in tr]), 1)
                     row['mean_wall_s'] = round(np.mean([r['wall_s'] for r in tr]), 3)
                 rows.append(row)
-            # existence: hallucination on negatives, per tier and pooled
+            # existence: hallucination on negatives per tier+pool, and pos accuracy
             if task == 'existence':
                 for tier in TIERS + ['both']:
                     tr = [r for r in sel if r.get('question_kind') == 'neg' and
@@ -157,6 +157,15 @@ def build_main(recs_by_task, model):
                                      'accuracy': round(float(acc), 4), 'abstain_rate': 0.0,
                                      'certain_error_rate': round(float(hal), 4),
                                      'hallucination_on_neg': round(float(hal), 4)})
+                    tp = [r for r in sel if r.get('question_kind') == 'pos' and
+                          (tier == 'both' or r['tier'] == tier)]
+                    if tp:
+                        acc = np.mean([r['outcome'] == 'correct' for r in tp])
+                        rows.append({'model': model, 'task': 'existence', 'method': m,
+                                     'tier': f'pos_{tier}', 'n': len(tp),
+                                     'accuracy': round(float(acc), 4), 'abstain_rate': 0.0,
+                                     'certain_error_rate': round(float(1 - acc), 4),
+                                     'hallucination_on_neg': ''})
     return rows
 
 
@@ -216,11 +225,14 @@ def gather_signals(recs_naming):
     """join direct + per-method outcomes with direct-record signals"""
     by_sid = {}
     for r in recs_naming:
-        if r['method'] == 'direct' and r.get('signals'):
-            by_sid.setdefault(r['sample_id'], {}).update(
-                tier=r['tier'], entropy=r['signals']['entropy'], jsd=r['signals']['jsd'],
-                maxp=r['signals'].get('maxp'))
-        elif r['method'] != 'direct':
+        if r['method'] == 'direct':
+            d = by_sid.setdefault(r['sample_id'], {})
+            d['tier'] = r['tier']
+            d['direct'] = r['outcome']
+            if r.get('signals'):
+                d.update(entropy=r['signals']['entropy'], jsd=r['signals']['jsd'],
+                         maxp=r['signals'].get('maxp'))
+        else:
             by_sid.setdefault(r['sample_id'], {})[r['method']] = r['outcome']
     return [v for v in by_sid.values() if 'entropy' in v and 'direct' in v]
 
@@ -237,30 +249,56 @@ def harmed_helped(sig_row, m):
 def build_judgment2(recs_naming, model):
     rows = []
     sig = gather_signals(recs_naming)
+    def auc_rows_for(sel_method, m_label, tier_filter):
+        ss = [s for s in sig if tier_filter == 'all' or s['tier'] == tier_filter]
+        if sel_method is None:
+            hh = [harmed_helped_any(s) for s in ss]
+        else:
+            hh = [harmed_helped(s, sel_method) for s in ss]
+        pairs = [(s, h) for s, h in zip(ss, hh) if h[0] is not None and h[1] is not None and (h[0] or h[1])]
+        sel = [p[0] for p in pairs]
+        labels = [p[1][0] for p in pairs]
+        out = []
+        if len(set(labels)) < 2:
+            for name in ['entropy', 'jsd', 'logistic_combo']:
+                out.append({'model': model, 'method': m_label, 'tier': tier_filter, 'signal': name,
+                            'auc': float('nan'), 'n_harmed': int(np.sum(labels)), 'n_helped': len(labels) - int(np.sum(labels))})
+            return out
+        for name in ['entropy', 'jsd']:
+            a, nh, ng = auc_score([s[name] for s in sel], labels)
+            out.append({'model': model, 'method': m_label, 'tier': tier_filter, 'signal': name,
+                        'auc': round(a, 4), 'n_harmed': nh, 'n_helped': ng})
+        X = np.array([[s['entropy'], s['jsd']] for s in sel])
+        clf = tiny_logistic(X, np.array(labels))
+        a, _, _ = auc_score(clf(X), labels)
+        out.append({'model': model, 'method': m_label, 'tier': tier_filter, 'signal': 'logistic_combo',
+                    'auc': round(a, 4), 'n_harmed': int(np.sum(labels)),
+                    'n_helped': len(labels) - int(np.sum(labels))})
+        return out
     for m in METHODS[1:]:
         for tier in TIERS + ['all']:
-            ss = [s for s in sig if tier == 'all' or s['tier'] == tier]
-            h = [harmed_helped(s, m)[0] for s in ss]
-            g = [harmed_helped(s, m)[1] for s in ss]
-            mask = [(hh is not None and gg is not None and (hh or gg)) for hh, gg in zip(h, g)]
-            sel = [s for s, k in zip(ss, mask) if k]
-            labels = [harmed_helped(s, m)[0] for s in sel]
-            if len(set(labels)) < 2:
-                for name in ['entropy', 'jsd']:
-                    rows.append({'model': model, 'method': m, 'tier': tier, 'signal': name,
-                                 'auc': float('nan'), 'n_harmed': int(np.sum(labels)), 'n_helped': len(labels) - int(np.sum(labels))})
-                continue
-            for name in ['entropy', 'jsd']:
-                a, nh, ng = auc_score([s[name] for s in sel], labels)
-                rows.append({'model': model, 'method': m, 'tier': tier, 'signal': name,
-                             'auc': round(a, 4), 'n_harmed': nh, 'n_helped': ng})
-            X = np.array([[s['entropy'], s['jsd']] for s in sel])
-            clf = tiny_logistic(X, np.array(labels))
-            a, _, _ = auc_score(clf(X), labels)
-            rows.append({'model': model, 'method': m, 'tier': tier, 'signal': 'logistic_combo',
-                         'auc': round(a, 4), 'n_harmed': int(np.sum(labels)),
-                         'n_helped': len(labels) - int(np.sum(labels))})
+            rows += auc_rows_for(m, m, tier)
+    # pooled across the three suppression methods (judgment-2 headline number)
+    for tier in TIERS + ['all']:
+        rows += auc_rows_for(None, 'pooled', tier)
     return rows
+
+
+def harmed_helped_any(sig_row):
+    """pooled: a sample is harmed if ANY method harmed it and none helped;
+    helped if ANY method helped it and none harmed; else excluded."""
+    hs, gs = [], []
+    for m in METHODS[1:]:
+        h, g = harmed_helped(sig_row, m)
+        if h is not None:
+            hs.append(h); gs.append(g)
+    if not hs:
+        return None, None
+    if any(hs) and not any(gs):
+        return 1, 0
+    if any(gs) and not any(hs):
+        return 0, 1
+    return None, None
 
 
 # ---------------------------------------------------------------- judgment 3
@@ -302,14 +340,22 @@ def build_judgment3(recs_naming, model):
         return met
 
     best = None
+    # constraint from judgment-3's own acceptance condition: high-tier accuracy
+    # loss <= 2pp (uses only high-tier data). Among feasible thresholds, maximize
+    # high-tier (accuracy - certain_error).
     for qh in qs:
         for qj in qs:
             tau_h = np.quantile([s['entropy'] for s in high], qh)
             tau_j = np.quantile([s['jsd'] for s in high], qj)
             met = eval_on(high, tau_h, tau_j)
+            direct_high_acc = scoring.metrics([{'outcome': s['direct']} for s in high])['accuracy']
+            if met['accuracy'] < direct_high_acc - 0.02 - 1e-9:
+                continue  # infeasible: would violate the high-tier accuracy budget
             obj = met['accuracy'] - met['certain_error_rate']
             if best is None or obj > best[0]:
                 best = (obj, tau_h, tau_j, qh, qj)
+    if best is None:  # no feasible point: fall back to never-abstain thresholds
+        best = (float('-inf'), float('inf'), float('inf'), 1.0, 1.0)
     _, tau_h, tau_j, qh, qj = best
 
     # median variant (all samples, no gold used)

@@ -1,0 +1,305 @@
+{
+ "models": [
+  "q4b",
+  "q9b"
+ ],
+ "generated": "2026-09-13 02:46:25",
+ "counts": {
+  "q4b": {
+   "naming": 776,
+   "existence": 1552
+  },
+  "q9b": {
+   "naming": 776,
+   "existence": 1552
+  }
+ },
+ "judgment3_info": {
+  "q4b": {
+   "m_star": "vcd",
+   "m_star_high_gains": {
+    "vcd": 0.0825,
+    "mib": 0.0,
+    "lcd": -0.0103
+   },
+   "tau_entropy": 1.9175140380859375,
+   "tau_jsd": 0.5935113728046417,
+   "q_entropy": 0.7,
+   "q_jsd": 0.0
+  },
+  "q9b": {
+   "m_star": "mib",
+   "m_star_high_gains": {
+    "vcd": 0.0103,
+    "mib": 0.0206,
+    "lcd": -0.0412
+   },
+   "tau_entropy": 2.3133395671844483,
+   "tau_jsd": 0.5812981724739075,
+   "q_entropy": 0.9,
+   "q_jsd": 0.0
+  }
+ },
+ "examples": [
+  {
+   "model": "q4b",
+   "image_id": 199681,
+   "sample_id": "nm:199681",
+   "tier": "high",
+   "gold": "microwave_oven",
+   "method": "mib",
+   "direct_out": "microwave",
+   "direct_outcome": "correct",
+   "method_out": "stuffed animal",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/199681.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 96923,
+   "sample_id": "nm:96923",
+   "tier": "high",
+   "gold": "hairbrush",
+   "method": "mib",
+   "direct_out": "hairbrush",
+   "direct_outcome": "correct",
+   "method_out": "comb",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/96923.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 429898,
+   "sample_id": "nm:429898",
+   "tier": "high",
+   "gold": "bird",
+   "method": "mib",
+   "direct_out": "bird",
+   "direct_outcome": "correct",
+   "method_out": "grey caracara",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/429898.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 78058,
+   "sample_id": "nm:78058",
+   "tier": "high",
+   "gold": "fireplug",
+   "method": "mib",
+   "direct_out": "fire hydrant",
+   "direct_outcome": "correct",
+   "method_out": "dog costumes",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/78058.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 419559,
+   "sample_id": "nm:419559",
+   "tier": "high",
+   "gold": "mattress",
+   "method": "lcd",
+   "direct_out": "mattress",
+   "direct_outcome": "correct",
+   "method_out": "label",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/419559.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 485406,
+   "sample_id": "nm:485406",
+   "tier": "high",
+   "gold": "parking_meter",
+   "method": "lcd",
+   "direct_out": "parking meter",
+   "direct_outcome": "correct",
+   "method_out": "parker",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/485406.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 294855,
+   "sample_id": "nm:294855",
+   "tier": "high",
+   "gold": "suitcase",
+   "method": "lcd",
+   "direct_out": "suitcase",
+   "direct_outcome": "correct",
+   "method_out": "ice bucket",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/294855.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 348012,
+   "sample_id": "nm:348012",
+   "tier": "high",
+   "gold": "scissors",
+   "method": "mib",
+   "direct_out": "scissors",
+   "direct_outcome": "correct",
+   "method_out": "duct tape",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/348012.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 477671,
+   "sample_id": "nm:477671",
+   "tier": "high",
+   "gold": "poster",
+   "method": "mib",
+   "direct_out": "poster",
+   "direct_outcome": "correct",
+   "method_out": "snowboarder",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/477671.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 441876,
+   "sample_id": "nm:441876",
+   "tier": "high",
+   "gold": "toothbrush",
+   "method": "lcd",
+   "direct_out": "toothbrush",
+   "direct_outcome": "correct",
+   "method_out": "toot",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/441876.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 19221,
+   "sample_id": "nm:19221",
+   "tier": "high",
+   "gold": "broccoli",
+   "method": "mib",
+   "direct_out": "broccoli",
+   "direct_outcome": "correct",
+   "method_out": "snail",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/19221.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 94326,
+   "sample_id": "nm:94326",
+   "tier": "high",
+   "gold": "statue_(sculpture)",
+   "method": "mib",
+   "direct_out": "statue",
+   "direct_outcome": "correct",
+   "method_out": "map reader",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/94326.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 174196,
+   "sample_id": "nm:174196",
+   "tier": "low",
+   "gold": "gorilla",
+   "method": "lcd",
+   "direct_out": "gorilla",
+   "direct_outcome": "correct",
+   "method_out": "stuffed animal",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/174196.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 5383,
+   "sample_id": "nm:5383",
+   "tier": "low",
+   "gold": "quiche",
+   "method": "lcd",
+   "direct_out": "quiche",
+   "direct_outcome": "correct",
+   "method_out": "cheese pie",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/5383.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 67832,
+   "sample_id": "nm:67832",
+   "tier": "low",
+   "gold": "lamb-chop",
+   "method": "lcd",
+   "direct_out": "lamb chop",
+   "direct_outcome": "correct",
+   "method_out": "carrot",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/67832.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 148077,
+   "sample_id": "nm:148077",
+   "tier": "low",
+   "gold": "seaplane",
+   "method": "lcd",
+   "direct_out": "airplane",
+   "direct_outcome": "correct",
+   "method_out": "aircraf",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/148077.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 512308,
+   "sample_id": "nm:512308",
+   "tier": "low",
+   "gold": "dollhouse",
+   "method": "lcd",
+   "direct_out": "dollhouse",
+   "direct_outcome": "correct",
+   "method_out": "doll",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/512308.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 224821,
+   "sample_id": "nm:224821",
+   "tier": "low",
+   "gold": "burrito",
+   "method": "vcd",
+   "direct_out": "burrito",
+   "direct_outcome": "correct",
+   "method_out": "wrap",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/224821.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 126653,
+   "sample_id": "nm:126653",
+   "tier": "low",
+   "gold": "lasagna",
+   "method": "lcd",
+   "direct_out": "lasagna",
+   "direct_outcome": "correct",
+   "method_out": "meat",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/126653.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  },
+  {
+   "model": "q4b",
+   "image_id": 294635,
+   "sample_id": "nm:294635",
+   "tier": "low",
+   "gold": "river_boat",
+   "method": "mib",
+   "direct_out": "boat",
+   "direct_outcome": "correct",
+   "method_out": "steamboat",
+   "image_path": "/home/g203-4028/projects/hallucination-mitigation-deficit/data/images/294635.jpg",
+   "prompt": "Look at the image. Name the main object shown in the image. Reply with a single English noun (one word or a short compound). If you do not recognize the object or are not sure, reply exactly: UNKNOWN"
+  }
+ ]
+}
