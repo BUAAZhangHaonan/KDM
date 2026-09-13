@@ -101,5 +101,11 @@
  "run_log_tail": {
   "q4b": "[q4b] DONE in 22.3 min",
   "q9b": "[q9b] DONE in 25.1 min"
+ },
+ "duration": {
+  "start": "2026-09-13 01:03:06",
+  "end": "2026-09-13 02:14:40",
+  "minutes": 71.6,
+  "basis": "first project artifact (LVIS val annotation download) to final git commit 02:54:40 +0800; within the 24h budget; includes a mid-run server repair pause (GPU1 failure, ~1h idle)"
  }
 }
