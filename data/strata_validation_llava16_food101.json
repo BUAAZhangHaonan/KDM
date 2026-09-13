@@ -1,0 +1,12 @@
+{
+ "model": "llava16",
+ "domain": "food101",
+ "eval_acc_known": 0.8217,
+ "eval_acc_deficient": 0.0183,
+ "diff": -0.8033,
+ "ci": [
+  -0.8612,
+  -0.7455
+ ],
+ "PASS": true
+}

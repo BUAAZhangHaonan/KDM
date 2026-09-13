@@ -1,0 +1,5 @@
+{
+ "model_type": "qwen3_5",
+ "lcd_ready": true,
+ "norm_path": "model.language_model.norm"
+}

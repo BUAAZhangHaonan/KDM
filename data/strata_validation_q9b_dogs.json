@@ -1,0 +1,12 @@
+{
+ "model": "q9b",
+ "domain": "dogs",
+ "eval_acc_known": 0.5375,
+ "eval_acc_deficient": 0.0014,
+ "diff": -0.5361,
+ "ci": [
+  -0.6944,
+  -0.3778
+ ],
+ "PASS": true
+}

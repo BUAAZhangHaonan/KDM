@@ -1,0 +1,12 @@
+{
+ "model": "q3vl4b",
+ "domain": "food101",
+ "eval_acc_known": 0.8933,
+ "eval_acc_deficient": 0.1633,
+ "diff": -0.73,
+ "ci": [
+  -0.8147,
+  -0.6453
+ ],
+ "PASS": true
+}

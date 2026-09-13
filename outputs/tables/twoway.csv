@@ -1,0 +1,15 @@
+abstain_closed_bad,abstain_closed_ok,classes_with_R,known_object,n_total,open_ok_closed_bad,pair,recognition_failure,retrieval_failure,retrieval_share_of_errors,share_hi,share_lo,stratum
+13,23,17,451,600,51,q4b@food101,24,38,0.6129,0.7242,0.4885,known
+32,31,25,89,600,7,q4b@food101,166,275,0.6236,0.6676,0.5775,deficient
+0,1,14,520,600,31,q9b@food101,18,30,0.625,0.7478,0.4836,known
+0,0,25,145,600,3,q9b@food101,159,293,0.6482,0.6908,0.6031,deficient
+0,0,12,235,600,276,internvl4b@food101,63,26,0.2921,0.3936,0.2078,known
+0,0,24,7,600,8,internvl4b@food101,424,161,0.2752,0.3128,0.2406,deficient
+15,1,10,238,600,255,llava16@food101,78,13,0.1429,0.2292,0.0854,known
+45,11,21,6,600,5,llava16@food101,401,132,0.2477,0.286,0.2129,deficient
+0,0,16,496,600,40,q3vl4b@food101,30,34,0.5312,0.6482,0.4107,known
+0,0,25,89,600,9,q3vl4b@food101,122,380,0.757,0.7924,0.7176,deficient
+0,0,20,150,720,248,q4b@dogs,157,165,0.5124,0.5665,0.458,known
+0,0,26,3,720,0,q4b@dogs,488,229,0.3194,0.3544,0.2863,deficient
+0,0,21,213,720,174,q9b@dogs,82,251,0.7538,0.797,0.7048,known
+0,0,27,1,720,0,q9b@dogs,396,323,0.4492,0.4858,0.4132,deficient

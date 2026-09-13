@@ -1,0 +1,9 @@
+{
+ "source": "Donghyun99/Stanford-Dogs",
+ "n_classes": 120,
+ "per_class_min": 148,
+ "per_class_max": 252,
+ "n_group": 2880,
+ "n_eval": 2880,
+ "seed": 42
+}

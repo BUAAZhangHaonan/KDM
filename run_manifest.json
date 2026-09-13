@@ -103,5 +103,58 @@
  "strata_validation_pass": [
   "q4b,25,25,0.9267,0.1383,0.8817,0.1717,0.71,0.6228,0.7972,0.8817,0.1717,True,0.0,0.0,0.108,True,style3",
   "q9b,25,25,0.9533,0.215,0.9183,0.2467,0.6717,0.5671,0.7762,0.9183,0.2467,True,0.004,0.0,0.0,False,(dropped->style1)"
- ]
+ ],
+ "stage3": {
+  "date": "2026-09-13/14",
+  "preregister": "PREREGISTER_STAGE3.md",
+  "closedset": {
+   "task": "101-option (food101) / 120-option (dogs) number-choice, per-sample deterministic candidate shuffle seed f\"{file}|{variant}\"",
+   "variants": [
+    "full101 (all classes)",
+    "near10 (gold + 9 WordNet Wu-Palmer neighbours)"
+   ],
+   "scoring": "first integer in reply == gold position; unparsed counts as wrong"
+  },
+  "models_extended": {
+   "q3vl4b": {
+    "path": "/home/g203-4028/Models/Qwen3-VL-4B-Instruct",
+    "notes": "Conv3d->matmul patch (verified 0.0078 bf16), max-side 640px input cap"
+   },
+   "llava16": {
+    "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf",
+    "notes": "native anyres"
+   },
+   "internvl4b": {
+    "path": "/home/g203-4028/Models/InternVL3_5-4B",
+    "notes": "remote code; manual ChatML template, single 448 crop, all_tied_weights_keys patch, timm installed"
+   },
+   "excluded": {
+    "glm46v": "loads and decodes but 16.5 s/decode steady-state (measured); full pipeline ~2 days/GPU, excluded per task section 9",
+    "MiniCPM-V-2_6": "weights incomplete (48K)",
+    "Ministral-3/8B": "missing dirs; text-only",
+    "Qwen3.5-35B-A3B": "67G bf16 exceeds single 3090"
+   }
+  },
+  "domains": {
+   "food101": {
+    "source": "ethz/food101 (stage-2 manifest reused)"
+   },
+   "dogs": {
+    "source": "Donghyun99/Stanford-Dogs (HF parquet)",
+    "n_classes": 120,
+    "per_class_min": 148,
+    "n_group": 2880,
+    "n_eval": 2880,
+    "seed": 42
+   }
+  },
+  "stage3_outputs": [
+   "outputs/raw/q4b_stage3_closedset.jsonl",
+   "outputs/raw/q4b_stage3_mechanism.jsonl",
+   "outputs/raw/q9b_stage3_closedset.jsonl",
+   "outputs/raw/q9b_stage3_mechanism.jsonl",
+   "outputs/tables/stage3_summary.json"
+  ],
+  "updated": "2026-09-14T01:13:21"
+ }
 }

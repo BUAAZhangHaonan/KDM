@@ -1,0 +1,956 @@
+{
+ "generated": "2026-09-14 01:12:35",
+ "preregister": "PREREGISTER_STAGE3.md",
+ "pairs": [
+  "q4b@food101",
+  "q9b@food101",
+  "internvl4b@food101",
+  "llava16@food101",
+  "q3vl4b@food101",
+  "q4b@dogs",
+  "q9b@dogs"
+ ],
+ "per_pair": {
+  "q4b@food101": {
+   "n_samples": 1200,
+   "j1": {
+    "share": 0.6236,
+    "ci": [
+     0.5775,
+     0.6676
+    ],
+    "classes_with_R": 25,
+    "n_R": 275,
+    "n_K": 166,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1127,
+     "ci_R": [
+      0.0806,
+      0.1556
+     ],
+     "acc_K": 0.0,
+     "ci_K": [
+      0.0,
+      0.0226
+     ],
+     "diff": 0.1127,
+     "ci_diff": [
+      0.0753,
+      0.1501
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": true,
+     "diff_excl_zero": true
+    },
+    "mib": {
+     "acc_R": 0.2982,
+     "ci_R": [
+      0.2472,
+      0.3547
+     ],
+     "acc_K": 0.0542,
+     "ci_K": [
+      0.0288,
+      0.0998
+     ],
+     "diff": 0.244,
+     "ci_diff": [
+      0.1799,
+      0.3081
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.1745,
+     "ci_R": [
+      0.1343,
+      0.2238
+     ],
+     "acc_K": 0.0602,
+     "ci_K": [
+      0.033,
+      0.1073
+     ],
+     "diff": 0.1143,
+     "ci_diff": [
+      0.0567,
+      0.1719
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "satisfied_methods": [
+     "vcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": -0.0024,
+      "ci90": [
+       -0.0349,
+       0.0305
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.1118,
+      "ci90": [
+       -0.1587,
+       -0.067
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": 0.0189,
+      "ci90": [
+       -0.0264,
+       0.0632
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.1145,
+      "ci90": [
+       -0.1671,
+       -0.0493
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.4548,
+    "jsd_blank": 0.5939,
+    "logistic_combo": 0.6338,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.8533,
+    "known_near10": 0.94,
+    "deficient_full": 0.6583,
+    "unparsed_rate_full": 0.0242
+   },
+   "caveat": {
+    "R_share_near10_all": 0.8776,
+    "R_share_near10_synset_only": 0.8567,
+    "cross_variant_agreement": 0.7052
+   }
+  },
+  "q9b@food101": {
+   "n_samples": 1200,
+   "j1": {
+    "share": 0.6482,
+    "ci": [
+     0.6031,
+     0.6908
+    ],
+    "classes_with_R": 25,
+    "n_R": 293,
+    "n_K": 159,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1263,
+     "ci_R": [
+      0.093,
+      0.1692
+     ],
+     "acc_K": 0.0252,
+     "ci_K": [
+      0.0098,
+      0.0629
+     ],
+     "diff": 0.1011,
+     "ci_diff": [
+      0.056,
+      0.1463
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "mib": {
+     "acc_R": 0.2696,
+     "ci_R": [
+      0.222,
+      0.3232
+     ],
+     "acc_K": 0.044,
+     "ci_K": [
+      0.0215,
+      0.0881
+     ],
+     "diff": 0.2256,
+     "ci_diff": [
+      0.1656,
+      0.2856
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.1195,
+     "ci_R": [
+      0.0872,
+      0.1616
+     ],
+     "acc_K": 0.044,
+     "ci_K": [
+      0.0215,
+      0.0881
+     ],
+     "diff": 0.0754,
+     "ci_diff": [
+      0.0265,
+      0.1244
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "satisfied_methods": []
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": -0.0129,
+      "ci90": [
+       -0.0453,
+       0.0184
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.1036,
+      "ci90": [
+       -0.1477,
+       -0.0599
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": -0.0258,
+      "ci90": [
+       -0.0634,
+       0.013
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.0879,
+      "ci90": [
+       -0.1392,
+       -0.0253
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.4533,
+    "jsd_blank": 0.5842,
+    "logistic_combo": 0.5831,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.9183,
+    "known_near10": 0.94,
+    "deficient_full": 0.73,
+    "unparsed_rate_full": 0.0
+   },
+   "caveat": {
+    "R_share_near10_all": 0.854,
+    "R_share_near10_synset_only": 0.8223,
+    "cross_variant_agreement": 0.7765
+   }
+  },
+  "internvl4b@food101": {
+   "n_samples": 1200,
+   "j1": {
+    "share": 0.2752,
+    "ci": [
+     0.2406,
+     0.3128
+    ],
+    "classes_with_R": 24,
+    "n_R": 161,
+    "n_K": 424,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.0497,
+     "ci_R": [
+      0.0254,
+      0.095
+     ],
+     "acc_K": 0.0212,
+     "ci_K": [
+      0.0112,
+      0.0398
+     ],
+     "diff": 0.0285,
+     "ci_diff": [
+      -0.0078,
+      0.0647
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "mib": {
+     "acc_R": 0.0745,
+     "ci_R": [
+      0.0431,
+      0.1258
+     ],
+     "acc_K": 0.0212,
+     "ci_K": [
+      0.0112,
+      0.0398
+     ],
+     "diff": 0.0533,
+     "ci_diff": [
+      0.0105,
+      0.0961
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.0373,
+     "ci_R": [
+      0.0172,
+      0.0789
+     ],
+     "acc_K": 0.0071,
+     "ci_K": [
+      0.0024,
+      0.0206
+     ],
+     "diff": 0.0302,
+     "ci_diff": [
+      -0.0001,
+      0.0605
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "satisfied_methods": []
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": -0.0051,
+      "ci90": [
+       -0.0359,
+       0.0273
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.036,
+      "ci90": [
+       -0.0814,
+       0.0067
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": -0.0517,
+      "ci90": [
+       -0.0895,
+       -0.0158
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.0783,
+      "ci90": [
+       -0.1235,
+       -0.0367
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.4673,
+    "jsd_blank": 0.588,
+    "logistic_combo": 0.5949,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.435,
+    "known_near10": 0.8433,
+    "deficient_full": 0.28,
+    "unparsed_rate_full": 0.0
+   },
+   "caveat": {
+    "R_share_near10_all": 0.7077,
+    "R_share_near10_synset_only": 0.6043,
+    "cross_variant_agreement": 0.547
+   }
+  },
+  "llava16@food101": {
+   "n_samples": 1200,
+   "j1": {
+    "share": 0.2477,
+    "ci": [
+     0.2129,
+     0.286
+    ],
+    "classes_with_R": 21,
+    "n_R": 132,
+    "n_K": 401,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.0455,
+     "ci_R": [
+      0.021,
+      0.0956
+     ],
+     "acc_K": 0.0274,
+     "ci_K": [
+      0.0154,
+      0.0484
+     ],
+     "diff": 0.018,
+     "ci_diff": [
+      -0.0209,
+      0.057
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "mib": {
+     "acc_R": 0.0833,
+     "ci_R": [
+      0.0472,
+      0.1431
+     ],
+     "acc_K": 0.0549,
+     "ci_K": [
+      0.0365,
+      0.0817
+     ],
+     "diff": 0.0285,
+     "ci_diff": [
+      -0.0237,
+      0.0806
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "lcd": {
+     "acc_R": 0.0152,
+     "ci_R": [
+      0.0042,
+      0.0536
+     ],
+     "acc_K": 0.0175,
+     "ci_K": [
+      0.0085,
+      0.0356
+     ],
+     "diff": -0.0023,
+     "ci_diff": [
+      -0.0268,
+      0.0222
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "satisfied_methods": []
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": -0.0412,
+      "ci90": [
+       -0.0706,
+       -0.0109
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.0599,
+      "ci90": [
+       -0.1007,
+       -0.017
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": -0.0119,
+      "ci90": [
+       -0.053,
+       0.0277
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.005,
+      "ci90": [
+       -0.0433,
+       0.0358
+      ],
+      "equiv": true
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.4398,
+    "jsd_blank": 0.5719,
+    "logistic_combo": 0.5761,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.42,
+    "known_near10": 0.7867,
+    "deficient_full": 0.2483,
+    "unparsed_rate_full": 0.0
+   },
+   "caveat": {
+    "R_share_near10_all": 0.7617,
+    "R_share_near10_synset_only": 0.7443,
+    "cross_variant_agreement": 0.4371
+   }
+  },
+  "q3vl4b@food101": {
+   "n_samples": 1200,
+   "j1": {
+    "share": 0.757,
+    "ci": [
+     0.7176,
+     0.7924
+    ],
+    "classes_with_R": 25,
+    "n_R": 380,
+    "n_K": 122,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.0605,
+     "ci_R": [
+      0.0407,
+      0.0892
+     ],
+     "acc_K": 0.0,
+     "ci_K": [
+      0.0,
+      0.0305
+     ],
+     "diff": 0.0605,
+     "ci_diff": [
+      0.0366,
+      0.0845
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": true,
+     "diff_excl_zero": true
+    },
+    "mib": {
+     "acc_R": 0.1605,
+     "ci_R": [
+      0.127,
+      0.2008
+     ],
+     "acc_K": 0.0164,
+     "ci_K": [
+      0.0045,
+      0.0578
+     ],
+     "diff": 0.1441,
+     "ci_diff": [
+      0.1009,
+      0.1874
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.0684,
+     "ci_R": [
+      0.0471,
+      0.0984
+     ],
+     "acc_K": 0.0082,
+     "ci_K": [
+      0.0014,
+      0.045
+     ],
+     "diff": 0.0602,
+     "ci_diff": [
+      0.0302,
+      0.0902
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "satisfied_methods": [
+     "vcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": 0.0726,
+      "ci90": [
+       0.0412,
+       0.1006
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": 0.0142,
+      "ci90": [
+       -0.0214,
+       0.0507
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": 0.0233,
+      "ci90": [
+       -0.0077,
+       0.0525
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.0409,
+      "ci90": [
+       -0.0812,
+       -0.0052
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.5697,
+    "jsd_blank": 0.5246,
+    "logistic_combo": 0.5796,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.8833,
+    "known_near10": 0.9583,
+    "deficient_full": 0.7817,
+    "unparsed_rate_full": 0.0
+   },
+   "caveat": {
+    "R_share_near10_all": 0.9263,
+    "R_share_near10_synset_only": 0.9031,
+    "cross_variant_agreement": 0.8108
+   }
+  },
+  "q4b@dogs": {
+   "n_samples": 1440,
+   "j1": {
+    "share": 0.3194,
+    "ci": [
+     0.2863,
+     0.3544
+    ],
+    "classes_with_R": 26,
+    "n_R": 229,
+    "n_K": 488,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1441,
+     "ci_R": [
+      0.1045,
+      0.1955
+     ],
+     "acc_K": 0.0369,
+     "ci_K": [
+      0.0235,
+      0.0575
+     ],
+     "diff": 0.1072,
+     "ci_diff": [
+      0.0588,
+      0.1557
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "mib": {
+     "acc_R": 0.4279,
+     "ci_R": [
+      0.3656,
+      0.4927
+     ],
+     "acc_K": 0.2234,
+     "ci_K": [
+      0.1886,
+      0.2624
+     ],
+     "diff": 0.2046,
+     "ci_diff": [
+      0.1306,
+      0.2786
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.2445,
+     "ci_R": [
+      0.1934,
+      0.3041
+     ],
+     "acc_K": 0.0779,
+     "ci_K": [
+      0.0573,
+      0.1051
+     ],
+     "diff": 0.1667,
+     "ci_diff": [
+      0.1061,
+      0.2272
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "satisfied_methods": []
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": 0.0226,
+      "ci90": [
+       -0.0014,
+       0.0477
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.0724,
+      "ci90": [
+       -0.1125,
+       -0.0286
+      ],
+      "equiv": false
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": -0.0358,
+      "ci90": [
+       -0.0706,
+       -0.0026
+      ],
+      "equiv": false
+     },
+     "ece": {
+      "D": -0.1985,
+      "ci90": [
+       -0.2517,
+       -0.134
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.5615,
+    "jsd_blank": 0.5584,
+    "logistic_combo": 0.6339,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.4375,
+    "known_near10": 0.8583,
+    "deficient_full": 0.3222,
+    "unparsed_rate_full": 0.1444
+   },
+   "caveat": {
+    "R_share_near10_all": 0.8033,
+    "R_share_near10_synset_only": 0.8161,
+    "cross_variant_agreement": 0.4909
+   }
+  },
+  "q9b@dogs": {
+   "n_samples": 1440,
+   "j1": {
+    "share": 0.4492,
+    "ci": [
+     0.4132,
+     0.4858
+    ],
+    "classes_with_R": 27,
+    "n_R": 323,
+    "n_K": 396,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.0062,
+     "ci_R": [
+      0.0017,
+      0.0223
+     ],
+     "acc_K": 0.0051,
+     "ci_K": [
+      0.0014,
+      0.0182
+     ],
+     "diff": 0.0011,
+     "ci_diff": [
+      -0.0099,
+      0.0122
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": false
+    },
+    "mib": {
+     "acc_R": 0.291,
+     "ci_R": [
+      0.2442,
+      0.3428
+     ],
+     "acc_K": 0.0732,
+     "ci_K": [
+      0.0515,
+      0.1032
+     ],
+     "diff": 0.2178,
+     "ci_diff": [
+      0.162,
+      0.2736
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "lcd": {
+     "acc_R": 0.065,
+     "ci_R": [
+      0.0429,
+      0.0973
+     ],
+     "acc_K": 0.0025,
+     "ci_K": [
+      0.0004,
+      0.0142
+     ],
+     "diff": 0.0625,
+     "ci_diff": [
+      0.0352,
+      0.0898
+     ],
+     "sig_R_pos": true,
+     "sig_K_zero": false,
+     "diff_excl_zero": true
+    },
+    "satisfied_methods": []
+   },
+   "j3": {
+    "vcd": {
+     "conf": {
+      "D": -0.0016,
+      "ci90": [
+       -0.021,
+       0.0191
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.0045,
+      "ci90": [
+       -0.0251,
+       0.0167
+      ],
+      "equiv": true
+     }
+    },
+    "lcd": {
+     "conf": {
+      "D": -0.0008,
+      "ci90": [
+       -0.0252,
+       0.0226
+      ],
+      "equiv": true
+     },
+     "ece": {
+      "D": -0.0668,
+      "ci90": [
+       -0.1027,
+       -0.0334
+      ],
+      "equiv": false
+     }
+    },
+    "all_equiv": false
+   },
+   "j4": {
+    "entropy": 0.5123,
+    "jsd_blank": 0.5763,
+    "logistic_combo": 0.5735,
+    "all_below_limit": true
+   },
+   "sanity": {
+    "known_full": 0.6444,
+    "known_near10": 0.8861,
+    "deficient_full": 0.45,
+    "unparsed_rate_full": 0.0
+   },
+   "caveat": {
+    "R_share_near10_all": 0.7872,
+    "R_share_near10_synset_only": 0.8033,
+    "cross_variant_agreement": 0.6064
+   }
+  }
+ },
+ "primary_verdicts": {
+  "j1": "PASS",
+  "j2": "PARTIAL",
+  "j3": "FAIL(not equivalent)",
+  "j4": "PASS(cannot split)"
+ }
+}
