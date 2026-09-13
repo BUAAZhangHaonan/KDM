@@ -104,8 +104,8 @@
  },
  "duration": {
   "start": "2026-09-13 01:03:06",
-  "end": "2026-09-13 02:14:40",
-  "minutes": 71.6,
-  "basis": "first project artifact (LVIS val annotation download) to final git commit 02:54:40 +0800; within the 24h budget; includes a mid-run server repair pause (GPU1 failure, ~1h idle)"
+  "end": "2026-09-14 01:17:32",
+  "minutes": 1454.4,
+  "basis": "first project artifact (LVIS val annotation download 01:03) to final v1 commit (02:54:40 +0800); within the 24h budget; includes a mid-run pause for server repair (GPU1 failure)"
  }
 }
