@@ -41,7 +41,7 @@ def all_classes():
 
 
 def append(path, rec):
-    with open(path, 'a') as f:
+    with open(ROOT / 'outputs' / 'raw' / path, 'a') as f:
         f.write(json.dumps(rec) + '\n')
 
 

@@ -1,0 +1,11 @@
+{
+ "model": "q4b",
+ "abstain_usable": true,
+ "chosen_style": "style3",
+ "abstain_rates": {
+  "style2": 0.0,
+  "style3": 0.108,
+  "style1": 0.0
+ },
+ "primary_outcome": "abstention+confidence"
+}

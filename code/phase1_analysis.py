@@ -52,7 +52,7 @@ def main():
         d, lo, hi = welch_ci(known, defic)
         img_known = img['known'][0] / img['known'][1]
         img_defic = img['deficient'][0] / img['deficient'][1]
-        passed = (lo > 0) and (np.mean(defic) <= DEFICIENT_ACC_MAX)
+        passed = bool((lo > 0) and (np.mean(defic) <= DEFICIENT_ACC_MAX))
 
         # abstention pre-test
         arecs = [json.loads(l) for l in open(ROOT / 'outputs' / 'raw' / f'{model}_phase1_abstain.jsonl')]

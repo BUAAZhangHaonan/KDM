@@ -23,6 +23,7 @@ def main():
     names = ds['train'].features['label'].names
     print(f'source: ethz/food101 | splits: {[(k, len(v)) for k, v in ds.items()]} | classes: {len(names)}')
 
+    IMG_DIR.mkdir(parents=True, exist_ok=True)
     by_class = defaultdict(list)
     for split in ds:
         for ex in ds[split]:

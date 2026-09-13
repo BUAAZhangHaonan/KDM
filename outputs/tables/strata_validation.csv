@@ -1,0 +1,3 @@
+model,n_known_classes,n_deficient_classes,group_acc_known,group_acc_deficient,eval_acc_known,eval_acc_deficient,eval_diff,diff_lo,diff_hi,img_acc_known,img_acc_deficient,PASS,abstain_style1,abstain_style2,abstain_style3,abstain_usable,chosen_style
+q4b,25,25,0.9267,0.1383,0.8817,0.1717,0.71,0.6228,0.7972,0.8817,0.1717,True,0.0,0.0,0.108,True,style3
+q9b,25,25,0.9533,0.215,0.9183,0.2467,0.6717,0.5671,0.7762,0.9183,0.2467,True,0.004,0.0,0.0,False,(dropped->style1)

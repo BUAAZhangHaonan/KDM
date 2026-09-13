@@ -1,0 +1,11 @@
+{
+ "model": "q9b",
+ "abstain_usable": false,
+ "chosen_style": "style1",
+ "abstain_rates": {
+  "style2": 0.0,
+  "style3": 0.0,
+  "style1": 0.004
+ },
+ "primary_outcome": "confidence_and_calibration"
+}

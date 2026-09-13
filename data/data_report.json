@@ -1,0 +1,14 @@
+{
+ "source": "ethz/food101",
+ "license": "HF: ethz/food101 (Food-101, MIT/README at source)",
+ "n_classes": 101,
+ "per_class_counts": {
+  "min": 1000,
+  "max": 1000
+ },
+ "per_part_per_class": 24,
+ "n_group": 2424,
+ "n_eval": 2424,
+ "manifest_sha256": "4a2d11e2fd6b4b42d4735235e44ccc9bca5103ec73661e217fd34f75a2ee4599",
+ "seed": 42
+}

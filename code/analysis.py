@@ -382,8 +382,17 @@ def main():
     for model in models:
         data = load_all(model, args.tag)
         classes = sorted({r['class'] for r in data['naming']})
+        # style-3 round-A gate: if the model said it cannot recognize the object,
+        # the final outcome is abstain for every decoding config on that sample
+        roundA = {}
         for r in data['naming']:
-            r['outcome'] = scoring.score_naming(r['text'], r['class'], classes)
+            if r.get('method') == 'roundA':
+                roundA[r['key'].rsplit(':', 1)[0]] = bool(r['abstained'])
+        for r in data['naming']:
+            if r['method'] in METHODS:
+                sid = r['key'].rsplit(':', 1)[0]
+                oc = scoring.score_naming(r['text'], r['class'], classes)
+                r['outcome'] = 'abstain' if roundA.get(sid) else oc
         for r in data['existence']:
             r['outcome'] = scoring.score_existence(r['text'], r['gold_present'])
         summary.setdefault('counts', {})[model] = {k: len(v) for k, v in data.items()}
