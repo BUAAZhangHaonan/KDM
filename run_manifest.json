@@ -104,8 +104,8 @@
  },
  "duration": {
   "start": "2026-09-13 01:03:06",
-  "end": "2026-09-14 01:17:32",
-  "minutes": 1454.4,
-  "basis": "first project artifact (LVIS val annotation download 01:03) to final v1 commit (02:54:40 +0800); within the 24h budget; includes a mid-run pause for server repair (GPU1 failure)"
+  "end": "2026-09-13 02:54:40",
+  "minutes": 111.6,
+  "basis": "first project artifact (LVIS val annotation download 01:03:06) to final v1 experiment commit (fix: correct q9b existence pos accuracy figure, 02:54:40 +0800, 2026-09-13); includes a mid-run pause for server repair (GPU1 failure); within the 24h budget"
  }
 }
