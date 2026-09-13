@@ -1,0 +1,13 @@
+model,rule,m_star,tau_entropy,tau_jsd,stratum,n,accuracy,abstain_rate,certain_error_rate,d_cer_vs_direct,d_acc_vs_direct
+q4b,remedy_known_tuned,mib,5.5172,0.6385,known,600,0.84,0.06,0.1,-0.0033,0.0033
+q4b,remedy_known_tuned,mib,5.5172,0.6385,deficient,600,0.2417,0.1083,0.65,-0.085,0.0817
+q4b,remedy_median,mib,2.2589,0.6497,known,600,0.6667,0.2917,0.0417,-0.0617,-0.17
+q4b,remedy_median,mib,2.2589,0.6497,deficient,600,0.05,0.7633,0.1867,-0.5483,-0.11
+q4b,ideal,,,,known,600,0.89,0.11,0.0,-0.1033,0.0533
+q4b,ideal,,,,deficient,600,0.37,0.63,0.0,-0.735,0.21
+q9b,remedy_known_tuned,vcd,4.183,0.6784,known,600,0.9183,0.0017,0.08,0.0,0.0
+q9b,remedy_known_tuned,vcd,4.183,0.6784,deficient,600,0.245,0.02,0.735,-0.0183,-0.0017
+q9b,remedy_median,vcd,1.912,0.6726,known,600,0.745,0.235,0.02,-0.06,-0.1733
+q9b,remedy_median,vcd,1.912,0.6726,deficient,600,0.0683,0.765,0.1667,-0.5867,-0.1783
+q9b,ideal,,,,known,600,0.9633,0.0367,0.0,-0.08,0.045
+q9b,ideal,,,,deficient,600,0.4433,0.5567,0.0,-0.7533,0.1967

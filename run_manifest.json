@@ -1,0 +1,107 @@
+{
+ "created": "2026-09-13T17:53:58",
+ "python": "3.11.14",
+ "torch": "2.9.0+cu128",
+ "transformers": "5.17.0",
+ "datasets": "5.0.1",
+ "accelerate": "1.12.0",
+ "pillow": "12.0.0",
+ "scipy": "1.17.0",
+ "nltk": "3.10.3",
+ "numpy": "2.3.5",
+ "flash_linear_attention": "0.5.2",
+ "cuda": "12.8",
+ "gpus": [
+  "0, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "1, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "2, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "3, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "4, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "5, NVIDIA GeForce RTX 3090, 24576 MiB"
+ ],
+ "gpu_assignment": {
+  "q4b": "cuda:4",
+  "q9b": "cuda:5",
+  "note": "server admin restriction: GPUs 4/5 only"
+ },
+ "models": {
+  "q4b": "/home/g203-4028/Models/Qwen3.5-4B",
+  "q9b": "/home/g203-4028/Models/Qwen3.5-9B"
+ },
+ "data": {
+  "source": "ethz/food101",
+  "samples_manifest_sha256": "ef390e58ae1b0d1f1b230668a9326bda249dfdb4fa6b502c55443409196168db",
+  "n_manifest": 4848,
+  "license": "HF: ethz/food101 (Food-101, MIT/README at source)",
+  "n_classes": 101,
+  "per_class_counts": {
+   "min": 1000,
+   "max": 1000
+  },
+  "per_part_per_class": 24,
+  "n_group": 2424,
+  "n_eval": 2424,
+  "manifest_sha256": "4a2d11e2fd6b4b42d4735235e44ccc9bca5103ec73661e217fd34f75a2ee4599",
+  "seed": 42
+ },
+ "strata": {
+  "q4b": {
+   "rule": "bottom-25%/top-25% by grouping-half accuracy",
+   "k": 25,
+   "deficient_mean_group_acc": 0.1383,
+   "known_mean_group_acc": 0.9267
+  },
+  "q9b": {
+   "rule": "bottom-25%/top-25% by grouping-half accuracy",
+   "k": 25,
+   "deficient_mean_group_acc": 0.215,
+   "known_mean_group_acc": 0.9533
+  }
+ },
+ "raw_outputs": {
+  "q4b_main_existence.jsonl": {
+   "n": 4000,
+   "sum_wall_s": 2215.0
+  },
+  "q4b_main_naming.jsonl": {
+   "n": 6000,
+   "sum_wall_s": 3615.1
+  },
+  "q4b_phase1_abstain.jsonl": {
+   "n": 750,
+   "sum_wall_s": 0
+  },
+  "q4b_phase1_eval.jsonl": {
+   "n": 1200,
+   "sum_wall_s": 417.3
+  },
+  "q4b_phase1_group.jsonl": {
+   "n": 2424,
+   "sum_wall_s": 898.6
+  },
+  "q9b_main_existence.jsonl": {
+   "n": 4000,
+   "sum_wall_s": 2435.0
+  },
+  "q9b_main_naming.jsonl": {
+   "n": 4800,
+   "sum_wall_s": 4017.5
+  },
+  "q9b_phase1_abstain.jsonl": {
+   "n": 750,
+   "sum_wall_s": 0
+  },
+  "q9b_phase1_eval.jsonl": {
+   "n": 1200,
+   "sum_wall_s": 483.7
+  },
+  "q9b_phase1_group.jsonl": {
+   "n": 2424,
+   "sum_wall_s": 1013.9
+  }
+ },
+ "strata_validation_pass": [
+  "q4b,25,25,0.9267,0.1383,0.8817,0.1717,0.71,0.6228,0.7972,0.8817,0.1717,True,0.0,0.0,0.108,True,style3",
+  "q9b,25,25,0.9533,0.215,0.9183,0.2467,0.6717,0.5671,0.7762,0.9183,0.2467,True,0.004,0.0,0.0,False,(dropped->style1)"
+ ]
+}

@@ -20,10 +20,9 @@ STRATA = ['known', 'deficient']
 
 def load_all(model, tag='main'):
     out = {}
-    for name in [f'{model}_{tag}_naming.jsonl', f'{model}_{tag}_existence.jsonl']:
-        p = ROOT / 'outputs' / 'raw' / name
-        out[name.split('_', 1)[1].replace('.jsonl', '')] = (
-            [json.loads(l) for l in open(p)] if p.exists() else [])
+    for task in ['naming', 'existence']:
+        p = ROOT / 'outputs' / 'raw' / f'{model}_{tag}_{task}.jsonl'
+        out[task] = [json.loads(l) for l in open(p)] if p.exists() else []
     return out
 
 
@@ -177,6 +176,11 @@ def build_effects(recs, model, task):
                         if ind(d[m]) == 1 and ind(d['direct']) == 1 and d[m].get('answer_maxp') is not None:
                             out.append(d[m]['answer_maxp'] - d['direct']['answer_maxp'])
             return out
+        def ece_of(recs):
+            cs = [r['answer_maxp'] for r in recs if r.get('answer_maxp') is not None]
+            ks = [1.0 * (r['outcome'] == 'correct') for r in recs if r.get('answer_maxp') is not None]
+            return ece(cs, ks) if cs else float('nan')
+
         for kind in ['err', 'conf']:
             vl, vh = vec('deficient', kind), vec('known', kind)
             if vl and vh:
@@ -191,6 +195,26 @@ def build_effects(recs, model, task):
                              'err_hi' if kind == 'err' else 'conf_hi': round(dd + 1.96 * se, 4),
                              'err_ci_excl_zero' if kind == 'err' else 'conf_ci_excl_zero':
                                  not (dd - 1.96 * se <= 0 <= dd + 1.96 * se)})
+        # ECE diff-in-diff via paired bootstrap over samples within each stratum
+        sids_def = [s for s, d in by_sid.items() if m in d and 'direct' in d
+                    and d[m].get('stratum') == 'deficient']
+        sids_kn = [s for s, d in by_sid.items() if m in d and 'direct' in d
+                   and d[m].get('stratum') == 'known']
+        if sids_def and sids_kn:
+            def dd_ece(i_d, i_k):
+                ed = ece_of([by_sid[sids_def[i]][m] for i in i_d]) - ece_of([by_sid[sids_def[i]]['direct'] for i in i_d])
+                ek = ece_of([by_sid[sids_kn[i]][m] for i in i_k]) - ece_of([by_sid[sids_kn[i]]['direct'] for i in i_k])
+                return ed - ek
+            rng = np.random.default_rng(42)
+            B = 1000
+            boots = [dd_ece(rng.integers(0, len(sids_def), len(sids_def)),
+                            rng.integers(0, len(sids_kn), len(sids_kn))) for _ in range(B)]
+            v0 = dd_ece(np.arange(len(sids_def)), np.arange(len(sids_kn)))
+            lo, hi = float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))
+            rows.append({'model': model, 'task': task, 'method': m, 'stratum': 'did_ece',
+                         'n': len(sids_def), 'd_ece': round(float(v0), 4),
+                         'ece_lo': round(lo, 4), 'ece_hi': round(hi, 4),
+                         'ece_ci_excl_zero': bool(lo > 0 or hi < 0)})
     return rows
 
 
