@@ -78,8 +78,9 @@ def class_point(by_class_class, m):
 
 
 def pooled(records):
-    cd = np.array([r['answer_maxp'] for r in records['direct']])
-    kd = np.array([1.0 * (r['outcome'] == 'correct') for r in records['direct']])
+    dvals = list(records['direct'].values())
+    cd = np.array([r['answer_maxp'] for r in dvals])
+    kd = np.array([1.0 * (r['outcome'] == 'correct') for r in dvals])
     return float(cd.mean()), float(kd.mean()), ece(cd, kd)
 
 
@@ -141,7 +142,8 @@ def analyse(model, domain, by_class, stratum_of, base_rows, cross_rows, summary)
                     x0s.append(-a_ / b_)
             r_lo, r_hi = (np.percentile(rs, 2.5), np.percentile(rs, 97.5)) if rs else (float('nan'),) * 2
             b0, a0 = np.polyfit(x, y, 1)
-            supported = (r0 == r0) and (pred_sign * r0 > 0) and (pred_sign * r_lo > 0)
+            supported = (r0 == r0) and (pred_sign * r0 > 0) and \
+                (pred_sign * r_lo > 0) and (pred_sign * r_hi > 0)
             row = {'model': model, 'domain': domain, 'method': m, 'regressor': reg,
                    'n_classes': n_cls, 'r': round(r0, 4),
                    'r_lo': round(float(r_lo), 4), 'r_hi': round(float(r_hi), 4),
