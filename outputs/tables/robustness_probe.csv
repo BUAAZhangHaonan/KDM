@@ -1,0 +1,16 @@
+R_share,hi,lo,pair,probe
+0.6236,0.6676,0.5775,q4b@food101,full_number_choice
+0.2971,0.3413,0.2563,q4b@food101,ll_probe_v4
+0.8776,,,q4b@food101,near10_choice
+0.6482,0.6908,0.6031,q9b@food101,full_number_choice
+0.2566,0.2988,0.2185,q9b@food101,ll_probe_v4
+0.854,,,q9b@food101,near10_choice
+0.2752,0.3128,0.2406,internvl4b@food101,full_number_choice
+0.0462,0.0663,0.0319,internvl4b@food101,ll_probe_v4
+0.7077,,,internvl4b@food101,near10_choice
+0.2477,0.286,0.2129,llava16@food101,full_number_choice
+0.1482,0.1809,0.1206,llava16@food101,ll_probe_v4
+0.7617,,,llava16@food101,near10_choice
+0.757,0.7924,0.7176,q3vl4b@food101,full_number_choice
+0.2211,0.2595,0.187,q3vl4b@food101,ll_probe_v4
+0.9263,,,q3vl4b@food101,near10_choice

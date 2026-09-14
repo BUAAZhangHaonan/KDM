@@ -1,0 +1,11 @@
+abstain_probe_bad,abstain_probe_ok,classes_with_R,known_object,n_total,open_ok_probe_bad,pair,recognition_failure,retrieval_failure,retrieval_share,role,share_hi,share_lo,stratum
+14,22,14,397,600,105,q4b@food101,21,41,0.6613,exploratory,0.7666,0.5372,known
+41,22,18,81,600,15,q4b@food101,310,131,0.2971,exploratory,0.3413,0.2563,deficient
+0,1,5,401,600,150,q9b@food101,28,20,0.4167,exploratory,0.5572,0.2885,known
+0,0,17,117,600,31,q9b@food101,336,116,0.2566,exploratory,0.2988,0.2185,deficient
+0,0,8,219,600,292,internvl4b@food101,58,31,0.3483,confirmatory,0.4517,0.2575,known
+0,0,6,5,600,10,internvl4b@food101,558,27,0.0462,confirmatory,0.0663,0.0319,deficient
+16,0,8,292,600,201,llava16@food101,71,20,0.2198,confirmatory,0.3152,0.147,known
+51,5,9,6,600,5,llava16@food101,454,79,0.1482,confirmatory,0.1809,0.1206,deficient
+0,0,10,338,600,198,q3vl4b@food101,38,26,0.4062,exploratory,0.5286,0.2946,known
+0,0,13,63,600,35,q3vl4b@food101,391,111,0.2211,exploratory,0.2595,0.187,deficient

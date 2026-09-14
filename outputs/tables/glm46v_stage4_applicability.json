@@ -1,0 +1,14 @@
+{
+ "overlap": 90,
+ "open_correct": 45,
+ "probe_acc_on_correct": 0.3778,
+ "n_fullname": 20,
+ "acc_fullname": 0.5,
+ "n_notfull": 25,
+ "acc_notfull": 0.28,
+ "rank_diff_mean": 54.06,
+ "rank_diff_ci": [
+  49.08,
+  59.03
+ ]
+}

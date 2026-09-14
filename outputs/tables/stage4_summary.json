@@ -1,0 +1,1390 @@
+{
+ "generated": "2026-09-15 00:15:43",
+ "preregister": "PREREGISTER_STAGE4.md",
+ "per_pair": {
+  "q4b@food101": {
+   "role": "exploratory",
+   "n": 1200,
+   "j1": {
+    "share": 0.2971,
+    "ci": [
+     0.2563,
+     0.3413
+    ],
+    "classes_with_R": 18,
+    "n_R": 131,
+    "n_K": 310,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1832,
+     "ci_R": [
+      0.1263,
+      0.2581
+     ],
+     "acc_K": 0.0226,
+     "ci_K": [
+      0.011,
+      0.0459
+     ],
+     "diff": 0.1606,
+     "ci_diff": [
+      0.0923,
+      0.2289
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "mib": {
+     "acc_R": 0.4962,
+     "ci_R": [
+      0.4119,
+      0.5807
+     ],
+     "acc_K": 0.0839,
+     "ci_K": [
+      0.0579,
+      0.1201
+     ],
+     "diff": 0.4123,
+     "ci_diff": [
+      0.3213,
+      0.5033
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "lcd": {
+     "acc_R": 0.2672,
+     "ci_R": [
+      0.1988,
+      0.3488
+     ],
+     "acc_K": 0.0742,
+     "ci_K": [
+      0.0499,
+      0.1089
+     ],
+     "diff": 0.193,
+     "ci_diff": [
+      0.1118,
+      0.2742
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "methods_ok": [
+     "vcd",
+     "mib",
+     "lcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "D": -0.1379,
+     "ci90": [
+      -0.1955,
+      -0.071
+     ],
+     "hold": true
+    },
+    "lcd": {
+     "D": -0.141,
+     "ci90": [
+      -0.2073,
+      -0.0494
+     ],
+     "hold": true
+    }
+   },
+   "j4": {
+    "entropy": 0.4718,
+    "jsd_blank": 0.5733,
+    "logistic_combo": 0.629,
+    "all_below": true
+   },
+   "validity": {
+    "known_probe_acc": 0.7667,
+    "n_known": 600,
+    "known_probe_acc_given_fullname": 1.0,
+    "n_known_fullname": 219,
+    "known_probe_acc_given_correct_notfull": 0.6392,
+    "n_known_correct_notfull": 291,
+    "rank_diff_mean": 49.175,
+    "rank_diff_ci": [
+     47.664,
+     50.686
+    ],
+    "gate1_known_acc": false,
+    "gate2_blank_control": true,
+    "probe_valid": false
+   },
+   "rows": {
+    "twoway": [
+     {
+      "pair": "q4b@food101",
+      "stratum": "known",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 397,
+      "open_ok_probe_bad": 105,
+      "retrieval_failure": 41,
+      "recognition_failure": 21,
+      "abstain_probe_ok": 22,
+      "abstain_probe_bad": 14,
+      "retrieval_share": 0.6613,
+      "share_lo": 0.5372,
+      "share_hi": 0.7666,
+      "classes_with_R": 14
+     },
+     {
+      "pair": "q4b@food101",
+      "stratum": "deficient",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 81,
+      "open_ok_probe_bad": 15,
+      "retrieval_failure": 131,
+      "recognition_failure": 310,
+      "abstain_probe_ok": 22,
+      "abstain_probe_bad": 41,
+      "retrieval_share": 0.2971,
+      "share_lo": 0.2563,
+      "share_hi": 0.3413,
+      "classes_with_R": 18
+     }
+    ],
+    "bycause": [
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "retrieval",
+      "n": 131,
+      "acc": 0.1832,
+      "acc_lo": 0.1263,
+      "acc_hi": 0.2581
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "recognition",
+      "n": 310,
+      "acc": 0.0226,
+      "acc_lo": 0.011,
+      "acc_hi": 0.0459
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "diff_R-K",
+      "n": 441,
+      "acc": 0.1606,
+      "acc_lo": 0.0923,
+      "acc_hi": 0.2289,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "retrieval",
+      "n": 131,
+      "acc": 0.4962,
+      "acc_lo": 0.4119,
+      "acc_hi": 0.5807
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "recognition",
+      "n": 310,
+      "acc": 0.0839,
+      "acc_lo": 0.0579,
+      "acc_hi": 0.1201
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "diff_R-K",
+      "n": 441,
+      "acc": 0.4123,
+      "acc_lo": 0.3213,
+      "acc_hi": 0.5033,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "retrieval",
+      "n": 131,
+      "acc": 0.2672,
+      "acc_lo": 0.1988,
+      "acc_hi": 0.3488
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "recognition",
+      "n": 310,
+      "acc": 0.0742,
+      "acc_lo": 0.0499,
+      "acc_hi": 0.1089
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "diff_R-K",
+      "n": 441,
+      "acc": 0.193,
+      "acc_lo": 0.1118,
+      "acc_hi": 0.2742,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 441,
+      "acc": -0.1379,
+      "acc_lo": -0.1955,
+      "acc_hi": -0.071,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 441,
+      "acc": -0.141,
+      "acc_lo": -0.2073,
+      "acc_hi": -0.0494,
+      "ci_excl_zero": true
+     }
+    ]
+   }
+  },
+  "q9b@food101": {
+   "role": "exploratory",
+   "n": 1200,
+   "j1": {
+    "share": 0.2566,
+    "ci": [
+     0.2185,
+     0.2988
+    ],
+    "classes_with_R": 17,
+    "n_R": 116,
+    "n_K": 336,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1552,
+     "ci_R": [
+      0.1005,
+      0.232
+     ],
+     "acc_K": 0.0685,
+     "ci_K": [
+      0.046,
+      0.1006
+     ],
+     "diff": 0.0867,
+     "ci_diff": [
+      0.0155,
+      0.1579
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "mib": {
+     "acc_R": 0.4397,
+     "ci_R": [
+      0.3527,
+      0.5305
+     ],
+     "acc_K": 0.1042,
+     "ci_K": [
+      0.0759,
+      0.1414
+     ],
+     "diff": 0.3355,
+     "ci_diff": [
+      0.2394,
+      0.4315
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "lcd": {
+     "acc_R": 0.1897,
+     "ci_R": [
+      0.1287,
+      0.2705
+     ],
+     "acc_K": 0.0595,
+     "ci_K": [
+      0.0389,
+      0.0901
+     ],
+     "diff": 0.1301,
+     "ci_diff": [
+      0.0544,
+      0.2058
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "methods_ok": [
+     "vcd",
+     "mib",
+     "lcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "D": -0.0754,
+     "ci90": [
+      -0.1441,
+      -0.012
+     ],
+     "hold": true
+    },
+    "lcd": {
+     "D": -0.1225,
+     "ci90": [
+      -0.1827,
+      -0.0537
+     ],
+     "hold": true
+    }
+   },
+   "j4": {
+    "entropy": 0.4517,
+    "jsd_blank": 0.6274,
+    "logistic_combo": 0.6573,
+    "all_below": true
+   },
+   "validity": {
+    "known_probe_acc": 0.7033,
+    "n_known": 600,
+    "known_probe_acc_given_fullname": 0.9897,
+    "n_known_fullname": 194,
+    "known_probe_acc_given_correct_notfull": 0.5854,
+    "n_known_correct_notfull": 357,
+    "rank_diff_mean": 48.87,
+    "rank_diff_ci": [
+     47.229,
+     50.511
+    ],
+    "gate1_known_acc": false,
+    "gate2_blank_control": true,
+    "probe_valid": false
+   },
+   "rows": {
+    "twoway": [
+     {
+      "pair": "q9b@food101",
+      "stratum": "known",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 401,
+      "open_ok_probe_bad": 150,
+      "retrieval_failure": 20,
+      "recognition_failure": 28,
+      "abstain_probe_ok": 1,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.4167,
+      "share_lo": 0.2885,
+      "share_hi": 0.5572,
+      "classes_with_R": 5
+     },
+     {
+      "pair": "q9b@food101",
+      "stratum": "deficient",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 117,
+      "open_ok_probe_bad": 31,
+      "retrieval_failure": 116,
+      "recognition_failure": 336,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.2566,
+      "share_lo": 0.2185,
+      "share_hi": 0.2988,
+      "classes_with_R": 17
+     }
+    ],
+    "bycause": [
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "retrieval",
+      "n": 116,
+      "acc": 0.1552,
+      "acc_lo": 0.1005,
+      "acc_hi": 0.232
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "recognition",
+      "n": 336,
+      "acc": 0.0685,
+      "acc_lo": 0.046,
+      "acc_hi": 0.1006
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "diff_R-K",
+      "n": 452,
+      "acc": 0.0867,
+      "acc_lo": 0.0155,
+      "acc_hi": 0.1579,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "retrieval",
+      "n": 116,
+      "acc": 0.4397,
+      "acc_lo": 0.3527,
+      "acc_hi": 0.5305
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "recognition",
+      "n": 336,
+      "acc": 0.1042,
+      "acc_lo": 0.0759,
+      "acc_hi": 0.1414
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "diff_R-K",
+      "n": 452,
+      "acc": 0.3355,
+      "acc_lo": 0.2394,
+      "acc_hi": 0.4315,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "retrieval",
+      "n": 116,
+      "acc": 0.1897,
+      "acc_lo": 0.1287,
+      "acc_hi": 0.2705
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "recognition",
+      "n": 336,
+      "acc": 0.0595,
+      "acc_lo": 0.0389,
+      "acc_hi": 0.0901
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "diff_R-K",
+      "n": 452,
+      "acc": 0.1301,
+      "acc_lo": 0.0544,
+      "acc_hi": 0.2058,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 452,
+      "acc": -0.0754,
+      "acc_lo": -0.1441,
+      "acc_hi": -0.012,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q9b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 452,
+      "acc": -0.1225,
+      "acc_lo": -0.1827,
+      "acc_hi": -0.0537,
+      "ci_excl_zero": true
+     }
+    ]
+   }
+  },
+  "internvl4b@food101": {
+   "role": "confirmatory",
+   "n": 1200,
+   "j1": {
+    "share": 0.0462,
+    "ci": [
+     0.0319,
+     0.0663
+    ],
+    "classes_with_R": 6,
+    "n_R": 27,
+    "n_K": 558,
+    "pass": false
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1852,
+     "ci_R": [
+      0.0818,
+      0.367
+     ],
+     "acc_K": 0.0215,
+     "ci_K": [
+      0.0123,
+      0.0372
+     ],
+     "diff": 0.1637,
+     "ci_diff": [
+      0.0167,
+      0.3107
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "mib": {
+     "acc_R": 0.0741,
+     "ci_R": [
+      0.0206,
+      0.2337
+     ],
+     "acc_K": 0.0341,
+     "ci_K": [
+      0.0219,
+      0.0526
+     ],
+     "diff": 0.04,
+     "ci_diff": [
+      -0.0599,
+      0.1399
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": false,
+     "cond3_K_lt_half": true
+    },
+    "lcd": {
+     "acc_R": 0.1852,
+     "ci_R": [
+      0.0818,
+      0.367
+     ],
+     "acc_K": 0.0072,
+     "ci_K": [
+      0.0028,
+      0.0183
+     ],
+     "diff": 0.178,
+     "ci_diff": [
+      0.0313,
+      0.3247
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "methods_ok": [
+     "vcd",
+     "lcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "D": -0.2047,
+     "ci90": [
+      -0.3023,
+      -0.073
+     ],
+     "hold": true
+    },
+    "lcd": {
+     "D": -0.2897,
+     "ci90": [
+      -0.3436,
+      -0.1395
+     ],
+     "hold": true
+    }
+   },
+   "j4": {
+    "entropy": 0.4245,
+    "jsd_blank": 0.6243,
+    "logistic_combo": 0.6278,
+    "all_below": true
+   },
+   "validity": {
+    "known_probe_acc": 0.4167,
+    "n_known": 600,
+    "known_probe_acc_given_fullname": 0.6701,
+    "n_known_fullname": 194,
+    "known_probe_acc_given_correct_notfull": 0.2808,
+    "n_known_correct_notfull": 317,
+    "rank_diff_mean": 27.157,
+    "rank_diff_ci": [
+     25.855,
+     28.46
+    ],
+    "gate1_known_acc": false,
+    "gate2_blank_control": true,
+    "probe_valid": false
+   },
+   "rows": {
+    "twoway": [
+     {
+      "pair": "internvl4b@food101",
+      "stratum": "known",
+      "role": "confirmatory",
+      "n_total": 600,
+      "known_object": 219,
+      "open_ok_probe_bad": 292,
+      "retrieval_failure": 31,
+      "recognition_failure": 58,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.3483,
+      "share_lo": 0.2575,
+      "share_hi": 0.4517,
+      "classes_with_R": 8
+     },
+     {
+      "pair": "internvl4b@food101",
+      "stratum": "deficient",
+      "role": "confirmatory",
+      "n_total": 600,
+      "known_object": 5,
+      "open_ok_probe_bad": 10,
+      "retrieval_failure": 27,
+      "recognition_failure": 558,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.0462,
+      "share_lo": 0.0319,
+      "share_hi": 0.0663,
+      "classes_with_R": 6
+     }
+    ],
+    "bycause": [
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "retrieval",
+      "n": 27,
+      "acc": 0.1852,
+      "acc_lo": 0.0818,
+      "acc_hi": 0.367
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "recognition",
+      "n": 558,
+      "acc": 0.0215,
+      "acc_lo": 0.0123,
+      "acc_hi": 0.0372
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "diff_R-K",
+      "n": 585,
+      "acc": 0.1637,
+      "acc_lo": 0.0167,
+      "acc_hi": 0.3107,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "retrieval",
+      "n": 27,
+      "acc": 0.0741,
+      "acc_lo": 0.0206,
+      "acc_hi": 0.2337
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "recognition",
+      "n": 558,
+      "acc": 0.0341,
+      "acc_lo": 0.0219,
+      "acc_hi": 0.0526
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "diff_R-K",
+      "n": 585,
+      "acc": 0.04,
+      "acc_lo": -0.0599,
+      "acc_hi": 0.1399,
+      "ci_excl_zero": false
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "retrieval",
+      "n": 27,
+      "acc": 0.1852,
+      "acc_lo": 0.0818,
+      "acc_hi": 0.367
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "recognition",
+      "n": 558,
+      "acc": 0.0072,
+      "acc_lo": 0.0028,
+      "acc_hi": 0.0183
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "diff_R-K",
+      "n": 585,
+      "acc": 0.178,
+      "acc_lo": 0.0313,
+      "acc_hi": 0.3247,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 585,
+      "acc": -0.2047,
+      "acc_lo": -0.3023,
+      "acc_hi": -0.073,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "internvl4b@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 585,
+      "acc": -0.2897,
+      "acc_lo": -0.3436,
+      "acc_hi": -0.1395,
+      "ci_excl_zero": true
+     }
+    ]
+   }
+  },
+  "llava16@food101": {
+   "role": "confirmatory",
+   "n": 1200,
+   "j1": {
+    "share": 0.1482,
+    "ci": [
+     0.1206,
+     0.1809
+    ],
+    "classes_with_R": 9,
+    "n_R": 79,
+    "n_K": 454,
+    "pass": false
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1772,
+     "ci_R": [
+      0.1086,
+      0.2758
+     ],
+     "acc_K": 0.0066,
+     "ci_K": [
+      0.0022,
+      0.0192
+     ],
+     "diff": 0.1706,
+     "ci_diff": [
+      0.0861,
+      0.2551
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "mib": {
+     "acc_R": 0.1646,
+     "ci_R": [
+      0.0988,
+      0.2615
+     ],
+     "acc_K": 0.0441,
+     "ci_K": [
+      0.0287,
+      0.0671
+     ],
+     "diff": 0.1205,
+     "ci_diff": [
+      0.0366,
+      0.2044
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "lcd": {
+     "acc_R": 0.0506,
+     "ci_R": [
+      0.0199,
+      0.1231
+     ],
+     "acc_K": 0.011,
+     "ci_K": [
+      0.0047,
+      0.0255
+     ],
+     "diff": 0.0396,
+     "ci_diff": [
+      -0.0097,
+      0.0889
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": false,
+     "cond3_K_lt_half": true
+    },
+    "methods_ok": [
+     "vcd",
+     "mib"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "D": -0.1736,
+     "ci90": [
+      -0.2452,
+      -0.092
+     ],
+     "hold": true
+    },
+    "lcd": {
+     "D": -0.1262,
+     "ci90": [
+      -0.1857,
+      -0.072
+     ],
+     "hold": true
+    }
+   },
+   "j4": {
+    "entropy": 0.5449,
+    "jsd_blank": 0.5409,
+    "logistic_combo": 0.6538,
+    "all_below": true
+   },
+   "validity": {
+    "known_probe_acc": 0.52,
+    "n_known": 600,
+    "known_probe_acc_given_fullname": 0.9533,
+    "n_known_fullname": 150,
+    "known_probe_acc_given_correct_notfull": 0.4344,
+    "n_known_correct_notfull": 343,
+    "rank_diff_mean": 36.936,
+    "rank_diff_ci": [
+     35.545,
+     38.327
+    ],
+    "gate1_known_acc": false,
+    "gate2_blank_control": true,
+    "probe_valid": false
+   },
+   "rows": {
+    "twoway": [
+     {
+      "pair": "llava16@food101",
+      "stratum": "known",
+      "role": "confirmatory",
+      "n_total": 600,
+      "known_object": 292,
+      "open_ok_probe_bad": 201,
+      "retrieval_failure": 20,
+      "recognition_failure": 71,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 16,
+      "retrieval_share": 0.2198,
+      "share_lo": 0.147,
+      "share_hi": 0.3152,
+      "classes_with_R": 8
+     },
+     {
+      "pair": "llava16@food101",
+      "stratum": "deficient",
+      "role": "confirmatory",
+      "n_total": 600,
+      "known_object": 6,
+      "open_ok_probe_bad": 5,
+      "retrieval_failure": 79,
+      "recognition_failure": 454,
+      "abstain_probe_ok": 5,
+      "abstain_probe_bad": 51,
+      "retrieval_share": 0.1482,
+      "share_lo": 0.1206,
+      "share_hi": 0.1809,
+      "classes_with_R": 9
+     }
+    ],
+    "bycause": [
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "retrieval",
+      "n": 79,
+      "acc": 0.1772,
+      "acc_lo": 0.1086,
+      "acc_hi": 0.2758
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "recognition",
+      "n": 454,
+      "acc": 0.0066,
+      "acc_lo": 0.0022,
+      "acc_hi": 0.0192
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "diff_R-K",
+      "n": 533,
+      "acc": 0.1706,
+      "acc_lo": 0.0861,
+      "acc_hi": 0.2551,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "retrieval",
+      "n": 79,
+      "acc": 0.1646,
+      "acc_lo": 0.0988,
+      "acc_hi": 0.2615
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "recognition",
+      "n": 454,
+      "acc": 0.0441,
+      "acc_lo": 0.0287,
+      "acc_hi": 0.0671
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "mib",
+      "cause": "diff_R-K",
+      "n": 533,
+      "acc": 0.1205,
+      "acc_lo": 0.0366,
+      "acc_hi": 0.2044,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "retrieval",
+      "n": 79,
+      "acc": 0.0506,
+      "acc_lo": 0.0199,
+      "acc_hi": 0.1231
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "recognition",
+      "n": 454,
+      "acc": 0.011,
+      "acc_lo": 0.0047,
+      "acc_hi": 0.0255
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "diff_R-K",
+      "n": 533,
+      "acc": 0.0396,
+      "acc_lo": -0.0097,
+      "acc_hi": 0.0889,
+      "ci_excl_zero": false
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "vcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 533,
+      "acc": -0.1736,
+      "acc_lo": -0.2452,
+      "acc_hi": -0.092,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "llava16@food101",
+      "role": "confirmatory",
+      "method": "lcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 533,
+      "acc": -0.1262,
+      "acc_lo": -0.1857,
+      "acc_hi": -0.072,
+      "ci_excl_zero": true
+     }
+    ]
+   }
+  },
+  "q3vl4b@food101": {
+   "role": "exploratory",
+   "n": 1200,
+   "j1": {
+    "share": 0.2211,
+    "ci": [
+     0.187,
+     0.2595
+    ],
+    "classes_with_R": 13,
+    "n_R": 111,
+    "n_K": 391,
+    "pass": true
+   },
+   "j2": {
+    "vcd": {
+     "acc_R": 0.1261,
+     "ci_R": [
+      0.0766,
+      0.2006
+     ],
+     "acc_K": 0.023,
+     "ci_K": [
+      0.0122,
+      0.0432
+     ],
+     "diff": 0.1031,
+     "ci_diff": [
+      0.0396,
+      0.1666
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "mib": {
+     "acc_R": 0.2883,
+     "ci_R": [
+      0.2122,
+      0.3785
+     ],
+     "acc_K": 0.0793,
+     "ci_K": [
+      0.0564,
+      0.1103
+     ],
+     "diff": 0.209,
+     "ci_diff": [
+      0.1206,
+      0.2974
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "lcd": {
+     "acc_R": 0.1351,
+     "ci_R": [
+      0.0836,
+      0.211
+     ],
+     "acc_K": 0.0307,
+     "ci_K": [
+      0.0176,
+      0.0529
+     ],
+     "diff": 0.1044,
+     "ci_diff": [
+      0.0386,
+      0.1703
+     ],
+     "cond1_R_pos": true,
+     "cond2_diff_excl0": true,
+     "cond3_K_lt_half": true
+    },
+    "methods_ok": [
+     "vcd",
+     "mib",
+     "lcd"
+    ]
+   },
+   "j3": {
+    "vcd": {
+     "D": -0.0956,
+     "ci90": [
+      -0.1645,
+      -0.032
+     ],
+     "hold": true
+    },
+    "lcd": {
+     "D": -0.1121,
+     "ci90": [
+      -0.1794,
+      -0.0569
+     ],
+     "hold": true
+    }
+   },
+   "j4": {
+    "entropy": 0.4837,
+    "jsd_blank": 0.5569,
+    "logistic_combo": 0.5163,
+    "all_below": true
+   },
+   "validity": {
+    "known_probe_acc": 0.6067,
+    "n_known": 600,
+    "known_probe_acc_given_fullname": 1.0,
+    "n_known_fullname": 155,
+    "known_probe_acc_given_correct_notfull": 0.4803,
+    "n_known_correct_notfull": 381,
+    "rank_diff_mean": 46.299,
+    "rank_diff_ci": [
+     44.731,
+     47.868
+    ],
+    "gate1_known_acc": false,
+    "gate2_blank_control": true,
+    "probe_valid": false
+   },
+   "rows": {
+    "twoway": [
+     {
+      "pair": "q3vl4b@food101",
+      "stratum": "known",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 338,
+      "open_ok_probe_bad": 198,
+      "retrieval_failure": 26,
+      "recognition_failure": 38,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.4062,
+      "share_lo": 0.2946,
+      "share_hi": 0.5286,
+      "classes_with_R": 10
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "stratum": "deficient",
+      "role": "exploratory",
+      "n_total": 600,
+      "known_object": 63,
+      "open_ok_probe_bad": 35,
+      "retrieval_failure": 111,
+      "recognition_failure": 391,
+      "abstain_probe_ok": 0,
+      "abstain_probe_bad": 0,
+      "retrieval_share": 0.2211,
+      "share_lo": 0.187,
+      "share_hi": 0.2595,
+      "classes_with_R": 13
+     }
+    ],
+    "bycause": [
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "retrieval",
+      "n": 111,
+      "acc": 0.1261,
+      "acc_lo": 0.0766,
+      "acc_hi": 0.2006
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "recognition",
+      "n": 391,
+      "acc": 0.023,
+      "acc_lo": 0.0122,
+      "acc_hi": 0.0432
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "diff_R-K",
+      "n": 502,
+      "acc": 0.1031,
+      "acc_lo": 0.0396,
+      "acc_hi": 0.1666,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "retrieval",
+      "n": 111,
+      "acc": 0.2883,
+      "acc_lo": 0.2122,
+      "acc_hi": 0.3785
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "recognition",
+      "n": 391,
+      "acc": 0.0793,
+      "acc_lo": 0.0564,
+      "acc_hi": 0.1103
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "mib",
+      "cause": "diff_R-K",
+      "n": 502,
+      "acc": 0.209,
+      "acc_lo": 0.1206,
+      "acc_hi": 0.2974,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "retrieval",
+      "n": 111,
+      "acc": 0.1351,
+      "acc_lo": 0.0836,
+      "acc_hi": 0.211
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "recognition",
+      "n": 391,
+      "acc": 0.0307,
+      "acc_lo": 0.0176,
+      "acc_hi": 0.0529
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "diff_R-K",
+      "n": 502,
+      "acc": 0.1044,
+      "acc_lo": 0.0386,
+      "acc_hi": 0.1703,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "vcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 502,
+      "acc": -0.0956,
+      "acc_lo": -0.1645,
+      "acc_hi": -0.032,
+      "ci_excl_zero": true
+     },
+     {
+      "pair": "q3vl4b@food101",
+      "role": "exploratory",
+      "method": "lcd",
+      "cause": "D_dECE_R_minus_K",
+      "n": 502,
+      "acc": -0.1121,
+      "acc_lo": -0.1794,
+      "acc_hi": -0.0569,
+      "ci_excl_zero": true
+     }
+    ]
+   }
+  }
+ },
+ "judgments": {
+  "j1_pairs_pass": [],
+  "j2": {
+   "pairs_with_method": [],
+   "reversals": []
+  },
+  "j3_confirmatory": {},
+  "j4_pairs_fail": [],
+  "valid_pairs": [],
+  "confirmatory_valid": []
+ }
+}

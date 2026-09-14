@@ -1,0 +1,6 @@
+gate1_known_acc,gate2_blank_control,known_probe_acc,known_probe_acc_given_correct_notfull,known_probe_acc_given_fullname,n,n_known,n_known_correct_notfull,n_known_fullname,pair,probe_valid,rank_diff_ci,rank_diff_mean,role
+False,True,0.7667,0.6392,1.0,1200,600,291,219,q4b@food101,False,"[47.664, 50.686]",49.175,exploratory
+False,True,0.7033,0.5854,0.9897,1200,600,357,194,q9b@food101,False,"[47.229, 50.511]",48.87,exploratory
+False,True,0.4167,0.2808,0.6701,1200,600,317,194,internvl4b@food101,False,"[25.855, 28.46]",27.157,confirmatory
+False,True,0.52,0.4344,0.9533,1200,600,343,150,llava16@food101,False,"[35.545, 38.327]",36.936,confirmatory
+False,True,0.6067,0.4803,1.0,1200,600,381,155,q3vl4b@food101,False,"[44.731, 47.868]",46.299,exploratory
