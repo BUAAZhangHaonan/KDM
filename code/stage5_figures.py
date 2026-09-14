@@ -36,7 +36,8 @@ def fig9():
         if k not in pairs:
             pairs.append(k)
 
-    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 5.4))
+    handles = []
     for ax, reg, xlabel in ((axes[0], 'acc', 'pre-intervention accuracy (direct)'),
                             (axes[1], 'gap', 'pre-intervention calibration gap (confidence − accuracy)')):
         ax.axhline(0, color='0.4', lw=0.8, zorder=1)
@@ -53,8 +54,10 @@ def fig9():
                 y = [float(r['d_ece']) for r in bins]
                 c = MCOLOR[m]
                 lab = f'{NICE[model]} {NICE[m]}' if domain == 'food101' else f'{NICE[model]} {NICE[m]} (dogs)'
-                ax.plot(x, y, DOMLS[domain], marker=MSTYLE[m], ms=4.5, lw=1.2,
-                        color=c, alpha=0.85, label=lab, zorder=3)
+                line, = ax.plot(x, y, DOMLS[domain], marker=MSTYLE[m], ms=4.5, lw=1.2,
+                                color=c, alpha=0.85, label=lab, zorder=3)
+                if reg == 'acc':
+                    handles.append(line)
                 mixes = sorted([r for r in base if r['population'] == 'mixture'
                                 and r['model'] == model and r['domain'] == domain
                                 and r['method'] == m],
@@ -63,27 +66,30 @@ def fig9():
                     xm = [float(r[xk]) for r in mixes]
                     ym = [float(r['d_ece']) for r in mixes]
                     ax.plot(xm, ym, ':', lw=1.1, color=c, alpha=0.55, zorder=2)
-        # crossing markers on the acc panel (per model, method-averaged x0)
+        # crossing markers on the acc panel: VCD cells whose direction is supported
         if reg == 'acc':
+            ylim = ax.get_ylim()
             for (model, domain) in pairs:
                 x0s = [float(r['x0']) for r in cross
                        if r['model'] == model and r['domain'] == domain
-                       and r['regressor'] == 'acc' and r['x0'] not in ('', None)]
+                       and r['regressor'] == 'acc' and r['method'] == 'vcd'
+                       and r['direction_supported'] == 'True' and r['x0'] not in ('', None)]
                 if x0s:
-                    ax.axvline(float(np.mean(x0s)), color='0.3', lw=0.9, ls='--', alpha=0.6, zorder=1)
-                    ax.annotate(f'{NICE[model]} crossing\n' + r'$\approx$' + f'{np.mean(x0s):.2f}',
-                                (float(np.mean(x0s)), ax.get_ylim()[1]), fontsize=7,
-                                ha='center', va='top', color='0.25',
-                                xytext=(float(np.mean(x0s)), ax.get_ylim()[1] - 0.02 *
-                                        (ax.get_ylim()[1] - ax.get_ylim()[0])))
+                    xv = float(np.mean(x0s))
+                    ax.axvline(xv, color='0.3', lw=0.9, ls='--', alpha=0.6, zorder=1)
+                    ax.annotate(f'{NICE[model].split("-")[-1]} {domain}: ' + r'$x_0\approx$' + f'{np.mean(x0s):.2f}',
+                                (xv, ylim[1]), fontsize=7.5, ha='center', va='top', color='0.25',
+                                xytext=(xv, ylim[1] - 0.03 * (ylim[1] - ylim[0])))
+                    ax.set_ylim(ylim)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(r'$\Delta$ECE (method $-$ direct)')
-    axes[0].legend(fontsize=6.5, ncol=2, loc='upper right', framealpha=0.9)
-    axes[1].legend(fontsize=6.5, ncol=2, loc='upper right', framealpha=0.9)
-    fig.suptitle('Calibration change of decoding interventions is predicted by the population base rate '
-                 '(solid: class-accuracy bins; dotted: mixed populations; dashed vertical: OLS crossing)', fontsize=9)
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
-    fig.savefig(F / 'fig9.pdf')
+    fig.legend(handles=handles, loc='lower center', ncol=3, fontsize=8,
+               frameon=False, bbox_to_anchor=(0.5, -0.02))
+    fig.suptitle('Calibration change of decoding interventions is predicted by the population base rate\n'
+                 '(solid: class-accuracy bins; dotted: mixed populations; dashed vertical: OLS crossing)',
+                 fontsize=9.5)
+    fig.tight_layout(rect=(0, 0.05, 1, 0.92))
+    fig.savefig(F / 'fig9.pdf', bbox_inches='tight')
     print('wrote fig9.pdf')
 
 

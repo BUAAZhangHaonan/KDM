@@ -2,8 +2,8 @@
  "n_classes": {
   "q4b@food101": 101,
   "q9b@food101": 101,
-  "q4b@dogs": 61,
-  "q9b@dogs": 61
+  "q4b@dogs": 120,
+  "q9b@dogs": 120
  },
  "direction": {
   "q4b@food101|vcd|acc": true,

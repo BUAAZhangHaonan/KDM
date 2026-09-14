@@ -208,5 +208,64 @@
    "outputs/tables/stage4_summary.json"
   ],
   "updated": "2026-09-15T00:15:53"
+ },
+ "stage5": {
+  "date": "2026-09-15",
+  "preregister": "PREREGISTER_STAGE5.md",
+  "goal": "unify conclusions into one main line; test the pre-registered base-rate relation (dECE predictable from pre-intervention accuracy / calibration gap, with a crossing point)",
+  "new_inference": {
+   "food101_middle": {
+    "classes": 51,
+    "samples_per_class": 24,
+    "configs": [
+     "direct",
+     "vcd",
+     "mib",
+     "lcd"
+    ],
+    "runner": "code/stage5_middle.py (stage-2 engine path, settings unchanged)",
+    "duration_min": {
+     "q4b": 78.1,
+     "q9b": 75.9
+    },
+    "records": [
+     "outputs/raw/q4b_s5middle_naming.jsonl",
+     "outputs/raw/q9b_s5middle_naming.jsonl"
+    ]
+   },
+   "dogs_middle": {
+    "classes": 60,
+    "samples_per_class": 24,
+    "configs": [
+     "direct",
+     "vcd",
+     "mib",
+     "lcd"
+    ],
+    "runner": "code/stage5_middle_dogs.py (stage-3 engine path, settings unchanged)",
+    "duration_min": {
+     "q4b": null,
+     "q9b": null
+    },
+    "records": [
+     "outputs/raw/q4b_s5middle_dogs.jsonl",
+     "outputs/raw/q9b_s5middle_dogs.jsonl"
+    ]
+   }
+  },
+  "reanalysis": [
+   "code/stage5_nonqwen.py (non-Qwen main-line quantities from existing records; no probe dependency)",
+   "code/stage5_baserate.py (base-rate relation, both population constructions, class-cluster bootstrap)"
+  ],
+  "strata_renaming": "deficient -> low_acc (低准确率组), known -> high_acc (高准确率组); the low stratum mixes name-accessible-but-not-emitted samples and is NOT equivalent to \"model does not know the name\"",
+  "stage5_outputs": [
+   "outputs/figures/fig9.pdf",
+   "outputs/tables/baserate.csv",
+   "outputs/tables/crossing.csv",
+   "outputs/tables/nonqwen_core.csv",
+   "outputs/tables/related_work.csv",
+   "outputs/tables/stage5_summary.json"
+  ],
+  "updated": "2026-09-15T03:09:08"
  }
 }
