@@ -1,0 +1,40 @@
+{
+ "n_classes": {
+  "q4b@food101": 101,
+  "q9b@food101": 101,
+  "q4b@dogs": 61,
+  "q9b@dogs": 61
+ },
+ "direction": {
+  "q4b@food101|vcd|acc": true,
+  "q4b@food101|vcd|gap": true,
+  "q4b@food101|mib|acc": false,
+  "q4b@food101|mib|gap": false,
+  "q4b@food101|lcd|acc": true,
+  "q4b@food101|lcd|gap": true,
+  "q9b@food101|vcd|acc": true,
+  "q9b@food101|vcd|gap": true,
+  "q9b@food101|mib|acc": true,
+  "q9b@food101|mib|gap": true,
+  "q9b@food101|lcd|acc": true,
+  "q9b@food101|lcd|gap": true,
+  "q4b@dogs|vcd|acc": false,
+  "q4b@dogs|vcd|gap": false,
+  "q4b@dogs|mib|acc": false,
+  "q4b@dogs|mib|gap": false,
+  "q4b@dogs|lcd|acc": false,
+  "q4b@dogs|lcd|gap": false,
+  "q9b@dogs|vcd|acc": true,
+  "q9b@dogs|vcd|gap": true,
+  "q9b@dogs|mib|acc": false,
+  "q9b@dogs|mib|gap": false,
+  "q9b@dogs|lcd|acc": true,
+  "q9b@dogs|lcd|gap": true
+ },
+ "pairs": [
+  "q4b@food101",
+  "q9b@food101",
+  "q4b@dogs",
+  "q9b@dogs"
+ ]
+}
