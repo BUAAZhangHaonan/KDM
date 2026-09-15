@@ -72,12 +72,30 @@ class S6Model:
         tc = getattr(cfg, 'text_config', None) if cfg is not None else None
         self.n_layers = getattr(tc, 'num_hidden_layers', None) if tc is not None else None
         if self.n_layers is None:
-            self.n_layers = self.model.config.num_hidden_layers
+            try:  # internvl_chat: layers live on the inner language model
+                self.n_layers = self.model.language_model.config.num_hidden_layers
+            except AttributeError:
+                self.n_layers = self.model.config.num_hidden_layers
         # DeCo candidate layers: ceil(0.625L)..floor(0.875L) (official llama-7b
         # default range(20,29) == [20,28] at L=32).
         lo = math.ceil(0.625 * self.n_layers)
         hi = math.floor(0.875 * self.n_layers)
         self.deco_layers = list(range(lo, hi + 1))
+        self._internvl = (getattr(self.em, 'mt', '') == 'internvl_chat')
+
+    # ---------------- forwards (InternVL routes through its adapter) --------
+    def _fwd(self, inputs=None, tok=None, pkv=None, ohs=False, text_only=False):
+        if self._internvl:
+            if inputs is not None:
+                if text_only:  # M3ID prior branch: no pixel_values to inject
+                    return self.model.language_model(
+                        **inputs, output_hidden_states=ohs, use_cache=True)
+                return self.em._prefill(inputs, ohs=ohs)
+            return self.em._step(tok, pkv, ohs=ohs)
+        if inputs is not None:
+            return self.model(**inputs, output_hidden_states=ohs)
+        return self.model(input_ids=torch.tensor([[tok]], device=self.device),
+                          past_key_values=pkv, output_hidden_states=ohs)
 
     # ---------------- inputs ----------------
     def build(self, pil_img, text):
@@ -121,7 +139,7 @@ class S6Model:
         t0 = time.time()
         n_fw = 0
         ohs = method in ('dola', 'deco')
-        out = self.model(**inputs, output_hidden_states=ohs)
+        out = self._fwd(inputs=inputs, ohs=ohs)
         n_fw += 1
         n_prefill = inputs['input_ids'].shape[1]
         tokens, step_probs, layers_sel = [], [], []
@@ -144,9 +162,7 @@ class S6Model:
             tokens.append(tok)
             if tok in self.eos:
                 break
-            out = self.model(input_ids=torch.tensor([[tok]], device=self.device),
-                             past_key_values=out.past_key_values,
-                             output_hidden_states=ohs)
+            out = self._fwd(tok=tok, pkv=out.past_key_values, ohs=ohs)
             n_fw += 1
         text = self.tokenizer.decode(tokens, skip_special_tokens=True)
         text = text.replace('<|begin_of_box|>', '').replace('<|end_of_box|>', '')
@@ -211,8 +227,9 @@ class S6Model:
                           t0_sched=0, alpha_override=None):
         assert method in ('vcd', 'm3id')
         t0 = time.time()
-        out_a = self.model(**inputs_main)
-        out_b = self.model(**inputs_ref)
+        out_a = self._fwd(inputs=inputs_main)
+        out_b = self._fwd(inputs=inputs_ref,
+                          text_only=(method == 'm3id' and self._internvl))
         n_fw = 2
         n_prefill = inputs_main['input_ids'].shape[1]
         tokens, step_probs, first = [], [], {}
@@ -245,9 +262,8 @@ class S6Model:
             tokens.append(tok)
             if tok in self.eos:
                 break
-            tk = torch.tensor([[tok]], device=self.device)
-            out_a = self.model(input_ids=tk, past_key_values=out_a.past_key_values)
-            out_b = self.model(input_ids=tk, past_key_values=out_b.past_key_values)
+            out_a = self._fwd(tok=tok, pkv=out_a.past_key_values)
+            out_b = self._fwd(tok=tok, pkv=out_b.past_key_values)
             n_fw += 2
         text = self.tokenizer.decode(tokens, skip_special_tokens=True)
         text = text.replace('<|begin_of_box|>', '').replace('<|end_of_box|>', '')
