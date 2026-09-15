@@ -47,6 +47,30 @@
    }
   }
  },
+ "llava16": {
+  "direct_consistency": {
+   "n": 1200,
+   "mismatch": 0,
+   "rate": 0.0
+  },
+  "files": 1200,
+  "low_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.018333333333333333,
+    "mean_conf": 0.3973573987558484,
+    "ece": 0.3790240654225151
+   }
+  },
+  "high_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.8216666666666667,
+    "mean_conf": 0.5481287514170011,
+    "ece": 0.27353791524966553
+   }
+  }
+ },
  "internvl4b": {
   "direct_consistency": {
    "n": 1200,
@@ -72,14 +96,14 @@
   }
  },
  "tables": {
-  "core": 24,
-  "fourcell": 24,
-  "sharpening": 24,
-  "correction": 24,
-  "did": 12,
+  "core": 32,
+  "fourcell": 32,
+  "sharpening": 32,
+  "correction": 32,
+  "did": 16,
   "dose": 9,
-  "dname": 24,
-  "variant": 18,
-  "consistency": 3
+  "dname": 32,
+  "variant": 24,
+  "consistency": 4
  }
 }
