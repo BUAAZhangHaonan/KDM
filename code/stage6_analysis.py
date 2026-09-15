@@ -298,7 +298,8 @@ def main(models=None):
                         idx_un = [i for i in range(len(m_rows)) if u[i]
                                   and m_rows[i]['file'] in firstdist_eval]
                         fs_un = [m_rows[i]['file'] for i in idx_un]
-                        d_m_eval = float(np.nanmean(dconf_all[u]))
+                        d_m_eval = float(np.nanmean(dconf_all[idx_un]))
+                        base_un = np.array([dconf_all[i] for i in idx_un])
                         d_c1 = np.array([
                             _trunc_conf(firstdist_eval[f], kept[i]['tokens'][0]) -
                             np.float64(firstdist_eval[f][kept[i]['tokens'][0]])
@@ -309,8 +310,8 @@ def main(models=None):
                             for i, f in zip(idx_un, fs_un)])
                         rho1 = 1 - abs(d_c1.mean() - d_m_eval) / abs(d_m_eval) if d_m_eval else float('nan')
                         rho2 = 1 - abs(d_c2.mean() - d_m_eval) / abs(d_m_eval) if d_m_eval else float('nan')
-                        _, g1lo, g1hi = boot_mean(d_c1 - dconf_all[u & ~np.isnan(dconf_all)])
-                        _, g2lo, g2hi = boot_mean(d_c2 - dconf_all[u & ~np.isnan(dconf_all)])
+                        _, g1lo, g1hi = boot_mean(d_c1 - base_un)
+                        _, g2lo, g2hi = boot_mean(d_c2 - base_un)
                         ev_ok = [(r, f) for r, f in zip(d_rows, sfiles)
                                  if f in firstdist_eval and r.get('answer_maxp') is not None]
                         cf1 = [_trunc_conf(firstdist_eval[f], r['tokens'][0]) for r, f in ev_ok]
@@ -410,6 +411,10 @@ def main(models=None):
     dz = load('q4b', 'dose')
     if dz:
         ev = load('q4b', 'eval')
+        # alpha=1.0 reuses the experiment-A VCD records (same eval half)
+        for (f, m), r in list(ev.items()):
+            if m == 'vcd':
+                dz[(f, 'vcd')] = r
         for stratum in ('low_acc', 'high_acc'):
             for tag, alpha in DOSE_ALPHAS.items():
                 pairs = [(ev[(f, 'direct')], dz[(f, tag)]) for f in
@@ -501,10 +506,9 @@ def main(models=None):
                 if len(rows) < 100:
                     continue
                 if model in ROUND_A:
-                    for i, (d, r, od, o) in enumerate(rows):
-                        if o.get('abstained') or od.get('abstained'):
-                            rows[i] = None
-                    rows = [x for x in rows if x is not None]
+                    rows = [(d, r, od, o) for (d, r, od, o) in rows
+                            if not (r.get('abstained') or d.get('abstained') or
+                                    o.get('abstained') or od.get('abstained'))]
                 if len(rows) < 100:
                     continue
                 dece_old = ece([o['answer_maxp'] for _, _, _, o in rows],
