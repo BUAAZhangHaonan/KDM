@@ -1,0 +1,111 @@
+{
+ "created": "2026-09-13T02:51:55",
+ "python": "3.11.14",
+ "torch": "2.9.0+cu128",
+ "transformers": "5.17.0",
+ "accelerate": "1.12.0",
+ "pillow": "12.0.0",
+ "scipy": "1.17.0",
+ "nltk": "3.10.3",
+ "numpy": "2.3.5",
+ "flash_linear_attention": "0.5.2",
+ "cuda": "12.8",
+ "gpus": [
+  "0, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "1, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "2, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "3, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "4, NVIDIA GeForce RTX 3090, 24576 MiB",
+  "5, NVIDIA GeForce RTX 3090, 24576 MiB"
+ ],
+ "gpu_assignment": {
+  "q4b": "cuda:4 (Qwen3.5-4B)",
+  "q9b": "cuda:5 (Qwen3.5-9B)"
+ },
+ "model_paths": {
+  "q4b": "/home/g203-4028/Models/Qwen3.5-4B",
+  "q9b": "/home/g203-4028/Models/Qwen3.5-9B"
+ },
+ "data": {
+  "lvis_val_zip": {
+   "path": "data/lvis_v1_val.json.zip",
+   "sha256": "5cae9a3c79aadb667550c2b5dcf7f4d86e059a41ec91ef690225b667e28e9ba5",
+   "size": 64026968
+  },
+  "lvis_train_zip": {
+   "path": "data/lvis_v1_train.json.zip",
+   "sha256": "334a4caa374030a7817cf050364525e910f7960f9b6968cef47cffbf3893f8ba",
+   "size": 350264821
+  },
+  "dataset": {
+   "path": "data/dataset.jsonl",
+   "sha256": "319c154725b768d189e60f26fd497d74edfc0a40b225eefda24308671f206cc9",
+   "n_samples": 194
+  }
+ },
+ "dataset_report": {
+  "high": {
+   "n_candidates": 6004,
+   "n_categories": 201,
+   "val_first_candidates": 1036
+  },
+  "low": {
+   "n_candidates": 103,
+   "n_categories": 68,
+   "val_first_candidates": 8
+  },
+  "final_n_per_tier": 97,
+  "tier_cat_coverage": {
+   "high": 97,
+   "low": 64
+  },
+  "source_mix": {
+   "high": {
+    "val": 64,
+    "train": 33
+   },
+   "low": {
+    "val": 8,
+    "train": 89
+   }
+  },
+  "download": {
+   "attempted": 853,
+   "ok": 808,
+   "fail": 45,
+   "cached": 0
+  }
+ },
+ "raw_outputs": {
+  "q4b_main_existence.jsonl": {
+   "n": 1552,
+   "sum_wall_s": 847.0,
+   "sum_forwards": 9312
+  },
+  "q4b_main_naming.jsonl": {
+   "n": 776,
+   "sum_wall_s": 457.8,
+   "sum_forwards": 5164
+  },
+  "q9b_main_existence.jsonl": {
+   "n": 1552,
+   "sum_wall_s": 974.8,
+   "sum_forwards": 9312
+  },
+  "q9b_main_naming.jsonl": {
+   "n": 776,
+   "sum_wall_s": 577.4,
+   "sum_forwards": 5730
+  }
+ },
+ "run_log_tail": {
+  "q4b": "[q4b] DONE in 22.3 min",
+  "q9b": "[q9b] DONE in 25.1 min"
+ },
+ "duration": {
+  "start": "2026-09-13 01:03:06",
+  "end": "2026-09-13 02:54:40",
+  "minutes": 111.6,
+  "basis": "first project artifact (LVIS val annotation download 01:03:06) to final v1 experiment commit (fix: correct q9b existence pos accuracy figure, 02:54:40 +0800, 2026-09-13); includes a mid-run pause for server repair (GPU1 failure); within the 24h budget"
+ }
+}

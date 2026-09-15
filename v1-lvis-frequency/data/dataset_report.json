@@ -1,0 +1,33 @@
+{
+ "high": {
+  "n_candidates": 6004,
+  "n_categories": 201,
+  "val_first_candidates": 1036
+ },
+ "low": {
+  "n_candidates": 103,
+  "n_categories": 68,
+  "val_first_candidates": 8
+ },
+ "final_n_per_tier": 97,
+ "tier_cat_coverage": {
+  "high": 97,
+  "low": 64
+ },
+ "source_mix": {
+  "high": {
+   "val": 64,
+   "train": 33
+  },
+  "low": {
+   "val": 8,
+   "train": 89
+  }
+ },
+ "download": {
+  "attempted": 853,
+  "ok": 808,
+  "fail": 45,
+  "cached": 0
+ }
+}
