@@ -1,6 +1,6 @@
 # 第五阶段结论（收束轮）
 
-日期：2026-09-15 ｜ 预登记：`PREREGISTER_STAGE5.md`（commit afb987a7，先于本轮全部新推理）
+日期：2026-09-15 ｜ 预登记：`PREREGISTER_STAGE5.md`（commit b27963b，先于本轮全部新推理）
 本轮把前四阶段的结果收敛成一条主线，用一次新实验（中间准确率类别上的四种配置）把主线的
 两端外推变成完整曲线，并完成与最接近工作的对照。
 
@@ -178,7 +178,7 @@ VCD/LCD 的变号点在两个人物规模（4B/9B）上都落在 acc≈0.6 一�
 ## 9. 交付物与复现
 
 ```
-PREREGISTER_STAGE5.md            预登记（运行前提交，afb987a7）
+PREREGISTER_STAGE5.md            预登记（运行前提交，b27963b）
 STAGE5.md                        本文
 outputs/tables/baserate.csv      1590 行：类别点/三层聚合/分箱/混合人群 × 各方法（两域）
 outputs/tables/crossing.csv      相关系数与变号点及自助区间（24 行）

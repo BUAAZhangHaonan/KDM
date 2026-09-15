@@ -1,0 +1,23 @@
+# virtual environments
+venv/
+
+# caches (HF / torch / matplotlib / nltk), redirected into project at runtime
+cache/
+
+# python artifacts
+__pycache__/
+*.pyc
+
+# run logs (durations recorded in run_manifest.json; raw evidence in outputs/raw)
+logs/
+
+# dataset images: not tracked, regenerate with
+#   code/prepare_data.py (food101) / code/stage3_prepare_dogs.py (dogs)
+#   v1-lvis-frequency/code (LVIS v1 on COCO 2017)
+data/images/
+data/dogs_images/
+v1-lvis-frequency/data/images/
+v1-lvis-frequency/data/lvis_v1_*.json*
+
+# local history-rewrite backups (removed after verification)
+.git-backup-*/
