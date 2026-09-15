@@ -59,6 +59,7 @@ check('VCD noise: stage6 matches formula with same draw', torch.allclose(ref, mi
 # reconstructing the official noise draw from its own global stream.
 torch.manual_seed(0)
 a = official_add_diffusion_noise(x, 500)
+torch.manual_seed(0)  # reseed so the next draw reproduces official's internal one
 check('VCD noise: official-function output is formula-consistent (own draw)',
       torch.allclose(a, ap[500].sqrt() * x + (1 - ap[500]).sqrt() *
                      torch.randn(x.shape, dtype=torch.float64), atol=1e-6))
