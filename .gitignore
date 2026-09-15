@@ -20,3 +20,4 @@ data/lvis_v1_*.json*
 
 # local history-rewrite backups (removed after verification)
 .git-backup-*/
+reference_repos/
