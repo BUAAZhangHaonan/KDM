@@ -17,8 +17,9 @@
 | 三 | 开集失败两因分解（可及未输出 vs 不可及），跨模型跨域 | `STAGE3.md` |
 | 四 | 知识可及性测量的边界：名称受限 LL 探针门槛全败、粒度错配 | `STAGE4.md` |
 | 五 | 收束：基率预测律、变号点、与最接近工作的对照 | `STAGE5.md` |
+| 六 | 基线忠实化：VCD/M3ID/DoLa/DeCo 按官方实现重跑 + 尖化对照/四格分解/常数偏移校正（SID 受阻，见报告 §2.2） | `STAGE6.md` `IMPLEMENTATION_MAPPING_STAGE6.md` |
 
-每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5.md` 并先于数据提交。
+每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5/6.md` 并先于数据提交。
 第一阶段（LVIS/COCO）的产物并入主树：文档带 `_STAGE1` 后缀，实验产物带 `lvis_`
 前缀（如 `outputs/raw/lvis_q4b_main_naming.jsonl`、`outputs/figures/lvis_figure1.pdf`），
 其 LVIS 管线代码为 `code/stage1_*.py`；原始迭代提交历史完整保留
