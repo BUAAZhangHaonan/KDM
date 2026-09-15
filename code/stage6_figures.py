@@ -77,8 +77,8 @@ def fig1():
         ax.axhline(0, color='k', lw=0.6)
         ax.set_xticks(range(len(models)))
         ax.set_xticklabels(models)
-        ax.set_title('低准确率组' if st == 'low_acc' else '高准确率组')
-        ax.set_ylabel('Δ 置信度（答案未变样本）' if si == 0 else '')
+        ax.set_title('low-accuracy stratum' if st == 'low_acc' else 'high-accuracy stratum')
+        ax.set_ylabel('confidence increment (answer unchanged)' if si == 0 else '')
     h, l = axes[0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=4, frameon=False,
                bbox_to_anchor=(0.5, -0.04))
@@ -99,14 +99,14 @@ def fig1():
                     res.append(f(r['rescue_rate']))
                     brk.append(f(r['break_rate']))
             if xs:
-                ax.plot(xs, res, 'o', ms=4, color=COLOR[m], label=f'{m} 救回')
+                ax.plot(xs, res, 'o', ms=4, color=COLOR[m], label=f'{m} rescue')
                 ax.plot(xs, brk, 'x', ms=4, mfc='none', color=COLOR[m], alpha=0.55)
         ax.axhline(0, color='k', lw=0.6)
         ax.set_xticks(range(len(models)))
         ax.set_xticklabels(models)
         ax.set_ylim(bottom=min(0, ax.get_ylim()[0]))
-        ax.set_title('低准确率组' if st == 'low_acc' else '高准确率组')
-        ax.set_ylabel('救回率(●) / 破坏率(×)' if si == 0 else '')
+        ax.set_title('low-accuracy stratum' if st == 'low_acc' else 'high-accuracy stratum')
+        ax.set_ylabel('rescue (o) / break (x) rate' if si == 0 else '')
     h, l = axes[0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=4, frameon=False,
                bbox_to_anchor=(0.5, -0.04))
@@ -120,7 +120,7 @@ def fig2():
         return
     models = sorted({r['model'] for r in fc})
     cells = ['always_right', 'always_wrong', 'corrected', 'broken']
-    labels = ['一直答对', '一直答错', '由错变对', '由对变错']
+    labels = ['always right', 'always wrong', 'corrected', 'broken']
     fig, axes = plt.subplots(len(models), 2, figsize=(8.4, 2.3 * len(models)),
                              constrained_layout=True, squeeze=False)
     for ri, g in enumerate(models):
@@ -142,9 +142,9 @@ def fig2():
             ax.set_xticks(range(len(cells)))
             ax.set_xticklabels(labels, rotation=20, ha='right')
             if si == 0:
-                ax.set_ylabel(f'{g}\nΔ 置信度')
+                ax.set_ylabel(f'{g}\nconf. incr.')
             if ri == 0:
-                ax.set_title('低准确率组' if st == 'low_acc' else '高准确率组')
+                ax.set_title('low-accuracy stratum' if st == 'low_acc' else 'high-accuracy stratum')
     h, l = axes[0][0].get_legend_handles_labels()
     fig.legend(h, l, loc='lower center', ncol=4, frameon=False)
     fig.savefig(FDIR / 'stage6_fig2_fourcell.pdf', bbox_inches='tight')
@@ -176,7 +176,7 @@ def fig3():
     ax.axvline(0, color='k', lw=0.7)
     ax.set_yticks(yticks)
     ax.set_yticklabels(ylabels)
-    ax.set_xlabel('差中差 = 低准确率组 ΔECE − 高准确率组 ΔECE')
+    ax.set_xlabel('DiD = dECE(low-acc) - dECE(high-acc)')
     ax.legend(frameon=False, loc='upper left', bbox_to_anchor=(1.0, 1.0))
     fig.savefig(FDIR / 'stage6_fig3_did.pdf', bbox_inches='tight')
     plt.close(fig)
@@ -190,16 +190,16 @@ def fig4():
     fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.0), constrained_layout=True)
     for si, st in enumerate(['low_acc', 'high_acc']):
         ax = axes[si]
-        for m_label, col, mk in [('Δ 置信度', '#c44e52', 'o'),
-                                 ('ΔECE', '#4c72b0', 's')]:
+        for m_label, col, mk in [('conf. increment', '#c44e52', 'o'),
+                                 ('dECE', '#4c72b0', 's')]:
             xs = [f(r['alpha']) for r in dose if r['stratum'] == st]
             ys = [f(r['dconf_all']) if mk == 'o' else f(r['dece'])
                   for r in dose if r['stratum'] == st]
             o = np.argsort(xs)
             ax.plot(np.array(xs)[o], np.array(ys)[o], mk, ms=4, color=col,
                     label=m_label)
-        ax.set_xlabel('VCD 干预强度 α')
-        ax.set_title('低准确率组' if st == 'low_acc' else '高准确率组')
+        ax.set_xlabel('VCD strength alpha')
+        ax.set_title('low-accuracy stratum' if st == 'low_acc' else 'high-accuracy stratum')
     ax = axes[2]
     xs = [f(r['alpha']) for r in cross]
     ys = [f(r['crossing']) for r in cross]
@@ -211,7 +211,7 @@ def fig4():
                       np.array(hi)[o] - np.array(ys)[o]],
                 fmt='o', ms=4, lw=1.2, color='#55a868')
     ax.set_xlabel('α')
-    ax.set_ylabel('类别口径变号点')
+    ax.set_ylabel('crossing point (class-level)')
     fig.savefig(FDIR / 'stage6_fig4_dose.pdf', bbox_inches='tight')
     plt.close(fig)
 
