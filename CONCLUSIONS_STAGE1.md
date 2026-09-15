@@ -1,7 +1,7 @@
 # CONCLUSIONS.md — 免训练幻觉抑制方法在罕见对象上的行为
 
 项目目录:`/home/g203-4028/projects/hallucination-mitigation-deficit`
-生成时间:2026-09-13。全部数字来自 `outputs/tables/*.csv`(由 `code/analysis.py` 从 `outputs/raw/*.jsonl` 逐样本记录重算得出),可复算。样本:LVIS v1 频率分组,高频组(f)与低频组(r)各 n=97(两组同规模、同图像域;低频组受 LVIS 结构性限制不足 300 张,详见 `BLOCKING_NOTE_LOW_TIER.md`)。模型:Qwen3.5-4B 与 Qwen3.5-9B(均 bf16,GPU 4/5)。任务:对象命名(允许弃权)+ 对象存在性(正/负样本)。方法:直接回答 vs VCD/MIB/LCD 三种免训练抑制方法,同一解码框架、同一提示词、贪心解码,逐样本配对。
+生成时间:2026-09-13。全部数字来自 `outputs/tables/lvis_*.csv`(由 `code/stage1_analysis.py` 从 `outputs/raw/lvis_*.jsonl` 逐样本记录重算得出),可复算。样本:LVIS v1 频率分组,高频组(f)与低频组(r)各 n=97(两组同规模、同图像域;低频组受 LVIS 结构性限制不足 300 张,详见 `BLOCKING_NOTE_LOW_TIER_STAGE1.md`)。模型:Qwen3.5-4B 与 Qwen3.5-9B(均 bf16,GPU 4/5)。任务:对象命名(允许弃权)+ 对象存在性(正/负样本)。方法:直接回答 vs VCD/MIB/LCD 三种免训练抑制方法,同一解码框架、同一提示词、贪心解码,逐样本配对。
 
 ---
 
@@ -57,7 +57,7 @@
 | q4b | 仅 MIB(harmed=15) | 0.397 | **0.747** | 0.761 |
 | q9b | 各方法 | ≤0.62 | ≤0.62 | ≤0.62 |
 
-**判定:不成立。** 0.70 目标在两模型的合并层面均未达到(最高 0.695);仅 4B 上个别方法的小样本单元(VCD 组合 0.893,harmed 仅 4 例;MIB-JSD 0.747)超过 0.70,不构成可用证据。JSD 是两者中更一致的单一信号(两模型 0.67/0.58),熵在两模型上都接近随机(0.43/0.46)。对应图 `outputs/figures/figure3.pdf`。
+**判定:不成立。** 0.70 目标在两模型的合并层面均未达到(最高 0.695);仅 4B 上个别方法的小样本单元(VCD 组合 0.893,harmed 仅 4 例;MIB-JSD 0.747)超过 0.70,不构成可用证据。JSD 是两者中更一致的单一信号(两模型 0.67/0.58),熵在两模型上都接近随机(0.43/0.46)。对应图 `outputs/figures/lvis_figure3.pdf`。
 
 ---
 
@@ -76,7 +76,7 @@
 | q9b | 中位数阈值 | 0.196 | −62.7% | 0.608 | −7.2pp(✗) | 高频超损 |
 | q9b | 理想规则 | 0.000 | −100% | 0.423 | +11.3pp | 上限参照 |
 
-**判定:部分成立。** 成立条件在 4B 上全部满足,在 9B 上低频降幅不足。两点解读:(i) 4B 补救规则的 cerr 下降主要靠大规模弃权(低频弃权 56.7%)实现,其低频准确率同时下降 12.4pp——预登记判据只约束高频准确率与低频 cerr,规则按字面成立,但"用弃权换低错误率"的代价必须如实呈现;(ii) 理想规则显示上限存在(两模型低频 cerr 都可到 0,准确率上界 0.546/0.577,弃权约 45%),但两个免训练信号不足以在高频约束下把 9B 推向该上限——与判断二的信号区分力不足互为印证。对应图 `outputs/figures/figure2.pdf`。
+**判定:部分成立。** 成立条件在 4B 上全部满足,在 9B 上低频降幅不足。两点解读:(i) 4B 补救规则的 cerr 下降主要靠大规模弃权(低频弃权 56.7%)实现,其低频准确率同时下降 12.4pp——预登记判据只约束高频准确率与低频 cerr,规则按字面成立,但"用弃权换低错误率"的代价必须如实呈现;(ii) 理想规则显示上限存在(两模型低频 cerr 都可到 0,准确率上界 0.546/0.577,弃权约 45%),但两个免训练信号不足以在高频约束下把 9B 推向该上限——与判断二的信号区分力不足互为印证。对应图 `outputs/figures/lvis_figure2.pdf`。
 
 补充(校准):LCD 显著恶化两模型的置信度校准(4B 低频 ECE 0.200→0.377;9B 低频 0.201→0.388),VCD/MIB 变化不大(±0.02)——层级对比不仅改变答案,还扰乱了模型的信心估计。
 
@@ -150,4 +150,4 @@ wait
 ./venv/bin/python code/make_manifest.py
 ```
 
-原始逐样本输出:`outputs/raw/{q4b,q9b}_main_{naming,existence}.jsonl`(2328 条/模型);汇总表:`outputs/tables/{main,effects,remedy,judgment2_auc}.csv`;图:`outputs/figures/figure{1,2,3}.pdf` 与 20 张抽检拼图 `contact_sheet_20.png`;环境与数据指纹:`run_manifest.json`。
+原始逐样本输出:`outputs/raw/lvis_{q4b,q9b}_main_{naming,existence}.jsonl`(2328 条/模型);汇总表:`outputs/tables/lvis_{main,effects,remedy,judgment2_auc}.csv`;图:`outputs/figures/lvis_figure{1,2,3}.pdf` 与 20 张抽检拼图 `lvis_contact_sheet_20.png`;环境与数据指纹:`run_manifest_stage1.json`。

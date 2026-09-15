@@ -8,8 +8,8 @@ Stage pipeline (each stage is idempotent and resumable):
   5. run manifest
 
 Usage:
-  ./venv/bin/python code/run_all.py --stage all
-  ./venv/bin/python code/run_all.py --stage exp      # resume experiments only
+  ./venv/bin/python code/stage1_run_all.py --stage all
+  ./venv/bin/python code/stage1_run_all.py --stage exp      # resume experiments only
 """
 import os, sys, subprocess, argparse, time
 from pathlib import Path
@@ -36,7 +36,7 @@ def stage_data():
     if p.exists():
         print('dataset exists, skip (delete data/dataset.jsonl to rebuild)')
         return
-    sh([PY, ROOT / 'code/build_dataset.py', '--target', 600], log='build_dataset.log')
+    sh([PY, ROOT / 'code/stage1_build_dataset.py', '--target', 600], log='build_dataset.log')
 
 
 def stage_exp(models=('q4b', 'q9b')):
@@ -46,7 +46,7 @@ def stage_exp(models=('q4b', 'q9b')):
         if i:
             time.sleep(90)
         log = open(ROOT / 'logs' / f'main_{m}.log', 'a')
-        p = subprocess.Popen([PY, ROOT / 'code/run_experiment.py',
+        p = subprocess.Popen([PY, ROOT / 'code/stage1_run_experiment.py',
                               '--model', m, '--gpu', GPU_ASSIGN[m],
                               '--tasks', 'naming,existence',
                               '--methods', 'direct,vcd,mib,lcd',
@@ -62,16 +62,16 @@ def stage_exp(models=('q4b', 'q9b')):
 
 
 def stage_analysis():
-    sh([PY, ROOT / 'code/analysis.py', '--models', 'q4b,q9b', '--tag', 'main'],
+    sh([PY, ROOT / 'code/stage1_analysis.py', '--models', 'q4b,q9b', '--tag', 'main'],
        log='analysis.log')
 
 
 def stage_figures():
-    sh([PY, ROOT / 'code/make_figures.py'], log='figures.log')
+    sh([PY, ROOT / 'code/stage1_make_figures.py'], log='figures.log')
 
 
 def stage_manifest():
-    sh([PY, ROOT / 'code/make_manifest.py'], log='manifest.log')
+    sh([PY, ROOT / 'code/stage1_make_manifest.py'], log='manifest.log')
 
 
 if __name__ == '__main__':

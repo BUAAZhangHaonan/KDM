@@ -1,7 +1,7 @@
 """Build the evaluation dataset: select images per LVIS frequency tier, download them,
 construct naming + existence samples with gold answers and negatives.
 
-Usage: venv/bin/python code/build_dataset.py [--target 600] [--oversample 1.2]
+Usage: venv/bin/python code/stage1_build_dataset.py [--target 600] [--oversample 1.2]
 All outputs inside project dir. Deterministic seed.
 """
 import os, sys, json, random, argparse, hashlib, time

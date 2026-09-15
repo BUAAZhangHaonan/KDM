@@ -2,7 +2,7 @@
 dataset for the two tasks, writing per-sample raw outputs (resumable).
 
 Usage:
-  ./venv/bin/python code/run_experiment.py --model q4b --gpu 1 --tasks naming,existence --tag main
+  ./venv/bin/python code/stage1_run_experiment.py --model q4b --gpu 1 --tasks naming,existence --tag main
 """
 import os, sys, json, time, argparse, gc
 from pathlib import Path

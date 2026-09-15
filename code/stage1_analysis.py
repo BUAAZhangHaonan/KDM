@@ -13,7 +13,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'code'))
-import scoring
+import stage1_scoring
 
 METHODS = ['direct', 'vcd', 'mib', 'lcd']
 TIERS = ['high', 'low']

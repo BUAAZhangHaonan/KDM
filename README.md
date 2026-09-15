@@ -12,35 +12,37 @@
 
 | 阶段 | 问题 | 结论文件 |
 | --- | --- | --- |
-| 一（v1） | LVIS/COCO 频率分层：低频对象上抑制方法是否有害 | `v1-lvis-frequency/CONCLUSIONS.md` |
+| 一（LVIS/COCO） | 频率分层：低频对象上抑制方法是否有害 | `CONCLUSIONS_STAGE1.md`（附 `RECON/VALIDATION/BLOCKING_NOTE_*_STAGE1.md`） |
 | 二 | food101 实测分层（低/高准确率组），错误置信度为主结局 | `PILOT.md` `CONCLUSIONS.md` |
 | 三 | 开集失败两因分解（可及未输出 vs 不可及），跨模型跨域 | `STAGE3.md` |
 | 四 | 知识可及性测量的边界：名称受限 LL 探针门槛全败、粒度错配 | `STAGE4.md` |
 | 五 | 收束：基率预测律、变号点、与最接近工作的对照 | `STAGE5.md` |
 
-每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5.md` 并先于数据提交；
-v1 目录保留其完整迭代历史（`git log -- v1-lvis-frequency/`）。
+每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5.md` 并先于数据提交。
+第一阶段（LVIS/COCO）的产物并入主树：文档带 `_STAGE1` 后缀，实验产物带 `lvis_`
+前缀（如 `outputs/raw/lvis_q4b_main_naming.jsonl`、`outputs/figures/lvis_figure1.pdf`），
+其 LVIS 管线代码为 `code/stage1_*.py`；原始迭代提交历史完整保留
+（`git log -- code/stage1_engine.py` 可用 `--follow` 追溯）。
 
 ## 目录结构
 
 ```
-code/                    全部实验与分析代码（入口 run_all.py，阶段脚本 stageN_*.py）
-data/                    样本清单、分层定义、近邻表、数据报告（图像不入库，见下）
-outputs/raw/*.jsonl      每样本原始输出（四配置逐样本配对）
-outputs/tables/*.csv     汇总表（main/effects/…/baserate/crossing/related_work 等）
-outputs/figures/         论文图 fig4–9 + figure1–3 + 数据拼图
-v1-lvis-frequency/       第一阶段项目原样并入（LVIS v1 / COCO 2017）
-run_manifest.json        环境、数据指纹、各阶段耗时
+code/                    全部实验与分析代码（v2+ 入口 run_all.py；阶段脚本 stageN_*.py；
+                         第一阶段 LVIS 管线 stage1_*.py）
+data/                    样本清单、分层定义、近邻表、数据报告（含 lvis_* 清单；图像不入库）
+outputs/raw/*.jsonl      每样本原始输出（四配置逐样本配对；lvis_* 为第一阶段）
+outputs/tables/*.csv     汇总表（main/effects/…/baserate/crossing/related_work；lvis_* 为第一阶段）
+outputs/figures/         论文图 fig4–9 + figure1–3 + lvis_figure1–3 + 数据拼图
+run_manifest.json        v2 起环境、数据指纹、各阶段耗时（第一阶段为 run_manifest_stage1.json）
 ```
 
 ## 数据与图像
 
-图像不入库：克隆后按以下方式再生（清单 `data/samples_manifest*.jsonl` 固定样本集合与
-文件名）：
+图像不入库：克隆后按以下方式再生（清单固定样本集合与文件名）：
 
 - food101：`./venv/bin/python code/prepare_data.py`
 - stanford-dogs：`./venv/bin/python code/stage3_prepare_dogs.py`
-- LVIS/COCO（v1）：见 `v1-lvis-frequency/code`
+- LVIS/COCO（第一阶段）：`./venv/bin/python code/stage1_build_dataset.py`（清单 `data/lvis_dataset.jsonl`）
 
 ## 环境
 
