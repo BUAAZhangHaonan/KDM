@@ -12,7 +12,7 @@ durations = {}
 for model in GPU_MAP:
     p = ROOT / 'logs' / f'stage6_{model}.log'
     if p.exists():
-        for line in open(p, reverse=False):
+        for line in open(p):
             m = re.search(r'DONE (.+?) in ([0-9.]+) min', line)
             if m:
                 durations[model] = {'parts': m.group(1), 'min': float(m.group(2))}

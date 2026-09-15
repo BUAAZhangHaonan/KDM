@@ -267,5 +267,72 @@
    "outputs/tables/stage5_summary.json"
   ],
   "updated": "2026-09-15T03:09:08"
+ },
+ "stage6": {
+  "date": "2026-09-15",
+  "preregister": "PREREGISTER_STAGE6.md",
+  "purpose": "faithful reimplementation of official decoding methods + sharpening controls + constant-offset correction test; no new measurement schemes, no new methods proposed",
+  "methods": {
+   "vcd": "official DAMO-NLP-SG/VCD@d6568ff: sigmoid-schedule diffusion noise on processor pixel_values (t=500), (1+a)z_clean - a z_noise, beta=0.1 plausibility mask; greedy (deviation: official samples)",
+   "m3id": "paper arXiv:2403.14003 Alg.1/Eq.(4) (no official code): l* = l_c + gate(max p_c<0.3) * (1-g)/g * (l_c - l_u), g=exp(-0.02(t+t0)), t0=question-token-count, text-only prior branch",
+   "dola": "official voidism/DoLa@805230e dola_greedy_decode: candidates hidden[0..L-1] via lm_head WITHOUT final norm, per-step argmax JSD(final,candidate), relative_top=0.1 on final, z*=masked_final - log_softmax(prem) with -1e3 clamp",
+   "deco": "official zjunlp/DeCo@c1a9129 deco_greedy_search: candidate layers [ceil(0.625L),floor(0.875L)] via lm_head AFTER final norm, final top-k=20 truncated at cumulative top-p=0.9, z*=z_final+0.6*maxprob*z_sel, candidates-only mask",
+   "sid": "BLOCKED: official fork requires transformers 4.29.2 (project uses 5.17.0 for Qwen3.5); supports only llava-1.5/instructblip/shikra; CT2S needs attention weights at layers 0-2 which are linear-attention (no attention matrices) in Qwen3.5 - reported, not silently replaced"
+  },
+  "legacy_local_names": {
+   "mib": "variant implementation, not M3ID; kept as supplement",
+   "lcd": "variant implementation, differs from DoLa layer selection"
+  },
+  "runs": {
+   "q4b": {
+    "gpu": 2,
+    "log": "logs/stage6_q4b.log",
+    "parts": "eval,dev+dose",
+    "min": 90.2
+   },
+   "q9b": {
+    "gpu": 3,
+    "log": "logs/stage6_q9b.log",
+    "parts": "eval,dev",
+    "min": 72.5
+   },
+   "llava16": {
+    "gpu": 4,
+    "log": "logs/stage6_llava16.log",
+    "parts": "eval,dev",
+    "min": 156.6
+   },
+   "internvl4b": {
+    "gpu": 5,
+    "log": "logs/stage6_internvl4b.log",
+    "parts": "eval,dev",
+    "min": 58.6
+   }
+  },
+  "gpu_allocation": {
+   "q4b": 2,
+   "q9b": 3,
+   "llava16": 4,
+   "internvl4b": 5
+  },
+  "recording": "answer_maxp/step_probs under the final distribution each config used (post-contrast, post-truncation, renormalized); direct runs additionally store the full first-token distribution (float16 npz)",
+  "stage6_outputs": [
+   "outputs/figures/stage6_fig1_core.pdf",
+   "outputs/figures/stage6_fig1b_correction.pdf",
+   "outputs/figures/stage6_fig2_fourcell.pdf",
+   "outputs/figures/stage6_fig3_did.pdf",
+   "outputs/figures/stage6_fig4_dose.pdf",
+   "outputs/tables/stage6_consistency.csv",
+   "outputs/tables/stage6_core.csv",
+   "outputs/tables/stage6_correction.csv",
+   "outputs/tables/stage6_did.csv",
+   "outputs/tables/stage6_dname.csv",
+   "outputs/tables/stage6_dose.csv",
+   "outputs/tables/stage6_fourcell.csv",
+   "outputs/tables/stage6_sharpening.csv",
+   "outputs/tables/stage6_summary.json",
+   "outputs/tables/stage6_variant.csv"
+  ],
+  "updated": "2026-09-16T01:31:32"
  }
 }
