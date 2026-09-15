@@ -1,0 +1,85 @@
+{
+ "q4b": {
+  "direct_consistency": {
+   "n": 1200,
+   "mismatch": 0,
+   "rate": 0.0
+  },
+  "files": 1200,
+  "low_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.16,
+    "mean_conf": 0.40676358532250706,
+    "ece": 0.26256484829680216
+   }
+  },
+  "high_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.8366666666666667,
+    "mean_conf": 0.6342508962232594,
+    "ece": 0.2558200257625563
+   }
+  }
+ },
+ "q9b": {
+  "direct_consistency": {
+   "n": 1200,
+   "mismatch": 0,
+   "rate": 0.0
+  },
+  "files": 1200,
+  "low_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.24666666666666667,
+    "mean_conf": 0.39468493084112805,
+    "ece": 0.14801826417446134
+   }
+  },
+  "high_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.9183333333333333,
+    "mean_conf": 0.628093154852589,
+    "ece": 0.2906745843340953
+   }
+  }
+ },
+ "internvl4b": {
+  "direct_consistency": {
+   "n": 1200,
+   "mismatch": 0,
+   "rate": 0.0
+  },
+  "files": 1200,
+  "low_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.025,
+    "mean_conf": 0.3708144494642814,
+    "ece": 0.3458144494642815
+   }
+  },
+  "high_acc": {
+   "direct": {
+    "n": 600,
+    "acc": 0.8516666666666667,
+    "mean_conf": 0.6243443411340316,
+    "ece": 0.2275949929654598
+   }
+  }
+ },
+ "tables": {
+  "core": 24,
+  "fourcell": 24,
+  "sharpening": 24,
+  "correction": 24,
+  "did": 12,
+  "dose": 9,
+  "dname": 24,
+  "variant": 18,
+  "consistency": 3
+ }
+}

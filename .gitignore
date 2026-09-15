@@ -21,3 +21,4 @@ data/lvis_v1_*.json*
 # local history-rewrite backups (removed after verification)
 .git-backup-*/
 reference_repos/
+outputs/raw/*_s6_firstdist_*.npz

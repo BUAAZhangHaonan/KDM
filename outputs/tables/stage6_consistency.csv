@@ -1,0 +1,4 @@
+gate_pass,mismatch_rate,model,n_compared,n_mismatch,npz_vs_recordd_conf_maxdiff
+True,0.0,q4b,1200,0,0.00024402141571044922
+True,0.0,q9b,1200,0,0.00024312734603881836
+True,0.0,internvl4b,1200,0,0.00024253129959106445
