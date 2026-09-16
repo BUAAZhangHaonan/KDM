@@ -1,0 +1,13 @@
+case,heads,sys_len,img_len,k,keep_set_identical,mask_identical
+0,32,10,576,100,True,True
+1,32,10,576,100,True,True
+2,32,10,576,100,True,True
+3,16,200,256,100,True,True
+4,16,10,256,100,True,True
+5,32,10,256,100,True,True
+6,32,200,1024,100,True,True
+7,16,10,576,100,True,True
+8,16,40,256,100,True,True
+9,32,10,1024,100,True,True
+10,32,200,1024,100,True,True
+11,16,40,256,100,True,True
