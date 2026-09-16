@@ -12,7 +12,7 @@
   配对自助 95% CI 均不含零；救回率低准确率组 0.00–0.13、高准确率组 0.00–0.33。
 - 出处：`outputs/tables/stage6_core.csv`。
 - 实现类别：忠实（VCD/M3ID/DoLa/DeCo 官方定义）。
-- 适用范围：4 模型（Qwen3.5-4B/9B、LLaVA-1.5-16B、InternVL4B）、food101 命名任务、
+- 适用范围：4 模型（Qwen3.5-4B/9B、LLaVA-v1.6-7B（Mistral 骨干）、InternVL4B）、food101 命名任务、
   评测半区、既定高/低准确率分组。
 - 反例指针：无。
 
