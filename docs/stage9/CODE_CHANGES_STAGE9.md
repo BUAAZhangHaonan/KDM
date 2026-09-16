@@ -81,3 +81,12 @@
 
 `stage9_common.py`、`stage9_geometry.py`、`stage9_analyze.py`、`stage9_prepare.py`
 与 `stage6_*` 全部未改动（与包内 `MANIFEST.sha256` 记录一致）。
+
+## 8. 交付包校验状态的补充说明（复核轮发现）
+
+- 真实运行后，`deliverables/KDM_next_stage/figures/real/01–03.pdf` 与冻结
+  `MANIFEST.sha256` 不再逐字节一致：差异仅为 PDF `/CreationDate` 元数据
+  （matplotlib 重渲染时间戳），PNG 与内容完全一致（与安装提交的 git blob
+  逐字节相同）。属确定性重渲染的已知非确定性，不还原字节。
+- `figures/real/05–07`（真实新结果图）不在冻结 `MANIFEST.sha256` 内——该
+  清单固定于安装时刻（仅含 real/01–03）；新增图以 git 提交 417c7b0f 为准。
