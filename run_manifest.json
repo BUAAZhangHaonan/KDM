@@ -1,470 +1,523 @@
 {
- "created": "2026-09-13T17:53:58",
- "python": "3.11.14",
- "torch": "2.9.0+cu128",
- "transformers": "5.17.0",
- "datasets": "5.0.1",
- "accelerate": "1.12.0",
- "pillow": "12.0.0",
- "scipy": "1.17.0",
- "nltk": "3.10.3",
- "numpy": "2.3.5",
- "flash_linear_attention": "0.5.2",
- "cuda": "12.8",
- "gpus": [
-  "0, NVIDIA GeForce RTX 3090, 24576 MiB",
-  "1, NVIDIA GeForce RTX 3090, 24576 MiB",
-  "2, NVIDIA GeForce RTX 3090, 24576 MiB",
-  "3, NVIDIA GeForce RTX 3090, 24576 MiB",
-  "4, NVIDIA GeForce RTX 3090, 24576 MiB",
-  "5, NVIDIA GeForce RTX 3090, 24576 MiB"
- ],
- "gpu_assignment": {
-  "q4b": "cuda:4",
-  "q9b": "cuda:5",
-  "note": "server admin restriction: GPUs 4/5 only"
- },
- "models": {
-  "q4b": "/home/g203-4028/Models/Qwen3.5-4B",
-  "q9b": "/home/g203-4028/Models/Qwen3.5-9B"
- },
- "data": {
-  "source": "ethz/food101",
-  "samples_manifest_sha256": "ef390e58ae1b0d1f1b230668a9326bda249dfdb4fa6b502c55443409196168db",
-  "n_manifest": 4848,
-  "license": "HF: ethz/food101 (Food-101, MIT/README at source)",
-  "n_classes": 101,
-  "per_class_counts": {
-   "min": 1000,
-   "max": 1000
+  "created": "2026-09-13T17:53:58",
+  "python": "3.11.14",
+  "torch": "2.9.0+cu128",
+  "transformers": "5.17.0",
+  "datasets": "5.0.1",
+  "accelerate": "1.12.0",
+  "pillow": "12.0.0",
+  "scipy": "1.17.0",
+  "nltk": "3.10.3",
+  "numpy": "2.3.5",
+  "flash_linear_attention": "0.5.2",
+  "cuda": "12.8",
+  "gpus": [
+    "0, NVIDIA GeForce RTX 3090, 24576 MiB",
+    "1, NVIDIA GeForce RTX 3090, 24576 MiB",
+    "2, NVIDIA GeForce RTX 3090, 24576 MiB",
+    "3, NVIDIA GeForce RTX 3090, 24576 MiB",
+    "4, NVIDIA GeForce RTX 3090, 24576 MiB",
+    "5, NVIDIA GeForce RTX 3090, 24576 MiB"
+  ],
+  "gpu_assignment": {
+    "q4b": "cuda:4",
+    "q9b": "cuda:5",
+    "note": "server admin restriction: GPUs 4/5 only"
   },
-  "per_part_per_class": 24,
-  "n_group": 2424,
-  "n_eval": 2424,
-  "manifest_sha256": "4a2d11e2fd6b4b42d4735235e44ccc9bca5103ec73661e217fd34f75a2ee4599",
-  "seed": 42
- },
- "strata": {
-  "q4b": {
-   "rule": "bottom-25%/top-25% by grouping-half accuracy",
-   "k": 25,
-   "deficient_mean_group_acc": 0.1383,
-   "known_mean_group_acc": 0.9267
+  "models": {
+    "q4b": "/home/g203-4028/Models/Qwen3.5-4B",
+    "q9b": "/home/g203-4028/Models/Qwen3.5-9B"
   },
-  "q9b": {
-   "rule": "bottom-25%/top-25% by grouping-half accuracy",
-   "k": 25,
-   "deficient_mean_group_acc": 0.215,
-   "known_mean_group_acc": 0.9533
-  }
- },
- "raw_outputs": {
-  "q4b_main_existence.jsonl": {
-   "n": 4000,
-   "sum_wall_s": 2215.0
-  },
-  "q4b_main_naming.jsonl": {
-   "n": 6000,
-   "sum_wall_s": 3615.1
-  },
-  "q4b_phase1_abstain.jsonl": {
-   "n": 750,
-   "sum_wall_s": 0
-  },
-  "q4b_phase1_eval.jsonl": {
-   "n": 1200,
-   "sum_wall_s": 417.3
-  },
-  "q4b_phase1_group.jsonl": {
-   "n": 2424,
-   "sum_wall_s": 898.6
-  },
-  "q9b_main_existence.jsonl": {
-   "n": 4000,
-   "sum_wall_s": 2435.0
-  },
-  "q9b_main_naming.jsonl": {
-   "n": 4800,
-   "sum_wall_s": 4017.5
-  },
-  "q9b_phase1_abstain.jsonl": {
-   "n": 750,
-   "sum_wall_s": 0
-  },
-  "q9b_phase1_eval.jsonl": {
-   "n": 1200,
-   "sum_wall_s": 483.7
-  },
-  "q9b_phase1_group.jsonl": {
-   "n": 2424,
-   "sum_wall_s": 1013.9
-  }
- },
- "strata_validation_pass": [
-  "q4b,25,25,0.9267,0.1383,0.8817,0.1717,0.71,0.6228,0.7972,0.8817,0.1717,True,0.0,0.0,0.108,True,style3",
-  "q9b,25,25,0.9533,0.215,0.9183,0.2467,0.6717,0.5671,0.7762,0.9183,0.2467,True,0.004,0.0,0.0,False,(dropped->style1)"
- ],
- "stage3": {
-  "date": "2026-09-13/14",
-  "preregister": "docs/stage3/PREREGISTER_STAGE3.md",
-  "closedset": {
-   "task": "101-option (food101) / 120-option (dogs) number-choice, per-sample deterministic candidate shuffle seed f\"{file}|{variant}\"",
-   "variants": [
-    "full101 (all classes)",
-    "near10 (gold + 9 WordNet Wu-Palmer neighbours)"
-   ],
-   "scoring": "first integer in reply == gold position; unparsed counts as wrong"
-  },
-  "models_extended": {
-   "q3vl4b": {
-    "path": "/home/g203-4028/Models/Qwen3-VL-4B-Instruct",
-    "notes": "Conv3d->matmul patch (verified 0.0078 bf16), max-side 640px input cap"
-   },
-   "llava16": {
-    "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf",
-    "notes": "native anyres"
-   },
-   "internvl4b": {
-    "path": "/home/g203-4028/Models/InternVL3_5-4B",
-    "notes": "remote code; manual ChatML template, single 448 crop, all_tied_weights_keys patch, timm installed"
-   },
-   "excluded": {
-    "glm46v": "loads and decodes but 16.5 s/decode steady-state (measured); full pipeline ~2 days/GPU, excluded per task section 9",
-    "MiniCPM-V-2_6": "weights incomplete (48K)",
-    "Ministral-3/8B": "missing dirs; text-only",
-    "Qwen3.5-35B-A3B": "67G bf16 exceeds single 3090"
-   }
-  },
-  "domains": {
-   "food101": {
-    "source": "ethz/food101 (stage-2 manifest reused)"
-   },
-   "dogs": {
-    "source": "Donghyun99/Stanford-Dogs (HF parquet)",
-    "n_classes": 120,
-    "per_class_min": 148,
-    "n_group": 2880,
-    "n_eval": 2880,
+  "data": {
+    "source": "ethz/food101",
+    "samples_manifest_sha256": "ef390e58ae1b0d1f1b230668a9326bda249dfdb4fa6b502c55443409196168db",
+    "n_manifest": 4848,
+    "license": "HF: ethz/food101 (Food-101, MIT/README at source)",
+    "n_classes": 101,
+    "per_class_counts": {
+      "min": 1000,
+      "max": 1000
+    },
+    "per_part_per_class": 24,
+    "n_group": 2424,
+    "n_eval": 2424,
+    "manifest_sha256": "4a2d11e2fd6b4b42d4735235e44ccc9bca5103ec73661e217fd34f75a2ee4599",
     "seed": 42
-   }
   },
-  "stage3_outputs": [
-   "outputs/raw/q4b_stage3_closedset.jsonl",
-   "outputs/raw/q4b_stage3_mechanism.jsonl",
-   "outputs/raw/q9b_stage3_closedset.jsonl",
-   "outputs/raw/q9b_stage3_mechanism.jsonl",
-   "outputs/tables/stage3_summary.json"
-  ],
-  "updated": "2026-09-14T01:13:21"
- },
- "stage4": {
-  "date": "2026-09-14",
-  "preregister": "docs/stage4/PREREGISTER_STAGE4.md",
-  "probe": {
-   "definition": "name-restricted sum log-likelihood ranking under the open-set naming prompt; teacher-forced scoring against a shared prompt KV cache (per-candidate deepcopy), exact lp0 pruning; blank-image control on the same samples",
-   "validity_gate": "known-stratum probe accuracy >= 0.90 AND blank-control rank diff CI > 0 (uniform across models)"
-  },
-  "models_probed": {
-   "q4b": {
-    "known_acc": 0.7667,
-    "gate": "FAIL",
-    "fullname_conditional": 1.0
-   },
-   "q9b": {
-    "known_acc": 0.7033,
-    "gate": "FAIL",
-    "fullname_conditional": 0.9897
-   },
-   "q3vl4b": {
-    "known_acc": 0.6067,
-    "gate": "FAIL",
-    "fullname_conditional": 1.0
-   },
-   "llava16": {
-    "known_acc": 0.52,
-    "gate": "FAIL",
-    "fullname_conditional": 0.9533
-   },
-   "internvl4b": {
-    "known_acc": 0.4167,
-    "gate": "FAIL",
-    "fullname_conditional": 0.6701
-   },
-   "glm46v": "probe + naming subset only (see docs/stage4/STAGE4.md section 7)"
-  },
-  "outcome": "primary probe failed the pre-registered validity gate on ALL models; confirmatory set (llava16, internvl4b) invalid -> no confirmatory judgments executed; conditional granularity diagnosis: probe accuracy ~1.0 among full-name answerers; blank control passes everywhere",
-  "dropped": {
-   "dogs_probes": "cut after the probe failed its gate on all models; does not change any verdict (task sec-7 priority)"
-  },
-  "stage4_outputs": [
-   "outputs/raw/glm46v_stage4_naming_food101.jsonl",
-   "outputs/raw/glm46v_stage4_probe_food101.jsonl",
-   "outputs/raw/internvl4b_stage4_probe_food101.jsonl",
-   "outputs/raw/llava16_stage4_probe_food101.jsonl",
-   "outputs/raw/q3vl4b_stage4_probe_food101.jsonl",
-   "outputs/raw/q4b_stage4_probe_food101.jsonl",
-   "outputs/raw/q9b_stage4_probe_food101.jsonl",
-   "outputs/tables/glm46v_stage4_applicability.json",
-   "outputs/tables/stage4_summary.json"
-  ],
-  "updated": "2026-09-15T00:15:53"
- },
- "stage5": {
-  "date": "2026-09-15",
-  "preregister": "docs/stage5/PREREGISTER_STAGE5.md",
-  "goal": "unify conclusions into one main line; test the pre-registered base-rate relation (dECE predictable from pre-intervention accuracy / calibration gap, with a crossing point)",
-  "new_inference": {
-   "food101_middle": {
-    "classes": 51,
-    "samples_per_class": 24,
-    "configs": [
-     "direct",
-     "vcd",
-     "mib",
-     "lcd"
-    ],
-    "runner": "code/stage5_middle.py (stage-2 engine path, settings unchanged)",
-    "duration_min": {
-     "q4b": 78.1,
-     "q9b": 75.9
+  "strata": {
+    "q4b": {
+      "rule": "bottom-25%/top-25% by grouping-half accuracy",
+      "k": 25,
+      "deficient_mean_group_acc": 0.1383,
+      "known_mean_group_acc": 0.9267
     },
-    "records": [
-     "outputs/raw/q4b_s5middle_naming.jsonl",
-     "outputs/raw/q9b_s5middle_naming.jsonl"
-    ]
-   },
-   "dogs_middle": {
-    "classes": 60,
-    "samples_per_class": 24,
-    "configs": [
-     "direct",
-     "vcd",
-     "mib",
-     "lcd"
-    ],
-    "runner": "code/stage5_middle_dogs.py (stage-3 engine path, settings unchanged)",
-    "duration_min": {
-     "q4b": null,
-     "q9b": null
+    "q9b": {
+      "rule": "bottom-25%/top-25% by grouping-half accuracy",
+      "k": 25,
+      "deficient_mean_group_acc": 0.215,
+      "known_mean_group_acc": 0.9533
+    }
+  },
+  "raw_outputs": {
+    "q4b_main_existence.jsonl": {
+      "n": 4000,
+      "sum_wall_s": 2215.0
     },
-    "records": [
-     "outputs/raw/q4b_s5middle_dogs.jsonl",
-     "outputs/raw/q9b_s5middle_dogs.jsonl"
-    ]
-   }
+    "q4b_main_naming.jsonl": {
+      "n": 6000,
+      "sum_wall_s": 3615.1
+    },
+    "q4b_phase1_abstain.jsonl": {
+      "n": 750,
+      "sum_wall_s": 0
+    },
+    "q4b_phase1_eval.jsonl": {
+      "n": 1200,
+      "sum_wall_s": 417.3
+    },
+    "q4b_phase1_group.jsonl": {
+      "n": 2424,
+      "sum_wall_s": 898.6
+    },
+    "q9b_main_existence.jsonl": {
+      "n": 4000,
+      "sum_wall_s": 2435.0
+    },
+    "q9b_main_naming.jsonl": {
+      "n": 4800,
+      "sum_wall_s": 4017.5
+    },
+    "q9b_phase1_abstain.jsonl": {
+      "n": 750,
+      "sum_wall_s": 0
+    },
+    "q9b_phase1_eval.jsonl": {
+      "n": 1200,
+      "sum_wall_s": 483.7
+    },
+    "q9b_phase1_group.jsonl": {
+      "n": 2424,
+      "sum_wall_s": 1013.9
+    }
   },
-  "reanalysis": [
-   "code/stage5_nonqwen.py (non-Qwen main-line quantities from existing records; no probe dependency)",
-   "code/stage5_baserate.py (base-rate relation, both population constructions, class-cluster bootstrap)"
+  "strata_validation_pass": [
+    "q4b,25,25,0.9267,0.1383,0.8817,0.1717,0.71,0.6228,0.7972,0.8817,0.1717,True,0.0,0.0,0.108,True,style3",
+    "q9b,25,25,0.9533,0.215,0.9183,0.2467,0.6717,0.5671,0.7762,0.9183,0.2467,True,0.004,0.0,0.0,False,(dropped->style1)"
   ],
-  "strata_renaming": "deficient -> low_acc (低准确率组), known -> high_acc (高准确率组); the low stratum mixes name-accessible-but-not-emitted samples and is NOT equivalent to \"model does not know the name\"",
-  "stage5_outputs": [
-   "outputs/figures/fig9.pdf",
-   "outputs/tables/baserate.csv",
-   "outputs/tables/crossing.csv",
-   "outputs/tables/nonqwen_core.csv",
-   "outputs/tables/related_work.csv",
-   "outputs/tables/stage5_summary.json"
-  ],
-  "updated": "2026-09-15T03:09:08"
- },
- "stage6": {
-  "date": "2026-09-15",
-  "preregister": "docs/stage6/PREREGISTER_STAGE6.md",
-  "purpose": "faithful reimplementation of official decoding methods + sharpening controls + constant-offset correction test; no new measurement schemes, no new methods proposed",
-  "methods": {
-   "vcd": "official DAMO-NLP-SG/VCD@d6568ff: sigmoid-schedule diffusion noise on processor pixel_values (t=500), (1+a)z_clean - a z_noise, beta=0.1 plausibility mask; greedy (deviation: official samples)",
-   "m3id": "paper arXiv:2403.14003 Alg.1/Eq.(4) (no official code): l* = l_c + gate(max p_c<0.3) * (1-g)/g * (l_c - l_u), g=exp(-0.02(t+t0)), t0=question-token-count, text-only prior branch",
-   "dola": "official voidism/DoLa@805230e dola_greedy_decode: candidates hidden[0..L-1] via lm_head WITHOUT final norm, per-step argmax JSD(final,candidate), relative_top=0.1 on final, z*=masked_final - log_softmax(prem) with -1e3 clamp",
-   "deco": "official zjunlp/DeCo@c1a9129 deco_greedy_search: candidate layers [ceil(0.625L),floor(0.875L)] via lm_head AFTER final norm, final top-k=20 truncated at cumulative top-p=0.9, z*=z_final+0.6*maxprob*z_sel, candidates-only mask",
-   "sid": "BLOCKED: official fork requires transformers 4.29.2 (project uses 5.17.0 for Qwen3.5); supports only llava-1.5/instructblip/shikra; CT2S needs attention weights at layers 0-2 which are linear-attention (no attention matrices) in Qwen3.5 - reported, not silently replaced"
-  },
-  "legacy_local_names": {
-   "mib": "variant implementation, not M3ID; kept as supplement",
-   "lcd": "variant implementation, differs from DoLa layer selection"
-  },
-  "runs": {
-   "q4b": {
-    "gpu": 2,
-    "log": "logs/stage6_q4b.log",
-    "parts": "eval,dev+dose",
-    "min": 90.2
-   },
-   "q9b": {
-    "gpu": 3,
-    "log": "logs/stage6_q9b.log",
-    "parts": "eval,dev",
-    "min": 72.5
-   },
-   "llava16": {
-    "gpu": 4,
-    "log": "logs/stage6_llava16.log",
-    "parts": "eval,dev",
-    "min": 156.6
-   },
-   "internvl4b": {
-    "gpu": 5,
-    "log": "logs/stage6_internvl4b.log",
-    "parts": "eval,dev",
-    "min": 58.6
-   }
-  },
-  "gpu_allocation": {
-   "q4b": 2,
-   "q9b": 3,
-   "llava16": 4,
-   "internvl4b": 5
-  },
-  "recording": "answer_maxp/step_probs under the final distribution each config used (post-contrast, post-truncation, renormalized); direct runs additionally store the full first-token distribution (float16 npz)",
-  "stage6_outputs": [
-   "outputs/figures/stage6_fig1_core.pdf",
-   "outputs/figures/stage6_fig1b_correction.pdf",
-   "outputs/figures/stage6_fig2_fourcell.pdf",
-   "outputs/figures/stage6_fig3_did.pdf",
-   "outputs/figures/stage6_fig4_dose.pdf",
-   "outputs/tables/stage6_consistency.csv",
-   "outputs/tables/stage6_core.csv",
-   "outputs/tables/stage6_correction.csv",
-   "outputs/tables/stage6_did.csv",
-   "outputs/tables/stage6_dname.csv",
-   "outputs/tables/stage6_dose.csv",
-   "outputs/tables/stage6_fourcell.csv",
-   "outputs/tables/stage6_sharpening.csv",
-   "outputs/tables/stage6_summary.json",
-   "outputs/tables/stage6_variant.csv"
-  ],
-  "updated": "2026-09-16T01:31:32"
- },
- "stage7": {
-  "date": "2026-09-16",
-  "preregister": "docs/stage7/PREREGISTER_STAGE7.md (commit 30d9528, before any inference or judgment computation)",
-  "purpose": "final round: wording-deciding supplementary analyses, fidelity close-out (SID bounded reproduction, robustness, dogs faithful rerun), evidence map + mainline; no new measurements or methods",
-  "branch_decision": "strong wording branch (cell-wise sharpening consistency: 11 explainable vs 12 residual-structure cells of 23 judged)",
-  "extra_env": {
-   "venv_sid": "project-local conda-prefix env (python 3.11) with the official SID repo transformers 4.29.2 installed; used ONLY to generate official selection-logic reference outputs for the unit check (stage7_sid_reference.py, sha256 recorded)"
-  },
-  "runs": {
-   "q4b": {
-    "gpu": 2,
-    "jobs": [
-     "seed (2 salts)",
-     "dola_subset",
-     "dogs"
+  "stage3": {
+    "date": "2026-09-13/14",
+    "preregister": "docs/stage3/PREREGISTER_STAGE3.md",
+    "closedset": {
+      "task": "101-option (food101) / 120-option (dogs) number-choice, per-sample deterministic candidate shuffle seed f\"{file}|{variant}\"",
+      "variants": [
+        "full101 (all classes)",
+        "near10 (gold + 9 WordNet Wu-Palmer neighbours)"
+      ],
+      "scoring": "first integer in reply == gold position; unparsed counts as wrong"
+    },
+    "models_extended": {
+      "q3vl4b": {
+        "path": "/home/g203-4028/Models/Qwen3-VL-4B-Instruct",
+        "notes": "Conv3d->matmul patch (verified 0.0078 bf16), max-side 640px input cap"
+      },
+      "llava16": {
+        "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf",
+        "notes": "native anyres"
+      },
+      "internvl4b": {
+        "path": "/home/g203-4028/Models/InternVL3_5-4B",
+        "notes": "remote code; manual ChatML template, single 448 crop, all_tied_weights_keys patch, timm installed"
+      },
+      "excluded": {
+        "glm46v": "loads and decodes but 16.5 s/decode steady-state (measured); full pipeline ~2 days/GPU, excluded per task section 9",
+        "MiniCPM-V-2_6": "weights incomplete (48K)",
+        "Ministral-3/8B": "missing dirs; text-only",
+        "Qwen3.5-35B-A3B": "67G bf16 exceeds single 3090"
+      }
+    },
+    "domains": {
+      "food101": {
+        "source": "ethz/food101 (stage-2 manifest reused)"
+      },
+      "dogs": {
+        "source": "Donghyun99/Stanford-Dogs (HF parquet)",
+        "n_classes": 120,
+        "per_class_min": 148,
+        "n_group": 2880,
+        "n_eval": 2880,
+        "seed": 42
+      }
+    },
+    "stage3_outputs": [
+      "outputs/raw/q4b_stage3_closedset.jsonl",
+      "outputs/raw/q4b_stage3_mechanism.jsonl",
+      "outputs/raw/q9b_stage3_closedset.jsonl",
+      "outputs/raw/q9b_stage3_mechanism.jsonl",
+      "outputs/tables/stage3_summary.json"
     ],
-    "done_min_cumulative": 89.1
-   },
-   "q9b": {
-    "gpu": 3,
-    "jobs": [
-     "seed (2 salts)",
-     "dola_subset",
-     "dogs"
+    "updated": "2026-09-14T01:13:21"
+  },
+  "stage4": {
+    "date": "2026-09-14",
+    "preregister": "docs/stage4/PREREGISTER_STAGE4.md",
+    "probe": {
+      "definition": "name-restricted sum log-likelihood ranking under the open-set naming prompt; teacher-forced scoring against a shared prompt KV cache (per-candidate deepcopy), exact lp0 pruning; blank-image control on the same samples",
+      "validity_gate": "known-stratum probe accuracy >= 0.90 AND blank-control rank diff CI > 0 (uniform across models)"
+    },
+    "models_probed": {
+      "q4b": {
+        "known_acc": 0.7667,
+        "gate": "FAIL",
+        "fullname_conditional": 1.0
+      },
+      "q9b": {
+        "known_acc": 0.7033,
+        "gate": "FAIL",
+        "fullname_conditional": 0.9897
+      },
+      "q3vl4b": {
+        "known_acc": 0.6067,
+        "gate": "FAIL",
+        "fullname_conditional": 1.0
+      },
+      "llava16": {
+        "known_acc": 0.52,
+        "gate": "FAIL",
+        "fullname_conditional": 0.9533
+      },
+      "internvl4b": {
+        "known_acc": 0.4167,
+        "gate": "FAIL",
+        "fullname_conditional": 0.6701
+      },
+      "glm46v": "probe + naming subset only (see docs/stage4/STAGE4.md section 7)"
+    },
+    "outcome": "primary probe failed the pre-registered validity gate on ALL models; confirmatory set (llava16, internvl4b) invalid -> no confirmatory judgments executed; conditional granularity diagnosis: probe accuracy ~1.0 among full-name answerers; blank control passes everywhere",
+    "dropped": {
+      "dogs_probes": "cut after the probe failed its gate on all models; does not change any verdict (task sec-7 priority)"
+    },
+    "stage4_outputs": [
+      "outputs/raw/glm46v_stage4_naming_food101.jsonl",
+      "outputs/raw/glm46v_stage4_probe_food101.jsonl",
+      "outputs/raw/internvl4b_stage4_probe_food101.jsonl",
+      "outputs/raw/llava16_stage4_probe_food101.jsonl",
+      "outputs/raw/q3vl4b_stage4_probe_food101.jsonl",
+      "outputs/raw/q4b_stage4_probe_food101.jsonl",
+      "outputs/raw/q9b_stage4_probe_food101.jsonl",
+      "outputs/tables/glm46v_stage4_applicability.json",
+      "outputs/tables/stage4_summary.json"
     ],
-    "done_min_cumulative": 94.2
-   },
-   "llava16_sid": {
-    "gpu": 4,
-    "done_min": 43.8
-   },
-   "m3idgate_replay": {
-    "gpu": "4/5",
-    "note": "conditional-branch replay over stored tokens, ~6 min per model"
-   },
-   "internvl4b_sid": {
-    "status": "runtime-incompatible: remote attention hardwired to packed flash-varlen; unit check passed, keep-mask not injectable"
-   }
+    "updated": "2026-09-15T00:15:53"
   },
-  "key_results": {
-   "cellwise_consistency": "11 explainable / 12 residual (23 judged, 9 insufficient-n) -> strong branch",
-   "distlevel": "Spearman median 0.352, W1 median 0.110",
-   "positive_control_MIB": "q4b low acc 0.179->0.335 dECE -0.061 (sign flip demonstrated); q9b 0.247->0.358 dECE +0.041",
-   "dual_caliber": "matchable 28: 20/7/1; all 32: 20/7/5",
-   "drift": "mean -0.001 sd 0.027 range [-0.060,+0.038]",
-   "sid_llava16": "dconf +0.390/+0.308, dECE +0.361/-0.157, DiD +0.518; 12/12 unit checks vs official reference",
-   "seed_robustness": "dconf spread <= 0.021 (<= 11.8% of effect), directions stable across 3 draws",
-   "dola_subset": "DiD 0.256/0.266 vs all-layer 0.255/0.297 (unchanged)",
-   "m3id_gate_closed": "q4b 97.2%/85.9%, q9b 98.0%/87.4% (high/low strata)",
-   "dogs_prediction": "16/16 cells hit (dECE >= 0), 0 misses"
+  "stage5": {
+    "date": "2026-09-15",
+    "preregister": "docs/stage5/PREREGISTER_STAGE5.md",
+    "goal": "unify conclusions into one main line; test the pre-registered base-rate relation (dECE predictable from pre-intervention accuracy / calibration gap, with a crossing point)",
+    "new_inference": {
+      "food101_middle": {
+        "classes": 51,
+        "samples_per_class": 24,
+        "configs": [
+          "direct",
+          "vcd",
+          "mib",
+          "lcd"
+        ],
+        "runner": "code/stage5_middle.py (stage-2 engine path, settings unchanged)",
+        "duration_min": {
+          "q4b": 78.1,
+          "q9b": 75.9
+        },
+        "records": [
+          "outputs/raw/q4b_s5middle_naming.jsonl",
+          "outputs/raw/q9b_s5middle_naming.jsonl"
+        ]
+      },
+      "dogs_middle": {
+        "classes": 60,
+        "samples_per_class": 24,
+        "configs": [
+          "direct",
+          "vcd",
+          "mib",
+          "lcd"
+        ],
+        "runner": "code/stage5_middle_dogs.py (stage-3 engine path, settings unchanged)",
+        "duration_min": {
+          "q4b": null,
+          "q9b": null
+        },
+        "records": [
+          "outputs/raw/q4b_s5middle_dogs.jsonl",
+          "outputs/raw/q9b_s5middle_dogs.jsonl"
+        ]
+      }
+    },
+    "reanalysis": [
+      "code/stage5_nonqwen.py (non-Qwen main-line quantities from existing records; no probe dependency)",
+      "code/stage5_baserate.py (base-rate relation, both population constructions, class-cluster bootstrap)"
+    ],
+    "strata_renaming": "deficient -> low_acc (低准确率组), known -> high_acc (高准确率组); the low stratum mixes name-accessible-but-not-emitted samples and is NOT equivalent to \"model does not know the name\"",
+    "stage5_outputs": [
+      "outputs/figures/fig9.pdf",
+      "outputs/tables/baserate.csv",
+      "outputs/tables/crossing.csv",
+      "outputs/tables/nonqwen_core.csv",
+      "outputs/tables/related_work.csv",
+      "outputs/tables/stage5_summary.json"
+    ],
+    "updated": "2026-09-15T03:09:08"
   },
-  "stage7_outputs": [
-   "outputs/figures/stage7_fig_cellwise.pdf",
-   "outputs/raw/stage7_sid_reference.json",
-   "outputs/raw/stage7_sid_reference.npz",
-   "outputs/tables/stage7_cellconsistency.csv",
-   "outputs/tables/stage7_distlevel.csv",
-   "outputs/tables/stage7_dogspredict.csv",
-   "outputs/tables/stage7_dolasubset.csv",
-   "outputs/tables/stage7_drift.csv",
-   "outputs/tables/stage7_dualcaliber.csv",
-   "outputs/tables/stage7_m3idgate_q4b.csv",
-   "outputs/tables/stage7_m3idgate_q9b.csv",
-   "outputs/tables/stage7_poscontrol.csv",
-   "outputs/tables/stage7_seedrobust.csv",
-   "outputs/tables/stage7_sid.csv",
-   "outputs/tables/stage7_summary.json"
-  ],
-  "updated": "2026-09-16T14:30:48"
- },
- "stage8": {
-  "date": "2026-09-15",
-  "preregister": "docs/stage8/PREREGISTER_STAGE8.md (commit 9e1f577f, before any stage-8 computation)",
-  "purpose": "final close-out: redo the branch decision with a per-sample residual regression (replaces the stage-7 cell-count rule), equivalence testing at +/-0.02, DL meta + meta-regression, dogs magnitude-consistency test (caliber A), M3ID wording recheck, git history audit, naming compliance re-check; zero new inference",
-  "gpu_used": "none (re-analysis of stage-6/7 caches only)",
-  "branch_decision": "weak branch: gamma = +0.0097, 95% CI [-0.0013, +0.0208] (model-clustered primary); all six clustering/CI variants contain 0",
-  "key_numbers": {
-   "gamma": 0.0097098,
-   "gamma_ci_model": [
-    -0.0013341,
-    0.0207537
-   ],
-   "theta": 0.0605757,
-   "theta_ci_model": [
-    0.0158763,
-    0.1052752
-   ],
-   "theta_ci_cell": [
-    -0.0060955,
-    0.1272469
-   ],
-   "meta_pooled_d": 0.0149021,
-   "meta_ci": [
-    0.0022036,
-    0.0276006
-   ],
-   "I2": 0.891664,
-   "tau2": 0.0006585,
-   "Q": 203.071,
-   "k": 23,
-   "metareg_slope_fe": -0.0227757,
-   "metareg_slope_re": 0.0329994,
-   "metareg_slope_unweighted": 0.0750244,
-   "equivalence_margin": 0.02,
-   "equivalent_cells": 4,
-   "outside_band": 8,
-   "indeterminate": 11,
-   "N_samples": 14656,
-   "N_wrong": 6677,
-   "dogs_pooled_band_hits": 14,
-   "dogs_per_method_hits": 10,
-   "dogs_extrapolated": 8,
-   "stage7_sign_test_p": 1.0
+  "stage6": {
+    "date": "2026-09-15",
+    "preregister": "docs/stage6/PREREGISTER_STAGE6.md",
+    "purpose": "faithful reimplementation of official decoding methods + sharpening controls + constant-offset correction test; no new measurement schemes, no new methods proposed",
+    "methods": {
+      "vcd": "official DAMO-NLP-SG/VCD@d6568ff: sigmoid-schedule diffusion noise on processor pixel_values (t=500), (1+a)z_clean - a z_noise, beta=0.1 plausibility mask; greedy (deviation: official samples)",
+      "m3id": "paper arXiv:2403.14003 Alg.1/Eq.(4) (no official code): l* = l_c + gate(max p_c<0.3) * (1-g)/g * (l_c - l_u), g=exp(-0.02(t+t0)), t0=question-token-count, text-only prior branch",
+      "dola": "official voidism/DoLa@805230e dola_greedy_decode: candidates hidden[0..L-1] via lm_head WITHOUT final norm, per-step argmax JSD(final,candidate), relative_top=0.1 on final, z*=masked_final - log_softmax(prem) with -1e3 clamp",
+      "deco": "official zjunlp/DeCo@c1a9129 deco_greedy_search: candidate layers [ceil(0.625L),floor(0.875L)] via lm_head AFTER final norm, final top-k=20 truncated at cumulative top-p=0.9, z*=z_final+0.6*maxprob*z_sel, candidates-only mask",
+      "sid": "BLOCKED: official fork requires transformers 4.29.2 (project uses 5.17.0 for Qwen3.5); supports only llava-1.5/instructblip/shikra; CT2S needs attention weights at layers 0-2 which are linear-attention (no attention matrices) in Qwen3.5 - reported, not silently replaced"
+    },
+    "legacy_local_names": {
+      "mib": "variant implementation, not M3ID; kept as supplement",
+      "lcd": "variant implementation, differs from DoLa layer selection"
+    },
+    "runs": {
+      "q4b": {
+        "gpu": 2,
+        "log": "logs/stage6_q4b.log",
+        "parts": "eval,dev+dose",
+        "min": 90.2
+      },
+      "q9b": {
+        "gpu": 3,
+        "log": "logs/stage6_q9b.log",
+        "parts": "eval,dev",
+        "min": 72.5
+      },
+      "llava16": {
+        "gpu": 4,
+        "log": "logs/stage6_llava16.log",
+        "parts": "eval,dev",
+        "min": 156.6
+      },
+      "internvl4b": {
+        "gpu": 5,
+        "log": "logs/stage6_internvl4b.log",
+        "parts": "eval,dev",
+        "min": 58.6
+      }
+    },
+    "gpu_allocation": {
+      "q4b": 2,
+      "q9b": 3,
+      "llava16": 4,
+      "internvl4b": 5
+    },
+    "recording": "answer_maxp/step_probs under the final distribution each config used (post-contrast, post-truncation, renormalized); direct runs additionally store the full first-token distribution (float16 npz)",
+    "stage6_outputs": [
+      "outputs/figures/stage6_fig1_core.pdf",
+      "outputs/figures/stage6_fig1b_correction.pdf",
+      "outputs/figures/stage6_fig2_fourcell.pdf",
+      "outputs/figures/stage6_fig3_did.pdf",
+      "outputs/figures/stage6_fig4_dose.pdf",
+      "outputs/tables/stage6_consistency.csv",
+      "outputs/tables/stage6_core.csv",
+      "outputs/tables/stage6_correction.csv",
+      "outputs/tables/stage6_did.csv",
+      "outputs/tables/stage6_dname.csv",
+      "outputs/tables/stage6_dose.csv",
+      "outputs/tables/stage6_fourcell.csv",
+      "outputs/tables/stage6_sharpening.csv",
+      "outputs/tables/stage6_summary.json",
+      "outputs/tables/stage6_variant.csv"
+    ],
+    "updated": "2026-09-16T01:31:32"
   },
-  "outputs": [
-   "outputs/tables/stage8_residual_regression.csv",
-   "outputs/tables/stage8_meta.csv",
-   "outputs/tables/stage8_metareg.csv",
-   "outputs/tables/stage8_equivalence.csv",
-   "outputs/tables/stage8_dogs_transfer.csv",
-   "outputs/tables/stage8_m3id_gate_recheck.csv",
-   "outputs/tables/stage8_summary.json",
-   "outputs/tables/stage8_transfer_summary.json",
-   "outputs/figures/stage8_fig_residual.pdf"
-  ],
-  "code": [
-   "code/stage8_analysis.py",
-   "code/stage8_transfer.py",
-   "code/stage8_figures.py"
-  ],
-  "seal": "project sealed after this stage: no further experiments, re-analyses, or supplementary rounds; paper prose is the only remaining work (based on docs/stage8/CLAIMS_STAGE8.md and docs/stage8/MAINLINE_STAGE8.md)"
- }
+  "stage7": {
+    "date": "2026-09-16",
+    "preregister": "docs/stage7/PREREGISTER_STAGE7.md (commit 30d9528, before any inference or judgment computation)",
+    "purpose": "final round: wording-deciding supplementary analyses, fidelity close-out (SID bounded reproduction, robustness, dogs faithful rerun), evidence map + mainline; no new measurements or methods",
+    "branch_decision": "strong wording branch (cell-wise sharpening consistency: 11 explainable vs 12 residual-structure cells of 23 judged)",
+    "extra_env": {
+      "venv_sid": "project-local conda-prefix env (python 3.11) with the official SID repo transformers 4.29.2 installed; used ONLY to generate official selection-logic reference outputs for the unit check (stage7_sid_reference.py, sha256 recorded)"
+    },
+    "runs": {
+      "q4b": {
+        "gpu": 2,
+        "jobs": [
+          "seed (2 salts)",
+          "dola_subset",
+          "dogs"
+        ],
+        "done_min_cumulative": 89.1
+      },
+      "q9b": {
+        "gpu": 3,
+        "jobs": [
+          "seed (2 salts)",
+          "dola_subset",
+          "dogs"
+        ],
+        "done_min_cumulative": 94.2
+      },
+      "llava16_sid": {
+        "gpu": 4,
+        "done_min": 43.8
+      },
+      "m3idgate_replay": {
+        "gpu": "4/5",
+        "note": "conditional-branch replay over stored tokens, ~6 min per model"
+      },
+      "internvl4b_sid": {
+        "status": "runtime-incompatible: remote attention hardwired to packed flash-varlen; unit check passed, keep-mask not injectable"
+      }
+    },
+    "key_results": {
+      "cellwise_consistency": "11 explainable / 12 residual (23 judged, 9 insufficient-n) -> strong branch",
+      "distlevel": "Spearman median 0.352, W1 median 0.110",
+      "positive_control_MIB": "q4b low acc 0.179->0.335 dECE -0.061 (sign flip demonstrated); q9b 0.247->0.358 dECE +0.041",
+      "dual_caliber": "matchable 28: 20/7/1; all 32: 20/7/5",
+      "drift": "mean -0.001 sd 0.027 range [-0.060,+0.038]",
+      "sid_llava16": "dconf +0.390/+0.308, dECE +0.361/-0.157, DiD +0.518; 12/12 unit checks vs official reference",
+      "seed_robustness": "dconf spread <= 0.021 (<= 11.8% of effect), directions stable across 3 draws",
+      "dola_subset": "DiD 0.256/0.266 vs all-layer 0.255/0.297 (unchanged)",
+      "m3id_gate_closed": "q4b 97.2%/85.9%, q9b 98.0%/87.4% (high/low strata)",
+      "dogs_prediction": "16/16 cells hit (dECE >= 0), 0 misses"
+    },
+    "stage7_outputs": [
+      "outputs/figures/stage7_fig_cellwise.pdf",
+      "outputs/raw/stage7_sid_reference.json",
+      "outputs/raw/stage7_sid_reference.npz",
+      "outputs/tables/stage7_cellconsistency.csv",
+      "outputs/tables/stage7_distlevel.csv",
+      "outputs/tables/stage7_dogspredict.csv",
+      "outputs/tables/stage7_dolasubset.csv",
+      "outputs/tables/stage7_drift.csv",
+      "outputs/tables/stage7_dualcaliber.csv",
+      "outputs/tables/stage7_m3idgate_q4b.csv",
+      "outputs/tables/stage7_m3idgate_q9b.csv",
+      "outputs/tables/stage7_poscontrol.csv",
+      "outputs/tables/stage7_seedrobust.csv",
+      "outputs/tables/stage7_sid.csv",
+      "outputs/tables/stage7_summary.json"
+    ],
+    "updated": "2026-09-16T14:30:48"
+  },
+  "stage8": {
+    "date": "2026-09-15",
+    "preregister": "docs/stage8/PREREGISTER_STAGE8.md (commit 9e1f577f, before any stage-8 computation)",
+    "purpose": "final close-out: redo the branch decision with a per-sample residual regression (replaces the stage-7 cell-count rule), equivalence testing at +/-0.02, DL meta + meta-regression, dogs magnitude-consistency test (caliber A), M3ID wording recheck, git history audit, naming compliance re-check; zero new inference",
+    "gpu_used": "none (re-analysis of stage-6/7 caches only)",
+    "branch_decision": "weak branch: gamma = +0.0097, 95% CI [-0.0013, +0.0208] (model-clustered primary); all six clustering/CI variants contain 0",
+    "key_numbers": {
+      "gamma": 0.0097098,
+      "gamma_ci_model": [
+        -0.0013341,
+        0.0207537
+      ],
+      "theta": 0.0605757,
+      "theta_ci_model": [
+        0.0158763,
+        0.1052752
+      ],
+      "theta_ci_cell": [
+        -0.0060955,
+        0.1272469
+      ],
+      "meta_pooled_d": 0.0149021,
+      "meta_ci": [
+        0.0022036,
+        0.0276006
+      ],
+      "I2": 0.891664,
+      "tau2": 0.0006585,
+      "Q": 203.071,
+      "k": 23,
+      "metareg_slope_fe": -0.0227757,
+      "metareg_slope_re": 0.0329994,
+      "metareg_slope_unweighted": 0.0750244,
+      "equivalence_margin": 0.02,
+      "equivalent_cells": 4,
+      "outside_band": 8,
+      "indeterminate": 11,
+      "N_samples": 14656,
+      "N_wrong": 6677,
+      "dogs_pooled_band_hits": 14,
+      "dogs_per_method_hits": 10,
+      "dogs_extrapolated": 8,
+      "stage7_sign_test_p": 1.0
+    },
+    "outputs": [
+      "outputs/tables/stage8_residual_regression.csv",
+      "outputs/tables/stage8_meta.csv",
+      "outputs/tables/stage8_metareg.csv",
+      "outputs/tables/stage8_equivalence.csv",
+      "outputs/tables/stage8_dogs_transfer.csv",
+      "outputs/tables/stage8_m3id_gate_recheck.csv",
+      "outputs/tables/stage8_summary.json",
+      "outputs/tables/stage8_transfer_summary.json",
+      "outputs/figures/stage8_fig_residual.pdf"
+    ],
+    "code": [
+      "code/stage8_analysis.py",
+      "code/stage8_transfer.py",
+      "code/stage8_figures.py"
+    ],
+    "seal": "project sealed after this stage: no further experiments, re-analyses, or supplementary rounds; paper prose is the only remaining work (based on docs/stage8/CLAIMS_STAGE8.md and docs/stage8/MAINLINE_STAGE8.md)"
+  },
+  "stage9": {
+    "date": "2026-09-17",
+    "package_source_commit": "e5eda213dd3f51c08b43c1616305c93b84011dff",
+    "preregister_commit": "221d0ced",
+    "supplement": "docs/stage9/00_SUPPLEMENT_FOR_ZCODE.md (execution order, 3-seed robustness sec3.2, validity gate sec3.1, 14/16, naming fix, four-class reachability)",
+    "gpus": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "new_free_generations": 4858,
+    "reused_stage6_records": 1200,
+    "exp1": {
+      "output": "outputs/tables/stage9/paired_reliability.csv + risk_coverage.csv",
+      "claim3": "SUPPORTED in high-acc subset (VCD seq 80%: q9b +2.51pp CI[+0.42,+4.58]; llava16 +6.68pp CI[+2.14,+10.34]; low-acc flat or decreased)"
+    },
+    "exp2": {
+      "validity": "PASSED both models (q9b 0.580/0.515/0.375; llava16 0.400/0.340/0.175; all pairs distinguishable)",
+      "interaction": "no discernible change in any of 8 combos (llava16-high-vcd lo=0.0 exact)"
+    },
+    "exp3": {
+      "paths": 800,
+      "stable": 789,
+      "unstable": 11,
+      "four_class": {
+        "nonempty_contains_default": 36,
+        "nonempty_not_at_default": 23,
+        "empty_target_outside_support": 639,
+        "empty_constraints_incompatible": 91
+      },
+      "witness": "58/58 token-identical, 0 mismatches; 1 path feasible only above the [0,4] cap"
+    },
+    "exp4": {
+      "pope": "no VCD benefit in 4 cells; llava16-adversarial -2.67pp CI[-5.00,-0.67]"
+    },
+    "gpu_seconds_total": 5830,
+    "peak_vram_MiB": {
+      "q9b": 18854,
+      "llava16": 16952
+    },
+    "tracked_disk_increment_MB": 19,
+    "commits": [
+      "221d0ced",
+      "7272b0dc",
+      "4d5bd6ec",
+      "2655f27e",
+      "b3d7023e",
+      "30252465",
+      "417c7b0f"
+    ],
+    "seal": "fixed minimal set complete; no further stage-9 experiments; paper prose remains for the research designer"
+  }
 }
