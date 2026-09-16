@@ -1,0 +1,3 @@
+model,stratum,n_samples,n_steps,gate_closed_ratio
+q4b,high_acc,600,1535,0.972
+q4b,low_acc,600,1529,0.8587
