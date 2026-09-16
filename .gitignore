@@ -22,3 +22,4 @@ data/lvis_v1_*.json*
 .git-backup-*/
 reference_repos/
 outputs/raw/*_s6_firstdist_*.npz
+venv_sid/

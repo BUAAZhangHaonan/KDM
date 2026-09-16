@@ -1,0 +1,68 @@
+{
+ "cellwise": {
+  "sharpening_explains": 11,
+  "residual_structure": 12,
+  "branch": "strong (R > E)"
+ },
+ "drift": {
+  "mean": -0.001089925685441765,
+  "sd": 0.02666326662590664,
+  "min": -0.06048859316771883,
+  "max": 0.03814826619328533,
+  "n_cells": 23
+ },
+ "poscontrol": [
+  {
+   "model": "q4b",
+   "stratum": "low_acc",
+   "config": "MIB-variant (blur branch + linear decay; NOT a published method; positive strength control)",
+   "n": 537,
+   "acc_direct": 0.1787709497206704,
+   "acc_method": 0.33519553072625696,
+   "dconf": 0.12655444300319008,
+   "ece_direct": 0.26256484829680216,
+   "ece_method": 0.20150780946959776,
+   "dece": -0.061057038827204396,
+   "rescue_rate": 0.20634920634920634
+  },
+  {
+   "model": "q4b",
+   "stratum": "high_acc",
+   "config": "MIB-variant (blur branch + linear decay; NOT a published method; positive strength control)",
+   "n": 564,
+   "acc_direct": 0.8900709219858156,
+   "acc_method": 0.8900709219858156,
+   "dconf": 0.030886961953014345,
+   "ece_direct": 0.2558200257625563,
+   "ece_method": 0.24028647186379906,
+   "dece": -0.01553355389875724,
+   "rescue_rate": 0.4032258064516129
+  },
+  {
+   "model": "q9b",
+   "stratum": "low_acc",
+   "config": "MIB-variant (blur branch + linear decay; NOT a published method; positive strength control)",
+   "n": 600,
+   "acc_direct": 0.24666666666666667,
+   "acc_method": 0.35833333333333334,
+   "dconf": 0.15291266585389773,
+   "ece_direct": 0.14801826417446134,
+   "ece_method": 0.18926426336169241,
+   "dece": 0.04124599918723107,
+   "rescue_rate": 0.1902654867256637
+  },
+  {
+   "model": "q9b",
+   "stratum": "high_acc",
+   "config": "MIB-variant (blur branch + linear decay; NOT a published method; positive strength control)",
+   "n": 600,
+   "acc_direct": 0.9183333333333333,
+   "acc_method": 0.8866666666666667,
+   "dconf": -0.0015070626139640807,
+   "ece_direct": 0.2906745843340953,
+   "ece_method": 0.2607278377562761,
+   "dece": -0.029946746577819205,
+   "rescue_rate": 0.32653061224489793
+  }
+ ]
+}

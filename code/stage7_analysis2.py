@@ -49,7 +49,7 @@ def cell_stats(d_rows, m_rows):
           for d, m in zip(d_rows, m_rows)]
     unchanged = np.array([
         o and norm_text(m['text']) == norm_text(d['text']) and
-        m['tokens'][0] == d['tokens'][0]
+        (d.get('tokens') is None or m['tokens'][0] == d['tokens'][0])
         for o, d, m in zip(ok, d_rows, m_rows)])
     incs = np.array([m['answer_maxp'] - d['answer_maxp']
                      if u else np.nan
