@@ -1,0 +1,1 @@
+{"combinations": 64, "output": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/tables/stage9"}

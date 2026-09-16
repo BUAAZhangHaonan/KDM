@@ -1,0 +1,12 @@
+{
+  "new_generations": 200,
+  "reused_generations": 100,
+  "paths": 0,
+  "witness_checks": 0,
+  "direct_consistency_checks": 2,
+  "seconds": 60.55387258529663,
+  "selected": 100,
+  "model": "q9b",
+  "shard": 1,
+  "shards": 2
+}

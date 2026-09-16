@@ -1,0 +1,24 @@
+{
+  "sources": {
+    "q4b": {
+      "n_inputs": 1200,
+      "source": "outputs/raw/q4b_s6_eval_naming.jsonl"
+    },
+    "q9b": {
+      "n_inputs": 1200,
+      "source": "outputs/raw/q9b_s6_eval_naming.jsonl"
+    },
+    "llava16": {
+      "n_inputs": 1200,
+      "source": "outputs/raw/llava16_s6_eval_naming.jsonl"
+    },
+    "internvl4b": {
+      "n_inputs": 1200,
+      "source": "outputs/raw/internvl4b_s6_eval_naming.jsonl"
+    }
+  },
+  "replicates": 2000,
+  "primary_score": "sequence log probability including the recorded termination token",
+  "population": "common non-abstained answers across all five configurations; total-input coverage reported separately",
+  "novel_inference": false
+}

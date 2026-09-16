@@ -1,0 +1,12 @@
+{
+  "new_generations": 196,
+  "reused_generations": 98,
+  "paths": 0,
+  "witness_checks": 0,
+  "direct_consistency_checks": 2,
+  "seconds": 190.04486083984375,
+  "selected": 100,
+  "model": "llava16",
+  "shard": 0,
+  "shards": 2
+}

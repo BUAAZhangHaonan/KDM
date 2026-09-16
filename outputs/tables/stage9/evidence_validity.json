@@ -1,0 +1,69 @@
+{
+  "rule": "invalid if short64 or short32 direct accuracy in [0,0.10], or any pair of conditions indistinguishable (class-paired 95% CI of the difference contains 0)",
+  "replicates": 2000,
+  "floor": 0.1,
+  "models": {
+    "llava16": {
+      "n": 200,
+      "accuracy": {
+        "original": 0.4,
+        "short64": 0.34,
+        "short32": 0.175
+      },
+      "floor_range_ok": true,
+      "pairwise": {
+        "original_vs_short64": {
+          "diff": -0.06,
+          "lo": -0.11,
+          "hi": -0.02,
+          "distinguishable": true
+        },
+        "original_vs_short32": {
+          "diff": -0.22500000000000003,
+          "lo": -0.315125,
+          "hi": -0.14,
+          "distinguishable": true
+        },
+        "short64_vs_short32": {
+          "diff": -0.16500000000000004,
+          "lo": -0.235,
+          "hi": -0.095,
+          "distinguishable": true
+        }
+      },
+      "valid": true,
+      "note": "valid evidence-strength manipulation"
+    },
+    "q9b": {
+      "n": 200,
+      "accuracy": {
+        "original": 0.58,
+        "short64": 0.515,
+        "short32": 0.375
+      },
+      "floor_range_ok": true,
+      "pairwise": {
+        "original_vs_short64": {
+          "diff": -0.06499999999999995,
+          "lo": -0.105,
+          "hi": -0.025,
+          "distinguishable": true
+        },
+        "original_vs_short32": {
+          "diff": -0.20499999999999996,
+          "lo": -0.28,
+          "hi": -0.1398750000000007,
+          "distinguishable": true
+        },
+        "short64_vs_short32": {
+          "diff": -0.14,
+          "lo": -0.21,
+          "hi": -0.075,
+          "distinguishable": true
+        }
+      },
+      "valid": true,
+      "note": "valid evidence-strength manipulation"
+    }
+  }
+}
