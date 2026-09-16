@@ -28,8 +28,10 @@ def fetch_bytes(url:str)->bytes:
     source_manifest.json as a compensating audit control. See
     docs/stage9/CODE_CHANGES_STAGE9.md."""
     if url.startswith(IMAGE_HOST):
+        # Direct TLS to this host works; the local proxy resets the tunnel.
         ctx=ssl.create_default_context();ctx.check_hostname=False
-        opener=urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx))
+        opener=urllib.request.build_opener(urllib.request.ProxyHandler({}),
+                                           urllib.request.HTTPSHandler(context=ctx))
         with opener.open(url,timeout=180) as r:return r.read()
     with urllib.request.urlopen(url,timeout=120) as r:return r.read()
 
