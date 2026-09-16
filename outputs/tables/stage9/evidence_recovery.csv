@@ -1,0 +1,9 @@
+model,stratum,method,n,evidence_responsive_error_n,corrected_in_that_subset,conditional_correction_rate,original_input_accuracy,degraded_input_accuracy,note
+llava16,low_acc,vcd,100,1,0,0.0,0.01,0.0,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+llava16,low_acc,m3id,100,1,0,0.0,0.01,0.0,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+llava16,high_acc,vcd,100,47,5,0.10638297872340426,0.79,0.35,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+llava16,high_acc,m3id,100,47,2,0.0425531914893617,0.79,0.35,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+q9b,low_acc,vcd,100,17,4,0.23529411764705882,0.21,0.05,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+q9b,low_acc,m3id,100,17,1,0.058823529411764705,0.21,0.05,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+q9b,high_acc,vcd,100,25,4,0.16,0.95,0.7,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."
+q9b,high_acc,m3id,100,25,2,0.08,0.95,0.7,"Original-correct/degraded-wrong is a paired observed response category, not latent knowledge."

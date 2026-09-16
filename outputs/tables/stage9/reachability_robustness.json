@@ -1,0 +1,27 @@
+{
+  "operationalization": "interval on the original per-sample VCD noise seed; classes: nonempty&contains default alpha=1 / nonempty&excludes default / empty by support membership / empty by ranking constraints; unstable = emptiness flips across noise seeds (original, +1, +2); not a statement about object knowledge",
+  "n_paths": 800,
+  "n_stable": 789,
+  "n_unstable": 11,
+  "four_class_counts": {
+    "empty_target_outside_support": 639,
+    "empty_constraints_incompatible": 91,
+    "nonempty_not_at_default": 23,
+    "nonempty_contains_default": 36
+  },
+  "unstable_paths": [
+    "q9b:original:beef_tartare_eval_042.jpg:3320,797,43325,532,248046",
+    "q9b:original:deviled_eggs_eval_045.jpg:3464,2112,18237,248046",
+    "q9b:original:french_fries_eval_042.jpg:41772,50185,248046",
+    "q9b:original:mussels_eval_028.jpg:44,30818,248046",
+    "q9b:original:sashimi_eval_032.jpg:82,956,24050,248046",
+    "q9b:short32:french_fries_eval_034.jpg:69,6446,50185,248046",
+    "q9b:short32:mussels_eval_031.jpg:44,30818,248046",
+    "q9b:short32:paella_eval_028.jpg:6387,6628,248046",
+    "q9b:short32:sashimi_eval_025.jpg:82,956,24050,248046",
+    "q9b:short32:sushi_eval_047.jpg:50,35844,248046",
+    "q9b:short32:tacos_eval_039.jpg:51,40271,248046"
+  ],
+  "pass_fraction": 0.98625,
+  "appendix_demotion_required": false
+}

@@ -1,0 +1,9 @@
+model,stratum,method,effect_change,effect_change_lo,effect_change_hi,direct_evidence_change,direct_evidence_lo,direct_evidence_hi
+llava16,low_acc,vcd,0.0,0.0,0.0,-0.01,-0.03,0.0
+llava16,low_acc,m3id,-0.01,-0.03,0.0,-0.01,-0.03,0.0
+llava16,high_acc,vcd,0.09,0.0,0.19,-0.44,-0.57,-0.31
+llava16,high_acc,m3id,0.01,-0.04,0.06,-0.44,-0.57,-0.31
+q9b,low_acc,vcd,-0.07,-0.16,0.02,-0.16,-0.25,-0.07
+q9b,low_acc,m3id,0.02,-0.02,0.07,-0.16,-0.25,-0.07
+q9b,high_acc,vcd,0.01,-0.05,0.07,-0.25,-0.36,-0.15
+q9b,high_acc,m3id,-0.04,-0.09024999999999998,0.01,-0.25,-0.36,-0.15

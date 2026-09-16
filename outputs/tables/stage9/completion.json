@@ -1,0 +1,8 @@
+{
+  "evidence_records": 3600,
+  "name_paths": 800,
+  "selected_model_images": 400,
+  "complete": true,
+  "replicates": 2000,
+  "target_scope": "Two frozen name spellings and one specified EOS per path; not semantic knowledge or all acceptable names."
+}

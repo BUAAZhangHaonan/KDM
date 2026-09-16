@@ -1,0 +1,801 @@
+model,condition,file,target_name,status,robust_stable,interval_empty,contains_default,empty_reason,witness_alpha,validation_passed,category
+llava16,original,apple_pie_eval_027.jpg,apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,apple_pie_eval_027.jpg,Apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,apple_pie_eval_034.jpg,apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,apple_pie_eval_034.jpg,Apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,beignets_eval_025.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,beignets_eval_025.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,beignets_eval_038.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,beignets_eval_038.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bibimbap_eval_024.jpg,bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bibimbap_eval_024.jpg,Bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bibimbap_eval_044.jpg,bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bibimbap_eval_044.jpg,Bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,breakfast_burrito_eval_034.jpg,breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,breakfast_burrito_eval_034.jpg,Breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,breakfast_burrito_eval_037.jpg,breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,breakfast_burrito_eval_037.jpg,Breakfast burrito,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,bruschetta_eval_030.jpg,bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bruschetta_eval_030.jpg,Bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bruschetta_eval_044.jpg,bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,bruschetta_eval_044.jpg,Bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ceviche_eval_025.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ceviche_eval_025.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ceviche_eval_030.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ceviche_eval_030.jpg,Ceviche,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,chicken_curry_eval_025.jpg,chicken curry,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_curry_eval_025.jpg,Chicken curry,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,chicken_curry_eval_037.jpg,chicken curry,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_curry_eval_037.jpg,Chicken curry,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_wings_eval_025.jpg,chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_wings_eval_025.jpg,Chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_wings_eval_033.jpg,chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,chicken_wings_eval_033.jpg,Chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,churros_eval_042.jpg,churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,churros_eval_042.jpg,Churros,ok,True,True,False,target_never_overtakes_competitor,,,empty_constraints_incompatible
+llava16,original,churros_eval_046.jpg,churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,churros_eval_046.jpg,Churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,club_sandwich_eval_027.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,club_sandwich_eval_027.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,club_sandwich_eval_028.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,club_sandwich_eval_028.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,croque_madame_eval_025.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,croque_madame_eval_025.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,croque_madame_eval_039.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,croque_madame_eval_039.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,cup_cakes_eval_032.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,cup_cakes_eval_032.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,cup_cakes_eval_038.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,cup_cakes_eval_038.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,deviled_eggs_eval_044.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,deviled_eggs_eval_044.jpg,Deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,deviled_eggs_eval_045.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,deviled_eggs_eval_045.jpg,Deviled eggs,ok,True,True,False,target_never_overtakes_competitor,,,empty_constraints_incompatible
+llava16,original,donuts_eval_027.jpg,donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,donuts_eval_027.jpg,Donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,donuts_eval_030.jpg,donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,donuts_eval_030.jpg,Donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,dumplings_eval_029.jpg,dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,dumplings_eval_029.jpg,Dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,dumplings_eval_037.jpg,dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,dumplings_eval_037.jpg,Dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,eggs_benedict_eval_035.jpg,eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,eggs_benedict_eval_035.jpg,Eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,eggs_benedict_eval_039.jpg,eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,eggs_benedict_eval_039.jpg,Eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,falafel_eval_028.jpg,falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,falafel_eval_028.jpg,Falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,falafel_eval_047.jpg,falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,falafel_eval_047.jpg,Falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,filet_mignon_eval_026.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,filet_mignon_eval_026.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,filet_mignon_eval_046.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,filet_mignon_eval_046.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fish_and_chips_eval_026.jpg,fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fish_and_chips_eval_026.jpg,Fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fish_and_chips_eval_044.jpg,fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fish_and_chips_eval_044.jpg,Fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,foie_gras_eval_029.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,foie_gras_eval_029.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,foie_gras_eval_037.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,foie_gras_eval_037.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,french_fries_eval_034.jpg,french fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,french_fries_eval_034.jpg,French fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,french_fries_eval_042.jpg,french fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,french_fries_eval_042.jpg,French fries,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,fried_rice_eval_026.jpg,fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fried_rice_eval_026.jpg,Fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fried_rice_eval_034.jpg,fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,fried_rice_eval_034.jpg,Fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,garlic_bread_eval_039.jpg,garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,garlic_bread_eval_039.jpg,Garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,garlic_bread_eval_044.jpg,garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,garlic_bread_eval_044.jpg,Garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,greek_salad_eval_032.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,greek_salad_eval_032.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,greek_salad_eval_045.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,greek_salad_eval_045.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,gyoza_eval_024.jpg,gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,gyoza_eval_024.jpg,Gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,gyoza_eval_041.jpg,gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,gyoza_eval_041.jpg,Gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,hot_dog_eval_030.jpg,hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,hot_dog_eval_030.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,hot_dog_eval_040.jpg,hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,hot_dog_eval_040.jpg,Hot dog,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,huevos_rancheros_eval_025.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,huevos_rancheros_eval_025.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,huevos_rancheros_eval_032.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,huevos_rancheros_eval_032.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,macarons_eval_044.jpg,macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,macarons_eval_044.jpg,Macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,macarons_eval_047.jpg,macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,macarons_eval_047.jpg,Macarons,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,onion_rings_eval_038.jpg,onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,onion_rings_eval_038.jpg,Onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,onion_rings_eval_047.jpg,onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,onion_rings_eval_047.jpg,Onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,oysters_eval_026.jpg,oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,oysters_eval_026.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,oysters_eval_038.jpg,oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,oysters_eval_038.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pad_thai_eval_025.jpg,pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pad_thai_eval_025.jpg,Pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pad_thai_eval_034.jpg,pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pad_thai_eval_034.jpg,Pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,paella_eval_028.jpg,paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,paella_eval_028.jpg,Paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,paella_eval_045.jpg,paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,paella_eval_045.jpg,Paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pancakes_eval_039.jpg,pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pancakes_eval_039.jpg,Pancakes,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,pancakes_eval_040.jpg,pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pancakes_eval_040.jpg,Pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,panna_cotta_eval_032.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,panna_cotta_eval_032.jpg,Panna cotta,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,panna_cotta_eval_042.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,panna_cotta_eval_042.jpg,Panna cotta,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,peking_duck_eval_025.jpg,peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,peking_duck_eval_025.jpg,Peking duck,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,peking_duck_eval_031.jpg,peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,peking_duck_eval_031.jpg,Peking duck,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,pho_eval_034.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pho_eval_034.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pho_eval_040.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pho_eval_040.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pizza_eval_040.jpg,pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pizza_eval_040.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pizza_eval_046.jpg,pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,pizza_eval_046.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,poutine_eval_028.jpg,poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,poutine_eval_028.jpg,Poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,poutine_eval_036.jpg,poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,poutine_eval_036.jpg,Poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,prime_rib_eval_029.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,prime_rib_eval_029.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,prime_rib_eval_038.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,prime_rib_eval_038.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ramen_eval_029.jpg,ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ramen_eval_029.jpg,Ramen,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,ramen_eval_046.jpg,ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,ramen_eval_046.jpg,Ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,red_velvet_cake_eval_038.jpg,red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,red_velvet_cake_eval_038.jpg,Red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,red_velvet_cake_eval_042.jpg,red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,red_velvet_cake_eval_042.jpg,Red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,risotto_eval_026.jpg,risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,risotto_eval_026.jpg,Risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,risotto_eval_034.jpg,risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,risotto_eval_034.jpg,Risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sashimi_eval_025.jpg,sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sashimi_eval_025.jpg,Sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sashimi_eval_032.jpg,sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sashimi_eval_032.jpg,Sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,spaghetti_bolognese_eval_041.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,spaghetti_bolognese_eval_041.jpg,Spaghetti bolognese,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,spaghetti_bolognese_eval_045.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,spaghetti_bolognese_eval_045.jpg,Spaghetti bolognese,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,spaghetti_carbonara_eval_027.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,spaghetti_carbonara_eval_027.jpg,Spaghetti carbonara,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,spaghetti_carbonara_eval_041.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,spaghetti_carbonara_eval_041.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,steak_eval_024.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,steak_eval_024.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,steak_eval_036.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,steak_eval_036.jpg,Steak,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,original,sushi_eval_039.jpg,sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sushi_eval_039.jpg,Sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sushi_eval_047.jpg,sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,sushi_eval_047.jpg,Sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,takoyaki_eval_031.jpg,takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,takoyaki_eval_031.jpg,Takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,takoyaki_eval_040.jpg,takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,takoyaki_eval_040.jpg,Takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,tiramisu_eval_036.jpg,tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,tiramisu_eval_036.jpg,Tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,tiramisu_eval_044.jpg,tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,tiramisu_eval_044.jpg,Tiramisu,ok,True,True,False,target_never_overtakes_competitor,,,empty_constraints_incompatible
+llava16,original,waffles_eval_027.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,waffles_eval_027.jpg,Waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,waffles_eval_040.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,original,waffles_eval_040.jpg,Waffles,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,apple_pie_eval_027.jpg,apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,apple_pie_eval_027.jpg,Apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,apple_pie_eval_034.jpg,apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,apple_pie_eval_034.jpg,Apple pie,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,beignets_eval_025.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,beignets_eval_025.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,beignets_eval_038.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,beignets_eval_038.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bibimbap_eval_024.jpg,bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bibimbap_eval_024.jpg,Bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bibimbap_eval_044.jpg,bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bibimbap_eval_044.jpg,Bibimbap,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,breakfast_burrito_eval_034.jpg,breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,breakfast_burrito_eval_034.jpg,Breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,breakfast_burrito_eval_037.jpg,breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,breakfast_burrito_eval_037.jpg,Breakfast burrito,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bruschetta_eval_030.jpg,bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bruschetta_eval_030.jpg,Bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bruschetta_eval_044.jpg,bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,bruschetta_eval_044.jpg,Bruschetta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ceviche_eval_025.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ceviche_eval_025.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ceviche_eval_030.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ceviche_eval_030.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_curry_eval_025.jpg,chicken curry,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_curry_eval_025.jpg,Chicken curry,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,chicken_curry_eval_037.jpg,chicken curry,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_curry_eval_037.jpg,Chicken curry,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,chicken_wings_eval_025.jpg,chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_wings_eval_025.jpg,Chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_wings_eval_033.jpg,chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,chicken_wings_eval_033.jpg,Chicken wings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,churros_eval_042.jpg,churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,churros_eval_042.jpg,Churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,churros_eval_046.jpg,churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,churros_eval_046.jpg,Churros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,club_sandwich_eval_027.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,club_sandwich_eval_027.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,club_sandwich_eval_028.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,club_sandwich_eval_028.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,croque_madame_eval_025.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,croque_madame_eval_025.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,croque_madame_eval_039.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,croque_madame_eval_039.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,cup_cakes_eval_032.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,cup_cakes_eval_032.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,cup_cakes_eval_038.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,cup_cakes_eval_038.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,deviled_eggs_eval_044.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,deviled_eggs_eval_044.jpg,Deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,deviled_eggs_eval_045.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,deviled_eggs_eval_045.jpg,Deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,donuts_eval_027.jpg,donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,donuts_eval_027.jpg,Donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,donuts_eval_030.jpg,donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,donuts_eval_030.jpg,Donuts,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,dumplings_eval_029.jpg,dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,dumplings_eval_029.jpg,Dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,dumplings_eval_037.jpg,dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,dumplings_eval_037.jpg,Dumplings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,eggs_benedict_eval_035.jpg,eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,eggs_benedict_eval_035.jpg,Eggs benedict,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,eggs_benedict_eval_039.jpg,eggs benedict,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,eggs_benedict_eval_039.jpg,Eggs benedict,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,falafel_eval_028.jpg,falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,falafel_eval_028.jpg,Falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,falafel_eval_047.jpg,falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,falafel_eval_047.jpg,Falafel,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,filet_mignon_eval_026.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,filet_mignon_eval_026.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,filet_mignon_eval_046.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,filet_mignon_eval_046.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fish_and_chips_eval_026.jpg,fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fish_and_chips_eval_026.jpg,Fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fish_and_chips_eval_044.jpg,fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fish_and_chips_eval_044.jpg,Fish and chips,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,foie_gras_eval_029.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,foie_gras_eval_029.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,foie_gras_eval_037.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,foie_gras_eval_037.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,french_fries_eval_034.jpg,french fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,french_fries_eval_034.jpg,French fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,french_fries_eval_042.jpg,french fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,french_fries_eval_042.jpg,French fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fried_rice_eval_026.jpg,fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fried_rice_eval_026.jpg,Fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fried_rice_eval_034.jpg,fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,fried_rice_eval_034.jpg,Fried rice,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,garlic_bread_eval_039.jpg,garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,garlic_bread_eval_039.jpg,Garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,garlic_bread_eval_044.jpg,garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,garlic_bread_eval_044.jpg,Garlic bread,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,greek_salad_eval_032.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,greek_salad_eval_032.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,greek_salad_eval_045.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,greek_salad_eval_045.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,gyoza_eval_024.jpg,gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,gyoza_eval_024.jpg,Gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,gyoza_eval_041.jpg,gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,gyoza_eval_041.jpg,Gyoza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,hot_dog_eval_030.jpg,hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,hot_dog_eval_030.jpg,Hot dog,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,hot_dog_eval_040.jpg,hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,hot_dog_eval_040.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,huevos_rancheros_eval_025.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,huevos_rancheros_eval_025.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,huevos_rancheros_eval_032.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,huevos_rancheros_eval_032.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,macarons_eval_044.jpg,macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,macarons_eval_044.jpg,Macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,macarons_eval_047.jpg,macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,macarons_eval_047.jpg,Macarons,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,onion_rings_eval_038.jpg,onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,onion_rings_eval_038.jpg,Onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,onion_rings_eval_047.jpg,onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,onion_rings_eval_047.jpg,Onion rings,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,oysters_eval_026.jpg,oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,oysters_eval_026.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,oysters_eval_038.jpg,oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,oysters_eval_038.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pad_thai_eval_025.jpg,pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pad_thai_eval_025.jpg,Pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pad_thai_eval_034.jpg,pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pad_thai_eval_034.jpg,Pad thai,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,paella_eval_028.jpg,paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,paella_eval_028.jpg,Paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,paella_eval_045.jpg,paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,paella_eval_045.jpg,Paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pancakes_eval_039.jpg,pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pancakes_eval_039.jpg,Pancakes,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,pancakes_eval_040.jpg,pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pancakes_eval_040.jpg,Pancakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,panna_cotta_eval_032.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,panna_cotta_eval_032.jpg,Panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,panna_cotta_eval_042.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,panna_cotta_eval_042.jpg,Panna cotta,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,peking_duck_eval_025.jpg,peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,peking_duck_eval_025.jpg,Peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,peking_duck_eval_031.jpg,peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,peking_duck_eval_031.jpg,Peking duck,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pho_eval_034.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pho_eval_034.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pho_eval_040.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pho_eval_040.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pizza_eval_040.jpg,pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pizza_eval_040.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pizza_eval_046.jpg,pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,pizza_eval_046.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,poutine_eval_028.jpg,poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,poutine_eval_028.jpg,Poutine,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+llava16,short32,poutine_eval_036.jpg,poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,poutine_eval_036.jpg,Poutine,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,prime_rib_eval_029.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,prime_rib_eval_029.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,prime_rib_eval_038.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,prime_rib_eval_038.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ramen_eval_029.jpg,ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ramen_eval_029.jpg,Ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ramen_eval_046.jpg,ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,ramen_eval_046.jpg,Ramen,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,red_velvet_cake_eval_038.jpg,red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,red_velvet_cake_eval_038.jpg,Red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,red_velvet_cake_eval_042.jpg,red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,red_velvet_cake_eval_042.jpg,Red velvet cake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,risotto_eval_026.jpg,risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,risotto_eval_026.jpg,Risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,risotto_eval_034.jpg,risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,risotto_eval_034.jpg,Risotto,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sashimi_eval_025.jpg,sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sashimi_eval_025.jpg,Sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sashimi_eval_032.jpg,sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sashimi_eval_032.jpg,Sashimi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_bolognese_eval_041.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_bolognese_eval_041.jpg,Spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_bolognese_eval_045.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_bolognese_eval_045.jpg,Spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_carbonara_eval_027.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_carbonara_eval_027.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_carbonara_eval_041.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,spaghetti_carbonara_eval_041.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,steak_eval_024.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,steak_eval_024.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,steak_eval_036.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,steak_eval_036.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sushi_eval_039.jpg,sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sushi_eval_039.jpg,Sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sushi_eval_047.jpg,sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,sushi_eval_047.jpg,Sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,takoyaki_eval_031.jpg,takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,takoyaki_eval_031.jpg,Takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,takoyaki_eval_040.jpg,takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,takoyaki_eval_040.jpg,Takoyaki,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,tiramisu_eval_036.jpg,tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,tiramisu_eval_036.jpg,Tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,tiramisu_eval_044.jpg,tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,tiramisu_eval_044.jpg,Tiramisu,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,waffles_eval_027.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,waffles_eval_027.jpg,Waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,waffles_eval_040.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+llava16,short32,waffles_eval_040.jpg,Waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beef_carpaccio_eval_025.jpg,beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beef_carpaccio_eval_025.jpg,Beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beef_carpaccio_eval_033.jpg,beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beef_carpaccio_eval_033.jpg,Beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beef_tartare_eval_024.jpg,beef tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,beef_tartare_eval_024.jpg,Beef tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,beef_tartare_eval_042.jpg,beef tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,beef_tartare_eval_042.jpg,Beef tartare,ok,False,True,False,incompatible_constraints,,,unstable_across_seeds
+q9b,original,beet_salad_eval_025.jpg,beet salad,ok,True,False,False,,0.6354515050167224,True,nonempty_not_at_default
+q9b,original,beet_salad_eval_025.jpg,Beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beet_salad_eval_033.jpg,beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beet_salad_eval_033.jpg,Beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beignets_eval_025.jpg,beignets,ok,True,False,True,,2.0277777777777777,True,nonempty_contains_default
+q9b,original,beignets_eval_025.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beignets_eval_038.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,beignets_eval_038.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,caesar_salad_eval_037.jpg,caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,caesar_salad_eval_037.jpg,Caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,caesar_salad_eval_044.jpg,caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,caesar_salad_eval_044.jpg,Caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,cannoli_eval_026.jpg,cannoli,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,cannoli_eval_026.jpg,Cannoli,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,cannoli_eval_032.jpg,cannoli,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,cannoli_eval_032.jpg,Cannoli,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,ceviche_eval_025.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,ceviche_eval_025.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,ceviche_eval_030.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,ceviche_eval_030.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,clam_chowder_eval_028.jpg,clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,clam_chowder_eval_028.jpg,Clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,clam_chowder_eval_036.jpg,clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,clam_chowder_eval_036.jpg,Clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,club_sandwich_eval_027.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,club_sandwich_eval_027.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,club_sandwich_eval_028.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,club_sandwich_eval_028.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,crab_cakes_eval_026.jpg,crab cakes,ok,True,False,False,,3.142857142857143,True,nonempty_not_at_default
+q9b,original,crab_cakes_eval_026.jpg,Crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,crab_cakes_eval_044.jpg,crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,crab_cakes_eval_044.jpg,Crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,creme_brulee_eval_028.jpg,creme brulee,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,creme_brulee_eval_028.jpg,Creme brulee,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,creme_brulee_eval_032.jpg,creme brulee,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,creme_brulee_eval_032.jpg,Creme brulee,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,croque_madame_eval_025.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,croque_madame_eval_025.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,croque_madame_eval_039.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,croque_madame_eval_039.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,cup_cakes_eval_032.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,cup_cakes_eval_032.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,cup_cakes_eval_038.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,cup_cakes_eval_038.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,deviled_eggs_eval_044.jpg,deviled eggs,ok,True,False,False,,1.4805194805194803,True,nonempty_not_at_default
+q9b,original,deviled_eggs_eval_044.jpg,Deviled eggs,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,deviled_eggs_eval_045.jpg,deviled eggs,ok,False,False,True,,2.25,,unstable_across_seeds
+q9b,original,deviled_eggs_eval_045.jpg,Deviled eggs,ok,True,False,False,,,,nonempty_not_at_default
+q9b,original,edamame_eval_028.jpg,edamame,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,edamame_eval_028.jpg,Edamame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,edamame_eval_041.jpg,edamame,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,edamame_eval_041.jpg,Edamame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,escargots_eval_040.jpg,escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,escargots_eval_040.jpg,Escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,escargots_eval_047.jpg,escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,escargots_eval_047.jpg,Escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,filet_mignon_eval_026.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,filet_mignon_eval_026.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,filet_mignon_eval_046.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,filet_mignon_eval_046.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,foie_gras_eval_029.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,foie_gras_eval_029.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,foie_gras_eval_037.jpg,foie gras,ok,True,False,False,,2.7727272727272725,True,nonempty_not_at_default
+q9b,original,foie_gras_eval_037.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,french_fries_eval_034.jpg,french fries,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,french_fries_eval_034.jpg,French fries,ok,True,False,False,,2.666666666666667,True,nonempty_not_at_default
+q9b,original,french_fries_eval_042.jpg,french fries,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,french_fries_eval_042.jpg,French fries,ok,False,False,False,,,,unstable_across_seeds
+q9b,original,fried_rice_eval_026.jpg,fried rice,ok,True,False,False,,0.14285714285714285,True,nonempty_not_at_default
+q9b,original,fried_rice_eval_026.jpg,Fried rice,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,fried_rice_eval_034.jpg,fried rice,ok,True,False,False,,0.25,True,nonempty_not_at_default
+q9b,original,fried_rice_eval_034.jpg,Fried rice,ok,True,False,True,,2.25,True,nonempty_contains_default
+q9b,original,frozen_yogurt_eval_033.jpg,frozen yogurt,ok,True,False,True,,0.8909774436090225,True,nonempty_contains_default
+q9b,original,frozen_yogurt_eval_033.jpg,Frozen yogurt,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,frozen_yogurt_eval_038.jpg,frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,frozen_yogurt_eval_038.jpg,Frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,gnocchi_eval_035.jpg,gnocchi,ok,True,False,True,,2.111111111111111,True,nonempty_contains_default
+q9b,original,gnocchi_eval_035.jpg,Gnocchi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,gnocchi_eval_037.jpg,gnocchi,ok,True,False,True,,1.5,True,nonempty_contains_default
+q9b,original,gnocchi_eval_037.jpg,Gnocchi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,greek_salad_eval_032.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,greek_salad_eval_032.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,greek_salad_eval_045.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,greek_salad_eval_045.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hamburger_eval_039.jpg,hamburger,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,hamburger_eval_039.jpg,Hamburger,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hamburger_eval_044.jpg,hamburger,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,hamburger_eval_044.jpg,Hamburger,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_and_sour_soup_eval_032.jpg,hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_and_sour_soup_eval_032.jpg,Hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_and_sour_soup_eval_041.jpg,hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_and_sour_soup_eval_041.jpg,Hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_dog_eval_030.jpg,hot dog,ok,True,False,False,,0.14285714285714285,True,nonempty_not_at_default
+q9b,original,hot_dog_eval_030.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,hot_dog_eval_040.jpg,hot dog,ok,True,False,True,,2.25,True,nonempty_contains_default
+q9b,original,hot_dog_eval_040.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,huevos_rancheros_eval_025.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,huevos_rancheros_eval_025.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,huevos_rancheros_eval_032.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,huevos_rancheros_eval_032.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_bisque_eval_025.jpg,lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_bisque_eval_025.jpg,Lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_bisque_eval_044.jpg,lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_bisque_eval_044.jpg,Lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_roll_sandwich_eval_029.jpg,lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_roll_sandwich_eval_029.jpg,Lobster roll sandwich,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,lobster_roll_sandwich_eval_038.jpg,lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,lobster_roll_sandwich_eval_038.jpg,Lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,miso_soup_eval_033.jpg,miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,miso_soup_eval_033.jpg,Miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,miso_soup_eval_039.jpg,miso soup,ok,True,False,True,,2.326530612244898,True,nonempty_contains_default
+q9b,original,miso_soup_eval_039.jpg,Miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,mussels_eval_028.jpg,mussels,ok,True,False,True,,1.8333333333333333,True,nonempty_contains_default
+q9b,original,mussels_eval_028.jpg,Mussels,ok,False,True,False,incompatible_constraints,,,unstable_across_seeds
+q9b,original,mussels_eval_031.jpg,mussels,ok,True,False,False,,0.25,True,nonempty_not_at_default
+q9b,original,mussels_eval_031.jpg,Mussels,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,oysters_eval_026.jpg,oysters,ok,True,False,True,,1.0,True,nonempty_contains_default
+q9b,original,oysters_eval_026.jpg,Oysters,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,oysters_eval_038.jpg,oysters,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,oysters_eval_038.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,paella_eval_028.jpg,paella,ok,True,False,False,,0.4666666666666667,True,nonempty_not_at_default
+q9b,original,paella_eval_028.jpg,Paella,ok,True,False,True,,1.3952380952380952,True,nonempty_contains_default
+q9b,original,paella_eval_045.jpg,paella,ok,True,False,True,,1.125,True,nonempty_contains_default
+q9b,original,paella_eval_045.jpg,Paella,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,panna_cotta_eval_032.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,panna_cotta_eval_032.jpg,Panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,panna_cotta_eval_042.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,panna_cotta_eval_042.jpg,Panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pho_eval_034.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pho_eval_034.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pho_eval_040.jpg,pho,ok,True,False,True,,2.246153846153846,True,nonempty_contains_default
+q9b,original,pho_eval_040.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pizza_eval_040.jpg,pizza,ok,True,False,True,,0.53125,True,nonempty_contains_default
+q9b,original,pizza_eval_040.jpg,Pizza,ok,True,False,False,,2.53125,True,nonempty_not_at_default
+q9b,original,pizza_eval_046.jpg,pizza,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,pizza_eval_046.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pork_chop_eval_034.jpg,pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pork_chop_eval_034.jpg,Pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pork_chop_eval_046.jpg,pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,pork_chop_eval_046.jpg,Pork chop,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,prime_rib_eval_029.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,prime_rib_eval_029.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,prime_rib_eval_038.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,prime_rib_eval_038.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,sashimi_eval_025.jpg,sashimi,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,sashimi_eval_025.jpg,Sashimi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,sashimi_eval_032.jpg,sashimi,ok,False,False,False,,0.6285714285714286,,unstable_across_seeds
+q9b,original,sashimi_eval_032.jpg,Sashimi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,scallops_eval_031.jpg,scallops,ok,True,False,True,,2.123529411764706,True,nonempty_contains_default
+q9b,original,scallops_eval_031.jpg,Scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,scallops_eval_044.jpg,scallops,ok,True,False,True,,2.1650943396226414,True,nonempty_contains_default
+q9b,original,scallops_eval_044.jpg,Scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,shrimp_and_grits_eval_027.jpg,shrimp and grits,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,shrimp_and_grits_eval_027.jpg,Shrimp and grits,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,shrimp_and_grits_eval_028.jpg,shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,shrimp_and_grits_eval_028.jpg,Shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,spaghetti_bolognese_eval_041.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,spaghetti_bolognese_eval_041.jpg,Spaghetti bolognese,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spaghetti_bolognese_eval_045.jpg,spaghetti bolognese,ok,True,True,False,target_never_overtakes_competitor,,,empty_constraints_incompatible
+q9b,original,spaghetti_bolognese_eval_045.jpg,Spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,spaghetti_carbonara_eval_027.jpg,spaghetti carbonara,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spaghetti_carbonara_eval_027.jpg,Spaghetti carbonara,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spaghetti_carbonara_eval_041.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,spaghetti_carbonara_eval_041.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,spring_rolls_eval_029.jpg,spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spring_rolls_eval_029.jpg,Spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spring_rolls_eval_041.jpg,spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,spring_rolls_eval_041.jpg,Spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,steak_eval_024.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,steak_eval_024.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,steak_eval_036.jpg,steak,ok,True,False,True,,0.9,True,nonempty_contains_default
+q9b,original,steak_eval_036.jpg,Steak,ok,True,False,False,,2.9000000000000004,True,nonempty_not_at_default
+q9b,original,strawberry_shortcake_eval_041.jpg,strawberry shortcake,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,strawberry_shortcake_eval_041.jpg,Strawberry shortcake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,strawberry_shortcake_eval_044.jpg,strawberry shortcake,ok,True,False,True,,0.5,True,nonempty_contains_default
+q9b,original,strawberry_shortcake_eval_044.jpg,Strawberry shortcake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,sushi_eval_039.jpg,sushi,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,original,sushi_eval_039.jpg,Sushi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,sushi_eval_047.jpg,sushi,ok,True,False,True,,1.0,True,nonempty_contains_default
+q9b,original,sushi_eval_047.jpg,Sushi,ok,True,False,False,,3.0,True,nonempty_not_at_default
+q9b,original,tacos_eval_037.jpg,tacos,ok,True,False,False,,0.16666666666666666,True,nonempty_not_at_default
+q9b,original,tacos_eval_037.jpg,Tacos,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,tacos_eval_039.jpg,tacos,ok,True,False,False,,0.4166666666666667,True,nonempty_not_at_default
+q9b,original,tacos_eval_039.jpg,Tacos,ok,True,False,True,,2.4166666666666665,True,nonempty_contains_default
+q9b,original,tuna_tartare_eval_032.jpg,tuna tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,tuna_tartare_eval_032.jpg,Tuna tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,tuna_tartare_eval_036.jpg,tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,tuna_tartare_eval_036.jpg,Tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,waffles_eval_027.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,original,waffles_eval_027.jpg,Waffles,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,waffles_eval_040.jpg,waffles,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,original,waffles_eval_040.jpg,Waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_carpaccio_eval_025.jpg,beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_carpaccio_eval_025.jpg,Beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_carpaccio_eval_033.jpg,beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_carpaccio_eval_033.jpg,Beef carpaccio,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_tartare_eval_024.jpg,beef tartare,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,beef_tartare_eval_024.jpg,Beef tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_tartare_eval_042.jpg,beef tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beef_tartare_eval_042.jpg,Beef tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beet_salad_eval_025.jpg,beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beet_salad_eval_025.jpg,Beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beet_salad_eval_033.jpg,beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beet_salad_eval_033.jpg,Beet salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beignets_eval_025.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beignets_eval_025.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beignets_eval_038.jpg,beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,beignets_eval_038.jpg,Beignets,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,caesar_salad_eval_037.jpg,caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,caesar_salad_eval_037.jpg,Caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,caesar_salad_eval_044.jpg,caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,caesar_salad_eval_044.jpg,Caesar salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cannoli_eval_026.jpg,cannoli,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cannoli_eval_026.jpg,Cannoli,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cannoli_eval_032.jpg,cannoli,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cannoli_eval_032.jpg,Cannoli,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,ceviche_eval_025.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,ceviche_eval_025.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,ceviche_eval_030.jpg,ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,ceviche_eval_030.jpg,Ceviche,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,clam_chowder_eval_028.jpg,clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,clam_chowder_eval_028.jpg,Clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,clam_chowder_eval_036.jpg,clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,clam_chowder_eval_036.jpg,Clam chowder,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,club_sandwich_eval_027.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,club_sandwich_eval_027.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,club_sandwich_eval_028.jpg,club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,club_sandwich_eval_028.jpg,Club sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,crab_cakes_eval_026.jpg,crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,crab_cakes_eval_026.jpg,Crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,crab_cakes_eval_044.jpg,crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,crab_cakes_eval_044.jpg,Crab cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,creme_brulee_eval_028.jpg,creme brulee,ok,True,False,False,,0.015873015873015872,True,nonempty_not_at_default
+q9b,short32,creme_brulee_eval_028.jpg,Creme brulee,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,creme_brulee_eval_032.jpg,creme brulee,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,creme_brulee_eval_032.jpg,Creme brulee,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,croque_madame_eval_025.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,croque_madame_eval_025.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,croque_madame_eval_039.jpg,croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,croque_madame_eval_039.jpg,Croque madame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cup_cakes_eval_032.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cup_cakes_eval_032.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cup_cakes_eval_038.jpg,cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,cup_cakes_eval_038.jpg,Cup cakes,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,deviled_eggs_eval_044.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,deviled_eggs_eval_044.jpg,Deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,deviled_eggs_eval_045.jpg,deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,deviled_eggs_eval_045.jpg,Deviled eggs,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,edamame_eval_028.jpg,edamame,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,edamame_eval_028.jpg,Edamame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,edamame_eval_041.jpg,edamame,ok,True,False,True,,0.9705882352941176,True,nonempty_contains_default
+q9b,short32,edamame_eval_041.jpg,Edamame,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,escargots_eval_040.jpg,escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,escargots_eval_040.jpg,Escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,escargots_eval_047.jpg,escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,escargots_eval_047.jpg,Escargots,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,filet_mignon_eval_026.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,filet_mignon_eval_026.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,filet_mignon_eval_046.jpg,filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,filet_mignon_eval_046.jpg,Filet mignon,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,foie_gras_eval_029.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,foie_gras_eval_029.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,foie_gras_eval_037.jpg,foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,foie_gras_eval_037.jpg,Foie gras,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,french_fries_eval_034.jpg,french fries,ok,False,False,True,,1.086466165413534,,unstable_across_seeds
+q9b,short32,french_fries_eval_034.jpg,French fries,ok,True,False,False,,1.5078947368421054,True,nonempty_not_at_default
+q9b,short32,french_fries_eval_042.jpg,french fries,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,french_fries_eval_042.jpg,French fries,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,fried_rice_eval_026.jpg,fried rice,ok,True,False,False,,0.32926829268292684,True,nonempty_not_at_default
+q9b,short32,fried_rice_eval_026.jpg,Fried rice,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,fried_rice_eval_034.jpg,fried rice,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,fried_rice_eval_034.jpg,Fried rice,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,frozen_yogurt_eval_033.jpg,frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,frozen_yogurt_eval_033.jpg,Frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,frozen_yogurt_eval_038.jpg,frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,frozen_yogurt_eval_038.jpg,Frozen yogurt,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,gnocchi_eval_035.jpg,gnocchi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,gnocchi_eval_035.jpg,Gnocchi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,gnocchi_eval_037.jpg,gnocchi,ok,True,False,True,,2.1964285714285716,True,nonempty_contains_default
+q9b,short32,gnocchi_eval_037.jpg,Gnocchi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,greek_salad_eval_032.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,greek_salad_eval_032.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,greek_salad_eval_045.jpg,greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,greek_salad_eval_045.jpg,Greek salad,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hamburger_eval_039.jpg,hamburger,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,hamburger_eval_039.jpg,Hamburger,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hamburger_eval_044.jpg,hamburger,ok,True,False,True,,2.066666666666667,True,nonempty_contains_default
+q9b,short32,hamburger_eval_044.jpg,Hamburger,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_and_sour_soup_eval_032.jpg,hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_and_sour_soup_eval_032.jpg,Hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_and_sour_soup_eval_041.jpg,hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_and_sour_soup_eval_041.jpg,Hot and sour soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_dog_eval_030.jpg,hot dog,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,hot_dog_eval_030.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,hot_dog_eval_040.jpg,hot dog,ok,True,False,True,,2.3333333333333335,True,nonempty_contains_default
+q9b,short32,hot_dog_eval_040.jpg,Hot dog,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,huevos_rancheros_eval_025.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,huevos_rancheros_eval_025.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,huevos_rancheros_eval_032.jpg,huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,huevos_rancheros_eval_032.jpg,Huevos rancheros,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_bisque_eval_025.jpg,lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_bisque_eval_025.jpg,Lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_bisque_eval_044.jpg,lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_bisque_eval_044.jpg,Lobster bisque,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_roll_sandwich_eval_029.jpg,lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_roll_sandwich_eval_029.jpg,Lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_roll_sandwich_eval_038.jpg,lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,lobster_roll_sandwich_eval_038.jpg,Lobster roll sandwich,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,miso_soup_eval_033.jpg,miso soup,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,miso_soup_eval_033.jpg,Miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,miso_soup_eval_039.jpg,miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,miso_soup_eval_039.jpg,Miso soup,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,mussels_eval_028.jpg,mussels,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,mussels_eval_028.jpg,Mussels,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,mussels_eval_031.jpg,mussels,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,mussels_eval_031.jpg,Mussels,ok,False,False,False,,,,unstable_across_seeds
+q9b,short32,oysters_eval_026.jpg,oysters,ok,True,False,False,,0.3125,True,nonempty_not_at_default
+q9b,short32,oysters_eval_026.jpg,Oysters,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,oysters_eval_038.jpg,oysters,ok,True,False,False,,3.2,True,nonempty_not_at_default
+q9b,short32,oysters_eval_038.jpg,Oysters,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,paella_eval_028.jpg,paella,ok,False,False,True,,2.2708333333333335,,unstable_across_seeds
+q9b,short32,paella_eval_028.jpg,Paella,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,paella_eval_045.jpg,paella,ok,True,False,False,,0.39655172413793105,True,nonempty_not_at_default
+q9b,short32,paella_eval_045.jpg,Paella,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,panna_cotta_eval_032.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,panna_cotta_eval_032.jpg,Panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,panna_cotta_eval_042.jpg,panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,panna_cotta_eval_042.jpg,Panna cotta,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pho_eval_034.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pho_eval_034.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pho_eval_040.jpg,pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pho_eval_040.jpg,Pho,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pizza_eval_040.jpg,pizza,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,pizza_eval_040.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pizza_eval_046.jpg,pizza,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,pizza_eval_046.jpg,Pizza,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pork_chop_eval_034.jpg,pork chop,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,pork_chop_eval_034.jpg,Pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pork_chop_eval_046.jpg,pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,pork_chop_eval_046.jpg,Pork chop,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,prime_rib_eval_029.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,prime_rib_eval_029.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,prime_rib_eval_038.jpg,prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,prime_rib_eval_038.jpg,Prime rib,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,sashimi_eval_025.jpg,sashimi,ok,False,False,False,,0.6600120992135511,,unstable_across_seeds
+q9b,short32,sashimi_eval_025.jpg,Sashimi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,sashimi_eval_032.jpg,sashimi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,sashimi_eval_032.jpg,Sashimi,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,scallops_eval_031.jpg,scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,scallops_eval_031.jpg,Scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,scallops_eval_044.jpg,scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,scallops_eval_044.jpg,Scallops,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,shrimp_and_grits_eval_027.jpg,shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,shrimp_and_grits_eval_027.jpg,Shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,shrimp_and_grits_eval_028.jpg,shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,shrimp_and_grits_eval_028.jpg,Shrimp and grits,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_bolognese_eval_041.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_bolognese_eval_041.jpg,Spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_bolognese_eval_045.jpg,spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_bolognese_eval_045.jpg,Spaghetti bolognese,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_carbonara_eval_027.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_carbonara_eval_027.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_carbonara_eval_041.jpg,spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spaghetti_carbonara_eval_041.jpg,Spaghetti carbonara,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,spring_rolls_eval_029.jpg,spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,spring_rolls_eval_029.jpg,Spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,spring_rolls_eval_041.jpg,spring rolls,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,spring_rolls_eval_041.jpg,Spring rolls,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,steak_eval_024.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,steak_eval_024.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,steak_eval_036.jpg,steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,steak_eval_036.jpg,Steak,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,strawberry_shortcake_eval_041.jpg,strawberry shortcake,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,strawberry_shortcake_eval_041.jpg,Strawberry shortcake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,strawberry_shortcake_eval_044.jpg,strawberry shortcake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,strawberry_shortcake_eval_044.jpg,Strawberry shortcake,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,sushi_eval_039.jpg,sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,sushi_eval_039.jpg,Sushi,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,sushi_eval_047.jpg,sushi,ok,True,False,False,,0.3333333333333333,True,nonempty_not_at_default
+q9b,short32,sushi_eval_047.jpg,Sushi,ok,False,False,True,,1.4583333333333335,,unstable_across_seeds
+q9b,short32,tacos_eval_037.jpg,tacos,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,tacos_eval_037.jpg,Tacos,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,tacos_eval_039.jpg,tacos,ok,True,False,True,,2.0,True,nonempty_contains_default
+q9b,short32,tacos_eval_039.jpg,Tacos,ok,False,False,False,,,,unstable_across_seeds
+q9b,short32,tuna_tartare_eval_032.jpg,tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,tuna_tartare_eval_032.jpg,Tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,tuna_tartare_eval_036.jpg,tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,tuna_tartare_eval_036.jpg,Tuna tartare,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,waffles_eval_027.jpg,waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,waffles_eval_027.jpg,Waffles,ok,True,True,False,target_outside_support,,,empty_target_outside_support
+q9b,short32,waffles_eval_040.jpg,waffles,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible
+q9b,short32,waffles_eval_040.jpg,Waffles,ok,True,True,False,incompatible_constraints,,,empty_constraints_incompatible

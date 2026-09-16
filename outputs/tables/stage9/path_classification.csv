@@ -1,0 +1,5 @@
+model,condition,nonempty_contains_default,nonempty_not_at_default,empty_target_outside_support,empty_constraints_incompatible,unstable_across_seeds,outside_sequence_budget
+llava16,original,0,0,180,20,0,0
+llava16,short32,0,0,192,8,0,0
+q9b,original,26,16,113,40,5,0
+q9b,short32,10,7,154,23,6,0
