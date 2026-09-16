@@ -82,6 +82,7 @@ class S6Model:
         hi = math.floor(0.875 * self.n_layers)
         self.deco_layers = list(range(lo, hi + 1))
         self._internvl = (getattr(self.em, 'mt', '') == 'internvl_chat')
+        self._dola_candidates_override = None  # stage7: official-subset candidates
 
     # ---------------- forwards (InternVL routes through its adapter) --------
     def _fwd(self, inputs=None, tok=None, pkv=None, ohs=False, text_only=False):
@@ -182,7 +183,12 @@ class S6Model:
         lp_final = F.log_softmax(z_final, -1)
         best_idx, best_jsd = 0, -1.0
         base = None
-        for l in range(L):
+        # candidate premature hidden indices: all of 0..L-1, or the official-subset
+        # override (even layers) set by the stage-7 runner
+        cands = self._dola_candidates_override \
+            if getattr(self, '_dola_candidates_override', None) is not None \
+            else range(L)
+        for l in cands:
             lg = self.lm_head(hss[l][:, -1, :]).float()
             lp = F.log_softmax(lg, -1)
             v = jsd_logp(lp_final, lp)
