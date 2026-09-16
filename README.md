@@ -19,8 +19,9 @@
 | 五 | 收束：基率预测律、变号点、与最接近工作的对照 | `STAGE5.md` |
 | 六 | 基线忠实化：VCD/M3ID/DoLa/DeCo 按官方实现重跑 + 尖化对照/四格分解/常数偏移校正（SID 受阻，见报告 §2.2） | `STAGE6.md` `IMPLEMENTATION_MAPPING_STAGE6.md` |
 | 七（封版） | 收尾：分格尖化一致性定措辞分支（强版）、SID 有界复现（llava16）、dogs 忠实重跑 16/16 方向命中、证据—主张映射与主线定稿 | `STAGE7.md` `MAINLINE_STAGE7.md` `EVIDENCE_MAP_STAGE7.md` |
+| 八（终局封版） | 分支判定重做：逐样本残差回归 γ CI 含零（六口径）→ 弱版；等价检验 4/23；dogs 改数量级一致性检验（14/16）；M3ID 强化措辞；git 历史核查零残留 | `STAGE8.md` `MAINLINE_STAGE8.md` `CLAIMS_STAGE8.md` `LIMITATIONS_STAGE8.md` `EVIDENCE_MAP_STAGE8.md` `GITCHECK_STAGE8.md` |
 
-每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5/6/7.md` 并先于数据提交。
+每个阶段的判定阈值在运行前写入 `PREREGISTER_STAGE3/4/5/6/7/8.md` 并先于数据提交。
 第一阶段（LVIS/COCO）的产物并入主树：文档带 `_STAGE1` 后缀，实验产物带 `lvis_`
 前缀（如 `outputs/raw/lvis_q4b_main_naming.jsonl`、`outputs/figures/lvis_figure1.pdf`），
 其 LVIS 管线代码为 `code/stage1_*.py`；原始迭代提交历史完整保留

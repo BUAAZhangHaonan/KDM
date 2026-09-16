@@ -404,5 +404,67 @@
    "outputs/tables/stage7_summary.json"
   ],
   "updated": "2026-09-16T14:30:48"
+ },
+ "stage8": {
+  "date": "2026-09-15",
+  "preregister": "PREREGISTER_STAGE8.md (commit 9e1f577f, before any stage-8 computation)",
+  "purpose": "final close-out: redo the branch decision with a per-sample residual regression (replaces the stage-7 cell-count rule), equivalence testing at +/-0.02, DL meta + meta-regression, dogs magnitude-consistency test (caliber A), M3ID wording recheck, git history audit, naming compliance re-check; zero new inference",
+  "gpu_used": "none (re-analysis of stage-6/7 caches only)",
+  "branch_decision": "weak branch: gamma = +0.0097, 95% CI [-0.0013, +0.0208] (model-clustered primary); all six clustering/CI variants contain 0",
+  "key_numbers": {
+   "gamma": 0.0097098,
+   "gamma_ci_model": [
+    -0.0013341,
+    0.0207537
+   ],
+   "theta": 0.0605757,
+   "theta_ci_model": [
+    0.0158763,
+    0.1052752
+   ],
+   "theta_ci_cell": [
+    -0.0060955,
+    0.1272469
+   ],
+   "meta_pooled_d": 0.0149021,
+   "meta_ci": [
+    0.0022036,
+    0.0276006
+   ],
+   "I2": 0.891664,
+   "tau2": 0.0006585,
+   "Q": 203.071,
+   "k": 23,
+   "metareg_slope_fe": -0.0227757,
+   "metareg_slope_re": 0.0329994,
+   "metareg_slope_unweighted": 0.0750244,
+   "equivalence_margin": 0.02,
+   "equivalent_cells": 4,
+   "outside_band": 8,
+   "indeterminate": 11,
+   "N_samples": 14656,
+   "N_wrong": 6677,
+   "dogs_pooled_band_hits": 14,
+   "dogs_per_method_hits": 10,
+   "dogs_extrapolated": 8,
+   "stage7_sign_test_p": 1.0
+  },
+  "outputs": [
+   "outputs/tables/stage8_residual_regression.csv",
+   "outputs/tables/stage8_meta.csv",
+   "outputs/tables/stage8_metareg.csv",
+   "outputs/tables/stage8_equivalence.csv",
+   "outputs/tables/stage8_dogs_transfer.csv",
+   "outputs/tables/stage8_m3id_gate_recheck.csv",
+   "outputs/tables/stage8_summary.json",
+   "outputs/tables/stage8_transfer_summary.json",
+   "outputs/figures/stage8_fig_residual.pdf"
+  ],
+  "code": [
+   "code/stage8_analysis.py",
+   "code/stage8_transfer.py",
+   "code/stage8_figures.py"
+  ],
+  "seal": "project sealed after this stage: no further experiments, re-analyses, or supplementary rounds; paper prose is the only remaining work (based on CLAIMS_STAGE8.md and MAINLINE_STAGE8.md)"
  }
 }
