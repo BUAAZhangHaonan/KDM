@@ -1,0 +1,13 @@
+{
+  "seed": 910,
+  "per_class": 4,
+  "geometry_per_class": 2,
+  "n": 400,
+  "manifest_sha256": "25b9d6257220eb745c89259c4c28391a8f01392cbf0e5ca9f5de64ca94dc5d48",
+  "selection_uses_intervention_results": false,
+  "conditions": [
+    "original",
+    "short64",
+    "short32"
+  ]
+}

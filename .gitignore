@@ -9,7 +9,7 @@ __pycache__/
 *.pyc
 
 # run logs (durations recorded in run_manifest.json; raw evidence in outputs/raw)
-logs/
+/logs/
 
 # dataset images: not tracked, regenerate with
 #   code/prepare_data.py (food101) / code/stage3_prepare_dogs.py (dogs)
