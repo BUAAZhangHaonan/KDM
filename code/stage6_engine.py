@@ -59,8 +59,9 @@ def jsd_logp(lp1, lp2):
 class S6Model:
     """Wraps stage3_engine models with the four faithful stage-6 decoders."""
 
-    def __init__(self, model_path, device):
-        self.em = get_engine(model_path, device)
+    def __init__(self, model_path, device, attn_implementation=None):
+        self.em = get_engine(model_path, device,
+                             attn_implementation=attn_implementation)
         self.model = self.em.model
         self.proc = self.em.proc
         self.device = self.em.device
@@ -85,18 +86,22 @@ class S6Model:
         self._dola_candidates_override = None  # stage7: official-subset candidates
 
     # ---------------- forwards (InternVL routes through its adapter) --------
-    def _fwd(self, inputs=None, tok=None, pkv=None, ohs=False, text_only=False):
+    def _fwd(self, inputs=None, tok=None, pkv=None, ohs=False, text_only=False,
+             oa=False):
         if self._internvl:
             if inputs is not None:
                 if text_only:  # M3ID prior branch: no pixel_values to inject
                     return self.model.language_model(
-                        **inputs, output_hidden_states=ohs, use_cache=True)
-                return self.em._prefill(inputs, ohs=ohs)
-            return self.em._step(tok, pkv, ohs=ohs)
+                        **inputs, output_hidden_states=ohs,
+                        output_attentions=oa, use_cache=True)
+                return self.em._prefill(inputs, ohs=ohs, oa=oa)
+            return self.em._step(tok, pkv, ohs=ohs, oa=oa)
         if inputs is not None:
-            return self.model(**inputs, output_hidden_states=ohs)
+            return self.model(**inputs, output_hidden_states=ohs,
+                              output_attentions=oa)
         return self.model(input_ids=torch.tensor([[tok]], device=self.device),
-                          past_key_values=pkv, output_hidden_states=ohs)
+                          past_key_values=pkv, output_hidden_states=ohs,
+                          output_attentions=oa)
 
     # ---------------- inputs ----------------
     def build(self, pil_img, text):

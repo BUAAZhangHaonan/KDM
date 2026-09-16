@@ -26,15 +26,16 @@ NORM_CHAINS = ['model.model.language_model.norm', 'model.language_model.norm',
 
 
 class FamilyModel:
-    def __init__(self, model_path, device):
+    def __init__(self, model_path, device, attn_implementation=None):
         from transformers import AutoProcessor, AutoModelForImageTextToText, AutoConfig
         self.device = device
         self.cfg = AutoConfig.from_pretrained(model_path, trust_remote_code=True)
         self.mt = self.cfg.model_type
         self.proc = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
+        kw = {'attn_implementation': attn_implementation} if attn_implementation else {}
         self.model = AutoModelForImageTextToText.from_pretrained(
             model_path, dtype=torch.bfloat16, device_map=device,
-            trust_remote_code=True, low_cpu_mem_usage=True).eval()
+            trust_remote_code=True, low_cpu_mem_usage=True, **kw).eval()
 
         tok = self.proc.tokenizer
         self.eos = set()
@@ -264,15 +265,16 @@ class InternVLModel:
                 'pixel_values': px.to(self.device, torch.bfloat16),
                 'image_flags': torch.ones((1, 1), dtype=torch.long, device=self.device)}
 
-    def _prefill(self, inputs, ohs=False):
+    def _prefill(self, inputs, ohs=False, oa=False):
         return self.model(pixel_values=inputs['pixel_values'], input_ids=inputs['input_ids'],
                           attention_mask=inputs['attention_mask'], image_flags=inputs['image_flags'],
-                          output_hidden_states=ohs, use_cache=True)
+                          output_hidden_states=ohs, output_attentions=oa, use_cache=True)
 
-    def _step(self, tok, pkv, ohs=False):
+    def _step(self, tok, pkv, ohs=False, oa=False):
         return self.model.language_model(
             input_ids=torch.tensor([[tok]], device=self.device),
-            past_key_values=pkv, output_hidden_states=ohs, use_cache=True)
+            past_key_values=pkv, output_hidden_states=ohs, output_attentions=oa,
+            use_cache=True)
 
     @torch.no_grad()
     def decode_single(self, inputs, max_new_tokens, lcd=False):
@@ -378,10 +380,10 @@ class InternVLModel:
                 'wall_s': time.time() - t0}
 
 
-def get_engine(model_path, device):
+def get_engine(model_path, device, attn_implementation=None):
     """Factory: internvl_chat uses the manual adapter; everything else FamilyModel."""
     from transformers import AutoConfig
     mt = AutoConfig.from_pretrained(model_path, trust_remote_code=True).model_type
     if mt == 'internvl_chat':
         return InternVLModel(model_path, device)
-    return FamilyModel(model_path, device)
+    return FamilyModel(model_path, device, attn_implementation=attn_implementation)
