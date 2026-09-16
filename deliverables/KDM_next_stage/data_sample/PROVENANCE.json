@@ -1,0 +1,16 @@
+{
+  "kind": "real_repository_aggregate_data",
+  "repository": "BUAAZhangHaonan/KDM",
+  "commit": "e5eda213dd3f51c08b43c1616305c93b84011dff",
+  "retrieved_on": "2026-09-16",
+  "source_paths": [
+    "outputs/tables/stage6_core.csv",
+    "outputs/tables/stage6_fourcell.csv",
+    "outputs/tables/stage6_correction.csv"
+  ],
+  "source_core_git_blob_sha": "1861eff114ad5c399fedc3a06473c5754a4ed88b",
+  "transfer": "Selected columns transcribed from GitHub connector responses. Not a byte-identical copy of the source CSV. Transition counts reconstructed from n, accuracy, rescue_rate and break_rate; verified against all 32 end-point accuracies. First 11 combinations also checked against fourcell counts.",
+  "exclusions": "No images, models, or NPZ distributions downloaded. No fabricated per-sample rows derived from these aggregates.",
+  "n_rows": 32,
+  "high_accuracy_decrease_count": 14
+}

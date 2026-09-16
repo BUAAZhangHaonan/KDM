@@ -1,0 +1,68 @@
+[
+  {
+    "case": "An aligned reference preserves the wrong winner",
+    "scores": [
+      2.0,
+      1.0,
+      -2.0
+    ],
+    "reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "target": 1,
+    "interval": {
+      "lower": 0.0,
+      "upper": -1.0,
+      "lower_closed": true,
+      "upper_closed": false,
+      "empty": true,
+      "reason": "incompatible_constraints"
+    }
+  },
+  {
+    "case": "A relative advantage crosses the original margin",
+    "scores": [
+      2.0,
+      1.0,
+      -2.0
+    ],
+    "reference": [
+      2.0,
+      -1.0,
+      0.0
+    ],
+    "target": 1,
+    "interval": {
+      "lower": 0.5,
+      "upper": null,
+      "lower_closed": false,
+      "upper_closed": false,
+      "empty": false,
+      "reason": ""
+    }
+  },
+  {
+    "case": "An excluded target remains unreachable",
+    "scores": [
+      3.0,
+      2.0,
+      -1.0
+    ],
+    "reference": [
+      3.0,
+      2.0,
+      -12.0
+    ],
+    "target": 2,
+    "interval": {
+      "lower": 0.0,
+      "upper": null,
+      "lower_closed": true,
+      "upper_closed": false,
+      "empty": true,
+      "reason": "target_outside_support"
+    }
+  }
+]

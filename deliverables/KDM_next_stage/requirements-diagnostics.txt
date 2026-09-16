@@ -1,0 +1,7 @@
+# Reuse the project's torch/transformers environment. Do not upgrade them here.
+numpy
+pandas
+Pillow
+matplotlib
+pytest
+PyMuPDF

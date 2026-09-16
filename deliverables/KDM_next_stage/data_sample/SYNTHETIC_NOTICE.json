@@ -1,0 +1,7 @@
+{
+  "scientific_evidence": false,
+  "risk_source": "Seed-912 synthetic per-sample cache, processed by stage9_analyze.py",
+  "evidence_source": "Explicit fixed design-only values in tests/build_fixtures.py",
+  "reachability_source": "Explicit design-only category counts in tests/build_fixtures.py",
+  "interpretation": "Layout and code verification only; no expected or actual VLM findings."
+}

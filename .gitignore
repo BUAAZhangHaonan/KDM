@@ -30,3 +30,6 @@ venv_sid/
 nohup.out
 .DS_Store
 *.swp
+
+# stage9 POPE reference images (downloaded+verified at prepare time, not tracked)
+data/stage9/pope/images/

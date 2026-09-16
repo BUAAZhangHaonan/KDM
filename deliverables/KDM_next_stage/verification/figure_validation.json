@@ -1,0 +1,128 @@
+[
+  {
+    "pdf": "figures/illustrative/04_reachable_intervals.pdf",
+    "png": "figures/illustrative/04_reachable_intervals.png",
+    "pages": 1,
+    "png_pixels": [
+      1745,
+      904
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      523.6151733398438,
+      271.18499755859375
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "8ae97c8b1a6d4b0a5b5fd6c07ee5db8306dbdbd37c8611b46a12c909223bff96"
+  },
+  {
+    "pdf": "figures/illustrative/05_risk_coverage.pdf",
+    "png": "figures/illustrative/05_risk_coverage.png",
+    "pages": 1,
+    "png_pixels": [
+      1631,
+      1052
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      489.31201171875,
+      315.5450134277344
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "c4f7459e3ed5188fc5d672b11b479715a3b139fca112696bfceea5f13d9c2696"
+  },
+  {
+    "pdf": "figures/illustrative/06_evidence_control.pdf",
+    "png": "figures/illustrative/06_evidence_control.png",
+    "pages": 1,
+    "png_pixels": [
+      1690,
+      1052
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      507.204345703125,
+      315.5450134277344
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "26d08723ad4866f3faedbb46e5a099cbfccb08e801392095cc1e037510551324"
+  },
+  {
+    "pdf": "figures/illustrative/07_name_reachability.pdf",
+    "png": "figures/illustrative/07_name_reachability.png",
+    "pages": 1,
+    "png_pixels": [
+      1706,
+      851
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      512.0640258789062,
+      255.30499267578125
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "e62ff5b8f26b537b439bafd58ace30422520e689c6266bd6d591f27c44876f14"
+  },
+  {
+    "pdf": "figures/real/01_error_exchange.pdf",
+    "png": "figures/real/01_error_exchange.png",
+    "pages": 1,
+    "png_pixels": [
+      1724,
+      1469
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      517.2479858398438,
+      440.7120056152344
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "1d2e3d95dcddf402853ead729d9270976e35e60c30e990d41e6db868733649cd"
+  },
+  {
+    "pdf": "figures/real/02_confidence_tradeoff.pdf",
+    "png": "figures/real/02_confidence_tradeoff.png",
+    "pages": 1,
+    "png_pixels": [
+      1654,
+      1079
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      496.2959899902344,
+      323.7850036621094
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "9dedc33fd2a7b884170dbd5936a897249a82dd4cfa848986ed883d0b6c6448ac"
+  },
+  {
+    "pdf": "figures/real/03_offset_reversal.pdf",
+    "png": "figures/real/03_offset_reversal.png",
+    "pages": 1,
+    "png_pixels": [
+      1693,
+      1052
+    ],
+    "pdf_points": [
+      0.0,
+      0.0,
+      507.9850158691406,
+      315.5450134277344
+    ],
+    "type3_fonts": false,
+    "has_source_notice": true,
+    "sha256": "987760a896cfe74092de88bf32b17ad68e0c47d7aa30282547d392c7797badf3"
+  }
+]

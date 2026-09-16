@@ -1,0 +1,27 @@
+[
+  {
+    "command": "python code/stage9_analyze.py --help",
+    "returncode": 0,
+    "output": "usage: stage9_analyze.py [-h] [--root ROOT] [--out OUT] [--models MODELS]\n                         [--replicates REPLICATES]\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --out OUT\n  --models MODELS\n  --replicates REPLICATES\n"
+  },
+  {
+    "command": "python code/stage9_finalize.py --help",
+    "returncode": 0,
+    "output": "usage: stage9_finalize.py [-h] [--root ROOT] [--replicates REPLICATES]\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --replicates REPLICATES\n"
+  },
+  {
+    "command": "python code/stage9_pope.py --help",
+    "returncode": 0,
+    "output": "usage: stage9_pope.py [-h] [--root ROOT] [--model {q9b,llava16}] [--gpu GPU]\n                      [--shard SHARD] [--shards SHARDS]\n                      {prepare,run,summarize}\n\npositional arguments:\n  {prepare,run,summarize}\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --model {q9b,llava16}\n  --gpu GPU\n  --shard SHARD\n  --shards SHARDS\n"
+  },
+  {
+    "command": "python code/stage9_prepare.py --help",
+    "returncode": 0,
+    "output": "usage: stage9_prepare.py [-h] [--root ROOT] [--per-class PER_CLASS]\n                         [--geometry-per-class GEOMETRY_PER_CLASS]\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --per-class PER_CLASS\n  --geometry-per-class GEOMETRY_PER_CLASS\n"
+  },
+  {
+    "command": "python code/stage9_run.py --help",
+    "returncode": 0,
+    "output": "usage: stage9_run.py [-h] [--root ROOT] --model {q9b,llava16} --gpu GPU\n                     [--shard SHARD] [--shards SHARDS] [--limit LIMIT]\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --model {q9b,llava16}\n  --gpu GPU\n  --shard SHARD\n  --shards SHARDS\n  --limit LIMIT\n"
+  }
+]
