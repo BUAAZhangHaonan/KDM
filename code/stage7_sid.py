@@ -118,7 +118,7 @@ class SidDecoder:
     def image_span(self, inputs, model_type):
         ids = inputs['input_ids'][0]
         if model_type == 'internvl_chat':
-            tok = self.s6.em.img_context_token_id
+            tok = self.s6.em.img_ctx_id
         else:  # llava_next
             tok = getattr(self.model.config, 'image_token_id', None)
             if tok is None:
