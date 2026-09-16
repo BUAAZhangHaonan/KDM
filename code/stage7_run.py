@@ -29,7 +29,7 @@ MODELS = {
 }
 STRATA = {
     'food101': ('data/samples_manifest.jsonl',
-                {'q4b': 'data/strata_q4b.json', 'q9b': 'data/strata_q9b',
+                {'q4b': 'data/strata_q4b.json', 'q9b': 'data/strata_q9b.json',
                  'llava16': 'data/strata_llava16_food101.json',
                  'internvl4b': 'data/strata_internvl4b_food101.json'}),
     'dogs': ('data/samples_manifest_dogs.jsonl',
