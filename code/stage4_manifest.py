@@ -7,7 +7,7 @@ man = json.load(open(ROOT / 'run_manifest.json'))
 
 man['stage4'] = {
     'date': '2026-09-14',
-    'preregister': 'PREREGISTER_STAGE4.md',
+    'preregister': 'docs/stage4/PREREGISTER_STAGE4.md',
     'probe': {
         'definition': 'name-restricted sum log-likelihood ranking under the open-set '
                       'naming prompt; teacher-forced scoring against a shared prompt '
@@ -22,7 +22,7 @@ man['stage4'] = {
         'q3vl4b': {'known_acc': 0.6067, 'gate': 'FAIL', 'fullname_conditional': 1.0},
         'llava16': {'known_acc': 0.52, 'gate': 'FAIL', 'fullname_conditional': 0.9533},
         'internvl4b': {'known_acc': 0.4167, 'gate': 'FAIL', 'fullname_conditional': 0.6701},
-        'glm46v': 'probe + naming subset only (see STAGE4.md section 7)',
+        'glm46v': 'probe + naming subset only (see docs/stage4/STAGE4.md section 7)',
     },
     'outcome': 'primary probe failed the pre-registered validity gate on ALL models; '
                'confirmatory set (llava16, internvl4b) invalid -> no confirmatory '

@@ -5,7 +5,7 @@
 
 | 序 | 图 | 内容 | 数据来源 | 结论指向 |
 |---|---|---|---|---|
-| 1 | `outputs/figures/stage6_fig1_core.pdf` + `stage6_fig1b_correction.pdf` | 纠错变化（救回/破坏率）与置信度变化（答案未变样本增量 + CI）并排，四模型×两组×四方法 | `outputs/tables/stage6_core.csv` | 第一层诊断：抬升覆盖全部样本、纠错只覆盖少数 |
+| 1 | `outputs/figures/stage6_fig1_core.pdf` + `outputs/figures/stage6_fig1b_correction.pdf` | 纠错变化（救回/破坏率）与置信度变化（答案未变样本增量 + CI）并排，四模型×两组×四方法 | `outputs/tables/stage6_core.csv` | 第一层诊断：抬升覆盖全部样本、纠错只覆盖少数 |
 | 2 | `outputs/figures/stage7_fig_cellwise.pdf` | 分格一致性散点：方法的"一直错−一直对"增量差 vs 温度对照的同差，23 个可判定格 | `outputs/tables/stage7_cellconsistency.csv` | 第二层机制：多数格落在对角线上方之外——错误侧增量更大是尖化解释不了的残余结构 |
 | 3 | `outputs/figures/stage6_fig2_fourcell.pdf` | 四格分解（一直对/一直错/由错变对/由对变错）的平均增量 + CI | `outputs/tables/stage6_fourcell.csv` | 残余结构的形态：被纠正格与一直错格的增量偏大 |
 | 4 | `outputs/figures/stage6_fig3_did.pdf` | 分层差中差森林图（16 格全正、CI 不含零） | `outputs/tables/stage6_did.csv` | 校准后果的人群符号结构 |

@@ -1,4 +1,4 @@
-"""Stage-7 runner: fidelity close-out inference (PREREGISTER_STAGE7.md sec 2).
+"""Stage-7 runner: fidelity close-out inference (docs/stage7/PREREGISTER_STAGE7.md sec 2).
 
 Jobs:
   seed       : VCD with two fresh noise-seed salts (s2, s3), food101 eval half

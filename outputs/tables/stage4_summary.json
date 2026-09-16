@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-15 00:15:43",
- "preregister": "PREREGISTER_STAGE4.md",
+ "preregister": "docs/stage4/PREREGISTER_STAGE4.md",
  "per_pair": {
   "q4b@food101": {
    "role": "exploratory",

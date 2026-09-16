@@ -205,7 +205,7 @@ def analyse(pair, role):
 def main():
     pairs = discover_pairs()
     summary = {'generated': time.strftime('%Y-%m-%d %H:%M:%S'),
-               'preregister': 'PREREGISTER_STAGE4.md', 'per_pair': {}, 'judgments': {}}
+               'preregister': 'docs/stage4/PREREGISTER_STAGE4.md', 'per_pair': {}, 'judgments': {}}
     all_twoway, all_bycause, all_validity, all_rob = [], [], [], []
 
     for pair in pairs:

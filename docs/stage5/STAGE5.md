@@ -1,6 +1,6 @@
 # 第五阶段结论（收束轮）
 
-日期：2026-09-15 ｜ 预登记：`PREREGISTER_STAGE5.md`（commit d07e91e，先于本轮全部新推理）
+日期：2026-09-15 ｜ 预登记：`docs/stage5/PREREGISTER_STAGE5.md`（commit d07e91e，先于本轮全部新推理）
 本轮把前四阶段的结果收敛成一条主线，用一次新实验（中间准确率类别上的四种配置）把主线的
 两端外推变成完整曲线，并完成与最接近工作的对照。
 
@@ -30,7 +30,7 @@
 
 1. **置信度膨胀与类别无关。** 三种方法在两个分层上的错误回答置信度变化全部为正
    （VCD 在 Qwen3.5-4B/9B 上为 +0.26~+0.39，LLaVA-v1.6 与 InternVL3.5-4B 同号；
-   `outputs/tables/nonqwen_core.csv`、v2 `effects.csv`）。膨胀幅度并不因样本属于
+   `outputs/tables/nonqwen_core.csv`、v2 `outputs/tables/effects.csv`）。膨胀幅度并不因样本属于
    模型认识的类别而变小——它加在分布上，不是加在知识上。
 2. **只救回名字本就可及的样本。** 第三阶段分解显示：对"名字可及但开集答错"的样本，
    MIB 的救回率为 27–30%，对"两类都错"的样本仅 4–5%；Qwen3.5 两模型 × 三方法的
@@ -38,7 +38,7 @@
    （差值 +0.21/+0.22）同向。教师强制机制检查中，该类样本的金标签名对数似然在图像
    相对空图 +4.92/+4.50 nat（568/568 为正）。干预恢复的是本就存在的倾向，不创造知识。
 3. **输出侧信号不能分流。** 首 token 熵、maxp、与空图分布的 JSD 在样本层面的
-   区分能力全部低于可用下限（两模型两域 AUC<0.70，熵方向低于随机；v2 `signal_split.csv`）。
+   区分能力全部低于可用下限（两模型两域 AUC<0.70，熵方向低于随机；v2 `outputs/tables/signal_split.csv`）。
 
 ## 3. 证据二：校准效应随人群变号（差中差）
 
@@ -178,8 +178,8 @@ VCD/LCD 的变号点在两个人物规模（4B/9B）上都落在 acc≈0.6 一�
 ## 9. 交付物与复现
 
 ```
-PREREGISTER_STAGE5.md            预登记（运行前提交，d07e91e）
-STAGE5.md                        本文
+docs/stage5/PREREGISTER_STAGE5.md            预登记（运行前提交，d07e91e）
+docs/stage5/STAGE5.md                        本文
 outputs/tables/baserate.csv      1590 行：类别点/三层聚合/分箱/混合人群 × 各方法（两域）
 outputs/tables/crossing.csv      相关系数与变号点及自助区间（24 行）
 outputs/tables/nonqwen_core.csv  LLaVA/InternVL/Qwen3-VL/Qwen3.5 主线量（45 行）

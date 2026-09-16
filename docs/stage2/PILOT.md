@@ -1,4 +1,4 @@
-# PILOT.md — 勘察、分层构造与验证、弃权可得性检验(第一阶段产出)
+# docs/stage2/PILOT.md — 勘察、分层构造与验证、弃权可得性检验(第一阶段产出)
 
 日期:2026-09-13。本文件对应任务书第十二节"第 2–5 小时"关键路径产出。全部数字可由 `outputs/raw/*_phase1_*.jsonl` 与 `outputs/tables/strata_validation.csv` 复算。
 

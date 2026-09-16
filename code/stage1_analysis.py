@@ -4,7 +4,7 @@ Reads outputs/raw/{model}_{tag}_{task}.jsonl, recomputes outcomes with the FINAL
 scoring rules (records carry raw text + gold metadata), and produces:
   outputs/tables/main.csv, effects.csv, remedy.csv
   outputs/figures/figure1.pdf, figure2.pdf, figure3.pdf
-  outputs/analysis_summary.json (all numbers used by CONCLUSIONS.md)
+  outputs/analysis_summary.json (all numbers used by docs/stage2/CONCLUSIONS.md)
 """
 import os, sys, json, math, argparse, time
 from pathlib import Path

@@ -1,7 +1,7 @@
 """Stage-6 runner: faithful re-run of the five decoding configs (direct + VCD +
 M3ID + DoLa + DeCo) on the food101 strata, with enriched per-sample recording.
 
-Parts (per PREREGISTER_STAGE6.md section 3):
+Parts (per docs/stage6/PREREGISTER_STAGE6.md section 3):
   eval : evaluation half, both strata (25 classes x 24 imgs each) - experiment A
   dev  : grouping-half development subset, 200/stratum (seed 607) - fits for the
          B control-2 temperature and the F offset estimate

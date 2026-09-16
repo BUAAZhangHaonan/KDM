@@ -24,8 +24,8 @@
   也不在 known 的类别（按各模型自己的 `data/strata_{model}.json` 计算，101−50=51 类，
   每类 eval 半 24 张，共 1224 样本 × 4 配置）。dogs 域同理（120−60=60 类，1440 样本，
   文件名 `*_s5middle_dogs.jsonl`）。
-- 新增运行的代码路径：`code/stage5_middle.py`，逐字复用 `run_experiment.py` 的 naming
-  循环与 `engine.py`/`prompts.py`/`scoring.py`，仅把 stratum 记为 `middle` 并替换类别
+- 新增运行的代码路径：`code/stage5_middle.py`，逐字复用 `code/run_experiment.py` 的 naming
+  循环与 `code/engine.py`/`code/prompts.py`/`code/scoring.py`，仅把 stratum 记为 `middle` 并替换类别
   集合。超参、提示、判分、随机过程与主实验完全一致，不做任何调整。
 
 ### 1.2 人群的两个口径
@@ -107,5 +107,5 @@ outputs/figures/fig9.pdf
   `data/strata_{q4b,q9b}_dogs.json`（dogs）计算：全类集合 − deficient − known。
   q4b 与 q9b 的中间类别集合不同（各自按自己的分组半准确率分层），这是设计使然。
 - food101 中间运行由 `code/stage5_middle.py` 驱动（复用第二阶段 engine 路径）；
-  dogs 中间运行复用第三阶段 `stage3_model.py` 路径，仅替换类别集合为中间类别、
+  dogs 中间运行复用第三阶段 `code/stage3_model.py` 路径，仅替换类别集合为中间类别、
   stratum 记为 middle。两者均不在本轮改变任何超参、提示或判分。

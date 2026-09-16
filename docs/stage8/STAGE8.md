@@ -1,12 +1,12 @@
 # 第八阶段报告（STAGE8）：终局收尾
 
-零新推理：本阶段全部计算在第六/七阶段缓存上进行。预登记 `PREREGISTER_STAGE8.md`
+零新推理：本阶段全部计算在第六/七阶段缓存上进行。预登记 `docs/stage8/PREREGISTER_STAGE8.md`
 先于任何计算提交（commit 9e1f577f）；分析解释器为项目 `venv/`（python 3.11.14，
 numpy 2.3.5 / scipy 1.17.0），缓存重定向项目内 `cache/`。产出：
 `outputs/tables/stage8_{residual_regression, meta, metareg, equivalence, dogs_transfer,
-m3id_gate_recheck}.csv`、`stage8_summary.json`、`stage8_transfer_summary.json`、
+m3id_gate_recheck}.csv`、`outputs/tables/stage8_summary.json`、`outputs/tables/stage8_transfer_summary.json`、
 `outputs/figures/stage8_fig_residual.pdf`，及四份定稿文档
-（`MAINLINE/CLAIMS/LIMITATIONS/EVIDENCE_MAP_STAGE8.md`）。
+（`docs/stage8/MAINLINE_STAGE8.md`、`docs/stage8/CLAIMS_STAGE8.md`、`docs/stage8/LIMITATIONS_STAGE8.md`、`docs/stage8/EVIDENCE_MAP_STAGE8.md`）。
 
 ## 1. 做了什么
 
@@ -14,8 +14,8 @@ m3id_gate_recheck}.csv`、`stage8_summary.json`、`stage8_transfer_summary.json`
    计数；配套 DL 随机效应荟萃、元回归与 ±0.02 等价性检验。
 2. dogs 从"预测"改为数量级一致性检验（预登记口径甲，第 3 节）。
 3. M3ID 低准确率组救回率复核与新措辞（第 4 节）。
-4. 工程与合规收尾：git 历史核查（`GITCHECK_STAGE8.md`）、分母说明、图表定稿
-   （`FIGLIST_STAGE8.md`）、规范零残留复核（第 5 节）。
+4. 工程与合规收尾：git 历史核查（`docs/stage8/GITCHECK_STAGE8.md`）、分母说明、图表定稿
+   （`docs/stage8/FIGLIST_STAGE8.md`）、规范零残留复核（第 5 节）。
 
 ## 2. 分支判定重做（核心）
 
@@ -44,7 +44,7 @@ A_m = 格人群干预前准确率。主模型 r = α_m + γ·w + ε（32 个格�
 并冻结为主口径。本项目第五阶段以来"类别"另有一个既定含义（数据集类别），
 故本表把两种读法都算齐：**六种口径全部含零，分支判定对读法稳健**。
 逐格自助与第七阶段存档 95% 区间最大偏差 0.005（不同种子流、同 B=2000，
-`stage8_residual_regression.csv` per_cell 行有并排两列可查）。
+`outputs/tables/stage8_residual_regression.csv` per_cell 行有并排两列可查）。
 
 扩展模型 r = α_m + γ·w + θ·(w·A) + ε：**θ = +0.0606**，
 模型聚类 [+0.0159, +0.1053]、类别聚类 [+0.0215, +0.0996]（均不含零）、
@@ -95,7 +95,7 @@ q9b-高组-DeCo −0.001、llava16-高组-DeCo +0.006）；**8 格 90% CI 完全
    8/9。逐样本回归覆盖全部 9 格且两组非零（llava16-低组 n_right = 5/9/11/6、
    internvl4b-低组 9/11/3/15、internvl4b-高组-DoLa n_wrong = 11），覆盖缺口
    在名义上补上，但其对 γ 的贡献权重受小子群限制（见
-   `LIMITATIONS_STAGE8.md` 第 2 条）。
+   `docs/stage8/LIMITATIONS_STAGE8.md` 第 2 条）。
 3. **残余格分布**：按组计数为低组 5/8、高组 7/15，集中度不高；结合元回归
    三口径斜率不一致，"残余集中在高准确率组"不作为确立陈述。
 4. **R1 与 2.2 结论的关系**：R1（q4b-低组 2 格超界为负）与扩展模型的
@@ -105,7 +105,7 @@ q9b-高组-DeCo −0.001、llava16-高组-DeCo +0.006）；**8 格 90% CI 完全
 
 ## 3. dogs：数量级一致性检验（口径甲）
 
-拟合基准：food101 忠实实现的 32 个格（`stage6_core.csv`）的 OLS：
+拟合基准：food101 忠实实现的 32 个格（`outputs/tables/stage6_core.csv`）的 OLS：
 ΔECE = 0.204 − 0.330·准确率，**R² = 0.69**（分方法 R² 0.66–0.96，斜率
 −0.22～−0.44）。对每个 dogs 格（16 格）给 95% 预测带：
 
@@ -123,7 +123,7 @@ q9b-高组-DeCo −0.001、llava16-高组-DeCo +0.006）；**8 格 90% CI 完全
 
 ## 4. M3ID：复核与新措辞
 
-低准确率组救回率（`stage8_m3id_gate_recheck.csv`）：q4b 0.054、q9b 0.046、
+低准确率组救回率（`outputs/tables/stage8_m3id_gate_recheck.csv`）：q4b 0.054、q9b 0.046、
 llava16 0.017、internvl4b 0.005——全部落在低组救回区间 [0.00, 0.131] 的
 下半段（未见额外救回），任务书第 4 节的强化措辞条件成立。**定稿措辞**：
 
@@ -134,16 +134,16 @@ llava16 0.017、internvl4b 0.005——全部落在低组救回区间 [0.00, 0.13
 
 ## 5. 工程与合规收尾
 
-- **git 历史核查**（详见 `GITCHECK_STAGE8.md`）：最终推送历史零 `venv_sid`
+- **git 历史核查**（详见 `docs/stage8/GITCHECK_STAGE8.md`）：最终推送历史零 `venv_sid`
   引用；`.git` 227 MB，其中主 pack 约一半是被 amend 撤销的 venv_sid ELF
   二进制（本地不可达、不随克隆传播，未压缩合计 823 MB）；可达历史最大对象
   4.6 MB（raw jsonl 证据）。清理方案（`git gc --prune=now`）已上报、未执行；
-  无需历史重写。wordnet 恢复留痕复核在档（`STAGE6.md` §5）。
-- **图表定稿**（`FIGLIST_STAGE8.md`）：第一图维持"纠错变化与置信度变化并排"；
-  第二图按主检验结果改为残差回归呈现（`stage8_fig_residual.pdf`：(a) 逐格
+  无需历史重写。wordnet 恢复留痕复核在档（`docs/stage6/STAGE6.md` §5）。
+- **图表定稿**（`docs/stage8/FIGLIST_STAGE8.md`）：第一图维持"纠错变化与置信度变化并排"；
+  第二图按主检验结果改为残差回归呈现（`outputs/figures/stage8_fig_residual.pdf`：(a) 逐格
   γ_m 对人群准确率 + 三条元回归线，(b) 格内去均值残差按对错的分布 + 汇总
   γ 与 CI），原分格一致性散点移入附录清单。
-- **规范复核**：定稿材料（`MAINLINE/CLAIMS/LIMITATIONS/EVIDENCE_MAP_STAGE8.md`
+- **规范复核**：定稿材料（`docs/stage8/MAINLINE_STAGE8.md`、`docs/stage8/CLAIMS_STAGE8.md`、`docs/stage8/LIMITATIONS_STAGE8.md`、`docs/stage8/EVIDENCE_MAP_STAGE8.md`
   等第八阶段文档）检索假设代号（H-A/H-B/H-F）、提示风格代号（style1/2/3）
   **零命中**；MIB/LCD 仅出现在过程文件或明确标注"变体/正对照、非已发表方法"
   的语境（与第七阶段清扫同一判据）。检索命令与命中清单见第六节附注。
@@ -175,21 +175,21 @@ llava16 0.017、internvl4b 0.005——全部落在低组救回区间 [0.00, 0.13
 9. **git 历史是否残留 venv_sid 大对象？.git 体积？** 推送历史零残留；
    `.git` 227 MB（约一半为本地不可达的已撤销二进制）；无需重写，清理方案
    已上报未执行。
-10. **图表清单是否更新？第一图是否合规？** 已冻结（`FIGLIST_STAGE8.md`）；
+10. **图表清单是否更新？第一图是否合规？** 已冻结（`docs/stage8/FIGLIST_STAGE8.md`）；
     第一图维持"纠错变化与置信度变化并排"配对图；第二图为残差回归呈现。
 11. **规范复核是否零残留？** 是：定稿材料代号零命中，过程文件命中均有明确
     标注语境（第五节）。
 
 附注（规范检索）：`grep -rn -E "H-A|H-B|H-F|style1|style2|style3" --include="*.md"`
-在第八阶段定稿文档零命中；MIB/LCD 命中仅为 `RENAMING_STAGE7.md`（清扫记录）、
-`PREREGISTER_STAGE3/6.md`（历史预登记，明确标注变体与映射语境）、
-`EVIDENCE_MAP_STAGE7.md` R5（正对照语境）、`VALIDATION_STAGE1.md`（第一阶段
+在第八阶段定稿文档零命中；MIB/LCD 命中仅为 `docs/stage7/RENAMING_STAGE7.md`（清扫记录）、
+`docs/stage3/PREREGISTER_STAGE3.md`、`docs/stage6/PREREGISTER_STAGE6.md`（历史预登记，明确标注变体与映射语境）、
+`docs/stage7/EVIDENCE_MAP_STAGE7.md` R5（正对照语境）、`docs/stage1/VALIDATION_STAGE1.md`（第一阶段
 过程记录）。
 
 ## 7. 封版声明
 
 本阶段结束后项目**不再有实验、不再有再分析、不再有补充轮**。唯一后续工作是
-依据 `CLAIMS_STAGE8.md` 与 `MAINLINE_STAGE8.md` 撰写论文正文（由研究设计者
-执行）。未解决问题一律止于 `LIMITATIONS_STAGE8.md`（10 条）。不得把"一致性
+依据 `docs/stage8/CLAIMS_STAGE8.md` 与 `docs/stage8/MAINLINE_STAGE8.md` 撰写论文正文（由研究设计者
+执行）。未解决问题一律止于 `docs/stage8/LIMITATIONS_STAGE8.md`（10 条）。不得把"一致性
 检验"写成"预测"、不得把"不显著"写成"等价"（等价判定以 ±0.02 边界的 TOST
 为准：4/23）、不得把"高准确率人群的证据"写成"普遍结论"。

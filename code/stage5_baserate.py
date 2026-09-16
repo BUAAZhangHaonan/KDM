@@ -1,4 +1,4 @@
-"""Stage-5 base-rate relation analysis (pre-registered in PREREGISTER_STAGE5.md).
+"""Stage-5 base-rate relation analysis (pre-registered in docs/stage5/PREREGISTER_STAGE5.md).
 
 口径一 (class-set populations): per class points -> Pearson r(ΔECE, gap),
 r(ΔECE, acc) with class-cluster bootstrap (B=2000); OLS crossing point with

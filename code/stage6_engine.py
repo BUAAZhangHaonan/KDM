@@ -1,6 +1,6 @@
 """Stage-6 faithful decoding engine: VCD / M3ID / DoLa / DeCo per official sources.
 
-Official bases (details in IMPLEMENTATION_MAPPING_STAGE6.md):
+Official bases (details in docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md):
   VCD   DAMO-NLP-SG/VCD @ d6568ff  vcd_utils/vcd_sample.py + vcd_add_noise.py
   M3ID  arXiv:2403.14003 Algorithm 1 / Eq.(3)-(4) (no official code exists)
   DoLa  voidism/DoLa @ 805230e  transformers-4.28.1 generation/utils.py dola_greedy_decode

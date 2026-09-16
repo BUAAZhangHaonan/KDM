@@ -24,7 +24,7 @@ if p.exists():
 
 man['stage7'] = {
     'date': '2026-09-16',
-    'preregister': 'PREREGISTER_STAGE7.md (commit 30d9528, before any inference '
+    'preregister': 'docs/stage7/PREREGISTER_STAGE7.md (commit 30d9528, before any inference '
                    'or judgment computation)',
     'purpose': 'final round: wording-deciding supplementary analyses, fidelity '
                'close-out (SID bounded reproduction, robustness, dogs faithful '

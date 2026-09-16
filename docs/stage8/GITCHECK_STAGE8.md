@@ -33,7 +33,7 @@
 ## 4. filter-repo 事件留痕复核
 
 - 第六阶段曾因 filter-repo 丢失 nltk wordnet 缓存，恢复方式（重新下载官方
-  nltk_data 同名语料）已记录于 `STAGE6.md` §5 第 5 条，本阶段复核确认在档。
+  nltk_data 同名语料）已记录于 `docs/stage6/STAGE6.md` §5 第 5 条，本阶段复核确认在档。
 
 ## 5. 结论
 

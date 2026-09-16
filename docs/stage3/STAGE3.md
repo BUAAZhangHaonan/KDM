@@ -1,6 +1,6 @@
-# STAGE3.md — "回答错误"的两类构成与免训练抑制方法的选择性作用(第三阶段)
+# docs/stage3/STAGE3.md — "回答错误"的两类构成与免训练抑制方法的选择性作用(第三阶段)
 
-日期:2026-09-13/14。数据与分层:沿用第二阶段(food101 评测半区,实测分层 q4b/q9b,已验证);本阶段新增闭集识别任务、四格分解、判断一至四、机制核对、跨模型与跨图像域复现。全部阈值在闭集实验运行前登记于 `PREREGISTER_STAGE3.md`,运行后未改动;预登记口径下的判定只给"成立/不成立"(判断二按登记式分模型报告,综合口径见该节)。所有数字可由 `outputs/raw/*stage3*`、`outputs/raw/*_main*.jsonl` 与 `outputs/tables/{closedset,twoway,bycause,equivalence,signal_split}.csv` 复算。
+日期:2026-09-13/14。数据与分层:沿用第二阶段(food101 评测半区,实测分层 q4b/q9b,已验证);本阶段新增闭集识别任务、四格分解、判断一至四、机制核对、跨模型与跨图像域复现。全部阈值在闭集实验运行前登记于 `docs/stage3/PREREGISTER_STAGE3.md`,运行后未改动;预登记口径下的判定只给"成立/不成立"(判断二按登记式分模型报告,综合口径见该节)。所有数字可由 `outputs/raw/*stage3*`、`outputs/raw/*_main*.jsonl` 与 `outputs/tables/{closedset,twoway,bycause,equivalence,signal_split}.csv` 复算。
 
 ## 1. 第二阶段的断口
 
@@ -131,7 +131,7 @@ export HF_HOME=$PWD/cache/hf TORCH_HOME=$PWD/cache/torch \
        MPLCONFIGDIR=$PWD/cache/mpl XDG_CACHE_HOME=$PWD/cache NLTK_DATA=$PWD/cache/nltk \
        HF_HUB_DISABLE_XET=1 NLTK_ALLOW_PROXIED_URLOPEN=1
 
-# 判定阈值(运行闭集之前登记):PREREGISTER_STAGE3.md
+# 判定阈值(运行闭集之前登记):docs/stage3/PREREGISTER_STAGE3.md
 python code/stage3_closedset.py --model q4b --gpu 4        # 闭集 101选1+10邻项(q9b/GPU5 同理)
 python code/stage3_mechanism.py --model q4b --gpu 4        # 教师强制机制核对
 python code/stage3_analysis.py                             # 四格分解+判断一至四+表

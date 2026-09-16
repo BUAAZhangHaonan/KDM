@@ -1,6 +1,6 @@
-# STAGE4.md — 名称受限对数似然探针:不依赖指令遵循的知识可及性测量?(第四阶段)
+# docs/stage4/STAGE4.md — 名称受限对数似然探针:不依赖指令遵循的知识可及性测量?(第四阶段)
 
-日期:2026-09-14。判定阈值见 `PREREGISTER_STAGE4.md`(任何第四阶段数据产生之前提交,未改动)。本阶段复用第二/三阶段的图像、分层与主配置逐样本记录;新数据为各模型的探针记录(`outputs/raw/*_stage4_probe_*.jsonl`)与 GLM 命名子集。第三阶段结论文件未被覆盖。
+日期:2026-09-14。判定阈值见 `docs/stage4/PREREGISTER_STAGE4.md`(任何第四阶段数据产生之前提交,未改动)。本阶段复用第二/三阶段的图像、分层与主配置逐样本记录;新数据为各模型的探针记录(`outputs/raw/*_stage4_probe_*.jsonl`)与 GLM 命名子集。第三阶段结论文件未被覆盖。
 
 **一句话结果:主探针在全部五个模型上未通过预登记的有效性门槛(已知组 ≥0.90,实测 0.42–0.77),确认性检验因此不可执行;门槛失败的原因经条件化诊断定位为命名粒度错配,而非测量噪声——凡模型在开集中给出完整类名的样本,探针几乎全部判对(Qwen 系 0.99–1.00,LLaVA 0.95);空图对照在所有模型上显著为正。**
 
@@ -91,7 +91,7 @@ GLM 与 InternVL 同属"名称级分布不稳定"一类:即便说出全名,LL �
 cd /home/g203-4028/projects/knowledge-deficit-mitigation && source ./venv/bin/activate
 export HF_HOME=$PWD/cache/hf TORCH_HOME=$PWD/cache/torch \
        MPLCONFIGDIR=$PWD/cache/mpl XDG_CACHE_HOME=$PWD/cache NLTK_DATA=$PWD/cache/nltk
-# 阈值(运行前):PREREGISTER_STAGE4.md
+# 阈值(运行前):docs/stage4/PREREGISTER_STAGE4.md
 python code/stage4_probe.py --model q4b --gpu 4 --domain food101     # 各模型同理
 python code/stage4_glm_naming.py --gpu 4 --n 200                     # GLM 命名子集
 python code/stage4_probe.py --model glm46v --gpu 4 --domain food101 --limit 300 --strata-from q4b

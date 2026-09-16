@@ -17,10 +17,10 @@
   - `conf1_i =` 干预记录的 `answer_maxp`（首 token 相同，故即该 token 概率）；
   - `Δ_i = conf1_i − conf0_i`；
   - `pred_i = _temp_conf(v_i, tok_i, T_m) − conf0_i`（温度尖化对照增量，
-    `_temp_conf` 即 `stage6_analysis.py` 的同名函数：p^{1/T} 重归一化）；
+    `_temp_conf` 即 `code/stage6_analysis.py` 的同名函数：p^{1/T} 重归一化）；
   - **残差 `r_i = Δ_i − pred_i`**（尖化解释不了的置信度变化部分）；
   - `w_i = 1` 若该样本直接解码答错（`outcome != 'correct'`），否则 0；
-  - `A_m` = 该格人群干预前准确率（`stage6_core.csv` 的 `acc_direct`，分母含
+  - `A_m` = 该格人群干预前准确率（`outputs/tables/stage6_core.csv` 的 `acc_direct`，分母含
     弃权样本的既定口径）。
 - 格集合：忠实实现的 4 方法 × 4 模型 × 2 组 = 32 格（SID 仅单家族，维持单独
   报告，不进入本回归）。
@@ -45,7 +45,7 @@
 
 - 逐格 d_m = δ_m − δ_ctrl,m（第七阶段定义），配对自助标准误：本阶段重放同一
   自助过程（B=2000，种子 20260917），se_m 取自助标准差，同时记录 95% 与 90%
-  百分位区间；与 `stage7_cellconsistency.csv` 已存 95% 区间做一致性核对并报告。
+  百分位区间；与 `outputs/tables/stage7_cellconsistency.csv` 已存 95% 区间做一致性核对并报告。
 - 随机效应荟萃（23 个可判定格）：DerSimonian–Laird 估计 τ²，合并 d 与 95% CI
   （权重 1/(se²+τ²)），报告 I²、τ²、Q。
 - 元回归：d_m 对 A_m 的加权最小二乘（主口径权重 1/se_m²；同时报告随机效应
@@ -72,10 +72,10 @@
 
 ## 4. dogs 检验口径（冻结选口径甲：数量级一致性检验）
 
-- 拟合基准：food101 忠实实现的 32 个格（`stage6_core.csv`：`dece` 对
+- 拟合基准：food101 忠实实现的 32 个格（`outputs/tables/stage6_core.csv`：`dece` 对
   `acc_direct`）的 OLS 线性关系（既有缓存、无新推理；不使用第五阶段类别级
   旧实现拟合——实现与粒度均与 dogs 重跑不对应）。
-- 预测带：每个 dogs 格（16 格，`stage7_dogspredict.csv`）在其准确率水平上的
+- 预测带：每个 dogs 格（16 格，`outputs/tables/stage7_dogspredict.csv`）在其准确率水平上的
   回归预测值与 95% 预测区间 ŷ ± t_{0.975,n−2}·s·sqrt(1+1/n+(x*−x̄)²/Sxx)；
   命中 = 实测 ΔECE 落入预测带。报告命中数/16。
 - 敏感性：分方法（4 × 8 点）各自的 OLS + 预测带版本。
@@ -84,12 +84,12 @@
 
 ## 5. M3ID 措辞条件（冻结判据）
 
-- 忠实 M3ID 低准确率组救回率（`stage6_core.csv`，已缓存）：q4b 0.054、
+- 忠实 M3ID 低准确率组救回率（`outputs/tables/stage6_core.csv`，已缓存）：q4b 0.054、
   q9b 0.046、llava16 0.017、internvl4b 0.005；低组全部方法救回率区间
   0.00–0.13。四值全部位于区间下半段（未见额外救回）→ 采用任务书 §4 的强化
   措辞（门控在低准确率组抑制更少 = 干预更多，而纠错收益仍然很小）。若与缓存
   复核不符，按实测改写。门控比例数字直接引用
-  `stage7_m3idgate_q4b/q9b.csv`（97.2%/85.9%、98.0%/87.4%）。
+  `outputs/tables/stage7_m3idgate_q4b.csv` 与 `outputs/tables/stage7_m3idgate_q9b.csv`（97.2%/85.9%、98.0%/87.4%）。
 
 ## 6. 工程与合规（任务书 §5）
 
@@ -107,13 +107,13 @@
 
 不得因结果调整本文任何判据或边界；不得新增测量、方法、模型或数据集；不得
 为补缓存重跑推理；缺缓存即停并上报。全部产物写入项目目录。本阶段结束后项目
-封版：不再有实验、再分析或补充轮，未解决问题一律写入 `LIMITATIONS_STAGE8.md`。
+封版：不再有实验、再分析或补充轮，未解决问题一律写入 `docs/stage8/LIMITATIONS_STAGE8.md`。
 
 ## 8. 计划产物
 
 `outputs/tables/stage8_{residual_regression, meta, metareg, equivalence,
 dogs_transfer, m3id_gate_recheck}.csv`；`outputs/figures/` 残差回归图与更新后
-清单；`STAGE8.md`、`MAINLINE_STAGE8.md`、`CLAIMS_STAGE8.md`、
-`LIMITATIONS_STAGE8.md`、`EVIDENCE_MAP_STAGE8.md`、`FIGLIST_STAGE8.md`、
+清单；`docs/stage8/STAGE8.md`、`docs/stage8/MAINLINE_STAGE8.md`、`docs/stage8/CLAIMS_STAGE8.md`、
+`docs/stage8/LIMITATIONS_STAGE8.md`、`docs/stage8/EVIDENCE_MAP_STAGE8.md`、`docs/stage8/FIGLIST_STAGE8.md`、
 git 核查报告；`run_manifest.json` 更新。解释器 = 项目 `venv/`（python 3.11.14，
 numpy 2.3.5 / scipy 1.17.0）。

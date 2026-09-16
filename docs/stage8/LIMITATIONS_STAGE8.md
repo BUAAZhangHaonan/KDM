@@ -76,5 +76,5 @@
   （ELF 共享库，未压缩合计 823 MB）——这些对象不可达，远端与任何克隆不含它们；
   推送历史中 `git log --all -- venv_sid` 零引用，最大可达对象 4.6 MB。
 - 影响：仅本地磁盘占用；可选清理方案（`git gc --prune=now`）已上报、未执行。
-  第五阶段前 filter-repo 事件丢失的 wordnet 语料恢复方式已在 `STAGE6.md` §5
+  第五阶段前 filter-repo 事件丢失的 wordnet 语料恢复方式已在 `docs/stage6/STAGE6.md` §5
   留痕。

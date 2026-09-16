@@ -14,7 +14,7 @@ def log_done_minutes(log):
 
 man['stage5'] = {
     'date': '2026-09-15',
-    'preregister': 'PREREGISTER_STAGE5.md',
+    'preregister': 'docs/stage5/PREREGISTER_STAGE5.md',
     'goal': 'unify conclusions into one main line; test the pre-registered '
             'base-rate relation (dECE predictable from pre-intervention '
             'accuracy / calibration gap, with a crossing point)',

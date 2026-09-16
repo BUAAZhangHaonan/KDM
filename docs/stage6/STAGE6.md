@@ -3,8 +3,8 @@
 
 # 第六阶段报告 · 基线忠实化与机制对照（收束轮补正）
 
-日期：2026-09-15。预登记：`PREREGISTER_STAGE6.md`（提交 1c46a1d，先于本阶段任何推理）。
-实现对照：`IMPLEMENTATION_MAPPING_STAGE6.md`。原始记录与表格见 `outputs/raw/*_s6_*`、
+日期：2026-09-15。预登记：`docs/stage6/PREREGISTER_STAGE6.md`（提交 1c46a1d，先于本阶段任何推理）。
+实现对照：`docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md`。原始记录与表格见 `outputs/raw/*_s6_*`、
 `outputs/tables/stage6_*`。
 
 ---
@@ -49,7 +49,7 @@
 ### 2.1 实现来源与关键部件
 
 五方法按两条对比轴选定后冻结。实现逐部件对齐官方（依据、差异、第三方一致性见
-`IMPLEMENTATION_MAPPING_STAGE6.md`；数值一致性由 `code/test_stage6_official.py`
+`docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md`；数值一致性由 `code/test_stage6_official.py`
 11 项单元核对背书）：
 
 | 方法 | 轴 | 依据 | 关键部件（本阶段实现） |
@@ -127,7 +127,7 @@ llava16 156.6、internvl4b 58.6；四卡并行，主线两模型（q4b+q9b）合
 
 ### 4.2 置信度增量与纠错收益的脱节（问题 1）
 
-`stage6_core.csv`（32 个 模型×组×方法 格）。**32/32 格的答案未变样本置信度增量为正且
+`outputs/tables/stage6_core.csv`（32 个 模型×组×方法 格）。**32/32 格的答案未变样本置信度增量为正且
 bootstrap 95% CI 不含零**；增量范围 +0.008（M3ID-高组）到 +0.372（DoLa-internvl4b-低组），
 VCD 家族典型 +0.15～+0.25，层对比方法 +0.05～+0.20，M3ID 因门控常闭而最小。
 
@@ -135,7 +135,7 @@ VCD 家族典型 +0.15～+0.25，层对比方法 +0.05～+0.20，M3ID 因门控�
 破坏率普遍低于救回率（高组 q4b-VCD 救回 0.083/破坏 0.031 一类模式）。
 置信度的抬升覆盖几乎全部样本，纠错只覆盖一小部分——**脱节在忠实实现下成立（诊断假设确认）**。
 
-核心图 `outputs/figures/stage6_fig1_core.pdf`（置信度增量）与 `stage6_fig1b_correction.pdf`
+核心图 `outputs/figures/stage6_fig1_core.pdf`（置信度增量）与 `outputs/figures/stage6_fig1b_correction.pdf`
 （救回/破坏率）并排给出该脱节；不画拟合曲线与变号点（按任务书要求）。
 
 ### 4.3 分组符号结构（问题 3）
@@ -146,7 +146,7 @@ internvl4b 的 DoLa（高组 ΔECE +0.030）：该方法在该模型两组都恶
 （低组 +0.513，置信度增量 +0.372 全场最大）——例外不改变符号结构，反而加强了
 "增量越大、低准确率人群伤害越大"的规律。
 
-差中差（低组 ΔECE − 高组 ΔECE，`stage6_did.csv`、`stage6_fig3_did.pdf`）：
+差中差（低组 ΔECE − 高组 ΔECE，`outputs/tables/stage6_did.csv`、`outputs/figures/stage6_fig3_did.pdf`）：
 **16/16 为正且 CI 不含零**，范围 +0.110（llava16-DeCo）到 +0.482（internvl4b-DoLa）。
 VCD 依次 +0.311/+0.241/+0.417/+0.379（q4b/q9b/llava16/internvl4b）。
 
@@ -159,7 +159,7 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 
 ## 5. 实验 B：概率尖化对照（问题 4，决定性判据）
 
-`stage6_sharpening.csv`。两个对照都不动答案、只改概率：截断对照（直接解码 + β=0.1
+`outputs/tables/stage6_sharpening.csv`。两个对照都不动答案、只改概率：截断对照（直接解码 + β=0.1
 相对截断重归一化）与温度对照（直接解码 + T<1 尖化，强度在开发半区 200 样本上一次性
 匹配到该方法的平均置信度增量，网格 0.20–1.00）。
 
@@ -183,7 +183,7 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 
 ## 6. 实验 C：配对分解（问题 2、5）
 
-`stage6_fourcell.csv`、`stage6_fig2_fourcell.pdf`。四格 = 一直对 / 一直错 / 由错变对 /
+`outputs/tables/stage6_fourcell.csv`、`outputs/figures/stage6_fig2_fourcell.pdf`。四格 = 一直对 / 一直错 / 由错变对 /
 由对变错（对错按 outcome=correct 判定，弃权计入未答对；置信度增量在有置信度的子集上算）。
 
 - **增量非严格均匀**：32 格中仅 5 格满足"所有两两差的 95% CI 含零"；27 格存在至少一对
@@ -200,14 +200,14 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 
 ### 7.1 名称层置信度核对（问题 6）
 
-`stage6_dname.csv`。名称层置信度 = 各步所选 token 概率连乘。**32/32 格错误答案的
+`outputs/tables/stage6_dname.csv`。名称层置信度 = 各步所选 token 概率连乘。**32/32 格错误答案的
 名称层置信度配对增量为正且 CI 不含零**（范围 +0.038～+0.518；DoLa-internvl4b 最大
 +0.518/+0.482）。首 token 口径与名称层口径方向完全一致。"错误答案更加确定"在答案
 层面成立，不只是首 token 分布层面。
 
 ### 7.2 常数偏移校正（问题 7）
 
-`stage6_correction.csv`。偏移量在开发半区估计、评测半区一次性减去（答案不动）：
+`outputs/tables/stage6_correction.csv`。偏移量在开发半区估计、评测半区一次性减去（答案不动）：
 
 - 高准确率组：**11/16 格校正后 ECE 回到直接解码水平 +0.01 以内**（如 q4b-VCD
   0.111→0.260 vs 直接 0.256；llava16-VCD 0.087→0.201 vs 0.274），且准确率逐样本不变。
@@ -220,7 +220,7 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 
 ### 7.3 剂量-响应（问题 8）
 
-`stage6_dose.csv`、`stage6_fig4_dose.pdf`。q4b-VCD，α∈{0.5, 1.0, 2.0}（α=1 复用实验 A）：
+`outputs/tables/stage6_dose.csv`、`outputs/figures/stage6_fig4_dose.pdf`。q4b-VCD，α∈{0.5, 1.0, 2.0}（α=1 复用实验 A）：
 
 - 置信度增量单调上升：低组 0.199→0.260→0.355，高组 0.155→0.180→0.220。
 - ΔECE 单调恶化/改善：低组 +0.125→+0.167→+0.249；高组 −0.131→−0.145→−0.150
@@ -235,7 +235,7 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 
 ## 8. 变体实现对照（补充材料，问题 9）
 
-`stage6_variant.csv`（24 行）。同一评测半区上旧变体与忠实实现的对比：
+`outputs/tables/stage6_variant.csv`（24 行）。同一评测半区上旧变体与忠实实现的对比：
 
 - 方向（分层 DiD 的符号）在全部模型上保留；ΔECE 的符号 20/24 格一致。
 - **旧 MIB 的"大幅救回"不復现**：q4b 低组旧 MIB 准确率 0.335（ΔECE −0.061），
@@ -245,7 +245,7 @@ dogs 域只有旧变体实现的记录，按任务书只作符号级陈述并明
 - 结论：变体数字不能用来评价原方法——这正是本阶段存在的理由；变体结果保留为
   补充材料并全部标注。
 
-各方法与官方默认的逐项差异清单见 `IMPLEMENTATION_MAPPING_STAGE6.md`（含无官方代码的
+各方法与官方默认的逐项差异清单见 `docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md`（含无官方代码的
 M3ID 的论文依据单列）。共同偏差两条（贪心、噪声种子），M3ID 的 t₀ 设计选择一条，
 均在映射表中给出依据位置。
 
@@ -266,9 +266,9 @@ M3ID 的论文依据单列）。共同偏差两条（贪心、噪声种子），
 
 ## 10. 交付物
 
-- `PREREGISTER_STAGE6.md`（先于推理，1c46a1d）
-- `STAGE6.md`（本文）
-- `IMPLEMENTATION_MAPPING_STAGE6.md`
+- `docs/stage6/PREREGISTER_STAGE6.md`（先于推理，1c46a1d）
+- `docs/stage6/STAGE6.md`（本文）
+- `docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md`
 - `outputs/tables/`：stage6_{core, fourcell, sharpening, correction, did, dname, dose,
   variant, consistency}.csv + stage6_summary.json
 - `outputs/raw/`：{model}_s6_{eval,dev,dose}_naming.jsonl + {model}_s6_firstdist_*.npz

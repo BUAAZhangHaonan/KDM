@@ -4,7 +4,7 @@
 Pair naming:
   legacy  : q4b/q9b on food101 -> {m}_main_naming.jsonl + {m}_stage3_closedset.jsonl
   std     : extended models    -> {key}_{domain}_main.jsonl + {key}_{domain}_closedset.jsonl
-Verdicts per pair use the SAME pre-registered thresholds (PREREGISTER_STAGE3.md
+Verdicts per pair use the SAME pre-registered thresholds (docs/stage3/PREREGISTER_STAGE3.md
 section 7); the primary verdicts (the ones the assertions stand on) are the two
 legacy pairs; extended pairs are replication evidence, reported side by side.
 """
@@ -322,7 +322,7 @@ def analyse_pair(pair, nb, synset_classes):
 def main():
     pairs = discover_pairs()
     summary = {'generated': __import__('time').strftime('%Y-%m-%d %H:%M:%S'),
-               'preregister': 'PREREGISTER_STAGE3.md', 'pairs': [f"{p['label']}@{p['domain']}" for p in pairs],
+               'preregister': 'docs/stage3/PREREGISTER_STAGE3.md', 'pairs': [f"{p['label']}@{p['domain']}" for p in pairs],
                'per_pair': {}, 'primary_verdicts': {}}
     all_rows = {'closedset': [], 'twoway': [], 'bycause': [], 'equivalence': [], 'signal_split': []}
     for pair in pairs:

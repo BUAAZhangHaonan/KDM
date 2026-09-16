@@ -4,7 +4,7 @@
 # 第六阶段预登记 · 基线忠实化与机制对照
 
 提交时间：2026-09-15。本文件在任何第六阶段模型推理之前提交并冻结。此后不得修改；
-若最终判据需调整，必须在 `STAGE6.md` 中显式说明并保留原判据（任务书 §6.1）。
+若最终判据需调整，必须在 `docs/stage6/STAGE6.md` 中显式说明并保留原判据（任务书 §6.1）。
 
 ---
 
@@ -28,7 +28,7 @@
 ## 2. 方法集与忠实实现要点（冻结）
 
 方法集冻结为：VCD、SID、M3ID、DoLa、DeCo（视觉对比轴：VCD/SID/M3ID；层对比轴：DoLa/DeCo）。
-本地历史缩写 MIB、LCD 在 `IMPLEMENTATION_MAPPING_STAGE6.md` 中做一次性映射后弃用。
+本地历史缩写 MIB、LCD 在 `docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md` 中做一次性映射后弃用。
 
 ### 2.1 VCD（官方仓库 DAMO-NLP-SG/VCD，commit d6568ff）
 

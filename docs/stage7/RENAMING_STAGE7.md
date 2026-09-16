@@ -7,16 +7,16 @@
 
 | 文件 | 更正内容 | 性质 |
 |---|---|---|
-| `PREREGISTER_STAGE6.md` | 假设代号 `H-A`/`H-B`/`H-F` → "诊断假设/机制假设/校正假设"（7 处）；`style3`/`style1` → "判定型提问加弃权口径/直接命名口径"（1 处） | 措辞替换，判定内容零改动；文件头已加清扫注记 |
-| `STAGE6.md` | `（H-A 确认）` → `（诊断假设确认）`（1 处）；`style3` → 判定型提问加弃权口径（1 处）；对照分级标签 `sharpening`/`partial`/`structure` → "完整复现/部分复现/未复现（存在残余结构）"（6 处） | 同上 |
+| `docs/stage6/PREREGISTER_STAGE6.md` | 假设代号 `H-A`/`H-B`/`H-F` → "诊断假设/机制假设/校正假设"（7 处）；`style3`/`style1` → "判定型提问加弃权口径/直接命名口径"（1 处） | 措辞替换，判定内容零改动；文件头已加清扫注记 |
+| `docs/stage6/STAGE6.md` | `（H-A 确认）` → `（诊断假设确认）`（1 处）；`style3` → 判定型提问加弃权口径（1 处）；对照分级标签 `sharpening`/`partial`/`structure` → "完整复现/部分复现/未复现（存在残余结构）"（6 处） | 同上 |
 
 提交：清扫提交信息注明"zero judgment or number changes"，可用 `git diff` 逐行核对。
 
 ## 二、不改写的位置与理由
 
-1. **代码与数据文件中的字段值**（如 `stage6_sharpening.csv` 的 `verdict` 列取值
+1. **代码与数据文件中的字段值**（如 `outputs/tables/stage6_sharpening.csv` 的 `verdict` 列取值
    `sharpening/partial/structure`、记录中的 `style: "style1"`、文件名
-   `stage6_sharpening.csv`）：这些是机器可读的存储字段，不是定稿措辞；论文正文
+   `outputs/tables/stage6_sharpening.csv`）：这些是机器可读的存储字段，不是定稿措辞；论文正文
    与报告引用它们时一律使用自然语言称呼（本清单第一节已把报告侧改齐）。
 2. **更早阶段的过程文档**（`STAGE1–5`、`PILOT`、`CONCLUSIONS` 等全 8 份）：
    全仓检索确认其中不含假设代号（`H-A/H-B/H-F/H1/H2/H3` 零命中，见第三节），

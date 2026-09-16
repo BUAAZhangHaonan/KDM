@@ -7,7 +7,7 @@ man = json.load(open(ROOT / 'run_manifest.json'))
 
 man['stage3'] = {
     'date': '2026-09-13/14',
-    'preregister': 'PREREGISTER_STAGE3.md',
+    'preregister': 'docs/stage3/PREREGISTER_STAGE3.md',
     'closedset': {
         'task': '101-option (food101) / 120-option (dogs) number-choice, '
                 'per-sample deterministic candidate shuffle seed f"{file}|{variant}"',

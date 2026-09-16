@@ -2,7 +2,7 @@
 
 论文正文逐句落笔的依据：每条论断 → 最终数字（含置信区间）→ 出处文件 → 实现类别 →
 适用范围 → 反例指针。**任一句话被追问时都能指向文件**；反例与不可测边界单列在
-`EVIDENCE_MAP_STAGE8.md` F 节，不得藏进正文。实现类别只有三种：忠实（按官方
+`docs/stage8/EVIDENCE_MAP_STAGE8.md` F 节，不得藏进正文。实现类别只有三种：忠实（按官方
 定义复现）、变体（历史本地实现，只作补充）、正对照（非已发表方法，只作强度演示）。
 
 ## 第一层主张（诊断）
@@ -27,13 +27,13 @@
 - 数字：汇总残差回归 γ = +0.0097，95% CI [−0.0013, +0.0208]（模型聚类主口径；
   另五口径全部含零）；等价口径 4/23 与尖化一致、8/23 超出 ±0.02（6 正 2 负）、
   11/23 不定；I² = 89.2%。
-- 出处：`stage8_residual_regression.csv`、`stage8_equivalence.csv`、`stage8_meta.csv`。
+- 出处：`outputs/tables/stage8_residual_regression.csv`、`outputs/tables/stage8_equivalence.csv`、`outputs/tables/stage8_meta.csv`。
 - 实现类别：忠实（既有缓存再分析）。
 - 适用范围：与 C1.1 同；正文可写"格级证据两向并存、汇总检验边界性含零"，
   按开放问题处理。
 - 反例指针：R1、R9、R11。
 
-**C1.4 基线可比。** 四模型 0/1200 outcome 不一致（`stage6_consistency.csv`）。
+**C1.4 基线可比。** 四模型 0/1200 outcome 不一致（`outputs/tables/stage6_consistency.csv`）。
 
 ## 第二层主张（机制）
 
@@ -41,61 +41,61 @@
 的尖化）。**
 - 数字：可匹配格（增量 ≥0.04，28 格）中 20 格温度对照完整复现（ρ≥0.8）、
   7 部分、1 未复现；全 32 格口径 20/7/5；第八阶段汇总检验维持该表述（γ CI 含零）。
-- 出处：`stage6_sharpening.csv`、`stage7_dualcaliber.csv`、`stage8_residual_regression.csv`。
+- 出处：`outputs/tables/stage6_sharpening.csv`、`outputs/tables/stage7_dualcaliber.csv`、`outputs/tables/stage8_residual_regression.csv`。
 - 实现类别：忠实。反例指针：R2、R7。
 
 **C2.2 其上的残余成分方向互相冲突，未确立选择性机制。**
 - 数字：等价口径 4/8/11（一致/超界/不定）；超界的 2 个负向格为 q4b 低组
   VCD/M3ID（d = −0.102/−0.131）；荟萃 Q = 203.1（k=23）、I² = 89.2%；
   合并 d = +0.0149 [+0.0022, +0.0276]。
-- 出处：`stage8_equivalence.csv`、`stage8_meta.csv`。
+- 出处：`outputs/tables/stage8_equivalence.csv`、`outputs/tables/stage8_meta.csv`。
 - 实现类别：忠实（再分析）。反例指针：R1、R3。
 
 **C2.3 干预近似固定增量的置信度放大器（经验事实）。**
 - 数字：VCD α=0.5/1/2 → Δ置信度 0.199/0.260/0.355（低组）、0.155/0.180/0.220
   （高组）；变号点随 α 上移。
-- 出处：`stage6_dose.csv`。实现类别：忠实。反例指针：无。
+- 出处：`outputs/tables/stage6_dose.csv`。实现类别：忠实。反例指针：无。
 
 **C2.4 忠实 M3ID 的门控在更需要干预的人群上干预更多，纠错收益仍然很小。**
 - 数字：门控未施加纠正步比例 q4b 高/低组 97.2%/85.9%、q9b 98.0%/87.4%；
   低组救回率 0.005–0.054（q4b 0.054、q9b 0.046、llava16 0.017、internvl4b
   0.005），全部位于低组救回区间 [0.00, 0.131] 下半段。
-- 出处：`stage7_m3idgate_q4b/q9b.csv`、`stage8_m3id_gate_recheck.csv`、`stage6_core.csv`。
+- 出处：`outputs/tables/stage7_m3idgate_q4b.csv` 与 `outputs/tables/stage7_m3idgate_q9b.csv`、`outputs/tables/stage8_m3id_gate_recheck.csv`、`outputs/tables/stage6_core.csv`。
 - 实现类别：忠实。适用范围：门控比例为两 Qwen 模型的重放计数。反例指针：无。
 
 **C2.5 纠错收益足够大时校准符号可以翻转（正对照演示）。**
 - 数字：MIB 变体（非已发表方法）q4b 低组准确率 0.179→0.335、ΔECE −0.061。
-- 出处：`stage7_poscontrol.csv`。实现类别：正对照。适用范围：仅 q4b 演示成立。
+- 出处：`outputs/tables/stage7_poscontrol.csv`。实现类别：正对照。适用范围：仅 q4b 演示成立。
 - 反例指针：R5（q9b 未翻转，措辞用"可以"不用"必然"）。
 
 **C2.6 结论稳健性。** 噪声抽样波动 ≤11.8% 效应量级；DoLa 官方子集口径结论不变
-（`stage7_seedrobust.csv`、`stage7_dolasubset.csv`）；SID 官方代码忠实重实现
-12/12 单元校验一致，llava16 上差中差 +0.518 同向更强（`stage7_sidunit.csv`、
-`stage7_sid.csv`；反例 R6）。
+（`outputs/tables/stage7_seedrobust.csv`、`outputs/tables/stage7_dolasubset.csv`）；SID 官方代码忠实重实现
+12/12 单元校验一致，llava16 上差中差 +0.518 同向更强（`outputs/tables/stage7_sidunit.csv`、
+`outputs/tables/stage7_sid.csv`；反例 R6）。
 
 ## 第三层主张（后果）
 
 **C3.1 校准代价可被一次性常数校正处理掉大半，答案逐样本不变。**
 - 数字：高准确率组 11/16 格校正后 ECE ≤ 直接解码 +0.01。
-- 出处：`stage6_correction.csv`。反例指针：R8（5/16 过校正）。
+- 出处：`outputs/tables/stage6_correction.csv`。反例指针：R8（5/16 过校正）。
 
 **C3.2 校正只修把握、不修对错。** 低准确率人群校正后准确率逐样本不变，错误存量
-保留（`stage6_correction.csv`；与 C1.2 连用）。
+保留（`outputs/tables/stage6_correction.csv`；与 C1.2 连用）。
 
 **C3.3 常数只是近似。** 逐格漂移 −0.060～+0.038（均值 −0.001、标准差 0.027），
-与四格非均匀（27/32）同源（`stage7_drift.csv`、`stage6_fourcell.csv`）。
+与四格非均匀（27/32）同源（`outputs/tables/stage7_drift.csv`、`outputs/tables/stage6_fourcell.csv`）。
 
 ## 支撑与定位主张
 
 **C4.1 校准后果可用人群干预前准确率描述（描述性位置标记，非可移植判据）。**
 - 数字：差中差 16/16 为正且 CI 不含零（+0.110～+0.482）；变号点类别口径
   0.58–0.62、混合口径 0.65–0.74。
-- 出处：`stage6_did.csv`、`STAGE5.md` §3。反例指针：R4。
+- 出处：`outputs/tables/stage6_did.csv`、`docs/stage5/STAGE5.md` §3。反例指针：R4。
 
 **C4.2 跨域数量级一致性检验（dogs；不称预测）。**
 - 数字：food101 32 格拟合（斜率 −0.330、R² = 0.69）；dogs 16 格 14 格落入
   95% 预测带；分方法带 10/16；8/16 外推；2 个未命中格均为 M3ID 低组。
-- 出处：`stage8_dogs_transfer.csv`。
+- 出处：`outputs/tables/stage8_dogs_transfer.csv`。
 - 适用范围：分母 dogs 每组 720（120 类×6 张）、food101 每半区每组 600
   （50 类×12 张），跨域表格必须标注。
 - 反例指针：R10。
@@ -109,7 +109,7 @@
 - 数字：γ = +0.0097；模型聚类 [−0.0013, +0.0208]、类别 [−0.0039, +0.0233]、
   方法 [−0.0065, +0.0259]、格 [−0.0119, +0.0313]、t(3) [−0.0082, +0.0276]、
   整簇自助 [−0.0008, +0.0186]；N = 14656（答错 6677）。
-- 出处：`stage8_residual_regression.csv`、`stage8_summary.json`。
+- 出处：`outputs/tables/stage8_residual_regression.csv`、`outputs/tables/stage8_summary.json`。
 - 措辞上限：第一层只写"抬升覆盖全部样本、纠错只覆盖少数"；第二层维持
   "近似整体重标定"；不得写"错误侧超额抬升获汇总确立"。
 
@@ -117,11 +117,11 @@
 - 数字：θ = +0.0606 [+0.0159, +0.1053]（模型聚类）/[+0.0215, +0.0996]（类别）/
   [−0.0061, +0.1272]（格，不显著）；A=0.9 处拟合差约 +0.031、A=0.16 处约 −0.014；
   元回归三口径斜率 −0.0228 / +0.0330 / +0.0750（符号随权重口径翻转）。
-- 出处：`stage8_residual_regression.csv`、`stage8_metareg.csv`。
+- 出处：`outputs/tables/stage8_residual_regression.csv`、`outputs/tables/stage8_metareg.csv`。
 - 反例指针：R9、R11。
 
 **C5.3 第七阶段格数判定已按程序废止并留档。**
 - 数字：格数判定 11/12/9，二项符号检验双侧 p = 1.0；替换理由 = 统计量不可承重
   （"不显著"误作"可解释"、格数忽略估计精度、可判定格分布与功效混淆），
   非结果不合意。
-- 出处：`STAGE8.md` 2.6、`stage8_summary.json`（stage7_archive）。
+- 出处：`docs/stage8/STAGE8.md` 2.6、`outputs/tables/stage8_summary.json`（stage7_archive）。

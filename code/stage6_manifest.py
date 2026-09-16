@@ -19,7 +19,7 @@ for model in GPU_MAP:
 
 man['stage6'] = {
     'date': '2026-09-15',
-    'preregister': 'PREREGISTER_STAGE6.md',
+    'preregister': 'docs/stage6/PREREGISTER_STAGE6.md',
     'purpose': 'faithful reimplementation of official decoding methods + '
                'sharpening controls + constant-offset correction test; '
                'no new measurement schemes, no new methods proposed',

@@ -106,7 +106,7 @@
  ],
  "stage3": {
   "date": "2026-09-13/14",
-  "preregister": "PREREGISTER_STAGE3.md",
+  "preregister": "docs/stage3/PREREGISTER_STAGE3.md",
   "closedset": {
    "task": "101-option (food101) / 120-option (dogs) number-choice, per-sample deterministic candidate shuffle seed f\"{file}|{variant}\"",
    "variants": [
@@ -159,7 +159,7 @@
  },
  "stage4": {
   "date": "2026-09-14",
-  "preregister": "PREREGISTER_STAGE4.md",
+  "preregister": "docs/stage4/PREREGISTER_STAGE4.md",
   "probe": {
    "definition": "name-restricted sum log-likelihood ranking under the open-set naming prompt; teacher-forced scoring against a shared prompt KV cache (per-candidate deepcopy), exact lp0 pruning; blank-image control on the same samples",
    "validity_gate": "known-stratum probe accuracy >= 0.90 AND blank-control rank diff CI > 0 (uniform across models)"
@@ -190,7 +190,7 @@
     "gate": "FAIL",
     "fullname_conditional": 0.6701
    },
-   "glm46v": "probe + naming subset only (see STAGE4.md section 7)"
+   "glm46v": "probe + naming subset only (see docs/stage4/STAGE4.md section 7)"
   },
   "outcome": "primary probe failed the pre-registered validity gate on ALL models; confirmatory set (llava16, internvl4b) invalid -> no confirmatory judgments executed; conditional granularity diagnosis: probe accuracy ~1.0 among full-name answerers; blank control passes everywhere",
   "dropped": {
@@ -211,7 +211,7 @@
  },
  "stage5": {
   "date": "2026-09-15",
-  "preregister": "PREREGISTER_STAGE5.md",
+  "preregister": "docs/stage5/PREREGISTER_STAGE5.md",
   "goal": "unify conclusions into one main line; test the pre-registered base-rate relation (dECE predictable from pre-intervention accuracy / calibration gap, with a crossing point)",
   "new_inference": {
    "food101_middle": {
@@ -270,7 +270,7 @@
  },
  "stage6": {
   "date": "2026-09-15",
-  "preregister": "PREREGISTER_STAGE6.md",
+  "preregister": "docs/stage6/PREREGISTER_STAGE6.md",
   "purpose": "faithful reimplementation of official decoding methods + sharpening controls + constant-offset correction test; no new measurement schemes, no new methods proposed",
   "methods": {
    "vcd": "official DAMO-NLP-SG/VCD@d6568ff: sigmoid-schedule diffusion noise on processor pixel_values (t=500), (1+a)z_clean - a z_noise, beta=0.1 plausibility mask; greedy (deviation: official samples)",
@@ -337,7 +337,7 @@
  },
  "stage7": {
   "date": "2026-09-16",
-  "preregister": "PREREGISTER_STAGE7.md (commit 30d9528, before any inference or judgment computation)",
+  "preregister": "docs/stage7/PREREGISTER_STAGE7.md (commit 30d9528, before any inference or judgment computation)",
   "purpose": "final round: wording-deciding supplementary analyses, fidelity close-out (SID bounded reproduction, robustness, dogs faithful rerun), evidence map + mainline; no new measurements or methods",
   "branch_decision": "strong wording branch (cell-wise sharpening consistency: 11 explainable vs 12 residual-structure cells of 23 judged)",
   "extra_env": {
@@ -407,7 +407,7 @@
  },
  "stage8": {
   "date": "2026-09-15",
-  "preregister": "PREREGISTER_STAGE8.md (commit 9e1f577f, before any stage-8 computation)",
+  "preregister": "docs/stage8/PREREGISTER_STAGE8.md (commit 9e1f577f, before any stage-8 computation)",
   "purpose": "final close-out: redo the branch decision with a per-sample residual regression (replaces the stage-7 cell-count rule), equivalence testing at +/-0.02, DL meta + meta-regression, dogs magnitude-consistency test (caliber A), M3ID wording recheck, git history audit, naming compliance re-check; zero new inference",
   "gpu_used": "none (re-analysis of stage-6/7 caches only)",
   "branch_decision": "weak branch: gamma = +0.0097, 95% CI [-0.0013, +0.0208] (model-clustered primary); all six clustering/CI variants contain 0",
@@ -465,6 +465,6 @@
    "code/stage8_transfer.py",
    "code/stage8_figures.py"
   ],
-  "seal": "project sealed after this stage: no further experiments, re-analyses, or supplementary rounds; paper prose is the only remaining work (based on CLAIMS_STAGE8.md and MAINLINE_STAGE8.md)"
+  "seal": "project sealed after this stage: no further experiments, re-analyses, or supplementary rounds; paper prose is the only remaining work (based on docs/stage8/CLAIMS_STAGE8.md and docs/stage8/MAINLINE_STAGE8.md)"
  }
 }

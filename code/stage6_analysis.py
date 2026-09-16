@@ -3,7 +3,7 @@
 Reads outputs/raw/{model}_s6_{eval,dev,dose}_naming.jsonl (+ firstdist npz) and
 produces outputs/tables/stage6_*.csv + outputs/tables/stage6_summary.json.
 
-Pre-registered judgments (PREREGISTER_STAGE6.md section 4):
+Pre-registered judgments (docs/stage6/PREREGISTER_STAGE6.md section 4):
   H-A  paired confidence increment on unchanged-answer samples, bootstrap CI
   H-B  sharpening controls (truncation / temperature) reproduction ratio rho
   C    four-cell decomposition, pairwise increment-difference CIs

@@ -1,7 +1,7 @@
-# CONCLUSIONS.md — 免训练幻觉抑制方法在罕见对象上的行为
+# docs/stage2/CONCLUSIONS.md — 免训练幻觉抑制方法在罕见对象上的行为
 
 项目目录:`/home/g203-4028/projects/hallucination-mitigation-deficit`
-生成时间:2026-09-13。全部数字来自 `outputs/tables/lvis_*.csv`(由 `code/stage1_analysis.py` 从 `outputs/raw/lvis_*.jsonl` 逐样本记录重算得出),可复算。样本:LVIS v1 频率分组,高频组(f)与低频组(r)各 n=97(两组同规模、同图像域;低频组受 LVIS 结构性限制不足 300 张,详见 `BLOCKING_NOTE_LOW_TIER_STAGE1.md`)。模型:Qwen3.5-4B 与 Qwen3.5-9B(均 bf16,GPU 4/5)。任务:对象命名(允许弃权)+ 对象存在性(正/负样本)。方法:直接回答 vs VCD/MIB/LCD 三种免训练抑制方法,同一解码框架、同一提示词、贪心解码,逐样本配对。
+生成时间:2026-09-13。全部数字来自 `outputs/tables/lvis_*.csv`(由 `code/stage1_analysis.py` 从 `outputs/raw/lvis_*.jsonl` 逐样本记录重算得出),可复算。样本:LVIS v1 频率分组,高频组(f)与低频组(r)各 n=97(两组同规模、同图像域;低频组受 LVIS 结构性限制不足 300 张,详见 `docs/stage1/BLOCKING_NOTE_LOW_TIER_STAGE1.md`)。模型:Qwen3.5-4B 与 Qwen3.5-9B(均 bf16,GPU 4/5)。任务:对象命名(允许弃权)+ 对象存在性(正/负样本)。方法:直接回答 vs VCD/MIB/LCD 三种免训练抑制方法,同一解码框架、同一提示词、贪心解码,逐样本配对。
 
 ---
 
@@ -150,4 +150,4 @@ wait
 ./venv/bin/python code/make_manifest.py
 ```
 
-原始逐样本输出:`outputs/raw/lvis_{q4b,q9b}_main_{naming,existence}.jsonl`(2328 条/模型);汇总表:`outputs/tables/lvis_{main,effects,remedy,judgment2_auc}.csv`;图:`outputs/figures/lvis_figure{1,2,3}.pdf` 与 20 张抽检拼图 `lvis_contact_sheet_20.png`;环境与数据指纹:`run_manifest_stage1.json`。
+原始逐样本输出:`outputs/raw/lvis_{q4b,q9b}_main_{naming,existence}.jsonl`(2328 条/模型);汇总表:`outputs/tables/lvis_{main,effects,remedy,judgment2_auc}.csv`;图:`outputs/figures/lvis_figure{1,2,3}.pdf` 与 20 张抽检拼图 `lvis_contact_sheet_20.png`;环境与数据指纹:`docs/stage1/run_manifest_stage1.json`。
