@@ -33,3 +33,19 @@ def test_construct_normalizer_without_vqa_objects():
 
 def test_refuse_incomplete_reference_source():
     with pytest.raises(ValueError):mod.extract_vqa_normalizer(SOURCE.replace('self.punct=', 'self.unexpected='))
+
+
+def test_fetch_records_failure_and_continues(tmp_path,monkeypatch):
+    import json,sys
+    manifest=tmp_path/'assets.json'
+    manifest.write_text(json.dumps([{'group':'papers','url':'bad','local_path':'cache/bad'}, {'group':'papers','url':'good','local_path':'cache/good'}]))
+    def fake_download(url,dest,expected=None):
+        if url=='bad':raise RuntimeError('specific transport failure')
+        dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(b'ok');return 'hash'
+    monkeypatch.setattr(mod,'download',fake_download)
+    monkeypatch.setattr(sys,'argv',['fetch_assets','--root',str(tmp_path),'--manifest',str(manifest),'--group','papers'])
+    with pytest.raises(SystemExit):mod.main()
+    reports=list((tmp_path/'outputs/records').glob('assets_papers_*.json'))
+    rows=json.loads(reports[0].read_text())
+    assert rows[0]['status']=='error' and rows[0]['error']=='specific transport failure'
+    assert rows[1]['status']=='ok' and rows[1]['downloaded_sha256']=='hash'

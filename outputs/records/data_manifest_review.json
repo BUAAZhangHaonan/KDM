@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "time_utc": "2026-09-19T09:22:05.033076+00:00",
+  "n": 9167,
+  "unique_ids": 9167,
+  "missing_images": [],
+  "counts": {
+    "food101:dev": 2424,
+    "food101:eval": 2424,
+    "vizwiz:eval": 3501,
+    "vizwiz:dev": 818
+  },
+  "food_split_preserved": true,
+  "food_source_sha256": "ef390e58ae1b0d1f1b230668a9326bda249dfdb4fa6b502c55443409196168db",
+  "vizwiz_annotation_sha256": "f96a6a42da56fa067d023ec25a841df840d6c5989b1b0e7b0e6f0d269c617ab7",
+  "vizwiz_split_rule": "SHA256 of UTF-8 original image filename; first eight hex digits mod 5 == 0 gives dev, otherwise eval",
+  "vizwiz_answerable": {
+    "0": 1385,
+    "1": 2934
+  },
+  "manifests": {
+    "food101": {
+      "path": "data/current/food101.jsonl",
+      "sha256": "bad3fe8c0335da84661c45bd29b5ea755a8bea3527440b9600e0bf5dc02adcbd"
+    },
+    "vizwiz": {
+      "path": "data/current/vizwiz.jsonl",
+      "sha256": "092dde6859c1011df727a2f14aecee93d6c0fcd632455256872d67db4d8c2eb2"
+    },
+    "interface16": {
+      "path": "data/current/interface16.jsonl",
+      "sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4"
+    },
+    "all": {
+      "path": "data/current/all.jsonl",
+      "sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c"
+    }
+  }
+}

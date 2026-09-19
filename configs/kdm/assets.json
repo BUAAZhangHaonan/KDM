@@ -2,64 +2,86 @@
   {
     "group": "papers",
     "url": "https://aclanthology.org/2025.acl-long.479.pdf",
-    "local_path": "references/papers/CDA_ACL2025.pdf"
+    "local_path": "cache/assets/references/papers/CDA_ACL2025.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/2504.10020v4",
-    "local_path": "references/papers/Mirage_NeurIPS2025.pdf"
+    "local_path": "cache/assets/references/papers/Mirage_NeurIPS2025.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/2403.14003",
-    "local_path": "references/papers/M3ID_CVPR2024.pdf"
+    "local_path": "cache/assets/references/papers/M3ID_CVPR2024.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/2311.16922",
-    "local_path": "references/papers/VCD_CVPR2024.pdf"
+    "local_path": "cache/assets/references/papers/VCD_CVPR2024.pdf"
   },
   {
     "group": "papers",
     "url": "https://aclanthology.org/2021.acl-long.522.pdf",
-    "local_path": "references/papers/DExperts_ACL2021.pdf"
+    "local_path": "cache/assets/references/papers/DExperts_ACL2021.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/2204.13631",
-    "local_path": "references/papers/ReliableVQA_ECCV2022.pdf"
+    "local_path": "cache/assets/references/papers/ReliableVQA_ECCV2022.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/2408.02032",
-    "local_path": "references/papers/SID.pdf"
+    "local_path": "cache/assets/references/papers/SID.pdf"
   },
   {
     "group": "papers",
     "url": "https://arxiv.org/pdf/1206.2459",
-    "local_path": "references/papers/Renyi_divergence.pdf"
+    "local_path": "cache/assets/references/papers/Renyi_divergence.pdf"
   },
   {
     "group": "papers",
     "url": "https://aclanthology.org/2024.acl-long.498.pdf",
-    "local_path": "references/papers/MM_SAP_ACL2024.pdf"
+    "local_path": "cache/assets/references/papers/MM_SAP_ACL2024.pdf"
   },
   {
     "group": "vizwiz",
     "url": "https://vizwiz.cs.colorado.edu/VizWiz_final/vqa_data/Annotations.zip",
-    "local_path": "data/assets/Annotations.zip",
-    "extract_to": "data/vizwiz"
+    "local_path": "cache/assets/vizwiz/Annotations.zip",
+    "extract_to": "cache/assets/vizwiz/extracted"
   },
   {
     "group": "vizwiz",
     "url": "https://vizwiz.cs.colorado.edu/VizWiz_final/images/val.zip",
-    "local_path": "data/assets/val.zip",
-    "extract_to": "data/vizwiz"
+    "local_path": "cache/assets/vizwiz/val.zip",
+    "extract_to": "cache/assets/vizwiz/extracted"
   },
   {
     "group": "vqa_code",
-    "url": "https://raw.githubusercontent.com/GT-Vision-Lab/VQA/master/PythonEvaluationTools/vqaEvaluation/vqaEval.py",
-    "local_path": "data/assets/vqaEval_original.py",
-    "vqa_normalizer": true
+    "url": "https://api.github.com/repos/GT-Vision-Lab/VQA/git/blobs/e4ff7887d53195f12856ab1e9087e69abe2e75c8",
+    "local_path": "cache/assets/vqa_code/vqaEval_original.py",
+    "vqa_normalizer": true,
+    "original_url": "https://raw.githubusercontent.com/GT-Vision-Lab/VQA/master/PythonEvaluationTools/vqaEvaluation/vqaEval.py",
+    "github_blob": "e4ff7887d53195f12856ab1e9087e69abe2e75c8"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2412.06775v1",
+    "local_path": "cache/assets/references/papers/VCD_Analysis.pdf"
+  },
+  {
+    "group": "papers",
+    "url": "https://aclanthology.org/2024.findings-acl.937.pdf",
+    "local_path": "cache/assets/references/papers/ICD_FindingsACL2024.pdf"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2309.03883",
+    "local_path": "cache/assets/references/papers/DoLa.pdf"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2410.11779",
+    "local_path": "cache/assets/references/papers/DeCo.pdf"
   }
 ]

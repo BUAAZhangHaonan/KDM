@@ -1,0 +1,21 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pytest",
+    "tests/test_io_data.py",
+    "tests/test_asset_normalizer.py",
+    "--basetemp=/home/g203-4028/projects/knowledge-deficit-mitigation/cache/pytest/data_assets",
+    "-q"
+  ],
+  "environment": {
+    "TMPDIR": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/tmp",
+    "PYTHONPATH": "/home/g203-4028/projects/knowledge-deficit-mitigation/src",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "exit_code": 0,
+  "stdout": "...................                                                      [100%]\n19 passed in 0.23s\n",
+  "stderr": "",
+  "time_utc": "2026-09-19T09:23:49.419549+00:00",
+  "scope": "data and downloader software regression only"
+}

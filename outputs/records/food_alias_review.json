@@ -1,0 +1,766 @@
+{
+  "reviewer": "Codex data_assets agent",
+  "scope": "All 101 class alias lists read individually, compared to source manifest classes; no output scores or intervention results consulted",
+  "human_confirmation": "pending: this is an agent review, not human approval",
+  "sha256": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+  "n_classes": 101,
+  "n_aliases": 147,
+  "wordnet_used": false,
+  "cross_class_collisions": [],
+  "decision": "Retain supplied conservative aliases unchanged; no generic food/category hypernyms added",
+  "classes": [
+    {
+      "class": "apple_pie",
+      "aliases": [
+        "apple pie"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "baby_back_ribs",
+      "aliases": [
+        "baby back ribs",
+        "baby back rib"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "baklava",
+      "aliases": [
+        "baklava"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "beef_carpaccio",
+      "aliases": [
+        "beef carpaccio"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "beef_tartare",
+      "aliases": [
+        "beef tartare"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "beet_salad",
+      "aliases": [
+        "beet salad"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "beignets",
+      "aliases": [
+        "beignets",
+        "beignet"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "bibimbap",
+      "aliases": [
+        "bibimbap"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "bread_pudding",
+      "aliases": [
+        "bread pudding"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "breakfast_burrito",
+      "aliases": [
+        "breakfast burrito"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "bruschetta",
+      "aliases": [
+        "bruschetta"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "caesar_salad",
+      "aliases": [
+        "caesar salad"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "cannoli",
+      "aliases": [
+        "cannoli",
+        "cannolo"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "caprese_salad",
+      "aliases": [
+        "caprese salad"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "carrot_cake",
+      "aliases": [
+        "carrot cake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "ceviche",
+      "aliases": [
+        "ceviche"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "cheesecake",
+      "aliases": [
+        "cheesecake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "cheese_plate",
+      "aliases": [
+        "cheese plate"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "chicken_curry",
+      "aliases": [
+        "chicken curry"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "chicken_quesadilla",
+      "aliases": [
+        "chicken quesadilla",
+        "chicken quesadillas"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "chicken_wings",
+      "aliases": [
+        "chicken wings",
+        "chicken wing"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "chocolate_cake",
+      "aliases": [
+        "chocolate cake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "chocolate_mousse",
+      "aliases": [
+        "chocolate mousse"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "churros",
+      "aliases": [
+        "churros",
+        "churro"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "clam_chowder",
+      "aliases": [
+        "clam chowder"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "club_sandwich",
+      "aliases": [
+        "club sandwich",
+        "club sandwiches"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "crab_cakes",
+      "aliases": [
+        "crab cakes",
+        "crab cake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "creme_brulee",
+      "aliases": [
+        "creme brulee",
+        "crème brûlée"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "croque_madame",
+      "aliases": [
+        "croque madame"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "cup_cakes",
+      "aliases": [
+        "cup cakes",
+        "cupcake",
+        "cupcakes",
+        "cup cake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "deviled_eggs",
+      "aliases": [
+        "deviled eggs",
+        "deviled egg",
+        "devilled eggs",
+        "devilled egg"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "donuts",
+      "aliases": [
+        "donuts",
+        "donut",
+        "doughnut",
+        "doughnuts"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "dumplings",
+      "aliases": [
+        "dumplings",
+        "dumpling"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "edamame",
+      "aliases": [
+        "edamame"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "eggs_benedict",
+      "aliases": [
+        "eggs benedict"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "escargots",
+      "aliases": [
+        "escargots",
+        "escargot"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "falafel",
+      "aliases": [
+        "falafel"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "filet_mignon",
+      "aliases": [
+        "filet mignon"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "fish_and_chips",
+      "aliases": [
+        "fish and chips"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "foie_gras",
+      "aliases": [
+        "foie gras"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "french_fries",
+      "aliases": [
+        "french fries",
+        "french fry"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "french_onion_soup",
+      "aliases": [
+        "french onion soup"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "french_toast",
+      "aliases": [
+        "french toast"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "fried_calamari",
+      "aliases": [
+        "fried calamari"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "fried_rice",
+      "aliases": [
+        "fried rice"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "frozen_yogurt",
+      "aliases": [
+        "frozen yogurt"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "garlic_bread",
+      "aliases": [
+        "garlic bread"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "gnocchi",
+      "aliases": [
+        "gnocchi"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "greek_salad",
+      "aliases": [
+        "greek salad"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "grilled_cheese_sandwich",
+      "aliases": [
+        "grilled cheese sandwich",
+        "grilled cheese sandwiches"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "grilled_salmon",
+      "aliases": [
+        "grilled salmon"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "guacamole",
+      "aliases": [
+        "guacamole"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "gyoza",
+      "aliases": [
+        "gyoza"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "hamburger",
+      "aliases": [
+        "hamburger",
+        "hamburgers"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "hot_and_sour_soup",
+      "aliases": [
+        "hot and sour soup"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "hot_dog",
+      "aliases": [
+        "hot dog",
+        "hot dogs"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "huevos_rancheros",
+      "aliases": [
+        "huevos rancheros"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "hummus",
+      "aliases": [
+        "hummus",
+        "houmous"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "ice_cream",
+      "aliases": [
+        "ice cream"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "lasagna",
+      "aliases": [
+        "lasagna",
+        "lasagne"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "lobster_bisque",
+      "aliases": [
+        "lobster bisque"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "lobster_roll_sandwich",
+      "aliases": [
+        "lobster roll sandwich",
+        "lobster roll",
+        "lobster rolls",
+        "lobster roll sandwiches"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "macaroni_and_cheese",
+      "aliases": [
+        "macaroni and cheese",
+        "macaroni cheese",
+        "mac and cheese"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "macarons",
+      "aliases": [
+        "macarons",
+        "macaron"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "miso_soup",
+      "aliases": [
+        "miso soup"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "mussels",
+      "aliases": [
+        "mussels",
+        "mussel"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "nachos",
+      "aliases": [
+        "nachos"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "omelette",
+      "aliases": [
+        "omelette",
+        "omelet",
+        "omelets",
+        "omelettes"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "onion_rings",
+      "aliases": [
+        "onion rings",
+        "onion ring"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "oysters",
+      "aliases": [
+        "oysters",
+        "oyster"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pad_thai",
+      "aliases": [
+        "pad thai"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "paella",
+      "aliases": [
+        "paella"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pancakes",
+      "aliases": [
+        "pancakes",
+        "pancake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "panna_cotta",
+      "aliases": [
+        "panna cotta"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "peking_duck",
+      "aliases": [
+        "peking duck"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pho",
+      "aliases": [
+        "pho"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pizza",
+      "aliases": [
+        "pizza"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pork_chop",
+      "aliases": [
+        "pork chop",
+        "pork chops"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "poutine",
+      "aliases": [
+        "poutine"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "prime_rib",
+      "aliases": [
+        "prime rib"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "pulled_pork_sandwich",
+      "aliases": [
+        "pulled pork sandwich",
+        "pulled pork sandwiches"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "ramen",
+      "aliases": [
+        "ramen"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "ravioli",
+      "aliases": [
+        "ravioli"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "red_velvet_cake",
+      "aliases": [
+        "red velvet cake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "risotto",
+      "aliases": [
+        "risotto"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "samosa",
+      "aliases": [
+        "samosa",
+        "samosas"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "sashimi",
+      "aliases": [
+        "sashimi"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "scallops",
+      "aliases": [
+        "scallops",
+        "scallop"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "seaweed_salad",
+      "aliases": [
+        "seaweed salad"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "shrimp_and_grits",
+      "aliases": [
+        "shrimp and grits"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "spaghetti_bolognese",
+      "aliases": [
+        "spaghetti bolognese"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "spaghetti_carbonara",
+      "aliases": [
+        "spaghetti carbonara"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "spring_rolls",
+      "aliases": [
+        "spring rolls",
+        "spring roll"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "steak",
+      "aliases": [
+        "steak"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "strawberry_shortcake",
+      "aliases": [
+        "strawberry shortcake"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "sushi",
+      "aliases": [
+        "sushi"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "tacos",
+      "aliases": [
+        "tacos",
+        "taco"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "takoyaki",
+      "aliases": [
+        "takoyaki"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "tiramisu",
+      "aliases": [
+        "tiramisu"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "tuna_tartare",
+      "aliases": [
+        "tuna tartare"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    },
+    {
+      "class": "waffles",
+      "aliases": [
+        "waffles",
+        "waffle"
+      ],
+      "decision": "accept as canonical name, direct synonym, spelling variant or singular/plural"
+    }
+  ]
+}

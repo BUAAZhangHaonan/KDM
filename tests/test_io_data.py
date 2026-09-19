@@ -36,6 +36,8 @@ def test_complete_manifests(tmp_path):
     annotation=tmp_path/'val.json';annotation.write_text(json.dumps([{'image':'x.png','question':'q','answers':[{'answer':'a'}]*10,'answerable':0}]))
     vizwiz_manifest(annotation,tmp_path,tmp_path/'viz.jsonl');v=list(read_jsonl(tmp_path/'viz.jsonl'))
     assert len(v)==1 and v[0]['annotated_answerable']==0
+    with pytest.raises(ValueError,match='Expected 4319'):
+        vizwiz_manifest(annotation,tmp_path,tmp_path/'incomplete.jsonl',expected_count=4319)
 
 @pytest.mark.parametrize('text,expected',[('UNKNOWN','abstain'),('I do not know.','abstain'),('', 'invalid'),('No',None),('Probably milk',None),('It is unknown whether this is milk',None)])
 def test_exact_and_semantic_labels(text,expected):assert lexical_label(text)==expected
@@ -45,8 +47,8 @@ def test_scoring_named_categories():
     aliases={'cup_cakes':['cupcake','cupcakes'],'crab_cakes':['crab cake','crab cakes']}
     assert food_correct('Cupcake','cup_cakes',aliases)
     assert not food_correct('person','crab_cakes',aliases)
-    assert vqa_score('yes',['yes']*3+['no']*7)==pytest.approx(.9)
-    assert vqa_score('yes',['yes']*4+['no']*6)==1
+    assert vqa_score('yes',['yes']*3+['no']*7,str.lower)==pytest.approx(.9)
+    assert vqa_score('yes',['yes']*4+['no']*6,str.lower)==1
 
 
 def test_full_annotation(tmp_path):
@@ -62,3 +64,33 @@ def test_judge_parser():
     spec=importlib.util.spec_from_file_location('judge_script',path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
     assert m.parse_label('{"label":"answer_uncertain","evidence_span":"Maybe","answer_text":"milk"}','Maybe milk')['answer_text']=='milk'
     with pytest.raises(ValueError):m.parse_label('{"label":"abstain","evidence_span":"invented"}','UNKNOWN')
+
+
+def test_manifest_failure_preserves_existing(tmp_path):
+    from kdm.data import write_manifest
+    image=tmp_path/'image';image.write_bytes(b'exists')
+    out=tmp_path/'manifest';out.write_text('previous')
+    row={'id':'same','image_path':str(image)}
+    with pytest.raises(ValueError):write_manifest([row,row],out)
+    assert out.read_text()=='previous'
+    with pytest.raises(FileNotFoundError):write_manifest([{'id':'x','image_path':str(tmp_path/'missing')}],out)
+    assert out.read_text()=='previous'
+
+
+def test_vizwiz_refuses_incomplete_answers(tmp_path):
+    image=tmp_path/'image';image.write_bytes(b'exists')
+    annotation=tmp_path/'val.json'
+    annotation.write_text(json.dumps([{'image':'image','question':'q','answers':[{'answer':'a'}]*9,'answerable':1}]))
+    with pytest.raises(ValueError,match='ten'):vizwiz_manifest(annotation,tmp_path,tmp_path/'out')
+
+
+def test_merge_retains_every_row_and_refuses_overlapping_ids(tmp_path):
+    from kdm.data import write_manifest,merge_manifests
+    image=tmp_path/'image';image.write_bytes(b'exists')
+    a=tmp_path/'a';b=tmp_path/'b';out=tmp_path/'combined'
+    write_manifest([{'id':'a','image_path':str(image),'split':'dev'}],a)
+    write_manifest([{'id':'b','image_path':str(image),'split':'eval'}],b)
+    merge_manifests([a,b],out)
+    assert [x['split'] for x in read_jsonl(out)]==['dev','eval']
+    with pytest.raises(ValueError):merge_manifests([a,a],out)
+    assert len(list(read_jsonl(out)))==2

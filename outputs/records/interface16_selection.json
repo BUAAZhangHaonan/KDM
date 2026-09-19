@@ -1,0 +1,24 @@
+{
+  "purpose": "Software interface parity only; full research manifest is unchanged",
+  "selection": "First existing manifest record for each of first 16 distinct classes in source order",
+  "source_sha256": "ef390e58ae1b0d1f1b230668a9326bda249dfdb4fa6b502c55443409196168db",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "ids": [
+    "food101:apple_pie_group_000.jpg",
+    "food101:baby_back_ribs_group_000.jpg",
+    "food101:baklava_group_000.jpg",
+    "food101:beef_carpaccio_group_000.jpg",
+    "food101:beef_tartare_group_000.jpg",
+    "food101:beet_salad_group_000.jpg",
+    "food101:beignets_group_000.jpg",
+    "food101:bibimbap_group_000.jpg",
+    "food101:bread_pudding_group_000.jpg",
+    "food101:breakfast_burrito_group_000.jpg",
+    "food101:bruschetta_group_000.jpg",
+    "food101:caesar_salad_group_000.jpg",
+    "food101:cannoli_group_000.jpg",
+    "food101:caprese_salad_group_000.jpg",
+    "food101:carrot_cake_group_000.jpg",
+    "food101:ceviche_group_000.jpg"
+  ]
+}
