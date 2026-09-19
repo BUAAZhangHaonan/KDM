@@ -65,12 +65,14 @@ def test_completion_rejects_matching_key_with_failed_or_wrong_task():
 def test_donor_pool_requires_every_prompt_and_termination():
     donor_pool=script('complete_response_audit').donor_pool
     rows=[{'model':'m','sample':{'id':'x'},'method':'direct','guided':True,'kind':'main',
-           'marker':marker,'text':'UNKNOWN','key':marker,'tokens':[0,3],'terminated':True} for marker in MARKERS]
+           'marker':marker,'text':'UNKNOWN','key':marker,'tokens':[0,3],'terminated':True,'status':'ok'} for marker in MARKERS]
     assert len(donor_pool(rows,'m',{})[0]['x'])==4
     with pytest.raises(ValueError,match='four'):donor_pool(rows[:-1],'m',{})
     with pytest.raises(ValueError,match='Duplicate'):donor_pool(rows+[rows[0]],'m',{})
     rows[0]['terminated']=False
-    with pytest.raises(ValueError,match='Truncated'):donor_pool(rows,'m',{})
+    pool,_=donor_pool(rows,'m',{})
+    assert script('complete_response_audit').donor_measurement_status(pool['x'])=='incomplete_direct_donor_pool'
+    assert pool['x'][0]['tokens']==[0,3] and pool['x'][0]['terminated'] is False
 
 
 def test_method_cannot_shrink_denominator():
@@ -204,3 +206,113 @@ def test_report_rejects_extra_closed_record():
     selection=[{'model':'m','dataset':'fixture','selected':True}]
     with pytest.raises(ValueError,match='Closed-set records do not match'):
         validate_report_coverage(report_records(samples),samples,selection,[{'model':'extra','sample':samples[0]}])
+
+
+
+def test_incomplete_donor_audit_records_undefined_without_model_generation(tmp_path,monkeypatch):
+    mod=script('complete_response_audit')
+    image=tmp_path/'image.png';Image.new('RGB',(8,8)).save(image)
+    sample={'id':'x','split':'eval','dataset':'fixture','question':'q','image_path':str(image)}
+    tasks=[t for t in experiment_tasks([sample]) if t['method']=='direct']
+    rows=[{**t,'model':'m','key':task_id('m',t),'status':'ok','text':'UNKNOWN',
+           'tokens':[0,3],'terminated':True,'seed':0} for t in tasks]
+    rows[0]['tokens']=[0]*32;rows[0]['terminated']=False
+    manifest=tmp_path/'manifest.jsonl';manifest.write_text(json.dumps(sample)+'\n')
+    records=tmp_path/'records.jsonl';records.write_text(''.join(json.dumps(r)+'\n' for r in rows))
+    annotations=tmp_path/'annotations.jsonl';annotations.write_text(''.join(json.dumps({
+        'key':r['key'],'text':r['text'],'label':'abstain','evidence':r['text'],'answer_text':''})+'\n' for r in rows))
+    spec=tmp_path/'spec.json';spec.write_text(json.dumps({'purpose':'CPU_TEST_ONLY'}))
+    out=tmp_path/'outputs/verification/audit.jsonl'
+    monkeypatch.setattr(mod,'make_backend',lambda *args:pytest.fail('Undefined pool must not load a backend'))
+    monkeypatch.setattr('sys.argv',['audit','--root',str(tmp_path),'--manifest',str(manifest),'--records',str(records),
+        '--annotations',str(annotations),'--model-spec',str(spec),'--model','m','--gpu','0','--methods','vcd','--out',str(out)])
+    mod.main()
+    result=[json.loads(line) for line in out.read_text().splitlines()]
+    assert len(result)==16
+    assert all(r['measurement_status']=='incomplete_direct_donor_pool' and r['finite_response_identity'] is None for r in result)
+    assert all(len(r['donor_pool'])==4 and r['donor_pool'][0]['tokens']==[0]*32 and not r['donor_pool'][0]['terminated'] for r in result)
+
+
+def test_complete_audit_execution_admission_before_backend(tmp_path,monkeypatch):
+    mod=script('complete_response_audit');import kdm.protocol as protocol
+    called=[]
+    monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
+    monkeypatch.setattr(protocol,'validate_runtime',lambda *args:called.append('runtime'))
+    monkeypatch.setattr(protocol,'code_identity',lambda root:called.append('source') or ['blob'])
+    assert mod.execution_identity(tmp_path,{},'m',tmp_path/'outputs/formal/audit.jsonl','0')==['blob']
+    assert called==['runtime','source']
+    with pytest.raises(ValueError,match='verification'):
+        mod.execution_identity(tmp_path,{'purpose':'CPU_TEST_ONLY'},'m',tmp_path/'outputs/formal/audit.jsonl','0')
+
+
+def test_complete_audit_rejects_missing_or_changed_input_identity(tmp_path):
+    mod=script('complete_response_audit')
+    path=tmp_path/'records.jsonl';path.write_text(json.dumps({'key':'x','identity':'changed'})+'\n')
+    with pytest.raises(ValueError,match='sidecar'):mod.validate_input_ledgers([path],'spec',True)
+    from kdm.io import stable_hash
+    definition={'backend_spec_sha256':'spec'}
+    path.with_suffix('.identity.json').write_text(json.dumps({'definition':definition,'identity':stable_hash(definition)}))
+    with pytest.raises(ValueError,match='record identity'):mod.validate_input_ledgers([path],'spec',True)
+    with pytest.raises(ValueError,match='backend spec'):mod.validate_input_ledgers([path],'other',True)
+
+
+def test_invalid_donor_is_preserved_and_truncation_is_explicit():
+    mod=script('complete_response_audit')
+    rows=[{'model':'m','sample':{'id':'x'},'method':'direct','guided':True,'kind':'main','status':'ok',
+           'marker':marker,'text':'','key':marker,'tokens':[3],'terminated':True} for marker in MARKERS]
+    pools,_=mod.donor_pool(rows,'m',{})
+    assert len(pools['x'])==4 and all(row['label']=='invalid' for row in pools['x'])
+    assert mod.donor_measurement_status(pools['x'])=='no_concrete_donor'
+    pools['x'][0]['terminated']=False
+    assert mod.donor_measurement_status(pools['x'])=='incomplete_direct_donor_pool'
+
+
+
+def test_annotation_queue_rejects_duplicate_and_changed_identity(tmp_path):
+    from kdm.annotation import build_queue
+    source=tmp_path/'source.jsonl';row={'key':'x','text':'UNKNOWN','sample':{'question':'q'}}
+    source.write_text(json.dumps(row)+'\n');out=tmp_path/'queue.jsonl'
+    assert build_queue([source],out)==1 and build_queue([source],out)==1
+    with pytest.raises(ValueError,match='Duplicate'):build_queue([source,source],tmp_path/'dupe.jsonl')
+    row['text']='UNCLEAR';source.write_text(json.dumps(row)+'\n')
+    with pytest.raises(ValueError,match='differs'):build_queue([source],out)
+    assert json.loads(out.read_text())['text']=='UNKNOWN'
+
+
+def test_annotation_cannot_endorse_answer_and_abstain(tmp_path):
+    from kdm.annotation import validate_annotations
+    row={'key':'x','text':'UNKNOWN','label':'abstain','evidence':'UNKNOWN','answer_text':'UNKNOWN'}
+    path=tmp_path/'ann.jsonl';path.write_text(json.dumps(row)+'\n')
+    with pytest.raises(ValueError,match='cannot endorse'):validate_annotations(path)
+    mod=script('annotate_responses')
+    with pytest.raises(ValueError,match='cannot endorse'):
+        mod.parse_label(json.dumps({'label':'abstain','evidence_span':'UNKNOWN','answer_text':'UNKNOWN'}),'UNKNOWN')
+    with pytest.raises(ValueError,match='JSON object'):mod.parse_label('[]','UNKNOWN')
+
+
+def test_semantic_judge_is_blinded_and_keeps_raw_reply(tmp_path,monkeypatch):
+    mod=script('annotate_responses')
+    queue=tmp_path/'queue.jsonl';queue.write_text(json.dumps({'key':'private-model-method-key','text':'Maybe milk',
+        'question':'What is shown?','label':None,'source':'requires_semantic_review'})+'\n')
+    seen={}
+    class Response:
+        status_code=200
+        def raise_for_status(self):pass
+        def json(self):return {'model':'independent-judge','id':'reply-id','kdm_judge_receipt_sha256':'receipt-sha','choices':[{'finish_reason':'stop','message':{'content':json.dumps({
+            'label':'answer_uncertain','evidence_span':'Maybe','answer_text':'milk'})}}]}
+    class Session:
+        trust_env=True
+        def post(self,url,**kwargs):
+            seen.update(kwargs);seen['trust_env']=self.trust_env;return Response()
+    monkeypatch.setattr(mod.requests,'Session',Session)
+    out=tmp_path/'out.jsonl'
+    judge_spec=tmp_path/'judge.json';judge_spec.write_text('{}')
+    monkeypatch.setattr(mod,'validate_judge_identity',lambda *args:{'receipt':{},'receipt_sha256':'receipt-sha'})
+    monkeypatch.setattr('sys.argv',['judge','--root',str(tmp_path),'--queue',str(queue),'--endpoint','http://localhost:8000/v1',
+        '--judge-model','independent-judge','--judge-spec',str(judge_spec),'--out',str(out)])
+    mod.main()
+    request=json.loads(seen['json']['messages'][1]['content'])
+    assert set(request)=={'task','question','answer','instructions'}
+    assert 'private-model-method-key' not in json.dumps(seen['json'])
+    assert seen['trust_env'] is False and seen['allow_redirects'] is False
+    row=json.loads(out.read_text());assert row['judge_response_id']=='reply-id' and row['judge_raw_content']

@@ -1,0 +1,19 @@
+{
+  "schema": "kdm_full_human_review_queue_v1",
+  "queue_sha256": "62a0196b4a49d2afeda43a61b3dc211abc8df6b872a476a495d781950ddb6d49",
+  "record_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+      "sha256": "939f79b5d15c3f87939f56c46d68e677c66da11e0a9fbdde10c890e123bc0e67"
+    },
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl",
+      "sha256": "6b225b61cca42998119a3ca3b90ddb8cee2fdd22627f5b113fc083b7ff6d41cf"
+    }
+  ],
+  "annotation_sha256": "4b0e522150e41936e433150c8a77a614feabb49d6e1c4506ce99af0195b0341c",
+  "required_count": 296,
+  "required_keys_sha256": "b510cb0c0bc6f0acc7602ef39cf495d3035b5e1501b67da711adc12b810374b7",
+  "remaining_checklist": "all_remaining_formal_outputs",
+  "human_review_completed": false
+}

@@ -15,7 +15,8 @@ def main():
     target=within(a.root,a.out_dir);target.mkdir(parents=True,exist_ok=True)
     spec=importlib.util.spec_from_file_location('vqa_official',a.normalizer);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
     ev=m.VQAEval(None,None);normalizer=lambda x:ev.processDigitArticle(ev.processPunctuation(x))
-    annotations=validate_annotations(a.annotations)
+    from kdm.human_review import validate_human_review
+    annotations=validate_human_review(a.annotations,a.records)
     for path in a.records:
         for record in read_jsonl(path):
             annotation=annotations.get(record['key'])

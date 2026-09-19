@@ -42,7 +42,8 @@ def main(argv=None):
     if a.command=='select':
         from .annotation import validate_annotations
         from .pipeline import select_models
-        ann=validate_annotations(a.annotations);samples=list(read_jsonl(a.manifest))
+        from .human_review import validate_human_review
+        ann=validate_human_review(a.annotations,a.census);samples=list(read_jsonl(a.manifest))
         from .protocol import validate_census_collection
         candidates=[r['key'] for r in json.load(open(root/'configs/kdm/models.json'))]
         validate_census_collection(a.census,samples,candidates)

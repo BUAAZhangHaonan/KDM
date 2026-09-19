@@ -1,0 +1,439 @@
+{
+  "data": "CPU mock model and synthetic fixture; no real model inference",
+  "commands": [
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/annotate_responses.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: annotate_responses.py [-h] --root ROOT --queue QUEUE --endpoint\n                             ENDPOINT --judge-model JUDGE_MODEL --judge-spec\n                             JUDGE_SPEC --out OUT\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --queue QUEUE\n  --endpoint ENDPOINT\n  --judge-model JUDGE_MODEL\n  --judge-spec JUDGE_SPEC\n  --out OUT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/build_reports.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: build_reports.py [-h] --root ROOT --records RECORDS [RECORDS ...]\n                        --manifest MANIFEST --selection SELECTION\n                        [--methods METHODS] [--method-plan METHOD_PLAN]\n                        --annotations ANNOTATIONS --aliases ALIASES --closed\n                        CLOSED [CLOSED ...] --normalizer NORMALIZER --out-dir\n                        OUT_DIR\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --records RECORDS [RECORDS ...]\n  --manifest MANIFEST\n  --selection SELECTION\n  --methods METHODS\n  --method-plan METHOD_PLAN\n  --annotations ANNOTATIONS\n  --aliases ALIASES\n  --closed CLOSED [CLOSED ...]\n  --normalizer NORMALIZER\n  --out-dir OUT_DIR\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/complete_response_audit.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: complete_response_audit.py [-h] --root ROOT --records RECORDS\n                                  [RECORDS ...] --manifest MANIFEST\n                                  --annotations ANNOTATIONS --model-spec\n                                  MODEL_SPEC --model MODEL [--methods METHODS]\n                                  --gpu {0,1,4,5} --out OUT\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --records RECORDS [RECORDS ...]\n  --manifest MANIFEST\n  --annotations ANNOTATIONS\n  --model-spec MODEL_SPEC\n  --model MODEL\n  --methods METHODS\n  --gpu {0,1,4,5}\n  --out OUT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/discover_models.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: discover_models.py [-h] --project PROJECT --candidates CANDIDATES\n                          --model-roots MODEL_ROOTS [MODEL_ROOTS ...] --out\n                          OUT\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT\n  --candidates CANDIDATES\n  --model-roots MODEL_ROOTS [MODEL_ROOTS ...]\n  --out OUT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/fetch_assets.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: fetch_assets.py [-h] --root ROOT --manifest MANIFEST --group\n                       {papers,vizwiz,vqa_code}\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --manifest MANIFEST\n  --group {papers,vizwiz,vqa_code}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/human_review.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: human_review.py [-h] --root ROOT {queue,merge} ...\n\npositional arguments:\n  {queue,merge}\n\noptions:\n  -h, --help     show this help message and exit\n  --root ROOT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/install.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: install.py [-h] --project PROJECT [--apply] [--package PACKAGE]\n                  [--reviewed-source-change]\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT\n  --apply\n  --package PACKAGE\n  --reviewed-source-change\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/prepare_selected_manifests.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: prepare_selected_manifests.py [-h] --root ROOT --manifest MANIFEST\n                                     --selection SELECTION --out-dir OUT_DIR\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --manifest MANIFEST\n  --selection SELECTION\n  --out-dir OUT_DIR\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/render_figures.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: render_figures.py [-h] --root ROOT [--out-dir OUT_DIR]\n                         [--matrix MATRIX] [--tradeoff TRADEOFF]\n                         [--source-note SOURCE_NOTE] [--examples]\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --out-dir OUT_DIR\n  --matrix MATRIX\n  --tradeoff TRADEOFF\n  --source-note SOURCE_NOTE\n  --examples\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/serve_annotation_judge.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: serve_annotation_judge.py [-h] --spec SPEC --run-dir RUN_DIR\n\noptions:\n  -h, --help         show this help message and exit\n  --spec SPEC\n  --run-dir RUN_DIR\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/verify_complete.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: verify_complete.py [-h] --root ROOT --manifest MANIFEST --records\n                          RECORDS [RECORDS ...] --model MODEL --mode\n                          {census,experiment,probe} [--methods METHODS] --out\n                          OUT\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --manifest MANIFEST\n  --records RECORDS [RECORDS ...]\n  --model MODEL\n  --mode {census,experiment,probe}\n  --methods METHODS\n  --out OUT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: cli.py [-h] [--root ROOT]\n              {prepare-food,prepare-vizwiz,run,annotation-queue,select,analyze,closed-probe,replay,mechanism}\n              ...\n\npositional arguments:\n  {prepare-food,prepare-vizwiz,run,annotation-queue,select,analyze,closed-probe,replay,mechanism}\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "census",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/census.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "8\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "census",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/census.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "8\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/verify_complete.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/census.jsonl",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "census",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/census_complete.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"expected\": 8, \"observed\": 8, \"missing\": [], \"unexpected\": [], \"duplicates\": [], \"invalid\": [], \"complete\": true}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "experiment",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "256\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "experiment",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "256\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/verify_complete.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "experiment",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/experiment_complete.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"expected\": 256, \"observed\": 256, \"missing\": [], \"unexpected\": [], \"duplicates\": [], \"invalid\": [], \"complete\": true}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "probe",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "40\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "run",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "probe",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "40\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/verify_complete.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl",
+        "--model",
+        "cpu_fixture",
+        "--mode",
+        "probe",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/probe_complete.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"expected\": 40, \"observed\": 40, \"missing\": [], \"unexpected\": [], \"duplicates\": [], \"invalid\": [], \"complete\": true}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "annotation-queue",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/annotation_queue.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "296\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "replay",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/replay.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "-m",
+        "kdm.cli",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "mechanism",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/mechanism.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/complete_response_audit.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "--manifest",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/manifest.jsonl",
+        "--annotations",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/complete_annotations.jsonl",
+        "--model-spec",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/configs/kdm/model_spec_mock.json",
+        "--model",
+        "cpu_fixture",
+        "--gpu",
+        "0",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/complete_response.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/human_review.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "queue",
+        "--records",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl",
+        "--annotations",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/complete_annotations.jsonl",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/human_review_queue.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"schema\": \"kdm_full_human_review_queue_v1\", \"queue_sha256\": \"62a0196b4a49d2afeda43a61b3dc211abc8df6b872a476a495d781950ddb6d49\", \"record_sources\": [{\"path\": \"/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/experiment.jsonl\", \"sha256\": \"939f79b5d15c3f87939f56c46d68e677c66da11e0a9fbdde10c890e123bc0e67\"}, {\"path\": \"/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/probe.jsonl\", \"sha256\": \"6b225b61cca42998119a3ca3b90ddb8cee2fdd22627f5b113fc083b7ff6d41cf\"}], \"annotation_sha256\": \"4b0e522150e41936e433150c8a77a614feabb49d6e1c4506ce99af0195b0341c\", \"required_count\": 296, \"required_keys_sha256\": \"b510cb0c0bc6f0acc7602ef39cf495d3035b5e1501b67da711adc12b810374b7\", \"remaining_checklist\": \"all_remaining_formal_outputs\", \"human_review_completed\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "scripts/human_review.py",
+        "--root",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "merge",
+        "--queue",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/human_review_queue.jsonl",
+        "--decisions",
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/SYNTHETIC_EXTERNAL_DECISIONS.jsonl",
+        "--out",
+        "outputs/verification/cli_fixture_20260919T095452676838Z/SYNTHETIC_REVIEWED_ANNOTATIONS.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"schema\": \"kdm_human_review_merge_v1\", \"queue_path\": \"/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/human_review_queue.jsonl\", \"queue_sha256\": \"62a0196b4a49d2afeda43a61b3dc211abc8df6b872a476a495d781950ddb6d49\", \"decision_sources\": [{\"path\": \"/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T095452676838Z/SYNTHETIC_EXTERNAL_DECISIONS.jsonl\", \"sha256\": \"d8a5b596fce3eefc4b98f7a6c9c03cb24eb2dfd664a030f565d463fc4e759e07\"}], \"annotations_sha256\": \"267925d2c0d3cd70eacc7dc9074926a76db75e704f0297625d931d7b666a83a8\", \"required_count\": 296, \"required_keys_sha256\": \"b510cb0c0bc6f0acc7602ef39cf495d3035b5e1501b67da711adc12b810374b7\", \"reviewed_count\": 296, \"missing_or_unresolved_keys\": [], \"all_reviewed\": true, \"human_judgments_source\": \"externally_submitted_decision_files\"}\n",
+      "stderr": ""
+    }
+  ],
+  "all_passed": true
+}

@@ -1,0 +1,19 @@
+{
+  "identity": "50df484a6d0dc15decddb5cede7041aff27482bdfef1552943cceccc03a46528",
+  "definition": {
+    "model": "cpu_fixture",
+    "model_spec": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec",
+    "inputs": [
+      "f12a8525d8fe9b2312bd0135951b46a0c19d92237437dfb5337860c078bfea5c"
+    ],
+    "annotations": "4b0e522150e41936e433150c8a77a614feabb49d6e1c4506ce99af0195b0341c",
+    "methods": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "instruction_vcd",
+      "instruction_m3id"
+    ]
+  }
+}

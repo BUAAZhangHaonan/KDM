@@ -13,7 +13,8 @@ image=fixture/'fixture.png';Image.new('RGB',(16,16),(100,120,130)).save(image)
 samples=[{'id':f'fixture-{i}','cluster':str(i),'dataset':'fixture','split':'eval','question':'What is shown?',
           'gold':['milk'],'image_path':str(image)} for i in range(4)]
 manifest=fixture/'manifest.jsonl';manifest.write_text(''.join(json.dumps(r)+'\n' for r in samples))
-env={**os.environ,'PYTHONPATH':str(ROOT/'src'),'MPLBACKEND':'Agg','CUDA_VISIBLE_DEVICES':'0','OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1','MKL_NUM_THREADS':'1'}
+tmp=ROOT/'cache/tmp';tmp.mkdir(parents=True,exist_ok=True)
+env={**os.environ,'TMPDIR':str(tmp),'PYTHONDONTWRITEBYTECODE':'1','PYTHONPATH':str(ROOT/'src'),'MPLBACKEND':'Agg','CUDA_VISIBLE_DEVICES':'0','OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1','MKL_NUM_THREADS':'1'}
 results=[]
 def run(args):
     print('RUN',args[0:3],flush=True)
@@ -44,9 +45,19 @@ for line in (fixture/'annotation_queue.jsonl').read_text().splitlines():
     annotations.append(r)
 annotation_path=fixture/'complete_annotations.jsonl'
 annotation_path.write_text(''.join(json.dumps(r)+'\n' for r in annotations))
-run(['scripts/complete_response_audit.py','--root',str(ROOT),'--records',str(fixture/'experiment.jsonl'),
+run(['scripts/complete_response_audit.py','--root',str(ROOT),'--records',str(fixture/'experiment.jsonl'),'--manifest',str(manifest),
      '--annotations',str(annotation_path),'--model-spec',str(ROOT/'configs/kdm/model_spec_mock.json'),
      '--model','cpu_fixture','--gpu','0','--out',f'{fixture_rel}/complete_response.jsonl'])
+run(['scripts/human_review.py','--root',str(ROOT),'queue','--records',str(fixture/'experiment.jsonl'),str(fixture/'probe.jsonl'),
+     '--annotations',str(annotation_path),'--out',f'{fixture_rel}/human_review_queue.jsonl'])
+# External decision files below are explicit CPU-test fixtures, never real human review.
+review_rows=[json.loads(line) for line in (fixture/'human_review_queue.jsonl').read_text().splitlines()]
+external=fixture/'SYNTHETIC_EXTERNAL_DECISIONS.jsonl'
+external.write_text(''.join(json.dumps({'key':row['key'],'text_sha256':row['text_sha256'],
+    'action':'approve','revision':1,'previous_revision':0,'reviewer':'CPU_SYNTHETIC_TEST_NOT_A_PERSON',
+    'reviewed_at':datetime.now(timezone.utc).isoformat(),'fixture_only':True})+'\n' for row in review_rows))
+run(['scripts/human_review.py','--root',str(ROOT),'merge','--queue',str(fixture/'human_review_queue.jsonl'),
+     '--decisions',str(external),'--out',f'{fixture_rel}/SYNTHETIC_REVIEWED_ANNOTATIONS.jsonl'])
 (fixture/'CLI_REVIEW.json').write_text(json.dumps({'data':'CPU mock model and synthetic fixture; no real model inference',
      'commands':results,'all_passed':True},indent=2))
 print('Validated',len(results),'command invocations')
