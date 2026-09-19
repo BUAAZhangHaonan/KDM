@@ -46,3 +46,48 @@ def test_noise_matches_official_native_dtype(dtype_name):
 @pytest.mark.parametrize('placement',['auto','balanced',{'model':'cpu'},{'model':'disk'}])
 def test_offload_is_rejected_before_model_construction(placement):
     with pytest.raises(ValueError):HFBackend('/nonexistent',device_map=placement)
+
+def test_minicpm_forward_preserves_original_data_mapping():
+    import torch
+    from kdm.models.remote import MiniCPMModel
+    engine=MiniCPMModel.__new__(MiniCPMModel)
+    image_bound=[torch.tensor([[4,8],[10,14]])]
+    pixels=[[torch.zeros((3,4,4)),torch.ones((3,4,4))]]
+    inputs={'input_ids':torch.tensor([[1,2,3]]),'pixel_values':pixels,
+            'image_bound':image_bound,'tgt_sizes':[torch.tensor([[2,2]])],
+            'position_ids':torch.tensor([[0,1,2]]),'attention_mask':torch.ones(1,3),
+            'temporal_ids':[[]]}
+    def model(**kw):
+        assert kw['data']['pixel_values'] is pixels
+        assert kw['data']['image_bound'] is image_bound
+        assert kw['data']['position_ids'] is inputs['position_ids']
+        assert kw['data']['temporal_ids'] is inputs['temporal_ids']
+        assert kw['attention_mask'] is inputs['attention_mask']
+        assert kw['use_cache'] is True
+        return 'forward-output'
+    engine.model=model
+    assert engine._prefill(inputs)=='forward-output'
+
+
+def test_nested_minicpm_noise_preserves_slices_and_rng_stream():
+    import torch
+    from kdm.models.hf import vcd_processed_noise
+    path=Path(__file__).resolve().parents[1]/'reference_repos/vcd/vcd_utils/vcd_add_noise.py'
+    spec=importlib.util.spec_from_file_location('official_vcd_noise_nested',path)
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    first=torch.arange(12,dtype=torch.float32).reshape(1,3,4)
+    second=torch.zeros(1,4,4,dtype=torch.bfloat16)
+    torch.manual_seed(47)
+    expected=[module.add_diffusion_noise(first,500),module.add_diffusion_noise(second,500)]
+    original=first.clone();result=vcd_processed_noise([[first,second]],47)
+    assert isinstance(result,list) and len(result)==1 and len(result[0])==2
+    assert all(torch.equal(a,b) for a,b in zip(result[0],expected))
+    assert torch.equal(first,original)
+
+def test_nonempty_truncated_safetensors_is_incomplete(tmp_path):
+    d=tmp_path/'checkpoint';d.mkdir();(d/'config.json').write_text('{}')
+    header=json.dumps({'weight':{'dtype':'F32','shape':[25],'data_offsets':[0,100]}}).encode()
+    (d/'model.safetensors').write_bytes(len(header).to_bytes(8,'little')+header+b'x')
+    row=discovery().discover([{'directory_names':['checkpoint']}],[tmp_path])[0]
+    assert row['resolution']=='incomplete'
+    assert 'expected' in row['checkpoint_error']

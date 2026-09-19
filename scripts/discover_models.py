@@ -16,6 +16,18 @@ def checkpoint_files(path):
     if not weights: raise ValueError(f'No checkpoint weights: {path}')
     missing=[str(w) for w in weights if not w.is_file() or w.stat().st_size==0]
     if missing: raise ValueError(f'Missing or empty checkpoint shards: {missing}')
+    for weight in weights:
+        if weight.suffix=='.safetensors':
+            with weight.open('rb') as stream:
+                size=weight.stat().st_size
+                header_size=int.from_bytes(stream.read(8),'little')
+                if header_size<=0 or header_size>min(size-8,100_000_000):
+                    raise ValueError(f'Invalid or partial safetensors header: {weight}')
+                header=json.loads(stream.read(header_size))
+            offsets=[v['data_offsets'][1] for k,v in header.items() if k!='__metadata__']
+            expected_size=8+header_size+max(offsets,default=0)
+            if size!=expected_size:
+                raise ValueError(f'Incomplete safetensors payload: {weight}; expected {expected_size}, observed {size}')
     return weights
 
 

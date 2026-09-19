@@ -6,27 +6,26 @@ NORM_CHAINS = ['model.model.language_model.norm', 'model.language_model.norm', '
 
 class FamilyModel:
 
-    def __init__(self, model_path, device, attn_implementation=None, device_map=None, max_memory=None):
+    def __init__(self, model_path, device, attn_implementation=None, device_map=None, max_memory=None, dtype='bfloat16'):
         from transformers import AutoProcessor, AutoModelForImageTextToText, AutoConfig
         self.device = device
         self.cfg = AutoConfig.from_pretrained(model_path, trust_remote_code=True)
         self.mt = self.cfg.model_type
         self.proc = AutoProcessor.from_pretrained(model_path, trust_remote_code=True)
         kw = {'attn_implementation': attn_implementation} if attn_implementation else {}
-        self.model = AutoModelForImageTextToText.from_pretrained(model_path, dtype=torch.bfloat16, device_map=device_map if device_map is not None else device, trust_remote_code=True, low_cpu_mem_usage=True, **kw, max_memory=max_memory).eval()
+        self.model = AutoModelForImageTextToText.from_pretrained(model_path, dtype=getattr(torch,dtype), device_map=device_map if device_map is not None else device, trust_remote_code=True, low_cpu_mem_usage=True, **kw, max_memory=max_memory).eval()
         tok = self.proc.tokenizer
         self.eos = set()
         tc = getattr(self.cfg, 'text_config', None)
-        e = getattr(tc, 'eos_token_id', None) if tc is not None else getattr(self.cfg, 'eos_token_id', None)
-        if isinstance(e, int):
-            self.eos.add(e)
-        elif e:
-            self.eos.update(e)
+        for config in (self.cfg,tc,getattr(self.model,'generation_config',None)):
+            e=getattr(config,'eos_token_id',None)
+            if isinstance(e,int):self.eos.add(e)
+            elif e:self.eos.update(e)
         if tok.eos_token_id is not None:
             self.eos.add(tok.eos_token_id)
         if self.mt in ('qwen3_5', 'qwen3_vl'):
             self._patch_conv3d()
-        self.lm_head = getattr(self.model, 'lm_head', None)
+        self.lm_head = self.model.get_output_embeddings()
         self.norm = None
         for chain in NORM_CHAINS:
             obj = self.model
@@ -141,10 +140,16 @@ class InternVLModel:
     def _step(self, tok, pkv, ohs=False, oa=False):
         return self.model.language_model(input_ids=torch.tensor([[tok]], device=self.device), past_key_values=pkv, output_hidden_states=ohs, output_attentions=oa, use_cache=True)
 
-def get_engine(model_path, device, attn_implementation=None, device_map=None, max_memory=None):
+def get_engine(model_path, device, attn_implementation=None, device_map=None, max_memory=None, dtype='bfloat16'):
     """Factory: internvl_chat uses the manual adapter; everything else FamilyModel."""
     from transformers import AutoConfig
     mt = AutoConfig.from_pretrained(model_path, trust_remote_code=True).model_type
+    if mt == 'minicpmv':
+        from .remote import MiniCPMModel
+        return MiniCPMModel(model_path,device,attn_implementation=attn_implementation,dtype=dtype)
+    if mt == 'phi3_v':
+        from .remote import PhiVisionModel
+        return PhiVisionModel(model_path,device,attn_implementation=attn_implementation,dtype=dtype)
     if mt == 'internvl_chat':
         return InternVLModel(model_path, device)
-    return FamilyModel(model_path, device, attn_implementation=attn_implementation, device_map=device_map, max_memory=max_memory)
+    return FamilyModel(model_path, device, attn_implementation=attn_implementation, device_map=device_map, max_memory=max_memory,dtype=dtype)
