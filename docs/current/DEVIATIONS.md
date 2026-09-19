@@ -2,13 +2,13 @@
 
 This is an execution-time source check, separate from the supplied package's historical review claims. No intervention results were inspected to make these decisions.
 
-## Unresolved: CDA calibration sign
+## CDA calibration sign: resolved by the user before formal execution
 
 Source: [ACL 2025 formal paper](https://aclanthology.org/2025.acl-long.479.pdf), printed p.9714, equations (6) and (7); downloaded file is registered by the asset downloader. The primary agent extracted the text and rendered PDF page 5; visual check artifact: `cache/paper_text/CDA_page5.png`.
 
 Equation (6) prints `r=max(H_input-H_null,0)/H_null`. Equation (7) uses `w_p=r_p^2/(r_p+r_c)`, `w_c=r_c^2/(r_p+r_c)`. The supplied `src/kdm/cda.py` instead computes `max(H_null-H_input,0)/H_null`. These are different algorithms. In addition, literal equation (6) does not generally bound the ratios by one, so the residual `1-w_p-w_c` need not be nonnegative. The task asks both for the main-paper version and three positive score weights. These requirements cannot be asserted jointly for arbitrary inputs without a further definition.
 
-The primary agent requested the user's choice between the published equation and an explicitly named sign-modified adaptation. Until resolved, the supplied sign remains unchanged, no formal CDA outputs are authorized as conforming to the published equation, and preregistration cannot be marked frozen. Software tests of the supplied implementation do not resolve this definition issue. No author erratum or verified official implementation was located in the bounded source search.
+The discrepancy was raised before formal execution. The user explicitly selected the printed main-paper equation and authorized negative residual weights, requiring them to be recorded (outputs/records/protocol_user_decisions_20260919.json). The implementation therefore uses input entropy minus null entropy and does not clamp the residual weight. Every CDA step records entropy, calibration ratios, all three weights and a negative-residual flag. At rp+rc=0 the continuous extension is (wp,wc,wa)=(0,0,1); zero null entropy remains an explicit undefined-condition error, without an added epsilon. The prior package formula and its earlier synthetic tests remain historical evidence only. No author erratum or verified official implementation was located in the bounded source search.
 
 CDA's related-work contribution remains joint accurate answering and abstention, including calibrated uncertainty and its separately evaluated momentum extension. KDM's intended comparison omits momentum according to the task and maps context to visual input; that mapping is an adaptation, not an original CDA experiment.
 

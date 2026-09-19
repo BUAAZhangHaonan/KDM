@@ -114,7 +114,9 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
                         'wall_s':time.perf_counter()-started,**result})
         except Exception as e:
             error=Path(str(out)+'.errors.jsonl')
-            with error.open('a') as f:f.write(json.dumps({'key':key,'error':type(e).__name__+': '+str(e)})+'\n')
+            failure={'key':key,'error':type(e).__name__+': '+str(e)}
+            if hasattr(e,'cda_diagnostics'):failure['cda_diagnostics']=e.cda_diagnostics
+            with error.open('a') as f:f.write(json.dumps(failure,allow_nan=False)+'\n')
             raise
     return len(ledger.keys)
 

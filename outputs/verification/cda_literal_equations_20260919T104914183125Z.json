@@ -1,0 +1,59 @@
+{
+  "scope": "synthetic binary distributions only; no real generation or negative-weight frequency claim",
+  "equations": "ACL2025 main-text 6 and 7; no momentum",
+  "probabilities_prior_context_null_prior_null_context": [
+    [
+      0.5,
+      0.5
+    ],
+    [
+      0.6,
+      0.4
+    ],
+    [
+      0.99,
+      0.01
+    ],
+    [
+      0.98,
+      0.02
+    ]
+  ],
+  "implementation": {
+    "h_prior": 0.6931471805599453,
+    "h_context": 0.6730116670092565,
+    "h_null_prior": 0.05600153435484735,
+    "h_null_context": 0.09803911327973197,
+    "rp": 11.377289096543267,
+    "rc": 5.86472617402172,
+    "wp": 7.507400101153067,
+    "wc": 1.9948371786315198,
+    "wa": -8.502237279784588,
+    "negative_wa": true,
+    "zero_sum_extension": false,
+    "calibration_status": "defined"
+  },
+  "independent_scalar_shannon": {
+    "rp": 11.377289096543269,
+    "rc": 5.864726174021718,
+    "wp": 7.507400101153069,
+    "wc": 1.9948371786315184,
+    "wa": -8.502237279784588
+  },
+  "max_absolute_error": 1.7763568394002505e-15,
+  "reverse_entropy_case": {
+    "h_prior": 0.05600153435484735,
+    "h_context": 0.09803911327973197,
+    "h_null_prior": 0.6931471805599453,
+    "h_null_context": 0.6730116670092565,
+    "rp": 0.0,
+    "rc": 0.0,
+    "wp": 0.0,
+    "wc": 0.0,
+    "wa": 1.0,
+    "negative_wa": false,
+    "zero_sum_extension": true,
+    "calibration_status": "zero_sum_continuous_extension"
+  },
+  "cda_source_sha256": "f513899081a75ee8b7588cf6cb816add4ed80ce1b5e64964145cd7d38c22b3b7"
+}

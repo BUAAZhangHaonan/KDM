@@ -22,7 +22,7 @@ def test_m3id_gate():
 
 def test_cda_weights():
     p=np.array([1.,2.,0.]);c=np.array([2.,0.,1.]);null=np.zeros(3)
-    w=cda_weights(p,c,null,null);assert np.isclose(w.sum(),1) and (w>=0).all()
+    w=cda_weights(p,c,null,null);assert np.allclose(w,[0,0,1])  # Lower input entropy gives zero r under the literal equation (6).
     assert np.allclose(cda_weights(null,null,null,null),[0,0,1])
 
 def test_cda_generation():

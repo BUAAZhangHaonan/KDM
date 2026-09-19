@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-09-19T10:47:49.049659+00:00",
+  "source": "Explicit user replies in Codex task 01a0b8ea-e971-7590-acc9-a827401e0519",
+  "food_alias_confirmation": {
+    "user_statement": "已逐类查看，确认当前名称表",
+    "confirmed": true,
+    "classes": 101,
+    "names": 147,
+    "alias_file": "configs/kdm/food_aliases.json",
+    "alias_sha256": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "review_table": "docs/current/FOOD_ALIAS_REVIEW_TABLE.md",
+    "review_table_commit": "df400091",
+    "review_time_provided_by_user": null,
+    "scope": "Current unchanged class-name table only; this is not human adjudication of generated responses"
+  },
+  "cda_definition": {
+    "user_statement": "严格采用正文公式，允许实际出现负残余权重并记录",
+    "calibration": "r=max(H_input-H_null,0)/H_null",
+    "weights": "wp=rp**2/(rp+rc); wc=rc**2/(rp+rc); wa=1-wp-wc",
+    "negative_residual_weight_allowed": true,
+    "negative_weight_must_be_recorded": true,
+    "momentum": false
+  },
+  "internvl_recovery": {
+    "user_statement": "允许按上述双卡方案核验",
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "scope": "Explicit two-card mapping with unchanged checkpoint, precision, images and SID settings; revalidate native16 and SID"
+  }
+}

@@ -20,7 +20,7 @@
 
 新增方法：instruction_vcd和instruction_m3id。前者由带引导正常分布及两个无引导视觉条件构成；后者使用相同三条件原则，门控依据无引导清晰分布、时间偏移依据无引导问题长度。alpha、lambda和阈值均固定。
 
-对照：仅删除参考条件弃权指令；原本弃权时直接保留完整原回复；CDA视觉迁移。CDA保留正文无动量版本的熵校准及三个正向分数权重。输入为无图问题、带图问题、带图加弃权指令；两个空输入条件使用[N/A]问题和均匀图像。该具体迁移定义完整记录。
+对照：仅删除参考条件弃权指令；原本弃权时直接保留完整原回复；CDA视觉迁移。CDA保留正文无动量版本的熵校准及正文分数权重（按用户裁定允许负残余权重并记录）。输入为无图问题、带图问题、带图加弃权指令；两个空输入条件使用[N/A]问题和均匀图像。该具体迁移定义完整记录。
 
 ## 合理性测量
 
@@ -75,7 +75,7 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 - VizWiz官方val：4,319条，每题10份原标注，保留answerability与原始答案字段；dev 818，eval 3,501。
 - VizWiz划分：原图像文件名的UTF-8 SHA256前8位转整数后模5，零归dev，其余eval；同图无交叉。
 - 完整检查：`outputs/records/data_manifest_review.json`，全部资产实际下载版本及SHA256见`outputs/records/assets_*.json`。
-- 类别别名：`configs/kdm/food_aliases.json`；101类的代理审查见`outputs/records/food_alias_review.json`，不冒称用户人工确认。
+- 类别别名：`configs/kdm/food_aliases.json`；101类的早期代理审查见`outputs/records/food_alias_review.json`；用户随后明确逐类确认当前101类/147名称，见`outputs/records/protocol_user_decisions_20260919.json`，对应文件SHA256为`f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f`。
 - 固定16条接口图：`data/current/interface16.jsonl`，只承担软件校验，不改变研究样本范围。
 
 清单SHA256：`f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c`。
@@ -94,12 +94,12 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 
 当前SID源已经在8个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为对应`*_sid_reference_v2_summary.json`，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
 
-### 待决定义与人工事项
+### 已确认定义与后续人工事项
 
-CDA论文式(6)与开发包熵差符号相反；正文原式与任务书一般正向权重要求存在冲突。已向用户给出两种具体口径，结论保存在`DEVIATIONS.md`；尚未选择或静默改式。DoLa标准JS与官方固定源码reverse-KL criterion的差异同文记录，原论文§2.2明确使用标准JS，因此保留交付包数学定义；不声明与该官方代码选层数值等价。
+CDA论文式(6)与开发包熵差符号相反。用户已明确采用正文`r=max(H_input-H_null,0)/H_null`，允许并记录实际负残余权重。式(7)保持`wp=rp²/(rp+rc)`、`wc=rc²/(rp+rc)`、`wa=1-wp-wc`；不截断wa、不加入动量，保留两个空输入校准。逐步保存熵、比率、权重及negative_wa；rp+rc=0使用连续延拓(0,0,1)，空输入熵为零则显式失败，不加epsilon。决定记录见`outputs/records/protocol_user_decisions_20260919.json`，发现过程见`DEVIATIONS.md`。DoLa标准JS与官方固定源码reverse-KL criterion的差异同文记录，原论文§2.2明确使用标准JS，因此保留交付包数学定义；不声明与该官方代码选层数值等价。
 
 完整语义标注使用独立登记的`mistralai/Ministral-3-8B-Instruct-2512`，不在16候选中，见`configs/runtime/semantic_judge.json`。原生FP8权重在3090上显式反量化为bf16；该设置在首次加载前固定，未使用CPU/disk卸载。真实本地服务身份握手已通过，但初次5个软件样例存在输出围栏以及Food/空白误标，完整原始输出见`outputs/verification/judge_semantic_examples_20260919T095326491080Z.json`；不能把已建立服务等同于语义标签可靠或人工复核完成。完整短语自动标签仍须进入统一文件。人工核查须覆盖全部弃权变化、无效/争议输出；尚未发生的人工判断不得由代理冒充。标签与来源均须真实记录。
 
 ### 执行顺序
 
-完成当前配置原生16图及方法核验、解决CDA定义、取得101类别名称人工确认并登记独立标注器后，更新本节为真实已冻结身份并提交普通push。之后运行完整普查、完成全量语义标注与人工核验、提交筛选；正式清单由`prepare_selected_manifests.py`保留所选任务的全部样本。报告入口须校验全部预定义任务与每题10次试答及101候选记录；任何缺项都显式失败。
+CDA定义与101类别名称人工确认已经取得；完成当前配置原生16图、方法核验及CDA实现检查后，更新本节为真实已冻结身份并提交普通push。之后运行完整普查、完成全量语义标注与人工核验、提交筛选；正式清单由`prepare_selected_manifests.py`保留所选任务的全部样本。报告入口须校验全部预定义任务与每题10次试答及101候选记录；任何缺项都显式失败。
