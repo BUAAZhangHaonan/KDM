@@ -101,7 +101,7 @@
     "record": "outputs/verification/qwen3vl_6403_full_visual_count_v1.json"
   },
   "resource_verification": {
-    "status": "pending",
+    "status": "passed",
     "records": {
       "layer": "outputs/verification/qwen3vl_6403_max_input_resource_v1_layer.json",
       "instruction_vcd": "outputs/verification/qwen3vl_6403_max_input_resource_v1_instruction_vcd.json",

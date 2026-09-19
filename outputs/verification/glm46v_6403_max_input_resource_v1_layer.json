@@ -1,0 +1,257 @@
+{
+  "scope": "Maximum-count actual VizWiz image; resource-only fixed prefixes, no generated answers or scientific scores; independent process per actual session group",
+  "passed": true,
+  "spec": {
+    "key": "glm46v",
+    "hf_model_id": "zai-org/GLM-4.6V-Flash",
+    "availability": "resolved",
+    "environment_python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/team/lvshuyang/Models/GLM-4.6V-Flash",
+      "device_map": {
+        "": 0
+      },
+      "dtype": "bfloat16"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "pending",
+      "record": "outputs/verification/glm46v_6403_native16_v1.json",
+      "scope": "new 6403 GPU1 existing runtime; old 4028 proofs remain historical"
+    },
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "transformers": "5.5.3",
+      "accelerate": "1.6.0",
+      "Pillow": "12.2.0",
+      "tokenizers": "0.22.2",
+      "numpy": "2.4.6",
+      "sentencepiece": "0.2.0",
+      "timm": "1.0.19",
+      "safetensors": "0.5.3",
+      "einops": "0.8.1",
+      "scipy": "1.17.1",
+      "requests": "2.34.2"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 5320911456,
+        "mtime_ns": 1765381941000000000,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "058745e42d1003c9fb6d1707838902478cd5acb0d7cb277a7e074ceaecf06402",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 5303216664,
+        "mtime_ns": 1765380760000000000,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "56e35e399921aa4d20ee0e20639bbb7e86e7036b11b74b643487d591206f071c",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 5303216664,
+        "mtime_ns": 1765381001000000000,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "7f57230ee36c64f3c5d2986674ddba5db3df26df828db1833f4792d4ef21ce48",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 4658299264,
+        "mtime_ns": 1765380404000000000,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "8c12ad6165dc9a2895a46547d611ed24990eae6fb357dddf066e239582fece2e",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "ef88f66ef623085cd86f5fd14bd6647a0b7175b9a25773049b82611d4ac82181",
+    "processor": {
+      "path": "/home/team/lvshuyang/Models/GLM-4.6V-Flash",
+      "files": {
+        "tokenizer.json": "9340665016419c825c4bdabbcc9acc43b7ca2c68ce142724afa829abb1be5efd",
+        "preprocessor_config.json": "02cc50c36240882ae35e8cd4077a25a379664108185d728d261cb785aefeccff",
+        "chat_template.jinja": "bf6cfe131f9af1cdbe0e1e4bda8cd56154e63d95d50df697155654bde7b387fd",
+        "tokenizer_config.json": "13809913afa65678aff5d54d888720c30cb000d0e9a85799ef22d1ca9dfdf228"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_pending_6403_configuration",
+      "deco_layers": "projection_pending_6403_configuration",
+      "sid_reference": {
+        "status": "pending",
+        "record": "outputs/verification/glm46v_6403_sid_reference_v1_summary.json"
+      },
+      "text_only_condition": "pending_6403_configuration"
+    },
+    "visual_count_verification": {
+      "status": "passed",
+      "record": "outputs/verification/glm46v_6403_full_visual_count_v1.json"
+    },
+    "resource_verification": {
+      "status": "pending",
+      "records": {
+        "layer": "outputs/verification/glm46v_6403_max_input_resource_v1_layer.json",
+        "instruction_vcd": "outputs/verification/glm46v_6403_max_input_resource_v1_instruction_vcd.json",
+        "cda": "outputs/verification/glm46v_6403_max_input_resource_v1_cda.json"
+      }
+    }
+  },
+  "stage": "layer",
+  "script_sha256": "423b7bf5fceb8c1bb46243059712ac0cabfe474c12f55297254f9f1bf08488ee",
+  "command": [
+    "verification/max_input_resource_check.py",
+    "--spec",
+    "configs/runtime/glm46v.json",
+    "--stage",
+    "layer",
+    "--output",
+    "outputs/verification/glm46v_6403_max_input_resource_v1_layer.json"
+  ],
+  "pid": 2405230,
+  "cuda_visible_devices": "1",
+  "sample": {
+    "id": "vizwiz:VizWiz_val_00000003.jpg",
+    "dataset": "vizwiz",
+    "split": "eval",
+    "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val/VizWiz_val_00000003.jpg"
+  },
+  "image_size": [
+    2592,
+    1936
+  ],
+  "expected_visual_tokens": 6030,
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "count_record": "outputs/verification/glm46v_6403_full_visual_count_v1.json",
+  "count_record_sha256": "84bb4334353b68116326c09d497b596b95a89a859a3659977e403eb305818671",
+  "runtime_adapter_sha256": {
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89"
+  },
+  "visits": [
+    {
+      "prefix_length": 0,
+      "branch": "main_need_layers",
+      "logit_shape": [
+        151552
+      ],
+      "logits_finite": true,
+      "raw_layers": 40,
+      "normalized_layers": 11,
+      "all_layer_logits_finite": true,
+      "layer_shapes": [
+        [
+          151552
+        ]
+      ]
+    },
+    {
+      "prefix_length": 1,
+      "branch": "main_need_layers",
+      "logit_shape": [
+        151552
+      ],
+      "logits_finite": true,
+      "raw_layers": 40,
+      "normalized_layers": 11,
+      "all_layer_logits_finite": true,
+      "layer_shapes": [
+        [
+          151552
+        ]
+      ]
+    },
+    {
+      "prefix_length": 2,
+      "branch": "main_need_layers",
+      "logit_shape": [
+        151552
+      ],
+      "logits_finite": true,
+      "raw_layers": 40,
+      "normalized_layers": 11,
+      "all_layer_logits_finite": true,
+      "layer_shapes": [
+        [
+          151552
+        ]
+      ]
+    }
+  ],
+  "branch_input_shapes": {
+    "main_need_layers": {
+      "input_ids": [
+        1,
+        6067
+      ],
+      "attention_mask": [
+        1,
+        6067
+      ],
+      "mm_token_type_ids": [
+        1,
+        6067
+      ],
+      "pixel_values": [
+        24120,
+        1176
+      ],
+      "image_grid_thw": [
+        1,
+        3
+      ],
+      "visual_token_count": 6030
+    }
+  },
+  "phase": "complete",
+  "execution": {
+    "host": "6403",
+    "hostname": "oem-PowerEdge-T640",
+    "project_root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "physical_gpus": [
+      "1"
+    ],
+    "gpu_uuids": {
+      "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
+    },
+    "registry_sha256": "98ad670d81672d0ed5a7d53787e61b43f2bd2c9a245105799244d6f14d72f301",
+    "resolver_sha256": "fc1c2c7d8e84a6ec74bffcf81ab20666a8738a52fd152a0d70f0b20a00ce39ee",
+    "image_catalog_sha256": "4021e893d8f9b9c74d9d98470bda7a887ce922c4edf8d657e1bfd3d69aaf858d"
+  },
+  "gpu_names": [
+    "NVIDIA A100 80GB PCIe"
+  ],
+  "model_load_peak_bytes": [
+    20585644032
+  ],
+  "branch_order": [
+    "main_need_layers"
+  ],
+  "seed": 1311811429,
+  "fixed_prefix_token_ids": [
+    3607,
+    11994
+  ],
+  "elapsed_seconds": 17.798045307863504,
+  "peak_allocated_bytes": [
+    24840144896
+  ],
+  "peak_reserved_bytes": [
+    26084376576
+  ]
+}
