@@ -253,9 +253,11 @@ def test_complete_audit_execution_admission_before_backend(tmp_path,monkeypatch)
     called=[]
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:called.append('runtime'))
-    monkeypatch.setattr(protocol,'code_identity',lambda root:called.append('source') or ['blob'])
-    assert mod.execution_identity(tmp_path,{},'m',tmp_path/'outputs/formal/audit.jsonl','0')==['blob']
-    assert called==['runtime','source']
+    receipt=tmp_path/'outputs/records/preregistration_freeze.json';receipt.parent.mkdir(parents=True);receipt.write_text('{}')
+    monkeypatch.setattr(protocol,'validate_freeze',lambda root:called.append('freeze') or {'source_blobs':['blob']})
+    actual=mod.execution_identity(tmp_path,{},'m',tmp_path/'outputs/formal/audit.jsonl','0')
+    assert actual['source_blobs']==['blob'] and actual['execution'] is None
+    assert called==['runtime','freeze']
     with pytest.raises(ValueError,match='verification'):
         mod.execution_identity(tmp_path,{'purpose':'CPU_TEST_ONLY'},'m',tmp_path/'outputs/formal/audit.jsonl','0')
 

@@ -1,0 +1,18 @@
+{
+  "reason": "Root-requested final input-path normalization; all report input paths now resolve under --root before validation.",
+  "command": [
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/test_task_provenance.py::test_report_gate_precedes_scoring_and_output",
+    "-q",
+    "--tb=short",
+    "--basetemp=/home/g203-4028/projects/knowledge-deficit-mitigation/cache/pytest/noncensus_report_paths_final"
+  ],
+  "exit_code": 0,
+  "log": "outputs/verification/noncensus_provenance_20260919T131009043544Z/report_paths_followup.log",
+  "files_sha256": {
+    "scripts/build_reports.py": "7414f3a796be6372bf9e61b8feaaa66904735c0f5deafc983989890487096704",
+    "tests/test_task_provenance.py": "151991ae366bd17039ef35e30ec6def89a05b253b0665b64ebfe373592a499d6"
+  }
+}

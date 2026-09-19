@@ -1,0 +1,9 @@
+{
+  "expected": 256,
+  "observed": 256,
+  "missing": [],
+  "unexpected": [],
+  "duplicates": [],
+  "invalid": [],
+  "complete": true
+}

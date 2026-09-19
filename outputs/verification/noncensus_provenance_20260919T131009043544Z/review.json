@@ -1,0 +1,57 @@
+{
+  "scope": "CPU software provenance validation only; no real model generation",
+  "started_at_utc": "20260919T131009043544Z",
+  "checks": [
+    {
+      "name": "pytest",
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+        "-m",
+        "pytest",
+        "tests",
+        "-q",
+        "--tb=short",
+        "--basetemp=/home/g203-4028/projects/knowledge-deficit-mitigation/cache/pytest/noncensus_final_20260919T131009043544Z"
+      ],
+      "exit_code": 0,
+      "log": "outputs/verification/noncensus_provenance_20260919T131009043544Z/pytest.log"
+    },
+    {
+      "name": "cli",
+      "command": [
+        "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+        "verification/execution_check.py"
+      ],
+      "exit_code": 0,
+      "log": "outputs/verification/noncensus_provenance_20260919T131009043544Z/cli.log"
+    }
+  ],
+  "all_passed": true,
+  "files_sha256": {
+    "src/kdm/task_provenance.py": "9376913f6fbe76b8cf2f915cd8197c4a2170834947a4bd622a88a000b858c3b0",
+    "src/kdm/selection_provenance.py": "96f6d6890e20c6f4b12f5b981e5dbcfc21c24dfaf61ab6d1ea2d8ebdab3975f0",
+    "src/kdm/cli.py": "009b75117855757119e172711305fa23f0c60498303e17dc9a7bf0619f4c4d4d",
+    "src/kdm/pipeline.py": "16a0f486e926e83bb5f8fe81bab532ff916c003686aade9976e01e3443bb5f02",
+    "scripts/complete_response_audit.py": "a8e1836a985bd8c9c86739956f81d49298ad021de24d46697d910caadf83d24e",
+    "scripts/build_reports.py": "c12911bd786eea1111027960452dc02bc06b393f17640a7c999ff6b3ef735b97",
+    "scripts/prepare_selected_manifests.py": "a51e7e45d0212cae48e920108cf89211841d1c94d63b0b9cc51d4ab2a7e375ac",
+    "verification/execution_check.py": "35537084cac80eb9a88238c679c4258fd67335e86fb3897af2f3dde47f02de70"
+  },
+  "prior_iterations": [
+    {
+      "check": "initial whole CPU suite",
+      "result": "15 failed, 312 passed",
+      "cause": "Older isolated entry fixtures lacked new required freeze/spec/manifest context; updated fixtures only."
+    },
+    {
+      "check": "actual CPU producer-consumer test",
+      "result": "1 failed, 40 passed",
+      "cause": "M3ID derived tokens were calculated but not persisted to raw row; fixed actual producer storage."
+    },
+    {
+      "check": "all three CPU CLI producer stages",
+      "result": "1 failed, 43 passed",
+      "cause": "Closed-stage fixture image was outside explicit nested verification path; corrected test fixture path, not execution resolver."
+    }
+  ]
+}

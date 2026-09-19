@@ -53,6 +53,8 @@ def test_preparation_preserves_all_selected_samples_splits_and_plan_arguments(tm
     (tmp_path/'configs/runtime').mkdir(parents=True);(tmp_path/'configs/runtime/m.json').write_text(json.dumps({'key':'m'}))
     (tmp_path/'outputs/records').mkdir(parents=True)
     (tmp_path/'outputs/records/preregistration_freeze.json').write_text(json.dumps({'status':'frozen','files':{'plan.json':file_hash(plan)}}))
+    monkeypatch.setattr(mod,'validate_freeze',lambda root:json.loads((root/'outputs/records/preregistration_freeze.json').read_text()))
+    monkeypatch.setattr(mod,'validate_selection',lambda root,path,manifest,freeze:{'selection':json.loads(path.read_text()),'provenance':{'fixture':'preparation-only'}})
     checked=[];monkeypatch.setattr(mod,'validate_method_runtime',lambda root,spec,methods:checked.append(methods))
     monkeypatch.setattr('sys.argv',['prepare','--root',str(tmp_path),'--manifest',str(manifest),'--selection',str(selected),'--method-plan',str(plan),'--out-dir','prepared'])
     mod.main()
@@ -94,6 +96,7 @@ def test_formal_experiment_task_plan_gate_precedes_backend(tmp_path,monkeypatch,
     def frozen(root):
         value=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
         value['files']['configs/kdm/method_plan.json']=value['files']['plan.json'];value['source_blobs']=[]
+        value['files']['configs/runtime/m.json']=file_hash(spec)
         return value
     monkeypatch.setattr(protocol,'validate_freeze',frozen)
     def method_proof(root,spec,methods):assert list(methods)==BASE
@@ -139,6 +142,8 @@ def test_selected_plan_and_manifest_are_identical_across_hosts_and_reusable_afte
         write(root,'outputs/records/preregistration_freeze.json',{'status':'frozen','files':{'configs/kdm/method_plan.json':file_hash(plan)}})
         write(root,'outputs/records/image_content_catalog.json',{'schema':1,'manifest_sha256':file_hash(manifest),
             'images':{logical:{'sha256':file_hash(image),'size_bytes':image.stat().st_size}}})
+    monkeypatch.setattr(mod,'validate_freeze',lambda root:json.loads((root/'outputs/records/preregistration_freeze.json').read_text()))
+    monkeypatch.setattr(mod,'validate_selection',lambda root,path,manifest,freeze:{'selection':json.loads(path.read_text()),'provenance':{'fixture':'path-portability-only'}})
     monkeypatch.setattr(mod,'validate_method_runtime',lambda *args:None)
     def prepare(root,name):
         monkeypatch.setattr(execution.socket,'gethostname',lambda:name)

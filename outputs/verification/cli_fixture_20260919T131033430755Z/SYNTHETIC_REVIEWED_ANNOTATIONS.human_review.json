@@ -1,0 +1,18 @@
+{
+  "schema": "kdm_human_review_merge_v1",
+  "queue_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T131033430755Z/human_review_queue.jsonl",
+  "queue_sha256": "4f0c9222cfc606469198177432470e43ae12f752196d9d42b5b0f9aaee60eb1a",
+  "decision_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/verification/cli_fixture_20260919T131033430755Z/SYNTHETIC_EXTERNAL_DECISIONS.jsonl",
+      "sha256": "2e213ae4230b569b829d75206f7694adbc5bc66fd8dc2d96d8d2c5fdf665d06d"
+    }
+  ],
+  "annotations_sha256": "c24b4028c0e261ae056dbe4d908c64890a683f790f1466cf2e26652ed7d18692",
+  "required_count": 296,
+  "required_keys_sha256": "b510cb0c0bc6f0acc7602ef39cf495d3035b5e1501b67da711adc12b810374b7",
+  "reviewed_count": 296,
+  "missing_or_unresolved_keys": [],
+  "all_reviewed": true,
+  "human_judgments_source": "externally_submitted_decision_files"
+}

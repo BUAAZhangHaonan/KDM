@@ -77,7 +77,7 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
         key=task_id(model,task)
         if key in ledger.keys:continue
         seed=stable_seed(sid,model,task['replicate'])
-        current=replace(cfg,method=task['method'])
+        current=replace(cfg,method=task['method']);offset_prompt_tokens=None
         started=time.perf_counter()
         try:
             with Image.open(resolve_image_path(task['sample']['image_path'], ROOT)) as im:image=im.convert('RGB')
@@ -89,9 +89,11 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
             else:
                 main,reference,neutral,prompt,rprompt=sessions(backend,image,task,current,seed)
                 if current.method=='m3id':
-                    current=replace(current,m3id_offset=len(backend.encode(prompt)))
+                    offset_prompt_tokens=list(backend.encode(prompt))
+                    current=replace(current,m3id_offset=len(offset_prompt_tokens))
                 if current.method=='instruction_m3id':
-                    current=replace(current,m3id_offset=len(backend.encode(task_prompt(task['sample']['question'],guided=False))))
+                    offset_prompt_tokens=list(backend.encode(task_prompt(task['sample']['question'],guided=False)))
+                    current=replace(current,m3id_offset=len(offset_prompt_tokens))
                 if current.method=='cda_visual':
                     from .cda import generate_cda
                     question=task['sample']['question'];plain=task_prompt(question,guided=False)
@@ -113,6 +115,7 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
                         'reference_prompt':task_prompt(task['sample']['question'],task['reference_marker'],task['reference_guided']) if task['method']!='direct' else None,
                         'neutral_prompt':task_prompt(task['sample']['question'],guided=False) if task['method'].startswith('instruction_') else None,
                         'config':asdict(current),'seed':seed,
+                        **({'offset_prompt_tokens':offset_prompt_tokens} if offset_prompt_tokens is not None else {}),
                         'wall_s':time.perf_counter()-started,**result})
         except Exception as e:
             error=Path(str(out)+'.errors.jsonl')

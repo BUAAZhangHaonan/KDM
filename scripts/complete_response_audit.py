@@ -54,16 +54,18 @@ def donor_measurement_status(pool):
 
 
 def execution_identity(root,spec,model,out,gpu):
-    from kdm.protocol import validate_runtime,code_identity
+    from kdm.protocol import validate_runtime,validate_freeze
     if spec.get('purpose')=='CPU_TEST_ONLY':
         if not out.is_relative_to(root/'outputs/verification'):
             raise ValueError('Synthetic model outputs must remain in outputs/verification')
-        return {'software_fixture':True,'formal_evidence':False}
+        return {'source_blobs':{'software_fixture':True,'formal_evidence':False}}
     cards=os.environ.get('CUDA_VISIBLE_DEVICES','').split(',')
     if not cards or cards[0]!=gpu or any(card not in {'0','1','4','5'} for card in cards):
         raise ValueError('Use the allocated worker script')
-    validate_runtime(root,spec,model,cards)
-    return code_identity(root)
+    execution=validate_runtime(root,spec,model,cards)
+    freeze=validate_freeze(root)
+    return {'source_blobs':freeze['source_blobs'],'execution':execution,
+            'freeze_receipt_sha256':file_hash(root/'outputs/records/preregistration_freeze.json')}
 
 
 def validate_input_ledgers(paths,spec_sha,formal):
@@ -87,8 +89,10 @@ def main():
     p.add_argument('--methods',default='vcd,m3id,dola,deco,instruction_vcd,instruction_m3id');p.add_argument('--gpu',choices=['0','1','4','5'],required=True);p.add_argument('--out',required=True);a=p.parse_args()
     from kdm.cli import setup
     root=setup(a.root);out=within(root,a.out)
+    a.records=[str(within(root,path)) for path in a.records]
+    a.manifest=str(within(root,a.manifest))
     spec=json.load(open(a.model_spec));spec_sha=file_hash(a.model_spec)
-    source_blobs=execution_identity(root,spec,a.model,out,a.gpu)
+    execution=execution_identity(root,spec,a.model,out,a.gpu);input_provenance=None
     methods=tuple(a.methods.split(','))
     if not methods or not set(methods)<={'vcd','m3id','dola','deco','sid','instruction_vcd','instruction_m3id'}:raise ValueError('Unsupported complete-response method')
     if spec.get('purpose')=='CPU_TEST_ONLY':
@@ -96,10 +100,20 @@ def main():
     else:
         from kdm.protocol import validate_method_runtime
         from kdm.human_review import validate_human_review
+        from kdm.task_provenance import validate_task_inputs,validate_measurement_methods
+        freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+        input_provenance=validate_task_inputs(root,a.records,freeze,stages={'experiment'},model=a.model)
+        if spec_sha!=freeze['files'][f'configs/runtime/{a.model}.json']:raise ValueError('Measurement backend differs from frozen producing spec')
+        validate_measurement_methods(root,input_provenance,methods)
         validate_method_runtime(root,spec,methods)
         ann=validate_human_review(a.annotations,a.records)
     manifest=list(read_jsonl(a.manifest))
     if len({row['id'] for row in manifest})!=len(manifest):raise ValueError('Duplicate frozen manifest sample')
+    if input_provenance is not None:
+        from kdm.task_provenance import manifest_identity
+        datasets={d for source in input_provenance['sources'] for d in source['datasets']}
+        frozen_samples=[row for row in read_jsonl(root/'data/current/all.jsonl') if row['dataset'] in datasets]
+        if manifest_identity(manifest)!=manifest_identity(frozen_samples):raise ValueError('Audit manifest differs from complete frozen donor datasets')
     expected={row['id']:row for row in manifest if row['split']=='eval'}
     validate_input_ledgers(a.records,spec_sha,spec.get('purpose')!='CPU_TEST_ONLY')
     donors,samples=donor_pool((r for path in a.records for r in read_jsonl(path)),a.model,ann,expected,True)
@@ -108,7 +122,7 @@ def main():
     backend=None
     ledger=Ledger(out,{'model':a.model,'model_spec':spec_sha,'manifest':file_hash(a.manifest),
         'inputs':[file_hash(x) for x in a.records],'annotations':file_hash(a.annotations),
-        'methods':methods,'source_blobs':source_blobs,'measurement_script_sha256':file_hash(__file__),
+        'methods':methods,**execution,'input_provenance':input_provenance,'measurement_script_sha256':file_hash(__file__),
         'measurement_schema':'complete_response_v2'})
     for sid in sorted(samples):
         pool=donors[sid];record=samples[sid]

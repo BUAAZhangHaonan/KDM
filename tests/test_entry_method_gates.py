@@ -25,10 +25,17 @@ def test_formal_entry_method_proof_precedes_backend(tmp_path,monkeypatch,command
         extra=[str(manifest) if x=='unused' else x for x in extra]+['--method-plan',str(plan)]
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
+    if command!='run':
+        (tmp_path/'outputs/records').mkdir(parents=True)
+        (tmp_path/'outputs/records/preregistration_freeze.json').write_text(json.dumps({'files':{},'source_blobs':[]}))
+    import kdm.task_provenance as provenance
+    monkeypatch.setattr(provenance,'validate_task_inputs',lambda *args,**kwargs:{'sources':[]})
+    monkeypatch.setattr(provenance,'validate_measurement_methods',lambda *args:None)
     def frozen(root):
         from kdm.io import file_hash
         value=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
-        value['files']['configs/kdm/method_plan.json']=value['files']['plan.json'];value['source_blobs']=[]
+        if 'plan.json' in value['files']:value['files']['configs/kdm/method_plan.json']=value['files']['plan.json']
+        value['files']['configs/runtime/m.json']=file_hash(spec);value['source_blobs']=[]
         return value
     monkeypatch.setattr(protocol,'validate_freeze',frozen)
     def gate(root,spec,methods):
@@ -46,14 +53,19 @@ def test_non_method_runs_do_not_require_method_proof(tmp_path,monkeypatch,mode,m
     import kdm.protocol as protocol
     import kdm.pipeline as pipeline
     spec=tmp_path/'spec.json';spec.write_text(json.dumps({'purpose':'CPU_TEST_ONLY'} if mock else {}))
+    from kdm.io import file_hash
+    (tmp_path/'data/current').mkdir(parents=True);(tmp_path/'outputs/records').mkdir(parents=True)
+    manifest=tmp_path/'data/current/all.jsonl';manifest.write_text(json.dumps({'id':'s','dataset':'fixture','split':'eval'})+'\n')
+    (tmp_path/'outputs/records/preregistration_freeze.json').write_text('{}')
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
+    monkeypatch.setattr(protocol,'validate_freeze',lambda *args:{'source_blobs':['frozen'],'files':{'configs/runtime/m.json':file_hash(spec)}})
     monkeypatch.setattr(protocol,'code_identity',lambda *args:{})
     monkeypatch.setattr(protocol,'validate_method_runtime',lambda *args:pytest.fail('unexpected method gate'),raising=False)
     def backend(*args):raise RuntimeError('backend reached without method gate')
     monkeypatch.setattr(pipeline,'make_backend',backend)
     with pytest.raises(RuntimeError,match='backend reached'):
-        cli.main(['--root',str(tmp_path),'run','--mode',mode,'--manifest','unused','--model-spec',str(spec),'--model','m','--gpu','0','--out','outputs/verification/mock.jsonl' if mock else 'formal.jsonl'])
+        cli.main(['--root',str(tmp_path),'run','--mode',mode,'--manifest',str(manifest),'--model-spec',str(spec),'--model','m','--gpu','0','--out','outputs/verification/mock.jsonl' if mock else 'formal.jsonl'])
 
 
 def test_complete_response_requires_method_proof_and_final_human_labels(tmp_path,monkeypatch):
@@ -62,10 +74,16 @@ def test_complete_response_requires_method_proof_and_final_human_labels(tmp_path
     spec=importlib.util.spec_from_file_location('complete_entry',Path(__file__).parents[1]/'scripts/complete_response_audit.py')
     mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
     config=tmp_path/'spec.json';config.write_text('{}');events=[]
+    from kdm.io import file_hash
+    (tmp_path/'outputs/records').mkdir(parents=True)
+    (tmp_path/'outputs/records/preregistration_freeze.json').write_text(json.dumps({'files':{'configs/runtime/m.json':file_hash(config)}}))
+    import kdm.task_provenance as provenance
+    monkeypatch.setattr(provenance,'validate_task_inputs',lambda *args,**kwargs:{'sources':[]})
+    monkeypatch.setattr(provenance,'validate_measurement_methods',lambda *args:None)
     monkeypatch.setattr(mod,'execution_identity',lambda *args:{})
     monkeypatch.setattr(protocol,'validate_method_runtime',lambda root,spec,methods:events.append(methods),raising=False)
     def reviewed(path,records):
-        assert path=='annotations' and records==['raw-records']
+        assert path=='annotations' and records==[str(tmp_path/'raw-records')]
         events.append('human_review');raise ValueError('human review incomplete')
     monkeypatch.setattr(human,'validate_human_review',reviewed)
     monkeypatch.setattr(mod,'validate_annotations',lambda *args:pytest.fail('formal used provisional annotations'))
@@ -100,7 +118,7 @@ def test_formal_census_matches_frozen_full_manifest_before_model_load(tmp_path,m
     (tmp_path/'outputs/records').mkdir(parents=True)
     (tmp_path/'outputs/records/preregistration_freeze.json').write_text('synthetic receipt content')
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0');monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
-    monkeypatch.setattr(protocol,'validate_freeze',lambda root:{'source_blobs':['frozen-source'],'files':{'data/current/all.jsonl':expected}})
+    monkeypatch.setattr(protocol,'validate_freeze',lambda root:{'source_blobs':['frozen-source'],'files':{'data/current/all.jsonl':expected,'configs/runtime/m.json':file_hash(spec)}})
     def backend(*args):raise RuntimeError('backend reached after frozen full manifest check')
     monkeypatch.setattr(pipeline,'make_backend',backend)
     with pytest.raises(ValueError if changed_manifest else RuntimeError) as exc:

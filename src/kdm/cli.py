@@ -25,8 +25,8 @@ def main(argv=None):
     q=sub.add_parser('select');q.add_argument('--census',nargs='+',required=True);q.add_argument('--manifest',required=True);q.add_argument('--annotations',required=True);q.add_argument('--out',required=True)
     q=sub.add_parser('analyze');q.add_argument('--records',nargs='+',required=True);q.add_argument('--annotations',required=True);q.add_argument('--aliases',required=True);q.add_argument('--out',required=True);q.add_argument('--vqa-normalizer')
     q=sub.add_parser('closed-probe');q.add_argument('--manifest',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
-    q=sub.add_parser('replay');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
-    q=sub.add_parser('mechanism');q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
+    q=sub.add_parser('replay');q.add_argument('--records',nargs='+',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
+    q=sub.add_parser('mechanism');q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--records',nargs='+',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
     a=p.parse_args(argv);root=setup(a.root)
     from .execution import resolve_image_path
     from .io import within,read_jsonl,atomic_json,file_hash,Ledger,stable_hash,stable_seed
@@ -98,7 +98,9 @@ def main(argv=None):
     from .pipeline import make_backend,run_tasks,census_tasks,experiment_tasks,probe_tasks,closed_rank,sessions,json_safe
     from .decoding import DecodeConfig,replay
     from .prompts import MARKERS
-    spec=json.load(open(a.model_spec));task_plan_identity={};execution=None
+    spec=json.load(open(a.model_spec));task_plan_identity={};execution=None;input_provenance=None
+    if a.command in {'mechanism','replay'}:
+        a.records=[str(within(root,path)) for path in a.records]
     from .protocol import code_identity
     if spec.get('purpose')=='CPU_TEST_ONLY':
         if not out.is_relative_to(root/'outputs/verification'):
@@ -107,13 +109,16 @@ def main(argv=None):
     else:
         from .protocol import validate_runtime
         execution=validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
-        freeze=None
-        if a.command=='run' and a.mode in {'census','experiment'}:
-            from .protocol import validate_freeze
-            freeze=validate_freeze(root)
-            task_plan_identity['freeze_receipt_sha256']=file_hash(root/'outputs/records/preregistration_freeze.json')
-            if a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
-                raise ValueError('Census manifest differs from the frozen full original manifest')
+        from .protocol import validate_freeze
+        freeze=validate_freeze(root)
+        if file_hash(a.model_spec)!=freeze['files'][f'configs/runtime/{a.model}.json']:
+            raise ValueError('Execution backend differs from frozen model spec')
+        task_plan_identity['freeze_receipt_sha256']=file_hash(root/'outputs/records/preregistration_freeze.json')
+        if a.command=='run' and a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
+            raise ValueError('Census manifest differs from the frozen full original manifest')
+        if a.command in {'mechanism','replay'}:
+            from .task_provenance import validate_task_inputs
+            input_provenance=validate_task_inputs(root,a.records,freeze,stages={'experiment'},model=a.model)
         if a.command=='run' and a.mode=='experiment':
             if not a.method_plan:raise ValueError('Formal experiment requires the frozen model/dataset method plan')
             plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
@@ -139,14 +144,27 @@ def main(argv=None):
         elif a.command=='mechanism':
             methods=tuple(a.methods.split(','))
         elif a.command=='replay':
-            methods=tuple(sorted({row['method'] for row in read_jsonl(a.records)} & {'vcd','m3id','dola','deco','sid'}))
+            methods=tuple(sorted({row['method'] for path in a.records for row in read_jsonl(path)} & {'vcd','m3id','dola','deco','sid'}))
         else:methods=None
         if methods is not None:
+            if input_provenance is not None:
+                from .task_provenance import validate_measurement_methods
+                validate_measurement_methods(root,input_provenance,methods)
             from .protocol import validate_method_runtime
             validate_method_runtime(root,spec,methods)
         source_blobs=freeze['source_blobs'] if freeze is not None else code_identity(root)
+    if a.command=='closed-probe' or (a.command=='run' and a.mode!='census'):
+        from .task_provenance import manifest_identity
+        samples=list(read_jsonl(a.manifest))
+        manifest_fields=manifest_identity(samples)
+        if spec.get('purpose')!='CPU_TEST_ONLY':
+            original=list(read_jsonl(root/'data/current/all.jsonl'))
+            expected=[s for s in original if s['dataset'] in manifest_fields['datasets']]
+            if manifest_fields!=manifest_identity(expected):raise ValueError('Task manifest must retain complete frozen dataset contents')
+        task_plan_identity.update(manifest_fields)
+        task_plan_identity['stage']=a.mode if a.command=='run' else 'closed'
     backend=make_backend(spec,'cuda:0')
-    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs,**task_plan_identity}
+    identity={'model':a.model,'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs,**task_plan_identity}
     if execution is not None:identity['execution']=execution
     if a.command=='run':
         samples=list(read_jsonl(a.manifest));identity['manifest_sha256']=file_hash(a.manifest)
@@ -161,7 +179,7 @@ def main(argv=None):
         from PIL import Image
         samples=list(read_jsonl(a.manifest));names=sorted(json.load(open(root/'configs/kdm/food_aliases.json')))
         if len(names)!=101:raise ValueError('Closed measurement requires all 101 frozen Food-101 classes')
-        ledger=Ledger(out,{**identity,'manifest':file_hash(a.manifest),'names':names})
+        ledger=Ledger(out,{**identity,'manifest_sha256':file_hash(a.manifest),'names':names})
         for sample in samples:
             if sample['dataset']!='food101' or sample['split']!='eval':continue
             key=stable_hash([a.model,sample['id'],'closed'])
@@ -172,8 +190,8 @@ def main(argv=None):
     if a.command=='mechanism':
         from PIL import Image
         from .mechanism import measure_path
-        ledger=Ledger(out,{**identity,'records':file_hash(a.records),'mechanism':'four_condition_shared_prefix'})
-        for record in read_jsonl(a.records):
+        ledger=Ledger(out,{**identity,'records':[file_hash(path) for path in a.records],'input_provenance':input_provenance,'mechanism':'four_condition_shared_prefix'})
+        for record in (row for path in a.records for row in read_jsonl(path)):
             if record['method']!='direct' or not record['guided'] or record['sample']['split']!='eval':continue
             if record.get('tokens') is None:raise ValueError('Mechanism requires matching backend token records')
             for method in a.methods.split(','):
@@ -187,8 +205,8 @@ def main(argv=None):
         return
     if a.command=='replay':
         from PIL import Image
-        ledger=Ledger(out,{**identity,'records':file_hash(a.records),'replay':'direct_response_path'})
-        records=list(read_jsonl(a.records))
+        ledger=Ledger(out,{**identity,'records':[file_hash(path) for path in a.records],'input_provenance':input_provenance,'replay':'direct_response_path'})
+        records=[row for path in a.records for row in read_jsonl(path)]
         donors={}
         for row in records:
             if row['method']=='direct' and row.get('guided') and row['sample']['split']=='eval':

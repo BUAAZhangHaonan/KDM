@@ -7,7 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from kdm.io import read_jsonl, within, file_hash, atomic_json
 from kdm.data import write_manifest
-from kdm.protocol import selected_samples, validate_method_runtime
+from kdm.protocol import selected_samples, validate_method_runtime, validate_freeze
+from kdm.selection_provenance import validate_selection
 from kdm.reports import validated_method_plan
 
 
@@ -22,9 +23,10 @@ def main():
     root=Path(a.root).resolve()
     manifest_path=within(root,a.manifest);selection_path=within(root,a.selection)
     samples = list(read_jsonl(manifest_path))
-    selection = json.loads(selection_path.read_text())
+    freeze=validate_freeze(root)
+    verified_selection=validate_selection(root,selection_path,manifest_path,freeze)
+    selection=verified_selection['selection']
     plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
-    freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
     if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
         raise ValueError('Selected execution plan differs from frozen method-plan identity')
     plan=validated_method_plan(json.loads(plan_path.read_text()),[(r['model'],r['dataset']) for r in selection])
@@ -55,7 +57,7 @@ def main():
             'execution_note':'GPU allocation and output path must come from the approved worker schedule; runtime proof remains a separate gate'})
         print(model,dataset,len(subset),out)
     receipt={'schema':'kdm_selected_model_dataset_manifests_v1','source_manifest_sha256':file_hash(manifest_path),
-        'selection_sha256':file_hash(selection_path),'method_plan':plan_relative,
+        'selection_sha256':file_hash(selection_path),'selection_provenance':verified_selection['provenance'],'method_plan':plan_relative,
         'method_plan_sha256':file_hash(plan_path),'conditions':entries,
         'sample_policy':'all original samples and dev/eval assignments in each selected condition'}
     index=within(root,Path(a.out_dir)/'execution_plan.json')
