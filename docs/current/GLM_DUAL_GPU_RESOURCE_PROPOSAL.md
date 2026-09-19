@@ -1,0 +1,13 @@
+# GLM最大输入资源双卡提案（只读，未获执行授权）
+
+当前单卡spec未改。视觉token数最大的真实VizWiz图为6030，独立need_layers单图分支在空前缀发生真实OOM：申请1.71GiB、剩余826MiB，allocated峰值23,814,273,536 bytes；406.8秒后失败。该输入及原始错误保留于glm46v_max_input_resource_v1_layer.json/log，未降配置或重试。其余两个独立原配置组合正在既有授权内核验，结果另列补充review。
+
+实际checkpoint架构Glm4vForConditionalGeneration，text_config.num_hidden_layers=40，未绑定输入embedding与输出head权重。当前transformers 5.17.0实装Glm4vForConditionalGeneration构造(1284行)包含model及lm_head；Glm4vModel(915行)包含visual与language_model；Glm4vTextModel(812行)包含embed_tokens、40个layers、norm、rotary_emb。提案JSON记录实际源码段、路径与SHA，没有依据名称推测。
+
+拟议物理4/5对应逻辑0/1。model.visual、model.language_model.embed_tokens、rotary_emb及layers.0–19置0；layers.20–39、model.language_model.norm及lm_head置1。每个具权重子树恰好归一个卡，没有父级根映射覆盖子级，也不使用CPU/disk/auto offload；max_memory显式各22GiB。完整40层device_map在JSON。vision全部内部模块随model.visual留0。
+
+HFBackend → get_engine → FamilyModel → AutoModelForImageTextToText.from_pretrained现有构造链已接受显式device_map和max_memory，拟议无需改共享源，只需获批后在新spec中登记上述kwargs及gpu_count=2。完整旧单卡spec快照和SHA保存在JSON existing_spec，当前原文件未动。
+
+保持原始BF16、checkpoint、processor全部默认与实际分辨率、模板、禁用thinking、方法/生成参数，绝不修改SID第二层最低100定义。这只是源码结构与显式构造支持的提案，尚无双卡数值/资源成功证据。若获批必须以新spec身份重做完整native16、SID原式oracle（只支撑Food适用条件）、三种最大真实Viz输入资源组合。不能将旧单卡证明直接移植到双卡，也不声称空/1/2前缀覆盖每个问题长度及32生成步的绝对峰值。
+
+证据：outputs/verification/glm46v_dual_gpu_resource_proposal_v1.json。未修改spec、未启动双卡。

@@ -1,0 +1,187 @@
+{
+  "status": "proposal_only_not_authorized_or_executed",
+  "physical_gpu_order": [
+    4,
+    5
+  ],
+  "logical_gpu_map": {
+    "model.visual": 0,
+    "model.language_model.embed_tokens": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.layers.0": 0,
+    "model.language_model.layers.1": 0,
+    "model.language_model.layers.2": 0,
+    "model.language_model.layers.3": 0,
+    "model.language_model.layers.4": 0,
+    "model.language_model.layers.5": 0,
+    "model.language_model.layers.6": 0,
+    "model.language_model.layers.7": 0,
+    "model.language_model.layers.8": 0,
+    "model.language_model.layers.9": 0,
+    "model.language_model.layers.10": 0,
+    "model.language_model.layers.11": 0,
+    "model.language_model.layers.12": 0,
+    "model.language_model.layers.13": 0,
+    "model.language_model.layers.14": 0,
+    "model.language_model.layers.15": 0,
+    "model.language_model.layers.16": 0,
+    "model.language_model.layers.17": 0,
+    "model.language_model.layers.18": 0,
+    "model.language_model.layers.19": 0,
+    "model.language_model.layers.20": 1,
+    "model.language_model.layers.21": 1,
+    "model.language_model.layers.22": 1,
+    "model.language_model.layers.23": 1,
+    "model.language_model.layers.24": 1,
+    "model.language_model.layers.25": 1,
+    "model.language_model.layers.26": 1,
+    "model.language_model.layers.27": 1,
+    "model.language_model.layers.28": 1,
+    "model.language_model.layers.29": 1,
+    "model.language_model.layers.30": 1,
+    "model.language_model.layers.31": 1,
+    "model.language_model.layers.32": 1,
+    "model.language_model.layers.33": 1,
+    "model.language_model.layers.34": 1,
+    "model.language_model.layers.35": 1,
+    "model.language_model.layers.36": 1,
+    "model.language_model.layers.37": 1,
+    "model.language_model.layers.38": 1,
+    "model.language_model.layers.39": 1,
+    "model.language_model.norm": 1,
+    "lm_head": 1
+  },
+  "gpu_count": 2,
+  "dtype": "bfloat16",
+  "max_memory": {
+    "0": "22GiB",
+    "1": "22GiB"
+  },
+  "existing_spec": {
+    "key": "glm46v",
+    "hf_model_id": "zai-org/GLM-4.6V-Flash",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/GLM-4.6V-Flash"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/glm46v_final16.json",
+      "completed": 16,
+      "expected": 16,
+      "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 5320911456,
+        "mtime_ns": 1768891450984877875,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "058745e42d1003c9fb6d1707838902478cd5acb0d7cb277a7e074ceaecf06402",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 5303216664,
+        "mtime_ns": 1768891536906049313,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "56e35e399921aa4d20ee0e20639bbb7e86e7036b11b74b643487d591206f071c",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 5303216664,
+        "mtime_ns": 1768891446195684505,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "7f57230ee36c64f3c5d2986674ddba5db3df26df828db1833f4792d4ef21ce48",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 4658299264,
+        "mtime_ns": 1768891460261247167,
+        "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+        "hub_recorded_sha256": "8c12ad6165dc9a2895a46547d611ed24990eae6fb357dddf066e239582fece2e",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "ef88f66ef623085cd86f5fd14bd6647a0b7175b9a25773049b82611d4ac82181",
+    "processor": {
+      "path": "/home/g203-4028/Models/GLM-4.6V-Flash",
+      "files": {
+        "tokenizer.json": "9340665016419c825c4bdabbcc9acc43b7ca2c68ce142724afa829abb1be5efd",
+        "preprocessor_config.json": "02cc50c36240882ae35e8cd4077a25a379664108185d728d261cb785aefeccff",
+        "chat_template.jinja": "bf6cfe131f9af1cdbe0e1e4bda8cd56154e63d95d50df697155654bde7b387fd",
+        "tokenizer_config.json": "13809913afa65678aff5d54d888720c30cb000d0e9a85799ef22d1ca9dfdf228"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_verified_only",
+      "deco_layers": "projection_verified_only",
+      "sid_reference": {
+        "status": "passed",
+        "record": "outputs/verification/glm46v_sid_reference_v2_summary.json"
+      },
+      "text_only_condition": "passed_fixed16_state_isolation"
+    }
+  },
+  "existing_spec_sha256": "81f7a75c1f79d57316574c7b0e936a1150777bca323092ff5dccfd70b4170ab1",
+  "model_config_sha256": "ef88f66ef623085cd86f5fd14bd6647a0b7175b9a25773049b82611d4ac82181",
+  "sources": {
+    "Glm4vForConditionalGeneration": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/glm4v/modeling_glm4v.py",
+      "sha256": "94f5ccdbcfe60f361c2b772b0a6f39a321b61acd17b7601e9d10bdd8e21e8088",
+      "constructor_line": 1284,
+      "constructor_source": "    def __init__(self, config):\n        super().__init__(config)\n        self.model = Glm4vModel(config)\n        self.lm_head = nn.Linear(config.text_config.hidden_size, config.text_config.vocab_size, bias=False)\n\n        self.post_init()\n"
+    },
+    "Glm4vModel": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/glm4v/modeling_glm4v.py",
+      "sha256": "94f5ccdbcfe60f361c2b772b0a6f39a321b61acd17b7601e9d10bdd8e21e8088",
+      "constructor_line": 915,
+      "constructor_source": "    def __init__(self, config):\n        super().__init__(config)\n        self.visual = Glm4vVisionModel._from_config(config.vision_config)\n        self.language_model = Glm4vTextModel._from_config(config.text_config)\n        self.rope_deltas = None  # cache rope_deltas here\n\n        # Initialize weights and apply final processing\n        self.post_init()\n"
+    },
+    "Glm4vTextModel": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/glm4v/modeling_glm4v.py",
+      "sha256": "94f5ccdbcfe60f361c2b772b0a6f39a321b61acd17b7601e9d10bdd8e21e8088",
+      "constructor_line": 812,
+      "constructor_source": "    def __init__(self, config: Glm4vTextConfig):\n        super().__init__(config)\n        self.padding_idx = config.pad_token_id\n        self.vocab_size = config.vocab_size\n\n        self.embed_tokens = nn.Embedding(config.vocab_size, config.hidden_size, self.padding_idx)\n        self.layers = nn.ModuleList(\n            [Glm4vTextDecoderLayer(config, layer_idx) for layer_idx in range(config.num_hidden_layers)]\n        )\n        self.norm = Glm4vRMSNorm(config.hidden_size, eps=config.rms_norm_eps)\n        self.rotary_emb = Glm4vTextRotaryEmbedding(config=config)\n\n        self.gradient_checkpointing = False\n        # Initialize weights and apply final processing\n        self.post_init()\n"
+    }
+  },
+  "shared_constructor_path": "HFBackend -> get_engine -> FamilyModel -> AutoModelForImageTextToText.from_pretrained(dtype=torch.bfloat16, device_map=explicit, max_memory=explicit)",
+  "shared_sources_sha256": {
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89"
+  },
+  "trigger": "single need_layers branch at maximum-count real VizWiz input (6030 visual tokens), empty prefix OOM requesting 1.71GiB with 826MiB free",
+  "unmodified_parameters": [
+    "processor defaults and all image resolution",
+    "checkpoint and BF16 dtype",
+    "native template and no-thinking mode",
+    "rank100/second-layer SID definition",
+    "method and generation parameters"
+  ],
+  "required_acceptance_if_authorized": [
+    "new explicit spec identity and actual placement",
+    "native16 full proof for new identity",
+    "SID oracle for new identity (Food applicability only)",
+    "fresh max-Viz independent groups without retry/fallback"
+  ]
+}
