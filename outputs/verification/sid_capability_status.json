@@ -11,5 +11,5 @@
   "phi35": "passed",
   "llava15_13b": "passed",
   "gemma3_12b": "runtime_mask_contract_error",
-  "glm46v": "6403_configuration_pending"
+  "glm46v": "passed"
 }
