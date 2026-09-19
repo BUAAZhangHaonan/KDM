@@ -139,17 +139,23 @@ def test_report_gate_requires_whole_frozen_task_universe():
     selected=[{'model':'m','dataset':'fixture','selected':True}]
     tasks=list(experiment_tasks(samples))+list(probe_tasks(samples))
     rows=[{**task,'model':'m','key':task_id('m',task),'status':'ok'} for task in tasks]
-    assert validate_report_coverage(rows,samples,selected,[])['selected_conditions']==1
+    assert validate_report_coverage(rows,samples,selected,[],baseline_plan(selected))['selected_conditions']==1
     with pytest.raises(ValueError,match='Missing frozen'):
-        validate_report_coverage([r for r in rows if r['sample']['id']=='a'],samples,selected,[])
+        validate_report_coverage([r for r in rows if r['sample']['id']=='a'],samples,selected,[],baseline_plan(selected))
     with pytest.raises(ValueError,match='Missing frozen'):
-        validate_report_coverage([r for r in rows if r['method']!='deco'],samples,selected,[])
+        validate_report_coverage([r for r in rows if r['method']!='deco'],samples,selected,[],baseline_plan(selected))
 
 
 def test_vqa_scoring_cannot_use_generic_normalization():
     from kdm.scoring import vqa_score
     with pytest.raises(ValueError,match='Official'):vqa_score('yes',['yes']*10)
 
+
+
+def baseline_plan(selection):
+    plan={}
+    for row in selection:plan.setdefault(row['model'],{})[row['dataset']]=['vcd','m3id','dola','deco']
+    return plan
 
 
 def report_records(samples,model='m',methods=('vcd','m3id','dola','deco')):
@@ -165,9 +171,9 @@ def test_report_gate_rejects_extra_unselected_and_forged_model():
     rows=report_records(samples)
     for extra in (report_records(samples,'unselected')[0],{**rows[0],'key':'unexpected'}):
         with pytest.raises(ValueError,match='Unexpected or unselected'):
-            validate_report_coverage(rows+[extra],samples,selection,[])
+            validate_report_coverage(rows+[extra],samples,selection,[],baseline_plan(selection))
     rows[0]['model']='forged'
-    with pytest.raises(ValueError,match='disagrees'):validate_report_coverage(rows,samples,selection,[])
+    with pytest.raises(ValueError,match='disagrees'):validate_report_coverage(rows,samples,selection,[],baseline_plan(selection))
 
 
 def test_report_gate_compares_all_101_frozen_class_names():
@@ -179,25 +185,25 @@ def test_report_gate_compares_all_101_frozen_class_names():
     scores=[{'label':sample['class'],'sum_logp':-1.,'mean_logp':-1.,'n_tokens':1} for sample in samples]
     closed=[{'model':'m','sample':samples[0],'candidate_scores':scores,'gold_rank':1,
              'ranking_rule':'mean_log_probability','target':'class_0'}]
-    validate_report_coverage(rows,samples,selection,closed)
+    validate_report_coverage(rows,samples,selection,closed,baseline_plan(selection))
     closed[0]['candidate_scores'][-1]['label']='forged_class'
-    with pytest.raises(ValueError,match='frozen 101'):validate_report_coverage(rows,samples,selection,closed)
+    with pytest.raises(ValueError,match='frozen 101'):validate_report_coverage(rows,samples,selection,closed,baseline_plan(selection))
 
 
 def test_report_method_plan_is_model_specific_and_fixed():
     from kdm.reports import validate_report_coverage
     samples=[{'id':'x','dataset':'fixture','split':'eval'}]
     selection=[{'model':model,'dataset':'fixture','selected':True} for model in ('m','n')]
-    baselines=['vcd','m3id','dola','deco'];plan={'m':baselines+['sid'],'n':baselines}
-    rows=report_records(samples,'m',plan['m'])+report_records(samples,'n',plan['n'])
+    baselines=['vcd','m3id','dola','deco'];plan={'m':{'fixture':baselines+['sid']},'n':{'fixture':baselines}}
+    rows=report_records(samples,'m',plan['m']['fixture'])+report_records(samples,'n',plan['n']['fixture'])
     out=validate_report_coverage(rows,samples,selection,[],method_plan=plan)
-    assert 'sid' in out['method_plan']['m'] and 'sid' not in out['method_plan']['n']
+    assert 'sid' in out['method_plan']['m']['fixture'] and 'sid' not in out['method_plan']['n']['fixture']
     with pytest.raises(ValueError,match='Unexpected or unselected'):
-        validate_report_coverage(rows,samples,selection,[])
+        validate_report_coverage(rows,samples,selection,[],baseline_plan(selection))
     with pytest.raises(ValueError,match='all four'):
-        validate_report_coverage(rows,samples,selection,[],method_plan={'m':['vcd','sid']})
-    with pytest.raises(ValueError,match='unselected model'):
-        validate_report_coverage(rows,samples,selection,[],method_plan={'other':baselines})
+        validate_report_coverage(rows,samples,selection,[],method_plan={'m':{'fixture':['vcd','sid']}})
+    with pytest.raises(ValueError,match='exactly cover'):
+        validate_report_coverage(rows,samples,selection,[],method_plan={'other':{'fixture':baselines}})
 
 
 def test_report_rejects_extra_closed_record():
@@ -205,7 +211,7 @@ def test_report_rejects_extra_closed_record():
     samples=[{'id':'x','dataset':'fixture','split':'eval'}]
     selection=[{'model':'m','dataset':'fixture','selected':True}]
     with pytest.raises(ValueError,match='Closed-set records do not match'):
-        validate_report_coverage(report_records(samples),samples,selection,[{'model':'extra','sample':samples[0]}])
+        validate_report_coverage(report_records(samples),samples,selection,[{'model':'extra','sample':samples[0]}],baseline_plan(selection))
 
 
 

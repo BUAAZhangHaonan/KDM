@@ -5,11 +5,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from kdm.analysis import annotated_rows,evaluate,probe_summary,export_csv
 from kdm.annotation import validate_annotations
 from kdm.reports import behavioral_validity,method_comparison,validate_report_coverage
-from kdm.io import read_jsonl,within,atomic_json
+from kdm.io import read_jsonl,within,atomic_json,file_hash
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--records',nargs='+',required=True)
-    p.add_argument('--manifest',required=True);p.add_argument('--selection',required=True);p.add_argument('--methods',default='vcd,m3id,dola,deco');p.add_argument('--method-plan')
+    p.add_argument('--manifest',required=True);p.add_argument('--selection',required=True);p.add_argument('--method-plan',required=True)
     p.add_argument('--annotations',required=True);p.add_argument('--aliases',required=True);p.add_argument('--closed',nargs='+',required=True)
     p.add_argument('--normalizer',required=True);p.add_argument('--out-dir',required=True);a=p.parse_args()
     target=within(a.root,a.out_dir);target.mkdir(parents=True,exist_ok=True)
@@ -24,8 +24,19 @@ def main():
                 raise ValueError('Every formal response requires a matching unified annotation record')
     rows=annotated_rows(a.records,annotations,json.load(open(a.aliases)),normalizer)
     closed=[r for path in a.closed for r in read_jsonl(path)]
-    method_plan=json.load(open(a.method_plan)) if a.method_plan else None
-    validate_report_coverage(rows,list(read_jsonl(a.manifest)),json.load(open(a.selection)),closed,tuple(a.methods.split(',')),method_plan)
+    plan_path=within(a.root,a.method_plan);plan_relative=str(plan_path.relative_to(Path(a.root).resolve()))
+    freeze=json.loads((Path(a.root)/'outputs/records/preregistration_freeze.json').read_text())
+    if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
+        raise ValueError('Report method plan differs from frozen identity')
+    method_plan=json.load(open(plan_path));selection=json.load(open(a.selection))
+    coverage=validate_report_coverage(rows,list(read_jsonl(a.manifest)),selection,closed,method_plan)
+    from kdm.protocol import validate_method_runtime
+    for condition in selection:
+        if condition['selected']:
+            runtime=json.loads((Path(a.root)/'configs/runtime'/f"{condition['model']}.json").read_text())
+            validate_method_runtime(Path(a.root),runtime,method_plan[condition['model']][condition['dataset']])
+    coverage.update(method_plan_sha256=file_hash(a.method_plan),manifest_sha256=file_hash(a.manifest),selection_sha256=file_hash(a.selection))
+    atomic_json(target/'coverage.json',coverage)
     probes=probe_summary(rows)
     reports={'paired':evaluate(rows),'probe':probes,'validity':behavioral_validity(rows,probes,closed),
              'method':method_comparison(rows,probes,closed)}

@@ -111,23 +111,33 @@ def method_comparison(rows,probes,closed,bootstrap=2000):
     return out
 
 
-def validate_report_coverage(rows,samples,selection,closed,methods=('vcd','m3id','dola','deco'),method_plan=None):
+def validated_method_plan(method_plan,conditions):
+    """Read the frozen full model/dataset plan, including unselected conditions."""
+    required={'vcd','m3id','dola','deco'}
+    if not isinstance(method_plan,dict):raise ValueError('Method plan must map models to dataset method lists')
+    if len(conditions)!=len(set(conditions)):raise ValueError('Duplicate model/dataset condition')
+    actual=set();checked={}
+    for model,datasets in method_plan.items():
+        if not isinstance(model,str) or not model or not isinstance(datasets,dict) or not datasets:
+            raise ValueError('Method plan must map models to dataset method lists')
+        checked[model]={}
+        for dataset,values in datasets.items():
+            if not isinstance(dataset,str) or not dataset or not isinstance(values,(list,tuple)) or any(not isinstance(v,str) for v in values):
+                raise ValueError('Method plan requires explicit dataset method lists')
+            if len(values)!=len(set(values)) or not required<=set(values) or not set(values)<=required|{'sid'}:
+                raise ValueError('Method plan must retain all four baseline methods and may add SID')
+            actual.add((model,dataset));checked[model][dataset]=tuple(values)
+    if actual!=set(conditions):raise ValueError('Method plan must exactly cover every declared model/dataset condition, including unselected conditions')
+    return checked
+
+
+def validate_report_coverage(rows,samples,selection,closed,method_plan):
     """Require the frozen selected task universe before generating result tables."""
     from .pipeline import experiment_tasks,probe_tasks,task_id
     if not samples or len({s['id'] for s in samples})!=len(samples):raise ValueError('Empty or duplicate frozen manifest')
     selected=[(r['model'],r['dataset']) for r in selection if r['selected']]
     if not selected or len(selected)!=len(set(selected)):raise ValueError('Empty or duplicate selected model/dataset list')
-    required={'vcd','m3id','dola','deco'}
-    def checked_methods(values):
-        if not isinstance(values,(list,tuple)) or len(values)!=len(set(values)) or not required<=set(values) or not set(values)<=required|{'sid'}:
-            raise ValueError('Method plan must retain all four baseline methods and may add SID')
-        return tuple(values)
-    default_methods=checked_methods(methods)
-    if method_plan is not None and not isinstance(method_plan,dict):raise ValueError('Method plan must be a model-to-method-list object')
-    method_plan={} if method_plan is None else method_plan
-    selected_models={model for model,dataset in selected}
-    if not set(method_plan)<=selected_models:raise ValueError('Method plan contains an unselected model')
-    model_methods={model:checked_methods(method_plan.get(model,default_methods)) for model in selected_models}
+    task_methods=validated_method_plan(method_plan,[(r['model'],r['dataset']) for r in selection])
     food_names={sample['class'] for sample in samples if sample['dataset']=='food101'}
     if any(dataset=='food101' for model,dataset in selected) and len(food_names)!=101:
         raise ValueError('Frozen manifest must identify all 101 Food-101 classes')
@@ -135,7 +145,7 @@ def validate_report_coverage(rows,samples,selection,closed,methods=('vcd','m3id'
     for model,dataset in selected:
         subset=[sample for sample in samples if sample['dataset']==dataset and sample['split']=='eval']
         if not subset:raise ValueError('Selected dataset has no evaluation samples')
-        for task in list(experiment_tasks(subset,model_methods[model]))+list(probe_tasks(subset)):
+        for task in list(experiment_tasks(subset,task_methods[model][dataset]))+list(probe_tasks(subset)):
             expected[task_id(model,task)]=(model,task)
         if dataset=='food101':expected_closed.update((model,sample['id']) for sample in subset)
     index={}
@@ -176,4 +186,4 @@ def validate_report_coverage(rows,samples,selection,closed,methods=('vcd','m3id'
                 target=next((v for v in scores if v['label']==sample['class']),None)
                 if target is None or row['gold_rank']!=1+sum(v['mean_logp']>target['mean_logp'] for v in scores):
                     raise ValueError('Closed-set reported rank mismatch')
-    return {'selected_conditions':len(selected),'frozen_sample_count':len(samples),'method_plan':model_methods,'expected_response_count':len(expected)}
+    return {'selected_conditions':len(selected),'frozen_sample_count':len(samples),'method_plan':task_methods,'expected_response_count':len(expected)}

@@ -20,7 +20,7 @@ def main(argv=None):
     q=sub.add_parser('run');q.add_argument('--manifest',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True)
     q.add_argument('--mode',choices=['census','experiment','probe'],required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True)
     q.add_argument('--out',required=True);q.add_argument('--shard',type=int,default=0);q.add_argument('--n-shards',type=int,default=1)
-    q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--marker',default='all')
+    q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--marker',default='all');q.add_argument('--method-plan')
     q=sub.add_parser('annotation-queue');q.add_argument('--records',nargs='+',required=True);q.add_argument('--out',required=True)
     q=sub.add_parser('select');q.add_argument('--census',nargs='+',required=True);q.add_argument('--manifest',required=True);q.add_argument('--annotations',required=True);q.add_argument('--out',required=True)
     q=sub.add_parser('analyze');q.add_argument('--records',nargs='+',required=True);q.add_argument('--annotations',required=True);q.add_argument('--aliases',required=True);q.add_argument('--out',required=True);q.add_argument('--vqa-normalizer')
@@ -76,7 +76,7 @@ def main(argv=None):
     from .pipeline import make_backend,run_tasks,census_tasks,experiment_tasks,probe_tasks,closed_rank,sessions,json_safe
     from .decoding import DecodeConfig,replay
     from .prompts import MARKERS
-    spec=json.load(open(a.model_spec))
+    spec=json.load(open(a.model_spec));task_plan_identity={}
     from .protocol import code_identity
     if spec.get('purpose')=='CPU_TEST_ONLY':
         if not out.is_relative_to(root/'outputs/verification'):
@@ -85,7 +85,30 @@ def main(argv=None):
     else:
         from .protocol import validate_runtime
         validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
-        if (a.command=='run' and a.mode=='experiment') or a.command=='mechanism':
+        if a.command=='run' and a.mode=='experiment':
+            if not a.method_plan:raise ValueError('Formal experiment requires the frozen model/dataset method plan')
+            plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
+            freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+            if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
+                raise ValueError('Experiment method plan differs from frozen identity')
+            original=list(read_jsonl(root/'data/current/all.jsonl'))
+            if freeze['files'].get('data/current/all.jsonl')!=file_hash(root/'data/current/all.jsonl'):
+                raise ValueError('Experiment source manifest differs from frozen identity')
+            samples=list(read_jsonl(a.manifest));datasets={row['dataset'] for row in samples}
+            if len(datasets)!=1:raise ValueError('Formal experiment requires one complete dataset condition per manifest')
+            dataset=next(iter(datasets))
+            expected={row['id']:row for row in original if row['dataset']==dataset}
+            if not expected or len(samples)!=len(expected) or {row['id']:row for row in samples}!=expected:
+                raise ValueError('Experiment manifest must retain every original sample and split in its dataset condition')
+            from .reports import validated_method_plan
+            panel=json.loads((root/'configs/kdm/models.json').read_text())
+            conditions=[(m['key'],d) for m in panel for d in {row['dataset'] for row in original}]
+            plan=validated_method_plan(json.loads(plan_path.read_text()),conditions)
+            methods=tuple(a.methods.split(','))
+            if len(methods)!=len(set(methods)) or set(methods)!=set(plan[a.model][dataset]):
+                raise ValueError('Experiment methods differ from frozen model/dataset plan')
+            task_plan_identity={'method_plan_sha256':file_hash(plan_path),'planned_dataset':dataset,'planned_methods':list(methods)}
+        elif a.command=='mechanism':
             methods=tuple(a.methods.split(','))
         elif a.command=='replay':
             methods=tuple(sorted({row['method'] for row in read_jsonl(a.records)} & {'vcd','m3id','dola','deco','sid'}))
@@ -95,7 +118,7 @@ def main(argv=None):
             validate_method_runtime(root,spec,methods)
         source_blobs=code_identity(root)
     backend=make_backend(spec,'cuda:0')
-    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs}
+    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs,**task_plan_identity}
     if a.command=='run':
         samples=list(read_jsonl(a.manifest));identity['manifest_sha256']=file_hash(a.manifest)
         cfg=DecodeConfig()

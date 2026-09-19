@@ -4,7 +4,7 @@ import pytest
 
 
 @pytest.mark.parametrize('command,extra,expected',[
-    ('run',['--mode','experiment','--manifest','unused','--methods','vcd,dola'],('vcd','dola')),
+    ('run',['--mode','experiment','--manifest','unused','--methods','vcd,m3id,dola,deco'],('vcd','m3id','dola','deco')),
     ('mechanism',['--records','records','--methods','m3id,deco'],('m3id','deco')),
     ('replay',['--records','records'],('dola','sid')),
 ])
@@ -15,6 +15,14 @@ def test_formal_entry_method_proof_precedes_backend(tmp_path,monkeypatch,command
     spec=tmp_path/'spec.json';spec.write_text('{}')
     records=tmp_path/'records';records.write_text(''.join(json.dumps({'method':m})+'\n' for m in ['direct','dola','sid','dola']))
     extra=[str(records) if x=='records' else x for x in extra]
+    if command=='run':
+        from kdm.io import file_hash
+        (tmp_path/'data/current').mkdir(parents=True);(tmp_path/'configs/kdm').mkdir(parents=True);(tmp_path/'outputs/records').mkdir(parents=True)
+        manifest=tmp_path/'data/current/all.jsonl';manifest.write_text(json.dumps({'id':'s','dataset':'fixture','split':'eval'})+'\n')
+        (tmp_path/'configs/kdm/models.json').write_text(json.dumps([{'key':'m'}]))
+        plan=tmp_path/'plan.json';plan.write_text(json.dumps({'m':{'fixture':list(expected)}}))
+        (tmp_path/'outputs/records/preregistration_freeze.json').write_text(json.dumps({'status':'frozen','files':{'plan.json':file_hash(plan),'data/current/all.jsonl':file_hash(manifest)}}))
+        extra=[str(manifest) if x=='unused' else x for x in extra]+['--method-plan',str(plan)]
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
     def gate(root,spec,methods):

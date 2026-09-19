@@ -5,9 +5,10 @@ import json
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from kdm.io import read_jsonl, within
+from kdm.io import read_jsonl, within, file_hash, atomic_json
 from kdm.data import write_manifest
-from kdm.protocol import selected_samples
+from kdm.protocol import selected_samples, validate_method_runtime
+from kdm.reports import validated_method_plan
 
 
 def main():
@@ -15,21 +16,50 @@ def main():
     p.add_argument("--root", required=True)
     p.add_argument("--manifest", required=True)
     p.add_argument("--selection", required=True)
+    p.add_argument("--method-plan", required=True)
     p.add_argument("--out-dir", required=True)
     a = p.parse_args()
     samples = list(read_jsonl(a.manifest))
     selection = json.loads(Path(a.selection).read_text())
-    for model in sorted({r["model"] for r in selection}):
-        rows = selected_samples(samples, selection, model)
-        if not rows:
-            continue
-        out = within(a.root, Path(a.out_dir) / (model + ".jsonl"))
+    root=Path(a.root).resolve()
+    plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
+    freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+    if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
+        raise ValueError('Selected execution plan differs from frozen method-plan identity')
+    plan=validated_method_plan(json.loads(plan_path.read_text()),[(r['model'],r['dataset']) for r in selection])
+    planned=[]
+    for model in sorted({r['model'] for r in selection}):
+        rows=selected_samples(samples,selection,model)
+        if not rows:continue
+        spec_path=within(root,Path('configs/runtime')/(model+'.json'))
+        runtime=json.loads(spec_path.read_text())
+        if runtime.get('key')!=model:raise ValueError('Runtime spec belongs to a different model')
+        for dataset in sorted({r['dataset'] for r in rows}):
+            subset=[row for row in rows if row['dataset']==dataset]
+            methods=plan[model][dataset]
+            validate_method_runtime(root,runtime,methods)
+            out=within(root,Path(a.out_dir)/model/(dataset+'.jsonl'))
+            planned.append((model,dataset,subset,methods,out,spec_path))
+    entries=[]
+    for model,dataset,subset,methods,out,spec_path in planned:
         if out.exists():
-            if list(read_jsonl(out)) != rows:
-                raise ValueError("Cannot overwrite a different selected manifest")
-        else:
-            write_manifest(rows, out)
-        print(model, len(rows), sum(s["split"] == "eval" for s in rows), out)
+            if list(read_jsonl(out))!=subset:raise ValueError('Cannot overwrite a different selected manifest')
+        else:write_manifest(subset,out)
+        entries.append({'model':model,'dataset':dataset,'manifest':str(out.relative_to(root)),
+            'manifest_sha256':file_hash(out),'samples':len(subset),'eval_samples':sum(s['split']=='eval' for s in subset),
+            'methods':list(methods),'model_spec':str(spec_path.relative_to(root)),
+            'experiment_arguments':['--mode','experiment','--manifest',str(out.relative_to(root)),
+                '--model',model,'--model-spec',str(spec_path.relative_to(root)),'--methods',','.join(methods),
+                '--method-plan',str(plan_path)],
+            'execution_note':'GPU allocation and output path must come from the approved worker schedule; runtime proof remains a separate gate'})
+        print(model,dataset,len(subset),out)
+    receipt={'schema':'kdm_selected_model_dataset_manifests_v1','source_manifest_sha256':file_hash(a.manifest),
+        'selection_sha256':file_hash(a.selection),'method_plan':str(plan_path),
+        'method_plan_sha256':file_hash(plan_path),'conditions':entries,
+        'sample_policy':'all original samples and dev/eval assignments in each selected condition'}
+    index=within(root,Path(a.out_dir)/'execution_plan.json')
+    if index.exists() and json.loads(index.read_text())!=receipt:raise ValueError('Cannot overwrite a different selected execution plan')
+    if not index.exists():atomic_json(index,receipt)
 
 
 if __name__ == "__main__":
