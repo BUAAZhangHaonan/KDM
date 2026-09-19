@@ -1,0 +1,55 @@
+{
+  "schema": "KDM_GUIDED_ABSTENTION_20260918",
+  "project_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+  "source_commit": "eceed2246515cb938ad478ee23c94590c990eb5d",
+  "physical_gpus": [
+    0,
+    1,
+    4,
+    5
+  ],
+  "model_inventory": "models.json",
+  "census": "all_manifest_rows_all_candidates",
+  "main_guidance": true,
+  "markers": [
+    "UNKNOWN",
+    "UNCLEAR",
+    "UNSURE",
+    "I cannot identify it"
+  ],
+  "selection": "at_least_one_semantically_confirmed_abstention_in_complete_baseline_census",
+  "methods": [
+    "direct",
+    "vcd",
+    "m3id",
+    "dola",
+    "deco"
+  ],
+  "additional_reference_method": "sid_on_supported_selected_models",
+  "new_method": [
+    "instruction_vcd",
+    "instruction_m3id"
+  ],
+  "comparison": [
+    "copy_original_abstention",
+    "reference_instruction_removed",
+    "cda_visual"
+  ],
+  "max_new_tokens": 32,
+  "greedy": true,
+  "alpha": 1.0,
+  "beta": 0.1,
+  "m3id_lambda": 0.02,
+  "m3id_threshold": 0.3,
+  "attempt_count": 10,
+  "attempt_temperature": 1.0,
+  "attempt_top_p": 1.0,
+  "bootstrap": 2000,
+  "cluster_food101": "class",
+  "cluster_vizwiz": "image",
+  "annotation_rule": "full_response_semantic_label",
+  "dataset_scope": "existing_food101_manifest_entirety_and_entire_official_vizwiz_validation",
+  "semantic_matrix": "full_four_by_four_reference_marker_crossing",
+  "threshold_tuning": "none",
+  "no_guidance_control": true
+}

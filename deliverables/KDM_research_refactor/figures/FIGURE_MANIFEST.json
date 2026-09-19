@@ -1,0 +1,17 @@
+{
+  "files": [
+    "/mnt/data/KDM_research_refactor/figures/01_reported_abstentions.png",
+    "/mnt/data/KDM_research_refactor/figures/01_reported_abstentions.pdf",
+    "/mnt/data/KDM_research_refactor/figures/02_lexical_boundary.png",
+    "/mnt/data/KDM_research_refactor/figures/02_lexical_boundary.pdf",
+    "/mnt/data/KDM_research_refactor/figures/03_exact_decomposition.png",
+    "/mnt/data/KDM_research_refactor/figures/03_exact_decomposition.pdf",
+    "/mnt/data/KDM_research_refactor/figures/04_instruction_invariance.png",
+    "/mnt/data/KDM_research_refactor/figures/04_instruction_invariance.pdf",
+    "/mnt/data/KDM_research_refactor/figures/05_matrix_layout.png",
+    "/mnt/data/KDM_research_refactor/figures/05_matrix_layout.pdf",
+    "/mnt/data/KDM_research_refactor/figures/06_tradeoff_layout.png",
+    "/mnt/data/KDM_research_refactor/figures/06_tradeoff_layout.pdf"
+  ],
+  "examples": true
+}

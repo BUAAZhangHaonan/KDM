@@ -1,0 +1,10 @@
+{
+  "factory": "kdm.models.api:LocalChat",
+  "api": true,
+  "kwargs": {
+    "url": "http://127.0.0.1:8000/v1",
+    "model": "MUST_SET_SERVED_MODEL"
+  },
+  "checkpoint_revision": "MUST_RECORD",
+  "vllm_version": "MUST_RECORD"
+}

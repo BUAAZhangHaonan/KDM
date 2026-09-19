@@ -1,0 +1,82 @@
+[
+  {
+    "marker": "UNKNOWN",
+    "reference_marker": "UNKNOWN",
+    "retention": 0.08
+  },
+  {
+    "marker": "UNKNOWN",
+    "reference_marker": "UNCLEAR",
+    "retention": 0.17
+  },
+  {
+    "marker": "UNKNOWN",
+    "reference_marker": "UNSURE",
+    "retention": 0.26
+  },
+  {
+    "marker": "UNKNOWN",
+    "reference_marker": "I cannot identify it",
+    "retention": 0.35
+  },
+  {
+    "marker": "UNCLEAR",
+    "reference_marker": "UNKNOWN",
+    "retention": 0.14
+  },
+  {
+    "marker": "UNCLEAR",
+    "reference_marker": "UNCLEAR",
+    "retention": 0.23
+  },
+  {
+    "marker": "UNCLEAR",
+    "reference_marker": "UNSURE",
+    "retention": 0.32
+  },
+  {
+    "marker": "UNCLEAR",
+    "reference_marker": "I cannot identify it",
+    "retention": 0.41
+  },
+  {
+    "marker": "UNSURE",
+    "reference_marker": "UNKNOWN",
+    "retention": 0.2
+  },
+  {
+    "marker": "UNSURE",
+    "reference_marker": "UNCLEAR",
+    "retention": 0.29
+  },
+  {
+    "marker": "UNSURE",
+    "reference_marker": "UNSURE",
+    "retention": 0.38
+  },
+  {
+    "marker": "UNSURE",
+    "reference_marker": "I cannot identify it",
+    "retention": 0.47
+  },
+  {
+    "marker": "I cannot identify it",
+    "reference_marker": "UNKNOWN",
+    "retention": 0.26
+  },
+  {
+    "marker": "I cannot identify it",
+    "reference_marker": "UNCLEAR",
+    "retention": 0.35
+  },
+  {
+    "marker": "I cannot identify it",
+    "reference_marker": "UNSURE",
+    "retention": 0.44
+  },
+  {
+    "marker": "I cannot identify it",
+    "reference_marker": "I cannot identify it",
+    "retention": 0.53
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "source_type": "USER_REPORTED",
+  "source": "Current conversation pre-experiment report; no independent recount in this sandbox",
+  "model": "LLaVA-v1.6-7B",
+  "dataset": "Food-101",
+  "n": 1200,
+  "baseline_abstentions": 72,
+  "retained": 6,
+  "lost": 66,
+  "lost_outcomes": {
+    "wrong_specific_food": 35,
+    "generic_food": 21,
+    "unrelated_object": 9,
+    "correct_specific_food": 1
+  },
+  "accuracy_direct": 0.23333333333333334,
+  "accuracy_vcd": 0.24083333333333334
+}

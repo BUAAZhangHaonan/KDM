@@ -1,0 +1,68 @@
+[
+  {
+    "pdf": "figures/01_reported_abstentions.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 331.20001220703125,
+    "text_characters": 326,
+    "raster_size": [
+      1023,
+      663
+    ]
+  },
+  {
+    "pdf": "figures/02_lexical_boundary.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 302.3999938964844,
+    "text_characters": 370,
+    "raster_size": [
+      1023,
+      605
+    ]
+  },
+  {
+    "pdf": "figures/03_exact_decomposition.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 302.3999938964844,
+    "text_characters": 369,
+    "raster_size": [
+      1023,
+      605
+    ]
+  },
+  {
+    "pdf": "figures/04_instruction_invariance.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 302.3999938964844,
+    "text_characters": 376,
+    "raster_size": [
+      1023,
+      605
+    ]
+  },
+  {
+    "pdf": "figures/05_matrix_layout.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 396.0,
+    "text_characters": 377,
+    "raster_size": [
+      1023,
+      792
+    ]
+  },
+  {
+    "pdf": "figures/06_tradeoff_layout.pdf",
+    "pages": 1,
+    "width_pt": 511.20001220703125,
+    "height_pt": 302.3999938964844,
+    "text_characters": 307,
+    "raster_size": [
+      1023,
+      605
+    ]
+  }
+]
