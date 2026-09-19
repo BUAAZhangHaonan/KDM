@@ -1,0 +1,72 @@
+{
+  "record_kind": "historical_native_interface_completion",
+  "completed_at_utc": "2026-09-19T12:51:26.648944+00:00",
+  "host": "4028-root",
+  "physical_gpus": [
+    4,
+    5
+  ],
+  "process_pid": 322851,
+  "process_exit_code": 0,
+  "process_still_present": false,
+  "locks": {
+    "4": "released",
+    "5": "released"
+  },
+  "native_record": "outputs/verification/glm46v_dual_native16_v1.json",
+  "native_record_sha256": "b2b2bc5394cc1eeb3144caee38a1f4e4b6f9f5f2ed49afbe6bd8df159331d079",
+  "spec_sha256_embedded": "6e42eaaf1966920e8bacf415ddf1fa74069e87f143436b737ab8f293e226048e",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "all_native_backend_tokens_equal": true,
+  "all_condition_state_equal": true,
+  "condition_max_abs_error": 0.0,
+  "checked_conditions": [
+    "guided_clean",
+    "guided_noise",
+    "unguided_clean",
+    "unguided_noise",
+    "guided_text_only",
+    "unguided_text_only"
+  ],
+  "layer_projection_check": {
+    "status": "passed",
+    "sample_id": "food101:apple_pie_group_000.jpg",
+    "raw_layers": 40,
+    "normalized_layers": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "head_final_error": 0.0,
+    "raw_projection_error": 0.0,
+    "norm_projection_error": 0.0,
+    "scope": "layer projection interface only; method formulas and SID need separate validation"
+  },
+  "peak_allocated_bytes": {
+    "0": 11724349440,
+    "1": 9556078592
+  },
+  "dataset_counts": {
+    "food101": 16,
+    "vizwiz": 0
+  },
+  "scope": "Fixed interface16 native/backend equality and condition isolation under the embedded historical 4028 dual-GPU specification; not a formal experiment or validation of the new 6403 specification.",
+  "post_native_stages": {
+    "sid": "not_started_due_to_user_destination_change",
+    "maximum_viz_layer": "not_started_due_to_user_destination_change",
+    "maximum_viz_instruction_vcd": "not_started_due_to_user_destination_change",
+    "maximum_viz_cda": "not_started_due_to_user_destination_change"
+  },
+  "canonical_spec_and_status_updates": "none; parent is transferring canonical runtime to 6403 GPU1"
+}
