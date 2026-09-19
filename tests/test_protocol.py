@@ -43,3 +43,29 @@ def test_runtime_rejects_unresolved_and_unlocked_model(tmp_path):
     spec["gpu_count"]=1
     with pytest.raises(ValueError, match="worker"):
         validate_runtime(tmp_path,spec,"m",["0"])
+
+
+def test_runtime_refuses_incomplete_or_changed_adapter_identity(tmp_path,monkeypatch):
+    import os,sys
+    from kdm.io import file_hash
+    from kdm.protocol import validate_runtime
+    model='minicpm26'
+    (tmp_path/'data/current').mkdir(parents=True)
+    manifest=tmp_path/'data/current/interface16.jsonl';manifest.write_text('frozen interface manifest')
+    sources=tmp_path/'src/kdm/models';sources.mkdir(parents=True)
+    for name in ['hf.py','backbone.py','sid.py','remote.py']:(sources/name).write_text(name)
+    weights=tmp_path/'weights';weights.mkdir();(weights/'w.bin').write_bytes(b'1234')
+    spec={'key':model,'availability':'resolved','gpu_count':1,'environment_python':sys.executable,
+          'versions':{},'kwargs':{'model_path':str(weights)},'weights':[{'filename':'w.bin','size_bytes':4}],
+          'interface_verification':{'status':'passed','record':'proof.json'}}
+    proof={'passed':True,'completed':16,'expected':16,'spec':spec,
+           'manifest_sha256':file_hash(manifest),'runtime_adapter_sha256':{}}
+    original=os.readlink
+    monkeypatch.setattr(os,'readlink',lambda path,*a,**kw:str(tmp_path/'outputs/locks/gpu_0.lock') if str(path)=='/proc/self/fd/20' else original(path,*a,**kw))
+    def save(): (tmp_path/'proof.json').write_text(json.dumps(proof))
+    save()
+    with pytest.raises(ValueError,match='omits required'):validate_runtime(tmp_path,spec,model,['0'])
+    proof['runtime_adapter_sha256']={p.name:file_hash(p) for p in sources.iterdir()};save()
+    validate_runtime(tmp_path,spec,model,['0'])
+    (sources/'remote.py').write_text('different runtime')
+    with pytest.raises(ValueError,match='Adapter changed'):validate_runtime(tmp_path,spec,model,['0'])

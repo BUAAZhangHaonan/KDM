@@ -104,7 +104,16 @@ def validate_runtime(root, spec, model, cards):
         raise ValueError("Model, processor or environment changed after interface verification")
     if result["manifest_sha256"] != file_hash(Path(root) / "data/current/interface16.jsonl"):
         raise ValueError("Native-interface sample identity changed")
-    for filename, digest in result["runtime_adapter_sha256"].items():
+    dependencies = {"hf.py", "backbone.py", "sid.py"}
+    if model in {"minicpm26", "minicpm45", "phi35"}:
+        dependencies.add("remote.py")
+    if model == "internvl35_8b":
+        dependencies.add("internvl_preprocessing.py")
+    recorded_sources = result.get("runtime_adapter_sha256", {})
+    allowed_sources = {"hf.py", "backbone.py", "sid.py", "remote.py", "internvl_preprocessing.py"}
+    if not dependencies <= set(recorded_sources) or not set(recorded_sources) <= allowed_sources:
+        raise ValueError("Native-interface evidence omits required adapter source identities")
+    for filename, digest in recorded_sources.items():
         if file_hash(Path(root) / "src/kdm/models" / filename) != digest:
             raise ValueError("Adapter changed after native-interface verification: " + filename)
     for weight in spec["weights"]:
