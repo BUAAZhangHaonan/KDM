@@ -1,0 +1,132 @@
+{
+  "passed": false,
+  "reference_commit": "127dd412fa6b61ab1c9babf6979ec4da98002438",
+  "spec": {
+    "key": "phi35",
+    "hf_model_id": "microsoft/Phi-3.5-vision-instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct",
+      "dtype": "bfloat16",
+      "attn_implementation": "eager"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "not_applicable",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/phi35_final16.json",
+      "completed": 16,
+      "expected": 16
+    },
+    "versions": {
+      "torch": "2.3.0+cu121",
+      "torchvision": "0.18.0+cu121",
+      "transformers": "4.43.0",
+      "tokenizers": "0.19.1",
+      "accelerate": "0.30.0",
+      "numpy": "1.26.4",
+      "Pillow": "10.3.0",
+      "safetensors": "0.8.0",
+      "einops": "0.8.1",
+      "scipy": "1.17.0",
+      "requests": "2.32.5"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00002.safetensors",
+        "size_bytes": 4944122112,
+        "mtime_ns": 1778228548000000000,
+        "hub_revision": "12b77fb40b63a2c73c68243d3f767aab688a1b2a",
+        "hub_recorded_sha256": "be7bdee601478b3560aeb7122fe87a7d68445bb21b5f1ca88a764e8530b3aab8",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00002.safetensors",
+        "size_bytes": 3349208776,
+        "mtime_ns": 1778228482000000000,
+        "hub_revision": "12b77fb40b63a2c73c68243d3f767aab688a1b2a",
+        "hub_recorded_sha256": "94621eca6936d7a2fb94bd90f37edb0e28850235e7ba2c5e20445d2fc56bcaed",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "567e28c638a3e41aba1a304ae58b283845ad07e1c60e970643b0ad8fc229b382",
+    "processor": {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct",
+      "files": {
+        "configuration_phi3_v.py": "18ff44c5c1f9a6523184fb2e580e03ebf722a65f37b9cc57cd1a6d620a0f2666",
+        "processing_phi3_v.py": "990ef3d1f6b5cc61b44cf8ec8e8886b19721b7e01e8bae3ebea32781b0fcf598",
+        "tokenizer.json": "493f8ad437be806d5ccdc57e91479bdbb0c656448c1b89ff70f7653530d78518",
+        "processor_config.json": "286a9e7fb58a489eae6825b79be69f62068c2028435c29ee52c3a485d071707b",
+        "preprocessor_config.json": "0f3d920fcec587bb425312d30b0660e1fabaf46a75961f2b75ddbb1ff92de01c",
+        "tokenizer_config.json": "581d4654c018fbcef2504b57a805dcad37126038137b5d25d22b5a02abc1ef29",
+        "modeling_phi3_v.py": "b223be7d7e9f01903dd8704e5da45c6030824134441aa2734c40c36597c3b41c",
+        "sample_inference.py": "49b1246f2a18d9b4a1e12892e50d19929e550263075d4c80cedeac2246546da4"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+      "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": {
+        "status": "projection_verified",
+        "record": "outputs/verification/phi35_final16.json"
+      },
+      "deco_layers": {
+        "status": "projection_verified",
+        "record": "outputs/verification/phi35_final16.json"
+      },
+      "sid_reference": "not_verified",
+      "text_only_condition": {
+        "status": "passed",
+        "record": "outputs/verification/phi35_final16.json",
+        "scope": "six independent conditions on three shared prefixes of each fixed image"
+      }
+    }
+  },
+  "stage": "before_weight_loading",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+  "runtime_adapter_sha256": {
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "sid.py": "a74b3e784a7f81884a0069cd71baeaf11f4e4623203cd87e5e59890562cd3b83"
+  },
+  "gpu_compute_executed": false,
+  "checks": {},
+  "evidence": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/remote.py",
+      "sha256": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3",
+      "hits": [
+        {
+          "line": 102,
+          "source": "\nclass PhiVisionModel:\n    def __init__(self,model_path,device,attn_implementation=None,dtype='bfloat16',**kwargs):\n        from transformers import AutoModelForCausalLM,AutoProcessor,AutoConfig\n        self.device=device\n        self.cfg=AutoConfig.from_pretrained(model_path,trust_remote_code=True,local_files_only=True)\n        self.mt=self.cfg.model_type\n        self.proc=AutoProcessor.from_pretrained(model_path,trust_remote_code=True,local_files_only=True,num_crops=4)"
+        }
+      ]
+    },
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct/configuration_phi3_v.py",
+      "sha256": "18ff44c5c1f9a6523184fb2e580e03ebf722a65f37b9cc57cd1a6d620a0f2666",
+      "hits": [
+        {
+          "line": 31,
+          "source": "\nclass Phi3VConfig(PretrainedConfig):\n    r\"\"\"\n    This is the configuration class to store the configuration of a [`Phi3VModel`]. It is used to instantiate a Phi-3\n    model according to the specified arguments, defining the model architecture. Instantiating a configuration with the\n    defaults will yield a similar configuration to that of the\n    [microsoft/Phi-3-vision-128k-instruct](https://huggingface.co/microsoft/Phi-3-vision-128k-instruct).\n"
+        }
+      ]
+    }
+  ],
+  "classification": "adapter_structural_mapping_gap",
+  "error": "Actual Phi3VConfig has no image_token_id and PhiVisionModel provides no img_ctx_id. Current SID cannot map its visual sequence positions; no claim that SID is intrinsically impossible for Phi.",
+  "config_sha256": "567e28c638a3e41aba1a304ae58b283845ad07e1c60e970643b0ad8fc229b382"
+}

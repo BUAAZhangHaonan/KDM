@@ -41,3 +41,8 @@ data/stage9/pope/images/
 /outputs/locks/
 /.pytest_cache/
 /.environments/
+
+# Complete SID layer-index traces remain on disk; compact receipts are tracked.
+outputs/verification/*_sid_reference.json
+outputs/verification/*_sid_reference_v[0-9]*.json
+!outputs/verification/*_sid_reference*_summary.json

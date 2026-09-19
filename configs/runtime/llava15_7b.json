@@ -86,7 +86,7 @@
     "deco_layers": "projection_verified_only",
     "sid_reference": {
       "status": "passed",
-      "record": "outputs/verification/llava15_7b_sid_reference.json",
+      "record": "outputs/verification/llava15_7b_sid_reference_summary.json",
       "scope": "fixed official selection and causal-mask core on the same native backbone; shared hook transport; not a full legacy-fork end-to-end run"
     },
     "text_only_condition": "passed_fixed16_state_isolation"

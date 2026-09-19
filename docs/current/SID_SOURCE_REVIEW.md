@@ -56,3 +56,7 @@ PYTHONPATH=src TMPDIR=$PROJECT/cache/tmp "$PROJECT/.environments/mprisk-tf553/bi
 - `src/kdm/models/hf.py` SHA256 `0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e`
 - `verification/sid_reference_check.py` SHA256 `c7b8fadf89409769bc50b98524a2639948f03a8785806129f50f757061532b92`
 - `tests/test_sid_sessions.py` SHA256 `1c06bdf6fce7ae59518b3632f7a03b2ce5f8f65a7bf295f3f27ef5bef4ba21f4`
+
+## Evidence storage
+
+The complete layer-index traces are retained at their original project paths without rewriting. Compact `*_sid_reference_summary.json` receipts preserve method/runtime identity, checks, per-visit errors and each layer event's scalar/mask identity; only repeated selected/blocked index arrays are represented by their lengths. `detail_evidence` records the original full file path, size and SHA256. The deterministic derivation is `verification/summarize_sid_proof.py`. The previously committed LLaVA7 trace remains in Git history; its current tracked replacement is the compact receipt. Other complete traces are excluded from Git. These are interface proofs, not formal research responses or distributions.

@@ -1,0 +1,185 @@
+{
+  "passed": false,
+  "reference_commit": "127dd412fa6b61ab1c9babf6979ec4da98002438",
+  "spec": {
+    "key": "gemma3_12b",
+    "hf_model_id": "google/gemma-3-12b-it",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it",
+      "dtype": "bfloat16",
+      "device_map": {
+        "model.vision_tower": 0,
+        "model.multi_modal_projector": 0,
+        "model.language_model.embed_tokens": 0,
+        "model.language_model.rotary_emb": 0,
+        "lm_head": 0,
+        "model.language_model.layers.0": 0,
+        "model.language_model.layers.1": 0,
+        "model.language_model.layers.2": 0,
+        "model.language_model.layers.3": 0,
+        "model.language_model.layers.4": 0,
+        "model.language_model.layers.5": 0,
+        "model.language_model.layers.6": 0,
+        "model.language_model.layers.7": 0,
+        "model.language_model.layers.8": 0,
+        "model.language_model.layers.9": 0,
+        "model.language_model.layers.10": 0,
+        "model.language_model.layers.11": 0,
+        "model.language_model.layers.12": 0,
+        "model.language_model.layers.13": 0,
+        "model.language_model.layers.14": 0,
+        "model.language_model.layers.15": 0,
+        "model.language_model.layers.16": 0,
+        "model.language_model.layers.17": 0,
+        "model.language_model.layers.18": 0,
+        "model.language_model.layers.19": 0,
+        "model.language_model.layers.20": 0,
+        "model.language_model.layers.21": 0,
+        "model.language_model.layers.22": 0,
+        "model.language_model.layers.23": 0,
+        "model.language_model.layers.24": 1,
+        "model.language_model.layers.25": 1,
+        "model.language_model.layers.26": 1,
+        "model.language_model.layers.27": 1,
+        "model.language_model.layers.28": 1,
+        "model.language_model.layers.29": 1,
+        "model.language_model.layers.30": 1,
+        "model.language_model.layers.31": 1,
+        "model.language_model.layers.32": 1,
+        "model.language_model.layers.33": 1,
+        "model.language_model.layers.34": 1,
+        "model.language_model.layers.35": 1,
+        "model.language_model.layers.36": 1,
+        "model.language_model.layers.37": 1,
+        "model.language_model.layers.38": 1,
+        "model.language_model.layers.39": 1,
+        "model.language_model.layers.40": 1,
+        "model.language_model.layers.41": 1,
+        "model.language_model.layers.42": 1,
+        "model.language_model.layers.43": 1,
+        "model.language_model.layers.44": 1,
+        "model.language_model.layers.45": 1,
+        "model.language_model.layers.46": 1,
+        "model.language_model.layers.47": 1,
+        "model.language_model.norm": 1
+      },
+      "max_memory": {
+        "0": "22GiB",
+        "1": "22GiB"
+      }
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "not_applicable",
+    "gpu_count": 2,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/gemma3_12b_final16_v2.json",
+      "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+    },
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "transformers": "5.5.3",
+      "tokenizers": "0.22.2",
+      "accelerate": "1.6.0",
+      "numpy": "2.2.4",
+      "Pillow": "11.1.0",
+      "sentencepiece": "0.2.0",
+      "timm": "1.0.19",
+      "safetensors": "0.5.3",
+      "einops": "0.8.1",
+      "scipy": "1.17.0",
+      "requests": "2.32.5"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00005.safetensors",
+        "size_bytes": 4979902192,
+        "mtime_ns": 1767601046000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "4847447e92599833e8dbaa3067cd201c3bb5c052efa91f11ba891e43234f7832",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00005.safetensors",
+        "size_bytes": 4931296592,
+        "mtime_ns": 1767600928000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "891bd54eed03cba9ee1e705533a02a8217fcc29f356e4a1f53e5fd0d178883ad",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00005.safetensors",
+        "size_bytes": 4931296656,
+        "mtime_ns": 1767601215000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "7cee411d9d57324e50ce064a192cc5a858276d508611b12fc599e0c9767112e0",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00005.safetensors",
+        "size_bytes": 4931296656,
+        "mtime_ns": 1767601030000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "8bc75a29a730c9e743cad013feda3b0991a913fafe787c58a1c6e20afad97723",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00005-of-00005.safetensors",
+        "size_bytes": 4601000928,
+        "mtime_ns": 1767600990000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "ed14bd4908c98fed9f61e8cd410167e0846de9abd78e0452ab092072e5d9252d",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "39172c4124d3470341bbbb25f2926fd97edf68f0fe3a9fa4cde6acb9b7ed2cc6",
+    "processor": {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it",
+      "files": {
+        "tokenizer.json": "4667f2089529e8e7657cfb6d1c19910ae71ff5f28aa7ab2ff2763330affad795",
+        "processor_config.json": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53",
+        "preprocessor_config.json": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d",
+        "tokenizer_config.json": "bfe25c2735e395407beb78456ea9a6984a1f00d8c16fa04a8b75f2a614cf53e1"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_verified_only",
+      "deco_layers": "projection_verified_only",
+      "sid_reference": "not_verified",
+      "text_only_condition": "passed_fixed16_state_isolation"
+    }
+  },
+  "runtime_adapter_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "a74b3e784a7f81884a0069cd71baeaf11f4e4623203cd87e5e59890562cd3b83"
+  },
+  "scope": "exact native-forward equality to fixed official selection/mask source transplant; shared hook transport",
+  "script_sha256": "c7b8fadf89409769bc50b98524a2639948f03a8785806129f50f757061532b92",
+  "official_source": {
+    "path": "reference_repos/sid/transformers/src/transformers/models/llama/modeling_llama.py",
+    "sha256": "f1ffff7e7693703391cd6a86334426944fc55f8cf8cf8439f2e2c7b21ae4ec4e",
+    "selection_first_line": 785,
+    "selection_source": "last_layer_attention = layer_outputs[1]\n# compute average attention over different head\nlast_layer_attention_avg = torch.mean(last_layer_attention, dim=1)[0]\n# generate new attention mask based on the average attention, sample the top ATTENTION_RANK tokens with highest attention\nlast_layer_attention_avg_last_tok = last_layer_attention_avg[-1]\n# get the attention in image token\nlast_layer_attention_avg_last_tok_image = last_layer_attention_avg_last_tok[SYS_LENGTH:SYS_LENGTH+IMAGE_TOKEN_LENGTH]\n# get the indexs of the top ATTENTION_RANK tokens\ntop_attention_rank_index = last_layer_attention_avg_last_tok_image.topk(ATTENTION_RANK, largest=False).indices + SYS_LENGTH\n# print(top_attention_rank_index - SYS_LENGTH)\n# generate new attention mask\ngen_attention_mask = torch.ones((batch_size, seq_length_with_past), dtype=torch.bool, device=inputs_embeds.device)\ngen_attention_mask[:,SYS_LENGTH:SYS_LENGTH+IMAGE_TOKEN_LENGTH] = False\ngen_attention_mask[:,top_attention_rank_index] = True\n\ngen_attention_mask = self._prepare_decoder_attention_mask(\n    gen_attention_mask, (batch_size, seq_length), inputs_embeds, past_key_values_length\n)\nnew_attention_mask = gen_attention_mask"
+  },
+  "sample_id": "food101:apple_pie_group_000.jpg",
+  "image_sha256": "a5bfc17502fe9b482205a08601be6de4a874a5ebf063c4a26b74159ea610b4a3",
+  "prompts": [
+    "What food is shown? Answer briefly.",
+    "Inspect this photograph carefully. What food is shown? Give a short answer."
+  ],
+  "error": "ValueError: SID requires an additive floating 4D full-KV causal mask"
+}
