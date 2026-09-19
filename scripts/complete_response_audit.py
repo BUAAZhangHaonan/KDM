@@ -104,7 +104,7 @@ def main():
     validate_input_ledgers(a.records,spec_sha,spec.get('purpose')!='CPU_TEST_ONLY')
     donors,samples=donor_pool((r for path in a.records for r in read_jsonl(path)),a.model,ann,expected,True)
     for sample in expected.values():
-        if not Path(sample['image_path']).is_file():raise ValueError('Missing frozen donor image')
+        if not resolve_image_path(sample['image_path'],root).is_file():raise ValueError('Missing frozen donor image')
     backend=None
     ledger=Ledger(out,{'model':a.model,'model_spec':spec_sha,'manifest':file_hash(a.manifest),
         'inputs':[file_hash(x) for x in a.records],'annotations':file_hash(a.annotations),

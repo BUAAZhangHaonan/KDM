@@ -215,10 +215,18 @@ def test_report_rejects_extra_closed_record():
 
 
 
-def test_incomplete_donor_audit_records_undefined_without_model_generation(tmp_path,monkeypatch):
+@pytest.mark.parametrize('remote',[False,True])
+def test_incomplete_donor_audit_records_undefined_without_model_generation(tmp_path,monkeypatch,remote):
     mod=script('complete_response_audit')
     image=tmp_path/'image.png';Image.new('RGB',(8,8)).save(image)
-    sample={'id':'x','split':'eval','dataset':'fixture','question':'q','image_path':str(image)}
+    logical='/unmounted-original-host/image.png' if remote else str(image)
+    if remote:assert not Path(logical).exists()
+    mapped=[]
+    def resolve(path,root):
+        assert path==logical and root==tmp_path
+        mapped.append(path);return image
+    monkeypatch.setattr(mod,'resolve_image_path',resolve)
+    sample={'id':'x','split':'eval','dataset':'fixture','question':'q','image_path':logical}
     tasks=[t for t in experiment_tasks([sample]) if t['method']=='direct']
     rows=[{**t,'model':'m','key':task_id('m',t),'status':'ok','text':'UNKNOWN',
            'tokens':[0,3],'terminated':True,'seed':0} for t in tasks]
@@ -235,6 +243,7 @@ def test_incomplete_donor_audit_records_undefined_without_model_generation(tmp_p
     mod.main()
     result=[json.loads(line) for line in out.read_text().splitlines()]
     assert len(result)==16
+    assert mapped==[logical] and json.loads(manifest.read_text())['image_path']==logical
     assert all(r['measurement_status']=='incomplete_direct_donor_pool' and r['finite_response_identity'] is None for r in result)
     assert all(len(r['donor_pool'])==4 and r['donor_pool'][0]['tokens']==[0]*32 and not r['donor_pool'][0]['terminated'] for r in result)
 
