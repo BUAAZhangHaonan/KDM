@@ -9,3 +9,5 @@
 当前adapter无法仅改spec立即执行：`InternVLModel.__init__`仍是from_pretrained后`.to(device)`，get_engine的internvl分支也未传device_map/max_memory。这意味着未来若授权双卡，需明确修改该构造路径为显式dispatch并移除整体`.to`，不改视觉预处理/embedding替换；随后重新验证native16和SID，记录hf_device_map与各卡实际峰值。本文不声称上述映射已经运行或保证不OOM，也没有将其写入spec。
 
 内存保留核对：native `_prefill`没有请求全模型output_attentions；SID只捕获第二层attention到当前forward作用域，trace_collector不会在event记录里保留GPU attention tensor，返回的summary也只有标量/索引。Qwen3 eager核心在matmul后用float32 softmax，当前OOM栈落在该必需计算。控制器目前确实保留第二层整个attention tensor到forward结束，即使选择只读last query；这是一项可见的实现内存占用，不代表本次已获准或已实施新的内存优化。未改变核心算子，也未推定某个优化必能解决资源失败。
+
+用户随后明确回复“允许按上述双卡方案核验”。后续实现仅在项目内按该方案执行，并重新建立原生16图/SID证据；本提案中的单卡失败和提出时未执行的历史身份保留。

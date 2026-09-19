@@ -82,11 +82,17 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 
 ### 模型与环境身份
 
-固定候选仍为`configs/kdm/models.json`中的16个。当前只读发现根为`/home/g203-4028/Models`。完整模型登记见`configs/runtime/model_inventory.json`，各模型独立spec位于同目录；缺失spec明确不可执行，不使用其他规模或骨干替代。
+固定候选仍为`configs/kdm/models.json`中的16个。只读来源为`/home/g203-4028/Models`与`6403-lvshuyang:/home/team/lvshuyang/Models`。完整模型登记见`configs/runtime/model_inventory.json`，各模型独立spec位于同目录；缺失spec明确不可执行，不使用其他规模或骨干替代。
 
-当前可发现：GLM-4.6V-Flash、InternVL3.5-8B、Qwen3-VL-8B、Qwen3.5-4B、Qwen3.5-9B、LLaVA-v1.6-Mistral-7B。对应项目Python：`venv/bin/python`，当前登记torch 2.9.0+cu128、transformers 5.17.0。具体检查点、处理器、原始下载元数据指纹及接口核验状态以模型spec和真实核验输出为准。
+最初4028根含GLM-4.6V-Flash、InternVL3.5-8B、Qwen3-VL-8B、Qwen3.5-4B、Qwen3.5-9B、LLaVA-v1.6-Mistral-7B。它们对应项目Python：`venv/bin/python`，当前登记torch 2.9.0+cu128、transformers 5.17.0。具体检查点、处理器、原始下载元数据指纹及接口核验状态以模型spec和真实核验输出为准。
 
 随后从SOURCES所列mprisk官方仓库（固定提交`cc6c0d82a77a958fd20c58e35efdc18c1ce0c036`）发现既有模型根`6403-lvshuyang:/home/team/lvshuyang/Models`，其余10个固定候选已核验完整分片。已只读复制到本项目`cache/models/`，总权重162,461,857,144字节；10个模型的文件名、源文件大小及safetensors头部偏移均核验完整，见`outputs/records/model_transfer_complete.json`。用户随后确认了相同来源路径。来源不变，尚未完成对应环境与原生接口核验的条件不能视为已就绪或已完成普查。
+
+两套新增隔离环境已经实际安装和导入验证：`.environments/mprisk-tf553`为torch 2.6.0+cu124 / Transformers 5.5.3，`.environments/phi443`为torch 2.3.0+cu121 / Transformers 4.43.0；完整版本与84个实际下载wheel指纹见`configs/runtime/environments.json`和`outputs/records/environment_builds/`。用户指定mprisk源码路径`6403:/home/team/zhanghaonan/TAFFC/mprisk`的HEAD和四份包装blob已与固定来源核对，记录在`outputs/records/mprisk_user_path_verification.json`。
+
+15个候选在各自原登记配置下已通过完整16图原生token、六条件状态隔离与层投影核验；GLM最终核验仍在进行。InternVL的单卡SID在修复FA2/4Dmask接口后仍OOM，用户已明确授权物理4/5显式双卡方案，该新配置需重新完成native16与SID才可就绪。不得把旧单卡native证明直接算作新双卡通过。
+
+当前SID源已经在8个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为对应`*_sid_reference_v2_summary.json`，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
 
 ### 待决定义与人工事项
 
@@ -96,4 +102,4 @@ CDA论文式(6)与开发包熵差符号相反；正文原式与任务书一般�
 
 ### 执行顺序
 
-完成缺失模型登记与原生16图核验、解决CDA定义并登记独立标注器后，更新本节为真实已冻结身份并提交普通push。之后运行完整普查、完成全量语义标注与人工核验、提交筛选；正式清单由`prepare_selected_manifests.py`保留所选任务的全部样本。报告入口须校验全部预定义任务与每题10次试答及101候选记录；任何缺项都显式失败。
+完成当前配置原生16图及方法核验、解决CDA定义、取得101类别名称人工确认并登记独立标注器后，更新本节为真实已冻结身份并提交普通push。之后运行完整普查、完成全量语义标注与人工核验、提交筛选；正式清单由`prepare_selected_manifests.py`保留所选任务的全部样本。报告入口须校验全部预定义任务与每题10次试答及101候选记录；任何缺项都显式失败。
