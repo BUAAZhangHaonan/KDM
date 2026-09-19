@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-09-19T18:15:17.298864+00:00",
+  "service_pid": 351106,
+  "service_alive": true,
+  "gpu_lock": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/locks/gpu_0.lock",
+  "client_launcher_pid": 351368,
+  "client_launcher_alive": true,
+  "service_identity": "outputs/records/semantic_judge_census_20260920T0213/identity.json",
+  "service_receipt_sha256": "d185ff6aaaade9d1acacdb841e53ab100f0076e923ebdc634560689799a50e88",
+  "physical_gpus": [
+    "0"
+  ],
+  "queue": "outputs/annotations/current/census_completed_batch01_queue.jsonl",
+  "labels": "outputs/annotations/current/census_completed_batch01_labels.jsonl",
+  "annotation_identity_exists": true,
+  "initial_label_count": 15,
+  "initial_error_count": 0,
+  "exit_code_file": "outputs/records/semantic_judge_census_20260920T0213/batch01.exit_code",
+  "retry_failed": false,
+  "human_response_review_completed": false,
+  "model_selection_performed": false
+}

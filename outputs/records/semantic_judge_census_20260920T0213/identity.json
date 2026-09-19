@@ -1,0 +1,107 @@
+{
+  "receipt": {
+    "service_id": "fbe6dc35-a6d6-4314-b1ed-ba832e9bbf73",
+    "model": "kdm-semantic-ministral3-8b-20260919",
+    "spec_sha256": "a3fdcbebf63b9532c3a5bb288901458444616b6134568636931d92b709079aea",
+    "spec": {
+      "alias": "kdm-semantic-ministral3-8b-20260919",
+      "hf_model_id": "mistralai/Ministral-3-8B-Instruct-2512",
+      "model_path": "/home/g203-4028/Models/Ministral-3-8B-Instruct-2512",
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "versions": {
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "accelerate": "1.12.0",
+        "tokenizers": "0.23.2"
+      },
+      "config_sha256": "196c38570bb4bc8168a59cc0189c9a9b9974be8dcca6b46dfc109dbd250c01aa",
+      "weights": [
+        {
+          "filename": "model-00001-of-00003.safetensors",
+          "size_bytes": 4983094790,
+          "hub_revision": "dcfc440ed367bc62945a537e9e31473406535292",
+          "hub_recorded_sha256": "5a4d6e02534a2a10ce9b54ee1d91020617429d348f09de4cf912bcae362a9fc9",
+          "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+        },
+        {
+          "filename": "model-00002-of-00003.safetensors",
+          "size_bytes": 4992892530,
+          "hub_revision": "dcfc440ed367bc62945a537e9e31473406535292",
+          "hub_recorded_sha256": "ca3b3df6c15e1f1e19977b1bb3e1bb8ec77798c2687f0dd87337b0737002f619",
+          "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+        },
+        {
+          "filename": "model-00003-of-00003.safetensors",
+          "size_bytes": 444667504,
+          "hub_revision": "dcfc440ed367bc62945a537e9e31473406535292",
+          "hub_recorded_sha256": "ee2a5e33fe9dfdc8c013aa856fbafcb1bb9b4168f96ddef9484baa23adcb5d35",
+          "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+        }
+      ],
+      "processor_files": {
+        "generation_config.json": "e0923390059f84a9180b00e5501778acc45ea9856cd7f2fd68208b360927c677",
+        "tokenizer.json": "286acad9b0e27fce778ac429763536accf618ccb6ed72963b6f94685e531c5c7",
+        "processor_config.json": "ece2373c2ae391bce18785a1810543bc6173a1f28b6767cffab2c35dbea5f002",
+        "chat_template.jinja": "215fb003a8e13d40e26587f89951f26eac71bb32ddeac209bcbb8161df9e315f",
+        "tokenizer_config.json": "2dd4c610c43937e20945d96bae1752ecfac51ad106b01fd1fdac78df3be59ee3"
+      },
+      "quantization": "native_fp8_explicit_dequantize_bfloat16",
+      "dtype": "bfloat16",
+      "attention_implementation": "sdpa",
+      "device_map": {
+        "": "cuda:0"
+      },
+      "gpu_count": 1,
+      "weight_offload": false,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 512,
+      "temperature": 0,
+      "prompt": "kdm.scoring.semantic_judge_request; no model/method/key/image input",
+      "endpoint": "http://127.0.0.1:18765/v1",
+      "port": 18765,
+      "independence": {
+        "independent_checkpoint": true,
+        "subject_hf_model_ids": [
+          "google/gemma-3-4b-it",
+          "google/gemma-3-12b-it",
+          "zai-org/GLM-4.6V-Flash",
+          "OpenGVLab/InternVL3_5-8B",
+          "llava-hf/llava-1.5-7b-hf",
+          "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+          "openbmb/MiniCPM-V-2_6",
+          "openbmb/MiniCPM-V-4_5",
+          "microsoft/Phi-3.5-vision-instruct",
+          "Qwen/Qwen2.5-VL-7B-Instruct",
+          "Qwen/Qwen3-VL-8B-Instruct",
+          "Qwen/Qwen3.5-4B",
+          "Qwen/Qwen3.5-9B",
+          "llava-hf/llava-v1.6-mistral-7b-hf",
+          "llava-hf/llava-1.5-13b-hf",
+          "llava-hf/llava-v1.6-vicuna-7b-hf"
+        ],
+        "basis": "Exact local judge checkpoint is outside the fixed 16-model generation panel; this does not prove statistical independence or correctness"
+      },
+      "status": "registered_pending_real_service_verification"
+    },
+    "physical_gpus": [
+      "0"
+    ],
+    "parameter_devices": [
+      "cuda:0"
+    ],
+    "device_map": {
+      "": "cuda:0"
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0",
+      "accelerate": "1.12.0",
+      "tokenizers": "0.23.2"
+    },
+    "script_sha256": "bcdb13e6365cee41f6f45c091521377e119088487c731f35deac5bba8943828b",
+    "started_utc": "2026-09-19T18:14:05.220409+00:00",
+    "json_mode": "prompt_only_strict_client_validation_no_constrained_decoder",
+    "formal_annotations_completed": 0
+  },
+  "receipt_sha256": "d185ff6aaaade9d1acacdb841e53ab100f0076e923ebdc634560689799a50e88"
+}
