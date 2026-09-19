@@ -86,13 +86,13 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 
 当前可发现：GLM-4.6V-Flash、InternVL3.5-8B、Qwen3-VL-8B、Qwen3.5-4B、Qwen3.5-9B、LLaVA-v1.6-Mistral-7B。对应项目Python：`venv/bin/python`，当前登记torch 2.9.0+cu128、transformers 5.17.0。具体检查点、处理器、原始下载元数据指纹及接口核验状态以模型spec和真实核验输出为准。
 
-随后从SOURCES所列mprisk官方仓库（固定提交`cc6c0d82a77a958fd20c58e35efdc18c1ce0c036`）发现既有模型根`6403-lvshuyang:/home/team/lvshuyang/Models`，其余10个固定候选已核验完整分片。正在只读复制到本项目`cache/models/`，总权重162,461,857,144字节；复制进度见`outputs/records/model_transfer_status.json`。来源不变，尚未完成复制/对应环境与原生接口核验的条件不能视为已就绪或已完成普查。
+随后从SOURCES所列mprisk官方仓库（固定提交`cc6c0d82a77a958fd20c58e35efdc18c1ce0c036`）发现既有模型根`6403-lvshuyang:/home/team/lvshuyang/Models`，其余10个固定候选已核验完整分片。已只读复制到本项目`cache/models/`，总权重162,461,857,144字节；10个模型的文件名、源文件大小及safetensors头部偏移均核验完整，见`outputs/records/model_transfer_complete.json`。用户随后确认了相同来源路径。来源不变，尚未完成对应环境与原生接口核验的条件不能视为已就绪或已完成普查。
 
 ### 待决定义与人工事项
 
 CDA论文式(6)与开发包熵差符号相反；正文原式与任务书一般正向权重要求存在冲突。已向用户给出两种具体口径，结论保存在`DEVIATIONS.md`；尚未选择或静默改式。DoLa标准JS与官方固定源码reverse-KL criterion的差异同文记录，原论文§2.2明确使用标准JS，因此保留交付包数学定义；不声明与该官方代码选层数值等价。
 
-完整语义标注必须有独立固定本地检查点，并包含自动完整短语标签。人工核查须覆盖全部弃权变化、无效/争议输出；尚未发生的人工判断不得由代理冒充。标签与来源均须真实记录。
+完整语义标注使用独立登记的`mistralai/Ministral-3-8B-Instruct-2512`，不在16候选中，见`configs/runtime/semantic_judge.json`。原生FP8权重在3090上显式反量化为bf16；该设置在首次加载前固定，未使用CPU/disk卸载。真实本地服务身份握手已通过，但初次5个软件样例存在输出围栏以及Food/空白误标，完整原始输出见`outputs/verification/judge_semantic_examples_20260919T095326491080Z.json`；不能把已建立服务等同于语义标签可靠或人工复核完成。完整短语自动标签仍须进入统一文件。人工核查须覆盖全部弃权变化、无效/争议输出；尚未发生的人工判断不得由代理冒充。标签与来源均须真实记录。
 
 ### 执行顺序
 
