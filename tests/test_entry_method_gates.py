@@ -25,6 +25,12 @@ def test_formal_entry_method_proof_precedes_backend(tmp_path,monkeypatch,command
         extra=[str(manifest) if x=='unused' else x for x in extra]+['--method-plan',str(plan)]
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
+    def frozen(root):
+        from kdm.io import file_hash
+        value=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+        value['files']['configs/kdm/method_plan.json']=value['files']['plan.json'];value['source_blobs']=[]
+        return value
+    monkeypatch.setattr(protocol,'validate_freeze',frozen)
     def gate(root,spec,methods):
         assert methods==expected
         raise ValueError('missing method proof')
@@ -34,7 +40,7 @@ def test_formal_entry_method_proof_precedes_backend(tmp_path,monkeypatch,command
         cli.main(['--root',str(tmp_path),command,'--model-spec',str(spec),'--model','m','--gpu','0','--out','formal.jsonl',*extra])
 
 
-@pytest.mark.parametrize('mode,mock',[('census',False),('probe',False),('experiment',True)])
+@pytest.mark.parametrize('mode,mock',[('probe',False),('experiment',True)])
 def test_non_method_runs_do_not_require_method_proof(tmp_path,monkeypatch,mode,mock):
     import kdm.cli as cli
     import kdm.protocol as protocol
@@ -68,3 +74,35 @@ def test_complete_response_requires_method_proof_and_final_human_labels(tmp_path
         '--annotations','annotations','--model-spec',str(config),'--model','m','--gpu','0','--out','formal.jsonl','--methods','dola,instruction_vcd'])
     with pytest.raises(ValueError,match='human review incomplete'):mod.main()
     assert events==[('dola','instruction_vcd'),'human_review']
+
+
+def test_formal_census_without_freeze_cannot_reach_backend(tmp_path,monkeypatch):
+    import kdm.cli as cli
+    import kdm.protocol as protocol
+    import kdm.pipeline as pipeline
+    spec=tmp_path/'spec.json';spec.write_text('{}')
+    monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
+    monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
+    monkeypatch.setattr(pipeline,'make_backend',lambda *args:pytest.fail('Unfrozen census loaded model'))
+    with pytest.raises(FileNotFoundError,match='preregistration_freeze'):
+        cli.main(['--root',str(tmp_path),'run','--mode','census','--manifest','unused','--model-spec',str(spec),'--model','m','--gpu','0','--out','formal.jsonl'])
+
+
+@pytest.mark.parametrize('changed_manifest',[False,True])
+def test_formal_census_matches_frozen_full_manifest_before_model_load(tmp_path,monkeypatch,changed_manifest):
+    import kdm.cli as cli
+    import kdm.protocol as protocol
+    import kdm.pipeline as pipeline
+    from kdm.io import file_hash
+    spec=tmp_path/'spec.json';spec.write_text('{}');manifest=tmp_path/'manifest.jsonl';manifest.write_text('frozen content')
+    expected=file_hash(manifest)
+    if changed_manifest:manifest.write_text('subset or different version')
+    (tmp_path/'outputs/records').mkdir(parents=True)
+    (tmp_path/'outputs/records/preregistration_freeze.json').write_text('synthetic receipt content')
+    monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0');monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
+    monkeypatch.setattr(protocol,'validate_freeze',lambda root:{'source_blobs':['frozen-source'],'files':{'data/current/all.jsonl':expected}})
+    def backend(*args):raise RuntimeError('backend reached after frozen full manifest check')
+    monkeypatch.setattr(pipeline,'make_backend',backend)
+    with pytest.raises(ValueError if changed_manifest else RuntimeError) as exc:
+        cli.main(['--root',str(tmp_path),'run','--mode','census','--manifest',str(manifest),'--model-spec',str(spec),'--model','m','--gpu','0','--out','formal.jsonl'])
+    assert ('Census manifest differs' if changed_manifest else 'backend reached') in str(exc.value)

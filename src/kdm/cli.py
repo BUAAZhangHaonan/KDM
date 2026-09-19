@@ -36,13 +36,32 @@ def main(argv=None):
     if a.command=='prepare-vizwiz':
         from .data import vizwiz_manifest
         vizwiz_manifest(a.annotations,a.images,out);return
+    def census_provenance(paths, manifest=None, complete=False):
+        from .provenance import census_input_paths,validate_census_inputs
+        from .protocol import validate_freeze
+        paths=[within(root,path) for path in paths]
+        census=paths if complete else census_input_paths(paths)
+        if not census:return None
+        freeze=validate_freeze(root)
+        return validate_census_inputs(root,census,manifest or root/'data/current/all.jsonl',freeze,
+            require_complete_panel=complete,allow_mock=out.is_relative_to(root/'outputs/verification'))
+
+    def provenance_receipt(receipt):
+        if receipt is not None:
+            atomic_json(out.with_suffix('.sources.json'),{**receipt,'operation':a.command,'output_sha256':file_hash(out),
+                **({'annotations_sha256':file_hash(a.annotations)} if hasattr(a,'annotations') else {})})
+
     if a.command=='annotation-queue':
         from .annotation import build_queue
-        out.parent.mkdir(parents=True,exist_ok=True);print(build_queue(a.records,out));return
+        a.records=[str(within(root,path)) for path in a.records]
+        provenance=census_provenance(a.records)
+        out.parent.mkdir(parents=True,exist_ok=True);print(build_queue(a.records,out));provenance_receipt(provenance);return
     if a.command=='select':
         from .annotation import validate_annotations
         from .pipeline import select_models
         from .human_review import validate_human_review
+        a.census=[str(within(root,path)) for path in a.census];a.manifest=str(within(root,a.manifest))
+        provenance=census_provenance(a.census,a.manifest,complete=True)
         ann=validate_human_review(a.annotations,a.census);samples=list(read_jsonl(a.manifest))
         from .protocol import validate_census_collection
         candidates=[r['key'] for r in json.load(open(root/'configs/kdm/models.json'))]
@@ -52,10 +71,12 @@ def main(argv=None):
                 if record['key'] not in ann or ann[record['key']].get('text')!=record['text']:
                     raise ValueError('Every census response, including lexical labels, requires matching unified annotation')
         ids=[r['id'] for r in samples]
-        atomic_json(out,select_models(a.census,ann,ids));return
+        atomic_json(out,select_models(a.census,ann,ids));provenance_receipt(provenance);return
     if a.command=='analyze':
         from .analysis import annotated_rows,evaluate,export_csv,probe_summary
         from .annotation import validate_annotations
+        a.records=[str(within(root,path)) for path in a.records]
+        provenance=census_provenance(a.records)
         ann=validate_annotations(a.annotations);aliases=json.load(open(a.aliases));normalizer=None
         if not a.vqa_normalizer and any(r['sample']['dataset']=='vizwiz' for path in a.records for r in read_jsonl(path)):
             a.vqa_normalizer=str(root/'src/kdm/models/official_vqa_normalizer.py')
@@ -65,7 +86,7 @@ def main(argv=None):
             ev=mod.VQAEval(None,None);normalizer=lambda text:ev.processDigitArticle(ev.processPunctuation(text))
         rows=annotated_rows(a.records,ann,aliases,normalizer)
         results=evaluate(rows);atomic_json(out,results);export_csv(results,out.with_suffix('.csv'))
-        atomic_json(out.with_name(out.stem+'_probes.json'),probe_summary(rows));return
+        atomic_json(out.with_name(out.stem+'_probes.json'),probe_summary(rows));provenance_receipt(provenance);return
     # Set physical visibility before importing torch/model code.
     allocated=os.environ.get('CUDA_VISIBLE_DEVICES')
     if allocated:
@@ -85,11 +106,17 @@ def main(argv=None):
     else:
         from .protocol import validate_runtime
         validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
+        freeze=None
+        if a.command=='run' and a.mode in {'census','experiment'}:
+            from .protocol import validate_freeze
+            freeze=validate_freeze(root)
+            task_plan_identity['freeze_receipt_sha256']=file_hash(root/'outputs/records/preregistration_freeze.json')
+            if a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
+                raise ValueError('Census manifest differs from the frozen full original manifest')
         if a.command=='run' and a.mode=='experiment':
             if not a.method_plan:raise ValueError('Formal experiment requires the frozen model/dataset method plan')
             plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
-            freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
-            if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
+            if freeze['files'].get(plan_relative)!=file_hash(plan_path) or file_hash(plan_path)!=freeze['files']['configs/kdm/method_plan.json']:
                 raise ValueError('Experiment method plan differs from frozen identity')
             original=list(read_jsonl(root/'data/current/all.jsonl'))
             if freeze['files'].get('data/current/all.jsonl')!=file_hash(root/'data/current/all.jsonl'):
@@ -107,7 +134,7 @@ def main(argv=None):
             methods=tuple(a.methods.split(','))
             if len(methods)!=len(set(methods)) or set(methods)!=set(plan[a.model][dataset]):
                 raise ValueError('Experiment methods differ from frozen model/dataset plan')
-            task_plan_identity={'method_plan_sha256':file_hash(plan_path),'planned_dataset':dataset,'planned_methods':list(methods)}
+            task_plan_identity.update(method_plan_sha256=file_hash(plan_path),planned_dataset=dataset,planned_methods=list(methods))
         elif a.command=='mechanism':
             methods=tuple(a.methods.split(','))
         elif a.command=='replay':
@@ -116,7 +143,7 @@ def main(argv=None):
         if methods is not None:
             from .protocol import validate_method_runtime
             validate_method_runtime(root,spec,methods)
-        source_blobs=code_identity(root)
+        source_blobs=freeze['source_blobs'] if freeze is not None else code_identity(root)
     backend=make_backend(spec,'cuda:0')
     identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs,**task_plan_identity}
     if a.command=='run':

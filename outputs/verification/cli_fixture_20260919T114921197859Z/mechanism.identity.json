@@ -1,0 +1,18 @@
+{
+  "identity": "8e0d6e4168f5ec07670e1355015b0d590e35833a7295bf7612238f6ea49146bc",
+  "definition": {
+    "backend": {
+      "factory": "kdm.models.mock:MockBackend",
+      "kwargs": {},
+      "purpose": "CPU_TEST_ONLY"
+    },
+    "backend_spec_sha256": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec",
+    "schema": "kdm_current_v2",
+    "source_blobs": {
+      "software_fixture": true,
+      "formal_evidence": false
+    },
+    "records": "b45957040735f373bd072c499464c31843c65570364998a787ad63a8891ff950",
+    "mechanism": "four_condition_shared_prefix"
+  }
+}

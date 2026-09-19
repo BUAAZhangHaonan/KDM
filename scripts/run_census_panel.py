@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = Path('/home/g203-4028/projects/knowledge-deficit-mitigation')
 sys.path.insert(0, str(ROOT / 'src'))
 from kdm.io import atomic_json, file_hash, read_jsonl, within
-from kdm.protocol import code_identity
+from kdm.protocol import validate_freeze
 
 LANES = {
     'gpu0': {'cards': [0], 'models': ['glm46v']},
@@ -55,25 +55,8 @@ def execute(run_dir):
         raise ValueError('Unexpected write root')
     schedule, specs = plan()
     freeze_path = ROOT / 'outputs/records/preregistration_freeze.json'
-    freeze = json.loads(freeze_path.read_text())
-    if freeze.get('status') != 'frozen':
-        raise ValueError('Protocol has not been frozen')
-    for relative, expected in freeze['files'].items():
-        if file_hash(within(ROOT, relative)) != expected:
-            raise ValueError('Frozen identity changed: ' + relative)
-    required = {'docs/current/PREREGISTER.md', 'data/current/all.jsonl', 'configs/kdm/models.json',
-                'configs/kdm/food_aliases.json', 'outputs/records/protocol_user_decisions_20260919.json',
-                'scripts/run_census_panel.py', 'scripts/worker.sh', 'scripts/verify_complete.py',
-                'configs/runtime/semantic_judge.json'}
-    required.update(f'configs/runtime/{key}.json' for key in specs)
-    if not required <= set(freeze['files']):
-        raise ValueError('Freeze receipt omits required protocol/data/runtime identities')
-    sources = code_identity(ROOT)
-    for key, spec in specs.items():
-        declaration = spec.get('interface_verification', {})
-        proof = json.loads(within(ROOT, declaration['record']).read_text())
-        if declaration.get('status') != 'passed' or proof.get('passed') is not True or proof.get('completed') != 16 or proof.get('expected') != 16:
-            raise ValueError('Native interface is incomplete: ' + key)
+    freeze = validate_freeze(ROOT)
+    sources = freeze['source_blobs']
     target = within(ROOT, run_dir)
     if not target.is_relative_to(ROOT / 'outputs/records'):
         raise ValueError('Launch receipt must be under outputs/records')

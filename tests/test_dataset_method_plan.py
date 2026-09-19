@@ -89,6 +89,11 @@ def test_formal_experiment_task_plan_gate_precedes_backend(tmp_path,monkeypatch,
     spec=tmp_path/'spec.json';spec.write_text('{}')
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0');monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
     monkeypatch.setattr(protocol,'code_identity',lambda *args:{})
+    def frozen(root):
+        value=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+        value['files']['configs/kdm/method_plan.json']=value['files']['plan.json'];value['source_blobs']=[]
+        return value
+    monkeypatch.setattr(protocol,'validate_freeze',frozen)
     def method_proof(root,spec,methods):assert list(methods)==BASE
     monkeypatch.setattr(protocol,'validate_method_runtime',method_proof)
     def backend(*args):raise RuntimeError('backend admission reached')

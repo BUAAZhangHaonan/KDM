@@ -11,15 +11,18 @@ def validate_census_collection(paths, samples, candidates):
     if len(expected_samples) != len(samples):
         raise ValueError("Duplicate manifest samples")
     observed_models = set()
+    grouped = {}
     for path in paths:
         rows = list(read_jsonl(path))
         models = {r["model"] for r in rows}
         if len(models) != 1:
-            raise ValueError("Each merged census file must contain exactly one model")
+            raise ValueError("Each census source file must contain exactly one model")
         model = next(iter(models))
-        if model not in candidates or model in observed_models:
-            raise ValueError("Unexpected or duplicate model census")
+        if model not in candidates:
+            raise ValueError("Unexpected model census")
         observed_models.add(model)
+        grouped.setdefault(model, []).extend(rows)
+    for model, rows in grouped.items():
         expected = {task_id(model, t): t for t in census_tasks(samples)}
         seen = set()
         for r in rows:
@@ -92,6 +95,14 @@ def validate_runtime(root, spec, model, cards):
     for package, expected in spec["versions"].items():
         if version(package) != expected:
             raise ValueError("Runtime package version differs from registered spec: " + package)
+    validate_native_runtime_files(root,spec,model)
+
+
+def validate_native_runtime_files(root,spec,model):
+    """Pure file-identity portion of runtime admission, reusable before scheduling."""
+    import json
+    from pathlib import Path
+    from .io import within,file_hash
     check = spec.get("interface_verification", {})
     if not isinstance(check, dict) or check.get("status") != "passed":
         raise ValueError("Native 16-image interface verification has not passed")
@@ -160,3 +171,57 @@ def validate_method_runtime(root, spec, methods):
     for name in sorted(dependencies):
         if file_hash(Path(root)/"src/kdm/models"/name)!=sources[name]:
             raise ValueError("SID implementation changed after numerical verification: "+name)
+
+
+
+def validate_freeze(root):
+    """Validate one immutable protocol identity before formal census/experiment work."""
+    import json
+    from pathlib import Path
+    from .io import within,file_hash
+    from .reports import validated_method_plan
+    root=Path(root).resolve()
+    receipt_path=root/'outputs/records/preregistration_freeze.json'
+    freeze=json.loads(receipt_path.read_text())
+    if freeze.get('status')!='frozen' or not isinstance(freeze.get('files'),dict):
+        raise ValueError('Protocol has not been frozen with file identities')
+    for relative,expected in freeze['files'].items():
+        path=within(root,relative)
+        if path==receipt_path:raise ValueError('Freeze receipt must not reference itself')
+        if file_hash(path)!=expected:raise ValueError('Frozen identity changed: '+relative)
+    panel=json.loads((root/'configs/kdm/models.json').read_text())
+    keys=[row['key'] for row in panel]
+    if len(keys)!=16 or len(set(keys))!=16:raise ValueError('Freeze requires the fixed sixteen-model inventory')
+    required={'docs/current/PREREGISTER.md','data/current/all.jsonl','data/current/interface16.jsonl',
+        'configs/kdm/models.json','configs/kdm/food_aliases.json','configs/kdm/method_plan.json',
+        'outputs/records/protocol_user_decisions_20260919.json','configs/runtime/semantic_judge.json',
+        'scripts/run_census_panel.py','scripts/worker.sh','scripts/verify_complete.py'}
+    samples=list(read_jsonl(root/'data/current/all.jsonl'))
+    if len(samples)!=9167 or len({row['id'] for row in samples})!=9167 or Counter(row['dataset'] for row in samples)!={'food101':4848,'vizwiz':4319}:
+        raise ValueError('Freeze requires all original 9167 Food-101/VizWiz samples')
+    plan=json.loads((root/'configs/kdm/method_plan.json').read_text())
+    methods=validated_method_plan(plan,[(key,dataset) for key in keys for dataset in ('food101','vizwiz')])
+    specs={}
+    for key in keys:
+        relative=f'configs/runtime/{key}.json';required.add(relative)
+        spec=json.loads((root/relative).read_text());specs[key]=spec
+        if spec.get('key')!=key or spec.get('availability')!='resolved':raise ValueError('Unresolved frozen runtime: '+key)
+        declaration=spec.get('interface_verification',{})
+        if not isinstance(declaration,dict) or declaration.get('status')!='passed':raise ValueError('Native interface is incomplete: '+key)
+        proof_path=within(root,declaration['record']);required.add(str(proof_path.relative_to(root)))
+        proof=json.loads(proof_path.read_text())
+        if proof.get('passed') is not True or proof.get('completed')!=16 or proof.get('expected')!=16:
+            raise ValueError('Native interface is incomplete: '+key)
+        requested=set(method for values in methods[key].values() for method in values)
+        if 'sid' in requested:
+            sid=spec.get('mechanism_validation',{}).get('sid_reference')
+            if not isinstance(sid,dict) or sid.get('status')!='passed':raise ValueError('Frozen SID method proof is incomplete: '+key)
+            required.add(str(within(root,sid['record']).relative_to(root)))
+    if not required<=set(freeze['files']):
+        raise ValueError('Freeze receipt omits required protocol/data/runtime/proof identities: '+', '.join(sorted(required-set(freeze['files']))))
+    sources=code_identity(root)
+    if freeze.get('source_blobs')!=sources:raise ValueError('Active source identity differs from frozen source blobs')
+    for key,spec in specs.items():
+        validate_native_runtime_files(root,spec,key)
+        validate_method_runtime(root,spec,{method for values in methods[key].values() for method in values})
+    return freeze

@@ -147,18 +147,23 @@ def closed_rank(backend,image,question,names,gold):
 
 
 def select_models(census_paths,annotations,expected_ids):
-    """Use complete guided direct records only, before contrast results exist."""
-    report=[]
+    """Use complete guided direct records, aggregating authorized source shards."""
+    report=[];by_model={};sources={}
     for path in census_paths:
-        rows=[r for r in read_jsonl(path) if r['kind']=='census' and r['marker']=='UNKNOWN']
+        records=list(read_jsonl(path))
+        models={r['model'] for r in records}
+        if len(models)!=1:raise ValueError('Census file must contain exactly one model')
+        model=next(iter(models))
+        by_model.setdefault(model,[]).extend(r for r in records if r['kind']=='census' and r['marker']=='UNKNOWN')
+        sources.setdefault(model,[]).append(str(path))
+    for model,rows in by_model.items():
         ids=[r['sample']['id'] for r in rows]
         if len(ids)!=len(set(ids)) or set(ids)!=set(expected_ids):raise ValueError('Incomplete or duplicated model census')
-        if len({r['model'] for r in rows})!=1:raise ValueError('Census file combines model identities')
         for dataset in sorted({r['sample']['dataset'] for r in rows}):
             subset=[r for r in rows if r['sample']['dataset']==dataset]
             n_abs=sum(label_response(r['text'],annotations,r['key'])=='abstain' for r in subset)
-            report.append({'model':subset[0]['model'],'dataset':dataset,'n':len(subset),'n_abstain':n_abs,
-                           'selected':n_abs>0,'selection_source':str(path)})
+            report.append({'model':model,'dataset':dataset,'n':len(subset),'n_abstain':n_abs,
+                           'selected':n_abs>0,'selection_sources':sources[model]})
     return report
 
 
