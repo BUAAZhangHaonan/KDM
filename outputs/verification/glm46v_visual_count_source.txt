@@ -1,0 +1,141 @@
+Glm46VProcessor Glm46VImageProcessor /home/g203-4028/projects/knowledge-deficit-mitigation/venv/lib/python3.11/site-packages/transformers/models/glm46v/image_processing_glm46v.py
+{"size": {"longest_edge": 9633792, "shortest_edge": 12544}, "do_rescale": true, "patch_size": 14, "temporal_patch_size": 2, "merge_size": 2, "image_mean": [0.48145466, 0.4578275, 0.40821073], "image_std": [0.26862954, 0.26130258, 0.27577711], "image_processor_type": "Glm46VImageProcessor", "do_convert_rgb": true, "do_resize": true, "resample": 3, "rescale_factor": 0.00392156862745098, "do_normalize": true}
+METHOD _get_num_multimodal_tokens
+    def _get_num_multimodal_tokens(self, image_sizes=None, video_sizes=None, **kwargs):
+        """
+        Computes the number of placeholder tokens needed for multimodal inputs with the given sizes.
+        Args:
+            image_sizes (`list[list[int]]`, *optional*):
+                The input sizes formatted as (height, width) per each image.
+            video_sizes (`list[list[int]]`, *optional*):
+                The input sizes formatted as (num_frames, height, width) per each video.
+        Returns:
+            `MultiModalData`: A `MultiModalData` object holding number of tokens per each of the provided
+            input modalities, along with other useful data.
+        """
+
+        vision_data = {}
+        if image_sizes is not None:
+            images_kwargs = Glm46VProcessorKwargs._defaults.get("images_kwargs", {})
+            images_kwargs.update(kwargs)
+            merge_size = images_kwargs.get("merge_size", None) or self.image_processor.merge_size
+
+            num_image_patches = [
+                self.image_processor.get_number_of_image_patches(*image_size, images_kwargs)
+                for image_size in image_sizes
+            ]
+            num_image_tokens = [(num_patches // merge_size**2) for num_patches in num_image_patches]
+            vision_data.update({"num_image_tokens": num_image_tokens, "num_image_patches": num_image_patches})
+
+        if video_sizes is not None:
+            videos_kwargs = Glm46VProcessorKwargs._defaults.get("videos_kwargs", {})
+            videos_kwargs.update(kwargs)
+            num_video_patches = [
+                self.video_processor.get_number_of_video_patches(*video_size, videos_kwargs)
+                for video_size in video_sizes
+            ]
+            num_video_tokens = [(num_patches // merge_size**2) for num_patches in num_video_patches]
+            vision_data["num_video_tokens"] = num_video_tokens
+
+        return MultiModalData(**vision_data)
+
+METHOD get_number_of_image_patches
+    def get_number_of_image_patches(self, height: int, width: int, images_kwargs: dict | None = None) -> int:
+        """
+        A utility that returns number of image patches for a given image size.
+
+        Args:
+            height (`int`):
+                Height of the input image.
+            width (`int`):
+                Width of the input image.
+            images_kwargs (`dict`, *optional*)
+                Any kwargs to override defaults of the image processor.
+        Returns:
+            `int`: Number of image patches per image.
+        """
+        images_kwargs = images_kwargs or {}
+        patch_size = images_kwargs.get("patch_size", self.patch_size)
+        merge_size = images_kwargs.get("merge_size", self.merge_size)
+        size = images_kwargs.get("size", self.size)
+
+        factor = patch_size * merge_size
+        resized_height, resized_width = smart_resize(
+            num_frames=self.temporal_patch_size,
+            height=height,
+            width=width,
+            factor=factor,
+            min_pixels=size["shortest_edge"],
+            max_pixels=size["longest_edge"],
+            temporal_factor=self.temporal_patch_size,
+        )
+        grid_h, grid_w = resized_height // patch_size, resized_width // patch_size
+        return grid_h * grid_w
+
+METHOD _preprocess
+    def _preprocess(
+        self,
+        images: list["torch.Tensor"],
+        do_resize: bool,
+        size: SizeDict,
+        resample: "PILImageResampling | tvF.InterpolationMode | int | None",
+        do_rescale: bool,
+        rescale_factor: float,
+        do_normalize: bool,
+        image_mean: float | list[float] | None,
+        image_std: float | list[float] | None,
+        patch_size: int,
+        temporal_patch_size: int,
+        merge_size: int,
+        disable_grouping: bool | None,
+        return_tensors: str | TensorType | None,
+        **kwargs,
+    ) -> BatchFeature:
+        """
+        Preprocess an image or batch of images.
+        """
+
+        grouped_images, grouped_images_index = group_images_by_shape(images, disable_grouping=disable_grouping)
+        resized_images_grouped = {}
+        for shape, stacked_images in grouped_images.items():
+            if do_resize:
+                stacked_images = self.resize(
+                    images=stacked_images,
+                    size=size,
+                    resample=resample,
+                    factor=patch_size * merge_size,
+                    temporal_factor=temporal_patch_size,
+                )
+            resized_images_grouped[shape] = stacked_images
+
+        resized_images = reorder_images(resized_images_grouped, grouped_images_index)
+
+        grouped_images, grouped_images_index = group_images_by_shape(resized_images, disable_grouping=disable_grouping)
+        processed_images_grouped = {}
+        processed_grids = {}
+
+        for shape, stacked_images in grouped_images.items():
+            stacked_images = self.rescale_and_normalize(
+                stacked_images, do_rescale, rescale_factor, do_normalize, image_mean, image_std
+            )
+
+            patches, grid_h, grid_w = self.patchify(
+                stacked_images,
+                patch_size=patch_size,
+                merge_size=merge_size,
+                temporal_patch_size=temporal_patch_size,
+            )
+
+            processed_images_grouped[shape] = patches
+            processed_grids[shape] = [[1, grid_h, grid_w]] * len(stacked_images)
+
+        processed_images = reorder_images(processed_images_grouped, grouped_images_index)
+        processed_grids = reorder_images(processed_grids, grouped_images_index)
+
+        pixel_values = processed_images[0] if len(processed_images) == 1 else torch.cat(processed_images, dim=0)
+        image_grid_thw = torch.tensor(processed_grids)
+
+        return BatchFeature(
+            data={"pixel_values": pixel_values, "image_grid_thw": image_grid_thw}, tensor_type=return_tensors
+        )
+

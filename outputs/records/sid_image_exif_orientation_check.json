@@ -1,0 +1,1516 @@
+{
+  "orientations": {
+    "1": 8790,
+    "6": 377
+  },
+  "nontrivial": [
+    {
+      "id": "vizwiz:VizWiz_val_00000003.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000008.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000009.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000010.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000014.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000015.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000021.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000025.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000027.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000028.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000032.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000039.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000049.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000060.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000061.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000067.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000069.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000075.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000076.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000081.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000082.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000084.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000085.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000086.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000095.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000096.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000097.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000098.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000107.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000109.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000112.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000117.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000119.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000120.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000124.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000125.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000126.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000134.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000140.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000141.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000143.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000145.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000151.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000155.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000157.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000159.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000161.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000164.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000167.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000170.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000174.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000175.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000179.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000180.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000186.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000189.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000190.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000192.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000193.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000196.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000200.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000205.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000209.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000214.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000220.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000221.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000225.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000231.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000235.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000239.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000241.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000242.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000245.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000251.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000254.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000264.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000267.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000270.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000271.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000273.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000279.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000292.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000295.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000302.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000304.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000306.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000307.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000313.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000316.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000320.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000326.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000328.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000333.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000343.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000346.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000347.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000353.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000354.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000359.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000361.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001167.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001180.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001192.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001223.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001228.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001250.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001271.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001309.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001319.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001344.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001353.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001357.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001368.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001369.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001379.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001383.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001396.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001407.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001421.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001426.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001447.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001453.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001454.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001477.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001479.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001498.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001499.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001516.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001518.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001530.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001535.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001540.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001575.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001580.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001587.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001589.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001605.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001659.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001695.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001702.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001708.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001719.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001725.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001732.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001735.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001738.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001748.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001751.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001755.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001758.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001761.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001762.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001768.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001814.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001818.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001819.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001828.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001837.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001844.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001846.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001857.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001859.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001862.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001879.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001889.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001893.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001896.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001901.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001911.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001929.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001953.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001972.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001978.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001993.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002007.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002008.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002020.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002024.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002029.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002041.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002044.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002051.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002055.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002056.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002064.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002076.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002077.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002081.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002082.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002127.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002131.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002148.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002171.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002184.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002233.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002235.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002237.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002301.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002309.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002311.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002320.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002324.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002340.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002357.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002358.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002389.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002392.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002396.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002404.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002420.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002425.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002427.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002438.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002458.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002464.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002484.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002492.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002500.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002522.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002525.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002526.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002554.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002577.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002586.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002599.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002607.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002608.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002613.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002625.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002633.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002648.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002652.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002668.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002686.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002692.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002710.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002747.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002749.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002771.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002776.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002779.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002783.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002787.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002811.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002815.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002834.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002835.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002836.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002848.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002849.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002850.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002852.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002853.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002865.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002902.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002916.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002923.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002929.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002939.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002950.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002963.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002976.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002978.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002988.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002993.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002996.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002997.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002998.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003006.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003042.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003051.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003065.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003082.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003099.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003103.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003114.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003136.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003138.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003147.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003148.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003155.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003163.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003174.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003192.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003203.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003276.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003282.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003291.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003303.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003325.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003354.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003358.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003360.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003372.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003381.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003393.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003398.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003399.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003422.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003428.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003431.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003434.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003449.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003482.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003493.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003494.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003501.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003516.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003529.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003534.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003573.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003583.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003593.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003600.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003665.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003682.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003684.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003687.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003688.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003691.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003702.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003710.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003712.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003719.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003725.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003740.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003747.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003753.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003761.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003769.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003775.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003792.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003795.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003804.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003819.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003825.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003826.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003827.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003831.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003832.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003841.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003852.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003875.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003891.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003925.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003933.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003938.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003991.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004008.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004021.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004034.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004055.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004082.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004085.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004086.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004125.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004128.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004132.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004155.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004177.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004182.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004188.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004199.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004200.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004202.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004218.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004229.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004230.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004235.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004236.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004250.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004269.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004278.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004280.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004300.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004310.jpg",
+      "orientation": 6
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004316.jpg",
+      "orientation": 6
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # SID 固定候选能力核验
 
-范围为官方 commit `127dd412fa6b61ab1c9babf6979ec4da98002438` 的 agg_layer=2/rank100/mask-mode 参考构造。native16通过不等于SID通过。passed只表示固定官方选择与掩码核心在同一native backbone前向的数值比对通过；oracle共享hook transport，不是完整旧官方fork复现，不证明研究收益。
+范围为官方 commit `127dd412fa6b61ab1c9babf6979ec4da98002438` 的 agg_layer=2/rank100/mask-mode 参考构造。native16通过不等于SID通过。表内SID passed是固定图像上的软件接口证据，不代表整个dataset可计算；完整9,167图的rank100前置约束见 `docs/current/FULL_VISUAL_COUNT_REVIEW.md`，Qwen2.5/Qwen3/GLM的VizWiz与Mini两个dataset存在不足100输入。passed只表示固定官方选择与掩码核心在同一native backbone前向的数值比对通过；oracle共享hook transport，不是完整旧官方fork复现，不证明研究收益。
 
 单卡任务使用每个spec自己的environment_python、物理GPU4或5单卡、双卡使用物理4,5、`bash scripts/worker.sh`锁与项目内缓存。不改输入、生成配置或权重映射，不在模型失败后重试/降规模。LLaVA1.5-7B沿用主线程已跑证据、不重复。Gemma12B和LLaVA13B原为两卡调度待办，未执行不能算完成。无权重preflight有实际config和源码行证据，区分固定参考所需结构不成立与当前适配映射缺口。
 

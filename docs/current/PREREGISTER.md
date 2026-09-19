@@ -90,15 +90,23 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 
 两套新增隔离环境已经实际安装和导入验证：`.environments/mprisk-tf553`为torch 2.6.0+cu124 / Transformers 5.5.3，`.environments/phi443`为torch 2.3.0+cu121 / Transformers 4.43.0；完整版本与84个实际下载wheel指纹见`configs/runtime/environments.json`和`outputs/records/environment_builds/`。用户指定mprisk源码路径`6403:/home/team/zhanghaonan/TAFFC/mprisk`的HEAD和四份包装blob已与固定来源核对，记录在`outputs/records/mprisk_user_path_verification.json`。
 
-15个候选在各自原登记配置下已通过完整16图原生token、六条件状态隔离与层投影核验；GLM最终核验仍在进行。InternVL的单卡SID在修复FA2/4Dmask接口后仍OOM，用户已明确授权物理4/5显式双卡方案，该新配置需重新完成native16与SID才可就绪。不得把旧单卡native证明直接算作新双卡通过。
+16个候选的当前登记配置均已通过完整16图原生token、六条件状态隔离与层投影核验，见native16_status与native16_identity_audit。InternVL单卡SID在修复FA2/4Dmask接口后仍OOM；用户明确授权物理4/5显式双卡，该新配置已独立重做并通过native16与SID，旧单卡失败和证明保留。Qwen3VL随后在最大视觉输入的指令保持VCD及CDA三图分支发生真实OOM；其新增双卡提案尚待用户授权与新配置核验，不能因现有单卡接口通过就视资源问题已解决。
 
-当前SID源已经在8个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为对应`*_sid_reference_v2_summary.json`，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
+当前SID源已经在9个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为前八个对应`*_sid_reference_v2_summary.json`与InternVL的v3摘要，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
 
 ### 已确认定义与后续人工事项
 
 CDA论文式(6)与开发包熵差符号相反。用户已明确采用正文`r=max(H_input-H_null,0)/H_null`，允许并记录实际负残余权重。式(7)保持`wp=rp²/(rp+rc)`、`wc=rc²/(rp+rc)`、`wa=1-wp-wc`；不截断wa、不加入动量，保留两个空输入校准。逐步保存熵、比率、权重及negative_wa；rp+rc=0使用连续延拓(0,0,1)，空输入熵为零则显式失败，不加epsilon。决定记录见`outputs/records/protocol_user_decisions_20260919.json`，发现过程见`DEVIATIONS.md`。DoLa标准JS与官方固定源码reverse-KL criterion的差异同文记录，原论文§2.2明确使用标准JS，因此保留交付包数学定义；不声明与该官方代码选层数值等价。
 
 完整语义标注使用独立登记的`mistralai/Ministral-3-8B-Instruct-2512`，不在16候选中，见`configs/runtime/semantic_judge.json`。原生FP8权重在3090上显式反量化为bf16；该设置在首次加载前固定，未使用CPU/disk卸载。真实本地服务身份握手已通过，但初次5个软件样例存在输出围栏以及Food/空白误标，完整原始输出见`outputs/verification/judge_semantic_examples_20260919T095326491080Z.json`；不能把已建立服务等同于语义标签可靠或人工复核完成。完整短语自动标签仍须进入统一文件。人工核查须覆盖全部弃权变化、无效/争议输出；尚未发生的人工判断不得由代理冒充。标签与来源均须真实记录。
+
+### 完整任务的方法适用性
+
+在读取普查/干预结果前，按原生处理器枚举全部9,167张图的181种尺寸，并用真实边界图核对。固定rank100的SID在Qwen2.5VL/GLM的VizWiz各30张、Qwen3VL的VizWiz47张上未定义；两版MiniCPM各2,088张未定义，涉及Food与VizWiz。不会仅取较大图像计算SID指标。完整来源、全部ID及EXIF方向核对见`FULL_VISUAL_COUNT_REVIEW.md`和对应JSON。
+
+`configs/kdm/method_plan.json`为16模型×2数据集的显式计划，全部32条件保留vcd/m3id/dola/deco，指令保持与CDA仍由既定生成器完整展开。SID计划为10个Food条件、7个VizWiz条件，每项另须独立真实数值证明；当前GLM数值证明仍待完成，计划尚未冻结。某条件不适用SID不删除模型、不更改原始弃权选择、不筛除任何题目，其他方法保留完整样本与分母。初始依据见`outputs/records/method_applicability_plan.json`。
+
+正式清单按已selected的模型—数据集生成，每份包含该任务全部原dev/eval样本。experiment加载模型前检查冻结计划、方法集合与完整清单；报告按同一计划严格拒绝缺项、多项或在不适用条件下生成的部分SID结果。
 
 ### 执行顺序
 

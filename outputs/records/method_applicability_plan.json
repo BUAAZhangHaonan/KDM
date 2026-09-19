@@ -1,0 +1,389 @@
+{
+  "scope": "Pre-census/pre-intervention full model-dataset applicability; not model selection or evidence of scientific effects",
+  "frozen": false,
+  "baseline_methods_retained_for_all_32_conditions": [
+    "vcd",
+    "m3id",
+    "dola",
+    "deco"
+  ],
+  "conditions": [
+    {
+      "model": "gemma3_4b",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "native bidirectional image/sliding mask differs from the fixed pure-causal reference; no approximate replacement",
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "gemma3_4b",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "native bidirectional image/sliding mask differs from the fixed pure-causal reference; no approximate replacement",
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "native bidirectional image/sliding mask differs from the fixed pure-causal reference; no approximate replacement",
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "native bidirectional image/sliding mask differs from the fixed pure-causal reference; no approximate replacement",
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "glm46v",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/glm46v_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 0,
+      "minimum_visual_tokens": 162,
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "pending",
+        "prior_declaration": "not_verified"
+      }
+    },
+    {
+      "model": "glm46v",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/glm46v_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 30,
+      "minimum_visual_tokens": 9,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "internvl35_8b",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/internvl35_8b_sid_reference_v3_summary.json",
+        "scope": "authorized explicit dual factory; exact fixed official SID mask-core/native-logit comparison, matched prefix and independent sessions; shared hook transport"
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "internvl35_8b",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/internvl35_8b_sid_reference_v3_summary.json",
+        "scope": "authorized explicit dual factory; exact fixed official SID mask-core/native-logit comparison, matched prefix and independent sessions; shared hook transport"
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava15_7b",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava15_7b_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava15_7b",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava15_7b_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "onevision",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/onevision_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "onevision",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/onevision_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "minicpm26",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/minicpm26_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 1730,
+      "minimum_visual_tokens": 64,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "minicpm26",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/minicpm26_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 358,
+      "minimum_visual_tokens": 64,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "minicpm45",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/minicpm45_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 1730,
+      "minimum_visual_tokens": 64,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "minicpm45",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/minicpm45_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 358,
+      "minimum_visual_tokens": 64,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "phi35",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/phi35_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 0,
+      "minimum_visual_tokens": 457,
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/phi35_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      }
+    },
+    {
+      "model": "phi35",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/phi35_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 0,
+      "minimum_visual_tokens": 457,
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/phi35_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      }
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/qwen25vl_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 0,
+      "minimum_visual_tokens": 162,
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/qwen25vl_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      }
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/qwen25vl_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 30,
+      "minimum_visual_tokens": 4,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "qwen3vl",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/qwen3vl_sid_full_visual_count.json",
+      "sample_count": 4848,
+      "below100": 0,
+      "minimum_visual_tokens": 128,
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/qwen3vl_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      }
+    },
+    {
+      "model": "qwen3vl",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "visual_count_evidence": "outputs/verification/qwen3vl_sid_full_visual_count.json",
+      "sample_count": 4319,
+      "below100": 47,
+      "minimum_visual_tokens": 64,
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed second decoder layer is linear attention and has no required standard self-attention weights",
+      "structural_evidence": "outputs/verification/qwen35_4b_sid_reference.json"
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed second decoder layer is linear attention and has no required standard self-attention weights",
+      "structural_evidence": "outputs/verification/qwen35_4b_sid_reference.json"
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "food101",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed second decoder layer is linear attention and has no required standard self-attention weights",
+      "structural_evidence": "outputs/verification/qwen35_9b_sid_reference.json"
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "vizwiz",
+      "sid_planned": false,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed second decoder layer is linear attention and has no required standard self-attention weights",
+      "structural_evidence": "outputs/verification/qwen35_9b_sid_reference.json"
+    },
+    {
+      "model": "llava16_mistral",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava16_mistral_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava16_mistral",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava16_mistral_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava15_13b",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava15_13b_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava15_13b",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava15_13b_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava16_vicuna",
+      "dataset": "food101",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava16_vicuna_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    },
+    {
+      "model": "llava16_vicuna",
+      "dataset": "vizwiz",
+      "sid_planned": true,
+      "sample_policy": "complete original dataset condition; no image exclusion for SID",
+      "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
+      "numerical_interface": {
+        "status": "passed",
+        "record": "outputs/verification/llava16_vicuna_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
+    }
+  ],
+  "full_input_review": "docs/current/FULL_VISUAL_COUNT_REVIEW.md"
+}

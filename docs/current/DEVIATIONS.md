@@ -41,3 +41,9 @@ On the registered LLaVA-1.5-7B checkpoint, the actual GPU check compared the off
 ## Native generation settings
 
 Qwen2.5-VL's checkpoint generation defaults include repetition_penalty=1.05. The first native interface check inherited it while the supplied KDM protocol uses raw-score greedy decoding; two of sixteen images differed. The native check now explicitly uses the same fixed greedy settings (do_sample=False, num_beams=1, repetition_penalty=1.0), retaining the checkpoint defaults and overrides in its record. All sixteen then matched. This corrects an unmatched reference check; it does not tune or change the formal decoding operator. The failed check remains preserved.
+
+## 全量输入前置检查与派生记录修订
+
+全量原生视觉计数发现固定SID rank100对部分既定输入未定义：Qwen2.5VL与GLM的VizWiz各30条、Qwen3VL的VizWiz47条；MiniCPM两版各2,088条横跨两个数据任务。方法适用性因此在读取普查或干预结果前按模型与完整数据任务登记，其他方法仍保留全部样本。不得将SID仅在大图子集上的结果当作完整条件结果。
+
+计数检查增加EXIF方向核对时曾在同名派生count JSON/log路径重新执行写入，初版文件和初版脚本未单独保存或提交。当前记录是扩充脚本的真实重新观察，不能声称保留了初次执行的原始字节；该记录保全缺陷无法通过事后重建消除。具体可审计范围见FULL_VISUAL_COUNT_REVIEW。后续资源检查采用新版本路径，保存完整失败，不覆盖既有结果。正式科研原始生成尚未启动。

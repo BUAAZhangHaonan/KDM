@@ -1,0 +1,1168 @@
+{
+  "script_sha256": "5e0fefa95aec4e415f2839afff0f29d41401d1d80477ed453a8fd3972d6dc84c",
+  "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python verification/check_full_visual_counts.py phi35",
+  "key": "phi35",
+  "spec": {
+    "key": "phi35",
+    "hf_model_id": "microsoft/Phi-3.5-vision-instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct",
+      "dtype": "bfloat16",
+      "attn_implementation": "eager"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "not_applicable",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/phi35_final16.json",
+      "completed": 16,
+      "expected": 16
+    },
+    "versions": {
+      "torch": "2.3.0+cu121",
+      "torchvision": "0.18.0+cu121",
+      "transformers": "4.43.0",
+      "tokenizers": "0.19.1",
+      "accelerate": "0.30.0",
+      "numpy": "1.26.4",
+      "Pillow": "10.3.0",
+      "safetensors": "0.8.0",
+      "einops": "0.8.1",
+      "scipy": "1.17.0",
+      "requests": "2.32.5"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00002.safetensors",
+        "size_bytes": 4944122112,
+        "mtime_ns": 1778228548000000000,
+        "hub_revision": "12b77fb40b63a2c73c68243d3f767aab688a1b2a",
+        "hub_recorded_sha256": "be7bdee601478b3560aeb7122fe87a7d68445bb21b5f1ca88a764e8530b3aab8",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00002.safetensors",
+        "size_bytes": 3349208776,
+        "mtime_ns": 1778228482000000000,
+        "hub_revision": "12b77fb40b63a2c73c68243d3f767aab688a1b2a",
+        "hub_recorded_sha256": "94621eca6936d7a2fb94bd90f37edb0e28850235e7ba2c5e20445d2fc56bcaed",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "567e28c638a3e41aba1a304ae58b283845ad07e1c60e970643b0ad8fc229b382",
+    "processor": {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct",
+      "files": {
+        "configuration_phi3_v.py": "18ff44c5c1f9a6523184fb2e580e03ebf722a65f37b9cc57cd1a6d620a0f2666",
+        "processing_phi3_v.py": "990ef3d1f6b5cc61b44cf8ec8e8886b19721b7e01e8bae3ebea32781b0fcf598",
+        "tokenizer.json": "493f8ad437be806d5ccdc57e91479bdbb0c656448c1b89ff70f7653530d78518",
+        "processor_config.json": "286a9e7fb58a489eae6825b79be69f62068c2028435c29ee52c3a485d071707b",
+        "preprocessor_config.json": "0f3d920fcec587bb425312d30b0660e1fabaf46a75961f2b75ddbb1ff92de01c",
+        "tokenizer_config.json": "581d4654c018fbcef2504b57a805dcad37126038137b5d25d22b5a02abc1ef29",
+        "modeling_phi3_v.py": "b223be7d7e9f01903dd8704e5da45c6030824134441aa2734c40c36597c3b41c",
+        "sample_inference.py": "49b1246f2a18d9b4a1e12892e50d19929e550263075d4c80cedeac2246546da4"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037",
+      "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": {
+        "status": "projection_verified",
+        "record": "outputs/verification/phi35_final16.json"
+      },
+      "deco_layers": {
+        "status": "projection_verified",
+        "record": "outputs/verification/phi35_final16.json"
+      },
+      "sid_reference": {
+        "status": "passed",
+        "record": "outputs/verification/phi35_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "text_only_condition": {
+        "status": "passed",
+        "record": "outputs/verification/phi35_final16.json",
+        "scope": "six independent conditions on three shared prefixes of each fixed image"
+      }
+    }
+  },
+  "scope": "full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward",
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "header_record": "outputs/records/sid_visual_image_headers.json",
+  "header_record_sha256": "1a3a31b1d4efac1ff31c150f183e3a8356a2482ccd62b628274786bbbf70cf2b",
+  "processor_class": "Phi3VProcessor",
+  "image_processor_class": "Phi3VImageProcessor",
+  "image_processor_config": {
+    "_processor_class": "Phi3VProcessor",
+    "auto_map": {
+      "AutoImageProcessor": "processing_phi3_v.Phi3VImageProcessor",
+      "AutoProcessor": "processing_phi3_v.Phi3VProcessor"
+    },
+    "image_processor_type": "Phi3VImageProcessor",
+    "num_img_tokens": 144,
+    "num_crops": 4,
+    "image_mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "image_std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "do_convert_rgb": true
+  },
+  "installed_source_sha256": {
+    "cache/hf/modules/transformers_modules/Phi-3.5-vision-instruct/processing_phi3_v.py": "990ef3d1f6b5cc61b44cf8ec8e8886b19721b7e01e8bae3ebea32781b0fcf598"
+  },
+  "total_images": 9167,
+  "unique_dimensions": 181,
+  "shape_errors": [],
+  "groups": [
+    {
+      "dataset": "food101",
+      "split": "dev",
+      "n": 2424,
+      "minimum": 457,
+      "maximum": 757,
+      "below100": 0
+    },
+    {
+      "dataset": "food101",
+      "split": "eval",
+      "n": 2424,
+      "minimum": 757,
+      "maximum": 757,
+      "below100": 0
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "dev",
+      "n": 818,
+      "minimum": 757,
+      "maximum": 757,
+      "below100": 0
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "eval",
+      "n": 3501,
+      "minimum": 457,
+      "maximum": 757,
+      "below100": 0
+    }
+  ],
+  "below100_count": 0,
+  "below100": [],
+  "shape_formula_counts": [
+    {
+      "height": 25,
+      "width": 60,
+      "visual_tokens": 457
+    },
+    {
+      "height": 29,
+      "width": 150,
+      "visual_tokens": 745
+    },
+    {
+      "height": 30,
+      "width": 23,
+      "visual_tokens": 757
+    },
+    {
+      "height": 41,
+      "width": 31,
+      "visual_tokens": 757
+    },
+    {
+      "height": 50,
+      "width": 50,
+      "visual_tokens": 757
+    },
+    {
+      "height": 60,
+      "width": 45,
+      "visual_tokens": 757
+    },
+    {
+      "height": 64,
+      "width": 48,
+      "visual_tokens": 757
+    },
+    {
+      "height": 81,
+      "width": 61,
+      "visual_tokens": 757
+    },
+    {
+      "height": 102,
+      "width": 77,
+      "visual_tokens": 757
+    },
+    {
+      "height": 106,
+      "width": 120,
+      "visual_tokens": 757
+    },
+    {
+      "height": 128,
+      "width": 96,
+      "visual_tokens": 757
+    },
+    {
+      "height": 162,
+      "width": 121,
+      "visual_tokens": 757
+    },
+    {
+      "height": 201,
+      "width": 202,
+      "visual_tokens": 757
+    },
+    {
+      "height": 240,
+      "width": 160,
+      "visual_tokens": 757
+    },
+    {
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 757
+    },
+    {
+      "height": 240,
+      "width": 320,
+      "visual_tokens": 757
+    },
+    {
+      "height": 241,
+      "width": 512,
+      "visual_tokens": 457
+    },
+    {
+      "height": 256,
+      "width": 192,
+      "visual_tokens": 757
+    },
+    {
+      "height": 266,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 278,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 287,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 288,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 289,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 294,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 300,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 304,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 306,
+      "width": 306,
+      "visual_tokens": 757
+    },
+    {
+      "height": 306,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 307,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 308,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 310,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 316,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 319,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 320,
+      "width": 240,
+      "visual_tokens": 757
+    },
+    {
+      "height": 321,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 757
+    },
+    {
+      "height": 336,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 337,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 339,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 340,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 341,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 342,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 343,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 346,
+      "width": 450,
+      "visual_tokens": 757
+    },
+    {
+      "height": 346,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 348,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 349,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 352,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 355,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 357,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 358,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 360,
+      "width": 480,
+      "visual_tokens": 757
+    },
+    {
+      "height": 360,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 362,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 364,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 366,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 368,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 369,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 370,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 372,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 375,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 376,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 377,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 378,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 380,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 381,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 382,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 383,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 384,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 385,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 388,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 390,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 395,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 396,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 397,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 398,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 400,
+      "width": 300,
+      "visual_tokens": 757
+    },
+    {
+      "height": 403,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 405,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 408,
+      "width": 306,
+      "visual_tokens": 757
+    },
+    {
+      "height": 408,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 409,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 410,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 412,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 417,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 420,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 421,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 422,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 428,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 430,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 432,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 434,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 443,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 449,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 450,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 453,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 456,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 469,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 471,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 474,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 475,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 480,
+      "width": 320,
+      "visual_tokens": 757
+    },
+    {
+      "height": 480,
+      "width": 360,
+      "visual_tokens": 757
+    },
+    {
+      "height": 482,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 485,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 486,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 488,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 489,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 491,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 492,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 497,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 498,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 500,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 503,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 504,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 505,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 506,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 507,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 508,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 509,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 510,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 511,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 287,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 288,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 289,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 306,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 307,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 332,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 333,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 339,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 340,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 341,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 342,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 343,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 354,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 358,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 378,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 380,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 381,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 382,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 383,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 384,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 385,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 386,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 388,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 417,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 419,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 427,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 433,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 438,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 439,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 442,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 445,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 446,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 454,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 477,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 493,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 498,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 506,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 508,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 509,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 510,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 511,
+      "visual_tokens": 757
+    },
+    {
+      "height": 512,
+      "width": 512,
+      "visual_tokens": 757
+    },
+    {
+      "height": 568,
+      "width": 320,
+      "visual_tokens": 757
+    },
+    {
+      "height": 640,
+      "width": 480,
+      "visual_tokens": 757
+    },
+    {
+      "height": 648,
+      "width": 484,
+      "visual_tokens": 757
+    },
+    {
+      "height": 720,
+      "width": 960,
+      "visual_tokens": 757
+    },
+    {
+      "height": 744,
+      "width": 728,
+      "visual_tokens": 757
+    },
+    {
+      "height": 768,
+      "width": 1024,
+      "visual_tokens": 757
+    },
+    {
+      "height": 816,
+      "width": 612,
+      "visual_tokens": 757
+    },
+    {
+      "height": 960,
+      "width": 540,
+      "visual_tokens": 757
+    },
+    {
+      "height": 968,
+      "width": 1296,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1024,
+      "width": 768,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1152,
+      "width": 1152,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1166,
+      "width": 1232,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1224,
+      "width": 1632,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1296,
+      "width": 968,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1536,
+      "width": 2048,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1632,
+      "width": 1224,
+      "visual_tokens": 757
+    },
+    {
+      "height": 1936,
+      "width": 2592,
+      "visual_tokens": 757
+    }
+  ],
+  "boundary_checks": [
+    {
+      "id": "food101:pancakes_group_016.jpg",
+      "height": 241,
+      "width": 512,
+      "formula_tokens": 457,
+      "native_visual_position_count": 457,
+      "image_grid_thw": null,
+      "grid_count": 457,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "height": 384,
+      "width": 512,
+      "formula_tokens": 757,
+      "native_visual_position_count": 757,
+      "image_grid_thw": null,
+      "grid_count": 757,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003667.jpg",
+      "height": 25,
+      "width": 60,
+      "formula_tokens": 457,
+      "native_visual_position_count": 457,
+      "image_grid_thw": null,
+      "grid_count": 457,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000003.jpg",
+      "height": 1936,
+      "width": 2592,
+      "formula_tokens": 757,
+      "native_visual_position_count": 757,
+      "image_grid_thw": null,
+      "grid_count": 757,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001384.jpg",
+      "height": 30,
+      "width": 23,
+      "formula_tokens": 757,
+      "native_visual_position_count": 757,
+      "image_grid_thw": null,
+      "grid_count": 757,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "food101:apple_pie_group_002.jpg",
+      "height": 512,
+      "width": 512,
+      "formula_tokens": 757,
+      "native_visual_position_count": 757,
+      "image_grid_thw": null,
+      "grid_count": 757,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001989.jpg",
+      "height": 29,
+      "width": 150,
+      "formula_tokens": 745,
+      "native_visual_position_count": 745,
+      "image_grid_thw": null,
+      "grid_count": 745,
+      "visual_positions_contiguous": true,
+      "equal": true
+    }
+  ],
+  "boundary_checks_passed": true,
+  "all_images_at_least100": true,
+  "exif_orientation_record": {
+    "path": "outputs/records/sid_image_exif_orientation_check.json",
+    "sha256": "19c16944f9ec73b8018f0bd2af8ca0e7508afa88b9f50659f64a379d53c5d6af",
+    "counts": {
+      "1": 8790,
+      "6": 377
+    }
+  },
+  "gpu_initialized": false
+}
