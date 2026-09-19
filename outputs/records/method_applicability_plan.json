@@ -52,12 +52,17 @@
       "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
       "numerical_interface": {
         "status": "pending",
-        "record": "outputs/verification/glm46v_dual_sid_reference_v1_summary.json"
+        "record": "outputs/verification/glm46v_6403_sid_reference_v1_summary.json"
       },
       "prior_single_gpu_numerical_interface": {
         "status": "passed",
         "record": "outputs/verification/glm46v_sid_reference_v2_summary.json"
-      }
+      },
+      "prior_4028_numerical_interface": {
+        "status": "pending",
+        "record": "outputs/verification/glm46v_dual_sid_reference_v1_summary.json"
+      },
+      "pending_6403_visual_count_evidence": "outputs/verification/glm46v_6403_full_visual_count_v1.json"
     },
     {
       "model": "glm46v",
@@ -68,7 +73,8 @@
       "sample_count": 4319,
       "below100": 30,
       "minimum_visual_tokens": 9,
-      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition",
+      "pending_6403_visual_count_evidence": "outputs/verification/glm46v_6403_full_visual_count_v1.json"
     },
     {
       "model": "internvl35_8b",
@@ -262,10 +268,15 @@
       "minimum_visual_tokens": 128,
       "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
       "numerical_interface": {
+        "status": "pending",
+        "record": "outputs/verification/qwen3vl_6403_sid_reference_v1_summary.json"
+      },
+      "prior_4028_numerical_interface": {
         "status": "passed",
         "record": "outputs/verification/qwen3vl_sid_reference_v2_summary.json",
         "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
-      }
+      },
+      "pending_6403_visual_count_evidence": "outputs/verification/qwen3vl_6403_full_visual_count_v1.json"
     },
     {
       "model": "qwen3vl",
@@ -276,7 +287,8 @@
       "sample_count": 4319,
       "below100": 47,
       "minimum_visual_tokens": 64,
-      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition"
+      "reason": "some original inputs have fewer than the fixed 100 visual positions; cannot evaluate this complete dataset condition under that SID definition",
+      "pending_6403_visual_count_evidence": "outputs/verification/qwen3vl_6403_full_visual_count_v1.json"
     },
     {
       "model": "qwen35_4b",

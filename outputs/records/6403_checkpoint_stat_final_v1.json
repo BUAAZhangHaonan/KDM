@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "scope": "CPU read-only final actual environment and checkpoint stat; no weight content hash or GPU initialization",
+  "python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+  "python_version": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0]",
+  "PYTHONNOUSERSITE": null,
+  "enable_user_site": true,
+  "user_site": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages",
+  "versions": {
+    "torch": {
+      "version": "2.6.0+cu124",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "torchvision": {
+      "version": "0.21.0+cu124",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "transformers": {
+      "version": "5.5.3",
+      "distribution_path": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/lib/python3.11/site-packages"
+    },
+    "accelerate": {
+      "version": "1.6.0",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "Pillow": {
+      "version": "12.2.0",
+      "distribution_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+    },
+    "tokenizers": {
+      "version": "0.22.2",
+      "distribution_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+    },
+    "numpy": {
+      "version": "2.4.6",
+      "distribution_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+    },
+    "sentencepiece": {
+      "version": "0.2.0",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "timm": {
+      "version": "1.0.19",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "safetensors": {
+      "version": "0.5.3",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "einops": {
+      "version": "0.8.1",
+      "distribution_path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+    },
+    "scipy": {
+      "version": "1.17.1",
+      "distribution_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+    },
+    "requests": {
+      "version": "2.34.2",
+      "distribution_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+    }
+  },
+  "models": {
+    "qwen3vl": {
+      "path": "/home/team/lvshuyang/Models/Qwen3-VL-8B-Instruct",
+      "shards": [
+        {
+          "filename": "model-00001-of-00004.safetensors",
+          "size_bytes": 4902275944,
+          "mtime_ns": 1765382005000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00002-of-00004.safetensors",
+          "size_bytes": 4915962496,
+          "mtime_ns": 1765382622000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00003-of-00004.safetensors",
+          "size_bytes": 4999831048,
+          "mtime_ns": 1765383551000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00004-of-00004.safetensors",
+          "size_bytes": 2716270024,
+          "mtime_ns": 1765381781000000000,
+          "readable": true
+        }
+      ]
+    },
+    "glm46v": {
+      "path": "/home/team/lvshuyang/Models/GLM-4.6V-Flash",
+      "shards": [
+        {
+          "filename": "model-00001-of-00004.safetensors",
+          "size_bytes": 5320911456,
+          "mtime_ns": 1765381941000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00002-of-00004.safetensors",
+          "size_bytes": 5303216664,
+          "mtime_ns": 1765380760000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00003-of-00004.safetensors",
+          "size_bytes": 5303216664,
+          "mtime_ns": 1765381001000000000,
+          "readable": true
+        },
+        {
+          "filename": "model-00004-of-00004.safetensors",
+          "size_bytes": 4658299264,
+          "mtime_ns": 1765380404000000000,
+          "readable": true
+        }
+      ]
+    }
+  },
+  "actual_imports": {
+    "Pillow": {
+      "version": "12.2.0",
+      "path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages/PIL/__init__.py"
+    },
+    "numpy": {
+      "version": "2.4.6",
+      "path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages/numpy/__init__.py"
+    },
+    "torch": {
+      "version": "2.6.0+cu124",
+      "path": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages/torch/__init__.py",
+      "cuda_build": "12.4",
+      "cuda_initialized": false
+    }
+  }
+}

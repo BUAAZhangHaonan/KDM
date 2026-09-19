@@ -90,9 +90,9 @@ VizWiz分别报告人工可回答性与可回答题上的独立作答成功率�
 
 两套新增隔离环境已经实际安装和导入验证：`.environments/mprisk-tf553`为torch 2.6.0+cu124 / Transformers 5.5.3，`.environments/phi443`为torch 2.3.0+cu121 / Transformers 4.43.0；完整版本与84个实际下载wheel指纹见`configs/runtime/environments.json`和`outputs/records/environment_builds/`。用户指定mprisk源码路径`6403:/home/team/zhanghaonan/TAFFC/mprisk`的HEAD和四份包装blob已与固定来源核对，记录在`outputs/records/mprisk_user_path_verification.json`。
 
-切换GLM双卡前，16个候选的登记配置均已通过完整16图原生token、六条件状态隔离与层投影核验，见native16_status与native16_identity_audit。InternVL单卡SID在修复FA2/4Dmask接口后仍OOM；用户明确授权物理4/5显式双卡，该新配置已独立重做并通过native16与SID，旧单卡失败和证明保留。Qwen3VL随后在最大视觉输入的指令保持VCD及CDA三图分支发生真实OOM；其新增双卡提案尚待用户授权与新配置核验，不能因现有单卡接口通过就视资源问题已解决。
+切换GLM双卡前，16个候选的登记配置均已通过完整16图原生token、六条件状态隔离与层投影核验，见native16_status与native16_identity_audit。InternVL单卡SID在修复FA2/4Dmask接口后仍OOM；用户明确授权物理4/5显式双卡，该新配置已独立重做并通过native16与SID，旧单卡失败和证明保留。Qwen3VL随后在最大视觉输入的指令保持VCD及CDA三图分支发生真实OOM；用户随后指定失败模型改到6403物理GPU1，并授权该机隔离项目根，取代尚未执行的Qwen3VL双卡提案；新配置仍须核验。
 
-当前SID源已经在10个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL、GLM。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为除InternVL为v3外，其余对应`*_sid_reference_v2_summary.json`，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
+迁移前SID源曾在10个候选上通过真实官方片段数值核验：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL、GLM。每项14次前缀访问，并检查普通native logits在SID调用前后保持不变。可追溯紧凑证明为除InternVL为v3外，其余对应`*_sid_reference_v2_summary.json`，完整逐层数组留在项目原路径；这一结果不是正式研究证据。MiniCPM两版有64个视觉词元的真实输入，固定rank100无法定义；Qwen3.5两版指定第二层为线性注意力；Gemma原生双向图像/sliding mask与固定纯causal参考存在定义差异。具体原因和仍未通过的条件见`SID_VISUAL_MAPPING_REVIEW.md`及`SID_CAPABILITY_REVIEW.md`，不以近似同名实现补齐。
 
 ### 已确认定义与后续人工事项
 
@@ -104,10 +104,16 @@ CDA论文式(6)与开发包熵差符号相反。用户已明确采用正文`r=ma
 
 在读取普查/干预结果前，按原生处理器枚举全部9,167张图的181种尺寸，并用真实边界图核对。固定rank100的SID在Qwen2.5VL/GLM的VizWiz各30张、Qwen3VL的VizWiz47张上未定义；两版MiniCPM各2,088张未定义，涉及Food与VizWiz。不会仅取较大图像计算SID指标。完整来源、全部ID及EXIF方向核对见`FULL_VISUAL_COUNT_REVIEW.md`和对应JSON。
 
-`configs/kdm/method_plan.json`为16模型×2数据集的显式计划，全部32条件保留vcd/m3id/dola/deco，指令保持与CDA仍由既定生成器完整展开。SID计划为10个Food条件、7个VizWiz条件，每项另须独立真实数值证明；GLM旧单卡数值证明已通过，但最大输入层方法和指令保持VCD真实OOM；用户已授权其物理4/5的40层20/20映射，新配置native16正在运行，SID及资源组待重新核验。Qwen3VL最大输入资源问题仍待授权方案核验，计划尚未冻结。某条件不适用SID不删除模型、不更改原始弃权选择、不筛除任何题目，其他方法保留完整样本与分母。初始依据见`outputs/records/method_applicability_plan.json`。
+`configs/kdm/method_plan.json`为16模型×2数据集的显式计划，全部32条件保留vcd/m3id/dola/deco，指令保持与CDA仍由既定生成器完整展开。SID计划为10个Food条件、7个VizWiz条件，每项另须独立真实数值证明；GLM旧单卡三组最大输入均真实OOM，已启动的4028双卡native16仅收尾保留历史记录。按用户最新安排，Qwen3VL和GLM均迁移至6403物理GPU1的A100 80GB，新的native16、SID、原生处理器计数及资源证明尚待完成，计划尚未冻结。某条件不适用SID不删除模型、不更改原始弃权选择、不筛除任何题目，其他方法保留完整样本与分母。初始依据见`outputs/records/method_applicability_plan.json`。
 
 正式清单按已selected的模型—数据集生成，每份包含该任务全部原dev/eval样本。experiment加载模型前检查冻结计划、方法集合与完整清单；报告按同一计划严格拒绝缺项、多项或在不适用条件下生成的部分SID结果。
 
 ### 执行顺序
 
 CDA定义与101类别名称人工确认已经取得；完成当前配置原生16图、方法核验及CDA实现检查后，更新本节为真实已冻结身份并提交普通push。之后运行完整普查、完成全量语义标注与人工核验、提交筛选；正式清单由`prepare_selected_manifests.py`保留所选任务的全部样本。报告入口须校验全部预定义任务与每题10次试答及101候选记录；任何缺项都显式失败。
+
+### 用户授权的6403执行补充
+
+允许的新增写入根为`/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation`，仅物理GPU1，UUID为`GPU-5c45e961-7442-eb90-9b8c-295a1cf14995`。Qwen3VL和GLM复用`/home/team/lvshuyang/Models`中相应原检查点，环境Python为`/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python`，既有模型和环境只读；实际包版本单独登记，不沿用4028环境声明。BF16、完整图像、32词元上限和算法参数不变，所有权重显式映射到本机逻辑cuda:0（物理1），不卸载。其余14个模型继续4028登记设备。
+
+清单仍保留4028绝对原始路径和原SHA；6403仅在文件打开边界按登记前缀映射，使用原图内容目录核对。全部9167图传输校验通过且失败0。冻结包含host registry和原图内容目录；每主机只执行其登记模型，完整16候选结果经统一来源与计数核验后才判定普查完成。新配置的所有方法证明必须来自6403，旧4028证明仅保留历史身份。

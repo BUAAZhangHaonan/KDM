@@ -19,17 +19,17 @@
   },
   {
     "key": "glm46v",
-    "record": "outputs/verification/glm46v_dual_native16_v1.json",
+    "record": "outputs/verification/glm46v_6403_native16_v1.json",
     "status": "pending",
     "completed": 0,
     "current_spec_identity_matches": false,
     "current_adapter_sources_match": true,
     "layer_projection": "pending",
     "physical_gpus": [
-      "4",
-      "5"
+      "1"
     ],
-    "historical_single_spec": "outputs/records/spec_history/glm46v_single_gpu_before_dual.json"
+    "historical_single_spec": "outputs/records/spec_history/glm46v_single_gpu_before_dual.json",
+    "host": "6403"
   },
   {
     "key": "internvl35_8b",
@@ -101,12 +101,16 @@
   },
   {
     "key": "qwen3vl",
-    "record": "outputs/verification/qwen3vl_final16.json",
-    "status": "passed",
-    "completed": 16,
-    "current_spec_identity_matches": true,
+    "record": "outputs/verification/qwen3vl_6403_native16_v1.json",
+    "status": "pending",
+    "completed": 0,
+    "current_spec_identity_matches": false,
     "current_adapter_sources_match": true,
-    "layer_projection": "passed"
+    "layer_projection": "pending",
+    "physical_gpus": [
+      "1"
+    ],
+    "host": "6403"
   },
   {
     "key": "qwen35_4b",

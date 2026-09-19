@@ -52,5 +52,30 @@
     "tmpdir": "cache/tmp",
     "wheel_download_fingerprints": "outputs/records/environment_builds/downloaded_wheel_sha256.json",
     "model_evidence_scope": "Individual model specs link their actual native16 checks; environment version alone is not model verification."
+  },
+  "6403-existing-kv-tf553": {
+    "python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+    "python_realpath": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python3.11",
+    "python_version": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0]",
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "transformers": "5.5.3",
+      "accelerate": "1.6.0",
+      "Pillow": "12.2.0",
+      "torchvision": "0.21.0+cu124",
+      "safetensors": "0.5.3",
+      "tokenizers": "0.22.2",
+      "numpy": "2.4.6",
+      "einops": "0.8.1",
+      "sentencepiece": "0.2.0",
+      "timm": "1.0.19",
+      "scipy": "1.17.1",
+      "requests": "2.34.2"
+    },
+    "host": "6403",
+    "status": "existing_imports_verified_native_model_proofs_pending",
+    "isolation": "existing_environment_and_inherited_system_user_site_read_only",
+    "inventory": "outputs/records/6403_environment_registered_tf553_inventory_v1.json",
+    "write_policy": "No installs or changes to shared environment; caches and outputs only inside authorized project root"
   }
 }
