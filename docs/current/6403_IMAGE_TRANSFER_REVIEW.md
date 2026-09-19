@@ -1,0 +1,12 @@
+# 6403完整图像内容验证
+
+既有一次目标核验exec8434已实际收取最终退出码0，没有重跑。9167个manifest原始唯一路径在获批6403隔离根完成逐图一次SHA256比对，全部通过，共2,455,250,687字节，failures为空，耗时52.72秒。manifest原字节身份保持f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c，catalog身份保持4021e893d8f9b9c74d9d98470bda7a887ce922c4edf8d657e1bfd3d69aaf858d。
+
+源根/home/g203-4028/projects/knowledge-deficit-mitigation，目标根/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation。验证只读取原图；目标仅新增验证receipt/log，不改变图像、manifest、catalog。此次不加载GPU权重、不运行模型。
+
+两份目标receipt/log通过Windows二进制SSH tar流原字节复制回4028对应新路径；复制前两文件均不存在，目标tar使用--keep-old-files防止覆盖，source/destination实际退出码均0。两端SHA256一致：
+
+- outputs/records/6403_image_transfer_verification_v1.json：8682a0ee2e24ab83a358dc461552ac3c91129a6d74990a224990c9f5941fb759
+- outputs/records/6403_image_transfer_verification_v1.log：f70c6f63d044f130bdbd436dea4781eddd598a29eaefceae677bbd582d22320f
+
+最终环境选择是已登记kv来源/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python。核心torch2.6/cu124、TF5.5.3、accelerate1.6匹配来源登记，但Pillow/numpy/scipy/requests存在已记录漂移，不声称旧环境逐包一致。环境与模型运行验收需另行实际证明；原图内容一致只证明迁移图像身份。

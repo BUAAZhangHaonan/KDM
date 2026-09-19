@@ -1,0 +1,29 @@
+{
+  "scope": "Supplement for one explicitly registered source environment; no additional environment search or mutation",
+  "recommended_environment": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+  "original_registry_entry": "configs/runtime/environments.json:mprisk-tf553.source_python",
+  "inventory_record": "outputs/records/6403_environment_registered_tf553_inventory_v1.json",
+  "inventory_sha256": "c3671b424799f9eb8ef83f00011db5dc8eea308bb9e47bd1c6e31e356ed43cca",
+  "version_differences_from_4028_reconstructed_env": {
+    "numpy": {
+      "registered": "2.2.4",
+      "actual": "2.4.6"
+    },
+    "Pillow": {
+      "registered": "11.1.0",
+      "actual": "12.2.0"
+    },
+    "scipy": {
+      "registered": "1.17.0",
+      "actual": "1.17.1"
+    },
+    "requests": {
+      "registered": "2.32.5",
+      "actual": "2.34.2"
+    }
+  },
+  "all_required_imports_passed": true,
+  "cuda_build": "12.4",
+  "cuda_initialized": false,
+  "recommendation": "Prefer registered mprisk-kv-transformers-5.5.3 over initially inventoried mprisk: torch2.6/cu124, transformers5.5.3, accelerate1.6 match existing reconstructed environment core versions; current Pillow/numpy/scipy/requests have drifted and require new destination native/processors/SID/resource proofs. No package installation or shared environment edits."
+}
