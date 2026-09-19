@@ -44,7 +44,7 @@ def test_old_partial_or_missing_baseline_plans_are_rejected(plan):
 def test_preparation_preserves_all_selected_samples_splits_and_plan_arguments(tmp_path,monkeypatch):
     source=Path(__file__).parents[1]/'scripts/prepare_selected_manifests.py'
     spec=importlib.util.spec_from_file_location('prepare_conditions',source);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
-    image=tmp_path/'image.png';image.write_bytes(b'existence fixture')
+    image=tmp_path/'outputs/verification/image.png';image.parent.mkdir(parents=True);image.write_bytes(b'existence fixture')
     samples=[{'id':d+split,'dataset':d,'split':split,'image_path':str(image)} for d in ('food101','vizwiz') for split in ('dev','eval')]
     manifest=tmp_path/'all.jsonl';manifest.write_text(''.join(json.dumps(s)+'\n' for s in samples))
     selection=[{'model':m,'dataset':d,'n':2,'n_abstain':1 if m=='m' else 0,'selected':m=='m'} for m in ('m','n') for d in ('food101','vizwiz')]
@@ -58,11 +58,13 @@ def test_preparation_preserves_all_selected_samples_splits_and_plan_arguments(tm
     mod.main()
     receipt=json.loads((tmp_path/'prepared/execution_plan.json').read_text())
     assert len(receipt['conditions'])==2 and receipt['method_plan_sha256']==file_hash(plan)
+    assert receipt['method_plan']=='plan.json'
     assert checked==[tuple(BASE+['sid']),tuple(BASE)] and not (tmp_path/'prepared/n').exists()
     for item in receipt['conditions']:
         saved=[json.loads(line) for line in (tmp_path/item['manifest']).read_text().splitlines()]
         assert saved==[s for s in samples if s['dataset']==item['dataset']]
         assert item['samples']==2 and item['eval_samples']==1 and '--method-plan' in item['experiment_arguments']
+        assert item['experiment_arguments'][item['experiment_arguments'].index('--method-plan')+1]=='plan.json'
     # An unchanged manifest/plan is reusable; no different previous artifact is overwritten.
     mod.main()
     (tmp_path/'prepared/m/vizwiz.jsonl').write_text('{}\n')
@@ -103,3 +105,72 @@ def test_formal_experiment_task_plan_gate_precedes_backend(tmp_path,monkeypatch,
     if mutation!='missing_plan':args+=['--method-plan',str(plan)]
     with pytest.raises(RuntimeError if mutation=='none' else ValueError) as exc:cli.main(args)
     if mutation=='none':assert 'backend admission reached' in str(exc.value)
+
+
+def test_selected_plan_and_manifest_are_identical_across_hosts_and_reusable_after_sync(tmp_path,monkeypatch):
+    import shutil
+    import kdm.execution as execution
+    from kdm.io import stable_hash
+    source=Path(__file__).parents[1]/'scripts/prepare_selected_manifests.py'
+    module=importlib.util.spec_from_file_location('prepare_portable_conditions',source)
+    mod=importlib.util.module_from_spec(module);module.loader.exec_module(mod)
+    central=tmp_path/'central';remote=tmp_path/'remote'
+    logical='/unmounted-original-host/images/original.jpg'
+    assert not Path(logical).exists()
+    samples=[{'id':dataset+split,'dataset':dataset,'split':split,'image_path':logical,'question':'q'}
+             for dataset in ('food101','vizwiz') for split in ('dev','eval')]
+    original_rows=json.loads(json.dumps(samples))
+    original_tasks=[task_id('m',t) for t in experiment_tasks(samples)]
+    selection=[{'model':'m','dataset':d,'n':2,'n_abstain':1,'selected':True} for d in ('food101','vizwiz')]
+    registry={'schema':1,'hosts':{
+        '4028':{'root':str(central),'hostname':'central','allowed_gpus':[0],'gpu_uuids':{'0':'unused'}},
+        '6403':{'root':str(remote),'hostname':'remote','allowed_gpus':[1],'gpu_uuids':{'1':'unused'}}},
+        'model_hosts':{'m':'6403'},'image_prefixes':{'/unmounted-original-host/images':'data/images'},
+        'image_catalog':'outputs/records/image_content_catalog.json'}
+    def write(root,path,payload):
+        target=root/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_text(payload if isinstance(payload,str) else json.dumps(payload));return target
+    for root in (central,remote):
+        manifest=write(root,'data/current/all.jsonl',''.join(json.dumps(s)+'\n' for s in samples))
+        image=write(root,'data/images/original.jpg','exact original bytes')
+        write(root,'selection.json',selection)
+        plan=write(root,'configs/kdm/method_plan.json',{'m':{'food101':BASE,'vizwiz':BASE}})
+        write(root,'configs/runtime/m.json',{'key':'m'})
+        write(root,'configs/runtime/hosts.json',registry)
+        write(root,'outputs/records/preregistration_freeze.json',{'status':'frozen','files':{'configs/kdm/method_plan.json':file_hash(plan)}})
+        write(root,'outputs/records/image_content_catalog.json',{'schema':1,'manifest_sha256':file_hash(manifest),
+            'images':{logical:{'sha256':file_hash(image),'size_bytes':image.stat().st_size}}})
+    monkeypatch.setattr(mod,'validate_method_runtime',lambda *args:None)
+    def prepare(root,name):
+        monkeypatch.setattr(execution.socket,'gethostname',lambda:name)
+        monkeypatch.setattr('sys.argv',['prepare','--root',str(root),'--manifest','data/current/all.jsonl',
+            '--selection','selection.json','--method-plan','configs/kdm/method_plan.json','--out-dir','prepared'])
+        mod.main()
+    # CWD is neither project root: relative CLI inputs resolve against explicit --root.
+    monkeypatch.chdir(tmp_path)
+    prepare(central,'central')
+    shutil.copytree(central/'prepared',remote/'prepared')
+    central_receipt=(central/'prepared/execution_plan.json').read_bytes()
+    prepare(remote,'remote')
+    assert (remote/'prepared/execution_plan.json').read_bytes()==central_receipt
+    # Recreate the selected manifests on the remote host from unchanged original rows.
+    for dataset in ('food101','vizwiz'):(remote/f'prepared/m/{dataset}.jsonl').unlink()
+    prepare(remote,'remote')
+    assert (remote/'prepared/execution_plan.json').read_bytes()==central_receipt
+    receipt=json.loads(central_receipt)
+    assert receipt['method_plan']=='configs/kdm/method_plan.json'
+    saved=[]
+    for condition in receipt['conditions']:
+        args=condition['experiment_arguments']
+        for option in ('--manifest','--model-spec','--method-plan'):
+            value=args[args.index(option)+1]
+            assert not Path(value).is_absolute() and (remote/value).is_file()
+        relative=condition['manifest']
+        assert (central/relative).read_bytes()==(remote/relative).read_bytes()
+        saved.extend(json.loads(line) for line in (remote/relative).read_text().splitlines())
+    assert saved==original_rows
+    assert [task_id('m',t) for t in experiment_tasks(saved)]==original_tasks
+    # A changed mapped image cannot generate a new selected manifest.
+    (remote/'data/images/original.jpg').write_text('different image bytes')
+    (remote/'prepared/m/food101.jsonl').unlink()
+    with pytest.raises(ValueError,match='content differs'):prepare(remote,'remote')
+    assert not (remote/'prepared/m/food101.jsonl').exists()

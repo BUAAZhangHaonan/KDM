@@ -19,9 +19,10 @@ def main():
     p.add_argument("--method-plan", required=True)
     p.add_argument("--out-dir", required=True)
     a = p.parse_args()
-    samples = list(read_jsonl(a.manifest))
-    selection = json.loads(Path(a.selection).read_text())
     root=Path(a.root).resolve()
+    manifest_path=within(root,a.manifest);selection_path=within(root,a.selection)
+    samples = list(read_jsonl(manifest_path))
+    selection = json.loads(selection_path.read_text())
     plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
     freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
     if freeze.get('status')!='frozen' or freeze.get('files',{}).get(plan_relative)!=file_hash(plan_path):
@@ -44,17 +45,17 @@ def main():
     for model,dataset,subset,methods,out,spec_path in planned:
         if out.exists():
             if list(read_jsonl(out))!=subset:raise ValueError('Cannot overwrite a different selected manifest')
-        else:write_manifest(subset,out)
+        else:write_manifest(subset,out,image_root=root)
         entries.append({'model':model,'dataset':dataset,'manifest':str(out.relative_to(root)),
             'manifest_sha256':file_hash(out),'samples':len(subset),'eval_samples':sum(s['split']=='eval' for s in subset),
             'methods':list(methods),'model_spec':str(spec_path.relative_to(root)),
             'experiment_arguments':['--mode','experiment','--manifest',str(out.relative_to(root)),
                 '--model',model,'--model-spec',str(spec_path.relative_to(root)),'--methods',','.join(methods),
-                '--method-plan',str(plan_path)],
+                '--method-plan',plan_relative],
             'execution_note':'GPU allocation and output path must come from the approved worker schedule; runtime proof remains a separate gate'})
         print(model,dataset,len(subset),out)
-    receipt={'schema':'kdm_selected_model_dataset_manifests_v1','source_manifest_sha256':file_hash(a.manifest),
-        'selection_sha256':file_hash(a.selection),'method_plan':str(plan_path),
+    receipt={'schema':'kdm_selected_model_dataset_manifests_v1','source_manifest_sha256':file_hash(manifest_path),
+        'selection_sha256':file_hash(selection_path),'method_plan':plan_relative,
         'method_plan_sha256':file_hash(plan_path),'conditions':entries,
         'sample_policy':'all original samples and dev/eval assignments in each selected condition'}
     index=within(root,Path(a.out_dir)/'execution_plan.json')

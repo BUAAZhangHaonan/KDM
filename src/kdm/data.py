@@ -6,14 +6,19 @@ import requests
 from .io import file_hash, atomic_json, read_jsonl, within
 
 
-def write_manifest(rows,path):
-    """Validate before atomically publishing; never truncate a valid old manifest."""
+def write_manifest(rows,path,*,image_root=None):
+    """Validate local images, preserving original row paths before atomic publication."""
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     rows=list(rows);identifiers=set()
     for row in rows:
         if row['id'] in identifiers: raise ValueError('Duplicate sample identifier')
         identifiers.add(row['id'])
-        if not Path(row['image_path']).is_file():raise FileNotFoundError(row['image_path'])
+        if image_root is None:
+            image=Path(row['image_path'])
+        else:
+            from .execution import resolve_image_path
+            image=resolve_image_path(row['image_path'],image_root)
+        if not image.is_file():raise FileNotFoundError(row['image_path'])
     text=''.join(json.dumps(row,ensure_ascii=False,allow_nan=False)+'\n' for row in rows)
     fd,name=tempfile.mkstemp(prefix='.manifest-',dir=path.parent)
     try:
