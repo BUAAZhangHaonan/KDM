@@ -1,12 +1,14 @@
 """Run command-line contracts in a fresh CPU fixture and validate completeness."""
 from pathlib import Path
-import json,os,subprocess,sys,shutil
+import json,os,subprocess,sys
+from datetime import datetime,timezone
 from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
-fixture=ROOT/'verification'/'runtime_fixture'
-if fixture.exists():shutil.rmtree(fixture)
-fixture.mkdir()
+stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+fixture=ROOT/'outputs'/'verification'/('cli_fixture_'+stamp)
+fixture.mkdir(parents=True)
+fixture_rel=str(fixture.relative_to(ROOT))
 image=fixture/'fixture.png';Image.new('RGB',(16,16),(100,120,130)).save(image)
 samples=[{'id':f'fixture-{i}','cluster':str(i),'dataset':'fixture','split':'eval','question':'What is shown?',
           'gold':['milk'],'image_path':str(image)} for i in range(4)]
@@ -21,19 +23,19 @@ def run(args):
 for script in sorted((ROOT/'scripts').glob('*.py')):run([str(script),'--help'])
 run(['-m','kdm.cli','--help'])
 for mode in ('census','experiment','probe'):
-    dest=f'verification/runtime_fixture/{mode}.jsonl'
-    command=['-m','kdm.cli','--root',str(ROOT),'run','--manifest',str(manifest),'--model-spec',str(ROOT/'configs/model_spec_mock.json'),
+    dest=f'{fixture_rel}/{mode}.jsonl'
+    command=['-m','kdm.cli','--root',str(ROOT),'run','--manifest',str(manifest),'--model-spec',str(ROOT/'configs/kdm/model_spec_mock.json'),
              '--model','cpu_fixture','--mode',mode,'--gpu','0','--out',dest]
     run(command);run(command)
     run(['scripts/verify_complete.py','--root',str(ROOT),'--manifest',str(manifest),
          '--records',str(ROOT/dest),'--model','cpu_fixture','--mode',mode,
-         '--out',f'verification/runtime_fixture/{mode}_complete.json'])
+         '--out',f'{fixture_rel}/{mode}_complete.json'])
 run(['-m','kdm.cli','--root',str(ROOT),'annotation-queue','--records',str(fixture/'experiment.jsonl'),str(fixture/'probe.jsonl'),
-     '--out','verification/runtime_fixture/annotation_queue.jsonl'])
+     '--out',f'{fixture_rel}/annotation_queue.jsonl'])
 for command in ('replay','mechanism'):
     run(['-m','kdm.cli','--root',str(ROOT),command,'--records',str(fixture/'experiment.jsonl'),
-         '--model-spec',str(ROOT/'configs/model_spec_mock.json'),'--model','cpu_fixture','--gpu','0',
-         '--out',f'verification/runtime_fixture/{command}.jsonl'])
+         '--model-spec',str(ROOT/'configs/kdm/model_spec_mock.json'),'--model','cpu_fixture','--gpu','0',
+         '--out',f'{fixture_rel}/{command}.jsonl'])
 annotations=[]
 for line in (fixture/'annotation_queue.jsonl').read_text().splitlines():
     r=json.loads(line)
@@ -43,8 +45,8 @@ for line in (fixture/'annotation_queue.jsonl').read_text().splitlines():
 annotation_path=fixture/'complete_annotations.jsonl'
 annotation_path.write_text(''.join(json.dumps(r)+'\n' for r in annotations))
 run(['scripts/complete_response_audit.py','--root',str(ROOT),'--records',str(fixture/'experiment.jsonl'),
-     '--annotations',str(annotation_path),'--model-spec',str(ROOT/'configs/model_spec_mock.json'),
-     '--model','cpu_fixture','--gpu','0','--out','verification/runtime_fixture/complete_response.jsonl'])
-(ROOT/'verification'/'CLI_REVIEW.json').write_text(json.dumps({'data':'CPU mock model and synthetic fixture; no real model inference',
+     '--annotations',str(annotation_path),'--model-spec',str(ROOT/'configs/kdm/model_spec_mock.json'),
+     '--model','cpu_fixture','--gpu','0','--out',f'{fixture_rel}/complete_response.jsonl'])
+(fixture/'CLI_REVIEW.json').write_text(json.dumps({'data':'CPU mock model and synthetic fixture; no real model inference',
      'commands':results,'all_passed':True},indent=2))
 print('Validated',len(results),'command invocations')

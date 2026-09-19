@@ -31,3 +31,15 @@ def test_selected_manifest_preserves_entire_dataset_and_split():
     selection[0]["n"]=1
     with pytest.raises(ValueError, match="denominator"):
         selected_samples(samples,selection,"m")
+
+
+def test_runtime_rejects_unresolved_and_unlocked_model(tmp_path):
+    from kdm.protocol import validate_runtime
+    with pytest.raises(ValueError, match="unresolved"):
+        validate_runtime(tmp_path,{"key":"m","availability":"missing"},"m",["0"])
+    spec={"key":"m","availability":"resolved","gpu_count":2}
+    with pytest.raises(ValueError, match="GPU count"):
+        validate_runtime(tmp_path,spec,"m",["0"])
+    spec["gpu_count"]=1
+    with pytest.raises(ValueError, match="worker"):
+        validate_runtime(tmp_path,spec,"m",["0"])

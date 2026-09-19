@@ -65,3 +65,49 @@ def code_identity(root):
     if not lines:
         raise ValueError("No committed research source identity")
     return lines
+
+
+def validate_runtime(root, spec, model, cards):
+    """Admit only the registered model and a complete native-interface check."""
+    import json
+    import os
+    import sys
+    from pathlib import Path
+    from importlib.metadata import version
+    from .io import within, file_hash
+    if spec.get("key") != model or spec.get("availability") != "resolved":
+        raise ValueError("Model spec is unresolved or belongs to another candidate")
+    if len(cards) != spec.get("gpu_count") or len(cards) != len(set(cards)):
+        raise ValueError("Allocated physical GPU count differs from model spec")
+    for i, card in enumerate(sorted(cards, key=int)):
+        lock = Path(root) / "outputs/locks" / f"gpu_{card}.lock"
+        try:
+            owned = Path(os.readlink(f"/proc/self/fd/{20+i}"))
+        except OSError as exc:
+            raise ValueError("Formal execution requires inherited worker.sh GPU locks") from exc
+        if owned != lock:
+            raise ValueError("Worker lock does not match allocated physical GPU")
+    if os.path.abspath(sys.executable) != os.path.abspath(spec["environment_python"]):
+        raise ValueError("Use the model spec's environment Python")
+    for package, expected in spec["versions"].items():
+        if version(package) != expected:
+            raise ValueError("Runtime package version differs from registered spec: " + package)
+    check = spec.get("interface_verification", {})
+    if not isinstance(check, dict) or check.get("status") != "passed":
+        raise ValueError("Native 16-image interface verification has not passed")
+    result = json.loads(within(root, check["record"]).read_text())
+    if not result.get("passed") or result.get("completed") != 16 or result.get("expected") != 16:
+        raise ValueError("Incomplete native-interface evidence")
+    verified = result.get("spec", {})
+    fields = ("key", "factory", "kwargs", "environment_python", "versions", "dtype", "thinking_mode", "processor", "weights")
+    if any(verified.get(field) != spec.get(field) for field in fields):
+        raise ValueError("Model, processor or environment changed after interface verification")
+    if result["manifest_sha256"] != file_hash(Path(root) / "data/current/interface16.jsonl"):
+        raise ValueError("Native-interface sample identity changed")
+    for filename, digest in result["runtime_adapter_sha256"].items():
+        if file_hash(Path(root) / "src/kdm/models" / filename) != digest:
+            raise ValueError("Adapter changed after native-interface verification: " + filename)
+    for weight in spec["weights"]:
+        path = Path(spec["kwargs"]["model_path"]) / weight["filename"]
+        if not path.is_file() or path.stat().st_size != weight["size_bytes"]:
+            raise ValueError("Missing or incomplete registered model weight: " + str(path))

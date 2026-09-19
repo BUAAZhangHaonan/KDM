@@ -77,7 +77,14 @@ def main(argv=None):
     from .prompts import MARKERS
     spec=json.load(open(a.model_spec))
     from .protocol import code_identity
-    source_blobs=code_identity(root)
+    if spec.get('purpose')=='CPU_TEST_ONLY':
+        if not out.is_relative_to(root/'outputs/verification'):
+            raise ValueError('Synthetic model outputs must remain in outputs/verification')
+        source_blobs={'software_fixture':True,'formal_evidence':False}
+    else:
+        from .protocol import validate_runtime
+        validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
+        source_blobs=code_identity(root)
     backend=make_backend(spec,'cuda:0')
     identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs}
     if a.command=='run':
