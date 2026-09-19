@@ -2,7 +2,7 @@
 set -euo pipefail
 # Usage: worker.sh PROJECT PHYSICAL_GPUS PYTHON [python arguments...]
 ROOT="$(realpath "$1")"; GPUS="$2"; PYTHON="$3"; shift 3
-[[ "$ROOT" == /home/g203-4028/projects/knowledge-deficit-mitigation ]] || { echo 'Unexpected project root' >&2; exit 2; }
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$ROOT/src" "$PYTHON" -m kdm.execution --root "$ROOT" --cards "$GPUS"
 mkdir -p "$ROOT/outputs/locks"
 IFS=',' read -r -a cards <<< "$GPUS"
 [[ ${#cards[@]} -gt 0 ]] || exit 2
@@ -10,7 +10,6 @@ IFS=',' read -r -a cards <<< "$GPUS"
 mapfile -t cards < <(printf '%s\n' "${cards[@]}" | sort -nu)
 fd=20
 for card in "${cards[@]}"; do
-  [[ "$card" =~ ^(0|1|4|5)$ ]] || { echo "Unauthorized GPU $card" >&2; exit 2; }
   eval "exec ${fd}>\"$ROOT/outputs/locks/gpu_${card}.lock\""
   flock -n "$fd" || { echo "GPU $card already reserved" >&2; exit 3; }
   fd=$((fd+1))

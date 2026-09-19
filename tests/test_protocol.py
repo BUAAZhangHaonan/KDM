@@ -65,6 +65,9 @@ def test_runtime_refuses_incomplete_or_changed_adapter_identity(tmp_path,monkeyp
           'interface_verification':{'status':'passed','record':'proof.json'}}
     proof={'passed':True,'completed':16,'expected':16,'spec':spec,
            'manifest_sha256':file_hash(manifest),'runtime_adapter_sha256':{}}
+    import kdm.execution as execution
+    monkeypatch.setattr(execution,'validate_host',lambda *a,**kw:None)
+    monkeypatch.setattr(execution,'execution_receipt',lambda *a,**kw:{'host':'4028'})
     original=os.readlink
     monkeypatch.setattr(os,'readlink',lambda path,*a,**kw:str(tmp_path/'outputs/locks/gpu_0.lock') if str(path)=='/proc/self/fd/20' else original(path,*a,**kw))
     def save(): (tmp_path/'proof.json').write_text(json.dumps(proof))

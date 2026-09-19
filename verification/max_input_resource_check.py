@@ -5,9 +5,13 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
  p=argparse.ArgumentParser();p.add_argument('--spec',required=True);p.add_argument('--stage',choices=['layer','instruction_vcd','cda'],required=True);p.add_argument('--output',required=True);a=p.parse_args()
- out=ROOT/a.output
+ from kdm.io import within
+ out=within(ROOT,a.output)
+ if not out.is_relative_to(ROOT/'outputs/verification'):raise ValueError('Resource evidence must stay in outputs/verification')
  if out.exists():raise FileExistsError(out)
- spec=json.loads((ROOT/a.spec).read_text());key=spec['key'];countpath=ROOT/f'outputs/verification/{key}_sid_full_visual_count.json';counts=json.loads(countpath.read_text())
+ from kdm.io import within
+ spec=json.loads((ROOT/a.spec).read_text());key=spec['key'];countpath=within(ROOT,spec.get('visual_count_verification',{}).get('record',f'outputs/verification/{key}_sid_full_visual_count.json'));counts=json.loads(countpath.read_text())
+ if key in ('qwen3vl','glm46v') and spec.get('visual_count_verification',{}).get('status')!='passed':raise ValueError('Migrated runtime requires current full visual-count proof')
  headers=json.loads((ROOT/counts['header_record']).read_text())
  manifest=ROOT/'data/current/all.jsonl'
  if sha(manifest)!=counts['manifest_sha256']:raise ValueError('manifest count identity changed')
@@ -20,15 +24,18 @@ def main():
  try:
   import torch,numpy as np
   from PIL import Image
+  from kdm.execution import resolve_image_path
   from kdm.pipeline import make_backend,sessions
   from kdm.decoding import DecodeConfig
   from kdm.prompts import task_prompt
   from kdm.io import stable_seed
+  from kdm.protocol import validate_execution_runtime
+  record['execution']=validate_execution_runtime(ROOT,spec,key,os.environ.get('CUDA_VISIBLE_DEVICES','').split(','))
   record['phase']='model_load';backend=make_backend(spec,'cuda:0')
   record['gpu_names']=[torch.cuda.get_device_name(i) for i in range(torch.cuda.device_count())]
   record['model_load_peak_bytes']=[torch.cuda.max_memory_allocated(i) for i in range(torch.cuda.device_count())]
   record['phase']='session_build'
-  with Image.open(sample['image_path']) as im:image=im.convert('RGB')
+  with Image.open(resolve_image_path(sample['image_path'], ROOT)) as im:image=im.convert('RGB')
   method={'layer':'dola','instruction_vcd':'instruction_vcd','cda':'cda_visual'}[a.stage]
   task={'sample':sample,'marker':'UNKNOWN','reference_marker':'UNKNOWN','guided':True,'reference_guided':False}
   seed=stable_seed(sample['id'],key,0)

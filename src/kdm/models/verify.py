@@ -3,6 +3,7 @@ import argparse,json,time,math,os
 import numpy as np
 from pathlib import Path
 from PIL import Image
+from kdm.execution import resolve_image_path
 from kdm.io import read_jsonl,atomic_json,within,file_hash
 from kdm.pipeline import make_backend
 from kdm.prompts import task_prompt
@@ -16,12 +17,14 @@ def main():
     if spec.get("factory", "").partition(":")[0] == "kdm.models.internvl_dual":
         runtime_sources["internvl_dual.py"]=file_hash(Path(__file__).parent/"internvl_dual.py")
     verification_script_sha256=file_hash(__file__)
+    from kdm.protocol import validate_execution_runtime
+    execution=validate_execution_runtime(root,spec,spec['key'],os.environ.get('CUDA_VISIBLE_DEVICES','').split(','))
     b=make_backend(spec,'cuda:0');rows=[];layer_check={'status':'not_run'}
     if getattr(b.em,'mt','') not in {'minicpmv','phi3_v'}:runtime_sources.pop('remote.py',None)
     if getattr(b.em,'mt','')!='internvl_chat':runtime_sources.pop('internvl_preprocessing.py',None)
     for sample in samples:
         prompt=task_prompt(sample['question'],marker='UNKNOWN',guided=True)
-        with Image.open(sample['image_path']) as im:
+        with Image.open(resolve_image_path(sample['image_path'], root)) as im:
             image=im.convert('RGB');inputs=b.em.build(image,prompt)
             with b.torch.inference_mode():
                 if hasattr(b.em,'native_generate'):
@@ -75,6 +78,6 @@ def main():
             row={'id':sample['id'],'checked_conditions':['guided_clean','guided_noise','unguided_clean','unguided_noise','guided_text_only','unguided_text_only'],'condition_max_abs_error':max(errors),'condition_state_equal':state_ok,'native_tokens':native,'backend_tokens':tokens,'equal':native==tokens and state_ok,'native_text':b.decode(native),'backend_text':b.decode(tokens)}
             rows.append(row);print(json.dumps(row),flush=True)
             del session
-        atomic_json(within(root,args.out),{'physical_gpus':os.environ.get('CUDA_VISIBLE_DEVICES','').split(','),'hf_device_map':{k:str(v) for k,v in getattr(b.model,'hf_device_map',{}).items()},'peak_allocated_bytes':{str(i):b.torch.cuda.max_memory_allocated(i) for i in range(b.torch.cuda.device_count())},'native_greedy_overrides':({'do_sample':False,'max_new_tokens':32} if hasattr(b.em,'native_generate') else {'do_sample':False,'num_beams':1,'repetition_penalty':1.0,'max_new_tokens':32}),'checkpoint_generation_config':(b.model.generation_config.to_dict() if getattr(b.model,'generation_config',None) is not None else None),'verification_script_sha256':verification_script_sha256,'layer_projection_check':layer_check,'runtime_adapter_sha256':runtime_sources,'spec':spec,'spec_sha256':spec_sha256,'manifest_sha256':file_hash(args.manifest),'completed':len(rows),'expected':16,'passed':len(rows)==16 and all(r['equal'] for r in rows),'rows':rows})
+        atomic_json(within(root,args.out),{'execution':execution,'physical_gpus':os.environ.get('CUDA_VISIBLE_DEVICES','').split(','),'hf_device_map':{k:str(v) for k,v in getattr(b.model,'hf_device_map',{}).items()},'peak_allocated_bytes':{str(i):b.torch.cuda.max_memory_allocated(i) for i in range(b.torch.cuda.device_count())},'native_greedy_overrides':({'do_sample':False,'max_new_tokens':32} if hasattr(b.em,'native_generate') else {'do_sample':False,'num_beams':1,'repetition_penalty':1.0,'max_new_tokens':32}),'checkpoint_generation_config':(b.model.generation_config.to_dict() if getattr(b.model,'generation_config',None) is not None else None),'verification_script_sha256':verification_script_sha256,'layer_projection_check':layer_check,'runtime_adapter_sha256':runtime_sources,'spec':spec,'spec_sha256':spec_sha256,'manifest_sha256':file_hash(args.manifest),'completed':len(rows),'expected':16,'passed':len(rows)==16 and all(r['equal'] for r in rows),'rows':rows})
     if not all(r['equal'] for r in rows):raise SystemExit('Native token equivalence failed')
 if __name__=='__main__':main()

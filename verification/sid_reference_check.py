@@ -139,6 +139,7 @@ def compare(backend, inputs_a, inputs_b, prefixes):
 def main():
     import argparse, importlib
     from PIL import Image
+    from kdm.execution import resolve_image_path
     from kdm.io import within
     parser=argparse.ArgumentParser()
     parser.add_argument('--spec',required=True)
@@ -158,6 +159,9 @@ def main():
             'scope':'exact native-forward equality to fixed official selection/mask source transplant; shared hook transport',
             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     try:
+        import os
+        from kdm.protocol import validate_execution_runtime
+        report['execution']=validate_execution_runtime(ROOT,spec,spec['key'],os.environ.get('CUDA_VISIBLE_DEVICES','').split(','))
         namespace,code,snippet,line=official_core()
         report['official_source']={'path':str(SOURCE.relative_to(ROOT)),
                                   'sha256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),
@@ -166,8 +170,8 @@ def main():
         backend=getattr(importlib.import_module(module),factory)(**{**spec['kwargs'],'device':args.device})
         sample=json.loads((ROOT/'data/current/interface16.jsonl').read_text().splitlines()[0])
         report['sample_id']=sample['id']
-        report['image_sha256']=hashlib.sha256(Path(sample['image_path']).read_bytes()).hexdigest()
-        image=Image.open(sample['image_path']).convert('RGB')
+        report['image_sha256']=hashlib.sha256(resolve_image_path(sample['image_path'], ROOT).read_bytes()).hexdigest()
+        image=Image.open(resolve_image_path(sample['image_path'], ROOT)).convert('RGB')
         prompts=['What food is shown? Answer briefly.',
                  'Inspect this photograph carefully. What food is shown? Give a short answer.']
         report['prompts']=prompts

@@ -11,6 +11,7 @@ from kdm.annotation import validate_annotations
 from kdm.decoding import DecodeConfig
 from kdm.prompts import MARKERS
 from PIL import Image
+from kdm.execution import resolve_image_path
 
 def donor_pool(records,model,annotations,expected_samples=None,require_annotations=False):
     donors=defaultdict(list);samples={};seen=defaultdict(set)
@@ -126,7 +127,7 @@ def main():
                         continue
                     if backend is None:backend=make_backend(spec,'cuda:0')
                     candidates=[row for row in pool if row['kind']!='invalid']
-                    with Image.open(record['sample']['image_path']) as im:
+                    with Image.open(resolve_image_path(record['sample']['image_path'], root)) as im:
                         result=finite_response_audit(backend,im.convert('RGB'),record['sample']['question'],marker,refmarker,candidates,DecodeConfig(method=method),record['seed'])
                     ledger.add(key,{'sample_id':sid,'model':a.model,'method':method,'marker':marker,'reference_marker':refmarker,'measurement_status':'defined','donor_pool':pool,**json_safe(result)})
 if __name__=='__main__':main()

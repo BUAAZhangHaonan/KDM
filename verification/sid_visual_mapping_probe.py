@@ -2,6 +2,7 @@ import argparse,hashlib,json
 from pathlib import Path
 from transformers import AutoProcessor
 from PIL import Image
+from kdm.execution import resolve_image_path
 from kdm.models.remote import MiniCPMModel,PhiVisionModel
 ROOT=Path(__file__).resolve().parents[1]
 p=argparse.ArgumentParser();p.add_argument('--spec',required=True);p.add_argument('--output',required=True);a=p.parse_args()
@@ -12,7 +13,7 @@ kw={'num_crops':4} if cls is PhiVisionModel else {}
 engine.proc=AutoProcessor.from_pretrained(str(model_path),trust_remote_code=True,local_files_only=True,**kw)
 rows=[]
 for line in (ROOT/'data/current/interface16.jsonl').read_text().splitlines():
- sample=json.loads(line);im=Image.open(sample['image_path']).convert('RGB')
+ sample=json.loads(line);im=Image.open(resolve_image_path(sample['image_path'], ROOT)).convert('RGB')
  inputs=engine.build(im,'What food is shown? Answer briefly.');ids=inputs['input_ids'][0]
  if cls is MiniCPMModel:
   bounds=inputs['image_bound'][0].tolist();positions=[i for start,end in bounds for i in range(start,end)]

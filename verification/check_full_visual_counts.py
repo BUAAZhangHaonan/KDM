@@ -3,15 +3,18 @@ import argparse,hashlib,inspect,json
 from collections import defaultdict
 from pathlib import Path
 from PIL import Image
+from kdm.execution import resolve_image_path
 import torch
 from transformers import AutoProcessor
 from kdm.models.backbone import FamilyModel
 from kdm.models.remote import MiniCPMModel,PhiVisionModel
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('key');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('key');p.add_argument('--output');a=p.parse_args()
 assert not torch.cuda.is_initialized()
 torch.set_num_threads(1)
 spec=json.loads((ROOT/'configs/runtime'/f'{a.key}.json').read_text())
+from kdm.protocol import validate_processor_runtime
+processor_execution=validate_processor_runtime(ROOT,spec)
 config=json.loads((Path(spec['kwargs']['model_path'])/'config.json').read_text())
 processor_kwargs={'num_crops':4} if a.key=='phi35' else {}
 proc=AutoProcessor.from_pretrained(spec['kwargs']['model_path'],trust_remote_code=True,local_files_only=True,**processor_kwargs)
@@ -42,9 +45,11 @@ for id,dataset,split,h,w in headers['rows']:
  if count<100:bad.append({'id':id,'dataset':dataset,'split':split,'height':h,'width':w,'visual_tokens':count})
 sources={}
 for obj in [type(proc),type(proc.image_processor)]:
- path=Path(inspect.getfile(obj));sources[str(path.relative_to(ROOT))]=hashlib.sha256(path.read_bytes()).hexdigest()
-record={'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'command':spec['environment_python']+' verification/check_full_visual_counts.py '+a.key,'key':a.key,'spec':spec,'scope':'full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward','manifest_sha256':headers['manifest_sha256'],'header_record':str(headers_path.relative_to(ROOT)),'header_record_sha256':hashlib.sha256(headers_path.read_bytes()).hexdigest(),'processor_class':type(proc).__name__,'image_processor_class':type(proc.image_processor).__name__,'image_processor_config':proc.image_processor.to_dict(),'installed_source_sha256':sources,'total_images':len(headers['rows']),'unique_dimensions':len(count_by_size),'shape_errors':errors,'groups':[{'dataset':d,'split':s,'n':len(v),'minimum':min(v),'maximum':max(v),'below100':sum(n<100 for n in v)} for (d,s),v in sorted(bygroup.items())],'below100_count':len(bad),'below100':bad,'shape_formula_counts':[{'height':h,'width':w,'visual_tokens':v} for (h,w),v in sorted(count_by_size.items())],'boundary_checks':[],'boundary_checks_passed':False,'all_images_at_least100':False}
-out=ROOT/'outputs/verification'/f'{a.key}_sid_full_visual_count.json'
+ path=Path(inspect.getfile(obj));sources[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
+record={'processor_execution':processor_execution,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'command':spec['environment_python']+' verification/check_full_visual_counts.py '+a.key,'key':a.key,'spec':spec,'scope':'full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward','manifest_sha256':headers['manifest_sha256'],'header_record':str(headers_path.relative_to(ROOT)),'header_record_sha256':hashlib.sha256(headers_path.read_bytes()).hexdigest(),'processor_class':type(proc).__name__,'image_processor_class':type(proc.image_processor).__name__,'image_processor_config':proc.image_processor.to_dict(),'installed_source_sha256':sources,'total_images':len(headers['rows']),'unique_dimensions':len(count_by_size),'shape_errors':errors,'groups':[{'dataset':d,'split':s,'n':len(v),'minimum':min(v),'maximum':max(v),'below100':sum(n<100 for n in v)} for (d,s),v in sorted(bygroup.items())],'below100_count':len(bad),'below100':bad,'shape_formula_counts':[{'height':h,'width':w,'visual_tokens':v} for (h,w),v in sorted(count_by_size.items())],'boundary_checks':[],'boundary_checks_passed':False,'all_images_at_least100':False}
+from kdm.io import within
+out=within(ROOT,a.output or f'outputs/verification/{a.key}_sid_full_visual_count.json')
+if not out.is_relative_to(ROOT/'outputs/verification'):raise ValueError('Visual-count evidence must stay in outputs/verification')
 if out.exists():
  raise FileExistsError(f'Refusing to overwrite existing visual-count evidence: {out}')
 out.write_text(json.dumps(record,ensure_ascii=False,indent=2,default=str)+'\n')
@@ -82,7 +87,7 @@ if exif['nontrivial']:
  if extra_id not in [id for size,id in checks_to_run]:checks_to_run.append((tuple(extra[-2:]),extra_id))
 for (h,w),id in checks_to_run:
  sample=manifest[id]
- with Image.open(sample['image_path']) as image:inputs=engine.build(image.convert('RGB'),'What food is shown? Answer briefly.')
+ with Image.open(resolve_image_path(sample['image_path'], ROOT)) as image:inputs=engine.build(image.convert('RGB'),'What food is shown? Answer briefly.')
  ids=inputs['input_ids'][0]
  if a.key.startswith('minicpm'):
   bounds=inputs['image_bound'][0]

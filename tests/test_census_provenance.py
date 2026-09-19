@@ -185,3 +185,29 @@ def test_cli_resolves_validated_raw_paths_under_root(census,monkeypatch):
     main(['--root',str(c.root),'annotation-queue','--records',str(path.relative_to(c.root)),
           '--out','outputs/verification/queue.jsonl'])
     assert len(list(read_jsonl(c.root/'outputs/verification/queue.jsonl')))==16
+
+
+@pytest.mark.parametrize('mutation',['valid_remote','missing_receipt','wrong_host','wrong_card','changed_resolver'])
+def test_consumption_checks_recorded_execution_host_not_consumers_host(census,mutation,monkeypatch):
+    import kdm.execution as execution
+    c=census
+    registry={'schema':1,'hosts':{'6403':{'hostname':'remote','root':'/remote/project','allowed_gpus':[1],'gpu_uuids':{'1':'remote-uuid'}}},
+        'model_hosts':{'a':'6403','b':'6403'},'image_prefixes':{'/logical':'data/images'},'image_catalog':'catalog.json'}
+    def save(relative,value):
+        p=c.root/relative;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(value))
+        c.freeze['files'][relative]=file_hash(p)
+    save('configs/runtime/hosts.json',registry);save('catalog.json',{'synthetic':True})
+    save('src/kdm/execution.py',{'synthetic':'resolver'})
+    c.freeze_path.write_text(json.dumps(c.freeze));path=c.write()
+    receipt={'host':'6403','hostname':'remote','project_root':'/remote/project','physical_gpus':['1'],'gpu_uuids':{'1':'remote-uuid'},
+        'registry_sha256':file_hash(c.root/'configs/runtime/hosts.json'),'resolver_sha256':file_hash(c.root/'src/kdm/execution.py'),
+        'image_catalog_sha256':file_hash(c.root/'catalog.json')}
+    if mutation=='wrong_host':receipt['host']='4028'
+    elif mutation=='wrong_card':receipt['physical_gpus']=['0']
+    if mutation!='missing_receipt':rewrite_definition(path,lambda d:d.update(execution=receipt))
+    if mutation=='changed_resolver':(c.root/'src/kdm/execution.py').write_text('changed')
+    monkeypatch.setattr(execution.socket,'gethostname',lambda:'central-consumer')
+    monkeypatch.setattr(execution.subprocess,'check_output',lambda *a,**kw:pytest.fail('Consumer queried GPUs'))
+    if mutation=='valid_remote':assert check(c,[path])['models']['a']['formal_evidence']
+    else:
+        with pytest.raises(ValueError):check(c,[path])

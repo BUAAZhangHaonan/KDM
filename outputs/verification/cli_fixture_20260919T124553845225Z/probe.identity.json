@@ -1,0 +1,34 @@
+{
+  "identity": "4eb7b2ef0fef8447ef194727c88cc6425c55589771169dafe682e11e05ca5032",
+  "definition": {
+    "backend": {
+      "factory": "kdm.models.mock:MockBackend",
+      "kwargs": {},
+      "purpose": "CPU_TEST_ONLY"
+    },
+    "backend_spec_sha256": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec",
+    "schema": "kdm_current_v2",
+    "source_blobs": {
+      "software_fixture": true,
+      "formal_evidence": false
+    },
+    "manifest_sha256": "f223e3094cd306c3621649cce3fb874737a0c1b498d074b55e880744e78ad4fd",
+    "model": "cpu_fixture",
+    "shard": 0,
+    "n_shards": 1,
+    "base_config": {
+      "method": "direct",
+      "alpha": 1.0,
+      "beta": 0.1,
+      "m3id_lambda": 0.02,
+      "m3id_threshold": 0.3,
+      "m3id_offset": 0,
+      "deco_alpha": 0.6,
+      "deco_topk": 20,
+      "deco_topp": 0.9,
+      "max_tokens": 32,
+      "temperature": 1.0,
+      "top_p": 1.0
+    }
+  }
+}

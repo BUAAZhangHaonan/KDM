@@ -64,6 +64,9 @@ def validate_census_inputs(root, paths, manifest_path, freeze, require_complete_
                 raise ValueError('Mock census requires explicit verification scope and MockBackend')
             expected_sources={'software_fixture':True,'formal_evidence':False}
         else:
+            from .execution import REGISTRY,validate_execution_receipt
+            if REGISTRY in frozen:
+                validate_execution_receipt(root,definition.get('execution'),model,spec.get('gpu_count'))
             expected_sources=freeze['source_blobs']
             if definition.get('freeze_receipt_sha256')!=freeze_sha:raise ValueError('Census ledger freeze receipt differs from the active frozen receipt')
         if definition.get('source_blobs')!=expected_sources:raise ValueError('Census source blobs differ from the frozen source anchor')

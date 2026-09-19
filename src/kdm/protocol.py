@@ -70,8 +70,8 @@ def code_identity(root):
     return lines
 
 
-def validate_runtime(root, spec, model, cards):
-    """Admit only the registered model and a complete native-interface check."""
+def validate_execution_runtime(root, spec, model, cards):
+    """Verify the actual local model/env/GPU locks; usable before native proof exists."""
     import json
     import os
     import sys
@@ -90,12 +90,41 @@ def validate_runtime(root, spec, model, cards):
             raise ValueError("Formal execution requires inherited worker.sh GPU locks") from exc
         if owned != lock:
             raise ValueError("Worker lock does not match allocated physical GPU")
-    if os.path.abspath(sys.executable) != os.path.abspath(spec["environment_python"]):
+    validate_environment(spec)
+    from .execution import validate_host, execution_receipt
+    validate_host(root, cards, model)
+    validate_local_checkpoint(spec)
+    return execution_receipt(root, cards, model)
+
+
+def validate_environment(spec):
+    import os,sys
+    from importlib.metadata import version
+    if os.path.abspath(sys.executable) != os.path.abspath(spec['environment_python']):
         raise ValueError("Use the model spec's environment Python")
-    for package, expected in spec["versions"].items():
-        if version(package) != expected:
-            raise ValueError("Runtime package version differs from registered spec: " + package)
-    validate_native_runtime_files(root,spec,model)
+    observed={package:version(package) for package in spec['versions']}
+    if observed!=spec['versions']:
+        raise ValueError('Runtime package version differs from registered spec')
+    return {'environment_python':os.path.abspath(sys.executable),'versions':observed}
+
+
+def validate_processor_runtime(root,spec):
+    """CPU processor checks bind actual environment/host without initializing a GPU."""
+    from .execution import local_host,read_registry
+    host,details=local_host(root)
+    if read_registry(root)['model_hosts'].get(spec['key'])!=host:
+        raise ValueError('Processor check belongs to a different execution host')
+    environment=validate_environment(spec)
+    validate_local_checkpoint(spec)
+    return {'host':host,'hostname':details['hostname'],**environment}
+
+
+def validate_runtime(root, spec, model, cards):
+    """Local execution admission plus portable native proof admission."""
+    receipt = validate_execution_runtime(root, spec, model, cards)
+    validate_native_runtime_files(root, spec, model)
+    if receipt['host']=='6403':validate_resource_runtime(root,spec)
+    return receipt
 
 
 def validate_native_runtime_files(root,spec,model):
@@ -130,6 +159,14 @@ def validate_native_runtime_files(root,spec,model):
     for filename in sorted(dependencies):
         if file_hash(Path(root) / "src/kdm/models" / filename) != recorded_sources[filename]:
             raise ValueError("Adapter changed after native-interface verification: " + filename)
+    from .execution import REGISTRY, read_registry, validate_execution_receipt
+    if (Path(root) / REGISTRY).is_file() and read_registry(root)['model_hosts'].get(model) == '6403':
+        validate_execution_receipt(root, result.get('execution'), model, spec.get('gpu_count'))
+
+
+def validate_local_checkpoint(spec):
+    """Only the execution host checks its own registered checkpoint files."""
+    from pathlib import Path
     for weight in spec["weights"]:
         path = Path(spec["kwargs"]["model_path"]) / weight["filename"]
         if not path.is_file() or path.stat().st_size != weight["size_bytes"]:
@@ -166,12 +203,81 @@ def validate_method_runtime(root, spec, methods):
     if spec["key"] in {"minicpm26","minicpm45","phi35"}:dependencies.add("remote.py")
     if spec["key"]=="internvl35_8b":dependencies.add("internvl_preprocessing.py")
     if spec.get("factory", "").partition(":")[0] == "kdm.models.internvl_dual":dependencies.add("internvl_dual.py")
+    from .execution import REGISTRY, read_registry, validate_execution_receipt
+    if (Path(root) / REGISTRY).is_file() and read_registry(root)['model_hosts'].get(spec['key']) == '6403':
+        validate_execution_receipt(root, proof.get('execution'), spec['key'], spec.get('gpu_count'))
+        first=next(read_jsonl(Path(root)/'data/current/interface16.jsonl'))
+        registry=read_registry(root);catalog=json.loads(within(root,registry['image_catalog']).read_text())
+        if proof.get('sample_id')!=first['id'] or proof.get('image_sha256')!=catalog['images'][first['image_path']]['sha256']:
+            raise ValueError('Remote SID proof does not use the original fixed Food image')
     sources=proof.get("runtime_adapter_sha256",{})
     if not dependencies <= set(sources):raise ValueError("SID source identity is incomplete")
     for name in sorted(dependencies):
         if file_hash(Path(root)/"src/kdm/models"/name)!=sources[name]:
             raise ValueError("SID implementation changed after numerical verification: "+name)
 
+
+
+def validate_resource_runtime(root, spec):
+    """Check the registered three finite-prefix maximum-input proofs, without loading weights."""
+    import json
+    from pathlib import Path
+    from .io import within, file_hash
+    from .execution import validate_execution_receipt
+    declaration=spec.get('resource_verification',{})
+    stages={'layer','instruction_vcd','cda'}
+    if declaration.get('status')!='passed' or set(declaration.get('records',{}))!=stages:
+        raise ValueError('Migrated runtime needs all three maximum-input resource proofs')
+    if spec.get('visual_count_verification',{}).get('status')!='passed':
+        raise ValueError('Migrated runtime requires current native processor counts')
+    required={'verification/max_input_resource_check.py','verification/check_full_visual_counts.py'}
+    fields=('key','factory','kwargs','environment_python','versions','dtype','thinking_mode','processor','weights')
+    for stage,relative in declaration['records'].items():
+        path=within(root,relative);required.add(str(path.relative_to(root)))
+        proof=json.loads(path.read_text())
+        if proof.get('passed') is not True or proof.get('stage')!=stage or proof.get('phase')!='complete':
+            raise ValueError('Maximum-input resource evidence is incomplete')
+        if any(proof.get('spec',{}).get(k)!=spec.get(k) for k in fields):
+            raise ValueError('Maximum-input checkpoint/processor/environment identity changed')
+        if proof.get('script_sha256')!=file_hash(Path(root)/'verification/max_input_resource_check.py'):
+            raise ValueError('Maximum-input resource check source changed')
+        if proof.get('manifest_sha256')!=file_hash(Path(root)/'data/current/all.jsonl'):
+            raise ValueError('Maximum-input proof has a different full manifest')
+        if proof['count_record']!=spec['visual_count_verification']['record']:
+            raise ValueError('Resource proof uses an unregistered visual-count record')
+        countpath=within(root,proof['count_record']);required.add(str(countpath.relative_to(root)))
+        if proof.get('count_record_sha256')!=file_hash(countpath):
+            raise ValueError('Maximum visual-count identity changed')
+        counts=json.loads(countpath.read_text())
+        if counts.get('manifest_sha256')!=proof['manifest_sha256'] or counts.get('boundary_checks_passed') is not True or counts.get('total_images')!=9167:
+            raise ValueError('Maximum visual-count proof is incomplete')
+        if any(counts.get('spec',{}).get(k)!=spec.get(k) for k in fields):
+            raise ValueError('Visual-count processor/environment changed')
+        from .execution import read_registry
+        registry=read_registry(root);host=registry['model_hosts'][spec['key']]
+        expected_processor={'host':host,'hostname':registry['hosts'][host]['hostname'],'environment_python':spec['environment_python'],'versions':spec['versions']}
+        if counts.get('processor_execution')!=expected_processor:raise ValueError('Native count environment was not verified on its target host')
+        if counts.get('script_sha256')!=file_hash(Path(root)/'verification/check_full_visual_counts.py'):
+            raise ValueError('Native visual-count check source changed')
+        headerpath=within(root,counts['header_record']);required.add(str(headerpath.relative_to(root)))
+        if counts.get('header_record_sha256')!=file_hash(headerpath):raise ValueError('Image-header record changed')
+        maximum=max(g['maximum'] for g in counts['groups'] if g['dataset']=='vizwiz')
+        if proof.get('expected_visual_tokens')!=maximum:
+            raise ValueError('Resource evidence does not use the maximum actual VizWiz input')
+        samples={sample['id']:sample for sample in read_jsonl(Path(root)/'data/current/all.jsonl')}
+        sample=proof.get('sample',{});original=samples.get(sample.get('id'),{})
+        if not original or sample!={k:original[k] for k in ('id','dataset','split','image_path')} or sample['dataset']!='vizwiz':
+            raise ValueError('Resource sample differs from the original VizWiz manifest')
+        if not any(row.get('id')==sample['id'] and row.get('formula_tokens')==maximum and row.get('equal') is True for row in counts['boundary_checks']):
+            raise ValueError('Resource sample lacks a matching maximum native count')
+        visits=proof.get('visits',[]);branches={'layer':['main_need_layers'],'instruction_vcd':['main','noise_reference','neutral'],'cda':['prior_text','context_image','abstention_image','null_prior_text','null_context_image']}[stage]
+        if len(visits)!=len(branches)*3 or {(v.get('prefix_length'),v.get('branch')) for v in visits}!={(length,branch) for length in (0,1,2) for branch in branches} or any(v.get('logits_finite') is not True or v.get('all_layer_logits_finite') is not True for v in visits):
+            raise ValueError('Resource evidence lacks the fixed finite-prefix branch checks')
+        validate_execution_receipt(root,proof.get('execution'),spec['key'],spec.get('gpu_count'))
+        for name in ('hf.py','backbone.py'):
+            if proof.get('runtime_adapter_sha256',{}).get(name)!=file_hash(Path(root)/'src/kdm/models'/name):
+                raise ValueError('Resource adapter identity changed')
+    return required
 
 
 def validate_freeze(root):
@@ -195,12 +301,21 @@ def validate_freeze(root):
     required={'docs/current/PREREGISTER.md','data/current/all.jsonl','data/current/interface16.jsonl',
         'configs/kdm/models.json','configs/kdm/food_aliases.json','configs/kdm/method_plan.json',
         'outputs/records/protocol_user_decisions_20260919.json','configs/runtime/semantic_judge.json',
-        'scripts/run_census_panel.py','scripts/worker.sh','scripts/verify_complete.py'}
+        'scripts/run_census_panel.py','scripts/worker.sh','scripts/verify_complete.py',
+        'configs/runtime/hosts.json','outputs/records/image_content_catalog.json'}
     samples=list(read_jsonl(root/'data/current/all.jsonl'))
     if len(samples)!=9167 or len({row['id'] for row in samples})!=9167 or Counter(row['dataset'] for row in samples)!={'food101':4848,'vizwiz':4319}:
         raise ValueError('Freeze requires all original 9167 Food-101/VizWiz samples')
+    catalog=json.loads((root/'outputs/records/image_content_catalog.json').read_text())
+    if catalog.get('schema')!=1 or catalog.get('manifest_sha256')!=file_hash(root/'data/current/all.jsonl') or set(catalog.get('images',{}))!={row['image_path'] for row in samples}:
+        raise ValueError('Image content catalog must cover the exact full original manifest')
+    if any(not isinstance(v.get('sha256'),str) or len(v['sha256'])!=64 or type(v.get('size_bytes')) is not int or v['size_bytes']<=0 for v in catalog['images'].values()):
+        raise ValueError('Image content catalog lacks complete byte identities')
     plan=json.loads((root/'configs/kdm/method_plan.json').read_text())
     methods=validated_method_plan(plan,[(key,dataset) for key in keys for dataset in ('food101','vizwiz')])
+    from .execution import read_registry
+    registry=read_registry(root)
+    if set(registry['model_hosts'])!=set(keys):raise ValueError('Host registry must assign all sixteen models exactly once')
     specs={}
     for key in keys:
         relative=f'configs/runtime/{key}.json';required.add(relative)
@@ -217,6 +332,9 @@ def validate_freeze(root):
             sid=spec.get('mechanism_validation',{}).get('sid_reference')
             if not isinstance(sid,dict) or sid.get('status')!='passed':raise ValueError('Frozen SID method proof is incomplete: '+key)
             required.add(str(within(root,sid['record']).relative_to(root)))
+    for key,spec in specs.items():
+        if registry['model_hosts'][key]=='6403':
+            required.update(validate_resource_runtime(root,spec))
     if not required<=set(freeze['files']):
         raise ValueError('Freeze receipt omits required protocol/data/runtime/proof identities: '+', '.join(sorted(required-set(freeze['files']))))
     sources=code_identity(root)

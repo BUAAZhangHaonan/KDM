@@ -4,12 +4,14 @@ from dataclasses import asdict,replace
 import importlib,json,time,math
 from pathlib import Path
 from PIL import Image
+from kdm.execution import resolve_image_path
 import numpy as np
 from .io import Ledger,read_jsonl,stable_hash,stable_seed,file_hash,atomic_json
 from .prompts import task_prompt,MARKERS,closed_prompt
 from .decoding import DecodeConfig,generate,replay
 from .probability import complete_response_shift,log_normalize
 from .scoring import lexical_label,label_response,food_correct,vqa_score,normalize
+ROOT=Path(__file__).resolve().parents[2]
 
 
 def make_backend(spec,device):
@@ -78,7 +80,7 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
         current=replace(cfg,method=task['method'])
         started=time.perf_counter()
         try:
-            with Image.open(task['sample']['image_path']) as im:image=im.convert('RGB')
+            with Image.open(resolve_image_path(task['sample']['image_path'], ROOT)) as im:image=im.convert('RGB')
             prompt=task_prompt(task['sample']['question'],task['marker'],task['guided'],task.get('attempt',False))
             if getattr(backend,'generate_text',None):
                 if current.method!='direct':raise ValueError('API runner supports direct census only')

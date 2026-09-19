@@ -28,6 +28,7 @@ def main(argv=None):
     q=sub.add_parser('replay');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
     q=sub.add_parser('mechanism');q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
     a=p.parse_args(argv);root=setup(a.root)
+    from .execution import resolve_image_path
     from .io import within,read_jsonl,atomic_json,file_hash,Ledger,stable_hash,stable_seed
     out=within(root,a.out)
     if a.command=='prepare-food':
@@ -97,7 +98,7 @@ def main(argv=None):
     from .pipeline import make_backend,run_tasks,census_tasks,experiment_tasks,probe_tasks,closed_rank,sessions,json_safe
     from .decoding import DecodeConfig,replay
     from .prompts import MARKERS
-    spec=json.load(open(a.model_spec));task_plan_identity={}
+    spec=json.load(open(a.model_spec));task_plan_identity={};execution=None
     from .protocol import code_identity
     if spec.get('purpose')=='CPU_TEST_ONLY':
         if not out.is_relative_to(root/'outputs/verification'):
@@ -105,7 +106,7 @@ def main(argv=None):
         source_blobs={'software_fixture':True,'formal_evidence':False}
     else:
         from .protocol import validate_runtime
-        validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
+        execution=validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
         freeze=None
         if a.command=='run' and a.mode in {'census','experiment'}:
             from .protocol import validate_freeze
@@ -146,6 +147,7 @@ def main(argv=None):
         source_blobs=freeze['source_blobs'] if freeze is not None else code_identity(root)
     backend=make_backend(spec,'cuda:0')
     identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs,**task_plan_identity}
+    if execution is not None:identity['execution']=execution
     if a.command=='run':
         samples=list(read_jsonl(a.manifest));identity['manifest_sha256']=file_hash(a.manifest)
         cfg=DecodeConfig()
@@ -164,7 +166,7 @@ def main(argv=None):
             if sample['dataset']!='food101' or sample['split']!='eval':continue
             key=stable_hash([a.model,sample['id'],'closed'])
             if key in ledger.keys:continue
-            with Image.open(sample['image_path']) as image:r=closed_rank(backend,image.convert('RGB'),sample['question'],names,sample['class'])
+            with Image.open(resolve_image_path(sample['image_path'], root)) as image:r=closed_rank(backend,image.convert('RGB'),sample['question'],names,sample['class'])
             ledger.add(key,{'status':'ok','model':a.model,'sample':sample,**r})
         return
     if a.command=='mechanism':
@@ -179,7 +181,7 @@ def main(argv=None):
                 for refmarker in reference_markers:
                     key=stable_hash([record['key'],method,refmarker,'mechanism'])
                     if key in ledger.keys:continue
-                    with Image.open(record['sample']['image_path']) as image:
+                    with Image.open(resolve_image_path(record['sample']['image_path'], root)) as image:
                         result=measure_path(backend,image.convert('RGB'),record['sample']['question'],record['tokens'],method,record['marker'],refmarker,record['seed'])
                     ledger.add(key,{'model':a.model,'sample':record['sample'],**json_safe(result)})
         return
@@ -201,7 +203,7 @@ def main(argv=None):
             donor=donors.get((record['sample']['id'],record['marker']))
             if donor is None or not donor.get('tokens'):raise ValueError('Missing matching direct response token donor')
             cfg=DecodeConfig(**record['config']);task=record
-            with Image.open(record['sample']['image_path']) as image:
+            with Image.open(resolve_image_path(record['sample']['image_path'], root)) as image:
                 main,ref,_,_,_=sessions(backend,image.convert('RGB'),task,cfg,record['seed'])
                 groups={'declared_marker_initial_tokens':sorted({backend.encode(text)[0] for text in MARKERS if backend.encode(text)})}
                 try:trace=replay(main,ref,cfg,donor['tokens'],groups)
