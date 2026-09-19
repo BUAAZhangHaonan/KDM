@@ -1,40 +1,41 @@
-# Execution status — 2026-09-19
+# 执行状态 — 2026-09-19
 
-The source and remote master were both eceed2246515cb938ad478ee23c94590c990eb5d, with a clean worktree. The supplied package and objective were preserved in commit 41388226. Migration was committed as 4ae61ad3. The original backbone Git blob matched fc94a965cfc9b3bbba94ca2cc63aea3018c36fd6; no reviewed-source override was used. Original data and outputs were not migrated or overwritten.
+目标尚未完成。当前完成的是迁移、完整数据/模型登记、方法修复和大部分真实软件核验；尚未启动正式普查，尚无正式模型筛选、干预结论或论文结果图。
 
-## Finite work checklist
+## 有限交付清单
 
-- [x] Preserve supplied package/objective and inspect source/remote state.
-- [x] Archive old code/README and install current code.
-- [ ] Complete tests, mathematical review, method/source review and runtime adapters.
-- [ ] Register all 16 model environments and weights; finish 16-image native token equivalence checks.
-- [x] Prepare complete Food-101 + 4,319 VizWiz manifest and official scoring code.
-- [ ] Freeze all runtime and method identities.
-- [ ] Commit and push preregistration before census/selection/interventions.
-- [ ] Complete full census, semantic annotation/human review, and commit selection.
-- [ ] Complete all predefined experiments, probes, closed measurements and mechanism measurements.
-- [ ] Complete validated tables, real figures, evidence-bounded paper outline, granular commits and ordinary push.
+- [x] 保留用户开发包、原始要求和Git历史；迁移活动代码至src/kdm。
+- [x] 完整数据清单：9,167唯一样本，Food-101 4,848、VizWiz 4,319，缺图0。
+- [x] 16个固定检查点全部登记；只读复制的10个检查点分片完整。
+- [x] 两个项目内隔离环境安装/导入验证，84个实际下载wheel指纹登记。
+- [x] 13份一手论文和相应方法源码核对；CDA歧义已按用户明确裁定修正。
+- [x] Food-101的101类/147名称获用户逐类人工确认，名称文件未变。
+- [x] 最新全套CPU检查209通过；28次合成CLI调用通过。
+- [ ] 全部当前模型配置原生16图核验：15通过，GLM最终运行中。
+- [ ] 方法运行身份全部收尾：9个模型SID通过；6个模型固定参考限制已记录；GLM待最终真实SID。
+- [ ] 协议冻结、提交和普通push；随后执行完整16候选普查。
+- [ ] 全量语义标注、所需人工复核、仅按原始弃权选择并提交。
+- [ ] 全部正式干预、10次独立试答、101类闭集和机制/完整序列测量。
+- [ ] 完整表、真实图、RESULTS和证据一致的中文论文详纲。
 
-## Execution deviations and corrections
+## 当前证据与边界
 
-The first installer dry-run failed before mutation because a Windows piped command appended CR to the package argument. The dry-run and apply were then invoked with explicit paths and succeeded.
+原生接口每个模型使用固定16图，完整greedy token含EOS；六条件独立/交错状态与层投影分别核验。它们不是减少后的研究样本。状态表为`outputs/records/native16_status.json`。GLM旧四条件记录16/16已完成，不能替代尚在执行的最终六条件记录。
 
-The initial pytest invocation used pytest's default /tmp temporary fixture location, outside the requested write root. This was an execution mistake, not an authorized expansion. No unrelated files were removed. Subsequent tests redirect TMPDIR and basetemp into project/cache; root conftest enforces this boundary. The first migration test also assumed it was running from the uninstalled package; its fixture now refers to the preserved package after installation.
+SID现有9个通过模型：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL。每份通过证明含14次实际前缀访问、官方片段对照、独立状态和普通native logits前后不变。完整逐层数组留在项目原路径，Git保留可追溯摘要。MiniCPM原生64视觉词元实例无法执行固定rank100；Qwen3.5第二层为线性注意力；Gemma原生双向图像/sliding mask与固定参考纯causal mask不同。运行错误与结构/协议限制分别记录，未制造同名近似SID。详见`SID_CAPABILITY_REVIEW.md`。
 
-No current formal census, intervention, model selection or scientific outcome has yet been completed. Supplied verification/runtime_fixture and data_example remain synthetic software fixtures, never formal evidence.
+InternVL单卡的接口错误和随后真实OOM均保留。用户明确授权物理4/5显式双卡；独立构造器复用既有输入/前向方法，新的完整native16和SID均通过。双卡native峰值约14.37GB/10.52GB，模型参数无CPU/disk卸载。旧单卡证明和spec保留历史身份。
 
-## Current verified preparation
+最新集成证据：`outputs/verification/pytest_cda_dual_scheduler_20260919.txt`为209通过；新的合成CLI目录有28次调用，包含CDA修订、完整性校验与人审文件工作流。所有合成记录都位于verification且明确标记，不构成真实人审或科研证据。
 
-Complete manifest: 9,167 unique samples, Food-101 4,848 and VizWiz 4,319, missing images zero. Data provenance and original split preservation are in outputs/records/data_manifest_review.json. The full candidate census has 293,344 predefined guided/unguided responses before selection; this is a task count, not completed work.
+独立本地语义检查器已完成真实服务/客户端身份握手；五个诊断例中的原始围栏输出与两项语义/格式错误保留。解析器只接受严格JSON或单一完整围栏，不纠正模型语义。正式回答的人审尚未发生，名称表确认不代替回答人审。
 
-The latest integrated CPU check passed 166 tests, and the latest synthetic end-to-end fixture completed 27 CLI calls (outputs/verification/cli_fixture_20260919T100107533387Z/CLI_REVIEW.json). Later targeted checks cover method-specific runtime evidence and SID session isolation. These are software checks only. Fifteen candidates now pass the complete fixed sixteen-image native token, six-condition isolation and layer-projection checks; outputs/records/native16_status.json records identities. GLM's earlier four-condition run completed 16/16; its final six-condition run remains in progress with the unchanged 32-token protocol. Neither partial final output nor historical narrower checks count as a final pass.
+用户原话、CDA正文公式裁定及名称表指纹见`outputs/records/protocol_user_decisions_20260919.json`。CDA不截断负残余权重，逐步记录全部熵/比例/权重与negative_wa；零校准和使用连续延拓，空输入熵为零显式失败。
 
-The remaining ten exact checkpoints were found in the registered mprisk model root on 6403, and all ten have been copied read-only into project/cache/models; exact source shard sizes and safetensors offsets passed. Two isolated project environments have been built and their registered library versions and actual imports verified; shared environments are not modified. Model and environment readiness must be established by actual completion and native interface checks.
+## 普查执行准备
 
-CDA's published entropy-difference sign conflicts with the supplied implementation and positive-weight requirement. This necessary scientific choice was sent to the user and remains unresolved. No freeze, formal census, intervention output, human review or scientific conclusion is claimed. DoLa standard Jensen-Shannon selection is supported by the paper while its fixed official source has a documented reverse-KL discrepancy.
+`scripts/run_census_panel.py`静态计划完整覆盖16个模型，每模型18,334条、全panel293,344条guided/unguided直接回答。仅使用GPU0/1/4/5及worker锁；4/5先完成三个显式双卡模型，再转两个单卡队列。调度器要求完整冻结身份，任何生成/完整性检查失败停止新调度，不自动重试、不降低参数；已运行任务自然完成。14项CPU mock调度测试已核验阶段顺序、无漏项/重复、失败与冻结门禁。当前尚未执行正式排程。
 
-Independent semantic-judge integration was tested on five diagnostic examples. The original Markdown-fenced responses and two semantic/schema failures are preserved; the parser accepts only a complete single JSON fence and does not correct model semantics. The external human review queue/merge pipeline is implemented, but no actual human decisions have been received. Food alias confirmation remains pending. SID has separate per-model checks and unresolved architecture/interface conditions; native token equivalence does not establish SID support.
+## 历史保留
 
-Current SID-source integration passes 180 CPU tests (outputs/verification/pytest_sid_v2_integration_20260919_v2.txt). The preceding 179/180 log is retained: a rejection test matched lowercase worker but the legitimate wrong-descriptor error began with Worker; the assertion now accepts either case without changing runtime lock checks. Eight current SID numerical proofs pass and have been registered through validate_method_runtime. InternVL's new dual-GPU configuration is explicitly user-authorized after its retained single-GPU OOM and requires fresh native/SID verification.
-
-User decisions are now received: use the printed CDA entropy sign and record negative residual weights; accept the unchanged 101-class/147-name Food alias table after the user's per-class review. The immutable decision record is outputs/records/protocol_user_decisions_20260919.json. Earlier pending statements above describe the discovery stage. Formal response human review has not occurred and is not covered by the alias confirmation.
+原始本地与远程HEAD均为`eceed2246515cb938ad478ee23c94590c990eb5d`，来源提交`41388226`、迁移提交`4ae61ad3`，原始backbone blob符合指定版本。原data/outputs未覆盖。最初安装路径CR故障、初次pytest误用系统临时目录、后续全部修复与失败证据保留于Git及DEVIATIONS/专项评审；之后的缓存、临时文件和所有任务写入均限定在项目根内。

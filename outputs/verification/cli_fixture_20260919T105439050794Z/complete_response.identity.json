@@ -1,0 +1,26 @@
+{
+  "identity": "51a744a257a18643a692a8b40686787754ca931c99c3f1a630a73150ddecb61f",
+  "definition": {
+    "model": "cpu_fixture",
+    "model_spec": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec",
+    "manifest": "36ebeccefefe93fafa0eb65331dadef315056036fb6640adb716dc93761fb6ac",
+    "inputs": [
+      "7a19872e761b150324efd689da05f36905419cca6a7bbeebd535976a4b4b0a20"
+    ],
+    "annotations": "4b0e522150e41936e433150c8a77a614feabb49d6e1c4506ce99af0195b0341c",
+    "methods": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "instruction_vcd",
+      "instruction_m3id"
+    ],
+    "source_blobs": {
+      "software_fixture": true,
+      "formal_evidence": false
+    },
+    "measurement_script_sha256": "9e52d4eb23f5e70f3f7d2e92daec042e5f2f50b2a660edeef98c8ef0875918a8",
+    "measurement_schema": "complete_response_v2"
+  }
+}
