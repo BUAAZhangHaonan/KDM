@@ -1,0 +1,44 @@
+{
+  "recorded_utc": "2026-09-19T11:00:01.552419+00:00",
+  "system": "Linux",
+  "kernel": "6.8.0-138-generic",
+  "architecture": "x86_64",
+  "query_command": [
+    "nvidia-smi",
+    "-i",
+    "0,1,4,5",
+    "--query-gpu=index,uuid,name,memory.total,driver_version",
+    "--format=csv,noheader,nounits"
+  ],
+  "allowed_gpus": [
+    {
+      "physical_gpu": 0,
+      "uuid": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3",
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_total_mib": 24576,
+      "driver_version": "595.91.07"
+    },
+    {
+      "physical_gpu": 1,
+      "uuid": "GPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e",
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_total_mib": 24576,
+      "driver_version": "595.91.07"
+    },
+    {
+      "physical_gpu": 4,
+      "uuid": "GPU-8d98e481-b89b-2166-b474-c33d59e0fd3d",
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_total_mib": 24576,
+      "driver_version": "595.91.07"
+    },
+    {
+      "physical_gpu": 5,
+      "uuid": "GPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d",
+      "name": "NVIDIA GeForce RTX 3090",
+      "memory_total_mib": 24576,
+      "driver_version": "595.91.07"
+    }
+  ],
+  "scope": "Read-only hardware identity for the allowed cards; not utilization or exclusive-access evidence"
+}
