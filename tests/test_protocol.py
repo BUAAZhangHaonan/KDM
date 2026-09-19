@@ -69,3 +69,27 @@ def test_runtime_refuses_incomplete_or_changed_adapter_identity(tmp_path,monkeyp
     validate_runtime(tmp_path,spec,model,['0'])
     (sources/'remote.py').write_text('different runtime')
     with pytest.raises(ValueError,match='Adapter changed'):validate_runtime(tmp_path,spec,model,['0'])
+
+
+def test_method_gate_requires_actual_projection_and_sid_reference(tmp_path):
+    from kdm.protocol import validate_method_runtime
+    from kdm.io import file_hash
+    spec={'key':'llava15_7b','interface_verification':{'record':'native.json'},'mechanism_validation':{'sid_reference':'not_verified'}}
+    path=tmp_path/'native.json';path.write_text('{}')
+    validate_method_runtime(tmp_path,spec,['vcd','m3id'])
+    with pytest.raises(ValueError,match='layer projection'):validate_method_runtime(tmp_path,spec,['dola'])
+    path.write_text(json.dumps({'layer_projection_check':{'status':'passed','head_final_error':0.,'raw_projection_error':0.,'norm_projection_error':0.,'raw_layers':32,'normalized_layers':[20,21]}}))
+    validate_method_runtime(tmp_path,spec,['dola','deco'])
+    with pytest.raises(ValueError,match='SID official'):validate_method_runtime(tmp_path,spec,['sid'])
+    sources=tmp_path/'src/kdm/models';sources.mkdir(parents=True)
+    for name in ['hf.py','backbone.py','sid.py']:(sources/name).write_text(name)
+    spec['mechanism_validation']['sid_reference']={'status':'passed','record':'sid.json'}
+    proof={'passed':True,'reference_commit':'127dd412fa6b61ab1c9babf6979ec4da98002438','spec':spec,
+           'checks':dict.fromkeys(['official_selection','official_reference_logits','causal_mask_preserved','interleaved_sessions','nonmonotonic_prefix'],True),
+           'runtime_adapter_sha256':{p.name:file_hash(p) for p in sources.iterdir()}}
+    def save(): (tmp_path/'sid.json').write_text(json.dumps(proof))
+    save();validate_method_runtime(tmp_path,spec,['sid'])
+    proof['checks']['interleaved_sessions']=False;save()
+    with pytest.raises(ValueError,match='session-isolation'):validate_method_runtime(tmp_path,spec,['sid'])
+    proof['checks']['interleaved_sessions']=True;save();(sources/'sid.py').write_text('changed')
+    with pytest.raises(ValueError,match='implementation changed'):validate_method_runtime(tmp_path,spec,['sid'])

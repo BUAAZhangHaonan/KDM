@@ -104,7 +104,7 @@ def validate_runtime(root, spec, model, cards):
         raise ValueError("Model, processor or environment changed after interface verification")
     if result["manifest_sha256"] != file_hash(Path(root) / "data/current/interface16.jsonl"):
         raise ValueError("Native-interface sample identity changed")
-    dependencies = {"hf.py", "backbone.py", "sid.py"}
+    dependencies = {"hf.py", "backbone.py"}
     if model in {"minicpm26", "minicpm45", "phi35"}:
         dependencies.add("remote.py")
     if model == "internvl35_8b":
@@ -113,10 +113,47 @@ def validate_runtime(root, spec, model, cards):
     allowed_sources = {"hf.py", "backbone.py", "sid.py", "remote.py", "internvl_preprocessing.py"}
     if not dependencies <= set(recorded_sources) or not set(recorded_sources) <= allowed_sources:
         raise ValueError("Native-interface evidence omits required adapter source identities")
-    for filename, digest in recorded_sources.items():
-        if file_hash(Path(root) / "src/kdm/models" / filename) != digest:
+    # Native six-condition checks never invoke SID. Its separate proof is checked below.
+    for filename in sorted(dependencies):
+        if file_hash(Path(root) / "src/kdm/models" / filename) != recorded_sources[filename]:
             raise ValueError("Adapter changed after native-interface verification: " + filename)
     for weight in spec["weights"]:
         path = Path(spec["kwargs"]["model_path"]) / weight["filename"]
         if not path.is_file() or path.stat().st_size != weight["size_bytes"]:
             raise ValueError("Missing or incomplete registered model weight: " + str(path))
+
+
+def validate_method_runtime(root, spec, methods):
+    """Require actual projection or official SID evidence for methods that use it."""
+    import json
+    from pathlib import Path
+    from .io import within, file_hash
+    methods=set(methods)
+    if methods & {"dola", "deco"}:
+        native=json.loads(within(root,spec["interface_verification"]["record"]).read_text())
+        projection=native.get("layer_projection_check",{})
+        errors=[projection.get(k) for k in ("head_final_error","raw_projection_error","norm_projection_error")]
+        if projection.get("status")!="passed" or errors!=[0.,0.,0.] or not projection.get("raw_layers") or not projection.get("normalized_layers"):
+            raise ValueError("DoLa/DeCo require verified native layer projection evidence")
+    if "sid" not in methods:
+        return
+    declaration=spec.get("mechanism_validation",{}).get("sid_reference")
+    if not isinstance(declaration,dict) or declaration.get("status")!="passed":
+        raise ValueError("SID official reference verification has not passed for this architecture")
+    proof=json.loads(within(root,declaration["record"]).read_text())
+    if proof.get("passed") is not True or proof.get("reference_commit")!="127dd412fa6b61ab1c9babf6979ec4da98002438":
+        raise ValueError("SID proof does not establish the fixed official reference")
+    required_checks={"official_selection","official_reference_logits","causal_mask_preserved","interleaved_sessions","nonmonotonic_prefix"}
+    if any(proof.get("checks",{}).get(k) is not True for k in required_checks):
+        raise ValueError("SID matched-prefix and session-isolation checks are incomplete")
+    fields=("key","factory","kwargs","environment_python","versions","dtype","thinking_mode","processor","weights")
+    if any(proof.get("spec",{}).get(field)!=spec.get(field) for field in fields):
+        raise ValueError("SID checkpoint or environment changed after its numerical verification")
+    dependencies={"hf.py","backbone.py","sid.py"}
+    if spec["key"] in {"minicpm26","minicpm45","phi35"}:dependencies.add("remote.py")
+    if spec["key"]=="internvl35_8b":dependencies.add("internvl_preprocessing.py")
+    sources=proof.get("runtime_adapter_sha256",{})
+    if not dependencies <= set(sources):raise ValueError("SID source identity is incomplete")
+    for name in sorted(dependencies):
+        if file_hash(Path(root)/"src/kdm/models"/name)!=sources[name]:
+            raise ValueError("SID implementation changed after numerical verification: "+name)

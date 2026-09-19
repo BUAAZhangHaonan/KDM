@@ -88,7 +88,15 @@ def main():
     root=setup(a.root);out=within(root,a.out)
     spec=json.load(open(a.model_spec));spec_sha=file_hash(a.model_spec)
     source_blobs=execution_identity(root,spec,a.model,out,a.gpu)
-    ann=validate_annotations(a.annotations)
+    methods=tuple(a.methods.split(','))
+    if not methods or not set(methods)<={'vcd','m3id','dola','deco','sid','instruction_vcd','instruction_m3id'}:raise ValueError('Unsupported complete-response method')
+    if spec.get('purpose')=='CPU_TEST_ONLY':
+        ann=validate_annotations(a.annotations)
+    else:
+        from kdm.protocol import validate_method_runtime
+        from kdm.human_review import validate_human_review
+        validate_method_runtime(root,spec,methods)
+        ann=validate_human_review(a.annotations,a.records)
     manifest=list(read_jsonl(a.manifest))
     if len({row['id'] for row in manifest})!=len(manifest):raise ValueError('Duplicate frozen manifest sample')
     expected={row['id']:row for row in manifest if row['split']=='eval'}
@@ -97,8 +105,6 @@ def main():
     for sample in expected.values():
         if not Path(sample['image_path']).is_file():raise ValueError('Missing frozen donor image')
     backend=None
-    methods=tuple(a.methods.split(','))
-    if not methods or not set(methods)<={'vcd','m3id','dola','deco','sid','instruction_vcd','instruction_m3id'}:raise ValueError('Unsupported complete-response method')
     ledger=Ledger(out,{'model':a.model,'model_spec':spec_sha,'manifest':file_hash(a.manifest),
         'inputs':[file_hash(x) for x in a.records],'annotations':file_hash(a.annotations),
         'methods':methods,'source_blobs':source_blobs,'measurement_script_sha256':file_hash(__file__),

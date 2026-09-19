@@ -85,6 +85,14 @@ def main(argv=None):
     else:
         from .protocol import validate_runtime
         validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
+        if (a.command=='run' and a.mode=='experiment') or a.command=='mechanism':
+            methods=tuple(a.methods.split(','))
+        elif a.command=='replay':
+            methods=tuple(sorted({row['method'] for row in read_jsonl(a.records)} & {'vcd','m3id','dola','deco','sid'}))
+        else:methods=None
+        if methods is not None:
+            from .protocol import validate_method_runtime
+            validate_method_runtime(root,spec,methods)
         source_blobs=code_identity(root)
     backend=make_backend(spec,'cuda:0')
     identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs}
