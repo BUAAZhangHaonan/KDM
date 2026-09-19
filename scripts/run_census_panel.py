@@ -18,9 +18,9 @@ from kdm.io import atomic_json, file_hash, read_jsonl, within
 from kdm.protocol import validate_freeze
 
 LANES = {
-    'gpu0': {'cards': [0], 'models': ['glm46v']},
-    'gpu1': {'cards': [1], 'models': ['qwen35_9b', 'qwen35_4b', 'qwen3vl', 'qwen25vl']},
-    'pair45': {'cards': [4, 5], 'models': ['gemma3_12b', 'llava15_13b', 'internvl35_8b']},
+    'gpu0': {'cards': [0], 'models': ['qwen35_9b']},
+    'gpu1': {'cards': [1], 'models': ['qwen35_4b', 'qwen3vl', 'qwen25vl']},
+    'pair45': {'cards': [4, 5], 'models': ['glm46v', 'gemma3_12b', 'llava15_13b', 'internvl35_8b']},
     'gpu4_after_pairs': {'cards': [4], 'models': ['gemma3_4b', 'llava15_7b', 'onevision', 'llava16_mistral']},
     'gpu5_after_pairs': {'cards': [5], 'models': ['minicpm26', 'minicpm45', 'phi35', 'llava16_vicuna']},
 }

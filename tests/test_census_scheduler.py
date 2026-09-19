@@ -101,7 +101,7 @@ def test_failure_stops_new_work_without_retry_or_killing_running_jobs(scheduler,
         return SimpleNamespace(returncode=8 if key=='glm46v' and failure_stage=='verification' else 0)
     monkeypatch.setattr(mod.subprocess,'Popen',Process);monkeypatch.setattr(mod.subprocess,'run',verify)
     assert mod.execute('outputs/records/synthetic-failure')==1
-    assert set(started)=={'glm46v','qwen35_9b','gemma3_12b'} and len(started)==3
+    assert set(started)=={'glm46v','qwen35_9b','qwen35_4b'} and len(started)==3
     assert set(waited)==set(started)
     report=json.loads((root/'outputs/records/synthetic-failure/status.json').read_text())
     assert not report['complete'] and report['jobs']['glm46v']['status']=='failed'
