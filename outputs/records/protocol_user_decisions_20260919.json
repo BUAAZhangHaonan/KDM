@@ -28,5 +28,20 @@
       5
     ],
     "scope": "Explicit two-card mapping with unchanged checkpoint, precision, images and SID settings; revalidate native16 and SID"
+  },
+  "glm_recovery": {
+    "user_statement": "允许 GLM 按上述双卡方案核验",
+    "recorded_at_utc": "2026-09-19T11:46:01.320856+00:00",
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "layer_partition": [
+      20,
+      20
+    ],
+    "proposal": "outputs/verification/glm46v_dual_gpu_resource_proposal_v1.json",
+    "scope": "Explicit proposed mapping only; unchanged BF16, checkpoint, processor, input and algorithm; repeat native16, Food SID and three maximum-visual-input resource groups; preserve single-card failures",
+    "authorization_does_not_imply_verification_passed": true
   }
 }
