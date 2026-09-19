@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "scope": "CPU software regression only; not registered multimodal model SID proof",
+  "cuda_visible_devices": "",
+  "checks": [
+    {
+      "tests": [
+        "tests/test_backends.py",
+        "tests/test_sid_sessions.py"
+      ],
+      "passed": 6,
+      "seconds": 8.09
+    },
+    {
+      "tests": [
+        "tests/test_sid_sessions.py"
+      ],
+      "reason": "Added nontrivial pruning effect assertion",
+      "passed": 4,
+      "seconds": 6.15
+    }
+  ],
+  "files": {
+    "src/kdm/models/sid.py": "a74b3e784a7f81884a0069cd71baeaf11f4e4623203cd87e5e59890562cd3b83",
+    "verification/sid_reference_check.py": "c7b8fadf89409769bc50b98524a2639948f03a8785806129f50f757061532b92",
+    "tests/test_sid_sessions.py": "1c06bdf6fce7ae59518b3632f7a03b2ce5f8f65a7bf295f3f27ef5bef4ba21f4"
+  }
+}

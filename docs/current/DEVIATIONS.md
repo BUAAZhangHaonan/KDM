@@ -31,3 +31,13 @@ Read official `reference_repos/deco/transformers/generation/utils.py` candidate 
 ## Scope and remaining validation
 
 The source package, historical experiment numbers and synthetic fixtures remain identified separately from new real records. Incomplete checkpoint transfers or interfaces, human semantic adjudication, and unresolved method definitions are not treated as zero effects, failed scientific criteria, or completed experimental conditions.
+
+## SID fixed-code reference and isolated sessions
+
+The independent source review found and repaired two concrete implementation faults: a second reference session removed the first session's hooks, and reference selection used an external clean branch's attention rather than the reference forward's own shallow attention. The corrected implementation installs hooks only during its own forward and restores them on success or failure. Fixed official commit `127dd412fa6b61ab1c9babf6979ec4da98002438` uses aggregation index 2 and rank 100; the later ICLR 2025 paper version uses different settings. The fixed source settings remain unchanged.
+
+On the registered LLaVA-1.5-7B checkpoint, the actual GPU check compared the official selection/mask source transplant with the port: 14 visits across two prompts and repeated/backtracked prefixes, 600 layer events, 576 visual positions reduced to the declared 100. Both evolving and fresh-reference logits matched exactly; causal masks and session isolation passed. The oracle shares the native backbone/hook transport, so this is not an end-to-end run of the whole legacy official fork. Other architectures require their own evidence or a concrete structural reason, not inference from this one success. Details: `SID_SOURCE_REVIEW.md` and `outputs/verification/llava15_7b_sid_reference.json`.
+
+## Native generation settings
+
+Qwen2.5-VL's checkpoint generation defaults include repetition_penalty=1.05. The first native interface check inherited it while the supplied KDM protocol uses raw-score greedy decoding; two of sixteen images differed. The native check now explicitly uses the same fixed greedy settings (do_sample=False, num_beams=1, repetition_penalty=1.0), retaining the checkpoint defaults and overrides in its record. All sixteen then matched. This corrects an unmatched reference check; it does not tune or change the formal decoding operator. The failed check remains preserved.
