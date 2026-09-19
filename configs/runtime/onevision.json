@@ -1,0 +1,13 @@
+{
+  "key": "onevision",
+  "hf_model_id": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+  "availability": "missing",
+  "environment_python": null,
+  "factory": null,
+  "kwargs": {},
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 1,
+  "interface_verification": "pending",
+  "versions": null
+}

@@ -1,0 +1,86 @@
+{
+  "key": "llava16_mistral",
+  "hf_model_id": "llava-hf/llava-v1.6-mistral-7b-hf",
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf"
+  },
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 1,
+  "interface_verification": {
+    "status": "passed",
+    "record": "outputs/verification/llava16_mistral_native16_states.json",
+    "completed": 16,
+    "expected": 16,
+    "native_tokens_equal": true,
+    "max_condition_state_error": 0.0
+  },
+  "versions": {
+    "torch": "2.9.0+cu128",
+    "transformers": "5.17.0"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00004.safetensors",
+      "size_bytes": 4921618144,
+      "mtime_ns": 1768892817108143963,
+      "hub_revision": "2424fdd47412fccc66d91719126b420e9fbd7065",
+      "hub_recorded_sha256": "2d7d9a865868c5f05d8e44b6218f43401a0456d875429d32fa5f947d5ca01a67",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00004.safetensors",
+      "size_bytes": 4915917568,
+      "mtime_ns": 1768892802555116068,
+      "hub_revision": "2424fdd47412fccc66d91719126b420e9fbd7065",
+      "hub_recorded_sha256": "02a36fb5d7b0574dc4c8da545089aac85b14a7972908293c11a63eca8ef46c0e",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00003-of-00004.safetensors",
+      "size_bytes": 4915917576,
+      "mtime_ns": 1768892812860135944,
+      "hub_revision": "2424fdd47412fccc66d91719126b420e9fbd7065",
+      "hub_recorded_sha256": "9201eb56fd7d71e2e8dbc6ff7f856e81c6eddb5b4eb12e9acc760576b668948c",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00004-of-00004.safetensors",
+      "size_bytes": 380134008,
+      "mtime_ns": 1768892593499562625,
+      "hub_revision": "2424fdd47412fccc66d91719126b420e9fbd7065",
+      "hub_recorded_sha256": "472780e31b22135a80dc7721cc0ab5665cf7cfc2348755816a2404484abe17dc",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "ddf45e24cea7da06747d67a2f377b8fe65e672f61180c50adae7fd9c0392ab6e",
+  "processor": {
+    "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf",
+    "files": {
+      "tokenizer.json": "3ac63c3abef09099abe96833fbad9cdf473ede830413b0063bf8c3f357ed833c",
+      "processor_config.json": "7cd8bff508772b8b4e6b0678550bf856a7f28abd0f8b237235ac83bfcb9b1c36",
+      "preprocessor_config.json": "ecef425c1d3ee91f5e05144c4d107389f9fefd04a424d5cbfc3fb6e0525b8c55",
+      "tokenizer_config.json": "37729d3fee9c6d74290bd6a85524941cd06cc7e9c9acb013863c23e9c6275d2f"
+    }
+  },
+  "adapter_source_sha256": {
+    "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+    "backbone.py": "0f12dd7df3f40ea470eda79886ba1c9891952a91ff3f411854482a6e3a18e5e4",
+    "hf.py": "735ae873e559e6017d9d8d64d5dde8790eb372c78e38829ec7c78471928ae795",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": "not_verified",
+    "deco_layers": "not_verified",
+    "sid_reference": "not_verified",
+    "text_only_condition": "not_verified"
+  }
+}

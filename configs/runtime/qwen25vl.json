@@ -1,0 +1,13 @@
+{
+  "key": "qwen25vl",
+  "hf_model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "availability": "missing",
+  "environment_python": null,
+  "factory": null,
+  "kwargs": {},
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 1,
+  "interface_verification": "pending",
+  "versions": null
+}

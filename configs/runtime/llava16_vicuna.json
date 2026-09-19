@@ -1,0 +1,13 @@
+{
+  "key": "llava16_vicuna",
+  "hf_model_id": "llava-hf/llava-v1.6-vicuna-7b-hf",
+  "availability": "missing",
+  "environment_python": null,
+  "factory": null,
+  "kwargs": {},
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 1,
+  "interface_verification": "pending",
+  "versions": null
+}

@@ -1,0 +1,13 @@
+{
+  "key": "llava15_13b",
+  "hf_model_id": "llava-hf/llava-1.5-13b-hf",
+  "availability": "missing",
+  "environment_python": null,
+  "factory": null,
+  "kwargs": {},
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 2,
+  "interface_verification": "pending",
+  "versions": null
+}

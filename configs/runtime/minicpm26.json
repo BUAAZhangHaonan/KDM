@@ -1,0 +1,13 @@
+{
+  "key": "minicpm26",
+  "hf_model_id": "openbmb/MiniCPM-V-2_6",
+  "availability": "missing",
+  "environment_python": null,
+  "factory": null,
+  "kwargs": {},
+  "dtype": "bfloat16",
+  "thinking_mode": "not_applicable",
+  "gpu_count": 1,
+  "interface_verification": "pending",
+  "versions": null
+}

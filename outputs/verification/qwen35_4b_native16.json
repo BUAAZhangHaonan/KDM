@@ -1,0 +1,265 @@
+{
+  "spec_sha256": "efe03c54cdbd31e19409e51494f7faa58af1cb34b6d69ea8d7e7150e1d79a4b3",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "rows": [
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "native_tokens": [
+        21680,
+        4208,
+        248046
+      ],
+      "backend_tokens": [
+        21680,
+        4208,
+        248046
+      ],
+      "equal": true,
+      "native_text": "apple pie",
+      "backend_text": "apple pie"
+    },
+    {
+      "id": "food101:baby_back_ribs_group_000.jpg",
+      "native_tokens": [
+        49,
+        3151,
+        50,
+        248046
+      ],
+      "backend_tokens": [
+        49,
+        3151,
+        50,
+        248046
+      ],
+      "equal": true,
+      "native_text": "RIBS",
+      "backend_text": "RIBS"
+    },
+    {
+      "id": "food101:baklava_group_000.jpg",
+      "native_tokens": [
+        67459,
+        184883,
+        248046
+      ],
+      "backend_tokens": [
+        67459,
+        184883,
+        248046
+      ],
+      "equal": true,
+      "native_text": "baklava",
+      "backend_text": "baklava"
+    },
+    {
+      "id": "food101:beef_carpaccio_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:beef_tartare_group_000.jpg",
+      "native_tokens": [
+        51,
+        461,
+        532,
+        248046
+      ],
+      "backend_tokens": [
+        51,
+        461,
+        532,
+        248046
+      ],
+      "equal": true,
+      "native_text": "Tartare",
+      "backend_text": "Tartare"
+    },
+    {
+      "id": "food101:beet_salad_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:beignets_group_000.jpg",
+      "native_tokens": [
+        329,
+        322,
+        3508,
+        248046
+      ],
+      "backend_tokens": [
+        329,
+        322,
+        3508,
+        248046
+      ],
+      "equal": true,
+      "native_text": "churros",
+      "backend_text": "churros"
+    },
+    {
+      "id": "food101:bibimbap_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:bread_pudding_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:breakfast_burrito_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:bruschetta_group_000.jpg",
+      "native_tokens": [
+        47,
+        61052,
+        248046
+      ],
+      "backend_tokens": [
+        47,
+        61052,
+        248046
+      ],
+      "equal": true,
+      "native_text": "PITA",
+      "backend_text": "PITA"
+    },
+    {
+      "id": "food101:caesar_salad_group_000.jpg",
+      "native_tokens": [
+        21871,
+        31177,
+        61398,
+        248046
+      ],
+      "backend_tokens": [
+        21871,
+        31177,
+        61398,
+        248046
+      ],
+      "equal": true,
+      "native_text": "Caesar Salad",
+      "backend_text": "Caesar Salad"
+    },
+    {
+      "id": "food101:cannoli_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:caprese_salad_group_000.jpg",
+      "native_tokens": [
+        12533,
+        68057,
+        31393,
+        248046
+      ],
+      "backend_tokens": [
+        12533,
+        68057,
+        31393,
+        248046
+      ],
+      "equal": true,
+      "native_text": "Caprese salad",
+      "backend_text": "Caprese salad"
+    },
+    {
+      "id": "food101:carrot_cake_group_000.jpg",
+      "native_tokens": [
+        49649,
+        248046
+      ],
+      "backend_tokens": [
+        49649,
+        248046
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:ceviche_group_000.jpg",
+      "native_tokens": [
+        329,
+        2978,
+        321,
+        18594,
+        248046
+      ],
+      "backend_tokens": [
+        329,
+        2978,
+        321,
+        18594,
+        248046
+      ],
+      "equal": true,
+      "native_text": "chips and soup",
+      "backend_text": "chips and soup"
+    }
+  ]
+}

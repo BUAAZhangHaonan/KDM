@@ -1,0 +1,18 @@
+{
+  "pid": 258550,
+  "cwd": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+  "gpu_physical": [
+    0
+  ],
+  "worker_fd20_target": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/locks/gpu_0.lock",
+  "nonblocking_lock_probe": "HELD",
+  "python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+  "spec": "configs/runtime/glm46v.json",
+  "manifest": "data/current/interface16.jsonl",
+  "output": "outputs/verification/glm46v_native16_states.json",
+  "log": "outputs/verification/glm46v_native16_states.log",
+  "completed": 1,
+  "expected": 16,
+  "formal_experiment": false,
+  "note": "Fixed interface verification only; no parameter or input reduction. Do not restart while PID is live."
+}

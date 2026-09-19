@@ -1,0 +1,86 @@
+{
+  "key": "glm46v",
+  "hf_model_id": "zai-org/GLM-4.6V-Flash",
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/Models/GLM-4.6V-Flash"
+  },
+  "dtype": "bfloat16",
+  "thinking_mode": "disabled",
+  "gpu_count": 1,
+  "interface_verification": {
+    "status": "running",
+    "record": "outputs/verification/glm46v_native16_states.json",
+    "completed": 1,
+    "expected": 16,
+    "native_tokens_equal": true,
+    "max_condition_state_error": 0.0
+  },
+  "versions": {
+    "torch": "2.9.0+cu128",
+    "transformers": "5.17.0"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00004.safetensors",
+      "size_bytes": 5320911456,
+      "mtime_ns": 1768891450984877875,
+      "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+      "hub_recorded_sha256": "058745e42d1003c9fb6d1707838902478cd5acb0d7cb277a7e074ceaecf06402",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00004.safetensors",
+      "size_bytes": 5303216664,
+      "mtime_ns": 1768891536906049313,
+      "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+      "hub_recorded_sha256": "56e35e399921aa4d20ee0e20639bbb7e86e7036b11b74b643487d591206f071c",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00003-of-00004.safetensors",
+      "size_bytes": 5303216664,
+      "mtime_ns": 1768891446195684505,
+      "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+      "hub_recorded_sha256": "7f57230ee36c64f3c5d2986674ddba5db3df26df828db1833f4792d4ef21ce48",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00004-of-00004.safetensors",
+      "size_bytes": 4658299264,
+      "mtime_ns": 1768891460261247167,
+      "hub_revision": "411bb4d77144a3f03accbf4b780f5acb8b7cde4e",
+      "hub_recorded_sha256": "8c12ad6165dc9a2895a46547d611ed24990eae6fb357dddf066e239582fece2e",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "ef88f66ef623085cd86f5fd14bd6647a0b7175b9a25773049b82611d4ac82181",
+  "processor": {
+    "path": "/home/g203-4028/Models/GLM-4.6V-Flash",
+    "files": {
+      "tokenizer.json": "9340665016419c825c4bdabbcc9acc43b7ca2c68ce142724afa829abb1be5efd",
+      "preprocessor_config.json": "02cc50c36240882ae35e8cd4077a25a379664108185d728d261cb785aefeccff",
+      "chat_template.jinja": "bf6cfe131f9af1cdbe0e1e4bda8cd56154e63d95d50df697155654bde7b387fd",
+      "tokenizer_config.json": "13809913afa65678aff5d54d888720c30cb000d0e9a85799ef22d1ca9dfdf228"
+    }
+  },
+  "adapter_source_sha256": {
+    "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+    "backbone.py": "0f12dd7df3f40ea470eda79886ba1c9891952a91ff3f411854482a6e3a18e5e4",
+    "hf.py": "735ae873e559e6017d9d8d64d5dde8790eb372c78e38829ec7c78471928ae795",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": "not_verified",
+    "deco_layers": "not_verified",
+    "sid_reference": "not_verified",
+    "text_only_condition": "not_verified"
+  }
+}

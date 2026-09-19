@@ -8,9 +8,22 @@ import math
 import numpy as np
 from ..decoding import Step
 
+def vcd_noise(x,seed):
+    """Official VCD schedule and native tensor noise dtype, with a private RNG."""
+    import torch
+    generator=torch.Generator(device=x.device);generator.manual_seed(seed)
+    beta=torch.sigmoid(torch.linspace(-6,6,1000))*(.005-.00001)+.00001
+    abar=torch.cumprod(1-beta,0)
+    noise=torch.empty_like(x).normal_(generator=generator)
+    return abar.sqrt()[500]*x+(1-abar).sqrt()[500]*noise
+
 class HFBackend:
     def __init__(self,model_path,device='cuda:0',attn_implementation=None,device_map=None,max_memory=None):
         import torch
+        if isinstance(device_map,str) and device_map in {'auto','balanced','balanced_low_0','sequential'}:
+            raise ValueError('Provide an explicit GPU device map; automatic placement may offload weights')
+        if isinstance(device_map,dict) and any(str(v) in {'cpu','disk'} for v in device_map.values()):
+            raise ValueError('CPU/disk weight offload is prohibited')
         if max_memory is not None:max_memory={int(k) if str(k).isdigit() else k:v for k,v in max_memory.items()}
         from .backbone import get_engine
         self.em=get_engine(model_path,device,attn_implementation=attn_implementation,device_map=device_map,max_memory=max_memory)
@@ -20,7 +33,7 @@ class HFBackend:
         if any(str(v) in {'cpu','disk'} for v in placement.values()):raise RuntimeError('Unexpected model CPU/disk placement')
         if not self.eos: raise RuntimeError("No EOS token configured")
     def encode(self,text): return self.tokenizer.encode(text,add_special_tokens=False)
-    def decode(self,tokens): return self.tokenizer.decode(tokens,skip_special_tokens=True).strip()
+    def decode(self,tokens): return self.tokenizer.decode(tokens,skip_special_tokens=True,clean_up_tokenization_spaces=False)
     def session(self,image,prompt,reference='clean',seed=0,need_layers=False):
         if reference=='text_only': inputs=self._text_inputs(prompt)
         else:
@@ -32,21 +45,14 @@ class HFBackend:
         if reference=='noise':
             if 'pixel_values' not in inputs: raise RuntimeError("No processed pixel_values for VCD")
             inputs={k:(v.clone() if hasattr(v,'clone') else v) for k,v in inputs.items()}
-            x=inputs['pixel_values'];t=self.torch
-            gen=t.Generator(device=x.device);gen.manual_seed(seed)
-            # Official sigmoid schedule, no clipping, processed pixel tensor.
-            beta=t.sigmoid(t.linspace(-6,6,1000,device=x.device,dtype=t.float64))*(.005-.00001)+.00001
-            abar=t.cumprod(1-beta,0)[500]
-            eps=t.randn(x.shape,device=x.device,dtype=t.float64,generator=gen)
-            inputs['pixel_values']=(abar.sqrt()*x.double()+(1-abar).sqrt()*eps).to(x.dtype)
+            inputs['pixel_values']=vcd_noise(inputs['pixel_values'],seed)
         if reference not in {'clean','noise','text_only'}:
             raise RuntimeError(f"Reference needs an explicit adapter: {reference}")
         return HFSession(self,inputs,reference=='text_only',need_layers)
     def _text_inputs(self,text):
         t=self.torch
         if getattr(self.em,'mt','')=='internvl_chat':
-            query=f'<|im_start|>user\n{text}<|im_end|>\n<|im_start|>assistant\n'
-            enc=self.tokenizer(query,return_tensors='pt')
+            return self.em.build_text(text)
         else:
             msg=[{'role':'user','content':[{'type':'text','text':text}]}]
             kw=dict(add_generation_prompt=True,tokenize=True,return_dict=True,return_tensors='pt')

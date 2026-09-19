@@ -106,13 +106,34 @@ class InternVLModel:
         except AttributeError:
             (self.lm_head, self.norm, self.lcd_ready) = (None, None, False)
 
+    def _query(self, text, patches=0):
+        import importlib
+        conversation=importlib.import_module(self.model.__class__.__module__.rsplit('.',1)[0]+'.conversation')
+        template=conversation.get_conv_template(self.model.template)
+        template.system_message=self.model.system_message
+        question=('<image>\n' if patches else '')+text
+        template.append_message(template.roles[0],question)
+        template.append_message(template.roles[1],None)
+        query=template.get_prompt()
+        if patches:
+            image_tokens='<img>'+'<IMG_CONTEXT>'*(self.num_image_token*patches)+'</img>'
+            query=query.replace('<image>',image_tokens,1)
+        return query
+
+    def build_text(self,text):
+        enc=self.proc.tokenizer(self._query(text),return_tensors='pt')
+        return {k:v.to(self.device) for k,v in enc.items()}
+
     def build(self, pil_img, text):
-        import torch
-        px = self.ip(images=pil_img.convert('RGB'), return_tensors='pt')['pixel_values']
-        img_tokens = '<img>' + '<IMG_CONTEXT>' * self.num_image_token + '</img>'
-        query = f'<|im_start|>user\n{img_tokens}\n{text}<|im_end|>\n<|im_start|>assistant\n'
-        enc = self.proc.tokenizer(query, return_tensors='pt')
-        return {'input_ids': enc['input_ids'].to(self.device), 'attention_mask': enc['attention_mask'].to(self.device), 'pixel_values': px.to(self.device, torch.bfloat16), 'image_flags': torch.ones((1, 1), dtype=torch.long, device=self.device)}
+        from .internvl_preprocessing import build_transform,dynamic_preprocess
+        size=int(self.cfg.force_image_size or self.cfg.vision_config.image_size)
+        transform=build_transform(size)
+        tiles=dynamic_preprocess(pil_img.convert('RGB'),image_size=size,max_num=12,use_thumbnail=True)
+        px=torch.stack([transform(tile) for tile in tiles])
+        enc=self.proc.tokenizer(self._query(text,len(tiles)),return_tensors='pt')
+        return {'input_ids':enc['input_ids'].to(self.device),'attention_mask':enc['attention_mask'].to(self.device),
+                'pixel_values':px.to(self.device,torch.bfloat16),
+                'image_flags':torch.ones((len(tiles),1),dtype=torch.long,device=self.device)}
 
     def _prefill(self, inputs, ohs=False, oa=False):
         return self.model(pixel_values=inputs['pixel_values'], input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'], image_flags=inputs['image_flags'], output_hidden_states=ohs, output_attentions=oa, use_cache=True)

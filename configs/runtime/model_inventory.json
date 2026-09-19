@@ -1,0 +1,318 @@
+[
+  {
+    "key": "gemma3_4b",
+    "display_name": "Gemma-3-4B",
+    "hf_model_id": "google/gemma-3-4b-it",
+    "url": "https://huggingface.co/google/gemma-3-4b-it",
+    "directory_names": [
+      "gemma-3-4b-it",
+      "google/gemma-3-4b-it"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "gemma3_12b",
+    "display_name": "Gemma-3-12B",
+    "hf_model_id": "google/gemma-3-12b-it",
+    "url": "https://huggingface.co/google/gemma-3-12b-it",
+    "directory_names": [
+      "gemma-3-12b-it",
+      "google/gemma-3-12b-it"
+    ],
+    "gpu_count": 2,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "glm46v",
+    "display_name": "GLM-4.6V-Flash",
+    "hf_model_id": "zai-org/GLM-4.6V-Flash",
+    "url": "https://huggingface.co/zai-org/GLM-4.6V-Flash",
+    "directory_names": [
+      "GLM-4.6V-Flash",
+      "zai-org/GLM-4.6V-Flash"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/GLM-4.6V-Flash"
+    ],
+    "resolved_path": "/home/g203-4028/Models/GLM-4.6V-Flash",
+    "config_sha256": "ef88f66ef623085cd86f5fd14bd6647a0b7175b9a25773049b82611d4ac82181",
+    "resolution": "resolved"
+  },
+  {
+    "key": "internvl35_8b",
+    "display_name": "InternVL3.5-8B",
+    "hf_model_id": "OpenGVLab/InternVL3_5-8B",
+    "url": "https://huggingface.co/OpenGVLab/InternVL3_5-8B",
+    "directory_names": [
+      "InternVL3_5-8B",
+      "OpenGVLab/InternVL3_5-8B"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/InternVL3_5-8B"
+    ],
+    "resolved_path": "/home/g203-4028/Models/InternVL3_5-8B",
+    "config_sha256": "e849152d81a9eb158475d493d6c5ba1fc935d35ed01429bbd0182582416bb963",
+    "resolution": "resolved"
+  },
+  {
+    "key": "llava15_7b",
+    "display_name": "LLaVA-v1.5-7B",
+    "hf_model_id": "llava-hf/llava-1.5-7b-hf",
+    "url": "https://huggingface.co/llava-hf/llava-1.5-7b-hf",
+    "directory_names": [
+      "llava-1.5-7b-hf",
+      "llava-hf/llava-1.5-7b-hf"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "onevision",
+    "display_name": "LLaVA-OneVision-7B",
+    "hf_model_id": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
+    "url": "https://huggingface.co/llava-hf/llava-onevision-qwen2-7b-ov-hf",
+    "directory_names": [
+      "llava-onevision-qwen2-7b-ov-hf",
+      "llava-hf/llava-onevision-qwen2-7b-ov-hf"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "minicpm26",
+    "display_name": "MiniCPM-V-2.6",
+    "hf_model_id": "openbmb/MiniCPM-V-2_6",
+    "url": "https://huggingface.co/openbmb/MiniCPM-V-2_6",
+    "directory_names": [
+      "MiniCPM-V-2_6",
+      "openbmb/MiniCPM-V-2_6"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "minicpm45",
+    "display_name": "MiniCPM-V-4.5",
+    "hf_model_id": "openbmb/MiniCPM-V-4_5",
+    "url": "https://huggingface.co/openbmb/MiniCPM-V-4_5",
+    "directory_names": [
+      "MiniCPM-V-4_5",
+      "openbmb/MiniCPM-V-4_5"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "phi35",
+    "display_name": "Phi-3.5-Vision",
+    "hf_model_id": "microsoft/Phi-3.5-vision-instruct",
+    "url": "https://huggingface.co/microsoft/Phi-3.5-vision-instruct",
+    "directory_names": [
+      "Phi-3.5-vision-instruct",
+      "microsoft/Phi-3.5-vision-instruct"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "qwen25vl",
+    "display_name": "Qwen2.5-VL-7B",
+    "hf_model_id": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "url": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+    "directory_names": [
+      "Qwen2.5-VL-7B-Instruct",
+      "Qwen/Qwen2.5-VL-7B-Instruct"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "qwen3vl",
+    "display_name": "Qwen3-VL-8B-Instruct",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "url": "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct",
+    "directory_names": [
+      "Qwen3-VL-8B-Instruct",
+      "Qwen/Qwen3-VL-8B-Instruct"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/Qwen3-VL-8B-Instruct"
+    ],
+    "resolved_path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct",
+    "config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "resolution": "resolved"
+  },
+  {
+    "key": "qwen35_4b",
+    "display_name": "Qwen3.5-4B",
+    "hf_model_id": "Qwen/Qwen3.5-4B",
+    "url": "https://huggingface.co/Qwen/Qwen3.5-4B",
+    "directory_names": [
+      "Qwen3.5-4B",
+      "Qwen/Qwen3.5-4B"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/Qwen3.5-4B"
+    ],
+    "resolved_path": "/home/g203-4028/Models/Qwen3.5-4B",
+    "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+    "resolution": "resolved"
+  },
+  {
+    "key": "qwen35_9b",
+    "display_name": "Qwen3.5-9B",
+    "hf_model_id": "Qwen/Qwen3.5-9B",
+    "url": "https://huggingface.co/Qwen/Qwen3.5-9B",
+    "directory_names": [
+      "Qwen3.5-9B",
+      "Qwen/Qwen3.5-9B"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/Qwen3.5-9B"
+    ],
+    "resolved_path": "/home/g203-4028/Models/Qwen3.5-9B",
+    "config_sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+    "resolution": "resolved"
+  },
+  {
+    "key": "llava16_mistral",
+    "display_name": "LLaVA-v1.6-Mistral-7B",
+    "hf_model_id": "llava-hf/llava-v1.6-mistral-7b-hf",
+    "url": "https://huggingface.co/llava-hf/llava-v1.6-mistral-7b-hf",
+    "directory_names": [
+      "llava-v1.6-mistral-7b-hf",
+      "llava-hf/llava-v1.6-mistral-7b-hf"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [
+      "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf"
+    ],
+    "resolved_path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf",
+    "config_sha256": "ddf45e24cea7da06747d67a2f377b8fe65e672f61180c50adae7fd9c0392ab6e",
+    "resolution": "resolved"
+  },
+  {
+    "key": "llava15_13b",
+    "display_name": "LLaVA-v1.5-13B",
+    "hf_model_id": "llava-hf/llava-1.5-13b-hf",
+    "url": "https://huggingface.co/llava-hf/llava-1.5-13b-hf",
+    "directory_names": [
+      "llava-1.5-13b-hf",
+      "llava-hf/llava-1.5-13b-hf"
+    ],
+    "gpu_count": 2,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  },
+  {
+    "key": "llava16_vicuna",
+    "display_name": "LLaVA-v1.6-Vicuna-7B",
+    "hf_model_id": "llava-hf/llava-v1.6-vicuna-7b-hf",
+    "url": "https://huggingface.co/llava-hf/llava-v1.6-vicuna-7b-hf",
+    "directory_names": [
+      "llava-v1.6-vicuna-7b-hf",
+      "llava-hf/llava-v1.6-vicuna-7b-hf"
+    ],
+    "gpu_count": 1,
+    "environment": null,
+    "factory": null,
+    "model_path": null,
+    "selection": "complete_guided_direct_census",
+    "matches": [],
+    "resolved_path": null,
+    "config_sha256": null,
+    "resolution": "missing"
+  }
+]
