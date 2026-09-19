@@ -1,0 +1,41 @@
+{
+  "key": "glm46v",
+  "passed": true,
+  "completed": 16,
+  "process_pid": 287647,
+  "physical_gpus": [
+    "1"
+  ],
+  "process_exited": true,
+  "exit_code": 0,
+  "wall_seconds_including_load": 3616.7175116539,
+  "per_image_seconds_including_first_load": [
+    244.66167569160461,
+    193.003643989563,
+    235.092791557312,
+    231.81678557395935,
+    192.29433822631836,
+    243.1446189880371,
+    233.47202038764954,
+    239.94777584075928,
+    234.47930431365967,
+    230.3886203765869,
+    229.2298126220703,
+    228.85793375968933,
+    182.67200422286987,
+    233.79746556282043,
+    233.9344379901886,
+    229.92428255081177
+  ],
+  "median_image_seconds_excluding_load": 231.81678557395935,
+  "observed_linux_thread_counts": [
+    252
+  ],
+  "thread_scope": "Observed Linux process task count at image completion, not an inferred torch pool configuration",
+  "peak_allocated_bytes": {
+    "0": 21163414528
+  },
+  "record": "outputs/verification/glm46v_final16.json",
+  "timing_record": "outputs/verification/glm46v_final16_timing.jsonl",
+  "parameters_changed_during_run": false
+}

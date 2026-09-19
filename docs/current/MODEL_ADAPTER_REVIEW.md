@@ -36,7 +36,7 @@ The records below are software evidence; incomplete runs are not passes. Earlier
 | --- | --- | --- |
 | gemma3_4b | 16/16 passed: `gemma3_4b_final16_v3.json` | passed |
 | gemma3_12b | 16/16 passed: `gemma3_12b_final16_v2.json` | passed |
-| glm46v | pending final record | pending |
+| glm46v | 16/16 passed: `glm46v_final16.json` | passed |
 | internvl35_8b | 16/16 passed: `internvl35_8b_dual_final16.json` (explicit 4/5 dual factory) | passed |
 | llava15_7b | 16/16 passed: `llava15_7b_final16.json` | passed |
 | onevision | 16/16 passed: `onevision_final16.json` | passed |
@@ -60,3 +60,5 @@ Qwen2.5-VL initially disagreed on two first tokens because its checkpoint genera
 The authorized new factory `kdm.models.internvl_dual:InternVLDualBackend` replaces only model construction with an explicit 18/18 decoder split across logical0/1 (physical4/5). Vision, projector and text embedding remain together on logical0; final normalization/head are on logical1. It inherits native build/template/visual processing and forward methods unchanged; the shared hf/backbone/remote/sid sources were not modified for this placement change. Seven constructor/layout/inherited-method CPU checks pass.
 
 The complete new native16 record `outputs/verification/internvl35_8b_dual_final16.json` passes all16 token/state checks and native layer projections, with peaks14,374,173,184 and10,517,976,576 bytes. SID `outputs/verification/internvl35_8b_sid_reference_v3_summary.json` separately passes all14 visits, exact official selection/mask-core logits, interleaving/nonmonotonic-prefix checks and native clean logits before/after SID. Both records include the additional internvl_dual.py dependency; the runtime method gate was actually checked successfully. The original single-GPU spec and both single-GPU failure records remain as history. This hardware-placement change does not reduce images, native tiling, precision, rank100, layer2 or continuation inputs.
+
+GLM current-source native16 completed normally with all sixteen token/state checks and layer projections exact. Physical GPU1 peak allocation was 21,163,414,528 bytes. Total elapsed time including loading was 3,616.72 seconds; the observed process task count was 252 at each image completion. Per-image timings are retained in `outputs/verification/glm46v_final16_timing.jsonl`; no image, token budget, operator or runtime parameter was changed during the run. All sixteen candidates now have complete current native-interface evidence. GLM SID remains a separate pending method check at this native-record closeout.

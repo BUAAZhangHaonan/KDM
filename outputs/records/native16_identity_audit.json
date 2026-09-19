@@ -1,0 +1,237 @@
+{
+  "scope": "read-only final proof/spec/source/manifest/weight-size consistency audit; actual worker gate remains separate",
+  "passed": true,
+  "models": 16,
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "rows": [
+    {
+      "key": "gemma3_4b",
+      "record": "outputs/verification/gemma3_4b_final16_v3.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "gemma3_12b",
+      "record": "outputs/verification/gemma3_12b_final16_v2.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "glm46v",
+      "record": "outputs/verification/glm46v_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "internvl35_8b",
+      "record": "outputs/verification/internvl35_8b_dual_final16.json",
+      "factory": "kdm.models.internvl_dual:InternVLDualBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py",
+        "internvl_preprocessing.py",
+        "internvl_dual.py"
+      ]
+    },
+    {
+      "key": "llava15_7b",
+      "record": "outputs/verification/llava15_7b_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "onevision",
+      "record": "outputs/verification/onevision_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "minicpm26",
+      "record": "outputs/verification/minicpm26_final16_v4.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py",
+        "remote.py"
+      ]
+    },
+    {
+      "key": "minicpm45",
+      "record": "outputs/verification/minicpm45_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py",
+        "remote.py"
+      ]
+    },
+    {
+      "key": "phi35",
+      "record": "outputs/verification/phi35_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py",
+        "remote.py"
+      ]
+    },
+    {
+      "key": "qwen25vl",
+      "record": "outputs/verification/qwen25vl_final16_v2.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "qwen3vl",
+      "record": "outputs/verification/qwen3vl_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "qwen35_4b",
+      "record": "outputs/verification/qwen35_4b_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "qwen35_9b",
+      "record": "outputs/verification/qwen35_9b_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "llava16_mistral",
+      "record": "outputs/verification/llava16_mistral_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "llava15_13b",
+      "record": "outputs/verification/llava15_13b_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    },
+    {
+      "key": "llava16_vicuna",
+      "record": "outputs/verification/llava16_vicuna_final16.json",
+      "factory": "kdm.models.hf:HFBackend",
+      "native_tokens_exact": true,
+      "six_condition_states_exact": true,
+      "layer_projection_passed": true,
+      "current_identity_matches": true,
+      "weight_sizes_match": true,
+      "dependencies": [
+        "hf.py",
+        "backbone.py"
+      ]
+    }
+  ]
+}

@@ -19,7 +19,15 @@
   },
   {
     "key": "glm46v",
-    "status": "pending_final_record"
+    "status": "passed",
+    "record": "outputs/verification/glm46v_final16.json",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed",
+    "physical_gpus": [
+      "1"
+    ]
   },
   {
     "key": "internvl35_8b",
