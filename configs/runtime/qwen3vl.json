@@ -91,13 +91,13 @@
     "dola_layers": "projection_verified_only",
     "deco_layers": "projection_verified_only",
     "sid_reference": {
-      "status": "pending",
+      "status": "passed",
       "record": "outputs/verification/qwen3vl_6403_sid_reference_v1_summary.json"
     },
     "text_only_condition": "passed_fixed16_state_isolation"
   },
   "visual_count_verification": {
-    "status": "pending",
+    "status": "passed",
     "record": "outputs/verification/qwen3vl_6403_full_visual_count_v1.json"
   },
   "resource_verification": {

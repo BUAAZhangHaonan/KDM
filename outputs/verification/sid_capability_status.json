@@ -4,7 +4,7 @@
   "onevision": "passed",
   "gemma3_4b": "runtime_mask_contract_error",
   "qwen25vl": "passed",
-  "qwen3vl": "6403_configuration_pending",
+  "qwen3vl": "passed",
   "internvl35_8b": "passed",
   "minicpm26": "fixed_rank_undefined_on_64_token_inputs",
   "minicpm45": "fixed_rank_undefined_on_64_token_inputs",

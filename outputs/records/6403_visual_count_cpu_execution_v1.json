@@ -1,0 +1,110 @@
+{
+  "scope": "Sequential 6403 CPU full-manifest native counts; no GPU lock or initialization; final kv user-site behavior preserved",
+  "runs": [
+    {
+      "key": "qwen3vl",
+      "record": "outputs/verification/qwen3vl_6403_full_visual_count_v1.json",
+      "sha256": "ab0c7c6630a783139e1fae0120388abc52baf01262536bb1acbf4820c0053cb0",
+      "exec_session_id": 98330,
+      "exit_code": 0,
+      "boundary_count": 8,
+      "total_images": 9167,
+      "groups": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "minimum": 128,
+          "maximum": 256,
+          "below100": 0
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "minimum": 128,
+          "maximum": 256,
+          "below100": 0
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "minimum": 70,
+          "maximum": 4860,
+          "below100": 10
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "minimum": 64,
+          "maximum": 4860,
+          "below100": 37
+        }
+      ],
+      "gpu_initialized": false
+    },
+    {
+      "key": "glm46v",
+      "record": "outputs/verification/glm46v_6403_full_visual_count_v1.json",
+      "sha256": "84bb4334353b68116326c09d497b596b95a89a859a3659977e403eb305818671",
+      "exec_session_id": 63419,
+      "exit_code": 0,
+      "boundary_count": 8,
+      "total_images": 9167,
+      "groups": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "minimum": 162,
+          "maximum": 324,
+          "below100": 0
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "minimum": 180,
+          "maximum": 324,
+          "below100": 0
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "minimum": 12,
+          "maximum": 6030,
+          "below100": 7
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "minimum": 9,
+          "maximum": 6030,
+          "below100": 23
+        }
+      ],
+      "gpu_initialized": false
+    }
+  ],
+  "initial_launch_error": {
+    "model": "qwen3vl",
+    "exit_code": 1,
+    "stderr": "bash: line 11: 1\\r: ambiguous redirect",
+    "cause": "Windows stdin final CR reached bash redirection token",
+    "python_started": false,
+    "original_zero_byte_log_preserved": "outputs/verification/qwen3vl_6403_full_visual_count_v1.log",
+    "corrected_launch_log": "outputs/verification/qwen3vl_6403_full_visual_count_v1_run.log",
+    "correction": "single-line ssh env command; same script/parameters, no processor or model rerun"
+  },
+  "copy": {
+    "method": "Windows byte-stream SSH tar --keep-old-files",
+    "source_exit": 0,
+    "destination_exit": 0,
+    "json_sha256_matches_6403": true
+  },
+  "spec_modified": false
+}

@@ -97,7 +97,7 @@
     "text_only_condition": "pending_6403_configuration"
   },
   "visual_count_verification": {
-    "status": "pending",
+    "status": "passed",
     "record": "outputs/verification/glm46v_6403_full_visual_count_v1.json"
   },
   "resource_verification": {
