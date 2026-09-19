@@ -37,7 +37,8 @@ def test_extraction():
     assert 'max_memory' in out;compile(out,'x','exec')
 
 def test_migration_readonly_and_apply(tmp_path):
-    p=repo(tmp_path);bundle=Path(__file__).parents[1]
+    p=repo(tmp_path);root=Path(__file__).parents[1]
+    bundle=root/'deliverables/KDM_research_refactor' if (root/'deliverables/KDM_research_refactor').is_dir() else root
     r=migrate(p,bundle,allow_source_change=True);assert (p/'code').is_dir()
     migrate(p,bundle,apply=True,allow_source_change=True)
     assert not (p/'code').exists() and (p/r['archive']/'code/stage3_engine.py').exists()

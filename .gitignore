@@ -33,3 +33,11 @@ nohup.out
 
 # stage9 POPE reference images (downloaded+verified at prepare time, not tracked)
 data/stage9/pope/images/
+
+# Current research: large downloaded assets and project-local runtime files
+/data/assets/
+/data/vizwiz/
+/references/papers/
+/outputs/locks/
+/.pytest_cache/
+/.environments/

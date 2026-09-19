@@ -16,6 +16,9 @@ for card in "${cards[@]}"; do
   fd=$((fd+1))
 done
 export CUDA_VISIBLE_DEVICES="$GPUS" HF_HUB_DISABLE_XET=1
+export TMPDIR="$ROOT/cache/tmp" TMP="$ROOT/cache/tmp" TEMP="$ROOT/cache/tmp"
+export PYTHONDONTWRITEBYTECODE=1 PIP_CACHE_DIR="$ROOT/cache/pip"
+mkdir -p "$TMPDIR"
 export HF_HOME="$ROOT/cache/hf" TORCH_HOME="$ROOT/cache/torch"
 export XDG_CACHE_HOME="$ROOT/cache/xdg" MPLCONFIGDIR="$ROOT/cache/mpl" NLTK_DATA="$ROOT/cache/nltk"
 export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
