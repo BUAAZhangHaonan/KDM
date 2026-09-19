@@ -1,0 +1,57 @@
+{
+  "scope": "Initial observed startup of the frozen full census; not completion or scientific selection",
+  "freeze_commit": "396f0290",
+  "freeze_receipt_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+  "full_panel_models": 16,
+  "samples_per_model": 9167,
+  "responses_per_model": 18334,
+  "expected_total_responses": 293344,
+  "hosts": {
+    "4028": {
+      "scheduler_pid": 339150,
+      "status_path": "outputs/records/census_4028_frozen_v1/status.json",
+      "initial_running": {
+        "qwen35_9b": {
+          "pid": 339285,
+          "physical_gpus": [
+            0
+          ],
+          "initial_observed_records": 45
+        },
+        "qwen35_4b": {
+          "pid": 339288,
+          "physical_gpus": [
+            1
+          ],
+          "initial_observed_records": 87
+        },
+        "gemma3_12b": {
+          "pid": 339291,
+          "physical_gpus": [
+            4,
+            5
+          ],
+          "initial_observed_records": 21
+        }
+      }
+    },
+    "6403": {
+      "scheduler_pid": 2408234,
+      "status_path": "outputs/records/census_6403_frozen_v1/status.json",
+      "initial_running": {
+        "qwen3vl": {
+          "pid": 2408319,
+          "physical_gpus": [
+            1
+          ],
+          "initial_observed_records": 146
+        }
+      },
+      "next_model": "glm46v"
+    }
+  },
+  "initial_error_rows": 0,
+  "complete": false,
+  "selection_started": false,
+  "interventions_started": false
+}
