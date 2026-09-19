@@ -23,12 +23,17 @@
   },
   {
     "key": "internvl35_8b",
-    "record": "outputs/verification/internvl35_8b_final16.json",
+    "record": "outputs/verification/internvl35_8b_dual_final16.json",
     "status": "passed",
     "completed": 16,
     "current_spec_identity_matches": true,
     "current_adapter_sources_match": true,
-    "layer_projection": "passed"
+    "layer_projection": "passed",
+    "factory": "kdm.models.internvl_dual:InternVLDualBackend",
+    "physical_gpus": [
+      "4",
+      "5"
+    ]
   },
   {
     "key": "llava15_7b",

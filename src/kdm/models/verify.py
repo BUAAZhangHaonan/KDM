@@ -13,6 +13,8 @@ def main():
     samples=list(read_jsonl(args.manifest))
     if len(samples)!=16 or len({x['id'] for x in samples})!=16: raise ValueError('Expected fixed 16 distinct interface samples')
     spec=json.loads(Path(args.spec).read_text());spec_sha256=file_hash(args.spec);runtime_sources={x.name:file_hash(x) for x in Path(__file__).parent.glob('*.py') if x.name in ['hf.py','backbone.py','internvl_preprocessing.py','remote.py']}
+    if spec.get("factory", "").partition(":")[0] == "kdm.models.internvl_dual":
+        runtime_sources["internvl_dual.py"]=file_hash(Path(__file__).parent/"internvl_dual.py")
     verification_script_sha256=file_hash(__file__)
     b=make_backend(spec,'cuda:0');rows=[];layer_check={'status':'not_run'}
     if getattr(b.em,'mt','') not in {'minicpmv','phi3_v'}:runtime_sources.pop('remote.py',None)

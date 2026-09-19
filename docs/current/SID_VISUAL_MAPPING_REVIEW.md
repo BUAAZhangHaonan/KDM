@@ -23,3 +23,7 @@
 InternVL真实SID尝试在FA2 `_upad_input/_index_first_axis`触发OOM（额外21.12GiB），原始proof保留。当前端口只强制第二层eager，后层恢复FA2却收到4D mask，后层mask契约需另核查，不能用降规模掩盖问题。
 
 Gemma3-4B真实前向触发浮点4D full-KV mask契约错误。安装TF5.5.3 `models/gemma3/modeling_gemma3.py`第735行起 `create_causal_mask_mapping`明确图像token为bidirectional，并按full/sliding层生成mask；原始SID oracle从全1重建纯causal。即使解决bool/dtype/shape，保留Gemma原生mask与严格官方pure-causal oracle不是同一个定义。不可静默改变Gemma image attention。此处不把一次接口异常本身写成架构不支持。
+
+## 后续授权执行状态
+
+以上“未改源/未跑Phi”描述的是映射调查阶段。主线程随后明确授权后，Phi专支已按原生负token谓词补入SID，并在原phi443环境真实核验通过：`outputs/verification/phi35_sid_reference_v2_summary.json`，完整raw保持在同名无summary文件。层2、rank100、757原生视觉位置、输入和processor保持不变；普通native/clean logits在SID前后均零差。MiniCPM的64<100仍不改参数，Qwen3.5也不改选层。InternVL后层FA2/4D软件契约修复后仍真实eager OOM，单卡不通过，双卡仅有只读方案。

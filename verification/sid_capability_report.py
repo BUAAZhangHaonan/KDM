@@ -20,12 +20,15 @@ for path in sorted((ROOT/'configs/runtime').glob('*.json')):
  spec=json.loads(path.read_text())
  if not isinstance(spec,dict) or 'kwargs' not in spec or 'gpu_count' not in spec:continue
  key=spec['key'];proof=ROOT/'outputs/verification'/f'{key}_sid_reference.json'
- newer=proof.with_name(f'{key}_sid_reference_v2.json')
- if newer.exists():proof=newer
+ for version in range(2,10):
+  newer=proof.with_name(f'{key}_sid_reference_v{version}.json')
+  if newer.exists():proof=newer
  state=status.get(key,'two_gpu_scheduling_pending' if spec['gpu_count']==2 else 'pending')
  detail='尚未执行';link='—'
  if proof.exists():
-  row=json.loads(proof.read_text());link=f'`{proof.relative_to(ROOT)}` / 同名 `.log`'
+  row=json.loads(proof.read_text())
+  receipt=proof.with_name(proof.stem+'_summary.json')
+  link=f'`{receipt.relative_to(ROOT) if receipt.exists() else proof.relative_to(ROOT)}`; 完整raw `{proof.relative_to(ROOT)}` / 同名 `.log`'
   if row.get('passed'):
    state='passed' if row.get('runtime_adapter_sha256',{}).get('sid.py')==hashlib.sha256((ROOT/'src/kdm/models/sid.py').read_bytes()).hexdigest() else 'prior_source_passed_recheck_pending'
    ev=row.get('evidence',[])
@@ -35,7 +38,7 @@ for path in sorted((ROOT/'configs/runtime').glob('*.json')):
    detail=row.get('error','无成功证据').replace('|','/')
  text+=f'|{key}|{state}|{detail}|{link}|\n'
 text+='''
-映射调查详见 `docs/current/SID_VISUAL_MAPPING_REVIEW.md` 和 `outputs/verification/{minicpm26,minicpm45,phi35}_sid_visual_mapping.json`。Mini两版均有64<100的原生输入，属于固定rank在实际样本未定义；Phi757连续位置的补充方案已报告但尚未改源/前向验收。
+映射调查详见 `docs/current/SID_VISUAL_MAPPING_REVIEW.md` 和 `outputs/verification/{minicpm26,minicpm45,phi35}_sid_visual_mapping.json`。Mini两版均有64<100的原生输入，属于固定rank在实际样本未定义；Phi原生757连续位置映射已在v2实现并真实前向验收通过，native/clean前后logits零差。InternVL双卡为另外获准的新factory，旧单卡OOM记录保留。
 
 分类解释：`fixed_reference_structure_incompatible` 表示实际结构不具备固定第二层attention定义；`adapter_structural_mapping_gap` 表示当前适配器未实现实际结构/视觉区间映射，不能推断该模型本质上不能定义SID；`oom` 是资源失败；`runtime_error` 是软件/运行错误；`numerical_mismatch` 是实际对照未通过。后三类不能写成架构不支持。
 

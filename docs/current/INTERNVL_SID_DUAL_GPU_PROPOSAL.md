@@ -11,3 +11,11 @@
 内存保留核对：native `_prefill`没有请求全模型output_attentions；SID只捕获第二层attention到当前forward作用域，trace_collector不会在event记录里保留GPU attention tensor，返回的summary也只有标量/索引。Qwen3 eager核心在matmul后用float32 softmax，当前OOM栈落在该必需计算。控制器目前确实保留第二层整个attention tensor到forward结束，即使选择只读last query；这是一项可见的实现内存占用，不代表本次已获准或已实施新的内存优化。未改变核心算子，也未推定某个优化必能解决资源失败。
 
 用户随后明确回复“允许按上述双卡方案核验”。后续实现仅在项目内按该方案执行，并重新建立原生16图/SID证据；本提案中的单卡失败和提出时未执行的历史身份保留。
+
+## 后续明确授权执行
+
+用户随后明确授权该方案。已新增独立factory `kdm.models.internvl_dual:InternVLDualBackend`，其engine继承既有InternVLModel，所有build/模板/预处理/前向方法直接复用，只更换构造时的显式18/18 dispatch；旧hf/backbone/remote/sid均未改。原单卡spec在outputs/records/spec_history/internvl35_8b_single_gpu_before_dual.json完整保留。新factory7项CPU测试通过，物理4,5双锁下正在重新完整native16，之后才进行SID；当前不将待运行步骤当passed。上文JSON仍作为当时未执行提案保留。
+
+双卡native16现已完整16/16通过，六条件状态一致及36层projection均零差；实际峰值logical0=14,374,173,184 bytes、logical1=10,517,976,576 bytes。记录 `outputs/verification/internvl35_8b_dual_final16.json` 含实际完整hf_device_map与新的source依赖；SID v3正在同一双卡构造下核验，仍待结果。
+
+双卡SID v3现也已通过：14 visits，官方选择/掩码核心logits、fresh参考、交错session、非单调prefix及native/clean前后logits比较均成功且数值差为0。规范摘要为 `outputs/verification/internvl35_8b_sid_reference_v3_summary.json`。当前InternVL spec已登记新的native16与SID摘要；实际`validate_method_runtime(...,['sid'])`通过。物理4/5任务已退出并释放。

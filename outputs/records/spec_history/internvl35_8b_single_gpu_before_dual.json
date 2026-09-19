@@ -3,66 +3,17 @@
   "hf_model_id": "OpenGVLab/InternVL3_5-8B",
   "availability": "resolved",
   "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
-  "factory": "kdm.models.internvl_dual:InternVLDualBackend",
+  "factory": "kdm.models.hf:HFBackend",
   "kwargs": {
-    "model_path": "/home/g203-4028/Models/InternVL3_5-8B",
-    "dtype": "bfloat16",
-    "device_map": {
-      "vision_model": 0,
-      "mlp1": 0,
-      "language_model.model.embed_tokens": 0,
-      "language_model.model.rotary_emb": 0,
-      "language_model.model.layers.0": 0,
-      "language_model.model.layers.1": 0,
-      "language_model.model.layers.2": 0,
-      "language_model.model.layers.3": 0,
-      "language_model.model.layers.4": 0,
-      "language_model.model.layers.5": 0,
-      "language_model.model.layers.6": 0,
-      "language_model.model.layers.7": 0,
-      "language_model.model.layers.8": 0,
-      "language_model.model.layers.9": 0,
-      "language_model.model.layers.10": 0,
-      "language_model.model.layers.11": 0,
-      "language_model.model.layers.12": 0,
-      "language_model.model.layers.13": 0,
-      "language_model.model.layers.14": 0,
-      "language_model.model.layers.15": 0,
-      "language_model.model.layers.16": 0,
-      "language_model.model.layers.17": 0,
-      "language_model.model.layers.18": 1,
-      "language_model.model.layers.19": 1,
-      "language_model.model.layers.20": 1,
-      "language_model.model.layers.21": 1,
-      "language_model.model.layers.22": 1,
-      "language_model.model.layers.23": 1,
-      "language_model.model.layers.24": 1,
-      "language_model.model.layers.25": 1,
-      "language_model.model.layers.26": 1,
-      "language_model.model.layers.27": 1,
-      "language_model.model.layers.28": 1,
-      "language_model.model.layers.29": 1,
-      "language_model.model.layers.30": 1,
-      "language_model.model.layers.31": 1,
-      "language_model.model.layers.32": 1,
-      "language_model.model.layers.33": 1,
-      "language_model.model.layers.34": 1,
-      "language_model.model.layers.35": 1,
-      "language_model.model.norm": 1,
-      "language_model.lm_head": 1
-    },
-    "max_memory": {
-      "0": "22GiB",
-      "1": "22GiB"
-    }
+    "model_path": "/home/g203-4028/Models/InternVL3_5-8B"
   },
   "dtype": "bfloat16",
   "thinking_mode": "not_applicable",
-  "gpu_count": 2,
+  "gpu_count": 1,
   "interface_verification": {
     "status": "passed",
-    "record": "outputs/verification/internvl35_8b_dual_final16.json",
-    "scope": "explicit physical4/5 dual factory native16 tokens, six-condition state isolation and native layer projections"
+    "record": "outputs/verification/internvl35_8b_final16.json",
+    "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
   },
   "versions": {
     "torch": "2.9.0+cu128",
@@ -119,11 +70,9 @@
     }
   },
   "adapter_source_sha256": {
-    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
-    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
-    "internvl_dual.py": "7bcff705368cd43b4317c5287364c9c150fd05deec5cb7dcc04403f30c23500c",
     "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
-    "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
   },
   "input_limits": {
     "policy": "checkpoint_processor_defaults",
@@ -137,11 +86,7 @@
   "mechanism_validation": {
     "dola_layers": "projection_verified_only",
     "deco_layers": "projection_verified_only",
-    "sid_reference": {
-      "status": "passed",
-      "record": "outputs/verification/internvl35_8b_sid_reference_v3_summary.json",
-      "scope": "authorized explicit dual factory; exact fixed official SID mask-core/native-logit comparison, matched prefix and independent sessions; shared hook transport"
-    },
+    "sid_reference": "not_verified",
     "text_only_condition": "passed_fixed16_state_isolation"
   }
 }

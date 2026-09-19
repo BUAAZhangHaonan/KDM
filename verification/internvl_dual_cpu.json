@@ -1,0 +1,7 @@
+{
+  "passed": 7,
+  "seconds": 1.69,
+  "scope": "constructor/layout guards and inherited method identities only",
+  "file_sha256": "7bcff705368cd43b4317c5287364c9c150fd05deec5cb7dcc04403f30c23500c",
+  "test_file": "tests/test_internvl_dual_factory.py"
+}

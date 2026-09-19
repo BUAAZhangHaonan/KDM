@@ -60,3 +60,18 @@ PYTHONPATH=src TMPDIR=$PROJECT/cache/tmp "$PROJECT/.environments/mprisk-tf553/bi
 ## Evidence storage
 
 The complete layer-index traces are retained at their original project paths without rewriting. Compact `*_sid_reference_summary.json` receipts preserve method/runtime identity, checks, per-visit errors and each layer event's scalar/mask identity; only repeated selected/blocked index arrays are represented by their lengths. `detail_evidence` records the original full file path, size and SHA256. The deterministic derivation is `verification/summarize_sid_proof.py`. The previously committed LLaVA7 trace remains in Git history; its current tracked replacement is the compact receipt. Other complete traces are excluded from Git. These are interface proofs, not formal research responses or distributions.
+
+## V2 授权修复与验证（保留上文V1审查身份）
+
+追加Phi3V原生视觉映射：仅model_type=phi3_v分支采用checkpoint `Phi3ImageEmbedding.forward` 的负token谓词 `(id<0)&(id>-1e9)`；仍要求连续、至少100及全Q/K轴一致，不改变层、rank、processor或输入。固定16图原生处理器证据见SID_VISUAL_MAPPING_REVIEW，均757个连续视觉位置。
+
+修复FA2后层软件契约：SID下游4D additive mask不能传入FA2的2D padding/unpadding入口；仅实际FA2下游self-attention调用期间改用eager dispatch，finally恢复原设置与forward函数。第二层捕获、其他原有模型代码路径不变，clean会话无持久hook。CPU增加Phi原生谓词边界和FA2作用域/异常恢复测试，连同既有backend测试8 passed（5.89s）。
+
+真实v2脚本额外比较两条普通prompt的native原始logits、SID前clean与SID后clean，要求零差。所有旧成功proof因源身份改变而重新运行，不通过改hash继承结果。原raw与失败不覆盖，v2写新文件；派生summary统一使用主线程的summarize_sid_proof.py，原始raw路径和SHA记录其中。实际当前验收见SID_CAPABILITY_REVIEW及各v2 proof，不以本段计划代替运行。
+
+Phi v2已真实通过；InternVL v2已到eager softmax后触发额外1.37GiB申请、仅1.02GiB可用的真实OOM，仍不通过，不能降image规模或改数据来绕过。原V1 FA2 unpadding的21.12GiB错误仍保留。Gemma原生bidirectional/sliding mask、Mini64<100与Qwen3.5第二层线性attention不做近似适配。
+
+V2文件身份：
+- `src/kdm/models/sid.py` SHA256 `ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037`
+- `verification/sid_reference_check.py` SHA256 `e0bb85fcfa0476eaab2b63db8a2600922a5ba5a1ad994fef729fed1e22a5f8a7`
+- `tests/test_sid_sessions.py` SHA256 `dad145786f01ba97924205cbc838d0cdb219ea306ad9d906d72c55e9714759b7`

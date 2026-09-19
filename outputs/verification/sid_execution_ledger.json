@@ -219,6 +219,35 @@
       "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
       "proof": "outputs/verification/llava15_13b_sid_reference_v2.json",
       "log": "outputs/verification/llava15_13b_sid_reference_v2.log"
+    },
+    {
+      "key": "internvl35_8b",
+      "kind": "native16_dual",
+      "physical_gpus": [
+        "4",
+        "5"
+      ],
+      "exec_session_id": 80029,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/internvl35_8b_dual_final16.json",
+      "log": "outputs/verification/internvl35_8b_dual_final16.log"
+    },
+    {
+      "key": "internvl35_8b",
+      "version": 3,
+      "kind": "sid_dual",
+      "physical_gpus": [
+        "4",
+        "5"
+      ],
+      "exec_session_id": 55618,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/internvl35_8b_sid_reference_v3.json",
+      "log": "outputs/verification/internvl35_8b_sid_reference_v3.log",
+      "linux_pid": 302207,
+      "observed_elapsed": "02:17"
     }
   ]
 }

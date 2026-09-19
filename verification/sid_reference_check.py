@@ -151,6 +151,7 @@ def main():
     names={'hf.py','backbone.py','sid.py'}
     if spec['key'] in {'minicpm26','minicpm45','phi35'}:names.add('remote.py')
     if spec['key']=='internvl35_8b':names.add('internvl_preprocessing.py')
+    if spec.get('factory','').partition(':')[0]=='kdm.models.internvl_dual':names.add('internvl_dual.py')
     report={'passed':False,'reference_commit':COMMIT,'spec':spec,
             'runtime_adapter_sha256':{name:hashlib.sha256((ROOT/'src/kdm/models'/name).read_bytes()).hexdigest()
                                       for name in sorted(names)},

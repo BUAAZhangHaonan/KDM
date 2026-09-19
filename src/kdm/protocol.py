@@ -109,8 +109,10 @@ def validate_runtime(root, spec, model, cards):
         dependencies.add("remote.py")
     if model == "internvl35_8b":
         dependencies.add("internvl_preprocessing.py")
+    if spec.get("factory", "").partition(":")[0] == "kdm.models.internvl_dual":
+        dependencies.add("internvl_dual.py")
     recorded_sources = result.get("runtime_adapter_sha256", {})
-    allowed_sources = {"hf.py", "backbone.py", "sid.py", "remote.py", "internvl_preprocessing.py"}
+    allowed_sources = {"hf.py", "backbone.py", "sid.py", "remote.py", "internvl_preprocessing.py", "internvl_dual.py"}
     if not dependencies <= set(recorded_sources) or not set(recorded_sources) <= allowed_sources:
         raise ValueError("Native-interface evidence omits required adapter source identities")
     # Native six-condition checks never invoke SID. Its separate proof is checked below.
@@ -152,6 +154,7 @@ def validate_method_runtime(root, spec, methods):
     dependencies={"hf.py","backbone.py","sid.py"}
     if spec["key"] in {"minicpm26","minicpm45","phi35"}:dependencies.add("remote.py")
     if spec["key"]=="internvl35_8b":dependencies.add("internvl_preprocessing.py")
+    if spec.get("factory", "").partition(":")[0] == "kdm.models.internvl_dual":dependencies.add("internvl_dual.py")
     sources=proof.get("runtime_adapter_sha256",{})
     if not dependencies <= set(sources):raise ValueError("SID source identity is incomplete")
     for name in sorted(dependencies):
