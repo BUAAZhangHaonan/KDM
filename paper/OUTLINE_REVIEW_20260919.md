@@ -1,0 +1,13 @@
+# 无结果详纲核对记录
+
+本次写作发生于冻结完整普查运行期间，只修改paper内的非执行文档，未更改冻结95文件、推理代码、模型、提示、参数或运行任务。新增DETAILED_OUTLINE_ZH.md沿用原OUTLINE的主线，CLAIM_EVIDENCE.md标明经验主张尚未验证。没有新文献检索，也没有使用交接动机计数填充结果。
+
+主线程重新完整读取原始RESEARCH_WRITING_REQUIREMENTS、OUTLINE、PAPER_STORY、THEORY、标注评分说明，以及现有一手来源阅读记录；核对已下载DoLa/DeCo文本首页及实际下载记录的版本。使用既有正式论文链接及版本，未把下载文件数当作通读证明。
+
+独立math_pipeline_audit代理重新读取写作要求、数学定义与相关审查，随后通读新详纲。它指出并已落实四项修改：VizWiz部分分数/正分次数/满分次数分别保留；behavioral和human支持使用独立分母；完整序列二分布式限定为VCD型逐步算子；明确新分数减旧分数的方向及q_g的对数概率定义。另补充预算截断供体使完整回复比较未定义，不能补EOS或缩小供体集合。
+
+核对指标时检查了analysis.probe_summary和reports.behavioral_support/method_comparison实际冻结代码。Food行为支持为十次平均得分零且闭集未排首位；Viz行为支持为人工可回答且十次平均得分零，人工不可回答单列。具体纠正保留追踪原方法非满分到满分、新方法仍满分的原定义。这里是论文与既有实现对齐，没有改动指标。
+
+另一个只读疑点已由实际调用链排除：behavioral_validity单独接收伪造dev/main行会缺probe，但合法experiment_tasks/probe_tasks均只产生eval任务。代理内存运行含dev+eval清单的合法64条实验+10条probe，覆盖与行为报告通过；强行加dev/main时覆盖门拒绝。正式报告消费通过来源门的experiment/probe原始ledger，不混入census，不添加过滤异常行的绕过处理。
+
+当前详纲保留17处明确的待真实结果标记，包括摘要和结论；它是结构与已确定内容的草稿，不是已完成的真实结果论文。正式表、图、效果量、区间和案例仍须在全部对应任务与真实语义复核后回填。
