@@ -1,0 +1,14 @@
+{
+  "key": "glm46v",
+  "physical_gpus": [
+    0
+  ],
+  "linux_pid": 312557,
+  "exec_session_id": 50574,
+  "exit_code": 0,
+  "proof": "outputs/verification/glm46v_sid_reference_v2.json",
+  "summary": "outputs/verification/glm46v_sid_reference_v2_summary.json",
+  "log": "outputs/verification/glm46v_sid_reference_v2.log",
+  "runtime_gate_passed": true,
+  "scope": "14-visit official fixed SID reference-core numerical comparison; native identity unchanged; full Food count precondition meets rank100 but full Viz does not"
+}

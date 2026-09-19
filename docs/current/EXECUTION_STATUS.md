@@ -12,7 +12,7 @@
 - [x] Food-101的101类/147名称获用户逐类人工确认，名称文件未变。
 - [x] 最新全套CPU检查220通过；28次合成CLI调用通过。
 - [x] 全部16个当前模型配置原生16图核验通过；后续资源映射变化必须重新核验。
-- [ ] 方法运行身份全部收尾：9个模型SID通过；6个模型固定参考限制已记录；GLM待最终真实SID。
+- [ ] 方法运行身份全部收尾：10个模型SID接口通过；6个模型固定参考限制已记录；最大输入资源核验仍待收尾。
 - [ ] 协议冻结、提交和普通push；随后执行完整16候选普查。
 - [ ] 全量语义标注、所需人工复核、仅按原始弃权选择并提交。
 - [ ] 全部正式干预、10次独立试答、101类闭集和机制/完整序列测量。
@@ -22,7 +22,7 @@
 
 原生接口每个模型使用固定16图，完整greedy token含EOS；六条件独立/交错状态与层投影分别核验。它们不是减少后的研究样本。状态表为`outputs/records/native16_status.json`。GLM最终六条件记录已通过；完整身份审计见`outputs/records/native16_identity_audit.json`。
 
-SID现有9个通过模型：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL。每份通过证明含14次实际前缀访问、官方片段对照、独立状态和普通native logits前后不变。完整逐层数组留在项目原路径，Git保留可追溯摘要。MiniCPM原生64视觉词元实例无法执行固定rank100；Qwen3.5第二层为线性注意力；Gemma原生双向图像/sliding mask与固定参考纯causal mask不同。运行错误与结构/协议限制分别记录，未制造同名近似SID。详见`SID_CAPABILITY_REVIEW.md`。
+SID现有10个通过模型：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL、GLM。每份通过证明含14次实际前缀访问、官方片段对照、独立状态和普通native logits前后不变。完整逐层数组留在项目原路径，Git保留可追溯摘要。MiniCPM原生64视觉词元实例无法执行固定rank100；Qwen3.5第二层为线性注意力；Gemma原生双向图像/sliding mask与固定参考纯causal mask不同。运行错误与结构/协议限制分别记录，未制造同名近似SID。详见`SID_CAPABILITY_REVIEW.md`。
 
 InternVL单卡的接口错误和随后真实OOM均保留。用户明确授权物理4/5显式双卡；独立构造器复用既有输入/前向方法，新的完整native16和SID均通过。双卡native峰值约14.37GB/10.52GB，模型参数无CPU/disk卸载。旧单卡证明和spec保留历史身份。
 
@@ -34,9 +34,9 @@ InternVL单卡的接口错误和随后真实OOM均保留。用户明确授权物
 
 ## 完整输入边界
 
-全部9,167图的原生尺寸计数与实际处理器边界核对已完成。SID不能用于完整Qwen2.5VL/GLM/Qwen3VL的VizWiz条件，分别有30/30/47条输入不足固定100视觉位置；不删除这些样本。两版MiniCPM在两个数据任务均有不足100的输入。当前方法计划为32条件全部保留四基线，SID计划Food10条件、Viz7条件，GLM数值证明待完成。详见`FULL_VISUAL_COUNT_REVIEW.md`。
+全部9,167图的原生尺寸计数与实际处理器边界核对已完成。SID不能用于完整Qwen2.5VL/GLM/Qwen3VL的VizWiz条件，分别有30/30/47条输入不足固定100视觉位置；不删除这些样本。两版MiniCPM在两个数据任务均有不足100的输入。当前方法计划为32条件全部保留四基线，SID计划Food10条件、Viz7条件，GLM数值证明已通过。详见`FULL_VISUAL_COUNT_REVIEW.md`。
 
-Qwen2.5VL在最大视觉输入的单分支、指令保持VCD及CDA三组检查均通过；Qwen3VL单分支通过，后两组真实OOM。该检查仅覆盖最大视觉token真实样本的空/1/2前缀，不保证所有问题长度与32步峰值。Qwen3VL双卡提案已提出，尚待授权；GLM边界检查待其SID退出后执行。
+Qwen2.5VL在最大视觉输入的单分支、指令保持VCD及CDA三组检查均通过；Qwen3VL单分支通过，后两组真实OOM。该检查仅覆盖最大视觉token真实样本的空/1/2前缀，不保证所有问题长度与32步峰值。Qwen3VL双卡提案已提出，尚待授权；GLM边界检查正在按独立组执行。
 
 ## 普查执行准备
 

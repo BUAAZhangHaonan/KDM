@@ -1,6 +1,6 @@
 # 全量原生视觉 token 数与固定 SID rank100 可计算性
 
-本检查覆盖完整9,167条原清单：Food101 dev/eval各2,424；VizWiz dev818、eval3,501。没有筛图、改变split/group、图像尺寸、processor参数、选层或rank，没有运行GPU/权重前向，也没有改变任务selection或其它四个方法。**Qwen2.5-VL、Qwen3-VL与GLM的完整VizWiz条件不能按同一固定SID rank100协议运行**：各有真实输入视觉位置不足100。不能只保留大图计算该条件的SID指标。其Food完整条件的数量下界满足100，但仍需要对应实际SID接口通过。GLM的单图SID真实数值核验正在进行，不以本count检查替代。
+本检查覆盖完整9,167条原清单：Food101 dev/eval各2,424；VizWiz dev818、eval3,501。没有筛图、改变split/group、图像尺寸、processor参数、选层或rank，没有运行GPU/权重前向，也没有改变任务selection或其它四个方法。**Qwen2.5-VL、Qwen3-VL与GLM的完整VizWiz条件不能按同一固定SID rank100协议运行**：各有真实输入视觉位置不足100。不能只保留大图计算该条件的SID指标。其Food完整条件的数量下界满足100，但仍需要对应实际SID接口通过。GLM的单图SID真实数值核验随后已通过，证据为glm46v_sid_reference_v2_summary.json；本count检查不替代该数值核验。
 
 MiniCPM2.6和4.5在Food与VizWiz都存在64个原生视觉位置；因此两个完整数据任务均存在固定topk100未定义输入。Phi全量最低457，无此数量障碍。下列判断是**前置原生输入约束**，与干预结果无关；数量足够只是必要条件，Gemma原生mask差异与Qwen3.5第二层结构问题不会因token足够消失。
 
@@ -86,3 +86,5 @@ CUDA_VISIBLE_DEVICES='' PYTHONPATH=src PYTHONDONTWRITEBYTECODE=1 HF_HUB_OFFLINE=
 派生文件修订说明：增加全量EXIF orientation记录与三个动态模型181种尺寸交换不变性检查后，在同名派生count JSON/log路径重新执行写入。拟加入的EXIF候选`vizwiz:VizWiz_val_00000003.jpg`已存在于全部六模型的原选择（Qwen/GLM/Mini第2项、Phi第4项），按ID去重没有增加样本；最终仍为动态模型各8项、Mini各6项、Phi7项。重新计算确定性selector并逐ID对照当前记录，六模型的边界ID集合与原selector完全一致。此前代理声称新增一项并得到9/7/8项的文字报告不正确，此处明确撤回；JSON的实际观察数没有相应增加。
 
 当前边界观察来自扩充脚本重新执行，不能冒称初次执行文件的逐字节留存。初版JSON/log及脚本未单独另存，也未进入Git，因此无法从仓库恢复其原始字节/脚本SHA或调用日志。仓库内可审计的命令、脚本SHA和全部观察以当前扩充记录为准。此次说明不改变全量计数与SID任务适用性结论。后续资源边界核验采用新版本不可覆写输出，不覆盖本批count记录。
+
+记录所用脚本的完整版本保留于Git提交`e472d5b6`。后续提交`5bd5e0fd`仅新增拒绝覆写现有count文件的检查；未重写上述JSON或改写其记录的脚本SHA。当前脚本在原结果路径存在时会拒绝重跑。

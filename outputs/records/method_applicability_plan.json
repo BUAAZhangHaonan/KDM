@@ -51,8 +51,8 @@
       "minimum_visual_tokens": 162,
       "reason": "fixed-reference architecture and full-dataset visual count permit SID; numerical proof is an independent execution requirement",
       "numerical_interface": {
-        "status": "pending",
-        "prior_declaration": "not_verified"
+        "status": "passed",
+        "record": "outputs/verification/glm46v_sid_reference_v2_summary.json"
       }
     },
     {

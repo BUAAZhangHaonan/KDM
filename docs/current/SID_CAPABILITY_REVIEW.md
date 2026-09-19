@@ -8,7 +8,7 @@
 |---|---|---|---|
 |gemma3_12b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_12b_sid_reference.json`; 完整raw `outputs/verification/gemma3_12b_sid_reference.json` / 同名 `.log`|
 |gemma3_4b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_4b_sid_reference.json`; 完整raw `outputs/verification/gemma3_4b_sid_reference.json` / 同名 `.log`|
-|glm46v|pending|尚未执行|—|
+|glm46v|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/glm46v_sid_reference_v2_summary.json`; 完整raw `outputs/verification/glm46v_sid_reference_v2.json` / 同名 `.log`|
 |internvl35_8b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/internvl35_8b_sid_reference_v3_summary.json`; 完整raw `outputs/verification/internvl35_8b_sid_reference_v3.json` / 同名 `.log`|
 |llava15_13b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_13b_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava15_13b_sid_reference_v2.json` / 同名 `.log`|
 |llava15_7b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_7b_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava15_7b_sid_reference_v2.json` / 同名 `.log`|

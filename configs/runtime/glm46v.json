@@ -77,7 +77,10 @@
   "mechanism_validation": {
     "dola_layers": "projection_verified_only",
     "deco_layers": "projection_verified_only",
-    "sid_reference": "not_verified",
+    "sid_reference": {
+      "status": "passed",
+      "record": "outputs/verification/glm46v_sid_reference_v2_summary.json"
+    },
     "text_only_condition": "passed_fixed16_state_isolation"
   }
 }
