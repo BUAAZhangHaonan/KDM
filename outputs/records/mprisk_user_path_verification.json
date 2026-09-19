@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-09-19T10:24:05.064193+00:00",
+  "source_host": "6403-lvshuyang",
+  "source_path": "/home/team/zhanghaonan/TAFFC/mprisk",
+  "head": "cc6c0d82a77a958fd20c58e35efdc18c1ce0c036",
+  "selected_wrappers_worktree_clean": true,
+  "source_equals_project_pinned_blobs": true,
+  "wrappers": {
+    "minicpm_v.py": "dcec65d033f1baeb4b75dd87e246c49811817063",
+    "phi3_vision.py": "01074493e5088d589d2567de4abca5df447927c7",
+    "gemma3.py": "f70d397fa492ce84302a19ffaee52338852c6a12",
+    "llava_onevision.py": "e9e232a034cf34c4369eecc788610d357d57c57f"
+  },
+  "read_only": "GIT_OPTIONAL_LOCKS=0 GIT_NO_LAZY_FETCH=1; only rev-parse, path-scoped status and hash-object without -w"
+}

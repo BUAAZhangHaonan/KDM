@@ -49,3 +49,7 @@ The reviewing agent read the source at the pinned ref through the official GitHu
 - [OneVision wrapper](https://github.com/BUAAZhangHaonan/mprisk/blob/cc6c0d82a77a958fd20c58e35efdc18c1ce0c036/src/mprisk/models/llava_onevision.py): explicit OneVision classes and nested `text_config`; this mprisk wrapper freezes native-video F8 and explicitly rejects still-image requests. KDM's single-image task needs its own image adapter validation; copying the video restriction would change the task.
 
 All paths and versions above distinguish recorded previous execution, current metadata, and inaccessible evidence. The historical multi-frame protocol, its GPU allocation and its checkpoints are not transplanted into KDM's frozen task by this review.
+
+## User-confirmed path verified directly
+
+After the user explicitly supplied `6403:/home/team/zhanghaonan/TAFFC/mprisk`, the primary agent read that checkout directly. HEAD is exactly the pinned `cc6c0d82a77a958fd20c58e35efdc18c1ce0c036`; MiniCPM, Phi, Gemma and OneVision wrapper paths have a clean worktree and their Git blobs exactly match the project-local pinned sources. No source-host files were changed or fetched. Evidence: `outputs/records/mprisk_user_path_verification.json`.
