@@ -1,0 +1,634 @@
+{
+  "physical_gpus": [
+    "4"
+  ],
+  "hf_device_map": {},
+  "peak_allocated_bytes": {
+    "0": 18171325952
+  },
+  "native_greedy_overrides": {
+    "do_sample": false,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 32
+  },
+  "checkpoint_generation_config": {
+    "max_length": null,
+    "max_new_tokens": null,
+    "min_length": null,
+    "min_new_tokens": null,
+    "early_stopping": null,
+    "max_time": null,
+    "stop_strings": null,
+    "do_sample": true,
+    "num_beams": null,
+    "use_mtp": null,
+    "use_cache": null,
+    "cache_implementation": null,
+    "cache_config": null,
+    "max_cache_len": null,
+    "temperature": 0.7,
+    "top_k": 20,
+    "top_p": 0.8,
+    "min_p": null,
+    "top_h": null,
+    "typical_p": null,
+    "epsilon_cutoff": null,
+    "eta_cutoff": null,
+    "repetition_penalty": 1.0,
+    "encoder_repetition_penalty": null,
+    "length_penalty": null,
+    "no_repeat_ngram_size": null,
+    "bad_words_ids": null,
+    "renormalize_logits": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": null,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "sequence_bias": null,
+    "token_healing": null,
+    "guidance_scale": null,
+    "watermarking_config": null,
+    "num_return_sequences": null,
+    "output_attentions": null,
+    "output_hidden_states": null,
+    "output_scores": null,
+    "output_logits": null,
+    "return_dict_in_generate": null,
+    "pad_token_id": 151643,
+    "bos_token_id": 151643,
+    "eos_token_id": [
+      151645,
+      151643
+    ],
+    "encoder_no_repeat_ngram_size": null,
+    "decoder_start_token_id": null,
+    "is_assistant": null,
+    "num_assistant_tokens": null,
+    "num_assistant_tokens_schedule": null,
+    "assistant_confidence_threshold": null,
+    "prompt_lookup_num_tokens": null,
+    "max_matching_ngram_size": null,
+    "assistant_early_exit": null,
+    "assistant_lookbehind": null,
+    "target_lookbehind": null,
+    "assistant_ensemble_weight": null,
+    "speculation_type": null,
+    "compile_config": null,
+    "disable_compile": null,
+    "continuous_batching_config": null,
+    "low_memory": null,
+    "penalty_alpha": null,
+    "dola_layers": null,
+    "diversity_penalty": null,
+    "num_beam_groups": null,
+    "constraints": null,
+    "force_words_ids": null,
+    "prefill_chunk_size": null,
+    "_from_model_config": null,
+    "transformers_version": "5.17.0"
+  },
+  "verification_script_sha256": "138207debcf6f8b82574e03c29af23e6aee400c49f1fad2003f1ad33695d2540",
+  "layer_projection_check": {
+    "status": "passed",
+    "sample_id": "food101:apple_pie_group_000.jpg",
+    "raw_layers": 36,
+    "normalized_layers": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "head_final_error": 0.0,
+    "raw_projection_error": 0.0,
+    "norm_projection_error": 0.0,
+    "scope": "layer projection interface only; method formulas and SID need separate validation"
+  },
+  "runtime_adapter_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+  },
+  "spec": {
+    "key": "qwen3vl",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/qwen3vl_native16_states_v2.json",
+      "completed": 16,
+      "expected": 16,
+      "native_tokens_equal": true,
+      "max_condition_state_error": 0.0
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 4902275944,
+        "mtime_ns": 1768890948906243838,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "d5d0aef0eb170fc7453a296c43c0849a56f510555d3588e4fd662bb35490aefa",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 4915962496,
+        "mtime_ns": 1768890969998967264,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "8be88fb5501e4d5719a6d4cc212e6a13480330e74f3e8c77daa1a68f199106b5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4999831048,
+        "mtime_ns": 1768891222361237154,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "83de00eafe6e0d57ccd009dbcf71c9974d74df2f016c27afb7e95aafd16b2192",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 2716270024,
+        "mtime_ns": 1768890850850509175,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "0a88b98e9f96270973f567e6a2c103ede6ccdf915ca3075e21c755604d0377a5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "processor": {
+      "path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct",
+      "files": {
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+      }
+    },
+    "adapter_source_sha256": {
+      "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+      "backbone.py": "0f12dd7df3f40ea470eda79886ba1c9891952a91ff3f411854482a6e3a18e5e4",
+      "hf.py": "735ae873e559e6017d9d8d64d5dde8790eb372c78e38829ec7c78471928ae795",
+      "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "not_verified",
+      "deco_layers": "not_verified",
+      "sid_reference": "not_verified",
+      "text_only_condition": "not_verified"
+    }
+  },
+  "spec_sha256": "ac7b7e3060079330589c41a1a4d0fec30d1f38512f065d96bf4d831360f97ab8",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "rows": [
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        22377,
+        4349,
+        151645
+      ],
+      "backend_tokens": [
+        22377,
+        4349,
+        151645
+      ],
+      "equal": true,
+      "native_text": "apple pie",
+      "backend_text": "apple pie"
+    },
+    {
+      "id": "food101:baby_back_ribs_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        461,
+        1279,
+        151645
+      ],
+      "backend_tokens": [
+        461,
+        1279,
+        151645
+      ],
+      "equal": true,
+      "native_text": "ribs",
+      "backend_text": "ribs"
+    },
+    {
+      "id": "food101:baklava_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        151645
+      ],
+      "backend_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Baklava",
+      "backend_text": "Baklava"
+    },
+    {
+      "id": "food101:beef_carpaccio_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        12903,
+        70438,
+        32466,
+        151645
+      ],
+      "backend_tokens": [
+        12903,
+        70438,
+        32466,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Caprese salad",
+      "backend_text": "Caprese salad"
+    },
+    {
+      "id": "food101:beef_tartare_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        83,
+        471,
+        546,
+        151645
+      ],
+      "backend_tokens": [
+        83,
+        471,
+        546,
+        151645
+      ],
+      "equal": true,
+      "native_text": "tartare",
+      "backend_text": "tartare"
+    },
+    {
+      "id": "food101:beet_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        51378,
+        151645
+      ],
+      "backend_tokens": [
+        51378,
+        151645
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:beignets_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        15007,
+        332,
+        151645
+      ],
+      "backend_tokens": [
+        15007,
+        332,
+        151645
+      ],
+      "equal": true,
+      "native_text": "donut",
+      "backend_text": "donut"
+    },
+    {
+      "id": "food101:bibimbap_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        51378,
+        151645
+      ],
+      "backend_tokens": [
+        51378,
+        151645
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:bread_pudding_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        43197,
+        22405,
+        151645
+      ],
+      "backend_tokens": [
+        43197,
+        22405,
+        151645
+      ],
+      "equal": true,
+      "native_text": "French toast",
+      "backend_text": "French toast"
+    },
+    {
+      "id": "food101:breakfast_burrito_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        51378,
+        151645
+      ],
+      "backend_tokens": [
+        51378,
+        151645
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:bruschetta_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        1323,
+        51078,
+        26527,
+        151645
+      ],
+      "backend_tokens": [
+        1323,
+        51078,
+        26527,
+        151645
+      ],
+      "equal": true,
+      "native_text": "bruschetta",
+      "backend_text": "bruschetta"
+    },
+    {
+      "id": "food101:caesar_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        22571,
+        32240,
+        32466,
+        151645
+      ],
+      "backend_tokens": [
+        22571,
+        32240,
+        32466,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Caesar salad",
+      "backend_text": "Caesar salad"
+    },
+    {
+      "id": "food101:cannoli_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        33007,
+        529,
+        151645
+      ],
+      "backend_tokens": [
+        33007,
+        529,
+        151645
+      ],
+      "equal": true,
+      "native_text": "dessert",
+      "backend_text": "dessert"
+    },
+    {
+      "id": "food101:caprese_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        12903,
+        70438,
+        151645
+      ],
+      "backend_tokens": [
+        12903,
+        70438,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Caprese",
+      "backend_text": "Caprese"
+    },
+    {
+      "id": "food101:carrot_cake_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        51378,
+        151645
+      ],
+      "backend_tokens": [
+        51378,
+        151645
+      ],
+      "equal": true,
+      "native_text": "UNKNOWN",
+      "backend_text": "UNKNOWN"
+    },
+    {
+      "id": "food101:ceviche_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        331,
+        3921,
+        448,
+        23595,
+        151645
+      ],
+      "backend_tokens": [
+        331,
+        3921,
+        448,
+        23595,
+        151645
+      ],
+      "equal": true,
+      "native_text": "chili with chips",
+      "backend_text": "chili with chips"
+    }
+  ]
+}

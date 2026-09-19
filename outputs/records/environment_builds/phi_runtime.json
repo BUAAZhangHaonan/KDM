@@ -1,0 +1,18 @@
+{
+  "python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+  "versions": {
+    "torch": "2.3.0+cu121",
+    "torchvision": "0.18.0+cu121",
+    "transformers": "4.43.0",
+    "tokenizers": "0.19.1",
+    "accelerate": "0.30.0",
+    "numpy": "1.26.4",
+    "Pillow": "10.3.0",
+    "safetensors": "0.8.0",
+    "einops": "0.8.1",
+    "scipy": "1.17.0",
+    "requests": "2.32.5"
+  },
+  "imports": "passed",
+  "gpu_model_execution": "not_started"
+}

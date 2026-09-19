@@ -1,0 +1,29 @@
+[
+  {
+    "filename": "model-00001-of-00003.safetensors",
+    "size_bytes": 4992930200,
+    "mtime_ns": 1780898750000000000,
+    "hub_revision": null,
+    "hub_recorded_sha256": null,
+    "fingerprint_source": "fresh_content_sha256_required_because_hub_metadata_missing",
+    "sha256": "c11dbf016ee7d35ee130c19b67e20eb04873996006f424b7bcbd453b6517ee66"
+  },
+  {
+    "filename": "model-00002-of-00003.safetensors",
+    "size_bytes": 4957878440,
+    "mtime_ns": 1780898750000000000,
+    "hub_revision": null,
+    "hub_recorded_sha256": null,
+    "fingerprint_source": "fresh_content_sha256_required_because_hub_metadata_missing",
+    "sha256": "46df6c6e5fad297fe7fbca4963dcf180cb1d0528cabc884d1f603311fed01328"
+  },
+  {
+    "filename": "model-00003-of-00003.safetensors",
+    "size_bytes": 4176137408,
+    "mtime_ns": 1780898808000000000,
+    "hub_revision": null,
+    "hub_recorded_sha256": null,
+    "fingerprint_source": "fresh_content_sha256_required_because_hub_metadata_missing",
+    "sha256": "4f06177c37ca13944e73b57dd6d051767b950dffc12400c700dfa2509c24c697"
+  }
+]

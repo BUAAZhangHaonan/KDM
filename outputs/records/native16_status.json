@@ -1,0 +1,141 @@
+[
+  {
+    "key": "gemma3_4b",
+    "record": "outputs/verification/gemma3_4b_final16_v3.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "gemma3_12b",
+    "record": "outputs/verification/gemma3_12b_final16_v2.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "glm46v",
+    "status": "pending_final_record"
+  },
+  {
+    "key": "internvl35_8b",
+    "record": "outputs/verification/internvl35_8b_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "llava15_7b",
+    "record": "outputs/verification/llava15_7b_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "onevision",
+    "record": "outputs/verification/onevision_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "minicpm26",
+    "record": "outputs/verification/minicpm26_final16_v4.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "minicpm45",
+    "record": "outputs/verification/minicpm45_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "phi35",
+    "record": "outputs/verification/phi35_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "qwen25vl",
+    "record": "outputs/verification/qwen25vl_final16_v2.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "qwen3vl",
+    "record": "outputs/verification/qwen3vl_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "qwen35_4b",
+    "record": "outputs/verification/qwen35_4b_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "qwen35_9b",
+    "record": "outputs/verification/qwen35_9b_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "llava16_mistral",
+    "record": "outputs/verification/llava16_mistral_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "llava15_13b",
+    "record": "outputs/verification/llava15_13b_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  },
+  {
+    "key": "llava16_vicuna",
+    "record": "outputs/verification/llava16_vicuna_final16.json",
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
+    "current_adapter_sources_match": true,
+    "layer_projection": "passed"
+  }
+]

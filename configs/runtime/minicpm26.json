@@ -1,13 +1,112 @@
 {
   "key": "minicpm26",
   "hf_model_id": "openbmb/MiniCPM-V-2_6",
-  "availability": "missing",
-  "environment_python": null,
-  "factory": null,
-  "kwargs": {},
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-2_6",
+    "dtype": "bfloat16"
+  },
   "dtype": "bfloat16",
   "thinking_mode": "not_applicable",
   "gpu_count": 1,
-  "interface_verification": "pending",
-  "versions": null
+  "interface_verification": {
+    "status": "passed",
+    "record": "outputs/verification/minicpm26_final16_v4.json",
+    "completed": 16,
+    "expected": 16
+  },
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "torchvision": "0.21.0+cu124",
+    "transformers": "5.5.3",
+    "tokenizers": "0.22.2",
+    "accelerate": "1.6.0",
+    "numpy": "2.2.4",
+    "Pillow": "11.1.0",
+    "sentencepiece": "0.2.0",
+    "timm": "1.0.19",
+    "safetensors": "0.5.3",
+    "einops": "0.8.1",
+    "scipy": "1.17.0",
+    "requests": "2.32.5"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00004.safetensors",
+      "size_bytes": 4874808328,
+      "mtime_ns": 1767600726000000000,
+      "hub_revision": "6c04d9e3022bcff6e6738dfb1fc19a5cfd2a855f",
+      "hub_recorded_sha256": "327b5e63ac7729d00b0b17233a0d648a623fc080cc1069dce9cb79478cdaf2b5",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00004.safetensors",
+      "size_bytes": 4932751496,
+      "mtime_ns": 1767600916000000000,
+      "hub_revision": "6c04d9e3022bcff6e6738dfb1fc19a5cfd2a855f",
+      "hub_recorded_sha256": "e6d7af1f12ba8c72fec16ba3f3951df5643bef24de8b0af5baec67290c07ca4f",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00003-of-00004.safetensors",
+      "size_bytes": 4330865648,
+      "mtime_ns": 1767600660000000000,
+      "hub_revision": "6c04d9e3022bcff6e6738dfb1fc19a5cfd2a855f",
+      "hub_recorded_sha256": "e9ba1332c74a92b9c8af5fbc2c2da1baa8cd5ed4fd8056b98a586ff4bc3e54cf",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00004-of-00004.safetensors",
+      "size_bytes": 2060017080,
+      "mtime_ns": 1767600313000000000,
+      "hub_revision": "6c04d9e3022bcff6e6738dfb1fc19a5cfd2a855f",
+      "hub_recorded_sha256": "16fcfafa8caaa67e16f9dae7cc79bf081eb59d4e248723a8e79d9678e42732fe",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "6ca8152bcc0655f23002e12e9b910e4ced9793310014eea18c5b291e1b887ed2",
+  "processor": {
+    "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-2_6",
+    "files": {
+      "modeling_navit_siglip.py": "b67d27800d18dc623ac10414e180fd5b3dcd9ba2975faa26c5ed53752d4cb4c2",
+      "tokenization_minicpmv_fast.py": "4eb76984f6945cfdbfb5b2fece8cb3ebbdac96aea15e28af3eadbdba471f9b55",
+      "processing_minicpmv.py": "f817f348f704f11727b2f340742efe3479a715b8e7970e0ec1368131092b2044",
+      "tokenizer.json": "120c8f9b7a4f6fb721e3ffab5ab7863babd7f0ec706799192415dcd6a6e9fbbf",
+      "preprocessor_config.json": "5c0dbc92920ded2304e2ed6ad4251da56029aa1f3f69427117ac6df9bc68496e",
+      "configuration_minicpm.py": "e07b81b20d94d1535e5f651f6737272c49639e8b2c3417f077d0ba39c18c04ff",
+      "tokenizer_config.json": "d812665de21026393b5ec5cfa4fc4bb97c43c7a43ff8b91266b1ce35291db862",
+      "image_processing_minicpmv.py": "070fbe746243ce3fd666b48bbf415d9b9b3bf4cddaad15ab3f243733e40a6201",
+      "modeling_minicpmv.py": "fde0d8c25238ebd286a5fc03ada8867a780faeafc0e8c927f6567cc113f46313",
+      "resampler.py": "8ba12ce07446900fc2bf0abfc04af7774d44a4915ac230331d5ae9d9787ce43c"
+    }
+  },
+  "adapter_source_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+    "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": {
+      "status": "projection_verified",
+      "record": "outputs/verification/minicpm26_final16_v4.json"
+    },
+    "deco_layers": {
+      "status": "projection_verified",
+      "record": "outputs/verification/minicpm26_final16_v4.json"
+    },
+    "sid_reference": "not_verified",
+    "text_only_condition": {
+      "status": "passed",
+      "record": "outputs/verification/minicpm26_final16_v4.json",
+      "scope": "six independent conditions on three shared prefixes of each of the fixed 16 images"
+    }
+  }
 }

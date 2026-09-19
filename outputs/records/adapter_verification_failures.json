@@ -1,0 +1,191 @@
+[
+  {
+    "record": "minicpm26_final16",
+    "failure_reason": "missing_project_dependency",
+    "original_log": "outputs/verification/minicpm26_final16.log",
+    "log_sha256": "ef8b41328cbcf0c942e37ff63904e2a1f43c4a499bfb308671c52936411f582e",
+    "error_lines": [
+      "ModuleNotFoundError: No module named 'scipy'"
+    ],
+    "superseded_by": "outputs/verification/minicpm26_final16_v4.json",
+    "scope": "software interface failure; no research result"
+  },
+  {
+    "record": "gemma3_4b_final16",
+    "failure_reason": "missing_project_dependency",
+    "original_log": "outputs/verification/gemma3_4b_final16.log",
+    "log_sha256": "ef8b41328cbcf0c942e37ff63904e2a1f43c4a499bfb308671c52936411f582e",
+    "error_lines": [
+      "ModuleNotFoundError: No module named 'scipy'"
+    ],
+    "superseded_by": "outputs/verification/gemma3_4b_final16_v3.json",
+    "scope": "software interface failure; no research result"
+  },
+  {
+    "record": "minicpm26_final16_v2",
+    "failure_reason": "native_generate_unsupported_image_sizes_keyword",
+    "original_log": "outputs/verification/minicpm26_final16_v2.log",
+    "log_sha256": "f8781f65f84cb81cfd5cc02a93c9723fb3dcbfce42d26d66342743d51fb35bfd",
+    "error_lines": [
+      "ValueError: The following `model_kwargs` are not used by the model: ['image_sizes'] (note: typos in the generate arguments will also show up in this list)"
+    ],
+    "superseded_by": "outputs/verification/minicpm26_final16_v4.json",
+    "scope": "software interface failure; no research result"
+  },
+  {
+    "record": "minicpm26_final16_v3",
+    "failure_reason": "verification_projection_gemm_shape",
+    "original_log": "outputs/verification/minicpm26_final16_v3.log",
+    "log_sha256": "46f31a6420848d2033d966dcfbc768b067d8b68aec1d44ffd3fbf070bbac4f73",
+    "error_lines": [],
+    "superseded_by": "outputs/verification/minicpm26_final16_v4.json",
+    "scope": "software interface failure; no research result",
+    "completed": 16,
+    "native_passed": true,
+    "layer_projection_check": {
+      "status": "failed",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "raw_layers": 28,
+      "normalized_layers": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "head_final_error": 0.0625,
+      "raw_projection_error": 0.0,
+      "norm_projection_error": 0.0,
+      "scope": "layer projection interface only; method formulas and SID need separate validation"
+    },
+    "unequal_rows": []
+  },
+  {
+    "record": "gemma3_4b_final16_v2",
+    "failure_reason": "verification_projection_gemm_shape",
+    "original_log": "outputs/verification/gemma3_4b_final16_v2.log",
+    "log_sha256": "45353912bcaba37fa2e110e2936d208dbc389be1d6e3a2ea8bcb752daa398f6d",
+    "error_lines": [],
+    "superseded_by": "outputs/verification/gemma3_4b_final16_v3.json",
+    "scope": "software interface failure; no research result",
+    "completed": 16,
+    "native_passed": true,
+    "layer_projection_check": {
+      "status": "failed",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "raw_layers": 34,
+      "normalized_layers": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "head_final_error": 0.125,
+      "raw_projection_error": 0.0,
+      "norm_projection_error": 0.0,
+      "scope": "layer projection interface only; method formulas and SID need separate validation"
+    },
+    "unequal_rows": []
+  },
+  {
+    "record": "gemma3_12b_final16",
+    "failure_reason": "overlapping_explicit_device_map",
+    "original_log": "outputs/verification/gemma3_12b_final16.log",
+    "log_sha256": "d1c284162b90920948193a803226a1ce360410b79d28b690901a2b906dc1e293",
+    "error_lines": [
+      "RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cuda:1!"
+    ],
+    "superseded_by": "outputs/verification/gemma3_12b_final16_v2.json",
+    "scope": "software interface failure; no research result"
+  },
+  {
+    "record": "qwen25vl_final16",
+    "failure_reason": "native_checkpoint_repetition_penalty_differs_from_registered_greedy",
+    "original_log": "outputs/verification/qwen25vl_final16.log",
+    "log_sha256": "4518c329054a5fe33e04d1a08c59531ef529055a586a991c358e05188cb5df44",
+    "error_lines": [
+      "Native token equivalence failed"
+    ],
+    "superseded_by": "outputs/verification/qwen25vl_final16_v2.json",
+    "scope": "software interface failure; no research result",
+    "completed": 16,
+    "native_passed": false,
+    "layer_projection_check": {
+      "status": "passed",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "raw_layers": 28,
+      "normalized_layers": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "head_final_error": 0.0,
+      "raw_projection_error": 0.0,
+      "norm_projection_error": 0.0,
+      "scope": "layer projection interface only; method formulas and SID need separate validation"
+    },
+    "unequal_rows": [
+      {
+        "id": "food101:beef_carpaccio_group_000.jpg",
+        "checked_conditions": [
+          "guided_clean",
+          "guided_noise",
+          "unguided_clean",
+          "unguided_noise",
+          "guided_text_only",
+          "unguided_text_only"
+        ],
+        "condition_max_abs_error": 0.0,
+        "condition_state_equal": true,
+        "native_tokens": [
+          17245,
+          329,
+          151645
+        ],
+        "backend_tokens": [
+          51378,
+          151645
+        ],
+        "equal": false,
+        "native_text": "Salad",
+        "backend_text": "UNKNOWN"
+      },
+      {
+        "id": "food101:beef_tartare_group_000.jpg",
+        "checked_conditions": [
+          "guided_clean",
+          "guided_noise",
+          "unguided_clean",
+          "unguided_noise",
+          "guided_text_only",
+          "unguided_text_only"
+        ],
+        "condition_max_abs_error": 0.0,
+        "condition_state_equal": true,
+        "native_tokens": [
+          51,
+          471,
+          546,
+          151645
+        ],
+        "backend_tokens": [
+          51378,
+          151645
+        ],
+        "equal": false,
+        "native_text": "Tartare",
+        "backend_text": "UNKNOWN"
+      }
+    ]
+  }
+]

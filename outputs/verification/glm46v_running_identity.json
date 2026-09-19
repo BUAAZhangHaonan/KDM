@@ -14,5 +14,13 @@
   "completed": 1,
   "expected": 16,
   "formal_experiment": false,
-  "note": "Fixed interface verification only; no parameter or input reduction. Do not restart while PID is live."
+  "note": "Fixed interface verification only; no parameter or input reduction. Do not restart while PID is live.",
+  "final_status": {
+    "observed_at_unix": 1789813575.3391457,
+    "completed": 16,
+    "expected": 16,
+    "passed": true,
+    "process_exited": true,
+    "evidence_scope": "historical native tokens and four-condition state check; final current six-condition proof remains separate"
+  }
 }

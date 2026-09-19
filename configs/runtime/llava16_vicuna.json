@@ -1,13 +1,85 @@
 {
   "key": "llava16_vicuna",
   "hf_model_id": "llava-hf/llava-v1.6-vicuna-7b-hf",
-  "availability": "missing",
-  "environment_python": null,
-  "factory": null,
-  "kwargs": {},
-  "dtype": "bfloat16",
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf",
+    "dtype": "float16"
+  },
+  "dtype": "float16",
   "thinking_mode": "not_applicable",
   "gpu_count": 1,
-  "interface_verification": "pending",
-  "versions": null
+  "interface_verification": {
+    "status": "passed",
+    "record": "outputs/verification/llava16_vicuna_final16.json",
+    "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+  },
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "torchvision": "0.21.0+cu124",
+    "transformers": "5.5.3",
+    "tokenizers": "0.22.2",
+    "accelerate": "1.6.0",
+    "numpy": "2.2.4",
+    "Pillow": "11.1.0",
+    "sentencepiece": "0.2.0",
+    "timm": "1.0.19",
+    "safetensors": "0.5.3",
+    "einops": "0.8.1",
+    "scipy": "1.17.0",
+    "requests": "2.32.5"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00003.safetensors",
+      "size_bytes": 4992938464,
+      "mtime_ns": 1778227725000000000,
+      "hub_revision": "c916e6cdcd760b4cecd1dd4907f84ac649f93b23",
+      "hub_recorded_sha256": "546aee31158e918a0caaa135ee6f65069de11730aafe0805122a7436fc251299",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00003.safetensors",
+      "size_bytes": 4957878440,
+      "mtime_ns": 1778227724000000000,
+      "hub_revision": "c916e6cdcd760b4cecd1dd4907f84ac649f93b23",
+      "hub_recorded_sha256": "fda902ef90e156b023d26495d0aba10a015c441e1bea34f41f64e21646b66d52",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00003-of-00003.safetensors",
+      "size_bytes": 4176137408,
+      "mtime_ns": 1778227678000000000,
+      "hub_revision": "c916e6cdcd760b4cecd1dd4907f84ac649f93b23",
+      "hub_recorded_sha256": "2be13e3b2abaef7c0844a2c77621ca8ee48b90d12115923ad43f94de51b4e488",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "3ea1ed765b0b79834892d8060cb46162121ef01596e56ca6e168a48a8da08336",
+  "processor": {
+    "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf",
+    "files": {
+      "tokenizer.json": "8d13f38b3436fa9371fb2e6398dd2fac22dda34002161077311d6b712630d387",
+      "processor_config.json": "7cd8bff508772b8b4e6b0678550bf856a7f28abd0f8b237235ac83bfcb9b1c36",
+      "preprocessor_config.json": "ecef425c1d3ee91f5e05144c4d107389f9fefd04a424d5cbfc3fb6e0525b8c55",
+      "tokenizer_config.json": "89833b4fed3f4010fb864ae4f70055e7f940cf9b52aba4167d42647219fe097a"
+    }
+  },
+  "adapter_source_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": "projection_verified_only",
+    "deco_layers": "projection_verified_only",
+    "sid_reference": "not_verified",
+    "text_only_condition": "passed_fixed16_state_isolation"
+  }
 }

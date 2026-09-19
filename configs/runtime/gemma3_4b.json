@@ -1,13 +1,89 @@
 {
   "key": "gemma3_4b",
   "hf_model_id": "google/gemma-3-4b-it",
-  "availability": "missing",
-  "environment_python": null,
-  "factory": null,
-  "kwargs": {},
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it",
+    "dtype": "bfloat16"
+  },
   "dtype": "bfloat16",
   "thinking_mode": "not_applicable",
   "gpu_count": 1,
-  "interface_verification": "pending",
-  "versions": null
+  "interface_verification": {
+    "status": "passed",
+    "record": "outputs/verification/gemma3_4b_final16_v3.json",
+    "completed": 16,
+    "expected": 16
+  },
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "torchvision": "0.21.0+cu124",
+    "transformers": "5.5.3",
+    "tokenizers": "0.22.2",
+    "accelerate": "1.6.0",
+    "numpy": "2.2.4",
+    "Pillow": "11.1.0",
+    "sentencepiece": "0.2.0",
+    "timm": "1.0.19",
+    "safetensors": "0.5.3",
+    "einops": "0.8.1",
+    "scipy": "1.17.0",
+    "requests": "2.32.5"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00002.safetensors",
+      "size_bytes": 4961251752,
+      "mtime_ns": 1778228879000000000,
+      "hub_revision": "093f9f388b31de276ce2de164bdc2081324b9767",
+      "hub_recorded_sha256": "eb5fd5e97ddd07b56778733e9653c07312529cb00980a318fc3e1c4e3b5a8f1f",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00002.safetensors",
+      "size_bytes": 3639026128,
+      "mtime_ns": 1778228831000000000,
+      "hub_revision": "093f9f388b31de276ce2de164bdc2081324b9767",
+      "hub_recorded_sha256": "fdde0e5aa5ced0fa203b3d50f4ab78168b7e3a3e08c6349f5cc9326666e1bb13",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "9059f680f4dbd1957f35cb44b9fdd6948f4792db7a7a35ee353ea42e68adf7ff",
+  "processor": {
+    "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it",
+    "files": {
+      "tokenizer.json": "4667f2089529e8e7657cfb6d1c19910ae71ff5f28aa7ab2ff2763330affad795",
+      "processor_config.json": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53",
+      "preprocessor_config.json": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d",
+      "tokenizer_config.json": "bfe25c2735e395407beb78456ea9a6984a1f00d8c16fa04a8b75f2a614cf53e1"
+    }
+  },
+  "adapter_source_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": {
+      "status": "projection_verified",
+      "record": "outputs/verification/gemma3_4b_final16_v3.json"
+    },
+    "deco_layers": {
+      "status": "projection_verified",
+      "record": "outputs/verification/gemma3_4b_final16_v3.json"
+    },
+    "sid_reference": "not_verified",
+    "text_only_condition": {
+      "status": "passed",
+      "record": "outputs/verification/gemma3_4b_final16_v3.json",
+      "scope": "six independent conditions on three shared prefixes of each of the fixed 16 images"
+    }
+  }
 }

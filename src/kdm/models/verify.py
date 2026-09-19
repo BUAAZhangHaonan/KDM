@@ -26,7 +26,7 @@ def main():
                     native=b.em.native_generate(inputs,max_new_tokens=32)
                 else:
                     if getattr(b.em,'mt','')=='internvl_chat':inputs.pop('image_flags')
-                    native=b.model.generate(**inputs,do_sample=False,max_new_tokens=32,eos_token_id=sorted(b.eos),pad_token_id=b.tokenizer.pad_token_id or b.tokenizer.eos_token_id)
+                    native=b.model.generate(**inputs,do_sample=False,num_beams=1,repetition_penalty=1.0,max_new_tokens=32,eos_token_id=sorted(b.eos),pad_token_id=b.tokenizer.pad_token_id or b.tokenizer.eos_token_id)
                     offset=0 if getattr(b.em,'mt','')=='internvl_chat' else inputs['input_ids'].shape[-1]
                     native=native[0,offset:].tolist()
             if not rows:
@@ -73,6 +73,6 @@ def main():
             row={'id':sample['id'],'checked_conditions':['guided_clean','guided_noise','unguided_clean','unguided_noise','guided_text_only','unguided_text_only'],'condition_max_abs_error':max(errors),'condition_state_equal':state_ok,'native_tokens':native,'backend_tokens':tokens,'equal':native==tokens and state_ok,'native_text':b.decode(native),'backend_text':b.decode(tokens)}
             rows.append(row);print(json.dumps(row),flush=True)
             del session
-        atomic_json(within(root,args.out),{'physical_gpus':os.environ.get('CUDA_VISIBLE_DEVICES','').split(','),'hf_device_map':{k:str(v) for k,v in getattr(b.model,'hf_device_map',{}).items()},'peak_allocated_bytes':{str(i):b.torch.cuda.max_memory_allocated(i) for i in range(b.torch.cuda.device_count())},'verification_script_sha256':verification_script_sha256,'layer_projection_check':layer_check,'runtime_adapter_sha256':runtime_sources,'spec':spec,'spec_sha256':spec_sha256,'manifest_sha256':file_hash(args.manifest),'completed':len(rows),'expected':16,'passed':len(rows)==16 and all(r['equal'] for r in rows),'rows':rows})
+        atomic_json(within(root,args.out),{'physical_gpus':os.environ.get('CUDA_VISIBLE_DEVICES','').split(','),'hf_device_map':{k:str(v) for k,v in getattr(b.model,'hf_device_map',{}).items()},'peak_allocated_bytes':{str(i):b.torch.cuda.max_memory_allocated(i) for i in range(b.torch.cuda.device_count())},'native_greedy_overrides':({'do_sample':False,'max_new_tokens':32} if hasattr(b.em,'native_generate') else {'do_sample':False,'num_beams':1,'repetition_penalty':1.0,'max_new_tokens':32}),'checkpoint_generation_config':(b.model.generation_config.to_dict() if getattr(b.model,'generation_config',None) is not None else None),'verification_script_sha256':verification_script_sha256,'layer_projection_check':layer_check,'runtime_adapter_sha256':runtime_sources,'spec':spec,'spec_sha256':spec_sha256,'manifest_sha256':file_hash(args.manifest),'completed':len(rows),'expected':16,'passed':len(rows)==16 and all(r['equal'] for r in rows),'rows':rows})
     if not all(r['equal'] for r in rows):raise SystemExit('Native token equivalence failed')
 if __name__=='__main__':main()

@@ -1,13 +1,94 @@
 {
   "key": "onevision",
   "hf_model_id": "llava-hf/llava-onevision-qwen2-7b-ov-hf",
-  "availability": "missing",
-  "environment_python": null,
-  "factory": null,
-  "kwargs": {},
-  "dtype": "bfloat16",
+  "availability": "resolved",
+  "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf",
+    "dtype": "float16"
+  },
+  "dtype": "float16",
   "thinking_mode": "not_applicable",
   "gpu_count": 1,
-  "interface_verification": "pending",
-  "versions": null
+  "interface_verification": {
+    "status": "passed",
+    "record": "outputs/verification/onevision_final16.json",
+    "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+  },
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "torchvision": "0.21.0+cu124",
+    "transformers": "5.5.3",
+    "tokenizers": "0.22.2",
+    "accelerate": "1.6.0",
+    "numpy": "2.2.4",
+    "Pillow": "11.1.0",
+    "sentencepiece": "0.2.0",
+    "timm": "1.0.19",
+    "safetensors": "0.5.3",
+    "einops": "0.8.1",
+    "scipy": "1.17.0",
+    "requests": "2.32.5"
+  },
+  "weights": [
+    {
+      "filename": "model-00001-of-00004.safetensors",
+      "size_bytes": 4911200360,
+      "mtime_ns": 1765375622000000000,
+      "hub_revision": "0d50680527681998e456c7b78950205bedd8a068",
+      "hub_recorded_sha256": "ad4cb27d2a3f6e987147619cf2508a5bbb1b6b4c2d5533501fcc4a287a90e5af",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00002-of-00004.safetensors",
+      "size_bytes": 4991497664,
+      "mtime_ns": 1765376085000000000,
+      "hub_revision": "0d50680527681998e456c7b78950205bedd8a068",
+      "hub_recorded_sha256": "cfaed9e4ba187283a936fd6df5d55148a6de5a8416f1279778b364232c05f39a",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00003-of-00004.safetensors",
+      "size_bytes": 4932752752,
+      "mtime_ns": 1765375167000000000,
+      "hub_revision": "0d50680527681998e456c7b78950205bedd8a068",
+      "hub_recorded_sha256": "86cb0bb7f7d57873b27f16fd66b54be71055e582a48ce26e30884bfb209dffd4",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    },
+    {
+      "filename": "model-00004-of-00004.safetensors",
+      "size_bytes": 1226266240,
+      "mtime_ns": 1765373651000000000,
+      "hub_revision": "0d50680527681998e456c7b78950205bedd8a068",
+      "hub_recorded_sha256": "a2d1e40e47e9b524efcbbcab68e97fe4e7aadfe9a51bc14b54cc2331c48ebff6",
+      "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+    }
+  ],
+  "model_config_sha256": "69277c2c9ba8a4f61d2e72f79fbe02e043b8c3af670858a606818527f971a0c2",
+  "processor": {
+    "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf",
+    "files": {
+      "tokenizer.json": "3c0ce3213b50ff38d8aa1e91136a2d2cb142a3f569246170872e439cb2a29d15",
+      "processor_config.json": "04e9899e93f2a412c94e153cab4081457c9a44defb3b2c0b9df673d42c42cdd0",
+      "preprocessor_config.json": "3644c108b9f0fa53e62ff422a9be6639642f0e64dab4a71f961c7911d4386384",
+      "tokenizer_config.json": "b3151cdc153a44fa4e28abc8fc83567fc663aef7cd9dc041f5d66e617fe10b8e"
+    }
+  },
+  "adapter_source_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+  },
+  "input_limits": {
+    "policy": "checkpoint_processor_defaults",
+    "max_new_tokens": 32
+  },
+  "census_api_port": null,
+  "mechanism_validation": {
+    "dola_layers": "projection_verified_only",
+    "deco_layers": "projection_verified_only",
+    "sid_reference": "not_verified",
+    "text_only_condition": "passed_fixed16_state_isolation"
+  }
 }

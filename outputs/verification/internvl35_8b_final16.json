@@ -1,0 +1,669 @@
+{
+  "physical_gpus": [
+    "5"
+  ],
+  "hf_device_map": {},
+  "peak_allocated_bytes": {
+    "0": 23891913728
+  },
+  "native_greedy_overrides": {
+    "do_sample": false,
+    "num_beams": 1,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 32
+  },
+  "checkpoint_generation_config": {
+    "max_length": null,
+    "max_new_tokens": null,
+    "min_length": null,
+    "min_new_tokens": null,
+    "early_stopping": null,
+    "max_time": null,
+    "stop_strings": null,
+    "do_sample": null,
+    "num_beams": null,
+    "use_mtp": null,
+    "use_cache": null,
+    "cache_implementation": null,
+    "cache_config": null,
+    "max_cache_len": null,
+    "temperature": null,
+    "top_k": null,
+    "top_p": null,
+    "min_p": null,
+    "top_h": null,
+    "typical_p": null,
+    "epsilon_cutoff": null,
+    "eta_cutoff": null,
+    "repetition_penalty": null,
+    "encoder_repetition_penalty": null,
+    "length_penalty": null,
+    "no_repeat_ngram_size": null,
+    "bad_words_ids": null,
+    "renormalize_logits": null,
+    "forced_bos_token_id": null,
+    "forced_eos_token_id": null,
+    "remove_invalid_values": null,
+    "exponential_decay_length_penalty": null,
+    "suppress_tokens": null,
+    "begin_suppress_tokens": null,
+    "sequence_bias": null,
+    "token_healing": null,
+    "guidance_scale": null,
+    "watermarking_config": null,
+    "num_return_sequences": null,
+    "output_attentions": null,
+    "output_hidden_states": null,
+    "output_scores": null,
+    "output_logits": null,
+    "return_dict_in_generate": null,
+    "pad_token_id": null,
+    "bos_token_id": null,
+    "eos_token_id": null,
+    "encoder_no_repeat_ngram_size": null,
+    "decoder_start_token_id": null,
+    "is_assistant": null,
+    "num_assistant_tokens": null,
+    "num_assistant_tokens_schedule": null,
+    "assistant_confidence_threshold": null,
+    "prompt_lookup_num_tokens": null,
+    "max_matching_ngram_size": null,
+    "assistant_early_exit": null,
+    "assistant_lookbehind": null,
+    "target_lookbehind": null,
+    "assistant_ensemble_weight": null,
+    "speculation_type": null,
+    "compile_config": null,
+    "disable_compile": null,
+    "continuous_batching_config": null,
+    "low_memory": null,
+    "penalty_alpha": null,
+    "dola_layers": null,
+    "diversity_penalty": null,
+    "num_beam_groups": null,
+    "constraints": null,
+    "force_words_ids": null,
+    "prefill_chunk_size": null,
+    "_from_model_config": true,
+    "transformers_version": "5.17.0"
+  },
+  "verification_script_sha256": "138207debcf6f8b82574e03c29af23e6aee400c49f1fad2003f1ad33695d2540",
+  "layer_projection_check": {
+    "status": "passed",
+    "sample_id": "food101:apple_pie_group_000.jpg",
+    "raw_layers": 36,
+    "normalized_layers": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "head_final_error": 0.0,
+    "raw_projection_error": 0.0,
+    "norm_projection_error": 0.0,
+    "scope": "layer projection interface only; method formulas and SID need separate validation"
+  },
+  "runtime_adapter_sha256": {
+    "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+  },
+  "spec": {
+    "key": "internvl35_8b",
+    "hf_model_id": "OpenGVLab/InternVL3_5-8B",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/InternVL3_5-8B"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "not_applicable",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/internvl35_8b_native16_states.json",
+      "completed": 16,
+      "expected": 16,
+      "native_tokens_equal": true,
+      "max_condition_state_error": 0.0
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 4982437672,
+        "mtime_ns": 1768891855139983118,
+        "hub_revision": "9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79",
+        "hub_recorded_sha256": "8948bf3bae28444c3a5f9120429acff1121ff3716b5f5e4a5041d511cab0bd12",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 3848612416,
+        "mtime_ns": 1768891834611611898,
+        "hub_revision": "9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79",
+        "hub_recorded_sha256": "0646e5f2b3a811150998a7cb47bbbd38d5e812b2f2be365a2f6fe52c5c789c13",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4999903176,
+        "mtime_ns": 1768891855061981738,
+        "hub_revision": "9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79",
+        "hub_recorded_sha256": "e834ec95e94830b3da4a23df06abc296ba48756589eec359bdbfcc541358721a",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 3225776168,
+        "mtime_ns": 1768891810798161166,
+        "hub_revision": "9bb6a56ad9cc69db95e2d4eeb15a52bbcac4ef79",
+        "hub_recorded_sha256": "8c33a67f6ea2cc5c35fd631a763d70b52e4b132e12ca331c1767c0a95326840e",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "e849152d81a9eb158475d493d6c5ba1fc935d35ed01429bbd0182582416bb963",
+    "processor": {
+      "path": "/home/g203-4028/Models/InternVL3_5-8B",
+      "files": {
+        "configuration_intern_vit.py": "6530df52748e4f7766568825e1d11f55dfa6cc421990020a640c548dc6cd2646",
+        "conversation.py": "b1b9f280e9cb9211e519e2b8071002b57cc742aadb2f49b05fa674ee3c7d83ee",
+        "tokenizer.json": "6581c44164d273d4222df982905a7e0450dcf3a4a7ebe98f9ec53e4de05beffe",
+        "processor_config.json": "3511f4ae65c2fa5c1ab6a0fb2bb2fe767d6f0ee53ba412953b33acc892327c2a",
+        "preprocessor_config.json": "af09ffbe57900d5ae07f93f4c20693559a272e32fa6c5f816132cb71985aac98",
+        "chat_template.jinja": "cabb34545cf3d04f4d256439f6b8e9f6fcf61edaaee3b8cb5c0937a7ea6206d7",
+        "tokenizer_config.json": "01fa09d7bd718d09a7d795aec4fb310f2be928b5273fd16faf64037f0e3993d5",
+        "configuration_internvl_chat.py": "e9fdff47225fd380d940a4a2b6818b303fd2a5fdddf44fce0a75b05a4beb1539",
+        "modeling_internvl_chat.py": "ec972dd3d1c7f5da06455034d5cfe54968a9555dff60804edee9a7fb5759db34",
+        "modeling_intern_vit.py": "a33ec11c517041c7fcbaaff3d736d846498468efaf4a64400a89d55132d5f638"
+      }
+    },
+    "adapter_source_sha256": {
+      "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+      "backbone.py": "0f12dd7df3f40ea470eda79886ba1c9891952a91ff3f411854482a6e3a18e5e4",
+      "hf.py": "735ae873e559e6017d9d8d64d5dde8790eb372c78e38829ec7c78471928ae795",
+      "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32,
+      "max_tiles": 12,
+      "thumbnail": true,
+      "normalization": "ImageNet model-card defaults",
+      "image_size": 448
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "not_verified",
+      "deco_layers": "not_verified",
+      "sid_reference": "not_verified",
+      "text_only_condition": "not_verified"
+    }
+  },
+  "spec_sha256": "676c479fac282ae81b0b51ddde136a8c7e3e4395da1e1e2c5be75b1ca2600545",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "rows": [
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        90541,
+        47516,
+        151645
+      ],
+      "backend_tokens": [
+        90541,
+        47516,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Cornbread",
+      "backend_text": "Cornbread"
+    },
+    {
+      "id": "food101:baby_back_ribs_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        83863,
+        23196,
+        29033,
+        151645
+      ],
+      "backend_tokens": [
+        83863,
+        23196,
+        29033,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Chicken drumstick",
+      "backend_text": "Chicken drumstick"
+    },
+    {
+      "id": "food101:baklava_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        26843,
+        2367,
+        9101,
+        812,
+        151645
+      ],
+      "backend_tokens": [
+        26843,
+        2367,
+        9101,
+        812,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Cheese danish",
+      "backend_text": "Cheese danish"
+    },
+    {
+      "id": "food101:beef_carpaccio_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        17245,
+        329,
+        151645
+      ],
+      "backend_tokens": [
+        17245,
+        329,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Salad",
+      "backend_text": "Salad"
+    },
+    {
+      "id": "food101:beef_tartare_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        20903,
+        585,
+        323,
+        18805,
+        151645
+      ],
+      "backend_tokens": [
+        20903,
+        585,
+        323,
+        18805,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Steak and eggs",
+      "backend_text": "Steak and eggs"
+    },
+    {
+      "id": "food101:beet_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        53033,
+        1103,
+        151645
+      ],
+      "backend_tokens": [
+        53033,
+        1103,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Durian",
+      "backend_text": "Durian"
+    },
+    {
+      "id": "food101:beignets_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        8002,
+        6128,
+        151645
+      ],
+      "backend_tokens": [
+        8002,
+        6128,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Donuts",
+      "backend_text": "Donuts"
+    },
+    {
+      "id": "food101:bibimbap_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        48336,
+        14604,
+        151645
+      ],
+      "backend_tokens": [
+        48336,
+        14604,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Kimchi",
+      "backend_text": "Kimchi"
+    },
+    {
+      "id": "food101:bread_pudding_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        83863,
+        3338,
+        4349,
+        151645
+      ],
+      "backend_tokens": [
+        83863,
+        3338,
+        4349,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Chicken pot pie",
+      "backend_text": "Chicken pot pie"
+    },
+    {
+      "id": "food101:breakfast_burrito_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        3326,
+        93607,
+        18636,
+        151645
+      ],
+      "backend_tokens": [
+        3326,
+        93607,
+        18636,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Scotch egg",
+      "backend_text": "Scotch egg"
+    },
+    {
+      "id": "food101:bruschetta_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        47,
+        6255,
+        16002,
+        448,
+        32113,
+        5590,
+        323,
+        73214,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        47,
+        6255,
+        16002,
+        448,
+        32113,
+        5590,
+        323,
+        73214,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Pita bread with olive oil and salsa.",
+      "backend_text": "Pita bread with olive oil and salsa."
+    },
+    {
+      "id": "food101:caesar_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        17245,
+        329,
+        151645
+      ],
+      "backend_tokens": [
+        17245,
+        329,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Salad",
+      "backend_text": "Salad"
+    },
+    {
+      "id": "food101:cannoli_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        16001,
+        5498,
+        375,
+        151645
+      ],
+      "backend_tokens": [
+        16001,
+        5498,
+        375,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Crêpe",
+      "backend_text": "Crêpe"
+    },
+    {
+      "id": "food101:caprese_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        6464,
+        4374,
+        17163,
+        151645
+      ],
+      "backend_tokens": [
+        6464,
+        4374,
+        17163,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Grilled cheese",
+      "backend_text": "Grilled cheese"
+    },
+    {
+      "id": "food101:carrot_cake_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        26843,
+        288,
+        78256,
+        151645
+      ],
+      "backend_tokens": [
+        26843,
+        288,
+        78256,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Cheesecake",
+      "backend_text": "Cheesecake"
+    },
+    {
+      "id": "food101:ceviche_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        75919,
+        436,
+        151645
+      ],
+      "backend_tokens": [
+        75919,
+        436,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Nachos",
+      "backend_text": "Nachos"
+    }
+  ]
+}

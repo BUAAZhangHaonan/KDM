@@ -12,11 +12,8 @@
   "gpu_count": 1,
   "interface_verification": {
     "status": "passed",
-    "record": "outputs/verification/qwen35_9b_native16_states.json",
-    "completed": 16,
-    "expected": 16,
-    "native_tokens_equal": true,
-    "max_condition_state_error": 0.0
+    "record": "outputs/verification/qwen35_9b_final16.json",
+    "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
   },
   "versions": {
     "torch": "2.9.0+cu128",
@@ -67,10 +64,8 @@
     }
   },
   "adapter_source_sha256": {
-    "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
-    "backbone.py": "0f12dd7df3f40ea470eda79886ba1c9891952a91ff3f411854482a6e3a18e5e4",
-    "hf.py": "735ae873e559e6017d9d8d64d5dde8790eb372c78e38829ec7c78471928ae795",
-    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5"
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
   },
   "input_limits": {
     "policy": "checkpoint_processor_defaults",
@@ -78,9 +73,9 @@
   },
   "census_api_port": null,
   "mechanism_validation": {
-    "dola_layers": "not_verified",
-    "deco_layers": "not_verified",
+    "dola_layers": "projection_verified_only",
+    "deco_layers": "projection_verified_only",
     "sid_reference": "not_verified",
-    "text_only_condition": "not_verified"
+    "text_only_condition": "passed_fixed16_state_isolation"
   }
 }

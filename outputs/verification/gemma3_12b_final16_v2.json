@@ -1,0 +1,816 @@
+{
+  "physical_gpus": [
+    "1",
+    "5"
+  ],
+  "hf_device_map": {
+    "model.vision_tower": "0",
+    "model.multi_modal_projector": "0",
+    "model.language_model.embed_tokens": "0",
+    "model.language_model.rotary_emb": "0",
+    "lm_head": "0",
+    "model.language_model.layers.0": "0",
+    "model.language_model.layers.1": "0",
+    "model.language_model.layers.2": "0",
+    "model.language_model.layers.3": "0",
+    "model.language_model.layers.4": "0",
+    "model.language_model.layers.5": "0",
+    "model.language_model.layers.6": "0",
+    "model.language_model.layers.7": "0",
+    "model.language_model.layers.8": "0",
+    "model.language_model.layers.9": "0",
+    "model.language_model.layers.10": "0",
+    "model.language_model.layers.11": "0",
+    "model.language_model.layers.12": "0",
+    "model.language_model.layers.13": "0",
+    "model.language_model.layers.14": "0",
+    "model.language_model.layers.15": "0",
+    "model.language_model.layers.16": "0",
+    "model.language_model.layers.17": "0",
+    "model.language_model.layers.18": "0",
+    "model.language_model.layers.19": "0",
+    "model.language_model.layers.20": "0",
+    "model.language_model.layers.21": "0",
+    "model.language_model.layers.22": "0",
+    "model.language_model.layers.23": "0",
+    "model.language_model.layers.24": "1",
+    "model.language_model.layers.25": "1",
+    "model.language_model.layers.26": "1",
+    "model.language_model.layers.27": "1",
+    "model.language_model.layers.28": "1",
+    "model.language_model.layers.29": "1",
+    "model.language_model.layers.30": "1",
+    "model.language_model.layers.31": "1",
+    "model.language_model.layers.32": "1",
+    "model.language_model.layers.33": "1",
+    "model.language_model.layers.34": "1",
+    "model.language_model.layers.35": "1",
+    "model.language_model.layers.36": "1",
+    "model.language_model.layers.37": "1",
+    "model.language_model.layers.38": "1",
+    "model.language_model.layers.39": "1",
+    "model.language_model.layers.40": "1",
+    "model.language_model.layers.41": "1",
+    "model.language_model.layers.42": "1",
+    "model.language_model.layers.43": "1",
+    "model.language_model.layers.44": "1",
+    "model.language_model.layers.45": "1",
+    "model.language_model.layers.46": "1",
+    "model.language_model.layers.47": "1",
+    "model.language_model.norm": "1"
+  },
+  "peak_allocated_bytes": {
+    "0": 14662884864,
+    "1": 11121430528
+  },
+  "verification_script_sha256": "3668480c22a36c6f3ac91a1744072ef1b60c0518215f9bbc462358002dd28bdb",
+  "layer_projection_check": {
+    "status": "passed",
+    "sample_id": "food101:apple_pie_group_000.jpg",
+    "raw_layers": 48,
+    "normalized_layers": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "head_final_error": 0.0,
+    "raw_projection_error": 0.0,
+    "norm_projection_error": 0.0,
+    "scope": "layer projection interface only; method formulas and SID need separate validation"
+  },
+  "runtime_adapter_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+  },
+  "spec": {
+    "key": "gemma3_12b",
+    "hf_model_id": "google/gemma-3-12b-it",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it",
+      "dtype": "bfloat16",
+      "device_map": {
+        "model.vision_tower": 0,
+        "model.multi_modal_projector": 0,
+        "model.language_model.embed_tokens": 0,
+        "model.language_model.rotary_emb": 0,
+        "lm_head": 0,
+        "model.language_model.layers.0": 0,
+        "model.language_model.layers.1": 0,
+        "model.language_model.layers.2": 0,
+        "model.language_model.layers.3": 0,
+        "model.language_model.layers.4": 0,
+        "model.language_model.layers.5": 0,
+        "model.language_model.layers.6": 0,
+        "model.language_model.layers.7": 0,
+        "model.language_model.layers.8": 0,
+        "model.language_model.layers.9": 0,
+        "model.language_model.layers.10": 0,
+        "model.language_model.layers.11": 0,
+        "model.language_model.layers.12": 0,
+        "model.language_model.layers.13": 0,
+        "model.language_model.layers.14": 0,
+        "model.language_model.layers.15": 0,
+        "model.language_model.layers.16": 0,
+        "model.language_model.layers.17": 0,
+        "model.language_model.layers.18": 0,
+        "model.language_model.layers.19": 0,
+        "model.language_model.layers.20": 0,
+        "model.language_model.layers.21": 0,
+        "model.language_model.layers.22": 0,
+        "model.language_model.layers.23": 0,
+        "model.language_model.layers.24": 1,
+        "model.language_model.layers.25": 1,
+        "model.language_model.layers.26": 1,
+        "model.language_model.layers.27": 1,
+        "model.language_model.layers.28": 1,
+        "model.language_model.layers.29": 1,
+        "model.language_model.layers.30": 1,
+        "model.language_model.layers.31": 1,
+        "model.language_model.layers.32": 1,
+        "model.language_model.layers.33": 1,
+        "model.language_model.layers.34": 1,
+        "model.language_model.layers.35": 1,
+        "model.language_model.layers.36": 1,
+        "model.language_model.layers.37": 1,
+        "model.language_model.layers.38": 1,
+        "model.language_model.layers.39": 1,
+        "model.language_model.layers.40": 1,
+        "model.language_model.layers.41": 1,
+        "model.language_model.layers.42": 1,
+        "model.language_model.layers.43": 1,
+        "model.language_model.layers.44": 1,
+        "model.language_model.layers.45": 1,
+        "model.language_model.layers.46": 1,
+        "model.language_model.layers.47": 1,
+        "model.language_model.norm": 1
+      },
+      "max_memory": {
+        "0": "22GiB",
+        "1": "22GiB"
+      }
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "not_applicable",
+    "gpu_count": 2,
+    "interface_verification": "pending",
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "transformers": "5.5.3",
+      "tokenizers": "0.22.2",
+      "accelerate": "1.6.0",
+      "numpy": "2.2.4",
+      "Pillow": "11.1.0",
+      "sentencepiece": "0.2.0",
+      "timm": "1.0.19",
+      "safetensors": "0.5.3",
+      "einops": "0.8.1",
+      "scipy": "1.17.0",
+      "requests": "2.32.5"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00005.safetensors",
+        "size_bytes": 4979902192,
+        "mtime_ns": 1767601046000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "4847447e92599833e8dbaa3067cd201c3bb5c052efa91f11ba891e43234f7832",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00005.safetensors",
+        "size_bytes": 4931296592,
+        "mtime_ns": 1767600928000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "891bd54eed03cba9ee1e705533a02a8217fcc29f356e4a1f53e5fd0d178883ad",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00005.safetensors",
+        "size_bytes": 4931296656,
+        "mtime_ns": 1767601215000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "7cee411d9d57324e50ce064a192cc5a858276d508611b12fc599e0c9767112e0",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00005.safetensors",
+        "size_bytes": 4931296656,
+        "mtime_ns": 1767601030000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "8bc75a29a730c9e743cad013feda3b0991a913fafe787c58a1c6e20afad97723",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00005-of-00005.safetensors",
+        "size_bytes": 4601000928,
+        "mtime_ns": 1767600990000000000,
+        "hub_revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+        "hub_recorded_sha256": "ed14bd4908c98fed9f61e8cd410167e0846de9abd78e0452ab092072e5d9252d",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "39172c4124d3470341bbbb25f2926fd97edf68f0fe3a9fa4cde6acb9b7ed2cc6",
+    "processor": {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it",
+      "files": {
+        "tokenizer.json": "4667f2089529e8e7657cfb6d1c19910ae71ff5f28aa7ab2ff2763330affad795",
+        "processor_config.json": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53",
+        "preprocessor_config.json": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d",
+        "tokenizer_config.json": "bfe25c2735e395407beb78456ea9a6984a1f00d8c16fa04a8b75f2a614cf53e1"
+      }
+    },
+    "adapter_source_sha256": {
+      "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+      "remote.py": "b446fdf407dfa6aace79ca8ba8ef4ab5351d1a30fcf5e0d7dadba9416a551fdf"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "not_verified",
+      "deco_layers": "not_verified",
+      "sid_reference": "not_verified",
+      "text_only_condition": "not_verified"
+    }
+  },
+  "spec_sha256": "e0a12b54baed92576cb617d115706b747c1800366dfbef151dde219e0a0cc1a0",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "rows": [
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        38463,
+        34260,
+        2822,
+        27528,
+        106
+      ],
+      "backend_tokens": [
+        38463,
+        34260,
+        2822,
+        27528,
+        106
+      ],
+      "equal": true,
+      "native_text": "Cashew shortbread",
+      "backend_text": "Cashew shortbread"
+    },
+    {
+      "id": "food101:baby_back_ribs_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        20804,
+        236935,
+        52050,
+        106
+      ],
+      "backend_tokens": [
+        20804,
+        236935,
+        52050,
+        106
+      ],
+      "equal": true,
+      "native_text": "BBQ ribs",
+      "backend_text": "BBQ ribs"
+    },
+    {
+      "id": "food101:baklava_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        97500,
+        107970,
+        106
+      ],
+      "backend_tokens": [
+        97500,
+        107970,
+        106
+      ],
+      "equal": true,
+      "native_text": "Baklava",
+      "backend_text": "Baklava"
+    },
+    {
+      "id": "food101:beef_carpaccio_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        152312,
+        532,
+        220015,
+        20468,
+        607,
+        13840,
+        532,
+        101667,
+        12175,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        152312,
+        532,
+        220015,
+        20468,
+        607,
+        13840,
+        532,
+        101667,
+        12175,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Tomato and arugula salad with cheese and toasted bread.",
+      "backend_text": "Tomato and arugula salad with cheese and toasted bread."
+    },
+    {
+      "id": "food101:beef_tartare_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        4432,
+        628,
+        24630,
+        733,
+        106
+      ],
+      "backend_tokens": [
+        4432,
+        628,
+        24630,
+        733,
+        106
+      ],
+      "equal": true,
+      "native_text": "Steak tartare",
+      "backend_text": "Steak tartare"
+    },
+    {
+      "id": "food101:beet_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        43230,
+        1187,
+        1498,
+        568,
+        12238,
+        2529,
+        236768,
+        106
+      ],
+      "backend_tokens": [
+        43230,
+        1187,
+        1498,
+        568,
+        12238,
+        2529,
+        236768,
+        106
+      ],
+      "equal": true,
+      "native_text": "Escargots (snails)",
+      "backend_text": "Escargots (snails)"
+    },
+    {
+      "id": "food101:beignets_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        8993,
+        10656,
+        106
+      ],
+      "backend_tokens": [
+        8993,
+        10656,
+        106
+      ],
+      "equal": true,
+      "native_text": "Donuts",
+      "backend_text": "Donuts"
+    },
+    {
+      "id": "food101:bibimbap_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        1659,
+        583,
+        19915,
+        57518,
+        106
+      ],
+      "backend_tokens": [
+        1659,
+        583,
+        19915,
+        57518,
+        106
+      ],
+      "equal": true,
+      "native_text": "Chirashi sushi",
+      "backend_text": "Chirashi sushi"
+    },
+    {
+      "id": "food101:bread_pudding_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        105984,
+        74547,
+        106
+      ],
+      "backend_tokens": [
+        105984,
+        74547,
+        106
+      ],
+      "equal": true,
+      "native_text": "Bread pudding",
+      "backend_text": "Bread pudding"
+    },
+    {
+      "id": "food101:breakfast_burrito_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        236806,
+        1336,
+        28647,
+        214581,
+        106
+      ],
+      "backend_tokens": [
+        236806,
+        1336,
+        28647,
+        214581,
+        106
+      ],
+      "equal": true,
+      "native_text": "Omelette burrito",
+      "backend_text": "Omelette burrito"
+    },
+    {
+      "id": "food101:bruschetta_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        7320,
+        605,
+        149753,
+        607,
+        26012,
+        4446,
+        532,
+        71800,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        7320,
+        605,
+        149753,
+        607,
+        26012,
+        4446,
+        532,
+        71800,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Bruschetta with olive oil and salsa.",
+      "backend_text": "Bruschetta with olive oil and salsa."
+    },
+    {
+      "id": "food101:caesar_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        98293,
+        66560,
+        20468,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        98293,
+        66560,
+        20468,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Chicken Caesar salad.",
+      "backend_text": "Chicken Caesar salad."
+    },
+    {
+      "id": "food101:cannoli_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        40080,
+        44959,
+        7393,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        40080,
+        44959,
+        7393,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Cookie sundae.",
+      "backend_text": "Cookie sundae."
+    },
+    {
+      "id": "food101:caprese_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        16295,
+        36490,
+        20468,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        16295,
+        36490,
+        20468,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Caprese salad.",
+      "backend_text": "Caprese salad."
+    },
+    {
+      "id": "food101:carrot_cake_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        1509,
+        7412,
+        531,
+        577,
+        496,
+        31096,
+        236764,
+        4547,
+        496,
+        97769,
+        653,
+        510,
+        11644,
+        11151,
+        1246,
+        236764,
+        42093,
+        607,
+        66799,
+        4379,
+        755,
+        653,
+        27351,
+        29169,
+        532,
+        496,
+        68363,
+        16510,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        1509,
+        7412,
+        531,
+        577,
+        496,
+        31096,
+        236764,
+        4547,
+        496,
+        97769,
+        653,
+        510,
+        11644,
+        11151,
+        1246,
+        236764,
+        42093,
+        607,
+        66799,
+        4379,
+        755,
+        653,
+        27351,
+        29169,
+        532,
+        496,
+        68363,
+        16510,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "It appears to be a dessert, likely a mousse or panna cotta, topped with crispy tuile or fried dough and a berry sauce.",
+      "backend_text": "It appears to be a dessert, likely a mousse or panna cotta, topped with crispy tuile or fried dough and a berry sauce."
+    },
+    {
+      "id": "food101:ceviche_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        85361,
+        1777,
+        18987,
+        607,
+        133554,
+        22259,
+        532,
+        51854,
+        236761,
+        106
+      ],
+      "backend_tokens": [
+        85361,
+        1777,
+        18987,
+        607,
+        133554,
+        22259,
+        532,
+        51854,
+        236761,
+        106
+      ],
+      "equal": true,
+      "native_text": "Pozole soup with tortilla chips and avocado.",
+      "backend_text": "Pozole soup with tortilla chips and avocado."
+    }
+  ]
+}

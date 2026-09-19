@@ -1,0 +1,590 @@
+[
+  {
+    "name": "shellingham",
+    "version": "1.5.4",
+    "downloaded_archive_sha256": "7ecfff8f2fd72616f7481040475a65b2bf8af90a56c89140852d1120324e8686",
+    "size_bytes": 9755,
+    "cache_path": "cache/pip/http-v2/2/0/e/8/2/20e828d19af9ad66fd630a41e45c8b2df5b0396a7bb1efa1fa676add.body"
+  },
+  {
+    "name": "torchvision",
+    "version": "0.18.0+cu121",
+    "downloaded_archive_sha256": "1e516779520fc92157d6cb245ac0fd3f79872fe81c84b8593a8f2e998106f5b1",
+    "size_bytes": 6999979,
+    "cache_path": "cache/pip/http-v2/2/c/f/c/c/2cfccc671a49662ea3dfd20318933d293a387e85e7a112b00b1cd1de.body"
+  },
+  {
+    "name": "typer",
+    "version": "0.27.2",
+    "downloaded_archive_sha256": "b3a5fc4342d5fc8fda8fc3010b1cf117e9249aab7fae800c2eff62fd3842d97d",
+    "size_bytes": 123130,
+    "cache_path": "cache/pip/http-v2/2/e/d/3/6/2ed36afc594c4be95a9038e80891cf49fdac68447db56c372f5a1490.body"
+  },
+  {
+    "name": "safetensors",
+    "version": "0.5.3",
+    "downloaded_archive_sha256": "cead1fa41fc54b1e61089fa57452e8834f798cb1dc7a09ba3524f1eb08e0317a",
+    "size_bytes": 471642,
+    "cache_path": "cache/pip/http-v2/2/b/4/8/c/2b48c2125d39b07e6fef5e4f655e64fcf092f4b8a1edc6c90fa9adf6.body"
+  },
+  {
+    "name": "nvidia-cuda-cupti-cu12",
+    "version": "12.4.127",
+    "downloaded_archive_sha256": "9dec60f5ac126f7bb551c055072b69d85392b13311fcc1bcda2202d172df30fb",
+    "size_bytes": 13813957,
+    "cache_path": "cache/pip/http-v2/2/3/f/d/d/23fdd3bd8e9b06a701405d6aed40555296f1445af3eda48d562b5ce4.body"
+  },
+  {
+    "name": "numpy",
+    "version": "2.2.4",
+    "downloaded_archive_sha256": "f4162988a360a29af158aeb4a2f4f09ffed6a969c9776f8f3bdee9b06a8ab7e5",
+    "size_bytes": 16428819,
+    "cache_path": "cache/pip/http-v2/0/7/5/6/b/0756b8fb668a5a612e6fa398e028fe3a6c5c7d74d0414428bceda3bd.body"
+  },
+  {
+    "name": "click",
+    "version": "8.5.0",
+    "downloaded_archive_sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+    "size_bytes": 125251,
+    "cache_path": "cache/pip/http-v2/0/3/6/c/1/036c1e62ef44f855956200e7421d0868e5f00fe01d98ef98f0ddf85d.body"
+  },
+  {
+    "name": "sentencepiece",
+    "version": "0.2.0",
+    "downloaded_archive_sha256": "e58b47f933aca74c6a60a79dcb21d5b9e47416256c795c2d58d55cec27f9551d",
+    "size_bytes": 1301464,
+    "cache_path": "cache/pip/http-v2/0/3/f/8/3/03f83f8bcb340148bab3d3374a21a43ecde93a7f530f507a1606d042.body"
+  },
+  {
+    "name": "numpy",
+    "version": "2.4.6",
+    "downloaded_archive_sha256": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+    "size_bytes": 16918164,
+    "cache_path": "cache/pip/http-v2/0/5/9/f/8/059f833fcb0fe7608b08956b966cfeb8432f2488fa4c4c8e45e6148c.body"
+  },
+  {
+    "name": "nvidia-nvjitlink-cu12",
+    "version": "12.4.127",
+    "downloaded_archive_sha256": "06b3b9b25bf3f8af351d664978ca26a16d2c5127dbd53c0497e28d1fb9611d57",
+    "size_bytes": 21066810,
+    "cache_path": "cache/pip/http-v2/d/2/c/8/6/d2c862200f581696b230521153237a4708e2c7021904a3ca7cbc060d.body"
+  },
+  {
+    "name": "anyio",
+    "version": "4.15.1",
+    "downloaded_archive_sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101",
+    "size_bytes": 132079,
+    "cache_path": "cache/pip/http-v2/d/2/3/d/8/d23d88c956e13f85e2f2ae5691f55595ad68291b626cb620d3daf71a.body"
+  },
+  {
+    "name": "tokenizers",
+    "version": "0.22.2",
+    "downloaded_archive_sha256": "369cc9fc8cc10cb24143873a0d95438bb8ee257bb80c71989e3ee290e8d72c67",
+    "size_bytes": 3274982,
+    "cache_path": "cache/pip/http-v2/d/4/b/d/a/d4bda87d9d44b50df333347108564135dd1cb28999598d9721bc5cd1.body"
+  },
+  {
+    "name": "hf-xet",
+    "version": "1.6.0",
+    "downloaded_archive_sha256": "d62671bb130879cef0ee4c9ebe47a14af6c66ec53e6d84dc15936e5ffdfac82f",
+    "size_bytes": 4464663,
+    "cache_path": "cache/pip/http-v2/d/6/2/b/7/d62b7be3812ca2a3680abcd060ea093d1c6d607fec3f088237a4554c.body"
+  },
+  {
+    "name": "nvidia-cublas-cu12",
+    "version": "12.4.5.8",
+    "downloaded_archive_sha256": "2fc8da60df463fdefa81e323eef2e36489e1c94335b5358bcb38360adf75ac9b",
+    "size_bytes": 363438805,
+    "cache_path": "cache/pip/http-v2/d/1/2/5/2/d12522e188833c445a947e4a6cab91db3be550f153a94538c34fe4e0.body"
+  },
+  {
+    "name": "requests",
+    "version": "2.34.2",
+    "downloaded_archive_sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+    "size_bytes": 73075,
+    "cache_path": "cache/pip/http-v2/c/d/d/5/2/cdd52f4265939853222d4e30df947e372c0a2172141553eee10cffab.body"
+  },
+  {
+    "name": "nvidia-nvjitlink-cu12",
+    "version": "12.9.86",
+    "downloaded_archive_sha256": "e3f1171dbdc83c5932a45f0f4c99180a70de9bd2718c1ab77d14104f6d7147f9",
+    "size_bytes": 39748338,
+    "cache_path": "cache/pip/http-v2/c/d/8/d/e/cd8de2a9dcb0687804593800daf63ad7579c2cc04f692cccce391543.body"
+  },
+  {
+    "name": "nvidia-cufft-cu12",
+    "version": "11.0.2.54",
+    "downloaded_archive_sha256": "794e3948a1aa71fd817c3775866943936774d1c14e7628c74f6f7417224cdf56",
+    "size_bytes": 121635161,
+    "cache_path": "cache/pip/http-v2/c/d/f/d/7/cdfd7f2e712d55e492d8dc9850af03e3d3290708e336d327da1bdbc9.body"
+  },
+  {
+    "name": "MarkupSafe",
+    "version": "3.0.3",
+    "downloaded_archive_sha256": "0bf2a864d67e76e5c9a34dc26ec616a66b9888e25e7b9460e1c76d3293bd9dbf",
+    "size_bytes": 22940,
+    "cache_path": "cache/pip/http-v2/c/c/f/c/1/ccfc1228104aa023b92e0cdad19e231c8b968b83bd17d5c8a144405f.body"
+  },
+  {
+    "name": "triton",
+    "version": "2.3.0",
+    "downloaded_archive_sha256": "3c3d9607f85103afdb279938fc1dd2a66e4f5999a58eb48a346bd42738f986dd",
+    "size_bytes": 168079300,
+    "cache_path": "cache/pip/http-v2/c/4/2/a/3/c42a305ef6c5e7382bdc61a45a2b1e6fd6cf2a7320edc9c33df01e2e.body"
+  },
+  {
+    "name": "sympy",
+    "version": "1.13.1",
+    "downloaded_archive_sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8",
+    "size_bytes": 6189177,
+    "cache_path": "cache/pip/http-v2/c/4/a/f/3/c4af329deedf888e9202b770bfca0054fb894c5e25a85824fd06cc82.body"
+  },
+  {
+    "name": "tqdm",
+    "version": "4.70.1",
+    "downloaded_archive_sha256": "c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73",
+    "size_bytes": 80199,
+    "cache_path": "cache/pip/http-v2/c/4/5/6/0/c4560dbd02460dfcdd0e56ac8fbe09291aff2cf71ea4efdbddcb39c3.body"
+  },
+  {
+    "name": "nvidia-nccl-cu12",
+    "version": "2.21.5",
+    "downloaded_archive_sha256": "8579076d30a8c24988834445f8d633c697d42397e92ffc3f63fa26766d25e0a0",
+    "size_bytes": 188654414,
+    "cache_path": "cache/pip/http-v2/c/7/b/8/7/c7b87f6f981f756855961339b5bf21419815bb2e4e90add6414e996c.body"
+  },
+  {
+    "name": "safetensors",
+    "version": "0.8.0",
+    "downloaded_archive_sha256": "fd6f3f93c9a0a7cc2788ee63fb763353d4bd2e89b0751bc78fcf7dda00bea774",
+    "size_bytes": 516040,
+    "cache_path": "cache/pip/http-v2/c/b/9/d/0/cb9d0226db639c50da4a0db5001bfab16d6559e61949efbb565e987c.body"
+  },
+  {
+    "name": "torch",
+    "version": "2.3.0+cu121",
+    "downloaded_archive_sha256": "5df7e3cb3961018a891e4edef1e0bc1f3304a8d943f81b24a8c6bf687ca49a67",
+    "size_bytes": 780985547,
+    "cache_path": "cache/pip/http-v2/c/a/6/b/b/ca6bb7349080e28f82a544a66e20f8e791d3c28a3e10450a212736f0.body"
+  },
+  {
+    "name": "nvidia-cuda-runtime-cu12",
+    "version": "12.1.105",
+    "downloaded_archive_sha256": "6e258468ddf5796e25f1dc591a31029fa317d97a0a94ed93468fc86301d61e40",
+    "size_bytes": 823596,
+    "cache_path": "cache/pip/http-v2/e/4/3/c/e/e43ceb5f21a3b4d4d661bd25a237cba54b8c0e29432c5c76f51bee43.body"
+  },
+  {
+    "name": "triton",
+    "version": "3.2.0",
+    "downloaded_archive_sha256": "f1679fde231fb04c96cb5a01b160c8d0294ce6f7c122565d8b33ad8a910422d7",
+    "size_bytes": 166673743,
+    "cache_path": "cache/pip/http-v2/e/9/d/3/9/e9d393ea2883ca98d9fe143939b88d18ad6c769dbc475befee2046a7.body"
+  },
+  {
+    "name": "nvidia-cusolver-cu12",
+    "version": "11.4.5.107",
+    "downloaded_archive_sha256": "8a7ec542f0412294b15072fa7dab71d31334014a69f953004ea7a118206fe0dd",
+    "size_bytes": 124161928,
+    "cache_path": "cache/pip/http-v2/e/9/7/0/2/e970219630118357fb1d302073681b7c2fee9a7add8f31fc50befac9.body"
+  },
+  {
+    "name": "charset-normalizer",
+    "version": "3.5.1",
+    "downloaded_archive_sha256": "c7b742bf31c88566b4bb6335a7f393bb322e580b6bb98df7bd0c25e6e3519ce8",
+    "size_bytes": 262325,
+    "cache_path": "cache/pip/http-v2/4/2/8/f/6/428f67648d0b43c4bc9a9d1f49ac1ef2cfda82245cc7e56e8ecffe02.body"
+  },
+  {
+    "name": "Jinja2",
+    "version": "3.1.6",
+    "downloaded_archive_sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+    "size_bytes": 134899,
+    "cache_path": "cache/pip/http-v2/4/0/d/d/1/40dd1ddd968875b37da527b5cf84946a953d23b4599ad6051d2f650b.body"
+  },
+  {
+    "name": "nvidia-cusparselt-cu12",
+    "version": "0.6.2",
+    "downloaded_archive_sha256": "df2c24502fd76ebafe7457dbc4716b2fec071aabaed4fb7691a201cde03704d9",
+    "size_bytes": 150057751,
+    "cache_path": "cache/pip/http-v2/4/c/b/9/b/4cb9bb6b868a34c2949d896ccc6193ec73fff400b35e494f9bbeff8a.body"
+  },
+  {
+    "name": "nvidia-nvtx-cu12",
+    "version": "12.1.105",
+    "downloaded_archive_sha256": "dc21cf308ca5691e7c04d962e213f8a4aa9bbfa23d95412f452254c2caeb09e5",
+    "size_bytes": 99138,
+    "cache_path": "cache/pip/http-v2/4/7/9/0/8/47908e875a272192bc72c5cc5b01d0ce048665819af5c1ebdb2757f9.body"
+  },
+  {
+    "name": "timm",
+    "version": "1.0.19",
+    "downloaded_archive_sha256": "c07b56c32f3d3226c656f75c1b5479c08eb34eefed927c82fd8751a852f47931",
+    "size_bytes": 2497950,
+    "cache_path": "cache/pip/http-v2/4/1/4/7/f/4147f56faec1da3c5f5dd3fe35e187d0f47342619e0a8b7298e2dd63.body"
+  },
+  {
+    "name": "nvidia-cudnn-cu12",
+    "version": "8.9.2.26",
+    "downloaded_archive_sha256": "5ccb288774fdfb07a7e7025ffec286971c06d8d7b4fb162525334616d7629ff9",
+    "size_bytes": 731725872,
+    "cache_path": "cache/pip/http-v2/4/b/8/b/3/4b8b34ffeebc61d099e763fbd26f35cd11a74a67e3c24b1761ef25f4.body"
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "downloaded_archive_sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+    "size_bytes": 129956,
+    "cache_path": "cache/pip/http-v2/4/3/e/8/6/43e8688d8e0f93b72d86e275ad0cf85899d32ff94cc3ee9f10811328.body"
+  },
+  {
+    "name": "transformers",
+    "version": "4.43.0",
+    "downloaded_archive_sha256": "0158b430c3bab1abde3232598e250916edd906680b9ffe9d4e1b0b3fafbfc0ed",
+    "size_bytes": 9411812,
+    "cache_path": "cache/pip/http-v2/4/a/9/a/b/4a9ab002d01d69f8180e1fe2d2d32390be17dab1fd548f36f656e3d3.body"
+  },
+  {
+    "name": "transformers",
+    "version": "5.5.3",
+    "downloaded_archive_sha256": "e48f3ec31dd96505e96e66b63a1e43e1ad7a65749e108d9227caaf51051cdb02",
+    "size_bytes": 10236257,
+    "cache_path": "cache/pip/http-v2/6/c/b/b/e/6cbbedc6c59648b37df43cd6f33db49b0a4a81caa97f628fd098f4ba.body"
+  },
+  {
+    "name": "nvidia-curand-cu12",
+    "version": "10.3.5.147",
+    "downloaded_archive_sha256": "a88f583d4e0bb643c49743469964103aa59f7f708d862c3ddb0fc07f851e3b8b",
+    "size_bytes": 56305206,
+    "cache_path": "cache/pip/http-v2/6/1/f/e/7/61fe764212cb9caedf94b8f9ee69bfee80fc4841727111b13428b278.body"
+  },
+  {
+    "name": "nvidia-cuda-cupti-cu12",
+    "version": "12.1.105",
+    "downloaded_archive_sha256": "e54fde3983165c624cb79254ae9818a456eb6e87a7fd4d56a2352c24ee542d7e",
+    "size_bytes": 14109015,
+    "cache_path": "cache/pip/http-v2/6/b/7/d/c/6b7dc90a6d63ec7604f1a91832f6b2672b10c67117ab72aa28fdf75a.body"
+  },
+  {
+    "name": "regex",
+    "version": "2026.9.10",
+    "downloaded_archive_sha256": "0acee94b480dd853e39434aa9a575f95385b1b4b8fa3feae56db363ca5cad782",
+    "size_bytes": 802962,
+    "cache_path": "cache/pip/http-v2/7/c/2/7/a/7c27a6f0dcc13d93e1e0ce2de703bd5695b1d55c12a192f8eaf0a9c5.body"
+  },
+  {
+    "name": "einops",
+    "version": "0.8.1",
+    "downloaded_archive_sha256": "919387eb55330f5757c6bea9165c5ff5cfe63a642682ea788a6d472576d81737",
+    "size_bytes": 64359,
+    "cache_path": "cache/pip/http-v2/7/e/0/a/e/7e0ae53040780f67be1440506f003d85c13490af2dba9350adaed0f5.body"
+  },
+  {
+    "name": "filelock",
+    "version": "3.32.3",
+    "downloaded_archive_sha256": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09",
+    "size_bytes": 98901,
+    "cache_path": "cache/pip/http-v2/7/7/d/8/6/77d86004ef810d10f1a25bfd8d859c37e326ec9f871e10b2f3841150.body"
+  },
+  {
+    "name": "Pygments",
+    "version": "2.21.0",
+    "downloaded_archive_sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+    "size_bytes": 1250147,
+    "cache_path": "cache/pip/http-v2/7/8/6/f/1/786f13d441f0acaeaac0b7f53db4587b0da044e1bb25f587ded905da.body"
+  },
+  {
+    "name": "mdurl",
+    "version": "0.1.2",
+    "downloaded_archive_sha256": "84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8",
+    "size_bytes": 9979,
+    "cache_path": "cache/pip/http-v2/7/5/e/9/b/75e9b870d5e3250a7415f8807988e90c9462470b60405ceba7fef5fa.body"
+  },
+  {
+    "name": "httpcore",
+    "version": "1.0.9",
+    "downloaded_archive_sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55",
+    "size_bytes": 78784,
+    "cache_path": "cache/pip/http-v2/1/4/f/f/7/14ff7d80f054baad6654d8407c789a743936ccdbe38d9883c976b2dd.body"
+  },
+  {
+    "name": "numpy",
+    "version": "1.26.4",
+    "downloaded_archive_sha256": "666dbfb6ec68962c033a450943ded891bed2d54e6755e35e5835d63f4f6931d5",
+    "size_bytes": 18252005,
+    "cache_path": "cache/pip/http-v2/1/6/0/e/b/160eb7ce3fb2ac89380310299d610e33030e0911a03470c8b65476ff.body"
+  },
+  {
+    "name": "requests",
+    "version": "2.32.5",
+    "downloaded_archive_sha256": "2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6",
+    "size_bytes": 64738,
+    "cache_path": "cache/pip/http-v2/1/6/9/4/c/1694cfa0b53cf7ceb74370ee5e88d0bf548b040d92bce1b7bf7b78ec.body"
+  },
+  {
+    "name": "psutil",
+    "version": "7.2.2",
+    "downloaded_archive_sha256": "076a2d2f923fd4821644f5ba89f059523da90dc9014e85f8e45a5774ca5bc6f9",
+    "size_bytes": 155560,
+    "cache_path": "cache/pip/http-v2/8/c/e/b/9/8ceb92e26ed38cc1dbd83dcd50a82c3366a54ee1ed5c71097b8b4a8d.body"
+  },
+  {
+    "name": "networkx",
+    "version": "3.6.1",
+    "downloaded_archive_sha256": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762",
+    "size_bytes": 2068504,
+    "cache_path": "cache/pip/http-v2/8/8/f/e/f/88fefe607c974c182ed7b0b3b2045547f93fed9af9d75d745b867a87.body"
+  },
+  {
+    "name": "markdown-it-py",
+    "version": "4.2.0",
+    "downloaded_archive_sha256": "9f7ebbcd14fe59494226453aed97c1070d83f8d24b6fc3a3bcf9a38092641c4a",
+    "size_bytes": 91687,
+    "cache_path": "cache/pip/http-v2/8/5/5/f/8/855f8e3ba34bf818a053962d9922d42adb9762167fa9cb509f44400a.body"
+  },
+  {
+    "name": "nvidia-cusolver-cu12",
+    "version": "11.6.1.9",
+    "downloaded_archive_sha256": "19e33fa442bcfd085b3086c4ebf7e8debc07cfe01e11513cc6d332fd918ac260",
+    "size_bytes": 127936057,
+    "cache_path": "cache/pip/http-v2/b/c/0/b/7/bc0b7d10fe882ea2b0a8e22f912d57a34b6a5afcf3c2891d6812ea22.body"
+  },
+  {
+    "name": "pillow",
+    "version": "11.1.0",
+    "downloaded_archive_sha256": "837060a8599b8f5d402e97197d4924f05a2e0d68756998345c829c33186217b1",
+    "size_bytes": 4484021,
+    "cache_path": "cache/pip/http-v2/b/c/b/b/c/bcbbc371210ba97740d6bd9c47452f93e56a7da67f4d0a7cce288c1e.body"
+  },
+  {
+    "name": "nvidia-cuda-runtime-cu12",
+    "version": "12.4.127",
+    "downloaded_archive_sha256": "64403288fa2136ee8e467cdc9c9427e0434110899d07c779f25b5c068934faa5",
+    "size_bytes": 883737,
+    "cache_path": "cache/pip/http-v2/b/e/0/7/4/be074c8d91d4883da2c01d1792bc6e350bad39f0337ef484b2077515.body"
+  },
+  {
+    "name": "rich",
+    "version": "15.0.0",
+    "downloaded_archive_sha256": "33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb",
+    "size_bytes": 310654,
+    "cache_path": "cache/pip/http-v2/b/e/9/6/9/be969fbc41505a925e8eaacab5cc75a4cba8dee2934ca82dcdf7a7c1.body"
+  },
+  {
+    "name": "torch",
+    "version": "2.6.0+cu124",
+    "downloaded_archive_sha256": "d4c3e9a8d31a7c0fcbb9da17c31a1917e1fac26c566a4cfbd8c9568ad7cade79",
+    "size_bytes": 768460593,
+    "cache_path": "cache/pip/http-v2/b/b/6/a/b/bb6ab0ce6fe7c8dd4108b96c5c58fa5dbe9ffff9937cf3ef209656f1.body"
+  },
+  {
+    "name": "nvidia-cudnn-cu12",
+    "version": "9.1.0.70",
+    "downloaded_archive_sha256": "165764f44ef8c61fcdfdfdbe769d687e06374059fbb388b6c89ecb0e28793a6f",
+    "size_bytes": 664752741,
+    "cache_path": "cache/pip/http-v2/b/9/1/6/2/b9162090f0ba16a3e8f598fde84e0bd2d9b2a8216de84dcb3ca471aa.body"
+  },
+  {
+    "name": "nvidia-nvtx-cu12",
+    "version": "12.4.127",
+    "downloaded_archive_sha256": "781e950d9b9f60d8241ccea575b32f5105a5baf4c2351cab5256a24869f12a1a",
+    "size_bytes": 99144,
+    "cache_path": "cache/pip/http-v2/9/e/6/f/4/9e6f47b5a263021524f870169cb0a6b9d603fc7d666d229d7a07d052.body"
+  },
+  {
+    "name": "urllib3",
+    "version": "2.8.0",
+    "downloaded_archive_sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+    "size_bytes": 135717,
+    "cache_path": "cache/pip/http-v2/9/1/d/0/1/91d01b5aef41577df38977e36a4a8f82d9ea6e9aa47783c95019e083.body"
+  },
+  {
+    "name": "nvidia-cusparse-cu12",
+    "version": "12.1.0.106",
+    "downloaded_archive_sha256": "f3b50f42cf363f86ab21f720998517a659a48131e8d538dc02f8768237bd884c",
+    "size_bytes": 195958278,
+    "cache_path": "cache/pip/http-v2/9/8/b/c/c/98bccbd4de6ca869bc304f57c1076bea4f36b6d849b6c46175b063e5.body"
+  },
+  {
+    "name": "idna",
+    "version": "3.20",
+    "downloaded_archive_sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+    "size_bytes": 69583,
+    "cache_path": "cache/pip/http-v2/9/9/1/7/c/9917c4ea248ab1505e4025736e89c999891ec00e97be145d4a4f8208.body"
+  },
+  {
+    "name": "accelerate",
+    "version": "1.6.0",
+    "downloaded_archive_sha256": "1aee717d3d3735ad6d09710a7c26990ee4652b79b4e93df46551551b5227c2aa",
+    "size_bytes": 354748,
+    "cache_path": "cache/pip/http-v2/9/3/3/b/6/933b6ac8189644d03d420eb8b350bb64c39f55835e5c159486abd787.body"
+  },
+  {
+    "name": "nvidia-nccl-cu12",
+    "version": "2.20.5",
+    "downloaded_archive_sha256": "057f6bf9685f75215d0c53bf3ac4a10b3e6578351de307abad9e18a99182af56",
+    "size_bytes": 176249402,
+    "cache_path": "cache/pip/http-v2/3/2/a/8/6/32a86f33658f1989fc41fdd5e476f125beff6345d6c04de00f46415e.body"
+  },
+  {
+    "name": "mpmath",
+    "version": "1.3.0",
+    "downloaded_archive_sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+    "size_bytes": 536198,
+    "cache_path": "cache/pip/http-v2/3/d/2/3/a/3d23a5ad548471fdadffd54fe2363185ef4648db7c0bf11d16c83f16.body"
+  },
+  {
+    "name": "nvidia-curand-cu12",
+    "version": "10.3.2.106",
+    "downloaded_archive_sha256": "9d264c5036dde4e64f1de8c50ae753237c12e0b1348738169cd0f8a536c0e1e0",
+    "size_bytes": 56467784,
+    "cache_path": "cache/pip/http-v2/3/7/1/e/5/371e59ada90b5ba349b1c361bdc499d3d7da7fe79516f4385bf82ec2.body"
+  },
+  {
+    "name": "tokenizers",
+    "version": "0.19.1",
+    "downloaded_archive_sha256": "d16ff18907f4909dca9b076b9c2d899114dd6abceeb074eca0c93e2353f943aa",
+    "size_bytes": 3608228,
+    "cache_path": "cache/pip/http-v2/3/b/f/c/8/3bfc88a2b0112b338cd00bf4d656f2a93457c7b41cbf371e2359bad4.body"
+  },
+  {
+    "name": "nvidia-cuda-nvrtc-cu12",
+    "version": "12.4.127",
+    "downloaded_archive_sha256": "a178759ebb095827bd30ef56598ec182b85547f1508941a3d560eb7ea1fbf338",
+    "size_bytes": 24640306,
+    "cache_path": "cache/pip/http-v2/3/b/5/3/d/3b53d28499b0bc8b8b34f33c8f75d4caba8e2f7a135a7762044417a0.body"
+  },
+  {
+    "name": "accelerate",
+    "version": "0.30.0",
+    "downloaded_archive_sha256": "cd93902dc37a49952b4b8b324c5d53776c936fcd77b4b0162cf5ce55a4fc2721",
+    "size_bytes": 302387,
+    "cache_path": "cache/pip/http-v2/3/3/4/9/a/3349a5a717c75783074edf84f986122f321c3060838940b4d0d51c66.body"
+  },
+  {
+    "name": "huggingface_hub",
+    "version": "1.32.0",
+    "downloaded_archive_sha256": "b0c7c80561969d9cdacdd55fce67ba9584cca0b9d4ea80957a3a5c1445fac5c8",
+    "size_bytes": 842906,
+    "cache_path": "cache/pip/http-v2/a/c/c/a/c/accacc623a9a337978b08c0f670575f9021b3e7551d0a1366cdc5015.body"
+  },
+  {
+    "name": "sympy",
+    "version": "1.14.0",
+    "downloaded_archive_sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5",
+    "size_bytes": 6299353,
+    "cache_path": "cache/pip/http-v2/a/7/0/9/4/a7094ed5a4cc16f47a5321a9f38285921c17bacfd72d0b4f42bc4cf5.body"
+  },
+  {
+    "name": "pillow",
+    "version": "12.3.0",
+    "downloaded_archive_sha256": "23d27a3e0307ec2244cc51e7287b919aa68d097504ebe19df4e76a98a3eea5bd",
+    "size_bytes": 6934408,
+    "cache_path": "cache/pip/http-v2/a/7/9/0/1/a790189081ec60139b7da5098159bba0bd491e8a84cd2cd7f56eb977.body"
+  },
+  {
+    "name": "huggingface_hub",
+    "version": "0.36.2",
+    "downloaded_archive_sha256": "48f0c8eac16145dfce371e9d2d7772854a4f591bcb56c9cf548accf531d54270",
+    "size_bytes": 566395,
+    "cache_path": "cache/pip/http-v2/a/b/7/9/f/ab79fc10bf34c64f6c5ca945ee595275e2a3e74d9644c7099f14c3c1.body"
+  },
+  {
+    "name": "nvidia-cublas-cu12",
+    "version": "12.1.3.1",
+    "downloaded_archive_sha256": "ee53ccca76a6fc08fb9701aa95b6ceb242cdaab118c3bb152af4e579af792728",
+    "size_bytes": 410594774,
+    "cache_path": "cache/pip/http-v2/a/9/4/3/f/a943f1ef240870b948a1c630b23075ab699896c1d7d03a12d47f88a2.body"
+  },
+  {
+    "name": "httpx",
+    "version": "0.28.1",
+    "downloaded_archive_sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad",
+    "size_bytes": 73517,
+    "cache_path": "cache/pip/http-v2/a/a/b/c/6/aabc67571b401e727d49f64fbada38d882e738cbf8aac911d5841eb9.body"
+  },
+  {
+    "name": "scipy",
+    "version": "1.17.0",
+    "downloaded_archive_sha256": "dac97a27520d66c12a34fd90a4fe65f43766c18c0d6e1c0a80f114d2260080e4",
+    "size_bytes": 35112380,
+    "cache_path": "cache/pip/http-v2/f/0/5/9/f/f059f30bcf6715086f1890366b5ec2bbe145da9dea927685fd6cb06d.body"
+  },
+  {
+    "name": "torchvision",
+    "version": "0.21.0+cu124",
+    "downloaded_archive_sha256": "137376805aca5ba57bd2c7a3ecb8569df961dbe82b128aac9b3b0a7125ef9385",
+    "size_bytes": 7282380,
+    "cache_path": "cache/pip/http-v2/f/6/5/8/f/f658f61095a35f4584439e1a1f9488ffbdfa638b75e80aefb312996a.body"
+  },
+  {
+    "name": "nvidia-cusparse-cu12",
+    "version": "12.3.1.170",
+    "downloaded_archive_sha256": "ea4f11a2904e2a8dc4b1833cc1b5181cde564edd0d5cd33e3c168eff2d1863f1",
+    "size_bytes": 207454763,
+    "cache_path": "cache/pip/http-v2/f/7/d/4/4/f7d445d88656e80d87d8600730dbcede1580a710102432639a19ccab.body"
+  },
+  {
+    "name": "annotated-doc",
+    "version": "0.0.5",
+    "downloaded_archive_sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101",
+    "size_bytes": 5302,
+    "cache_path": "cache/pip/http-v2/f/8/4/d/7/f84d70fe76a851b57e0b4f77666d3ab03b0dbcacfcb54d756e992be9.body"
+  },
+  {
+    "name": "nvidia-cufft-cu12",
+    "version": "11.2.1.3",
+    "downloaded_archive_sha256": "f083fc24912aa410be21fa16d157fed2055dab1cc4b6934a0e03cba69eb242b9",
+    "size_bytes": 211459117,
+    "cache_path": "cache/pip/http-v2/f/9/0/8/4/f90844c651cc0d8c9b2ec1d74dad15febe2c0bce508202d956dcbdf8.body"
+  },
+  {
+    "name": "certifi",
+    "version": "2026.7.22",
+    "downloaded_archive_sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775",
+    "size_bytes": 136983,
+    "cache_path": "cache/pip/http-v2/5/0/1/8/d/5018d9c2965e73560f079f195ffafd8dc759a0098e6d74694b32595f.body"
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "downloaded_archive_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+    "size_bytes": 45571,
+    "cache_path": "cache/pip/http-v2/5/d/e/7/4/5de74aa606aaf8588141cbe765382839ecb0982f091a947770ca6fa8.body"
+  },
+  {
+    "name": "fsspec",
+    "version": "2026.7.0",
+    "downloaded_archive_sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279",
+    "size_bytes": 206583,
+    "cache_path": "cache/pip/http-v2/5/d/7/d/3/5d7d30659acfa5502115137acd7daa285b2e2735e411bd6b72419b3a.body"
+  },
+  {
+    "name": "nvidia-cuda-nvrtc-cu12",
+    "version": "12.1.105",
+    "downloaded_archive_sha256": "339b385f50c309763ca65456ec75e17bbefcbbf2893f462cb8b90584cd27a1c2",
+    "size_bytes": 23671734,
+    "cache_path": "cache/pip/http-v2/5/4/0/3/c/5403c52d55bda7b708dd7f15ac177d97b936d506da366545540396ae.body"
+  },
+  {
+    "name": "pillow",
+    "version": "10.3.0",
+    "downloaded_archive_sha256": "1b87bd9d81d179bd8ab871603bd80d8645729939f90b71e62914e816a76fc6bd",
+    "size_bytes": 4507469,
+    "cache_path": "cache/pip/http-v2/5/4/c/9/f/54c9f3e544a708317a992f2bd8ebafaf1d0eea97b3d6982b048d81e2.body"
+  },
+  {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "downloaded_archive_sha256": "b8bb0864c5a28024fac8a632c443c87c5aa6f215c0b126c449ae1a150412f31d",
+    "size_bytes": 806638,
+    "cache_path": "cache/pip/http-v2/5/6/7/1/d/5671d6b4d9936f987f178bccffdd6622edd2308a16ebb3bd167949da.body"
+  },
+  {
+    "name": "h11",
+    "version": "0.16.0",
+    "downloaded_archive_sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86",
+    "size_bytes": 37515,
+    "cache_path": "cache/pip/http-v2/5/5/9/d/f/559df78eaab69d875420dfddbca9a7a87ec29dfbe695968a386e8e7d.body"
+  }
+]
