@@ -1,0 +1,50 @@
+{
+  "schema": "kdm_completed_census_batch_v1",
+  "recorded_utc": "2026-09-19T16:13:11.521301+00:00",
+  "models": [
+    "qwen3vl",
+    "qwen35_4b"
+  ],
+  "completion_proofs": {
+    "qwen3vl": {
+      "expected": 18334,
+      "observed": 18334,
+      "missing": [],
+      "unexpected": [],
+      "duplicates": [],
+      "invalid": [],
+      "complete": true
+    },
+    "qwen35_4b": {
+      "expected": 18334,
+      "observed": 18334,
+      "missing": [],
+      "unexpected": [],
+      "duplicates": [],
+      "invalid": [],
+      "complete": true
+    }
+  },
+  "provenance_receipt": "outputs/annotations/current/census_completed_batch01_queue.sources.json",
+  "freeze_receipt_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+  "queue": "outputs/annotations/current/census_completed_batch01_queue.jsonl",
+  "queue_records": 36668,
+  "unique_response_keys": 36668,
+  "queue_source_counts": {
+    "requires_semantic_review": 31036,
+    "exact_phrase": 5632
+  },
+  "judge_payload_fields": [
+    "question",
+    "text"
+  ],
+  "model_and_method_fields_excluded_from_queue": true,
+  "semantic_annotation_started": false,
+  "semantic_annotation_pending_reason": "All authorized cards currently reserved by census workers; keep current jobs running. Launch registered independent judge when a card becomes available.",
+  "human_response_review_completed": false,
+  "model_selection_performed": false,
+  "panel_complete": false,
+  "fixed_panel_models": 16,
+  "fixed_panel_expected_records": 293344,
+  "remote_qwen3vl_transfer": "Original complete raw JSONL, immutable identity sidecar, and completion proof copied via SSH tar without overwriting existing paths; central annotation-queue provenance gate passed."
+}
