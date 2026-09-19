@@ -1,0 +1,141 @@
+{
+  "scope": "Read-only 6403 source models/environments; evidence written only under 4028 project; no CUDA initialization, GPU weights, model forward, environment mutation, or 6403 output/cache write",
+  "host": {
+    "ssh": "6403",
+    "address": "172.17.43.38",
+    "hostname": "oem-PowerEdge-T640",
+    "user": "zhanghaonan"
+  },
+  "gpu_read_only_snapshot": {
+    "physical_gpu1": "NVIDIA A100 80GB PCIe",
+    "total_mib": 81920,
+    "used_mib": 14,
+    "physical_gpu0_used_mib": 80671,
+    "driver": "595.71.05",
+    "driver_reported_cuda_max": "13.2",
+    "mprisk_torch_cuda_build": "13.0",
+    "scope": "Driver advertises CUDA13.2, exceeding installed torch CUDA13.0 build; GPU initialization/execution compatibility not exercised in this read-only inventory"
+  },
+  "recommended_environment": "/home/team/zhanghaonan/miniconda3/envs/mprisk/bin/python",
+  "recommendation_reason": "Both checkpoint model/processor and required Auto classes import; accelerate present. Dedicated Qwen/GLM envs lack accelerate required by current explicit device_map construction. No shared environment modifications proposed.",
+  "original_4028_versions": {
+    "torch": "2.9.0+cu128",
+    "transformers": "5.17.0",
+    "accelerate": "1.12.0",
+    "Pillow": "12.0.0",
+    "torchvision": "0.24.0+cu128",
+    "numpy": "2.3.5"
+  },
+  "6403_versions": {
+    "qwen": {
+      "torch": "2.9.0",
+      "transformers": "5.5.4",
+      "accelerate": {
+        "error": "PackageNotFoundError: No package metadata was found for accelerate"
+      },
+      "Pillow": "12.1.0",
+      "torchvision": "0.24.0",
+      "safetensors": "0.7.0",
+      "tokenizers": "0.22.1",
+      "numpy": "2.2.6",
+      "einops": "0.8.1",
+      "flash-attn": {
+        "error": "PackageNotFoundError: No package metadata was found for flash-attn"
+      }
+    },
+    "glm": {
+      "torch": "2.9.0",
+      "transformers": "5.0.0rc1",
+      "accelerate": {
+        "error": "PackageNotFoundError: No package metadata was found for accelerate"
+      },
+      "Pillow": "12.1.0",
+      "torchvision": "0.24.0",
+      "safetensors": "0.7.0",
+      "tokenizers": "0.22.1",
+      "numpy": "2.2.6",
+      "einops": "0.8.1",
+      "flash-attn": {
+        "error": "PackageNotFoundError: No package metadata was found for flash-attn"
+      }
+    },
+    "mprisk": {
+      "torch": "2.13.0+cu130",
+      "transformers": "5.5.3",
+      "accelerate": "1.14.0",
+      "Pillow": "12.2.0",
+      "torchvision": "0.28.0+cu130",
+      "safetensors": "0.5.3",
+      "tokenizers": "0.22.2",
+      "numpy": "2.4.6",
+      "einops": {
+        "error": "PackageNotFoundError: No package metadata was found for einops"
+      },
+      "flash-attn": {
+        "error": "PackageNotFoundError: No package metadata was found for flash-attn"
+      }
+    }
+  },
+  "processor_default_config_differences": {
+    "qwen3vl": {},
+    "glm46v": {}
+  },
+  "native_cpu_count_examples": {
+    "qwen3vl": {
+      "image_sizes_height_width": [
+        [
+          1936,
+          2592
+        ],
+        [
+          384,
+          512
+        ]
+      ],
+      "native_result_type": "MultiModalData",
+      "num_image_tokens": [
+        4860,
+        192
+      ],
+      "num_image_patches": [
+        19440,
+        768
+      ]
+    },
+    "glm46v": {
+      "image_sizes_height_width": [
+        [
+          1936,
+          2592
+        ],
+        [
+          384,
+          512
+        ]
+      ],
+      "native_result_type": "MultiModalData",
+      "num_image_tokens": [
+        6030,
+        252
+      ],
+      "num_image_patches": [
+        24120,
+        1008
+      ]
+    }
+  },
+  "limitations": [
+    "Tensor payloads not fully hashed; equality is config/processor hashes + shard names/sizes/header hashes + matching existing Hub revision/etag metadata.",
+    "Different transformers/torch/accelerate/Pillow identities require new native16, SID and actual resource proof on destination; same parameters/count examples are not pixel/logit equivalence.",
+    "Initial processor receipt native_formula_error arose only from inventory dict(MultiModalData) serialization; separate count receipt reads named attributes correctly. Original receipt retained."
+  ],
+  "records_sha256": {
+    "6403_checkpoint_inventory_v1.json": "cc58105a653cd18d7b8d878a186841eae2ee656808b16ca7bb02909dced95f2d",
+    "6403_checkpoint_comparison_v1.json": "33e242f4287ff51bea2c8472588e71a7e33f94ab704adbd8a18c5ab1f583b5d6",
+    "6403_environment_qwen_inventory_v1.json": "4b76d4c3fd60298b6264e254ef6dc39e739cc0c1738d7b9516102c7147258484",
+    "6403_environment_glm_inventory_v1.json": "fc5a555eac631cac595f1a263046473511afa2271b2fd81caa8d0e7fc4dd1bee",
+    "6403_environment_mprisk_inventory_v1.json": "ef3b9831ee6304e2283636dfd2cb88ff675b82522ec8e8036deba1cb16297e9a",
+    "6403_mprisk_processor_inventory_v1.json": "1df42bbfa3e6b67def41969c8fbfb4181096ac01883a4050233d19c4188c39d1",
+    "6403_mprisk_processor_counts_v1.json": "38f0385bea2da868a588cf0dd4bc49b0ac247e1d04001292ceae9dcba62a7861"
+  }
+}

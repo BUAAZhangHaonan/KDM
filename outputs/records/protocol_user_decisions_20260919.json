@@ -43,5 +43,21 @@
     "proposal": "outputs/verification/glm46v_dual_gpu_resource_proposal_v1.json",
     "scope": "Explicit proposed mapping only; unchanged BF16, checkpoint, processor, input and algorithm; repeat native16, Food SID and three maximum-visual-input resource groups; preserve single-card failures",
     "authorization_does_not_imply_verification_passed": true
+  },
+  "remote_recovery_6403": {
+    "user_statement": "失败的模型运行在6403服务器的GPU 1上跑，目前是空闲的，模型和环境都是现成的",
+    "directory_user_statement": "允许使用该隔离目录",
+    "recorded_at_utc": "2026-09-19T12:26:22.011893+00:00",
+    "host": "6403",
+    "physical_gpu": 1,
+    "scope_models": [
+      "qwen3vl",
+      "glm46v"
+    ],
+    "write_root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "existing_model_environment_policy": "read-only reuse; no shared-environment modification",
+    "central_evidence_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+    "supersedes": "pending Qwen3 4028 dual proposal and future GLM 4028 dual SID/resource stages; already running native record remains historical evidence",
+    "requires_fresh_native_sid_resource_evidence": true
   }
 }
