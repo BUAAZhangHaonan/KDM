@@ -1,6 +1,8 @@
-import argparse,json,hashlib
+import argparse,json,hashlib,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'src'))
+from kdm.protocol import validate_method_runtime
 p=argparse.ArgumentParser();p.add_argument('--status',action='append',default=[]);a=p.parse_args()
 registry=ROOT/'outputs/verification/sid_capability_status.json'
 status=json.loads(registry.read_text()) if registry.exists() else {}
@@ -23,14 +25,26 @@ for path in sorted((ROOT/'configs/runtime').glob('*.json')):
  for version in range(2,10):
   newer=proof.with_name(f'{key}_sid_reference_v{version}.json')
   if newer.exists():proof=newer
+ declaration=spec.get('mechanism_validation',{}).get('sid_reference',{})
+ if not isinstance(declaration,dict):declaration={}
+ declared=ROOT/declaration.get('record','outputs/verification/absent_sid_proof.json')
+ if declared.is_file():proof=declared
  state=status.get(key,'two_gpu_scheduling_pending' if spec['gpu_count']==2 else 'pending')
  detail='尚未执行';link='—'
  if proof.exists():
   row=json.loads(proof.read_text())
   receipt=proof.with_name(proof.stem+'_summary.json')
-  link=f'`{receipt.relative_to(ROOT) if receipt.exists() else proof.relative_to(ROOT)}`; 完整raw `{proof.relative_to(ROOT)}` / 同名 `.log`'
+  link=f'`{receipt.relative_to(ROOT) if receipt.exists() else proof.relative_to(ROOT)}`'
+  if proof.name.endswith('_summary.json'):
+   detail_source=row.get('detail_evidence',{})
+   link+='; 完整raw见摘要detail_evidence'
+  else:link+=f'; 完整raw `{proof.relative_to(ROOT)}` / 同名 `.log`'
   if row.get('passed'):
-   state='passed' if row.get('runtime_adapter_sha256',{}).get('sid.py')==hashlib.sha256((ROOT/'src/kdm/models/sid.py').read_bytes()).hexdigest() else 'prior_source_passed_recheck_pending'
+   try:
+    validate_method_runtime(ROOT,spec,['sid'])
+    state='passed'
+   except (ValueError,FileNotFoundError,KeyError):
+    state='prior_configuration_passed_recheck_pending'
    ev=row.get('evidence',[])
    detail=f"{len(ev)} visits; max logit error={max((x['max_abs_logit_error'] for x in ev),default=0)}; fresh error={max((x['fresh_reference_max_abs_logit_error'] for x in ev),default=0)}"
   else:

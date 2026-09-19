@@ -11,8 +11,8 @@
 - [x] 13份一手论文和相应方法源码核对；CDA歧义已按用户明确裁定修正。
 - [x] Food-101的101类/147名称获用户逐类人工确认，名称文件未变。
 - [x] 最新全套CPU检查260通过；28次合成CLI调用通过。
-- [x] 全部16个当前模型配置原生16图核验通过；后续资源映射变化必须重新核验。
-- [ ] 方法运行身份全部收尾：10个模型SID接口通过；6个模型固定参考限制已记录；最大输入资源核验仍待收尾。
+- [ ] 原16个配置曾全部通过；GLM获批切为双卡后正在重新核验，当前15个配置通过。
+- [ ] 方法运行身份全部收尾：9个当前模型SID接口通过；GLM旧单卡通过但新双卡待验；6个模型固定参考限制已记录。
 - [ ] 协议冻结、提交和普通push；随后执行完整16候选普查。
 - [ ] 全量语义标注、所需人工复核、仅按原始弃权选择并提交。
 - [ ] 全部正式干预、10次独立试答、101类闭集和机制/完整序列测量。
@@ -20,9 +20,9 @@
 
 ## 当前证据与边界
 
-原生接口每个模型使用固定16图，完整greedy token含EOS；六条件独立/交错状态与层投影分别核验。它们不是减少后的研究样本。状态表为`outputs/records/native16_status.json`。GLM最终六条件记录已通过；完整身份审计见`outputs/records/native16_identity_audit.json`。
+原生接口每个模型使用固定16图，完整greedy token含EOS；六条件独立/交错状态与层投影分别核验。它们不是减少后的研究样本。状态表为`outputs/records/native16_status.json`。GLM原单卡最终六条件记录已通过；切换前身份审计见`outputs/records/native16_identity_audit.json`。
 
-SID现有10个通过模型：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL、GLM。每份通过证明含14次实际前缀访问、官方片段对照、独立状态和普通native logits前后不变。完整逐层数组留在项目原路径，Git保留可追溯摘要。MiniCPM原生64视觉词元实例无法执行固定rank100；Qwen3.5第二层为线性注意力；Gemma原生双向图像/sliding mask与固定参考纯causal mask不同。运行错误与结构/协议限制分别记录，未制造同名近似SID。详见`SID_CAPABILITY_REVIEW.md`。
+切换GLM双卡前，SID有10个通过模型：LLaVA1.5-7B/13B、LLaVA1.6-Mistral/Vicuna、OneVision、Qwen2.5VL、Qwen3VL、Phi、InternVL、GLM。每份通过证明含14次实际前缀访问、官方片段对照、独立状态和普通native logits前后不变。完整逐层数组留在项目原路径，Git保留可追溯摘要。MiniCPM原生64视觉词元实例无法执行固定rank100；Qwen3.5第二层为线性注意力；Gemma原生双向图像/sliding mask与固定参考纯causal mask不同。运行错误与结构/协议限制分别记录，未制造同名近似SID。详见`SID_CAPABILITY_REVIEW.md`。
 
 InternVL单卡的接口错误和随后真实OOM均保留。用户明确授权物理4/5显式双卡；独立构造器复用既有输入/前向方法，新的完整native16和SID均通过。双卡native峰值约14.37GB/10.52GB，模型参数无CPU/disk卸载。旧单卡证明和spec保留历史身份。
 
@@ -34,13 +34,13 @@ InternVL单卡的接口错误和随后真实OOM均保留。用户明确授权物
 
 ## 完整输入边界
 
-全部9,167图的原生尺寸计数与实际处理器边界核对已完成。SID不能用于完整Qwen2.5VL/GLM/Qwen3VL的VizWiz条件，分别有30/30/47条输入不足固定100视觉位置；不删除这些样本。两版MiniCPM在两个数据任务均有不足100的输入。当前方法计划为32条件全部保留四基线，SID计划Food10条件、Viz7条件，GLM数值证明已通过。详见`FULL_VISUAL_COUNT_REVIEW.md`。
+全部9,167图的原生尺寸计数与实际处理器边界核对已完成。SID不能用于完整Qwen2.5VL/GLM/Qwen3VL的VizWiz条件，分别有30/30/47条输入不足固定100视觉位置；不删除这些样本。两版MiniCPM在两个数据任务均有不足100的输入。当前方法计划为32条件全部保留四基线，SID计划Food10条件、Viz7条件，GLM旧单卡数值证明已通过，新双卡尚待重新核验。详见`FULL_VISUAL_COUNT_REVIEW.md`。
 
-Qwen2.5VL在最大视觉输入的单分支、指令保持VCD及CDA三组检查均通过；Qwen3VL单分支通过，后两组真实OOM。该检查仅覆盖最大视觉token真实样本的空/1/2前缀，不保证所有问题长度与32步峰值。Qwen3VL双卡提案已提出，尚待授权；GLM最大输入层方法单卡真实OOM，用户已明确授权物理4/5的20/20层双卡核验；当前原单卡其余独立组仍在执行，双卡尚未切换。
+Qwen2.5VL在最大视觉输入的单分支、指令保持VCD及CDA三组检查均通过；Qwen3VL单分支通过，后两组真实OOM。该检查仅覆盖最大视觉token真实样本的空/1/2前缀，不保证所有问题长度与32步峰值。Qwen3VL双卡提案已提出，尚待授权；GLM最大输入层方法单卡真实OOM，用户已明确授权物理4/5的20/20层双卡核验；原单卡instruction组也因真实OOM退出，最后CDA组已读取旧配置并继续在GPU0运行；新双卡已用独立worker持有4/5锁启动native16，证明状态已改为pending。
 
 ## 普查执行准备
 
-`scripts/run_census_panel.py`静态计划完整覆盖16个模型，每模型18,334条、全panel293,344条guided/unguided直接回答。仅使用GPU0/1/4/5及worker锁；4/5先完成三个显式双卡模型，再转两个单卡队列。调度器要求完整冻结身份，任何生成/完整性检查失败停止新调度，不自动重试、不降低参数；已运行任务自然完成。14项CPU mock调度测试已核验阶段顺序、无漏项/重复、失败与冻结门禁。当前尚未执行正式排程。
+`scripts/run_census_panel.py`静态计划完整覆盖16个模型，每模型18,334条、全panel293,344条guided/unguided直接回答。仅使用GPU0/1/4/5及worker锁；4/5先完成四个显式双卡模型，再转两个单卡队列。调度器要求完整冻结身份，任何生成/完整性检查失败停止新调度，不自动重试、不降低参数；已运行任务自然完成。14项CPU mock调度测试已核验阶段顺序、无漏项/重复、失败与冻结门禁。当前尚未执行正式排程。
 
 冻结门禁现在统一核对完整方法计划、16模型证明和活动源码blob；正式census加载前也强制冻结。消费端同时核对原始ledger与sidecar、冻结spec/config/seed/prompt，并按模型合并合法分片。最新28次真实CPU CLI检查通过，覆盖范围不包含新的正式census标注/选择整链，详见`CENSUS_PROVENANCE_REVIEW.md`；新增来源门的集成单元测试使用明确合成freeze，不代替未来真实数据验收。
 

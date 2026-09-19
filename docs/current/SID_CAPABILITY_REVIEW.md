@@ -8,20 +8,20 @@
 |---|---|---|---|
 |gemma3_12b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_12b_sid_reference.json`; 完整raw `outputs/verification/gemma3_12b_sid_reference.json` / 同名 `.log`|
 |gemma3_4b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_4b_sid_reference.json`; 完整raw `outputs/verification/gemma3_4b_sid_reference.json` / 同名 `.log`|
-|glm46v|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/glm46v_sid_reference_v2_summary.json`; 完整raw `outputs/verification/glm46v_sid_reference_v2.json` / 同名 `.log`|
-|internvl35_8b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/internvl35_8b_sid_reference_v3_summary.json`; 完整raw `outputs/verification/internvl35_8b_sid_reference_v3.json` / 同名 `.log`|
-|llava15_13b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_13b_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava15_13b_sid_reference_v2.json` / 同名 `.log`|
-|llava15_7b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_7b_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava15_7b_sid_reference_v2.json` / 同名 `.log`|
-|llava16_mistral|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava16_mistral_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava16_mistral_sid_reference_v2.json` / 同名 `.log`|
-|llava16_vicuna|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava16_vicuna_sid_reference_v2_summary.json`; 完整raw `outputs/verification/llava16_vicuna_sid_reference_v2.json` / 同名 `.log`|
+|glm46v|prior_configuration_passed_recheck_pending|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/glm46v_sid_reference_v2_summary.json`; 完整raw `outputs/verification/glm46v_sid_reference_v2.json` / 同名 `.log`|
+|internvl35_8b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/internvl35_8b_sid_reference_v3_summary.json`; 完整raw见摘要detail_evidence|
+|llava15_13b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_13b_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|llava15_7b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_7b_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|llava16_mistral|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava16_mistral_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|llava16_vicuna|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava16_vicuna_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
 |minicpm26|fixed_rank_undefined_on_observed_inputs|Native processor produces 64 visual embedding positions for some fixed16 inputs, fewer than required rank100. Existing llm path/span adapter gap is separate; fixing it cannot make topk(100) defined on 64 tokens without changing fixed protocol.|`outputs/verification/minicpm26_sid_reference.json`; 完整raw `outputs/verification/minicpm26_sid_reference.json` / 同名 `.log`|
 |minicpm45|fixed_rank_undefined_on_observed_inputs|Native processor produces 64 visual embedding positions for some fixed16 inputs, fewer than required rank100. Existing llm path/span adapter gap is separate; fixing it cannot make topk(100) defined on 64 tokens without changing fixed protocol.|`outputs/verification/minicpm45_sid_reference.json`; 完整raw `outputs/verification/minicpm45_sid_reference.json` / 同名 `.log`|
-|onevision|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/onevision_sid_reference_v2_summary.json`; 完整raw `outputs/verification/onevision_sid_reference_v2.json` / 同名 `.log`|
-|phi35|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/phi35_sid_reference_v2_summary.json`; 完整raw `outputs/verification/phi35_sid_reference_v2.json` / 同名 `.log`|
-|qwen25vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen25vl_sid_reference_v2_summary.json`; 完整raw `outputs/verification/qwen25vl_sid_reference_v2.json` / 同名 `.log`|
+|onevision|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/onevision_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|phi35|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/phi35_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|qwen25vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen25vl_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
 |qwen35_4b|fixed_reference_structure_incompatible|Fixed SID reads second decoder self_attn weights, but registered layer_types[1]=linear_attention constructs Qwen3_5GatedDeltaNet as linear_attn (no self_attn). Selecting another full-attention layer would change agg_layer=2 protocol.|`outputs/verification/qwen35_4b_sid_reference.json`; 完整raw `outputs/verification/qwen35_4b_sid_reference.json` / 同名 `.log`|
 |qwen35_9b|fixed_reference_structure_incompatible|Fixed SID reads second decoder self_attn weights, but registered layer_types[1]=linear_attention constructs Qwen3_5GatedDeltaNet as linear_attn (no self_attn). Selecting another full-attention layer would change agg_layer=2 protocol.|`outputs/verification/qwen35_9b_sid_reference.json`; 完整raw `outputs/verification/qwen35_9b_sid_reference.json` / 同名 `.log`|
-|qwen3vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen3vl_sid_reference_v2_summary.json`; 完整raw `outputs/verification/qwen3vl_sid_reference_v2.json` / 同名 `.log`|
+|qwen3vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen3vl_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
 
 映射调查详见 `docs/current/SID_VISUAL_MAPPING_REVIEW.md` 和 `outputs/verification/{minicpm26,minicpm45,phi35}_sid_visual_mapping.json`。Mini两版均有64<100的原生输入，属于固定rank在实际样本未定义；Phi原生757连续位置映射已在v2实现并真实前向验收通过，native/clean前后logits零差。InternVL双卡为另外获准的新factory，旧单卡OOM记录保留。
 

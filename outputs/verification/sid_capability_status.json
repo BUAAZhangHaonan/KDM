@@ -10,5 +10,6 @@
   "minicpm45": "fixed_rank_undefined_on_64_token_inputs",
   "phi35": "passed",
   "llava15_13b": "passed",
-  "gemma3_12b": "runtime_mask_contract_error"
+  "gemma3_12b": "runtime_mask_contract_error",
+  "glm46v": "dual_configuration_pending"
 }
