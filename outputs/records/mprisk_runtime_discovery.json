@@ -1,0 +1,405 @@
+{
+  "schema": "kdm_mprisk_runtime_discovery_v1",
+  "source_host": "6403-lvshuyang",
+  "observed_date": "2026-09-19",
+  "actual_project": "/home/team/zhanghaonan/TAFFC/mprisk",
+  "historical_prefill_smoke": [
+    {
+      "model": "minicpm_v_2_6",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/minicpm_v_2_6/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "bfloat16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "MiniCPMV"
+      ]
+    },
+    {
+      "model": "minicpm_v_4_5",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/minicpm_v_4_5/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "bfloat16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "MiniCPMV"
+      ]
+    },
+    {
+      "model": "phi3_5_vision",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/phi3_5_vision/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "bfloat16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "Phi3VForCausalLM"
+      ]
+    },
+    {
+      "model": "gemma3_4b",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/gemma3_4b/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "bfloat16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "Gemma3ForConditionalGeneration"
+      ]
+    },
+    {
+      "model": "gemma3_12b",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/gemma3_12b/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "bfloat16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "Gemma3ForConditionalGeneration"
+      ]
+    },
+    {
+      "model": "llava_onevision_qwen2_7b",
+      "source": "/home/team/zhanghaonan/TAFFC/mprisk/outputs/cache_smoke_matrix_20260722/source/llava_onevision_qwen2_7b/SMOKE_COMPLETE.json",
+      "environment_python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "expected_tasks": 48,
+      "completed_tasks": 48,
+      "failed_tasks": 0,
+      "dtype": "float16",
+      "env_isolation": false,
+      "status": "PASS",
+      "transformers_versions": [
+        "5.5.3"
+      ],
+      "model_classes": [
+        "LlavaOnevisionForConditionalGeneration"
+      ]
+    }
+  ],
+  "current_environment_metadata": [
+    {
+      "python": "/home/team/lvshuyang/anaconda3/envs/mprisk_resp/bin/python",
+      "python_version": "3.11.15 (main, Jun 11 2026, 15:20:16) [GCC 14.3.0]",
+      "user_site": "/home/team/lvshuyang/.local/lib/python3.11/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.13.0+cu130",
+          "root": "/home/team/lvshuyang/anaconda3/envs/mprisk_resp/lib/python3.11/site-packages"
+        },
+        "torchvision": {
+          "version": "0.28.0+cu130",
+          "root": "/home/team/lvshuyang/anaconda3/envs/mprisk_resp/lib/python3.11/site-packages"
+        },
+        "transformers": null,
+        "tokenizers": null,
+        "accelerate": null,
+        "flash-attn": null,
+        "numpy": {
+          "version": "2.4.4",
+          "root": "/home/team/lvshuyang/anaconda3/envs/mprisk_resp/lib/python3.11/site-packages"
+        },
+        "Pillow": {
+          "version": "12.2.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/mprisk_resp/lib/python3.11/site-packages"
+        },
+        "sentencepiece": null,
+        "timm": null,
+        "safetensors": null,
+        "vllm": null
+      },
+      "python_no_user_site": true,
+      "metadata_only": true
+    },
+    {
+      "python": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/bin/python",
+      "python_version": "3.12.12 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 20:16:04) [GCC 11.2.0]",
+      "user_site": "/home/team/lvshuyang/.local/lib/python3.12/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.9.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "torchvision": {
+          "version": "0.24.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "transformers": {
+          "version": "4.57.3",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "tokenizers": {
+          "version": "0.22.2",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "accelerate": null,
+        "flash-attn": null,
+        "numpy": {
+          "version": "2.2.6",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "Pillow": {
+          "version": "12.1.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "sentencepiece": {
+          "version": "0.2.1",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "timm": null,
+        "safetensors": {
+          "version": "0.7.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        },
+        "vllm": {
+          "version": "0.13.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/MiniCPM-V-2_6/lib/python3.12/site-packages"
+        }
+      },
+      "python_no_user_site": true,
+      "metadata_only": true
+    },
+    {
+      "python": "/home/team/lvshuyang/anaconda3/envs/gemma-3/bin/python",
+      "python_version": "3.12.12 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 20:16:04) [GCC 11.2.0]",
+      "user_site": "/home/team/lvshuyang/.local/lib/python3.12/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.9.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "torchvision": {
+          "version": "0.24.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "transformers": {
+          "version": "4.57.3",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "tokenizers": {
+          "version": "0.22.1",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "accelerate": null,
+        "flash-attn": null,
+        "numpy": {
+          "version": "2.2.6",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "Pillow": {
+          "version": "12.1.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "sentencepiece": {
+          "version": "0.2.1",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "timm": null,
+        "safetensors": {
+          "version": "0.7.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        },
+        "vllm": {
+          "version": "0.13.0",
+          "root": "/home/team/lvshuyang/anaconda3/envs/gemma-3/lib/python3.12/site-packages"
+        }
+      },
+      "python_no_user_site": true,
+      "metadata_only": true
+    },
+    {
+      "python": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/bin/python",
+      "python_version": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0]",
+      "user_site": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.6.0+cu124",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "torchvision": {
+          "version": "0.21.0+cu124",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "transformers": {
+          "version": "4.57.1",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "tokenizers": {
+          "version": "0.22.2",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "accelerate": {
+          "version": "1.6.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "flash-attn": null,
+        "numpy": {
+          "version": "2.2.4",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "Pillow": {
+          "version": "11.1.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "sentencepiece": {
+          "version": "0.2.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "timm": {
+          "version": "1.0.19",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "safetensors": {
+          "version": "0.5.3",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "vllm": null
+      },
+      "python_no_user_site": false,
+      "metadata_only": true
+    },
+    {
+      "python": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/bin/python",
+      "python_version": "3.11.11 (main, Dec 11 2024, 16:28:39) [GCC 11.2.0]",
+      "user_site": "/home/team/lvshuyang/.local/lib/python3.11/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.3.0+cu121",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "torchvision": {
+          "version": "0.18.0+cu121",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "transformers": {
+          "version": "4.43.0",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "tokenizers": {
+          "version": "0.19.1",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "accelerate": {
+          "version": "0.30.0",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "flash-attn": null,
+        "numpy": {
+          "version": "1.26.4",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "Pillow": {
+          "version": "10.3.0",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "sentencepiece": null,
+        "timm": null,
+        "safetensors": {
+          "version": "0.8.0",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-phi3-vision-4.43-cu121/lib/python3.11/site-packages"
+        },
+        "vllm": null
+      },
+      "python_no_user_site": true,
+      "metadata_only": true
+    },
+    {
+      "python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+      "python_version": "3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0]",
+      "user_site": "/home/team/lvshuyang/.local/lib/python3.11/site-packages",
+      "packages": {
+        "torch": {
+          "version": "2.6.0+cu124",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "torchvision": {
+          "version": "0.21.0+cu124",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "transformers": {
+          "version": "5.5.3",
+          "root": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/lib/python3.11/site-packages"
+        },
+        "tokenizers": {
+          "version": "0.22.2",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "accelerate": {
+          "version": "1.6.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "flash-attn": null,
+        "numpy": {
+          "version": "2.2.4",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "Pillow": {
+          "version": "11.1.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "sentencepiece": {
+          "version": "0.2.0",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "timm": {
+          "version": "1.0.19",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "safetensors": {
+          "version": "0.5.3",
+          "root": "/home/team/zhanghaonan/miniconda3/envs/mind-py311/lib/python3.11/site-packages"
+        },
+        "vllm": null
+      },
+      "python_no_user_site": true,
+      "metadata_only": true
+    }
+  ],
+  "permission_limits": [
+    "/home/team/zhanghaonan/TAFFC/mprisk/outputs/diagnostics/phi3_description_watcher_smoke_official443_20260804_8a6649a/runtime_contract_receipt.json",
+    "/home/team/zhanghaonan/TAFFC/mprisk/outputs/in_domain_recovery_formal1934_20260804/queue_runtime_receipt.json",
+    "/home/team/zhanghaonan/.local/lib/python3.11/site-packages"
+  ],
+  "phi_generation_contract_source": "/home/team/zhanghaonan/TAFFC/mprisk/configs/recovery/phi3_5_vision_in_domain_pipeline_20260727.yaml",
+  "historical_user_site_transformers_path": "/home/team/zhanghaonan/.local/lib/python3.11/site-packages/transformers",
+  "history_scope": "Existing 48-task prefill smoke summaries were read; no generation rerun or GPU use.",
+  "source_commit": "cc6c0d82a77a958fd20c58e35efdc18c1ce0c036",
+  "initial_project": "/home/team/lvshuyang/TAFFC/mprisk",
+  "initial_project_observation": "Contains curation and delivery artifacts, not model-wrapper source.",
+  "adapter_constraints": {
+    "minicpm": "Remote-code AutoModel forward takes data dictionary including input_ids,pixel_values,tgt_sizes,image_bound,position_ids and optional temporal_ids; derive position_ids from mask; configure tokenizer special attributes; 4.5 thinking disabled. Existing code is prefill/use_cache=False, not a validated autoregressive session.",
+    "phi3": "AutoModelForCausalLM trust_remote_code; processor num_crops=4 in wrapper; image_i placeholders and explicit Phi user/assistant delimiters; eager attention in recovery configuration. Generation contract pins isolated Transformers4.43.0/CUDA12.1 environment.",
+    "gemma3": "Explicit Gemma3ForConditionalGeneration/Gemma3Processor, processor chat template, nested images batch; prior prefill uses bfloat16.",
+    "llava_onevision": "Explicit LlavaOnevisionForConditionalGeneration/Processor; text_config language contract. Existing wrapper rejects still images and freezes native-video F8; it is not directly reusable as the KDM still-image task."
+  }
+}

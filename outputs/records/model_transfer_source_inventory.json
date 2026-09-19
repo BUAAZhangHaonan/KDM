@@ -1,0 +1,269 @@
+{
+  "source_host": "6403-lvshuyang",
+  "source_root": "/home/team/lvshuyang/Models",
+  "models": [
+    {
+      "directory": "gemma-3-4b-it",
+      "path": "/home/team/lvshuyang/Models/gemma-3-4b-it",
+      "model_type": "gemma3",
+      "architectures": [
+        "Gemma3ForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00002.safetensors",
+          "bytes": 4961251752
+        },
+        {
+          "name": "model-00002-of-00002.safetensors",
+          "bytes": 3639026128
+        }
+      ],
+      "weight_bytes": 8600277880
+    },
+    {
+      "directory": "gemma-3-12b-it",
+      "path": "/home/team/lvshuyang/Models/gemma-3-12b-it",
+      "model_type": "gemma3",
+      "architectures": [
+        "Gemma3ForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00005.safetensors",
+          "bytes": 4979902192
+        },
+        {
+          "name": "model-00002-of-00005.safetensors",
+          "bytes": 4931296592
+        },
+        {
+          "name": "model-00003-of-00005.safetensors",
+          "bytes": 4931296656
+        },
+        {
+          "name": "model-00004-of-00005.safetensors",
+          "bytes": 4931296656
+        },
+        {
+          "name": "model-00005-of-00005.safetensors",
+          "bytes": 4601000928
+        }
+      ],
+      "weight_bytes": 24374793024
+    },
+    {
+      "directory": "llava-1.5-7b-hf",
+      "path": "/home/team/lvshuyang/Models/llava-1.5-7b-hf",
+      "model_type": "llava",
+      "architectures": [
+        "LlavaForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00003.safetensors",
+          "bytes": 4992930200
+        },
+        {
+          "name": "model-00002-of-00003.safetensors",
+          "bytes": 4957878440
+        },
+        {
+          "name": "model-00003-of-00003.safetensors",
+          "bytes": 4176137408
+        }
+      ],
+      "weight_bytes": 14126946048
+    },
+    {
+      "directory": "llava-onevision-qwen2-7b-ov-hf",
+      "path": "/home/team/lvshuyang/Models/llava-onevision-qwen2-7b-ov-hf",
+      "model_type": "llava_onevision",
+      "architectures": [
+        "LlavaOnevisionForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00004.safetensors",
+          "bytes": 4911200360
+        },
+        {
+          "name": "model-00002-of-00004.safetensors",
+          "bytes": 4991497664
+        },
+        {
+          "name": "model-00003-of-00004.safetensors",
+          "bytes": 4932752752
+        },
+        {
+          "name": "model-00004-of-00004.safetensors",
+          "bytes": 1226266240
+        }
+      ],
+      "weight_bytes": 16061717016
+    },
+    {
+      "directory": "MiniCPM-V-2_6",
+      "path": "/home/team/lvshuyang/Models/MiniCPM-V-2_6",
+      "model_type": "minicpmv",
+      "architectures": [
+        "MiniCPMV"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00004.safetensors",
+          "bytes": 4874808328
+        },
+        {
+          "name": "model-00002-of-00004.safetensors",
+          "bytes": 4932751496
+        },
+        {
+          "name": "model-00003-of-00004.safetensors",
+          "bytes": 4330865648
+        },
+        {
+          "name": "model-00004-of-00004.safetensors",
+          "bytes": 2060017080
+        }
+      ],
+      "weight_bytes": 16198442552
+    },
+    {
+      "directory": "MiniCPM-V-4_5",
+      "path": "/home/team/lvshuyang/Models/MiniCPM-V-4_5",
+      "model_type": "minicpmv",
+      "architectures": [
+        "MiniCPMV"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00004.safetensors",
+          "bytes": 5286612176
+        },
+        {
+          "name": "model-00002-of-00004.safetensors",
+          "bytes": 5301855088
+        },
+        {
+          "name": "model-00003-of-00004.safetensors",
+          "bytes": 4546851120
+        },
+        {
+          "name": "model-00004-of-00004.safetensors",
+          "bytes": 2256571800
+        }
+      ],
+      "weight_bytes": 17391890184
+    },
+    {
+      "directory": "Phi-3.5-vision-instruct",
+      "path": "/home/team/lvshuyang/Models/Phi-3.5-vision-instruct",
+      "model_type": "phi3_v",
+      "architectures": [
+        "Phi3VForCausalLM"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00002.safetensors",
+          "bytes": 4944122112
+        },
+        {
+          "name": "model-00002-of-00002.safetensors",
+          "bytes": 3349208776
+        }
+      ],
+      "weight_bytes": 8293330888
+    },
+    {
+      "directory": "Qwen2.5-VL-7B-Instruct",
+      "path": "/home/team/lvshuyang/Models/Qwen2.5-VL-7B-Instruct",
+      "model_type": "qwen2_5_vl",
+      "architectures": [
+        "Qwen2_5_VLForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00005.safetensors",
+          "bytes": 3900233256
+        },
+        {
+          "name": "model-00002-of-00005.safetensors",
+          "bytes": 3864726320
+        },
+        {
+          "name": "model-00003-of-00005.safetensors",
+          "bytes": 3864726424
+        },
+        {
+          "name": "model-00004-of-00005.safetensors",
+          "bytes": 3864733680
+        },
+        {
+          "name": "model-00005-of-00005.safetensors",
+          "bytes": 1089994880
+        }
+      ],
+      "weight_bytes": 16584414560
+    },
+    {
+      "directory": "llava-1.5-13b-hf",
+      "path": "/home/team/lvshuyang/Models/llava-1.5-13b-hf",
+      "model_type": "llava",
+      "architectures": [
+        "LlavaForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00006.safetensors",
+          "bytes": 4962087016
+        },
+        {
+          "name": "model-00002-of-00006.safetensors",
+          "bytes": 4970423200
+        },
+        {
+          "name": "model-00003-of-00006.safetensors",
+          "bytes": 4881273536
+        },
+        {
+          "name": "model-00004-of-00006.safetensors",
+          "bytes": 4933723208
+        },
+        {
+          "name": "model-00005-of-00006.safetensors",
+          "bytes": 4933723208
+        },
+        {
+          "name": "model-00006-of-00006.safetensors",
+          "bytes": 2021860512
+        }
+      ],
+      "weight_bytes": 26703090680
+    },
+    {
+      "directory": "llava-v1.6-vicuna-7b-hf",
+      "path": "/home/team/lvshuyang/Models/llava-v1.6-vicuna-7b-hf",
+      "model_type": "llava_next",
+      "architectures": [
+        "LlavaNextForConditionalGeneration"
+      ],
+      "weight_files": [
+        {
+          "name": "model-00001-of-00003.safetensors",
+          "bytes": 4992938464
+        },
+        {
+          "name": "model-00002-of-00003.safetensors",
+          "bytes": 4957878440
+        },
+        {
+          "name": "model-00003-of-00003.safetensors",
+          "bytes": 4176137408
+        }
+      ],
+      "weight_bytes": 14126954312
+    }
+  ],
+  "total_weight_bytes": 162461857144
+}

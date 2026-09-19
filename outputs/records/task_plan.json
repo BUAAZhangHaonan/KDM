@@ -1,0 +1,36 @@
+{
+  "status": "planned_not_executed",
+  "manifest": "data/current/all.jsonl",
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "n_samples": 9167,
+  "dataset_splits": [
+    {
+      "dataset": "food101",
+      "split": "dev",
+      "n": 2424
+    },
+    {
+      "dataset": "food101",
+      "split": "eval",
+      "n": 2424
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "dev",
+      "n": 818
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "eval",
+      "n": 3501
+    }
+  ],
+  "n_fixed_candidates": 16,
+  "census_per_model": 18334,
+  "census_total": 293344,
+  "experiment_selection": "pending_complete_census_and_semantic_review",
+  "evaluation_samples_if_both_datasets_selected": 5925,
+  "independent_attempts_per_evaluation_sample": 10,
+  "closed_candidates_per_food_evaluation_sample": 101,
+  "formal_completed": 0
+}
