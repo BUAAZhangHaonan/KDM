@@ -57,9 +57,14 @@ class SIDControl:
         tok = getattr(backend.em, 'img_ctx_id', None)
         if tok is None:
             tok = getattr(backend.model.config, 'image_token_id', None)
-        if tok is None:
-            raise RuntimeError('SID visual mapping unavailable: no explicit expanded image token id')
-        positions = (ids[0] == tok).nonzero(as_tuple=True)[0]
+        if getattr(backend.model.config, 'model_type', None) == 'phi3_v':
+            # Native Phi3ImageEmbedding.forward indexes exactly these expanded
+            # positions before clamping ids and writing projected visual vectors.
+            positions = ((ids[0] < 0) & (ids[0] > -int(1e9))).nonzero(as_tuple=True)[0]
+        else:
+            if tok is None:
+                raise RuntimeError('SID visual mapping unavailable: no explicit expanded image token id')
+            positions = (ids[0] == tok).nonzero(as_tuple=True)[0]
         if not len(positions):
             raise RuntimeError('SID visual mapping unavailable: no image token positions')
         self.start = int(positions.min())
@@ -92,6 +97,7 @@ class SIDControl:
         had_override = 'forward' in module.__dict__
         old_override = module.__dict__.get('forward')
         hooks = []
+        downstream_overrides = []
         attention = None
         selected = None
         # Legacy SDPA attention only delegates to eager when output_attentions=True.
@@ -142,6 +148,22 @@ class SIDControl:
             module.forward = capture
             for index, layer in enumerate(self.layers[2:], 2):
                 hooks.append(layer.register_forward_pre_hook(hook(index), with_kwargs=True))
+                attn = layer.self_attn
+                # FA2's padding/unpadding API consumes a 2D padding mask, not
+                # SID's query-specific 4D additive causal mask. Eager implements
+                # that exact mask; restore dispatch immediately after the call.
+                if getattr(attn.config, '_attn_implementation', None) == 'flash_attention_2':
+                    saved = ('forward' in attn.__dict__, attn.__dict__.get('forward'))
+                    downstream_overrides.append((attn, saved))
+                    original = attn.forward
+                    def eager_forward(*args, _module=attn, _forward=original, **kwargs):
+                        previous = _module.config._attn_implementation
+                        _module.config._attn_implementation = 'eager'
+                        try:
+                            return _forward(*args, **kwargs)
+                        finally:
+                            _module.config._attn_implementation = previous
+                    attn.forward = eager_forward
             yield
         finally:
             if had_override:
@@ -150,6 +172,11 @@ class SIDControl:
                 del module.forward
             for handle in hooks:
                 handle.remove()
+            for attn, (had_override, old_override) in reversed(downstream_overrides):
+                if had_override:
+                    attn.forward = old_override
+                else:
+                    del attn.forward
             self.b._sid_active_control = None
 
     def close(self):

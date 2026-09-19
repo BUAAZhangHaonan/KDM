@@ -16,6 +16,7 @@ from typing import Optional
 import numpy as np
 import torch
 from kdm.models.sid import SIDControl, SIDSession
+from kdm.models.hf import HFSession
 
 ROOT = Path(__file__).resolve().parents[1]
 COMMIT = '127dd412fa6b61ab1c9babf6979ec4da98002438'
@@ -173,7 +174,24 @@ def main():
         tokens=backend.encode(' food dish plate')
         if len(tokens)<3:raise RuntimeError('Verification continuation requires three native tokenizer tokens')
         prefixes=[(),tuple(tokens[:1]),tuple(tokens[:2]),tuple(tokens[:2]),tuple(tokens[2:3]),(),tuple(tokens[:3])]
+        clean_before=[]
+        for inputs in (a,b):
+            native=backend._forward(inputs=inputs,ohs=False)
+            native_logits=native.logits[0,-1].float().detach().cpu().numpy().copy()
+            del native
+            clean=HFSession(backend,inputs,False,False).next(()).logits
+            clean_before.append((native_logits,float(np.max(np.abs(native_logits-clean)))))
         report['checks'],report['evidence']=compare(backend,a,b,prefixes)
+        clean_checks=[]
+        for inputs,(native_logits,before_error) in zip((a,b),clean_before):
+            after=HFSession(backend,inputs,False,False).next(()).logits
+            after_error=float(np.max(np.abs(native_logits-after)))
+            clean_checks.append({'native_to_clean_before_max_abs_error':before_error,
+                                 'native_to_clean_after_sid_max_abs_error':after_error})
+        report['clean_native_logits']=clean_checks
+        report['checks']['clean_native_logits_preserved']=all(
+            row['native_to_clean_before_max_abs_error']==0. and
+            row['native_to_clean_after_sid_max_abs_error']==0. for row in clean_checks)
         report['passed']=all(report['checks'].values())
         if not report['passed']:raise RuntimeError('SID numerical source comparison failed; see checks/evidence')
     except Exception as exc:

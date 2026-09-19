@@ -89,3 +89,32 @@ def test_rank_never_clamped_and_visual_span_must_be_expanded(backend):
         SIDSession(backend,{'input_ids':torch.tensor([[1,159,2]])})
     bad=inputs();bad['input_ids'][0,51]=3
     with pytest.raises(RuntimeError,match='not contiguous'):SIDSession(backend,bad)
+
+
+def test_phi_visual_positions_use_native_negative_predicate(backend):
+    backend.model.config.model_type='phi3_v'
+    ids=inputs()['input_ids'].clone();ids[ids==159]=-1
+    session=SIDSession(backend,{'input_ids':ids})
+    assert session.control.start==1 and session.control.length==104
+    bad=ids.clone();bad[0,50]=-1000000000
+    with pytest.raises(RuntimeError,match='not contiguous'):
+        SIDSession(backend,{'input_ids':bad})
+
+
+def test_downstream_flash_dispatch_scoped_and_restored_even_on_error(backend):
+    control=SIDSession(backend,inputs()).control
+    cfg=backend.model.config;cfg._attn_implementation='flash_attention_2'
+    before=[]
+    for layer in backend.model.model.layers[2:]:
+        def observe(**kwargs):return cfg._attn_implementation
+        layer.self_attn.forward=observe
+        before.append(observe)
+    with pytest.raises(RuntimeError,match='scope exit'):
+        with control.forward_scope(108,108):
+            for layer in backend.model.model.layers[2:]:
+                assert layer.self_attn.forward()=='eager'
+                assert cfg._attn_implementation=='flash_attention_2'
+            raise RuntimeError('scope exit')
+    assert [layer.self_attn.forward for layer in backend.model.model.layers[2:]]==before
+    assert cfg._attn_implementation=='flash_attention_2'
+    assert all(not layer._forward_pre_hooks for layer in backend.model.model.layers)

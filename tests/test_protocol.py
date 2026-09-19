@@ -41,7 +41,7 @@ def test_runtime_rejects_unresolved_and_unlocked_model(tmp_path):
     with pytest.raises(ValueError, match="GPU count"):
         validate_runtime(tmp_path,spec,"m",["0"])
     spec["gpu_count"]=1
-    with pytest.raises(ValueError, match="worker"):
+    with pytest.raises(ValueError, match="[Ww]orker"):
         validate_runtime(tmp_path,spec,"m",["0"])
 
 
