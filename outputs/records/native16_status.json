@@ -102,11 +102,11 @@
   {
     "key": "qwen3vl",
     "record": "outputs/verification/qwen3vl_6403_native16_v1.json",
-    "status": "pending",
-    "completed": 0,
-    "current_spec_identity_matches": false,
+    "status": "passed",
+    "completed": 16,
+    "current_spec_identity_matches": true,
     "current_adapter_sources_match": true,
-    "layer_projection": "pending",
+    "layer_projection": "passed",
     "physical_gpus": [
       "1"
     ],

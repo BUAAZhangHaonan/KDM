@@ -15,7 +15,7 @@
   "thinking_mode": "disabled",
   "gpu_count": 1,
   "interface_verification": {
-    "status": "pending",
+    "status": "passed",
     "record": "outputs/verification/qwen3vl_6403_native16_v1.json",
     "scope": "new 6403 GPU1 existing runtime; old 4028 proofs remain historical"
   },
@@ -88,13 +88,13 @@
   },
   "census_api_port": null,
   "mechanism_validation": {
-    "dola_layers": "projection_pending_6403_configuration",
-    "deco_layers": "projection_pending_6403_configuration",
+    "dola_layers": "projection_verified_only",
+    "deco_layers": "projection_verified_only",
     "sid_reference": {
       "status": "pending",
       "record": "outputs/verification/qwen3vl_6403_sid_reference_v1_summary.json"
     },
-    "text_only_condition": "pending_6403_configuration"
+    "text_only_condition": "passed_fixed16_state_isolation"
   },
   "visual_count_verification": {
     "status": "pending",
