@@ -26,7 +26,7 @@ def main(argv=None):
     q=sub.add_parser('analyze');q.add_argument('--records',nargs='+',required=True);q.add_argument('--annotations',required=True);q.add_argument('--aliases',required=True);q.add_argument('--out',required=True);q.add_argument('--vqa-normalizer')
     q=sub.add_parser('closed-probe');q.add_argument('--manifest',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
     q=sub.add_parser('replay');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
-    q=sub.add_parser('mechanism');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
+    q=sub.add_parser('mechanism');q.add_argument('--methods',default='vcd,m3id,dola,deco');q.add_argument('--records',required=True);q.add_argument('--model-spec',required=True);q.add_argument('--model',required=True);q.add_argument('--gpu',type=int,choices=[0,1,4,5],required=True);q.add_argument('--out',required=True)
     a=p.parse_args(argv);root=setup(a.root)
     from .io import within,read_jsonl,atomic_json,file_hash,Ledger,stable_hash,stable_seed
     out=within(root,a.out)
@@ -42,12 +42,18 @@ def main(argv=None):
     if a.command=='select':
         from .annotation import validate_annotations
         from .pipeline import select_models
-        ann=validate_annotations(a.annotations);ids=[r['id'] for r in read_jsonl(a.manifest)]
+        ann=validate_annotations(a.annotations);samples=list(read_jsonl(a.manifest))
+        from .protocol import validate_census_collection
+        candidates=[r['key'] for r in json.load(open(root/'configs/kdm/models.json'))]
+        validate_census_collection(a.census,samples,candidates)
+        ids=[r['id'] for r in samples]
         atomic_json(out,select_models(a.census,ann,ids));return
     if a.command=='analyze':
         from .analysis import annotated_rows,evaluate,export_csv,probe_summary
         from .annotation import validate_annotations
         ann=validate_annotations(a.annotations);aliases=json.load(open(a.aliases));normalizer=None
+        if not a.vqa_normalizer and any(r['sample']['dataset']=='vizwiz' for path in a.records for r in read_jsonl(path)):
+            a.vqa_normalizer=str(root/'src/kdm/models/official_vqa_normalizer.py')
         if a.vqa_normalizer:
             import importlib.util
             spec=importlib.util.spec_from_file_location('official_vqa',a.vqa_normalizer);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
@@ -66,7 +72,8 @@ def main(argv=None):
     from .decoding import DecodeConfig,replay
     from .prompts import MARKERS
     spec=json.load(open(a.model_spec));backend=make_backend(spec,'cuda:0')
-    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v1'}
+    from .protocol import code_identity
+    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':code_identity(root)}
     if a.command=='run':
         samples=list(read_jsonl(a.manifest));identity['manifest_sha256']=file_hash(a.manifest)
         cfg=DecodeConfig()
@@ -78,7 +85,8 @@ def main(argv=None):
         print(run_tasks(backend,a.model,tasks,out,identity,cfg,a.shard,a.n_shards));return
     if a.command=='closed-probe':
         from PIL import Image
-        samples=list(read_jsonl(a.manifest));names=sorted({s['class'] for s in samples if s['dataset']=='food101'})
+        samples=list(read_jsonl(a.manifest));names=sorted(json.load(open(root/'configs/kdm/food_aliases.json')))
+        if len(names)!=101:raise ValueError('Closed measurement requires all 101 frozen Food-101 classes')
         ledger=Ledger(out,{**identity,'manifest':file_hash(a.manifest),'names':names})
         for sample in samples:
             if sample['dataset']!='food101' or sample['split']!='eval':continue
@@ -94,8 +102,9 @@ def main(argv=None):
         for record in read_jsonl(a.records):
             if record['method']!='direct' or not record['guided'] or record['sample']['split']!='eval':continue
             if record.get('tokens') is None:raise ValueError('Mechanism requires matching backend token records')
-            for method in ('vcd','m3id'):
-                for refmarker in MARKERS:
+            for method in a.methods.split(','):
+                reference_markers=MARKERS if method in {'vcd','m3id','sid'} else (record['marker'],)
+                for refmarker in reference_markers:
                     key=stable_hash([record['key'],method,refmarker,'mechanism'])
                     if key in ledger.keys:continue
                     with Image.open(record['sample']['image_path']) as image:
@@ -104,20 +113,29 @@ def main(argv=None):
         return
     if a.command=='replay':
         from PIL import Image
-        ledger=Ledger(out,{**identity,'records':file_hash(a.records),'replay':'actual_generated_path'})
-        for record in read_jsonl(a.records):
+        ledger=Ledger(out,{**identity,'records':file_hash(a.records),'replay':'direct_response_path'})
+        records=list(read_jsonl(a.records))
+        donors={}
+        for row in records:
+            if row['method']=='direct' and row.get('guided') and row['sample']['split']=='eval':
+                donor_id=(row['sample']['id'],row['marker'])
+                if donor_id in donors:raise ValueError('Duplicate direct replay donor')
+                donors[donor_id]=row
+        for record in records:
             if record.get('tokens') is None:raise ValueError('Replay requires token records from matching backend')
             if record['method'] not in {'vcd','m3id','dola','deco','sid'}:continue
             key=record['key']
             if key in ledger.keys:continue
+            donor=donors.get((record['sample']['id'],record['marker']))
+            if donor is None or not donor.get('tokens'):raise ValueError('Missing matching direct response token donor')
             cfg=DecodeConfig(**record['config']);task=record
             with Image.open(record['sample']['image_path']) as image:
                 main,ref,_,_,_=sessions(backend,image.convert('RGB'),task,cfg,record['seed'])
                 groups={'declared_marker_initial_tokens':sorted({backend.encode(text)[0] for text in MARKERS if backend.encode(text)})}
-                try:trace=replay(main,ref,cfg,record['tokens'],groups)
+                try:trace=replay(main,ref,cfg,donor['tokens'],groups)
                 finally:
                     if getattr(backend,'sid_control',None):
                         backend.sid_control.close();backend.sid_control=None
-            ledger.add(key,{'status':'ok','model':a.model,'sample':record['sample'],'trace':json_safe(trace)})
+            ledger.add(key,{'status':'ok','model':a.model,'sample':record['sample'],'method':record['method'],'marker':record['marker'],'reference_marker':record['reference_marker'],'reference_guided':record['reference_guided'],'seed':record['seed'],'config':record['config'],'donor_key':donor['key'],'donor_tokens':donor['tokens'],'trace':json_safe(trace)})
 
 if __name__=='__main__':main()
