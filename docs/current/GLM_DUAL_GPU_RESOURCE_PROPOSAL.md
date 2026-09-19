@@ -1,5 +1,7 @@
 # GLM最大输入资源双卡提案（只读，未获执行授权）
 
+> 历史提案状态更新：本提案后来获授权，4028双卡native16已自然完成；用户随后指定6403 GPU1，后续SID/资源组改在6403新配置执行并全部通过。当前身份详见6403_MIGRATION_VERIFICATION.md。下文保留提出时的原始边界。
+
 当前单卡spec未改。视觉token数最大的真实VizWiz图为6030，独立need_layers单图分支在空前缀发生真实OOM：申请1.71GiB、剩余826MiB，allocated峰值23,814,273,536 bytes；406.8秒后失败。该输入及原始错误保留于glm46v_max_input_resource_v1_layer.json/log，未降配置或重试。其余两个独立原配置组合正在既有授权内核验，结果另列补充review。
 
 实际checkpoint架构Glm4vForConditionalGeneration，text_config.num_hidden_layers=40，未绑定输入embedding与输出head权重。当前transformers 5.17.0实装Glm4vForConditionalGeneration构造(1284行)包含model及lm_head；Glm4vModel(915行)包含visual与language_model；Glm4vTextModel(812行)包含embed_tokens、40个layers、norm、rotary_emb。提案JSON记录实际源码段、路径与SHA，没有依据名称推测。

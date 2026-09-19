@@ -8,7 +8,7 @@
 |---|---|---|---|
 |gemma3_12b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_12b_sid_reference.json`; 完整raw `outputs/verification/gemma3_12b_sid_reference.json` / 同名 `.log`|
 |gemma3_4b|runtime_mask_contract_error|ValueError: SID requires an additive floating 4D full-KV causal mask|`outputs/verification/gemma3_4b_sid_reference.json`; 完整raw `outputs/verification/gemma3_4b_sid_reference.json` / 同名 `.log`|
-|glm46v|prior_configuration_passed_recheck_pending|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/glm46v_sid_reference_v2_summary.json`; 完整raw `outputs/verification/glm46v_sid_reference_v2.json` / 同名 `.log`|
+|glm46v|passed_6403_gpu1|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/glm46v_6403_sid_reference_v1_summary.json`; 完整raw `outputs/verification/glm46v_6403_sid_reference_v1.json` / 同名 `.log`|
 |internvl35_8b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/internvl35_8b_sid_reference_v3_summary.json`; 完整raw见摘要detail_evidence|
 |llava15_13b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_13b_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
 |llava15_7b|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/llava15_7b_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
@@ -21,10 +21,12 @@
 |qwen25vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen25vl_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
 |qwen35_4b|fixed_reference_structure_incompatible|Fixed SID reads second decoder self_attn weights, but registered layer_types[1]=linear_attention constructs Qwen3_5GatedDeltaNet as linear_attn (no self_attn). Selecting another full-attention layer would change agg_layer=2 protocol.|`outputs/verification/qwen35_4b_sid_reference.json`; 完整raw `outputs/verification/qwen35_4b_sid_reference.json` / 同名 `.log`|
 |qwen35_9b|fixed_reference_structure_incompatible|Fixed SID reads second decoder self_attn weights, but registered layer_types[1]=linear_attention constructs Qwen3_5GatedDeltaNet as linear_attn (no self_attn). Selecting another full-attention layer would change agg_layer=2 protocol.|`outputs/verification/qwen35_9b_sid_reference.json`; 完整raw `outputs/verification/qwen35_9b_sid_reference.json` / 同名 `.log`|
-|qwen3vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen3vl_sid_reference_v2_summary.json`; 完整raw见摘要detail_evidence|
+|qwen3vl|passed|14 visits; max logit error=0.0; fresh error=0.0|`outputs/verification/qwen3vl_6403_sid_reference_v1_summary.json`; 完整raw见摘要detail_evidence|
 
 映射调查详见 `docs/current/SID_VISUAL_MAPPING_REVIEW.md` 和 `outputs/verification/{minicpm26,minicpm45,phi35}_sid_visual_mapping.json`。Mini两版均有64<100的原生输入，属于固定rank在实际样本未定义；Phi原生757连续位置映射已在v2实现并真实前向验收通过，native/clean前后logits零差。InternVL双卡为另外获准的新factory，旧单卡OOM记录保留。
 
 分类解释：`fixed_reference_structure_incompatible` 表示实际结构不具备固定第二层attention定义；`adapter_structural_mapping_gap` 表示当前适配器未实现实际结构/视觉区间映射，不能推断该模型本质上不能定义SID；`oom` 是资源失败；`runtime_error` 是软件/运行错误；`numerical_mismatch` 是实际对照未通过。后三类不能写成架构不支持。
 
 启动异常保留：LLaVA-v1.6-Vicuna第一次只在shell层因worker.sh无执行位失败（模型未加载），日志为 `outputs/verification/llava16_vicuna_sid_reference.launch_error.log`；随后用bash运行同一脚本，未改变权限或模型参数。
+
+2026-09-19迁移补充：Qwen3VL和GLM现按最新授权使用6403物理GPU1，实际现有环境下native16、SID及三资源组均已重做通过。上方执行过程中的4028卡号说明仅属旧运行；新host/spec/证据见6403_MIGRATION_VERIFICATION.md。

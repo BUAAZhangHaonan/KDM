@@ -1,5 +1,7 @@
 # Qwen3VL最大输入资源双卡提案（只读，未获执行授权）
 
+> 历史提案状态更新：本提案未执行，已由用户指定6403 GPU1方案取代。6403新配置native16、SID和三组最大输入均通过。当前身份详见6403_MIGRATION_VERIFICATION.md。下文保留提出时的原始边界。
+
 当前单卡spec未改。最大真实VizWiz图4860视觉token在instruction VCD第3图像分支及CDA第3图像分支分别发生真实OOM；独立layer分支通过。两份原始失败记录保留。Qwen25三组均通过，本提案不为它新增资源配置。
 
 实际配置为36个Qwen3VLTextDecoderLayer，源码链为HFBackend → get_engine → FamilyModel → AutoModelForImageTextToText.from_pretrained，已传入显式device_map/max_memory。已安装transformers 5.17.0中Qwen3VLForConditionalGeneration(1272行)包含model及lm_head；Qwen3VLModel(878行)包含visual和language_model；Qwen3VLTextModel(757行)包含embed_tokens、layers、norm和rotary_emb。源码完整SHA及构造段见JSON，非依据模型名称推测。
