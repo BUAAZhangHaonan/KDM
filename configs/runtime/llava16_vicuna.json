@@ -69,7 +69,8 @@
   },
   "adapter_source_sha256": {
     "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
-    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
   },
   "input_limits": {
     "policy": "checkpoint_processor_defaults",
@@ -79,7 +80,11 @@
   "mechanism_validation": {
     "dola_layers": "projection_verified_only",
     "deco_layers": "projection_verified_only",
-    "sid_reference": "not_verified",
+    "sid_reference": {
+      "status": "passed",
+      "record": "outputs/verification/llava16_vicuna_sid_reference_v2_summary.json",
+      "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+    },
     "text_only_condition": "passed_fixed16_state_isolation"
   }
 }

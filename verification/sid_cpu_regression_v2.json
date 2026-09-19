@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "CPU software regression only; registered model proof is separate",
+  "cuda_visible_devices": "",
+  "passed": 8,
+  "seconds": 5.89,
+  "tests": [
+    "tests/test_backends.py",
+    "tests/test_sid_sessions.py"
+  ],
+  "files": {
+    "src/kdm/models/sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037",
+    "verification/sid_reference_check.py": "e0bb85fcfa0476eaab2b63db8a2600922a5ba5a1ad994fef729fed1e22a5f8a7",
+    "tests/test_sid_sessions.py": "dad145786f01ba97924205cbc838d0cdb219ea306ad9d906d72c55e9714759b7"
+  }
+}

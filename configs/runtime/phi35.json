@@ -66,7 +66,7 @@
   "adapter_source_sha256": {
     "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
     "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
-    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+    "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037",
     "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
   },
   "input_limits": {
@@ -83,7 +83,11 @@
       "status": "projection_verified",
       "record": "outputs/verification/phi35_final16.json"
     },
-    "sid_reference": "not_verified",
+    "sid_reference": {
+      "status": "passed",
+      "record": "outputs/verification/phi35_sid_reference_v2_summary.json",
+      "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+    },
     "text_only_condition": {
       "status": "passed",
       "record": "outputs/verification/phi35_final16.json",

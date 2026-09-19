@@ -1,0 +1,224 @@
+{
+  "scope": "Executed by data_assets agent; exec_session_id is orchestrator handle, not Linux PID. Every GPU launch used worker.sh locks and registered environment_python. No model retry before authorized v2 source repair.",
+  "runs": [
+    {
+      "key": "llava16_vicuna",
+      "version": 1,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 56076,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/llava16_vicuna_sid_reference.json",
+      "log": "outputs/verification/llava16_vicuna_sid_reference.log"
+    },
+    {
+      "key": "llava16_mistral",
+      "version": 1,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 64203,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/llava16_mistral_sid_reference.json",
+      "log": "outputs/verification/llava16_mistral_sid_reference.log"
+    },
+    {
+      "key": "onevision",
+      "version": 1,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 29724,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/onevision_sid_reference.json",
+      "log": "outputs/verification/onevision_sid_reference.log"
+    },
+    {
+      "key": "gemma3_4b",
+      "version": 1,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 56136,
+      "exit_code": 1,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/gemma3_4b_sid_reference.json",
+      "log": "outputs/verification/gemma3_4b_sid_reference.log"
+    },
+    {
+      "key": "qwen25vl",
+      "version": 1,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 50536,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/qwen25vl_sid_reference.json",
+      "log": "outputs/verification/qwen25vl_sid_reference.log"
+    },
+    {
+      "key": "qwen3vl",
+      "version": 1,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 35447,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/qwen3vl_sid_reference.json",
+      "log": "outputs/verification/qwen3vl_sid_reference.log"
+    },
+    {
+      "key": "internvl35_8b",
+      "version": 1,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 65254,
+      "exit_code": 1,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/internvl35_8b_sid_reference.json",
+      "log": "outputs/verification/internvl35_8b_sid_reference.log"
+    },
+    {
+      "key": "llava15_13b",
+      "version": 1,
+      "physical_gpus": [
+        "4",
+        "5"
+      ],
+      "exec_session_id": 85575,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/llava15_13b_sid_reference.json",
+      "log": "outputs/verification/llava15_13b_sid_reference.log"
+    },
+    {
+      "key": "gemma3_12b",
+      "version": 1,
+      "physical_gpus": [
+        "4",
+        "5"
+      ],
+      "exec_session_id": 54144,
+      "exit_code": 1,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/gemma3_12b_sid_reference.json",
+      "log": "outputs/verification/gemma3_12b_sid_reference.log"
+    },
+    {
+      "key": "phi35",
+      "version": 2,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 60650,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+      "proof": "outputs/verification/phi35_sid_reference_v2.json",
+      "log": "outputs/verification/phi35_sid_reference_v2.log"
+    },
+    {
+      "key": "internvl35_8b",
+      "version": 2,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 36600,
+      "exit_code": 1,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/internvl35_8b_sid_reference_v2.json",
+      "log": "outputs/verification/internvl35_8b_sid_reference_v2.log"
+    },
+    {
+      "key": "llava15_7b",
+      "version": 2,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 84809,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/llava15_7b_sid_reference_v2.json",
+      "log": "outputs/verification/llava15_7b_sid_reference_v2.log"
+    },
+    {
+      "key": "llava16_vicuna",
+      "version": 2,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 86613,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/llava16_vicuna_sid_reference_v2.json",
+      "log": "outputs/verification/llava16_vicuna_sid_reference_v2.log"
+    },
+    {
+      "key": "llava16_mistral",
+      "version": 2,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 71108,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/llava16_mistral_sid_reference_v2.json",
+      "log": "outputs/verification/llava16_mistral_sid_reference_v2.log"
+    },
+    {
+      "key": "onevision",
+      "version": 2,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 47524,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/onevision_sid_reference_v2.json",
+      "log": "outputs/verification/onevision_sid_reference_v2.log"
+    },
+    {
+      "key": "qwen25vl",
+      "version": 2,
+      "physical_gpus": [
+        "4"
+      ],
+      "exec_session_id": 81101,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/qwen25vl_sid_reference_v2.json",
+      "log": "outputs/verification/qwen25vl_sid_reference_v2.log"
+    },
+    {
+      "key": "qwen3vl",
+      "version": 2,
+      "physical_gpus": [
+        "5"
+      ],
+      "exec_session_id": 30077,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "proof": "outputs/verification/qwen3vl_sid_reference_v2.json",
+      "log": "outputs/verification/qwen3vl_sid_reference_v2.log"
+    },
+    {
+      "key": "llava15_13b",
+      "version": 2,
+      "physical_gpus": [
+        "4",
+        "5"
+      ],
+      "exec_session_id": 16081,
+      "exit_code": 0,
+      "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "proof": "outputs/verification/llava15_13b_sid_reference_v2.json",
+      "log": "outputs/verification/llava15_13b_sid_reference_v2.log"
+    }
+  ]
+}

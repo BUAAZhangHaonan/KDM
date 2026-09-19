@@ -1,0 +1,14 @@
+{
+  "llava16_vicuna": "passed",
+  "llava16_mistral": "passed",
+  "onevision": "passed",
+  "gemma3_4b": "runtime_mask_contract_error",
+  "qwen25vl": "passed",
+  "qwen3vl": "passed",
+  "internvl35_8b": "oom_v2_eager",
+  "minicpm26": "fixed_rank_undefined_on_64_token_inputs",
+  "minicpm45": "fixed_rank_undefined_on_64_token_inputs",
+  "phi35": "passed",
+  "llava15_13b": "passed",
+  "gemma3_12b": "runtime_mask_contract_error"
+}
