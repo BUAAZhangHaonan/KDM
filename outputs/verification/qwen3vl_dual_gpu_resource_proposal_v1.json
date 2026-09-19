@@ -1,0 +1,181 @@
+{
+  "status": "proposal_only_not_authorized_or_executed",
+  "physical_gpu_order": [
+    4,
+    5
+  ],
+  "logical_gpu_map": {
+    "model.visual": 0,
+    "model.language_model.embed_tokens": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.layers.0": 0,
+    "model.language_model.layers.1": 0,
+    "model.language_model.layers.2": 0,
+    "model.language_model.layers.3": 0,
+    "model.language_model.layers.4": 0,
+    "model.language_model.layers.5": 0,
+    "model.language_model.layers.6": 0,
+    "model.language_model.layers.7": 0,
+    "model.language_model.layers.8": 0,
+    "model.language_model.layers.9": 0,
+    "model.language_model.layers.10": 0,
+    "model.language_model.layers.11": 0,
+    "model.language_model.layers.12": 0,
+    "model.language_model.layers.13": 0,
+    "model.language_model.layers.14": 0,
+    "model.language_model.layers.15": 0,
+    "model.language_model.layers.16": 0,
+    "model.language_model.layers.17": 0,
+    "model.language_model.layers.18": 1,
+    "model.language_model.layers.19": 1,
+    "model.language_model.layers.20": 1,
+    "model.language_model.layers.21": 1,
+    "model.language_model.layers.22": 1,
+    "model.language_model.layers.23": 1,
+    "model.language_model.layers.24": 1,
+    "model.language_model.layers.25": 1,
+    "model.language_model.layers.26": 1,
+    "model.language_model.layers.27": 1,
+    "model.language_model.layers.28": 1,
+    "model.language_model.layers.29": 1,
+    "model.language_model.layers.30": 1,
+    "model.language_model.layers.31": 1,
+    "model.language_model.layers.32": 1,
+    "model.language_model.layers.33": 1,
+    "model.language_model.layers.34": 1,
+    "model.language_model.layers.35": 1,
+    "model.language_model.norm": 1,
+    "lm_head": 1
+  },
+  "gpu_count": 2,
+  "dtype": "bfloat16",
+  "max_memory": {
+    "0": "22GiB",
+    "1": "22GiB"
+  },
+  "existing_spec": {
+    "key": "qwen3vl",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/qwen3vl_final16.json",
+      "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 4902275944,
+        "mtime_ns": 1768890948906243838,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "d5d0aef0eb170fc7453a296c43c0849a56f510555d3588e4fd662bb35490aefa",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 4915962496,
+        "mtime_ns": 1768890969998967264,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "8be88fb5501e4d5719a6d4cc212e6a13480330e74f3e8c77daa1a68f199106b5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4999831048,
+        "mtime_ns": 1768891222361237154,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "83de00eafe6e0d57ccd009dbcf71c9974d74df2f016c27afb7e95aafd16b2192",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 2716270024,
+        "mtime_ns": 1768890850850509175,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "0a88b98e9f96270973f567e6a2c103ede6ccdf915ca3075e21c755604d0377a5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "processor": {
+      "path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct",
+      "files": {
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_verified_only",
+      "deco_layers": "projection_verified_only",
+      "sid_reference": {
+        "status": "passed",
+        "record": "outputs/verification/qwen3vl_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "text_only_condition": "passed_fixed16_state_isolation"
+    }
+  },
+  "existing_spec_sha256": "8e6cea6a49b34089dccf76934c609b5d66b8cc140b575242a763035850859814",
+  "model_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+  "sources": {
+    "Qwen3VLForConditionalGeneration": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py",
+      "sha256": "e96511fa034bd734fa06639611bc6cbdf1da12d02104785a9bc265baa764af8a",
+      "constructor_line": 1272,
+      "constructor_source": "    def __init__(self, config):\n        super().__init__(config)\n        self.model = Qwen3VLModel(config)\n        self.lm_head = nn.Linear(config.text_config.hidden_size, config.text_config.vocab_size, bias=False)\n\n        self.post_init()\n"
+    },
+    "Qwen3VLModel": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py",
+      "sha256": "e96511fa034bd734fa06639611bc6cbdf1da12d02104785a9bc265baa764af8a",
+      "constructor_line": 878,
+      "constructor_source": "    def __init__(self, config):\n        super().__init__(config)\n        self.visual = AutoModel.from_config(config.vision_config)\n        self.language_model = AutoModel.from_config(config.text_config)\n        self.rope_deltas = None  # cache rope_deltas here\n\n        # Initialize weights and apply final processing\n        self.post_init()\n"
+    },
+    "Qwen3VLTextModel": {
+      "path": "venv/lib/python3.11/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py",
+      "sha256": "e96511fa034bd734fa06639611bc6cbdf1da12d02104785a9bc265baa764af8a",
+      "constructor_line": 757,
+      "constructor_source": "    def __init__(self, config: Qwen3VLTextConfig):\n        super().__init__(config)\n        self.padding_idx = config.pad_token_id\n        self.vocab_size = config.vocab_size\n\n        self.embed_tokens = nn.Embedding(config.vocab_size, config.hidden_size, self.padding_idx)\n        self.layers = nn.ModuleList(\n            [Qwen3VLTextDecoderLayer(config, layer_idx) for layer_idx in range(config.num_hidden_layers)]\n        )\n        self.norm = Qwen3VLTextRMSNorm(config.hidden_size, eps=config.rms_norm_eps)\n        self.rotary_emb = Qwen3VLTextRotaryEmbedding(config=config)\n        self.gradient_checkpointing = False\n\n        # Initialize weights and apply final processing\n        self.post_init()\n"
+    }
+  },
+  "shared_constructor_path": "HFBackend -> get_engine -> FamilyModel -> AutoModelForImageTextToText.from_pretrained(dtype=torch.bfloat16, device_map=explicit, max_memory=explicit)",
+  "shared_sources_sha256": {
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89"
+  },
+  "unmodified_parameters": [
+    "processor defaults and all image resolution",
+    "checkpoint and BF16 dtype",
+    "native template and no-thinking mode",
+    "rank100/second-layer SID definition",
+    "method and generation parameters"
+  ],
+  "required_acceptance_if_authorized": [
+    "new explicit spec identity and actual placement",
+    "native16 full proof for new identity",
+    "SID oracle for new identity (Food applicability only)",
+    "fresh max-Viz independent groups without retry/fallback"
+  ]
+}

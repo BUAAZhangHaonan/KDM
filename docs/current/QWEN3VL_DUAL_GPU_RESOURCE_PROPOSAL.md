@@ -1,0 +1,11 @@
+# Qwen3VL最大输入资源双卡提案（只读，未获执行授权）
+
+当前单卡spec未改。最大真实VizWiz图4860视觉token在instruction VCD第3图像分支及CDA第3图像分支分别发生真实OOM；独立layer分支通过。两份原始失败记录保留。Qwen25三组均通过，本提案不为它新增资源配置。
+
+实际配置为36个Qwen3VLTextDecoderLayer，源码链为HFBackend → get_engine → FamilyModel → AutoModelForImageTextToText.from_pretrained，已传入显式device_map/max_memory。已安装transformers 5.17.0中Qwen3VLForConditionalGeneration(1272行)包含model及lm_head；Qwen3VLModel(878行)包含visual和language_model；Qwen3VLTextModel(757行)包含embed_tokens、layers、norm和rotary_emb。源码完整SHA及构造段见JSON，非依据模型名称推测。
+
+拟议物理4/5对应逻辑0/1；model.visual、model.language_model.embed_tokens、rotary_emb及layers.0–17置0；layers.18–35、model.language_model.norm及lm_head置1。每个具权重子树恰好归一个卡，不使用父级根映射覆盖子级、不CPU/disk/auto offload，max_memory显式各22GiB。完整逐层device_map在提案JSON。原生视觉编码器中的投影/merger/DeepStack也随model.visual留0；当前FamilyModel的Conv3d等价补丁继续保持既有行为。拟议仅将此映射、max_memory、原有BF16明确写入新spec kwargs并gpu_count=2，不需改共享源。
+
+保持全部原始输入尺寸、processor默认、dtype、模板、权重、方法参数。此处只验证模块路径和构造支持，尚未证明双卡真实前向/跨卡投影等价或最大输入可容纳。执行需新授权；获批后按新spec身份重做native16、Food SID接口和三个独立最大Viz资源组。旧单卡spec完整副本包含于提案JSON existing_spec，当前原文件仍未改；现有native/SID单卡证据不自动适用于新map。
+
+证据：outputs/verification/qwen3vl_dual_gpu_resource_proposal_v1.json；qwen3vl_max_input_resource_v1_{layer,instruction_vcd,cda}.json与同名log。无任何双卡进程已启动。

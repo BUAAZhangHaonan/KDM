@@ -1,0 +1,244 @@
+{
+  "scope": "Maximum-count actual VizWiz image; resource-only fixed prefixes, no generated answers or scientific scores; independent process per actual session group",
+  "passed": false,
+  "spec": {
+    "key": "qwen3vl",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/qwen3vl_final16.json",
+      "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 4902275944,
+        "mtime_ns": 1768890948906243838,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "d5d0aef0eb170fc7453a296c43c0849a56f510555d3588e4fd662bb35490aefa",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 4915962496,
+        "mtime_ns": 1768890969998967264,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "8be88fb5501e4d5719a6d4cc212e6a13480330e74f3e8c77daa1a68f199106b5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4999831048,
+        "mtime_ns": 1768891222361237154,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "83de00eafe6e0d57ccd009dbcf71c9974d74df2f016c27afb7e95aafd16b2192",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 2716270024,
+        "mtime_ns": 1768890850850509175,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "0a88b98e9f96270973f567e6a2c103ede6ccdf915ca3075e21c755604d0377a5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "processor": {
+      "path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct",
+      "files": {
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_verified_only",
+      "deco_layers": "projection_verified_only",
+      "sid_reference": {
+        "status": "passed",
+        "record": "outputs/verification/qwen3vl_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "text_only_condition": "passed_fixed16_state_isolation"
+    }
+  },
+  "stage": "instruction_vcd",
+  "script_sha256": "7904e99fdb9e7142cef76f197b03f4e41318aa077a8576b260d983ec85159d91",
+  "command": [
+    "verification/max_input_resource_check.py",
+    "--spec",
+    "configs/runtime/qwen3vl.json",
+    "--stage",
+    "instruction_vcd",
+    "--output",
+    "outputs/verification/qwen3vl_max_input_resource_v1_instruction_vcd.json"
+  ],
+  "pid": 314020,
+  "cuda_visible_devices": "5",
+  "sample": {
+    "id": "vizwiz:VizWiz_val_00000003.jpg",
+    "dataset": "vizwiz",
+    "split": "eval",
+    "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val/VizWiz_val_00000003.jpg"
+  },
+  "image_size": [
+    2592,
+    1936
+  ],
+  "expected_visual_tokens": 4860,
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "count_record": "outputs/verification/qwen3vl_sid_full_visual_count.json",
+  "count_record_sha256": "ee58da316f78e0c7d7cceed069066574366e5d1cd5ffba1bd56416d7fee00d6c",
+  "runtime_adapter_sha256": {
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89"
+  },
+  "visits": [
+    {
+      "prefix_length": 0,
+      "branch": "main",
+      "logit_shape": [
+        151936
+      ],
+      "logits_finite": true,
+      "raw_layers": 0,
+      "normalized_layers": 0,
+      "all_layer_logits_finite": true,
+      "layer_shapes": []
+    },
+    {
+      "prefix_length": 0,
+      "branch": "noise_reference",
+      "logit_shape": [
+        151936
+      ],
+      "logits_finite": true,
+      "raw_layers": 0,
+      "normalized_layers": 0,
+      "all_layer_logits_finite": true,
+      "layer_shapes": []
+    }
+  ],
+  "branch_input_shapes": {
+    "main": {
+      "input_ids": [
+        1,
+        4895
+      ],
+      "attention_mask": [
+        1,
+        4895
+      ],
+      "mm_token_type_ids": [
+        1,
+        4895
+      ],
+      "pixel_values": [
+        19440,
+        1536
+      ],
+      "image_grid_thw": [
+        1,
+        3
+      ],
+      "visual_token_count": 4860
+    },
+    "noise_reference": {
+      "input_ids": [
+        1,
+        4882
+      ],
+      "attention_mask": [
+        1,
+        4882
+      ],
+      "mm_token_type_ids": [
+        1,
+        4882
+      ],
+      "pixel_values": [
+        19440,
+        1536
+      ],
+      "image_grid_thw": [
+        1,
+        3
+      ],
+      "visual_token_count": 4860
+    },
+    "neutral": {
+      "input_ids": [
+        1,
+        4882
+      ],
+      "attention_mask": [
+        1,
+        4882
+      ],
+      "mm_token_type_ids": [
+        1,
+        4882
+      ],
+      "pixel_values": [
+        19440,
+        1536
+      ],
+      "image_grid_thw": [
+        1,
+        3
+      ],
+      "visual_token_count": 4860
+    }
+  },
+  "phase": "forward/0/neutral",
+  "gpu_names": [
+    "NVIDIA GeForce RTX 3090"
+  ],
+  "model_load_peak_bytes": [
+    17534319616
+  ],
+  "branch_order": [
+    "main",
+    "noise_reference",
+    "neutral"
+  ],
+  "seed": 709457523,
+  "fixed_prefix_token_ids": [
+    3607,
+    12000
+  ],
+  "error_type": "OutOfMemoryError",
+  "error": "CUDA out of memory. Tried to allocate 1.38 GiB. GPU 0 has a total capacity of 23.56 GiB of which 1.02 GiB is free. Including non-PyTorch memory, this process has 22.53 GiB memory in use. Of the allocated memory 21.49 GiB is allocated by PyTorch, and 745.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/verification/max_input_resource_check.py\", line 56, in main\n    step=session.next(tuple(tokens[:length]));torch.cuda.synchronize()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/hf.py\", line 120, in next\n    self.output=self._call(inputs=self.inputs,ohs=self.ohs,text_only=self.text_only)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/hf.py\", line 110, in _call\n    result = self.b._forward(**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/hf.py\", line 94, in _forward\n    if inputs is not None: return self.model(**inputs,use_cache=True,output_hidden_states=ohs)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/miniconda3/envs/py311/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/miniconda3/envs/py311/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/venv/lib/python3.11/site-packages/transformers/utils/generic.py\", line 939, in wrapper\n    output = func(self, *args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/projects/knowledge-deficit-mitigation/venv/lib/python3.11/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py\", line 1379, in forward\n    logits = self.lm_head(hidden_states[:, slice_indices, :])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/miniconda3/envs/py311/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1775, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/miniconda3/envs/py311/lib/python3.11/site-packages/torch/nn/modules/module.py\", line 1786, in _call_impl\n    return forward_call(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g203-4028/miniconda3/envs/py311/lib/python3.11/site-packages/torch/nn/modules/linear.py\", line 134, in forward\n    return F.linear(input, self.weight, self.bias)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.38 GiB. GPU 0 has a total capacity of 23.56 GiB of which 1.02 GiB is free. Including non-PyTorch memory, this process has 22.53 GiB memory in use. Of the allocated memory 21.49 GiB is allocated by PyTorch, and 745.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n",
+  "elapsed_seconds": 22.180951654096134,
+  "peak_allocated_bytes": [
+    23804253696
+  ],
+  "peak_reserved_bytes": [
+    24222105600
+  ]
+}

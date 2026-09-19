@@ -1,0 +1,107 @@
+{
+  "scope": "Maximum-visual-token real VizWiz example, prefixes 0/1/2 and three actual session groups only; not maximum over question lengths or all 32 generation steps",
+  "rows": [
+    {
+      "model": "qwen25vl",
+      "stage": "layer",
+      "record": "outputs/verification/qwen25vl_max_input_resource_v1_layer.json",
+      "sha256": "44082a079087d8e0d75b35f1bf2686c6dc8a117a3d9182a9b5631a39c1a36640",
+      "passed": true,
+      "completed_visits": 3,
+      "phase": "complete",
+      "peak_allocated_bytes": [
+        20401233408
+      ],
+      "peak_reserved_bytes": [
+        21611151360
+      ],
+      "error_type": null,
+      "expected_visual_tokens": 6417
+    },
+    {
+      "model": "qwen25vl",
+      "stage": "instruction_vcd",
+      "record": "outputs/verification/qwen25vl_max_input_resource_v1_instruction_vcd.json",
+      "sha256": "7388f2501ed20d62920d3eb57a8e43baf736454fece4226a33e6a9779afefda3",
+      "passed": true,
+      "completed_visits": 9,
+      "phase": "complete",
+      "peak_allocated_bytes": [
+        24004324864
+      ],
+      "peak_reserved_bytes": [
+        24354226176
+      ],
+      "error_type": null,
+      "expected_visual_tokens": 6417
+    },
+    {
+      "model": "qwen25vl",
+      "stage": "cda",
+      "record": "outputs/verification/qwen25vl_max_input_resource_v1_cda.json",
+      "sha256": "a930be37bb8857ec9b0b7d2cb64b97330d8eb976f037d1a8c23416d7f6438443",
+      "passed": true,
+      "completed_visits": 15,
+      "phase": "complete",
+      "peak_allocated_bytes": [
+        24023890432
+      ],
+      "peak_reserved_bytes": [
+        24496832512
+      ],
+      "error_type": null,
+      "expected_visual_tokens": 6417
+    },
+    {
+      "model": "qwen3vl",
+      "stage": "layer",
+      "record": "outputs/verification/qwen3vl_max_input_resource_v1_layer.json",
+      "sha256": "9800445dade9d70a37de4a59fdfd73f3a9f58e6ff677c193792a77948943faf3",
+      "passed": true,
+      "completed_visits": 3,
+      "phase": "complete",
+      "peak_allocated_bytes": [
+        21734113792
+      ],
+      "peak_reserved_bytes": [
+        23563599872
+      ],
+      "error_type": null,
+      "expected_visual_tokens": 4860
+    },
+    {
+      "model": "qwen3vl",
+      "stage": "instruction_vcd",
+      "record": "outputs/verification/qwen3vl_max_input_resource_v1_instruction_vcd.json",
+      "sha256": "556dd462f9051347c11d4446ee547e197d4d5bc6fc6d131adc2c26fc5c5c39eb",
+      "passed": false,
+      "completed_visits": 2,
+      "phase": "forward/0/neutral",
+      "peak_allocated_bytes": [
+        23804253696
+      ],
+      "peak_reserved_bytes": [
+        24222105600
+      ],
+      "error_type": "OutOfMemoryError",
+      "expected_visual_tokens": 4860
+    },
+    {
+      "model": "qwen3vl",
+      "stage": "cda",
+      "record": "outputs/verification/qwen3vl_max_input_resource_v1_cda.json",
+      "sha256": "5d5fb9ef59a22b7a3dd85cf9976f8edf5fff34baddd821907b15fe976a30bb1b",
+      "passed": false,
+      "completed_visits": 4,
+      "phase": "forward/0/null_context_image",
+      "peak_allocated_bytes": [
+        23821041152
+      ],
+      "peak_reserved_bytes": [
+        24110956544
+      ],
+      "error_type": "OutOfMemoryError",
+      "expected_visual_tokens": 4860
+    }
+  ]
+}
