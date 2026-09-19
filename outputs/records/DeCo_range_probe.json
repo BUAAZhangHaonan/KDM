@@ -1,0 +1,9 @@
+{
+  "url": "https://arxiv.org/pdf/2410.11779",
+  "range": "bytes=0-1023",
+  "status_code": 206,
+  "content_range": "bytes 0-1023/32629411",
+  "content_length": "1024",
+  "etag": "\"sha256:56ac0d1432031b0e0d298b384863264c4ec31252752a2d3485feb3eacb21825c\"",
+  "actual_bytes": 1024
+}

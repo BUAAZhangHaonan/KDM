@@ -1,0 +1,25 @@
+{
+  "url": "https://arxiv.org/pdf/2410.11779",
+  "status_code": 206,
+  "headers": {
+    "Connection": "keep-alive",
+    "Content-Length": "1024",
+    "server": "Google Frontend",
+    "link": "<https://arxiv.org/pdf/2410.11779>; rel='canonical'",
+    "etag": "\"sha256:56ac0d1432031b0e0d298b384863264c4ec31252752a2d3485feb3eacb21825c\"",
+    "via": "1.1 google, 1.1 varnish, 1.1 varnish, 1.1 varnish",
+    "last-modified": "Tue, 25 Feb 2025 02:08:35 GMT",
+    "access-control-allow-origin": "*",
+    "content-type": "application/pdf",
+    "x-cloud-trace-context": "37fd8ca1ae4412f764251a441aca348a",
+    "content-disposition": "inline; filename=\"2410.11779v2.pdf\"",
+    "Accept-Ranges": "bytes",
+    "Date": "Sat, 19 Sep 2026 09:47:07 GMT",
+    "Age": "131600",
+    "X-Served-By": "cache-lga-kjfk8660051-LGA, cache-lga-kjfk8660051-LGA, cache-lga-kjfk8660051-LGA, cache-nrt-rjaa8190033-NRT",
+    "X-Cache": "MISS, HIT, HIT",
+    "X-Timer": "S1789811228.953662,VS0,VE3",
+    "Content-Range": "bytes 0-1023/32629411"
+  },
+  "sha256": "5fc23906981c36524cf02890e4f6caa5391cb6881563dde3c7afb2e8d9bc5044"
+}

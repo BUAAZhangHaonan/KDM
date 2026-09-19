@@ -1,0 +1,24 @@
+[
+  {
+    "group": "vizwiz",
+    "url": "https://vizwiz.cs.colorado.edu/VizWiz_final/vqa_data/Annotations.zip",
+    "local_path": "cache/assets/vizwiz/Annotations.zip",
+    "extract_to": "cache/assets/vizwiz/extracted",
+    "started_at": "2026-09-19T09:12:26.659432+00:00",
+    "downloaded_sha256": "dbc32fc1e3f1b1039aea906030d569d6c238b4ddb2eea5e3453a6a565c829ec9",
+    "bytes": 1711273,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:12:54.295374+00:00"
+  },
+  {
+    "group": "vizwiz",
+    "url": "https://vizwiz.cs.colorado.edu/VizWiz_final/images/val.zip",
+    "local_path": "cache/assets/vizwiz/val.zip",
+    "extract_to": "cache/assets/vizwiz/extracted",
+    "started_at": "2026-09-19T09:12:54.301491+00:00",
+    "downloaded_sha256": "7cc829c1fbcbc9ffd0a895f9df33d4b365557289c037a578ea9f812e41422469",
+    "bytes": 3488913457,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:21:40.107300+00:00"
+  }
+]

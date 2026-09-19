@@ -1,0 +1,12 @@
+[
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2309.03883",
+    "local_path": "cache/assets/references/papers/DoLa.pdf",
+    "started_at": "2026-09-19T09:49:55.966764+00:00",
+    "downloaded_sha256": "c4ad9cd07b6e0550156886ad1189df01fb5fd75829fbf0510de9628bbb6ac87f",
+    "bytes": 704245,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:50:01.503555+00:00"
+  }
+]

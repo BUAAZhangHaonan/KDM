@@ -1,0 +1,108 @@
+{
+  "url": "https://arxiv.org/pdf/2410.11779",
+  "transport": "Eight parallel explicit HTTP byte ranges; same official URL; TLS verified; no retry or mirror",
+  "expected_bytes": 32629411,
+  "expected_etag": "\"sha256:56ac0d1432031b0e0d298b384863264c4ec31252752a2d3485feb3eacb21825c\"",
+  "started_at": "2026-09-19T09:46:32.516185+00:00",
+  "chunks": [
+    {
+      "part": 6,
+      "start": 24472062,
+      "end": 28550738,
+      "path": "cache/assets/references/parts/DeCo/06.bin",
+      "status_code": 206,
+      "content_range": "bytes 24472062-28550738/32629411",
+      "etag": "\"sha256:f12fda3fb3abade05048c8bc284c3ecdc3570f2060772ff73d4b981ff74dda8b\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 4,
+      "start": 16314708,
+      "end": 20393384,
+      "path": "cache/assets/references/parts/DeCo/04.bin",
+      "status_code": 206,
+      "content_range": "bytes 16314708-20393384/32629411",
+      "etag": "\"sha256:62b1f3d4ffdba67d5b0cf1bb5dda8b3067871ca0a7e450dc4a0f1e46806b5158\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 5,
+      "start": 20393385,
+      "end": 24472061,
+      "path": "cache/assets/references/parts/DeCo/05.bin",
+      "status_code": 206,
+      "content_range": "bytes 20393385-24472061/32629411",
+      "etag": "\"sha256:4a44601949c91ef82ecb321921d868fd6d67451ee590bbbc11d4e8c3dc1c25cd\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 2,
+      "start": 8157354,
+      "end": 12236030,
+      "path": "cache/assets/references/parts/DeCo/02.bin",
+      "status_code": 206,
+      "content_range": "bytes 8157354-12236030/32629411",
+      "etag": "\"sha256:d468c65a53eb10166829b89f7d7ac0dc75bdd8df94f31aa1adcfbadc8e26ba9c\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 1,
+      "start": 4078677,
+      "end": 8157353,
+      "path": "cache/assets/references/parts/DeCo/01.bin",
+      "status_code": 206,
+      "content_range": "bytes 4078677-8157353/32629411",
+      "etag": "\"sha256:bd93360831849eedd183d828c4e6b6fe461e20241f5e290da5f30859949dbec7\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 3,
+      "start": 12236031,
+      "end": 16314707,
+      "path": "cache/assets/references/parts/DeCo/03.bin",
+      "status_code": 206,
+      "content_range": "bytes 12236031-16314707/32629411",
+      "etag": "\"sha256:52313cd89f33264e55a535e9aef8d5c47348479e605c57b719349a868496db4c\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 7,
+      "start": 28550739,
+      "end": 32629410,
+      "path": "cache/assets/references/parts/DeCo/07.bin",
+      "status_code": 206,
+      "content_range": "bytes 28550739-32629410/32629411",
+      "etag": "\"sha256:925ccacfad464432ee93daf246e0bc8d21febabb7a49829ae3687d508f93dec7\"",
+      "status": "error",
+      "error_type": "ValueError",
+      "error": "Range response or source identity mismatch"
+    },
+    {
+      "part": 0,
+      "start": 0,
+      "end": 4078676,
+      "path": "cache/assets/references/parts/DeCo/00.bin",
+      "status_code": 206,
+      "content_range": "bytes 0-4078676/32629411",
+      "etag": "\"sha256:56ac0d1432031b0e0d298b384863264c4ec31252752a2d3485feb3eacb21825c\"",
+      "status": "ok",
+      "bytes": 4078677,
+      "sha256": "77b2ea298973f115ec1283843cd6aa48e621338c4fd5ff8ec9fcad4e5d0661c9"
+    }
+  ],
+  "status": "error",
+  "error": "Seven segments rejected because per-range ETag differed; no complete PDF published by this attempt",
+  "finished_at": "2026-09-19T09:52:05.972608+00:00"
+}

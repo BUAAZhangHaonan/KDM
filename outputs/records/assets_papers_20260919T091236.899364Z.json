@@ -1,0 +1,112 @@
+[
+  {
+    "group": "papers",
+    "url": "https://aclanthology.org/2025.acl-long.479.pdf",
+    "local_path": "cache/assets/references/papers/CDA_ACL2025.pdf",
+    "started_at": "2026-09-19T09:12:36.899543+00:00",
+    "downloaded_sha256": "c1417032293446f30f9b4cecad48385346ccc5520e547b3724f7cfb6a3a30b53",
+    "bytes": 2208810,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:12:42.252435+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2504.10020v4",
+    "local_path": "cache/assets/references/papers/Mirage_NeurIPS2025.pdf",
+    "started_at": "2026-09-19T09:12:42.260481+00:00",
+    "downloaded_sha256": "0998ac58273f561ea46ab91532f372f659500a96f530b7165587f9571d7adabc",
+    "bytes": 1054924,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:13:39.661119+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2403.14003",
+    "local_path": "cache/assets/references/papers/M3ID_CVPR2024.pdf",
+    "started_at": "2026-09-19T09:13:39.667903+00:00",
+    "downloaded_sha256": "fbaf559cd744ae3044f94c1b676f53fa01f6721e946cb21c7b3788f9a18cf687",
+    "bytes": 4466856,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:15:58.564935+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2311.16922",
+    "local_path": "cache/assets/references/papers/VCD_CVPR2024.pdf",
+    "started_at": "2026-09-19T09:15:58.573479+00:00",
+    "downloaded_sha256": "b945dc4a315d8a2dd14e6d5831223422ca11b27d351b7b2df45ab011e62bde3d",
+    "bytes": 3285961,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:19:28.467896+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://aclanthology.org/2021.acl-long.522.pdf",
+    "local_path": "cache/assets/references/papers/DExperts_ACL2021.pdf",
+    "started_at": "2026-09-19T09:19:28.474319+00:00",
+    "downloaded_sha256": "45756e189db4e1b072630ded160d99207e4747b9da049b91ca9aea71b85a1327",
+    "bytes": 766228,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:19:30.788753+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2204.13631",
+    "local_path": "cache/assets/references/papers/ReliableVQA_ECCV2022.pdf",
+    "started_at": "2026-09-19T09:19:30.795358+00:00",
+    "downloaded_sha256": "f3f41ab2ed7cd3dfe26477f9145ae01d73ce3839dc91d084fdc0c4a57ce5a838",
+    "bytes": 4330249,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:19:33.002665+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2408.02032",
+    "local_path": "cache/assets/references/papers/SID.pdf",
+    "started_at": "2026-09-19T09:19:33.009198+00:00",
+    "downloaded_sha256": "c7c06d30ac67544075f3876d2c1cd0638d22256a16ff701ca4635ceb048f4576",
+    "bytes": 8886128,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:28:00.796825+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/1206.2459",
+    "local_path": "cache/assets/references/papers/Renyi_divergence.pdf",
+    "started_at": "2026-09-19T09:28:00.806755+00:00",
+    "downloaded_sha256": "f59d9ba87db4099093f313d6309f8ab68925cb8638d8acbc1d5fcd87d4b5bb27",
+    "bytes": 994194,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:28:47.612411+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://aclanthology.org/2024.acl-long.498.pdf",
+    "local_path": "cache/assets/references/papers/MM_SAP_ACL2024.pdf",
+    "started_at": "2026-09-19T09:28:47.623929+00:00",
+    "downloaded_sha256": "e847e4aefa74b963ba9304b385dca1ec7201a8945d774d7a272ff72a204b12e5",
+    "bytes": 3510092,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:28:49.956976+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://arxiv.org/pdf/2412.06775v1",
+    "local_path": "cache/assets/references/papers/VCD_Analysis.pdf",
+    "started_at": "2026-09-19T09:28:49.968640+00:00",
+    "downloaded_sha256": "8daea0d0c891a36f13687a1f031ae118e84f1e1ac1d7c2a6ede1f05b2264b3aa",
+    "bytes": 15115438,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:45:10.033686+00:00"
+  },
+  {
+    "group": "papers",
+    "url": "https://aclanthology.org/2024.findings-acl.937.pdf",
+    "local_path": "cache/assets/references/papers/ICD_FindingsACL2024.pdf",
+    "started_at": "2026-09-19T09:45:10.338939+00:00",
+    "downloaded_sha256": "77c50ee0a659f9ff800cc86cfa2ef7ed9ad692c532690987162e72bb4978d4b8",
+    "bytes": 3947096,
+    "status": "ok",
+    "finished_at": "2026-09-19T09:45:15.025827+00:00"
+  }
+]

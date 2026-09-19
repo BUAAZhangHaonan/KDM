@@ -1,0 +1,142 @@
+{
+  "status": "complete",
+  "checked_utc": "2026-09-19T09:59:45.335497+00:00",
+  "transport_exit_code": 0,
+  "models": [
+    {
+      "directory": "gemma-3-4b-it",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it",
+      "complete": true,
+      "weight_bytes": 8600277880,
+      "shards": {
+        "model-00001-of-00002.safetensors": 4961251752,
+        "model-00002-of-00002.safetensors": 3639026128
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "gemma-3-12b-it",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it",
+      "complete": true,
+      "weight_bytes": 24374793024,
+      "shards": {
+        "model-00001-of-00005.safetensors": 4979902192,
+        "model-00002-of-00005.safetensors": 4931296592,
+        "model-00003-of-00005.safetensors": 4931296656,
+        "model-00004-of-00005.safetensors": 4931296656,
+        "model-00005-of-00005.safetensors": 4601000928
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "llava-1.5-7b-hf",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-7b-hf",
+      "complete": true,
+      "weight_bytes": 14126946048,
+      "shards": {
+        "model-00001-of-00003.safetensors": 4992930200,
+        "model-00002-of-00003.safetensors": 4957878440,
+        "model-00003-of-00003.safetensors": 4176137408
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "llava-onevision-qwen2-7b-ov-hf",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf",
+      "complete": true,
+      "weight_bytes": 16061717016,
+      "shards": {
+        "model-00001-of-00004.safetensors": 4911200360,
+        "model-00002-of-00004.safetensors": 4991497664,
+        "model-00003-of-00004.safetensors": 4932752752,
+        "model-00004-of-00004.safetensors": 1226266240
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "MiniCPM-V-2_6",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-2_6",
+      "complete": true,
+      "weight_bytes": 16198442552,
+      "shards": {
+        "model-00001-of-00004.safetensors": 4874808328,
+        "model-00002-of-00004.safetensors": 4932751496,
+        "model-00003-of-00004.safetensors": 4330865648,
+        "model-00004-of-00004.safetensors": 2060017080
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "MiniCPM-V-4_5",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-4_5",
+      "complete": true,
+      "weight_bytes": 17391890184,
+      "shards": {
+        "model-00001-of-00004.safetensors": 5286612176,
+        "model-00002-of-00004.safetensors": 5301855088,
+        "model-00003-of-00004.safetensors": 4546851120,
+        "model-00004-of-00004.safetensors": 2256571800
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "Phi-3.5-vision-instruct",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Phi-3.5-vision-instruct",
+      "complete": true,
+      "weight_bytes": 8293330888,
+      "shards": {
+        "model-00001-of-00002.safetensors": 4944122112,
+        "model-00002-of-00002.safetensors": 3349208776
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "Qwen2.5-VL-7B-Instruct",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/Qwen2.5-VL-7B-Instruct",
+      "complete": true,
+      "weight_bytes": 16584414560,
+      "shards": {
+        "model-00001-of-00005.safetensors": 3900233256,
+        "model-00002-of-00005.safetensors": 3864726320,
+        "model-00003-of-00005.safetensors": 3864726424,
+        "model-00004-of-00005.safetensors": 3864733680,
+        "model-00005-of-00005.safetensors": 1089994880
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "llava-1.5-13b-hf",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-13b-hf",
+      "complete": true,
+      "weight_bytes": 26703090680,
+      "shards": {
+        "model-00001-of-00006.safetensors": 4962087016,
+        "model-00002-of-00006.safetensors": 4970423200,
+        "model-00003-of-00006.safetensors": 4881273536,
+        "model-00004-of-00006.safetensors": 4933723208,
+        "model-00005-of-00006.safetensors": 4933723208,
+        "model-00006-of-00006.safetensors": 2021860512
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    },
+    {
+      "directory": "llava-v1.6-vicuna-7b-hf",
+      "destination": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf",
+      "complete": true,
+      "weight_bytes": 14126954312,
+      "shards": {
+        "model-00001-of-00003.safetensors": 4992938464,
+        "model-00002-of-00003.safetensors": 4957878440,
+        "model-00003-of-00003.safetensors": 4176137408
+      },
+      "validation": "exact source file sizes and safetensors header offsets; no weight rehash"
+    }
+  ],
+  "total_weight_bytes": 162461857144,
+  "source_unchanged": "read-only scp source",
+  "user_confirmed_sources": {
+    "mprisk": "6403:/home/team/zhanghaonan/TAFFC/mprisk",
+    "models": "6403-lsy:/home/team/lvshuyang/Models"
+  },
+  "connection_alias_used": "6403-lvshuyang"
+}

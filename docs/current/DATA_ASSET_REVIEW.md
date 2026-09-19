@@ -18,7 +18,9 @@
 
 原 VQA raw.githubusercontent.com 地址在本机验证 TLS 时出现自签名证书链错误；失败记录保留。随后明确改为 GitHub 官方 API 的固定 Git blob `e4ff7887d53195f12856ab1e9087e69abe2e75c8`，继续启用 TLS 校验，解码后验证 blob SHA1 完全一致。原源码 SHA256 为 `f08edfcad5be0112500993e245c706b6cb928eadebe203f89f838e5e0d04bec8`。提取到 `src/kdm/models/official_vqa_normalizer.py` 的只有官方六项初始化字段及两个归一化方法；没有替换评分定义。
 
-论文从 ACL Anthology 或 arXiv 官方地址下载，实际文件指纹在下载记录中。纯文本由 pdftotext -layout 从对应 PDF 生成，位置为 `cache/assets/references/papers/*.txt`。获取和转换全文不等于已经通读或证实论文论断。
+论文从 ACL Anthology 或 arXiv 官方地址下载，实际文件指纹在下载记录中。纯文本由 pdftotext -layout 从对应 PDF 生成，位置为 `cache/assets/references/papers/*.txt`。已取得 13 篇 PDF 并逐一成功转为非空纯文本，包含新增 DoLa 与 DeCo；每份 PDF/文本指纹、字节数见 `outputs/records/reference_asset_review.json`。获取和转换全文不等于已经通读或证实论文论断。
+
+DeCo 官方无版本 URL 明确返回 v2；下载固定到同一 v2。首次并行分段因服务对不同 Range 返回不同 ETag 被拒绝，失败记录完整保留。第二次使用固定版本 URL，逐段核验响应文件名、Last-Modified、Content-Range 与字节数，再按顺序拼接 32,629,411 字节；全文 SHA256 为 `20ed2b353eeb09cac8fbd9bffb88cf4fcca59e0e82af8657f528697a540c185e`。两个版本探针的首 1024 字节一致，首段完整 4,078,677 字节在两个 URL 下也一致。原始尝试和恢复证据见 `outputs/records/DeCo*_download.json`。所有论文最终仍由统一下载器记录 SHA256，已有完整文件没有重新传输。
 
 ## VizWiz 与合并清单
 

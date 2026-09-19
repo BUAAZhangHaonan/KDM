@@ -81,7 +81,9 @@
   },
   {
     "group": "papers",
-    "url": "https://arxiv.org/pdf/2410.11779",
-    "local_path": "cache/assets/references/papers/DeCo.pdf"
+    "url": "https://arxiv.org/pdf/2410.11779v2",
+    "local_path": "cache/assets/references/papers/DeCo.pdf",
+    "original_url": "https://arxiv.org/pdf/2410.11779",
+    "resolved_version": "v2 confirmed by official unversioned response Content-Disposition"
   }
 ]

@@ -1,0 +1,146 @@
+{
+  "status": "complete",
+  "n_papers": 13,
+  "scope": "Official-source acquisition and PDF-to-text extraction only; this record does not assert full scientific reading or formula validation",
+  "tool": "pdftotext -layout",
+  "time_utc": "2026-09-19T09:54:41.120705+00:00",
+  "papers": [
+    {
+      "url": "https://aclanthology.org/2025.acl-long.479.pdf",
+      "pdf": "cache/assets/references/papers/CDA_ACL2025.pdf",
+      "pdf_sha256": "c1417032293446f30f9b4cecad48385346ccc5520e547b3724f7cfb6a3a30b53",
+      "pdf_bytes": 2208810,
+      "text": "cache/assets/references/papers/CDA_ACL2025.txt",
+      "text_sha256": "3f22bfaab7a5f58522df761c45df25c8fe717b58cdd8717f29a3a5318cc5fd36",
+      "text_bytes": 146581,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2504.10020v4",
+      "pdf": "cache/assets/references/papers/Mirage_NeurIPS2025.pdf",
+      "pdf_sha256": "0998ac58273f561ea46ab91532f372f659500a96f530b7165587f9571d7adabc",
+      "pdf_bytes": 1054924,
+      "text": "cache/assets/references/papers/Mirage_NeurIPS2025.txt",
+      "text_sha256": "ca7bd73a218fdf66154d6931d41605476b9b5adf25bca4a2e2d6cdf960aab3e9",
+      "text_bytes": 85755,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2403.14003",
+      "pdf": "cache/assets/references/papers/M3ID_CVPR2024.pdf",
+      "pdf_sha256": "fbaf559cd744ae3044f94c1b676f53fa01f6721e946cb21c7b3788f9a18cf687",
+      "pdf_bytes": 4466856,
+      "text": "cache/assets/references/papers/M3ID_CVPR2024.txt",
+      "text_sha256": "a7b1e31ee137a5ffacfa5f56bbad5907fd0d885f33793ff5e9705f603575a60e",
+      "text_bytes": 273289,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2311.16922",
+      "pdf": "cache/assets/references/papers/VCD_CVPR2024.pdf",
+      "pdf_sha256": "b945dc4a315d8a2dd14e6d5831223422ca11b27d351b7b2df45ab011e62bde3d",
+      "pdf_bytes": 3285961,
+      "text": "cache/assets/references/papers/VCD_CVPR2024.txt",
+      "text_sha256": "f20615072b041e81fa4d8bcf653c2e6257447f3955d72796059488c52af2fefb",
+      "text_bytes": 118718,
+      "status": "ok"
+    },
+    {
+      "url": "https://aclanthology.org/2021.acl-long.522.pdf",
+      "pdf": "cache/assets/references/papers/DExperts_ACL2021.pdf",
+      "pdf_sha256": "45756e189db4e1b072630ded160d99207e4747b9da049b91ca9aea71b85a1327",
+      "pdf_bytes": 766228,
+      "text": "cache/assets/references/papers/DExperts_ACL2021.txt",
+      "text_sha256": "2df34991c435f317b956a93c6a58b73e41dac79795aa880b97fee43bf700275b",
+      "text_bytes": 80163,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2204.13631",
+      "pdf": "cache/assets/references/papers/ReliableVQA_ECCV2022.pdf",
+      "pdf_sha256": "f3f41ab2ed7cd3dfe26477f9145ae01d73ce3839dc91d084fdc0c4a57ce5a838",
+      "pdf_bytes": 4330249,
+      "text": "cache/assets/references/papers/ReliableVQA_ECCV2022.txt",
+      "text_sha256": "efaf6337a2fc59332edb52438ebc3ae0132a6129a7ec4335736037a58d631a34",
+      "text_bytes": 128001,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2408.02032",
+      "pdf": "cache/assets/references/papers/SID.pdf",
+      "pdf_sha256": "c7c06d30ac67544075f3876d2c1cd0638d22256a16ff701ca4635ceb048f4576",
+      "pdf_bytes": 8886128,
+      "text": "cache/assets/references/papers/SID.txt",
+      "text_sha256": "5cc4a9e713f70229bd0af073683855d6c297bca4f159a6195860b875f594df63",
+      "text_bytes": 138265,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1206.2459",
+      "pdf": "cache/assets/references/papers/Renyi_divergence.pdf",
+      "pdf_sha256": "f59d9ba87db4099093f313d6309f8ab68925cb8638d8acbc1d5fcd87d4b5bb27",
+      "pdf_bytes": 994194,
+      "text": "cache/assets/references/papers/Renyi_divergence.txt",
+      "text_sha256": "29fb29ad9bc8bad3fa210eef833be32ee5436a20f9c0650d69a83fe62c182a41",
+      "text_bytes": 209004,
+      "status": "ok"
+    },
+    {
+      "url": "https://aclanthology.org/2024.acl-long.498.pdf",
+      "pdf": "cache/assets/references/papers/MM_SAP_ACL2024.pdf",
+      "pdf_sha256": "e847e4aefa74b963ba9304b385dca1ec7201a8945d774d7a272ff72a204b12e5",
+      "pdf_bytes": 3510092,
+      "text": "cache/assets/references/papers/MM_SAP_ACL2024.txt",
+      "text_sha256": "193cb5e65af6105e70db3cff22a4a551084c0ec4b4a32136dda7b3155b3dbdbc",
+      "text_bytes": 84319,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2412.06775v1",
+      "pdf": "cache/assets/references/papers/VCD_Analysis.pdf",
+      "pdf_sha256": "8daea0d0c891a36f13687a1f031ae118e84f1e1ac1d7c2a6ede1f05b2264b3aa",
+      "pdf_bytes": 15115438,
+      "text": "cache/assets/references/papers/VCD_Analysis.txt",
+      "text_sha256": "03d88c5f9a4b7c92fbe1fcfe82965476b3cd4fc77829f7848e26d2dab9ad74f1",
+      "text_bytes": 85883,
+      "status": "ok"
+    },
+    {
+      "url": "https://aclanthology.org/2024.findings-acl.937.pdf",
+      "pdf": "cache/assets/references/papers/ICD_FindingsACL2024.pdf",
+      "pdf_sha256": "77c50ee0a659f9ff800cc86cfa2ef7ed9ad692c532690987162e72bb4978d4b8",
+      "pdf_bytes": 3947096,
+      "text": "cache/assets/references/papers/ICD_FindingsACL2024.txt",
+      "text_sha256": "ca310937378159d6ffb404b8cabbe5e95e0025f9a937c0923265ccfd11cc15e5",
+      "text_bytes": 73809,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2309.03883",
+      "pdf": "cache/assets/references/papers/DoLa.pdf",
+      "pdf_sha256": "c4ad9cd07b6e0550156886ad1189df01fb5fd75829fbf0510de9628bbb6ac87f",
+      "pdf_bytes": 704245,
+      "text": "cache/assets/references/papers/DoLa.txt",
+      "text_sha256": "1f2d8a5efa48550b945d69da87c42ca03c40ec6cf6f6db73f25835193d89b62e",
+      "text_bytes": 136038,
+      "status": "ok"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2410.11779v2",
+      "pdf": "cache/assets/references/papers/DeCo.pdf",
+      "pdf_sha256": "20ed2b353eeb09cac8fbd9bffb88cf4fcca59e0e82af8657f528697a540c185e",
+      "pdf_bytes": 32629411,
+      "text": "cache/assets/references/papers/DeCo.txt",
+      "text_sha256": "5dcc2f6c3eed9a8c94619cdfd565e3ad59840704e0a0108694589d6c4aed5db3",
+      "text_bytes": 148176,
+      "status": "ok"
+    }
+  ],
+  "DeCo_transport_evidence": [
+    "outputs/records/DeCo_range_probe.json",
+    "outputs/records/DeCo_range_header_diagnosis.json",
+    "outputs/records/DeCo_segmented_download.json",
+    "outputs/records/DeCo_v2_probe.json",
+    "outputs/records/DeCo_v2_segmented_download.json"
+  ]
+}

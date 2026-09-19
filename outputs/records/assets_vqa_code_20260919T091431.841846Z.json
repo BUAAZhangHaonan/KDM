@@ -1,0 +1,17 @@
+[
+  {
+    "group": "vqa_code",
+    "url": "https://api.github.com/repos/GT-Vision-Lab/VQA/git/blobs/e4ff7887d53195f12856ab1e9087e69abe2e75c8",
+    "local_path": "cache/assets/vqa_code/vqaEval_original.py",
+    "vqa_normalizer": true,
+    "original_url": "https://raw.githubusercontent.com/GT-Vision-Lab/VQA/master/PythonEvaluationTools/vqaEvaluation/vqaEval.py",
+    "github_blob": "e4ff7887d53195f12856ab1e9087e69abe2e75c8",
+    "started_at": "2026-09-19T09:14:31.842022+00:00",
+    "response_sha256": "8b4514ec62831b688e8aac6ce4ee55cf02005eadad11b9cd51de567a5097d229",
+    "downloaded_sha256": "f08edfcad5be0112500993e245c706b6cb928eadebe203f89f838e5e0d04bec8",
+    "bytes": 8428,
+    "status": "ok",
+    "git_blob_sha1": "e4ff7887d53195f12856ab1e9087e69abe2e75c8",
+    "finished_at": "2026-09-19T09:14:32.235627+00:00"
+  }
+]
