@@ -37,16 +37,18 @@ def vqa_score(answer,answers,normalizer=None):
     Formal VizWiz scoring passes the vendored official normalization function.
     """
     if len(answers)!=10: raise ValueError("Ten independent answers are required")
-    fn=normalizer or normalize
+    if normalizer is None:raise ValueError("Official VQA normalizer is required")
+    fn=normalizer
     pred=fn(answer); gold=[fn(a['answer'] if isinstance(a,dict) else a) for a in answers]
     return sum(min(1,sum(pred==b for j,b in enumerate(gold) if j!=i)/3)
                for i in range(10))/10
 
 
 def label_response(text,annotations,key):
-    literal=lexical_label(text)
-    if literal is not None: return literal
-    if key not in annotations: raise ValueError(f"Missing semantic annotation: {key}")
+    if key not in annotations:
+        literal=lexical_label(text)
+        if literal is not None:return literal
+        raise ValueError(f"Missing semantic annotation: {key}")
     row=annotations[key]
     if row.get('text')!=text or row.get('label') not in LABELS:
         raise ValueError("Semantic annotation content mismatch")

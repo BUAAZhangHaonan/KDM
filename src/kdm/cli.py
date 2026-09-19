@@ -46,6 +46,10 @@ def main(argv=None):
         from .protocol import validate_census_collection
         candidates=[r['key'] for r in json.load(open(root/'configs/kdm/models.json'))]
         validate_census_collection(a.census,samples,candidates)
+        for path in a.census:
+            for record in read_jsonl(path):
+                if record['key'] not in ann or ann[record['key']].get('text')!=record['text']:
+                    raise ValueError('Every census response, including lexical labels, requires matching unified annotation')
         ids=[r['id'] for r in samples]
         atomic_json(out,select_models(a.census,ann,ids));return
     if a.command=='analyze':
@@ -71,9 +75,11 @@ def main(argv=None):
     from .pipeline import make_backend,run_tasks,census_tasks,experiment_tasks,probe_tasks,closed_rank,sessions,json_safe
     from .decoding import DecodeConfig,replay
     from .prompts import MARKERS
-    spec=json.load(open(a.model_spec));backend=make_backend(spec,'cuda:0')
+    spec=json.load(open(a.model_spec))
     from .protocol import code_identity
-    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':code_identity(root)}
+    source_blobs=code_identity(root)
+    backend=make_backend(spec,'cuda:0')
+    identity={'backend':spec,'backend_spec_sha256':file_hash(a.model_spec),'schema':'kdm_current_v2','source_blobs':source_blobs}
     if a.command=='run':
         samples=list(read_jsonl(a.manifest));identity['manifest_sha256']=file_hash(a.manifest)
         cfg=DecodeConfig()

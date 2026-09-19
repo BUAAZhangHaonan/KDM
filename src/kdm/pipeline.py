@@ -35,7 +35,7 @@ def experiment_tasks(samples,methods=('vcd','m3id','dola','deco'),markers=MARKER
             yield {'sample':sample,'method':'direct','marker':marker,'reference_marker':marker,
                    'guided':True,'reference_guided':True,'replicate':0,'kind':'main'}
             for method in methods:
-                refs=markers if method in {'vcd','m3id'} else (marker,)
+                refs=markers if method in {'vcd','m3id','sid'} else (marker,)
                 for refmarker in refs:
                     yield {'sample':sample,'method':method,'marker':marker,'reference_marker':refmarker,
                            'guided':True,'reference_guided':True,'replicate':0,'kind':'main'}
@@ -107,7 +107,10 @@ def run_tasks(backend,model,tasks,out,identity,cfg=DecodeConfig(),shard=0,n_shar
                     backend.sid_control.close();backend.sid_control=None
                 del main,reference,neutral
             ledger.add(key,{'key':key,**{k:v for k,v in task.items() if k!='sample'},'sample':task['sample'],
-                        'model':model,'prompt':prompt,'config':asdict(current),'seed':seed,
+                        'model':model,'prompt':prompt,
+                        'reference_prompt':task_prompt(task['sample']['question'],task['reference_marker'],task['reference_guided']) if task['method']!='direct' else None,
+                        'neutral_prompt':task_prompt(task['sample']['question'],guided=False) if task['method'].startswith('instruction_') else None,
+                        'config':asdict(current),'seed':seed,
                         'wall_s':time.perf_counter()-started,**result})
         except Exception as e:
             error=Path(str(out)+'.errors.jsonl')
@@ -171,7 +174,10 @@ def finite_response_audit(backend,image,question,main_marker,reference_marker,ob
         base=list(entry['tokens']) if 'tokens' in entry else backend.encode(text)
         if not base:raise ValueError('Empty candidate sequence')
         if any(tok in backend.eos for tok in base[:-1]):raise ValueError('EOS appears before response end')
-        sequences=[tuple(base)] if base[-1] in backend.eos else [tuple(base+[eos]) for eos in sorted(backend.eos)]
+        if not backend.eos:raise ValueError('Registered termination tokens are required')
+        if base[-1] in backend.eos:base=base[:-1]
+        if not base:raise ValueError('Empty complete response')
+        sequences=[tuple(base+[eos]) for eos in sorted(backend.eos)]
         for toks in sequences:
             if toks in seen:
                 if seen[toks]!=kind:raise ValueError('Same token sequence assigned to conflicting response groups')
@@ -179,12 +185,13 @@ def finite_response_audit(backend,image,question,main_marker,reference_marker,ob
             seen[toks]=kind;candidates.append((kind,text,toks))
     if not any(c[0]=='answer' for c in candidates):raise ValueError('Answer candidates required')
     sample={'question':question};task={'sample':sample,'method':cfg.method,'marker':main_marker,
-            'reference_marker':reference_marker,'guided':True,'reference_guided':True}
-    main,ref,_,main_prompt,_=sessions(backend,image,task,cfg,seed=seed)
+            'reference_marker':reference_marker,'guided':True,'reference_guided':not cfg.method.startswith('instruction_')}
+    main,ref,neutral,main_prompt,_=sessions(backend,image,task,cfg,seed=seed)
     if cfg.method=='m3id':cfg=replace(cfg,m3id_offset=len(backend.encode(main_prompt)))
+    if cfg.method=='instruction_m3id':cfg=replace(cfg,m3id_offset=len(backend.encode(task_prompt(question,guided=False))))
     result=[]
     for kind,text,tokens in candidates:
-        steps=replay(main,ref,cfg,tokens)
+        steps=replay(main,ref,cfg,tokens,neutral_main=neutral)
         result.append({'kind':kind,'text':text,'tokens':list(tokens),
                        'base_logp':sum(s['base_logp'] for s in steps),
                        'modified_logp':sum(s['modified_logp'] for s in steps),
@@ -192,6 +199,8 @@ def finite_response_audit(backend,image,question,main_marker,reference_marker,ob
     p=np.array([r['base_logp'] for r in result]);m=np.array([r['modified_logp'] for r in result]);a=np.array([r['kind']=='abstention' for r in result])
     if not np.isfinite(m).any():raise ValueError('Declared response set has no method support')
     closure=complete_response_shift(p,m,a)
+    if cfg.method=='sid' and getattr(backend,'sid_control',None):
+        backend.sid_control.close();backend.sid_control=None
     return {'responses':result,'finite_response_identity':closure,
             'measurement_scope':'conditional_on_listed_complete_token_sequences'}
 

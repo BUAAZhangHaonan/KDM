@@ -1,0 +1,45 @@
+{
+  "source": "reference_repos/dola/transformers-4.28.1/src/transformers/generation/utils.py",
+  "commit": "805230e57e63ca561cb759994681b122ff6f81f0",
+  "greedy_source_lines": [
+    2684,
+    2694
+  ],
+  "seed": 724,
+  "trial_zero_based": 16,
+  "distribution_draw": "normal(0,3), vocab=5; one mature and two early distributions per trial",
+  "mature_probabilities": [
+    0.363402988306941,
+    0.006403965371936864,
+    0.6280813372734737,
+    0.001760105532837803,
+    0.00035160351481025484
+  ],
+  "early_probabilities": [
+    [
+      0.8783052239941233,
+      0.024122320602781862,
+      0.009496898495989952,
+      0.07911574533276851,
+      0.00895981157433684
+    ],
+    [
+      0.9881617089691945,
+      0.003179001670709243,
+      0.0074913042402055315,
+      0.0001744659972668864,
+      0.0009935191226238187
+    ]
+  ],
+  "standard_js": [
+    0.28031291289974863,
+    0.2756679027139847
+  ],
+  "official_selection_criterion": [
+    0.11359074851074738,
+    0.11387170054017708
+  ],
+  "standard_selected_layer_index": 0,
+  "official_selected_layer_index": 1,
+  "scope": "synthetic counterexample to selection equivalence; no model generation"
+}

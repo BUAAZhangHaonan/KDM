@@ -77,6 +77,21 @@ def distribution(main:Step,reference:Step|None,cfg:DecodeConfig,t:int):
     raise ValueError(f"Unknown decoder: {cfg.method}")
 
 
+def step_distribution(main,reference,cfg,t,neutral=None):
+    """One implementation for free generation and exact-prefix replay."""
+    if cfg.method not in {'instruction_vcd','instruction_m3id'}:
+        return distribution(main,reference,cfg,t)
+    if neutral is None or reference is None:raise ValueError('Three sessions required')
+    from .probability import instruction_preserving
+    weight=cfg.alpha;active=weight>0
+    if cfg.method=='instruction_m3id':
+        active=bool(np.exp(log_normalize(neutral.logits).max())<cfg.m3id_threshold)
+        weight=float(np.expm1(cfg.m3id_lambda*(t+cfg.m3id_offset))) if active else 0.
+    out,keep=instruction_preserving(main.logits,neutral.logits,reference.logits,weight,
+                                    0. if cfg.method=='instruction_m3id' else cfg.beta)
+    return out,{'weight':weight,'active':active,'layer':None,'n_retained':int(keep.sum())}
+
+
 def sampling_distribution(logp,cfg):
     if cfg.temperature==0:
         out=np.full_like(logp,-np.inf);out[int(np.argmax(logp))]=0.;return out
@@ -99,19 +114,8 @@ def generate(main,reference,cfg,eos,decode,seed=0,neutral_main=None):
     rng=np.random.default_rng(seed);tokens=[];lp_selected=[];trace=[]
     for t in range(cfg.max_tokens):
         m=main.next(tuple(tokens));r=reference.next(tuple(tokens)) if reference else None
-        if cfg.method in {'instruction_vcd','instruction_m3id'}:
-            if neutral_main is None or r is None: raise ValueError("Three sessions required")
-            from .probability import instruction_preserving
-            neutral=neutral_main.next(tuple(tokens))
-            weight=cfg.alpha
-            if cfg.method=='instruction_m3id':
-                gate=np.exp(log_normalize(neutral.logits).max())<cfg.m3id_threshold
-                weight=float(np.expm1(cfg.m3id_lambda*(t+cfg.m3id_offset))) if gate else 0.
-            out,keep=instruction_preserving(m.logits,neutral.logits,r.logits,weight,
-                                             0. if cfg.method=='instruction_m3id' else cfg.beta)
-            meta={'weight':weight,'active':weight>0,'layer':None,'n_retained':int(keep.sum())}
-        else:
-            out,meta=distribution(m,r,cfg,t)
+        neutral=neutral_main.next(tuple(tokens)) if neutral_main else None
+        out,meta=step_distribution(m,r,cfg,t,neutral)
         tok=draw_token(out,cfg,rng)
         tokens.append(tok);lp_selected.append(float(out[tok]))
         sampling_lp=sampling_distribution(out,cfg)
@@ -125,7 +129,7 @@ def generate(main,reference,cfg,eos,decode,seed=0,neutral_main=None):
             "status":"ok"}
 
 
-def replay(main,reference,cfg,tokens,token_groups=None):
+def replay(main,reference,cfg,tokens,token_groups=None,neutral_main=None):
     """Teacher-force an actual sequence, retaining every local normalizer.
     No assumption of an equivalence between sequence and one-step contrast.
     """
@@ -133,8 +137,9 @@ def replay(main,reference,cfg,tokens,token_groups=None):
     rows=[];prefix=[]
     for t,tok in enumerate(tokens):
         m=main.next(tuple(prefix));r=reference.next(tuple(prefix)) if reference else None
-        p=log_normalize(m.logits);out,meta=distribution(m,r,cfg,t)
-        rec={"step":t,"token":int(tok),"base_logp":float(p[tok]),
+        neutral=neutral_main.next(tuple(prefix)) if neutral_main else None
+        p=log_normalize(m.logits);out,meta=step_distribution(m,r,cfg,t,neutral)
+        rec={"step":t,"prefix":list(prefix),"token":int(tok),"base_logp":float(p[tok]),
              "modified_logp":float(out[tok]),**meta}
         if r is not None:
             q=log_normalize(r.logits);rec['reference_logp']=float(q[tok])
@@ -153,6 +158,12 @@ def replay(main,reference,cfg,tokens,token_groups=None):
                 if competitor!=tok:
                     rec['pair']=pair_margin(p,q,int(tok),competitor,w)
                     rec['competitor']=competitor
+        if cfg.method in {'instruction_vcd','instruction_m3id'}:
+            from scipy.special import logsumexp
+            q=log_normalize(r.logits);c=log_normalize(neutral.logits);keep=np.isfinite(out)
+            w=meta['weight']
+            rec.update(neutral_clean_logp=float(c[tok]),reference_logp=float(q[tok]),
+                       log_normalizer=float(logsumexp((p+w*(c-q))[keep])),in_support=bool(keep[tok]))
         if cfg.method in {'dola','deco'}:
             from .probability import general_group_decomposition
             from scipy.special import logsumexp

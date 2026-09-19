@@ -8,14 +8,21 @@ from kdm.prompts import MARKERS
 from kdm.io import read_jsonl,within,atomic_json
 
 def verify(samples,records,model,mode,methods=('vcd','m3id','dola','deco')):
+    if mode not in {'census','probe','experiment'}:raise ValueError('Unknown completion mode')
+    if len({s['id'] for s in samples})!=len(samples):raise ValueError('Duplicate manifest sample')
     tasks=census_tasks(samples) if mode=='census' else (probe_tasks(samples) if mode=='probe' else experiment_tasks(samples,methods,MARKERS))
-    expected={task_id(model,t) for t in tasks};found=set();duplicates=[]
+    expected_tasks={task_id(model,t):t for t in tasks};expected=set(expected_tasks);found=set();duplicates=[];invalid=[]
     for r in records:
         if r['model']!=model:raise ValueError('Wrong model in completion file')
         if r['key'] in found:duplicates.append(r['key'])
         found.add(r['key'])
+        task=expected_tasks.get(r['key'])
+        if task is not None:
+            if r.get('status')!='ok' or any(r.get(k)!=v for k,v in task.items()):invalid.append(r['key'])
+            elif not isinstance(r.get('text'),str) or not isinstance(r.get('terminated'),bool):invalid.append(r['key'])
+            elif not isinstance(r.get('tokens'),list) or not r['tokens']:invalid.append(r['key'])
     return {'expected':len(expected),'observed':len(found),'missing':sorted(expected-found),
-            'unexpected':sorted(found-expected),'duplicates':duplicates,'complete':found==expected and not duplicates}
+            'unexpected':sorted(found-expected),'duplicates':duplicates,'invalid':sorted(set(invalid)),'complete':found==expected and not duplicates and not invalid}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',required=True);p.add_argument('--manifest',required=True)
