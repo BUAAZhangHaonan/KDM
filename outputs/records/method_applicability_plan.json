@@ -1,6 +1,6 @@
 {
   "scope": "Pre-census/pre-intervention full model-dataset applicability; not model selection or evidence of scientific effects",
-  "frozen": false,
+  "frozen": true,
   "baseline_methods_retained_for_all_32_conditions": [
     "vcd",
     "m3id",
@@ -401,5 +401,6 @@
       "structural_evidence": "outputs/verification/sid_fixed_visual_lower_bounds.json"
     }
   ],
-  "full_input_review": "docs/current/FULL_VISUAL_COUNT_REVIEW.md"
+  "full_input_review": "docs/current/FULL_VISUAL_COUNT_REVIEW.md",
+  "freeze_authority": "outputs/records/preregistration_freeze.json"
 }
