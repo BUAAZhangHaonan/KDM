@@ -1,0 +1,7 @@
+{
+  "case_count": 1000,
+  "oracle": "long_double_direct_power_sums",
+  "maximum_group_log_odds_error": 5.329070518200751e-15,
+  "maximum_instruction_probability_error": 6.106226635438361e-16,
+  "passed": true
+}

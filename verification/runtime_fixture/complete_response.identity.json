@@ -1,0 +1,11 @@
+{
+  "identity": "7063c3615f5e2891790bd42396a5498e6a2c06908a5537ec52140a62316be564",
+  "definition": {
+    "model": "cpu_fixture",
+    "model_spec": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec",
+    "inputs": [
+      "ee9051ff7af43561c8d92708a60896151d62661738642f4feb8793ea2597ef7c"
+    ],
+    "annotations": "4b0e522150e41936e433150c8a77a614feabb49d6e1c4506ce99af0195b0341c"
+  }
+}

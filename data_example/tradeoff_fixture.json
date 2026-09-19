@@ -1,0 +1,17 @@
+[
+  {
+    "method": "Direct",
+    "accuracy": 0.4,
+    "retention": 1.0
+  },
+  {
+    "method": "VCD",
+    "accuracy": 0.45,
+    "retention": 0.25
+  },
+  {
+    "method": "Candidate",
+    "accuracy": 0.46,
+    "retention": 0.73
+  }
+]

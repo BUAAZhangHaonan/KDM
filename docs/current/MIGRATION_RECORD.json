@@ -1,0 +1,25 @@
+{
+  "source_commit": "41388226b4fb4b2218cee8e9587622ac8710723b",
+  "source_blob": "fc94a965cfc9b3bbba94ca2cc63aea3018c36fd6",
+  "archive": "archive/pre_refactor_41388226b4fb",
+  "moves": [
+    "code",
+    "README.md"
+  ],
+  "copy": [
+    "src",
+    "tests",
+    "scripts",
+    "configs",
+    "docs",
+    "paper",
+    "pyproject.toml"
+  ],
+  "keeps": [
+    "outputs/raw",
+    "outputs/tables",
+    "outputs/figures",
+    "data",
+    "git history"
+  ]
+}

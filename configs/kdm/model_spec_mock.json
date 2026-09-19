@@ -1,0 +1,5 @@
+{
+  "factory": "kdm.models.mock:MockBackend",
+  "kwargs": {},
+  "purpose": "CPU_TEST_ONLY"
+}

@@ -1,0 +1,10 @@
+{
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf"
+  },
+  "checkpoint_revision": "MUST_RECORD",
+  "processor_revision": "MUST_RECORD",
+  "torch_version": "MUST_RECORD",
+  "transformers_version": "MUST_RECORD"
+}

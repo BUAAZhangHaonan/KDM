@@ -1,83 +1,35 @@
-# KDM：免训练视觉语言解码中的概率变化与错误纠正
+# KDM：对比解码中的弃权保持
 
-**KDM · 免训练幻觉抑制方法在知识缺陷人群上的行为（历史题名）**
+KDM研究带有弃权引导的视觉问答中，对比解码如何改变模型原有的不确定表达，以及如何同时保持回答质量与合理弃权。
 
-解码期的免训练幻觉抑制方法（VCD / MIB / LCD 类对比解码）只重新分配置信度，不改变模型
-知道什么。它们对校准的影响方向由评估人群的基率决定：模型大多答对的人群上校准改善，
-大多答错的人群上同样的机制变成自信的错误；且输出侧统计量无法事先区分两侧。第五阶段把
-这一主线变成可检验的定量规律：**ΔECE 可由人群干预前的准确率/校准差预测，变号点在
-准确率 ≈0.6**（food101，Qwen3.5-4B/9B；LLaVA-v1.6 与 InternVL3.5 分层级方向一致）。
+当前研究以四个相连的问题组织：原有弃权是否对应较低的独立作答成功率；压低一种弃权表达是否影响其他同义表达；不同参考构造产生的影响如何由分数关系解释；将弃权引导与视觉对比计算分开能否改善回答与弃权的共同表现。
 
-## 五轮迭代（每轮有独立的预登记与结论文件）
+## 当前证据
 
-| 阶段 | 问题 | 结论文件 |
-| --- | --- | --- |
-| 一（LVIS/COCO） | 频率分层：低频对象上抑制方法是否有害 | `docs/stage1/CONCLUSIONS_STAGE1.md`（附 `docs/stage1/RECON_REPORT_STAGE1.md` `docs/stage1/VALIDATION_STAGE1.md` `docs/stage1/BLOCKING_NOTE_LOW_TIER_STAGE1.md`） |
-| 二 | food101 实测分层（低/高准确率组），错误置信度为主结局 | `docs/stage2/PILOT.md` `docs/stage2/CONCLUSIONS.md` |
-| 三 | 开集失败两因分解（可及未输出 vs 不可及），跨模型跨域 | `docs/stage3/STAGE3.md` |
-| 四 | 知识可及性测量的边界：名称受限 LL 探针门槛全败、粒度错配 | `docs/stage4/STAGE4.md` |
-| 五 | 收束：基率预测律、变号点、与最接近工作的对照 | `docs/stage5/STAGE5.md` |
-| 六 | 基线忠实化：VCD/M3ID/DoLa/DeCo 按官方实现重跑 + 尖化对照/四格分解/常数偏移校正（SID 受阻，见报告 §2.2） | `docs/stage6/STAGE6.md` `docs/stage6/IMPLEMENTATION_MAPPING_STAGE6.md` |
-| 七（封版） | 收尾：分格尖化一致性定措辞分支（强版）、SID 有界复现（llava16）、dogs 忠实重跑 16/16 方向命中、证据—主张映射与主线定稿 | `docs/stage7/STAGE7.md` `docs/stage7/MAINLINE_STAGE7.md` `docs/stage7/EVIDENCE_MAP_STAGE7.md` |
-| 八（终局封版） | 分支判定重做：逐样本残差回归 γ CI 含零（六口径）→ 弱版；等价检验 4/23；dogs 改数量级一致性检验（14/16）；M3ID 强化措辞；git 历史核查零残留 | `docs/stage8/STAGE8.md` `docs/stage8/MAINLINE_STAGE8.md` `docs/stage8/CLAIMS_STAGE8.md` `docs/stage8/LIMITATIONS_STAGE8.md` `docs/stage8/EVIDENCE_MAP_STAGE8.md` `docs/stage8/GITCHECK_STAGE8.md` |
-| 九 | 从置信度现象转向纠错条件：四模型缓存配对可靠性、同图像证据退化、指定名称路径连续强度可达区间（三噪声种子）、POPE 同图像参照 | `docs/stage9/RESULTS.md` `docs/stage9/PREREGISTER_STAGE9.md` `docs/stage9/00_SUPPLEMENT_FOR_ZCODE.md` |
+用户交接记录报告：LLaVA-v1.6-7B在带弃权引导的1200张Food-101评测图像中产生72次原始弃权，VCD保留6次、替换66次；替代结果包含35个错误菜名、21个上位描述、9个其他物体名称、1个正确名称。原始完全匹配正确数量由280变为289。文件 `data_example/reported_counts.json` 标明这些数字来自交接记录。本开发包没有重新运行这批真实模型实验。
 
-每个阶段的判定阈值在运行前写入 `docs/stage3`…`docs/stage9` 下的预登记文件
-（stage3–8 为 `PREREGISTER_STAGEN.md`，stage9 为 `docs/stage9/PREREGISTER_STAGE9.md`，
-另见 `docs/stage9/00_SUPPLEMENT_FOR_ZCODE.md` 执行补充）并先于数据提交。
-第一阶段（LVIS/COCO）的产物并入主树：文档在 `docs/stage1/`（带 `_STAGE1` 后缀），实验产物带 `lvis_`
-前缀（如 `outputs/raw/lvis_q4b_main_naming.jsonl`、`outputs/figures/lvis_figure1.pdf`），
-其 LVIS 管线代码为 `code/stage1_*.py`；原始迭代提交历史完整保留
-（`git log -- code/stage1_engine.py` 可用 `--follow` 追溯）。
+代码基于远程提交 `eceed2246515cb938ad478ee23c94590c990eb5d`。正式执行时保留原始输出与提交历史，把阶段脚本移入归档目录。新的活动代码位于 `src/kdm/`，按任务与计算功能组织。
 
-## 目录结构
+## 读取入口
 
-```
-docs/stage1…stage9/      各阶段预登记、报告与定稿文档（每阶段一个子目录；stage9 另有交付包 deliverables/KDM_next_stage/）
-code/                    全部实验与分析代码（v2+ 入口 run_all.py；阶段脚本 stageN_*.py；
-                         第一阶段 LVIS 管线 stage1_*.py）
-data/                    样本清单、分层定义、近邻表、数据报告（含 lvis_* 清单；图像不入库）
-outputs/raw/*.jsonl      每样本原始输出（四配置逐样本配对；lvis_* 为第一阶段）
-outputs/tables/*.csv     汇总表（main/effects/…/baserate/crossing/related_work；lvis_* 为第一阶段）
-outputs/figures/         论文图 fig4–9 + figure1–3 + lvis_figure1–3 + 数据拼图（stage9 新图在 outputs/figures/stage9/）
-run_manifest.json        v2 起环境、数据指纹、各阶段耗时（第一阶段为 docs/stage1/run_manifest_stage1.json）
-```
+- `docs/current/PAPER_STORY.md`：论文主线与章节安排。
+- `docs/current/THEORY.md`：语义分组、参考偏好和指令保持的完整推导。
+- `docs/current/STUDY_SPEC.md`：冻结实验、数据与报告规则。
+- `docs/current/CODEX_PROMPT.md`：可直接交给CodeX执行的任务书。
+- `docs/current/PAPERS_AND_STRUCTURE.md`：全文阅读与结构分析。
+- `verification/VALIDATION_REPORT.md`：本地实际验证范围与输出。
 
-## 数据与图像
+安装前执行 `python scripts/install.py --help`。安装器默认生成只读迁移方案；添加 `--apply` 才会修改目标仓库。正式工程目录固定为 `/home/g203-4028/projects/knowledge-deficit-mitigation/`。
 
-图像不入库：克隆后按以下方式再生（清单固定样本集合与文件名）：
+## 活动目录
 
-- food101：`./venv/bin/python code/prepare_data.py`
-- stanford-dogs：`./venv/bin/python code/stage3_prepare_dogs.py`
-- LVIS/COCO（第一阶段）：`./venv/bin/python code/stage1_build_dataset.py`（清单 `data/lvis_dataset.jsonl`）
+`src/kdm/` 提供解码、测量、数据、标注、统计与模型接口。
+`configs/` 保存模型清单、数据来源、提示词条件和研究参数。
+`tests/` 检验数学计算、数据身份、语义标签与运行流程。
+`scripts/` 提供安装、资源下载、模型发现、执行和制图入口。
+`paper/` 保存中文论文结构和图表安排。
+`source_materials/` 保存用户原始写作要求。
 
-## 环境
+## 研究状态
 
-本地 venv（`--system-site-packages`，Python 3.11 + transformers 5.17.0 + torch 2.9.0 +
-timm），模型走本机 `/home/g203-4028/Models`（Qwen3.5-4B/9B、Qwen3-VL-4B、LLaVA-v1.6-
-mistral-7B、InternVL3.5-4B、GLM-4.6V-Flash）。不调用外部闭源接口，不做任何参数更新；
-全部缓存重定向到项目内 `cache/`。
-
-## 主要结果速览
-
-- 基率关系（food101，101 类别点/模型）：VCD r(ΔECE,acc)=−0.83（两模型，CI 排除 0），
-  变号点 0.60/0.62 [0.56,0.66]；LCD 同向；MIB 在 4B 上方向不支持（准确率救回主导）。
-- 非 Qwen 确认：LLaVA-v1.6 / InternVL3.5 低准确率组 ΔECE 全正、高准确率组全负、DiD
-  全显著为正（`outputs/tables/nonqwen_core.csv`）。
-- dogs 域全谱 [0,0.55] 落在有害侧：VCD 六格 ΔECE 全正；混合口径无一穿零。
-- 输出侧信号（熵/maxp/空图 JSD）区分能力低于可用下限（AUC<0.70），门控路线在对象层面
-  不成立。
-
-完整论证与适用条件见 `docs/stage5/STAGE5.md`；与最接近工作的逐条差别见
-`outputs/tables/related_work.csv`。
-
-## 第九阶段实际状态（已完成）
-
-新增工作限定为固定最小集合，全部完成（详见 `docs/stage9/RESULTS.md`）：
-四模型缓存配对分析（高准确率子集 14/16 净准确率下降；固定覆盖率 80% 下 VCD
-选择性风险在两新推理模型的高准确率子集均显著升高，低准确率子集不升）；同图像
-证据退化（有效性判定两模型通过；跨条件交互无可辨别变化）；VCD 指定名称路径
-连续强度可达区间（800 路径三噪声种子 98.6% 稳定，四类计数 36/23/639/91，
-见证生成 58/58 与真实贪心解码逐 token 一致）；POPE 同图像参照（VCD 无明确
-收益，1/4 格显著为负）。低命名准确率不作为缺少知识的定义；空区间不写成知识
-缺失；见证强度不进入方法性能表。
+现有数字、数学推导、已运行的软件测试、待执行的真实推理分别记录。新方法使用三个条件分布，增加一条无弃权指令的清晰图像计算；无需建立弃权词典。词元级与完整回答级的测量分开保存。方法的正确回答与弃权表现由正式实验给出。
