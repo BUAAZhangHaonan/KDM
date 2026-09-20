@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-09-20T19:32:44.176432+00:00",
+  "queue_records": 18334,
+  "validated_labels": 17482,
+  "unresolved_failures": 852,
+  "error_counts": {
+    "ValueError: Nonempty response needs an exact evidence span": 605,
+    "ValueError: Evidence is absent from original response": 146,
+    "ValueError: Answer span is absent": 92,
+    "ValueError: Abstention or invalid output cannot endorse an answer span": 7,
+    "JSONDecodeError: Invalid control character at: line 4 column 135 (char 306)": 1,
+    "ValueError: Semantic response must be a JSON object": 1
+  },
+  "client_exit_code": 1,
+  "all_inputs_attempted": true,
+  "all_annotations_complete": false,
+  "human_review_queue": "outputs/annotations/current/census_batch02_human_review_queue.jsonl",
+  "required_human_reviews": 18334,
+  "human_review_completed": false,
+  "retries_performed": false,
+  "model_selection_performed": false
+}
