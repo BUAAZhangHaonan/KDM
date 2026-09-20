@@ -1,0 +1,25 @@
+{
+  "schema": "kdm_full_human_review_queue_v1",
+  "queue_sha256": "9f54ef03b7f2f9b8b96992ebc6c32d7a134c9c004595061e4683bff81e2113a9",
+  "record_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/raw/current/qwen3vl/census.jsonl",
+      "sha256": "28185576ad71e75b4ce88e3aeca80188ab06e29569fe60256b25b5a35387c441"
+    },
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/raw/current/qwen35_4b/census.jsonl",
+      "sha256": "fd1ed0f167aa7237bd49704983ae4a4ff5904c738a8c0bb2339d368b28e878e0"
+    }
+  ],
+  "annotation_sha256": "12b5b8da852a140c823415884861004ff791a0a78c3f1ce6f9eb004b37ba592f",
+  "error_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/annotations/current/census_completed_batch01_labels.jsonl.errors.jsonl",
+      "sha256": "da47f0c8a4dd11d92c7127412d7069258156e98a6911d612f5246b25fbbc37d7"
+    }
+  ],
+  "required_count": 36668,
+  "required_keys_sha256": "68004a958a7b6c7606aab0b010a0c35436785fda8af6ff83328abf6baaeda387",
+  "remaining_checklist": "all_remaining_formal_outputs",
+  "human_review_completed": false
+}

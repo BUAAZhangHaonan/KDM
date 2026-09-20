@@ -1,0 +1,68 @@
+{
+  "schema": "kdm_completed_census_batch_v1",
+  "recorded_utc": "2026-09-20T10:25:11.931506+00:00",
+  "models": [
+    "internvl35_8b"
+  ],
+  "completion_proofs": {
+    "internvl35_8b": {
+      "expected": 18334,
+      "observed": 18334,
+      "missing": [],
+      "unexpected": [],
+      "duplicates": [],
+      "invalid": [],
+      "complete": true
+    }
+  },
+  "scheduler_completion": {
+    "status": "complete",
+    "lane": "pair45",
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "command": [
+      "bash",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/worker.sh",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "4,5",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+      "-m",
+      "kdm.cli",
+      "--root",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "run",
+      "--mode",
+      "census",
+      "--manifest",
+      "data/current/all.jsonl",
+      "--model",
+      "internvl35_8b",
+      "--model-spec",
+      "configs/runtime/internvl35_8b.json",
+      "--gpu",
+      "4",
+      "--out",
+      "outputs/raw/current/internvl35_8b/census.jsonl"
+    ],
+    "started_utc": "2026-09-20T02:39:03.428296+00:00",
+    "worker_pid": 360415,
+    "process_exit_code": 0,
+    "generation_finished_utc": "2026-09-20T09:56:41.616024+00:00",
+    "verification_exit_code": 0,
+    "finished_utc": "2026-09-20T09:56:43.582700+00:00"
+  },
+  "provenance_receipt": "outputs/annotations/current/census_completed_batch06_queue.sources.json",
+  "freeze_receipt_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+  "queue": "outputs/annotations/current/census_completed_batch06_queue.jsonl",
+  "queue_records": 18334,
+  "queue_source_counts": {
+    "requires_semantic_review": 17181,
+    "exact_phrase": 1153
+  },
+  "semantic_annotation_started": false,
+  "human_response_review_completed": false,
+  "model_selection_performed": false,
+  "panel_complete": false
+}

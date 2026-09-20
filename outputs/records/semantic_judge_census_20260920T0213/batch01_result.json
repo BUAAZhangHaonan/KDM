@@ -1,0 +1,23 @@
+{
+  "recorded_utc": "2026-09-20T10:25:18.707854+00:00",
+  "queue_records": 36668,
+  "validated_labels": 34943,
+  "unresolved_failures": 1725,
+  "error_counts": {
+    "ValueError: Nonempty response needs an exact evidence span": 1402,
+    "ValueError: Evidence is absent from original response": 222,
+    "ValueError: Answer span is absent": 89,
+    "ValueError: Semantic response must be a JSON object": 4,
+    "ValueError: Abstention or invalid output cannot endorse an answer span": 6,
+    "TypeError: unhashable type: 'dict'": 1,
+    "JSONDecodeError: Invalid control character at: line 4 column 126 (char 288)": 1
+  },
+  "client_exit_code": 1,
+  "all_inputs_attempted": true,
+  "all_annotations_complete": false,
+  "human_review_queue": "outputs/annotations/current/census_batch01_human_review_queue.jsonl",
+  "required_human_reviews": 36668,
+  "human_review_completed": false,
+  "retries_performed": false,
+  "model_selection_performed": false
+}
