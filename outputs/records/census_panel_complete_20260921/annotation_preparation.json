@@ -1,0 +1,73 @@
+{
+  "recorded_utc": "2026-09-21T09:39:49.107037+00:00",
+  "census_panel_complete": true,
+  "panel_complete_receipt": "outputs/records/census_panel_complete_20260921/panel_complete.json",
+  "models": 16,
+  "records": 293344,
+  "manifest_samples_per_model": 9167,
+  "conditions_per_sample": 2,
+  "annotation_queues": [
+    {
+      "path": "outputs/annotations/current/census_completed_batch01_queue.jsonl",
+      "records": 36668
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch02_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch03_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch04_queue.jsonl",
+      "records": 36668
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch05_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch06_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch07_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch08_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch09_queue.jsonl",
+      "records": 36668
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch10_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch11_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch12_queue.jsonl",
+      "records": 18334
+    },
+    {
+      "path": "outputs/annotations/current/census_completed_batch13_queue.jsonl",
+      "records": 18334
+    }
+  ],
+  "unique_queued_response_keys": 293344,
+  "queue_source_counts": {
+    "requires_semantic_review": 262721,
+    "exact_phrase": 30623
+  },
+  "semantic_annotation_complete": false,
+  "human_review_complete": false,
+  "model_selection_performed": false,
+  "formal_intervention_experiments_started": false,
+  "research_goal_complete": false
+}
