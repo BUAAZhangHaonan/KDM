@@ -1,0 +1,21 @@
+{
+  "schema": "kdm_full_human_review_queue_v1",
+  "queue_sha256": "8a7da8d0d0aa30585a79dcba0a070685b301c347665580c96a252b449111f9f4",
+  "record_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/raw/current/qwen25vl/census.jsonl",
+      "sha256": "d089c5630547947ce73f473eef08817849a69b01900f9d5b27e4a5d67c1e6161"
+    }
+  ],
+  "annotation_sha256": "71fd293a6a092b6b42c0ea010ca5001cdfa68026b527fc635f3cc627b96e8bf8",
+  "error_sources": [
+    {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/annotations/current/census_completed_batch03_labels.jsonl.errors.jsonl",
+      "sha256": "041a3e2ee690d7e1b6aee20fbf5d84546aa1e84798058fb23ea5aa9e74872094"
+    }
+  ],
+  "required_count": 18334,
+  "required_keys_sha256": "fcfd97a4a24f089a23a5867f9675d2709146bdf9e08e367dff5e3aa8f6bc595b",
+  "remaining_checklist": "all_remaining_formal_outputs",
+  "human_review_completed": false
+}

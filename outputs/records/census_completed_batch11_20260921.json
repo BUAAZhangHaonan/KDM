@@ -1,0 +1,73 @@
+{
+  "schema": "kdm_completed_census_batch_v1",
+  "recorded_utc": "2026-09-21T03:38:16.278070+00:00",
+  "models": [
+    "onevision"
+  ],
+  "completion_proofs": {
+    "onevision": {
+      "expected": 18334,
+      "observed": 18334,
+      "missing": [],
+      "unexpected": [],
+      "duplicates": [],
+      "invalid": [],
+      "complete": true
+    }
+  },
+  "scheduler_completion": {
+    "status": "complete",
+    "lane": "gpu4_after_pairs",
+    "physical_gpus": [
+      4
+    ],
+    "command": [
+      "bash",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/worker.sh",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "4",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "-m",
+      "kdm.cli",
+      "--root",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "run",
+      "--mode",
+      "census",
+      "--manifest",
+      "data/current/all.jsonl",
+      "--model",
+      "onevision",
+      "--model-spec",
+      "configs/runtime/onevision.json",
+      "--gpu",
+      "4",
+      "--out",
+      "outputs/raw/current/onevision/census.jsonl"
+    ],
+    "started_utc": "2026-09-20T19:43:10.838799+00:00",
+    "worker_pid": 380006,
+    "process_exit_code": 0,
+    "generation_finished_utc": "2026-09-21T03:30:43.389860+00:00",
+    "verification_exit_code": 0,
+    "finished_utc": "2026-09-21T03:30:45.004069+00:00"
+  },
+  "provenance_receipt": "outputs/annotations/current/census_completed_batch11_queue.sources.json",
+  "freeze_receipt_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+  "queue": "outputs/annotations/current/census_completed_batch11_queue.jsonl",
+  "queue_records": 18334,
+  "unique_response_keys": 18334,
+  "queue_source_counts": {
+    "requires_semantic_review": 17765,
+    "exact_phrase": 569
+  },
+  "judge_payload_fields": [
+    "question",
+    "text"
+  ],
+  "model_and_method_fields_excluded_from_queue": true,
+  "semantic_annotation_started": false,
+  "human_response_review_completed": false,
+  "model_selection_performed": false,
+  "panel_complete": false
+}
