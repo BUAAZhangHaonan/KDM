@@ -1,0 +1,31 @@
+{
+  "recorded_utc": "2026-09-22T03:48:04.063138+00:00",
+  "queue_records": 36668,
+  "validated_labels": 33106,
+  "unresolved_failures": 3562,
+  "error_counts": {
+    "ValueError: Answer span is absent": 788,
+    "ValueError: Nonempty response needs an exact evidence span": 307,
+    "ValueError: Evidence is absent from original response": 2318,
+    "JSONDecodeError: Extra data: line 6 column 1 (char 114)": 1,
+    "JSONDecodeError: Invalid control character at: line 4 column 88 (char 277)": 2,
+    "ValueError: Semantic response must be a JSON object": 2,
+    "JSONDecodeError: Invalid \\escape: line 4 column 27 (char 89)": 1,
+    "JSONDecodeError: Extra data: line 6 column 1 (char 102)": 1,
+    "ValueError: Abstention or invalid output cannot endorse an answer span": 136,
+    "ValueError: Invalid semantic label": 1,
+    "JSONDecodeError: Invalid control character at: line 4 column 117 (char 344)": 1,
+    "JSONDecodeError: Invalid control character at: line 3 column 186 (char 218)": 1,
+    "JSONDecodeError: Expecting ',' delimiter: line 3 column 151 (char 183)": 1,
+    "JSONDecodeError: Expecting ',' delimiter: line 4 column 58 (char 206)": 1,
+    "JSONDecodeError: Invalid control character at: line 4 column 112 (char 261)": 1
+  },
+  "client_exit_code": 1,
+  "all_inputs_attempted": true,
+  "all_annotations_complete": false,
+  "human_review_queue": "outputs/annotations/current/census_batch04_human_review_queue.jsonl",
+  "required_human_reviews": 36668,
+  "human_review_completed": false,
+  "retries_performed": false,
+  "model_selection_performed": false
+}
