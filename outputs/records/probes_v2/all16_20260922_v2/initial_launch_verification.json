@@ -1,0 +1,213 @@
+{
+  "recorded_utc": "2026-09-22T09:03:06.309983+00:00",
+  "run_name": "all16_20260922_v2",
+  "scope": "initial launch and numerical validation; not complete inference coverage",
+  "scheduler_pids": {
+    "4028": 417944,
+    "6403": 14359
+  },
+  "worker_pids": {
+    "qwen35_9b": 418119,
+    "qwen35_4b": 418120,
+    "gemma3_12b": 418124,
+    "qwen3vl": 14446
+  },
+  "gpus": {
+    "4028": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "6403": [
+      1
+    ]
+  },
+  "4028_progress_at_check": [
+    {
+      "model": "qwen35_4b",
+      "pid": 418120,
+      "started_utc": "2026-09-22T08:56:23.351172+00:00",
+      "output": "outputs/raw/probes_v2/all16_20260922_v2/qwen35_4b",
+      "status": "running",
+      "independent": 90,
+      "closed": 9,
+      "expected_independent": 91670,
+      "expected_closed": 4848,
+      "execution": {
+        "host": "4028",
+        "hostname": "4028",
+        "project_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "physical_gpus": [
+          "1"
+        ],
+        "gpu_uuids": {
+          "1": "GPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e"
+        },
+        "registry_sha256": "98ad670d81672d0ed5a7d53787e61b43f2bd2c9a245105799244d6f14d72f301",
+        "resolver_sha256": "fc1c2c7d8e84a6ec74bffcf81ab20666a8738a52fd152a0d70f0b20a00ce39ee"
+      },
+      "last_sample_id": "food101:apple_pie_group_008.jpg",
+      "last_update_utc": "2026-09-22T09:02:46.305071+00:00"
+    },
+    {
+      "model": "gemma3_12b",
+      "pid": 418124,
+      "started_utc": "2026-09-22T08:56:23.349159+00:00",
+      "output": "outputs/raw/probes_v2/all16_20260922_v2/gemma3_12b",
+      "status": "running",
+      "independent": 40,
+      "closed": 4,
+      "expected_independent": 91670,
+      "expected_closed": 4848,
+      "execution": {
+        "host": "4028",
+        "hostname": "4028",
+        "project_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "physical_gpus": [
+          "4",
+          "5"
+        ],
+        "gpu_uuids": {
+          "4": "GPU-8d98e481-b89b-2166-b474-c33d59e0fd3d",
+          "5": "GPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d"
+        },
+        "registry_sha256": "98ad670d81672d0ed5a7d53787e61b43f2bd2c9a245105799244d6f14d72f301",
+        "resolver_sha256": "fc1c2c7d8e84a6ec74bffcf81ab20666a8738a52fd152a0d70f0b20a00ce39ee"
+      },
+      "last_sample_id": "food101:apple_pie_group_003.jpg",
+      "last_update_utc": "2026-09-22T09:03:02.961245+00:00"
+    },
+    {
+      "model": "qwen35_9b",
+      "pid": 418119,
+      "started_utc": "2026-09-22T08:56:23.380262+00:00",
+      "output": "outputs/raw/probes_v2/all16_20260922_v2/qwen35_9b",
+      "status": "running",
+      "independent": 70,
+      "closed": 7,
+      "expected_independent": 91670,
+      "expected_closed": 4848,
+      "execution": {
+        "host": "4028",
+        "hostname": "4028",
+        "project_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "physical_gpus": [
+          "0"
+        ],
+        "gpu_uuids": {
+          "0": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3"
+        },
+        "registry_sha256": "98ad670d81672d0ed5a7d53787e61b43f2bd2c9a245105799244d6f14d72f301",
+        "resolver_sha256": "fc1c2c7d8e84a6ec74bffcf81ab20666a8738a52fd152a0d70f0b20a00ce39ee"
+      },
+      "last_sample_id": "food101:apple_pie_group_006.jpg",
+      "last_update_utc": "2026-09-22T09:02:44.905660+00:00"
+    }
+  ],
+  "initial_real_memoization_checks": {
+    "qwen3vl_memoization_verification.json": {
+      "passed": true,
+      "model": "qwen3vl",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "attempts": [
+        {
+          "replicate": 0,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        },
+        {
+          "replicate": 1,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        }
+      ],
+      "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+      "workflow_sha256": {
+        "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+        "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+        "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+      },
+      "closed_max_score_error": 0.0,
+      "closed_gold_rank_equal": true
+    },
+    "qwen35_4b_memoization_verification.json": {
+      "passed": true,
+      "model": "qwen35_4b",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "attempts": [
+        {
+          "replicate": 0,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        },
+        {
+          "replicate": 1,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        }
+      ],
+      "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+      "workflow_sha256": {
+        "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+        "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+        "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+      },
+      "closed_max_score_error": 0.0,
+      "closed_gold_rank_equal": true
+    },
+    "gemma3_12b_memoization_verification.json": {
+      "passed": true,
+      "model": "gemma3_12b",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "attempts": [
+        {
+          "replicate": 0,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        },
+        {
+          "replicate": 1,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        }
+      ],
+      "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+      "workflow_sha256": {
+        "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+        "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+        "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+      },
+      "closed_max_score_error": 0.0,
+      "closed_gold_rank_equal": true
+    },
+    "qwen35_9b_memoization_verification.json": {
+      "passed": true,
+      "model": "qwen35_9b",
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "attempts": [
+        {
+          "replicate": 0,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        },
+        {
+          "replicate": 1,
+          "tokens_equal": true,
+          "max_log_probability_error": 0.0
+        }
+      ],
+      "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+      "workflow_sha256": {
+        "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+        "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+        "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+      },
+      "closed_max_score_error": 0.0,
+      "closed_gold_rank_equal": true
+    }
+  },
+  "original_frozen_source_modified": false,
+  "all_inference_complete": false,
+  "semantic_annotation_complete": false
+}

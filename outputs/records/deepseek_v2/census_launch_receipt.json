@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-09-22T09:03:05.796029+00:00",
+  "launcher_pid": 420107,
+  "worker_pid": 420108,
+  "worker_alive": true,
+  "identity": "a96ffd2dc30ed1693d0b74732b0a3661ecb4ef1dab5321e7bb9b0f13ef64910c",
+  "settings": {
+    "endpoint": "https://api.deepseek.com",
+    "request_model": "deepseek-flash",
+    "response_model": "deepseek-flash",
+    "concurrency": 256,
+    "timeout_s": 180,
+    "max_tokens": 512,
+    "thinking": "disabled"
+  },
+  "expected": 293344,
+  "initial_success": 3494,
+  "initial_failed": 2,
+  "observed_peak_concurrency": 256,
+  "local_ministral_stopped": true,
+  "secret_in_git": false
+}

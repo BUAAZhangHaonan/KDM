@@ -1,0 +1,325 @@
+{
+  "scope": "8 synthetic diagnostic examples, not census result or human review",
+  "results": [
+    {
+      "question": "What specific food is shown?",
+      "text": "ribs",
+      "expected": "answer_assertive",
+      "http_status": 200,
+      "response": {
+        "id": "94be8b29-da7f-47a1-a897-441c0793b227",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"answer_assertive\", \"evidence_span\": \"ribs\", \"answer_text\": \"ribs\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 478,
+          "completion_tokens": 26,
+          "total_tokens": 504,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 478
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "answer_assertive",
+        "evidence_span": "ribs",
+        "answer_text": "ribs"
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "It might be ribs.",
+      "expected": "answer_uncertain",
+      "http_status": 200,
+      "response": {
+        "id": "a0097dd0-8a3f-4fdf-810f-0e4bd6f1dd2a",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"answer_uncertain\", \"evidence_span\": \"might be ribs\", \"answer_text\": \"ribs\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 481,
+          "completion_tokens": 27,
+          "total_tokens": 508,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 481
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "answer_uncertain",
+        "evidence_span": "might be ribs",
+        "answer_text": "ribs"
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "UNKNOWN",
+      "expected": "abstain",
+      "http_status": 200,
+      "response": {
+        "id": "ffb8e4ee-c35d-4acd-b95c-a3655cc14e6b",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"abstain\", \"evidence_span\": \"UNKNOWN\", \"answer_text\": \"\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 478,
+          "completion_tokens": 23,
+          "total_tokens": 501,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 478
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "abstain",
+        "evidence_span": "UNKNOWN",
+        "answer_text": ""
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "I cannot identify it.",
+      "expected": "abstain",
+      "http_status": 200,
+      "response": {
+        "id": "42f35ac5-2278-485f-9e3b-5d361eb526af",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"abstain\", \"evidence_span\": \"I cannot identify it.\", \"answer_text\": \"\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 481,
+          "completion_tokens": 25,
+          "total_tokens": 506,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 481
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "abstain",
+        "evidence_span": "I cannot identify it.",
+        "answer_text": ""
+      },
+      "passed": true
+    },
+    {
+      "question": "Is the object red?",
+      "text": "No",
+      "expected": "answer_assertive",
+      "http_status": 200,
+      "response": {
+        "id": "bc549cb9-bba9-4a13-a368-41a92dc37180",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"answer_assertive\", \"evidence_span\": \"No\", \"answer_text\": \"No\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 476,
+          "completion_tokens": 24,
+          "total_tokens": 500,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 476
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "answer_assertive",
+        "evidence_span": "No",
+        "answer_text": "No"
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "Food",
+      "expected": "answer_assertive",
+      "http_status": 200,
+      "response": {
+        "id": "2a84be30-3e88-4f6d-ab07-a4c9df612573",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"answer_assertive\", \"evidence_span\": \"Food\", \"answer_text\": \"Food\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 477,
+          "completion_tokens": 24,
+          "total_tokens": 501,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 477
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "answer_assertive",
+        "evidence_span": "Food",
+        "answer_text": "Food"
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "",
+      "expected": "invalid",
+      "http_status": 200,
+      "response": {
+        "id": "d1ae43a6-012d-42ae-9e97-8d0df7c5b3d2",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"invalid\", \"evidence_span\": \"\", \"answer_text\": \"\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 476,
+          "completion_tokens": 18,
+          "total_tokens": 494,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 476
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "invalid",
+        "evidence_span": "",
+        "answer_text": ""
+      },
+      "passed": true
+    },
+    {
+      "question": "What specific food is shown?",
+      "text": "I am not sure, but I think it is apple pie.",
+      "expected": "answer_uncertain",
+      "http_status": 200,
+      "response": {
+        "id": "ddccb4c9-a222-45af-ba9b-3bad9828b817",
+        "object": "chat.completion",
+        "created": 1790067553,
+        "model": "deepseek-flash",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\"label\": \"answer_uncertain\", \"evidence_span\": \"I am not sure, but I think it is apple pie.\", \"answer_text\": \"apple pie\"}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 489,
+          "completion_tokens": 36,
+          "total_tokens": 525,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 489
+        },
+        "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+      },
+      "parsed": {
+        "label": "answer_uncertain",
+        "evidence_span": "I am not sure, but I think it is apple pie.",
+        "answer_text": "apple pie"
+      },
+      "passed": true
+    }
+  ]
+}

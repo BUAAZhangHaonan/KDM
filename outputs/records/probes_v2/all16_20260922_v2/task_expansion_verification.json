@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "models": [
+    "gemma3_4b",
+    "gemma3_12b",
+    "glm46v",
+    "internvl35_8b",
+    "llava15_7b",
+    "onevision",
+    "minicpm26",
+    "minicpm45",
+    "phi35",
+    "qwen25vl",
+    "qwen3vl",
+    "qwen35_4b",
+    "qwen35_9b",
+    "llava16_mistral",
+    "llava15_13b",
+    "llava16_vicuna"
+  ],
+  "original_samples_per_model": 9167,
+  "independent_per_model": 91670,
+  "independent_total": 1466720,
+  "food_per_model": 4848,
+  "closed_total": 77568,
+  "candidate_classes": 101,
+  "distinct_ten_seeds_per_model_question": true,
+  "all_splits": [
+    "dev",
+    "eval"
+  ],
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c"
+}

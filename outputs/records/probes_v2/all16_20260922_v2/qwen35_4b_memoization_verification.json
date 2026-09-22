@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "model": "qwen35_4b",
+  "sample_id": "food101:apple_pie_group_000.jpg",
+  "attempts": [
+    {
+      "replicate": 0,
+      "tokens_equal": true,
+      "max_log_probability_error": 0.0
+    },
+    {
+      "replicate": 1,
+      "tokens_equal": true,
+      "max_log_probability_error": 0.0
+    }
+  ],
+  "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+  "workflow_sha256": {
+    "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+    "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+    "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+  },
+  "closed_max_score_error": 0.0,
+  "closed_gold_rank_equal": true
+}
