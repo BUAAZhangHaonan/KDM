@@ -31,3 +31,11 @@ Only use `--resume` deliberately with the exact same immutable identity. To retr
 Canonical evidence: queue.jsonl, queue.sources.json, identity.json, requests.jsonl, results.jsonl, invocations.jsonl.
 Mutable status: status.json. Derived terminal exports: labels.jsonl, errors.jsonl, metrics.json.
 
+
+## Completed first pass and extra-field reconciliation (2026-09-22)
+
+All 293344 original requests finished. The initial validator accepted 292748 and retained 596 errors. Of these, 445 JSON responses contained exactly the required three fields plus an auxiliary `type` field. `reconcile_extra_type.py` removes only that extra field, checks the unchanged three values with the original validator, and creates a distinct derived annotation identity. It makes no API requests, performs no semantic relabeling, and preserves the original results/errors.
+
+Current derived evidence lives at `outputs/annotations/deepseek_v2/census/reconciled_extra_type_v1/`: `reconciliation.json`, `identity.json`, `projection_records.jsonl`, `labels.jsonl`, `errors.jsonl`, `metrics.json`, and `SUMMARY.md`. There are 293193 validated labels and 151 unresolved records. This is not a fully complete annotation set and is not human-reviewed. No failed requests have been retried.
+
+Original and derived ledgers have lossless gzip shards by original model in `outputs/annotations/deepseek_v2/census/archived_by_model/`. Its manifest records counts, original hashes and compressed-artifact hashes; all uncompressed originals remain preserved on 4028. Use the derived metrics for the latest full-denominator statistics. Original `status.json` deliberately keeps its original 596 failures instead of rewriting history.

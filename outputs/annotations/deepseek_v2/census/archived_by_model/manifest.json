@@ -1,0 +1,536 @@
+{
+  "schema": "deepseek_v2_lossless_gzip_archive",
+  "originals_preserved": true,
+  "models": {
+    "gemma3_4b": 18334,
+    "gemma3_12b": 18334,
+    "glm46v": 18334,
+    "internvl35_8b": 18334,
+    "llava15_7b": 18334,
+    "onevision": 18334,
+    "minicpm26": 18334,
+    "minicpm45": 18334,
+    "phi35": 18334,
+    "qwen25vl": 18334,
+    "qwen3vl": 18334,
+    "qwen35_4b": 18334,
+    "qwen35_9b": 18334,
+    "llava16_mistral": 18334,
+    "llava15_13b": 18334,
+    "llava16_vicuna": 18334
+  },
+  "sources": {
+    "queue": {
+      "path": "outputs/annotations/deepseek_v2/census/queue.jsonl",
+      "sha256": "a4cc5391d87549185ae1c6c1f637f71d90ac81dd35fa1b269733c30c6464b104",
+      "rows": 293344,
+      "bytes": 162129982
+    },
+    "requests": {
+      "path": "outputs/annotations/deepseek_v2/census/requests.jsonl",
+      "sha256": "f85a085c26659ddb794c234fcf7ba9faa3ed09ef4fce631187d7ad44ef233e59",
+      "rows": 293344,
+      "bytes": 101790368
+    },
+    "results": {
+      "path": "outputs/annotations/deepseek_v2/census/results.jsonl",
+      "sha256": "17fa79ac1a6d70743d008edefe02ae4a1053beea1b8ca5dbfaf85e25d51d03c3",
+      "rows": 293344,
+      "bytes": 477736809
+    },
+    "labels_initial": {
+      "path": "outputs/annotations/deepseek_v2/census/labels.jsonl",
+      "sha256": "3a9bd978a4e6021c3f8ff86c18e0cc3ce6aae454fd35fe3859b695c44e6b4964",
+      "rows": 292748,
+      "bytes": 266359586
+    },
+    "labels_reconciled": {
+      "path": "outputs/annotations/deepseek_v2/census/reconciled_extra_type_v1/labels.jsonl",
+      "sha256": "b97f075020d4a369f0e26761e42793fb2d225e026e04b4ee65dbc6c074399827",
+      "rows": 293193,
+      "bytes": 295496786
+    }
+  },
+  "archives": [
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_4b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2882775,
+      "sha256": "275acccdcac880c9a621148b9b82f26255f9195449cb9c6178ec1b46214fcc10"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_12b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2670750,
+      "sha256": "cca7052f288b47e7a2aa3b43adbf82767388d1f655556272718109c2f83212f1"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/glm46v/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2865760,
+      "sha256": "a7a565e1ab09879f33c4b9ad53a797f1c63db04384840f98bcb0d248016b7f35"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/internvl35_8b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2469000,
+      "sha256": "ec80b9884f86cd627fd0d6babb235425d4e3232d62a2da2a000524ad3b616ed8"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_7b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2212989,
+      "sha256": "95fed331fc469faef076449d02522176737fae2e06db69497acadd8a2a8c88cb"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/onevision/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2361429,
+      "sha256": "be4172d80b9157352493d78640a7910a15d7f1ac0cf95264021804b527af68ec"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm26/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2402466,
+      "sha256": "4005d5b094a3cb470bd20277f7f66759d9f421e14eaabdfa31eac73dcb4c6840"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm45/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2774133,
+      "sha256": "9fd464b0b12923be5e740bec0f2bda0e52a4c1fed693daf814397edc80cdaea5"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/phi35/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2422245,
+      "sha256": "0fadaf5d4fef7a893cb2ed8c8dad0719a93b6ca0483e942e5711492fe40fbb95"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen25vl/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2439555,
+      "sha256": "cf3ba0b0a6473c89e6d2063bf4c05fe4d3fc567fbf3b62a696ea2217ad4290ed"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen3vl/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2280190,
+      "sha256": "ab44cf9fd3208337ba2b306cd16b8129a48f92425aee0b26631f59f3c9b7833b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_4b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2296259,
+      "sha256": "a4a7636233e4133775a1aed01a75564b67090eded77d977b80c6cbb05381c138"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_9b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2381936,
+      "sha256": "eb3384e1ca56aeb757c82af720dfa55d94ec1e1f735e331708a97a8bd71a2efe"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_mistral/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2581917,
+      "sha256": "102786f129a14e667a753e89ca35708def0043739a35c6a1b757ecb846828f44"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_13b/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2392938,
+      "sha256": "ae6e9944f076d12e19692916a2b90f3a0caf774085a3abfd0fef527abe88d171"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_vicuna/queue.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 2253978,
+      "sha256": "bc67b8786fd3a4656a23030b7e60891d10b60603213595b155b2f629733997ab"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_4b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1541792,
+      "sha256": "5c9850804e4812bb34d414cc24e60bc84f828fe4be386cceae290561b4bb89b9"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_12b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1467514,
+      "sha256": "aa62b7b862f1e7036c112c068173dcd551a3e32547b834a4802384fe41b35f04"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/glm46v/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1511304,
+      "sha256": "6e95c8e551b7ca3bdc28e66a04bfaf8b1874cbf20bd95dacf9a2d91e48a77af6"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/internvl35_8b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1383085,
+      "sha256": "0dd51e585bf7003680e814c79bce30a6ac60ce2bf2d73879311dc78aab9d2a3b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_7b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1269273,
+      "sha256": "c0d508ae70e743b078cc1d9eb370fc4d8e3a258a6add1c714dc32f45980eaf79"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/onevision/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1346723,
+      "sha256": "33bda587c3d023218e833a9244b276fd0dd005461c416db40b496437c7305126"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm26/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1376411,
+      "sha256": "3ae9e60fbdcf115671c894651704d0e1529c8254352d3ebeb66c2407f859dd46"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm45/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1470421,
+      "sha256": "15dd3ce95309dfea0a6588fabdd2a88f14c65f7cb2b16036a696a94646398e91"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/phi35/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1359330,
+      "sha256": "ca14f6d99b5cabff3f53a7dba6534fdcda411a4fba8c286c75ee4949e52954ae"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen25vl/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1370548,
+      "sha256": "d655bb4c8145f2fee2c20d4aa7c7837a5cfdba91a45ed24abeb0ffce557c2797"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen3vl/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1312918,
+      "sha256": "c8b24d0fa6b18663c9c0222003274a7f29afa742ba1aa99902bf776e180cedc3"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_4b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1326324,
+      "sha256": "9127962700a7c37b20d2661c8b507ad4e88ca4605afa89b48d003c6cf675d29c"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_9b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1351867,
+      "sha256": "31ef126b6dec2a89bdb062cc6806140ddea02a9cf712be68d628d72c0dd294fc"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_mistral/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1427421,
+      "sha256": "499ad88fe9d2f92b817a358f67ab010df9ebe592aee9094e638caa824fbb1956"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_13b/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1352682,
+      "sha256": "0d076335f919b8774f303ce456ee000beb5500d7848b2ae17610a798308d23e9"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_vicuna/requests.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 1308290,
+      "sha256": "a1a2e2441d9d4b4614faf8c758a298f4fabda850beca134793918761f8dbd92b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_4b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 4232145,
+      "sha256": "460053fd01195126f24b0d3bc0ae3d968d311602ccf9b045c9cb373b6c5a40a5"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_12b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 4027220,
+      "sha256": "a62dfe4157623be02c625ed2cd69963ab6277e21b348e21dded30aa7884a3aa4"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/glm46v/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 4159933,
+      "sha256": "1b904759ca2fd5abc3ccd31586acd918cc566a1419b7e286750f359a5cd30cd3"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/internvl35_8b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3654757,
+      "sha256": "56e21fb9df3ca164d211522f3d550236319dfc476c67ec1e276a0fd8b6363b79"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_7b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3317668,
+      "sha256": "3641b95057cd9f07bad64dc5853206a86de32172e539aa7fe36f1e9a0fbabee8"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/onevision/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3452168,
+      "sha256": "c15b6496bb3b3fb3fecb18e33b52f6485b7bd6d4b17f5bbf64031f5079d4a69d"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm26/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3589254,
+      "sha256": "6b4083ce8cef8abcc1e981fa88bbe1fbcc18e187415a98ce9c936a2a946ce761"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm45/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 4087228,
+      "sha256": "64e3a5a2bbb34fa16293df58985e8ba5a0e67e852bc7898a048fd9f34705b12f"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/phi35/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3634162,
+      "sha256": "84bfaa568672eb47ecb78c72b63fd756fb62b1415181fba3e3838d63ec156a40"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen25vl/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3572648,
+      "sha256": "48d5d5f108f5479287e3eb2265e0c7db38e27f9367ffef74b1aa32e37d90e7ac"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen3vl/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3474410,
+      "sha256": "0b586101cf96c86d82a6d50cc8356c5ecce1056e322d81ec274544b077a97c70"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_4b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3456389,
+      "sha256": "3810df9c355d1f217904ee7ca9ac1d83589e56026fed0a4064ad2b6733a6f88b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_9b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3575015,
+      "sha256": "44f2dc45109a896efe2b386e41fa630efa13fe283711fbec77a7b83ee43cf34b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_mistral/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3859417,
+      "sha256": "f8d7d2cd74b8e65205b46e733d9dec6f5b2d2dbdc8dc8a744661c2e083053e86"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_13b/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3570337,
+      "sha256": "b029f4828b44c62841914f750048368d04528a81b5fea6c19195edfd6f7d29d6"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_vicuna/results.jsonl.gz",
+      "rows": 18334,
+      "compressed_bytes": 3415685,
+      "sha256": "9444af00d2bfb68a7e85e879b1035dbcbc6f896ea36fada79a97b9a236f6103d"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_4b/labels_initial.jsonl.gz",
+      "rows": 18304,
+      "compressed_bytes": 4160249,
+      "sha256": "7bae364e7adfae51c77fd87f9da0457ae1b8f81c1334a5a665efeefb32a803b1"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_12b/labels_initial.jsonl.gz",
+      "rows": 18306,
+      "compressed_bytes": 3869803,
+      "sha256": "f6f28527d194658166cc0c136eb080e58ab0920200d46c34962ae485535a6741"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/glm46v/labels_initial.jsonl.gz",
+      "rows": 18329,
+      "compressed_bytes": 4137199,
+      "sha256": "4e73dc59df3d025656e32496b2486248bdbc377dee1114773d04a26b93e77acc"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/internvl35_8b/labels_initial.jsonl.gz",
+      "rows": 18289,
+      "compressed_bytes": 3567405,
+      "sha256": "7fac746576d774a4b44fc2a23fe4bdb8c6fdd6252fd055a75c72aba83d90932f"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_7b/labels_initial.jsonl.gz",
+      "rows": 18291,
+      "compressed_bytes": 3246310,
+      "sha256": "cbab5ec3dfec601b01d5e8e42719df39f79b82b3c12643dee2fa72a4d23316ab"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/onevision/labels_initial.jsonl.gz",
+      "rows": 18297,
+      "compressed_bytes": 3413985,
+      "sha256": "db537dbdef9dd0ae9ab04f6803e04f9b2f3872bbcc94919a8a09dfce13cb10b9"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm26/labels_initial.jsonl.gz",
+      "rows": 18293,
+      "compressed_bytes": 3462242,
+      "sha256": "bf5938fe433271d43ae5946407390fc921e8c0801501742d2e50213794bf58e3"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm45/labels_initial.jsonl.gz",
+      "rows": 18311,
+      "compressed_bytes": 3975902,
+      "sha256": "38a44e59599c64b4661d507bfa08136a77245faba02296d09e1f77bc7924ac5a"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/phi35/labels_initial.jsonl.gz",
+      "rows": 18295,
+      "compressed_bytes": 3517386,
+      "sha256": "8b0a599a2aa43e58ef5c89dc5e86b9d6a51221264fd259f7511eb85bccdbb3c5"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen25vl/labels_initial.jsonl.gz",
+      "rows": 18309,
+      "compressed_bytes": 3425211,
+      "sha256": "637b44f0fb7f617db9da2f62b1692b5ce21e7f3e1cd3f839ed37d5c5ee1e9f31"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen3vl/labels_initial.jsonl.gz",
+      "rows": 18290,
+      "compressed_bytes": 3317725,
+      "sha256": "81b4adbc10e55f3e1c2d47ea577b2823ef84aa04ceeeb546d3002eddc7ecca3c"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_4b/labels_initial.jsonl.gz",
+      "rows": 18292,
+      "compressed_bytes": 3316048,
+      "sha256": "ae6c6250eb8265ffcd2a00aba24f79fc857f4039ee06cd516b45eb80feabd351"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_9b/labels_initial.jsonl.gz",
+      "rows": 18297,
+      "compressed_bytes": 3435139,
+      "sha256": "11b6fa38c58ba862a24fcade866f3dbc2e68ca5b848406d4674fd6e9d987fdf6"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_mistral/labels_initial.jsonl.gz",
+      "rows": 18280,
+      "compressed_bytes": 3685244,
+      "sha256": "bddd831114e04e07d2c7a26da4b324cc5a03d1c46a63f37070020e784ab37609"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_13b/labels_initial.jsonl.gz",
+      "rows": 18282,
+      "compressed_bytes": 3431645,
+      "sha256": "44ed2d069f1d225243c425b712b0601069c8e7fa9f1ea8845a664b2bdd852e93"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_vicuna/labels_initial.jsonl.gz",
+      "rows": 18283,
+      "compressed_bytes": 3257433,
+      "sha256": "34ccc4059e50ff2f44942ff6e338100d6912f4558f74798abef5688af338ca9f"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_4b/labels_reconciled.jsonl.gz",
+      "rows": 18311,
+      "compressed_bytes": 3884135,
+      "sha256": "b113e772e73b3397336a675c5f2abb102f396ea01e91a5a8c544e2e01cce9757"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/gemma3_12b/labels_reconciled.jsonl.gz",
+      "rows": 18315,
+      "compressed_bytes": 3603288,
+      "sha256": "45b304dd53b95a543803664ffe297a0030be1ad393680cfdf49ec44a6ab7fdca"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/glm46v/labels_reconciled.jsonl.gz",
+      "rows": 18329,
+      "compressed_bytes": 3834823,
+      "sha256": "b3c2d9208581563b892fdb0fb27587353b7e52de38062940bb7b05fb4aa7f5c0"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/internvl35_8b/labels_reconciled.jsonl.gz",
+      "rows": 18324,
+      "compressed_bytes": 3334475,
+      "sha256": "d0e2e7a855531516cada2b65b23be5418d707449b75b368270d9bab7ebe2630d"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_7b/labels_reconciled.jsonl.gz",
+      "rows": 18328,
+      "compressed_bytes": 3000155,
+      "sha256": "08f0a7a5a07ad62fd7fca876f8db16ca2cc2b438ed0f28d70286e0d645df4ce4"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/onevision/labels_reconciled.jsonl.gz",
+      "rows": 18331,
+      "compressed_bytes": 3199646,
+      "sha256": "b3f534024c14b540b4770224854740e90350eabc953cd00e42fd16ebcf0fa1c0"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm26/labels_reconciled.jsonl.gz",
+      "rows": 18331,
+      "compressed_bytes": 3251310,
+      "sha256": "0808dda9fd6822387a3855f6061d70a648b82da92bc360091a24d3abb7ed5ac2"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/minicpm45/labels_reconciled.jsonl.gz",
+      "rows": 18319,
+      "compressed_bytes": 3731802,
+      "sha256": "4b060d1148ad73faf5d3f2ec596121958148a6db78e5d56a896674990a14441b"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/phi35/labels_reconciled.jsonl.gz",
+      "rows": 18329,
+      "compressed_bytes": 3280492,
+      "sha256": "7660c4af735a456c50512d320749ad829d3127827a847e30e4c53ceabf941822"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen25vl/labels_reconciled.jsonl.gz",
+      "rows": 18320,
+      "compressed_bytes": 3260945,
+      "sha256": "cbbba9f80a95fddfc938dae25b8cb72f3f88eaca3a465255405292cc911ef383"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen3vl/labels_reconciled.jsonl.gz",
+      "rows": 18330,
+      "compressed_bytes": 3079507,
+      "sha256": "5f32f95afa3aac127366d81b45183b13ff43dcb62ee9dfe57171d874bd3aad05"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_4b/labels_reconciled.jsonl.gz",
+      "rows": 18330,
+      "compressed_bytes": 3101009,
+      "sha256": "e6b3ce4c8ed999717f9d42387834b5bb3427b34a66b27bde70316f4320c8d2a6"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/qwen35_9b/labels_reconciled.jsonl.gz",
+      "rows": 18326,
+      "compressed_bytes": 3204887,
+      "sha256": "f2671eca505da07d8b4239edaf603884df312911cb1e419276fa07fcd4967cf8"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_mistral/labels_reconciled.jsonl.gz",
+      "rows": 18327,
+      "compressed_bytes": 3502356,
+      "sha256": "2ae6d248e5b1d5f5318a982c697adbaa33dda42bcdba3cffb021edda7115d50d"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava15_13b/labels_reconciled.jsonl.gz",
+      "rows": 18320,
+      "compressed_bytes": 3229564,
+      "sha256": "58d5425a610a05b01827dd747846e170874d336553f3021f43fbe1a3579f9975"
+    },
+    {
+      "path": "outputs/annotations/deepseek_v2/census/archived_by_model/llava16_vicuna/labels_reconciled.jsonl.gz",
+      "rows": 18323,
+      "compressed_bytes": 3041693,
+      "sha256": "86bcca36bc25fe13c403909e953a8db0014b481a0afba42d5f2fb6935ac1c47c"
+    }
+  ]
+}
