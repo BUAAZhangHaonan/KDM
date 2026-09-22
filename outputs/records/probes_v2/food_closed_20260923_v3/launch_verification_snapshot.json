@@ -1,0 +1,35 @@
+{
+  "host": "4028",
+  "scheduler_pid": 431648,
+  "jobs": {
+    "qwen35_9b": {
+      "pid": 431778,
+      "gpus": [
+        0
+      ],
+      "closed": 594,
+      "reused": 591,
+      "first_actual_closed_check_passed": true
+    },
+    "qwen35_4b": {
+      "pid": 431781,
+      "gpus": [
+        1
+      ],
+      "closed": 720,
+      "reused": 715,
+      "first_actual_closed_check_passed": true
+    },
+    "gemma3_12b": {
+      "pid": 431784,
+      "gpus": [
+        4,
+        5
+      ],
+      "closed": 361,
+      "reused": 360,
+      "first_actual_closed_check_passed": true
+    }
+  },
+  "gpu_processes": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3, 431778, 19164 MiB\nGPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e, 431781, 9870 MiB\nGPU-8d98e481-b89b-2166-b474-c33d59e0fd3d, 431784, 14318 MiB\nGPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d, 431784, 11022 MiB\n"
+}

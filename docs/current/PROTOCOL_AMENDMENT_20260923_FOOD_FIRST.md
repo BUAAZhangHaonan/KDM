@@ -1,0 +1,6 @@
+# Food-first execution amendment — user instruction 2026-09-23
+Pause all independent generation. Preserve its partial records and failures.
+Concentrate 4028 physical GPUs 0/1/4/5 and 6403 physical GPUs 0/1 on all 16 models' Food101 closed scoring (4848 each, 77568 total).
+No KV-cache optimization, no new paid DeepSeek requests. Reuse complete validated closed rows from v2, compute only missing Food questions. This is a new user-authorized closed-only scope, including Qwen3VL whose previous mixed run exited -9; the prior failure is not erased or resumed.
+Keep checkpoint, environment, dtype, image processing, prompt, 101 class names and mean-log-probability ranking unchanged. 6403 GPU0 is additionally authorized (A100 80GB, UUID GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402); original registry and frozen code remain immutable. The v3 admission overlay records this extension.
+Use text matching for preliminary labels; ambiguous/unmatched answers remain unresolved, not semantic truth. After closed coverage, prepare Food101 labels and stage-five inputs; defer launching stage five and 1.466M independent answers until the user resumes after Codex reset. Do not automatically restart failed jobs.

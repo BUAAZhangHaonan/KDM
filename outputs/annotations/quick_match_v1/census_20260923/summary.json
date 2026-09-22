@@ -1,0 +1,839 @@
+{
+  "schema": "quick_match_v1",
+  "automatic_preliminary_only": true,
+  "final_gt": false,
+  "api_requests": 0,
+  "gpu_used": false,
+  "human_reviewed": false,
+  "rows": 293344,
+  "counts": {
+    "needs_confirmation": 163699,
+    "correct": 71848,
+    "incorrect": 11204,
+    "abstain": 30617,
+    "partial_match": 15976
+  },
+  "groups": {
+    "gemma3_12b|food101|dev|census|True": {
+      "needs_confirmation": 1317,
+      "correct": 1040,
+      "incorrect": 61,
+      "abstain": 6
+    },
+    "gemma3_12b|food101|dev|unguided|False": {
+      "needs_confirmation": 1574,
+      "correct": 815,
+      "incorrect": 35
+    },
+    "gemma3_12b|food101|eval|census|True": {
+      "needs_confirmation": 1306,
+      "correct": 1064,
+      "incorrect": 53,
+      "abstain": 1
+    },
+    "gemma3_12b|food101|eval|unguided|False": {
+      "needs_confirmation": 1548,
+      "correct": 843,
+      "incorrect": 33
+    },
+    "gemma3_12b|vizwiz|eval|census|True": {
+      "abstain": 818,
+      "needs_confirmation": 2048,
+      "partial_match": 245,
+      "correct": 390
+    },
+    "gemma3_12b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 3089,
+      "partial_match": 126,
+      "correct": 286
+    },
+    "gemma3_12b|vizwiz|dev|census|True": {
+      "needs_confirmation": 490,
+      "abstain": 179,
+      "correct": 91,
+      "partial_match": 58
+    },
+    "gemma3_12b|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 735,
+      "correct": 55,
+      "partial_match": 28
+    },
+    "gemma3_4b|food101|dev|census|True": {
+      "needs_confirmation": 1705,
+      "correct": 695,
+      "incorrect": 24
+    },
+    "gemma3_4b|food101|dev|unguided|False": {
+      "needs_confirmation": 2093,
+      "correct": 326,
+      "incorrect": 5
+    },
+    "gemma3_4b|food101|eval|census|True": {
+      "needs_confirmation": 1714,
+      "correct": 690,
+      "incorrect": 20
+    },
+    "gemma3_4b|food101|eval|unguided|False": {
+      "needs_confirmation": 2091,
+      "correct": 328,
+      "incorrect": 5
+    },
+    "gemma3_4b|vizwiz|eval|census|True": {
+      "needs_confirmation": 2578,
+      "abstain": 428,
+      "partial_match": 185,
+      "correct": 310
+    },
+    "gemma3_4b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 3259,
+      "partial_match": 71,
+      "correct": 171
+    },
+    "gemma3_4b|vizwiz|dev|census|True": {
+      "needs_confirmation": 615,
+      "abstain": 93,
+      "partial_match": 44,
+      "correct": 66
+    },
+    "gemma3_4b|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 777,
+      "correct": 32,
+      "partial_match": 9
+    },
+    "glm46v|food101|dev|census|True": {
+      "needs_confirmation": 2424
+    },
+    "glm46v|food101|dev|unguided|False": {
+      "needs_confirmation": 2424
+    },
+    "glm46v|food101|eval|census|True": {
+      "needs_confirmation": 2424
+    },
+    "glm46v|food101|eval|unguided|False": {
+      "needs_confirmation": 2424
+    },
+    "glm46v|vizwiz|eval|census|True": {
+      "needs_confirmation": 3501
+    },
+    "glm46v|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 3501
+    },
+    "glm46v|vizwiz|dev|census|True": {
+      "needs_confirmation": 818
+    },
+    "glm46v|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 818
+    },
+    "internvl35_8b|food101|dev|census|True": {
+      "needs_confirmation": 1352,
+      "incorrect": 390,
+      "correct": 643,
+      "abstain": 39
+    },
+    "internvl35_8b|food101|dev|unguided|False": {
+      "needs_confirmation": 1556,
+      "incorrect": 369,
+      "correct": 499
+    },
+    "internvl35_8b|food101|eval|census|True": {
+      "incorrect": 413,
+      "needs_confirmation": 1327,
+      "correct": 647,
+      "abstain": 37
+    },
+    "internvl35_8b|food101|eval|unguided|False": {
+      "incorrect": 401,
+      "needs_confirmation": 1538,
+      "correct": 485
+    },
+    "internvl35_8b|vizwiz|eval|census|True": {
+      "needs_confirmation": 1682,
+      "abstain": 879,
+      "partial_match": 366,
+      "correct": 574
+    },
+    "internvl35_8b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2381,
+      "correct": 640,
+      "partial_match": 478,
+      "abstain": 2
+    },
+    "internvl35_8b|vizwiz|dev|census|True": {
+      "needs_confirmation": 396,
+      "abstain": 193,
+      "correct": 139,
+      "partial_match": 90
+    },
+    "internvl35_8b|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 534,
+      "correct": 160,
+      "partial_match": 122,
+      "abstain": 2
+    },
+    "llava15_13b|food101|dev|census|True": {
+      "abstain": 77,
+      "needs_confirmation": 1419,
+      "incorrect": 280,
+      "correct": 648
+    },
+    "llava15_13b|food101|dev|unguided|False": {
+      "needs_confirmation": 1454,
+      "correct": 734,
+      "incorrect": 236
+    },
+    "llava15_13b|food101|eval|census|True": {
+      "incorrect": 299,
+      "correct": 620,
+      "needs_confirmation": 1428,
+      "abstain": 77
+    },
+    "llava15_13b|food101|eval|unguided|False": {
+      "incorrect": 257,
+      "correct": 725,
+      "needs_confirmation": 1442
+    },
+    "llava15_13b|vizwiz|eval|census|True": {
+      "abstain": 1257,
+      "correct": 645,
+      "needs_confirmation": 1102,
+      "partial_match": 497
+    },
+    "llava15_13b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2692,
+      "correct": 442,
+      "abstain": 2,
+      "partial_match": 365
+    },
+    "llava15_13b|vizwiz|dev|census|True": {
+      "needs_confirmation": 257,
+      "abstain": 277,
+      "correct": 149,
+      "partial_match": 135
+    },
+    "llava15_13b|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 631,
+      "correct": 98,
+      "partial_match": 89
+    },
+    "llava15_7b|food101|dev|census|True": {
+      "needs_confirmation": 1596,
+      "incorrect": 292,
+      "correct": 532,
+      "abstain": 4
+    },
+    "llava15_7b|food101|dev|unguided|False": {
+      "needs_confirmation": 1487,
+      "incorrect": 343,
+      "correct": 594
+    },
+    "llava15_7b|food101|eval|census|True": {
+      "needs_confirmation": 1590,
+      "incorrect": 313,
+      "correct": 520,
+      "abstain": 1
+    },
+    "llava15_7b|food101|eval|unguided|False": {
+      "needs_confirmation": 1466,
+      "incorrect": 375,
+      "correct": 583
+    },
+    "llava15_7b|vizwiz|eval|census|True": {
+      "abstain": 778,
+      "correct": 651,
+      "needs_confirmation": 1478,
+      "partial_match": 594
+    },
+    "llava15_7b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2132,
+      "correct": 702,
+      "partial_match": 659,
+      "abstain": 8
+    },
+    "llava15_7b|vizwiz|dev|census|True": {
+      "needs_confirmation": 355,
+      "correct": 153,
+      "abstain": 155,
+      "partial_match": 155
+    },
+    "llava15_7b|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 474,
+      "correct": 161,
+      "partial_match": 180,
+      "abstain": 3
+    },
+    "llava16_mistral|food101|dev|census|True": {
+      "abstain": 465,
+      "needs_confirmation": 1011,
+      "incorrect": 191,
+      "correct": 757
+    },
+    "llava16_mistral|food101|dev|unguided|False": {
+      "needs_confirmation": 1776,
+      "correct": 558,
+      "incorrect": 90
+    },
+    "llava16_mistral|food101|eval|census|True": {
+      "abstain": 482,
+      "needs_confirmation": 983,
+      "incorrect": 206,
+      "correct": 753
+    },
+    "llava16_mistral|food101|eval|unguided|False": {
+      "needs_confirmation": 1769,
+      "incorrect": 100,
+      "correct": 555
+    },
+    "llava16_mistral|vizwiz|eval|census|True": {
+      "abstain": 1496,
+      "needs_confirmation": 1178,
+      "correct": 521,
+      "partial_match": 306
+    },
+    "llava16_mistral|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 3034,
+      "correct": 301,
+      "abstain": 1,
+      "partial_match": 165
+    },
+    "llava16_mistral|vizwiz|dev|census|True": {
+      "needs_confirmation": 268,
+      "abstain": 325,
+      "correct": 140,
+      "partial_match": 85
+    },
+    "llava16_mistral|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 712,
+      "correct": 63,
+      "partial_match": 43
+    },
+    "llava16_vicuna|food101|dev|census|True": {
+      "abstain": 248,
+      "needs_confirmation": 1305,
+      "incorrect": 261,
+      "correct": 610
+    },
+    "llava16_vicuna|food101|dev|unguided|False": {
+      "needs_confirmation": 1377,
+      "incorrect": 331,
+      "correct": 716
+    },
+    "llava16_vicuna|food101|eval|census|True": {
+      "needs_confirmation": 1275,
+      "correct": 616,
+      "incorrect": 284,
+      "abstain": 249
+    },
+    "llava16_vicuna|food101|eval|unguided|False": {
+      "needs_confirmation": 1375,
+      "incorrect": 331,
+      "correct": 718
+    },
+    "llava16_vicuna|vizwiz|eval|census|True": {
+      "abstain": 1915,
+      "needs_confirmation": 710,
+      "correct": 526,
+      "partial_match": 350
+    },
+    "llava16_vicuna|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2105,
+      "correct": 725,
+      "abstain": 21,
+      "partial_match": 650
+    },
+    "llava16_vicuna|vizwiz|dev|census|True": {
+      "abstain": 403,
+      "correct": 152,
+      "needs_confirmation": 169,
+      "partial_match": 94
+    },
+    "llava16_vicuna|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 485,
+      "correct": 175,
+      "partial_match": 152,
+      "abstain": 6
+    },
+    "minicpm26|food101|dev|census|True": {
+      "needs_confirmation": 1016,
+      "correct": 964,
+      "incorrect": 260,
+      "abstain": 184
+    },
+    "minicpm26|food101|dev|unguided|False": {
+      "correct": 946,
+      "needs_confirmation": 1333,
+      "incorrect": 145
+    },
+    "minicpm26|food101|eval|census|True": {
+      "incorrect": 249,
+      "needs_confirmation": 1022,
+      "correct": 953,
+      "abstain": 200
+    },
+    "minicpm26|food101|eval|unguided|False": {
+      "incorrect": 146,
+      "correct": 959,
+      "needs_confirmation": 1319
+    },
+    "minicpm26|vizwiz|eval|census|True": {
+      "abstain": 1373,
+      "correct": 766,
+      "needs_confirmation": 807,
+      "partial_match": 555
+    },
+    "minicpm26|vizwiz|eval|unguided|False": {
+      "partial_match": 578,
+      "correct": 759,
+      "needs_confirmation": 2136,
+      "abstain": 28
+    },
+    "minicpm26|vizwiz|dev|census|True": {
+      "needs_confirmation": 194,
+      "abstain": 321,
+      "correct": 183,
+      "partial_match": 120
+    },
+    "minicpm26|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 505,
+      "correct": 188,
+      "partial_match": 121,
+      "abstain": 4
+    },
+    "minicpm45|food101|dev|census|True": {
+      "needs_confirmation": 913,
+      "correct": 1427,
+      "incorrect": 69,
+      "abstain": 15
+    },
+    "minicpm45|food101|dev|unguided|False": {
+      "needs_confirmation": 2364,
+      "correct": 59,
+      "incorrect": 1
+    },
+    "minicpm45|food101|eval|census|True": {
+      "incorrect": 89,
+      "correct": 1439,
+      "needs_confirmation": 883,
+      "abstain": 13
+    },
+    "minicpm45|food101|eval|unguided|False": {
+      "needs_confirmation": 2375,
+      "correct": 49
+    },
+    "minicpm45|vizwiz|eval|census|True": {
+      "needs_confirmation": 1939,
+      "correct": 540,
+      "abstain": 731,
+      "partial_match": 291
+    },
+    "minicpm45|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 3356,
+      "correct": 103,
+      "partial_match": 42
+    },
+    "minicpm45|vizwiz|dev|census|True": {
+      "needs_confirmation": 498,
+      "abstain": 138,
+      "correct": 119,
+      "partial_match": 63
+    },
+    "minicpm45|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 778,
+      "correct": 29,
+      "partial_match": 11
+    },
+    "onevision|food101|dev|census|True": {
+      "correct": 755,
+      "needs_confirmation": 1260,
+      "incorrect": 406,
+      "abstain": 3
+    },
+    "onevision|food101|dev|unguided|False": {
+      "correct": 817,
+      "needs_confirmation": 1274,
+      "incorrect": 333
+    },
+    "onevision|food101|eval|census|True": {
+      "incorrect": 371,
+      "needs_confirmation": 1276,
+      "correct": 776,
+      "abstain": 1
+    },
+    "onevision|food101|eval|unguided|False": {
+      "needs_confirmation": 1322,
+      "incorrect": 301,
+      "correct": 801
+    },
+    "onevision|vizwiz|eval|census|True": {
+      "needs_confirmation": 1690,
+      "correct": 703,
+      "partial_match": 652,
+      "abstain": 456
+    },
+    "onevision|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2089,
+      "correct": 761,
+      "partial_match": 642,
+      "abstain": 9
+    },
+    "onevision|vizwiz|dev|census|True": {
+      "needs_confirmation": 405,
+      "abstain": 98,
+      "correct": 165,
+      "partial_match": 150
+    },
+    "onevision|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 501,
+      "correct": 172,
+      "partial_match": 143,
+      "abstain": 2
+    },
+    "phi35|food101|dev|census|True": {
+      "needs_confirmation": 1343,
+      "incorrect": 265,
+      "correct": 791,
+      "abstain": 25
+    },
+    "phi35|food101|dev|unguided|False": {
+      "correct": 839,
+      "needs_confirmation": 1363,
+      "incorrect": 222
+    },
+    "phi35|food101|eval|census|True": {
+      "incorrect": 286,
+      "correct": 795,
+      "needs_confirmation": 1321,
+      "abstain": 22
+    },
+    "phi35|food101|eval|unguided|False": {
+      "incorrect": 247,
+      "correct": 823,
+      "needs_confirmation": 1354
+    },
+    "phi35|vizwiz|eval|census|True": {
+      "abstain": 1280,
+      "correct": 530,
+      "needs_confirmation": 1292,
+      "partial_match": 399
+    },
+    "phi35|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2578,
+      "correct": 523,
+      "abstain": 14,
+      "partial_match": 386
+    },
+    "phi35|vizwiz|dev|census|True": {
+      "abstain": 280,
+      "needs_confirmation": 320,
+      "correct": 127,
+      "partial_match": 91
+    },
+    "phi35|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 609,
+      "correct": 122,
+      "partial_match": 86,
+      "abstain": 1
+    },
+    "qwen25vl|food101|dev|census|True": {
+      "abstain": 1423,
+      "correct": 727,
+      "needs_confirmation": 244,
+      "incorrect": 30
+    },
+    "qwen25vl|food101|dev|unguided|False": {
+      "needs_confirmation": 1243,
+      "incorrect": 176,
+      "correct": 1005
+    },
+    "qwen25vl|food101|eval|census|True": {
+      "abstain": 1418,
+      "correct": 740,
+      "needs_confirmation": 239,
+      "incorrect": 27
+    },
+    "qwen25vl|food101|eval|unguided|False": {
+      "needs_confirmation": 1287,
+      "correct": 959,
+      "incorrect": 178
+    },
+    "qwen25vl|vizwiz|eval|census|True": {
+      "abstain": 2557,
+      "partial_match": 173,
+      "needs_confirmation": 431,
+      "correct": 340
+    },
+    "qwen25vl|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2537,
+      "partial_match": 401,
+      "correct": 560,
+      "abstain": 3
+    },
+    "qwen25vl|vizwiz|dev|census|True": {
+      "abstain": 574,
+      "needs_confirmation": 109,
+      "correct": 95,
+      "partial_match": 40
+    },
+    "qwen25vl|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 591,
+      "correct": 137,
+      "partial_match": 90
+    },
+    "qwen35_4b|food101|dev|census|True": {
+      "correct": 1161,
+      "needs_confirmation": 665,
+      "abstain": 490,
+      "incorrect": 108
+    },
+    "qwen35_4b|food101|dev|unguided|False": {
+      "correct": 1293,
+      "needs_confirmation": 963,
+      "incorrect": 168
+    },
+    "qwen35_4b|food101|eval|census|True": {
+      "abstain": 498,
+      "correct": 1182,
+      "incorrect": 114,
+      "needs_confirmation": 630
+    },
+    "qwen35_4b|food101|eval|unguided|False": {
+      "incorrect": 180,
+      "correct": 1328,
+      "needs_confirmation": 916
+    },
+    "qwen35_4b|vizwiz|eval|census|True": {
+      "abstain": 1368,
+      "correct": 747,
+      "partial_match": 505,
+      "needs_confirmation": 881
+    },
+    "qwen35_4b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 1768,
+      "correct": 913,
+      "partial_match": 819,
+      "abstain": 1
+    },
+    "qwen35_4b|vizwiz|dev|census|True": {
+      "partial_match": 124,
+      "abstain": 304,
+      "correct": 169,
+      "needs_confirmation": 221
+    },
+    "qwen35_4b|vizwiz|dev|unguided|False": {
+      "partial_match": 188,
+      "needs_confirmation": 416,
+      "correct": 214
+    },
+    "qwen35_9b|food101|dev|census|True": {
+      "needs_confirmation": 529,
+      "abstain": 648,
+      "correct": 1189,
+      "incorrect": 58
+    },
+    "qwen35_9b|food101|dev|unguided|False": {
+      "needs_confirmation": 894,
+      "correct": 1403,
+      "incorrect": 127
+    },
+    "qwen35_9b|food101|eval|census|True": {
+      "incorrect": 66,
+      "correct": 1179,
+      "abstain": 651,
+      "needs_confirmation": 528
+    },
+    "qwen35_9b|food101|eval|unguided|False": {
+      "incorrect": 145,
+      "correct": 1395,
+      "needs_confirmation": 884
+    },
+    "qwen35_9b|vizwiz|eval|census|True": {
+      "abstain": 1300,
+      "needs_confirmation": 966,
+      "partial_match": 526,
+      "correct": 709
+    },
+    "qwen35_9b|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 2061,
+      "correct": 759,
+      "partial_match": 678,
+      "abstain": 3
+    },
+    "qwen35_9b|vizwiz|dev|census|True": {
+      "partial_match": 115,
+      "abstain": 283,
+      "needs_confirmation": 244,
+      "correct": 176
+    },
+    "qwen35_9b|vizwiz|dev|unguided|False": {
+      "partial_match": 147,
+      "needs_confirmation": 478,
+      "correct": 193
+    },
+    "qwen3vl|food101|dev|census|True": {
+      "correct": 1284,
+      "abstain": 486,
+      "needs_confirmation": 579,
+      "incorrect": 75
+    },
+    "qwen3vl|food101|dev|unguided|False": {
+      "correct": 1396,
+      "needs_confirmation": 896,
+      "incorrect": 132
+    },
+    "qwen3vl|food101|eval|census|True": {
+      "incorrect": 88,
+      "correct": 1280,
+      "abstain": 517,
+      "needs_confirmation": 539
+    },
+    "qwen3vl|food101|eval|unguided|False": {
+      "incorrect": 144,
+      "correct": 1370,
+      "needs_confirmation": 910
+    },
+    "qwen3vl|vizwiz|eval|census|True": {
+      "abstain": 1607,
+      "correct": 708,
+      "partial_match": 439,
+      "needs_confirmation": 747
+    },
+    "qwen3vl|vizwiz|eval|unguided|False": {
+      "needs_confirmation": 1719,
+      "correct": 1000,
+      "partial_match": 775,
+      "abstain": 7
+    },
+    "qwen3vl|vizwiz|dev|census|True": {
+      "abstain": 353,
+      "correct": 185,
+      "needs_confirmation": 169,
+      "partial_match": 111
+    },
+    "qwen3vl|vizwiz|dev|unguided|False": {
+      "needs_confirmation": 406,
+      "correct": 237,
+      "partial_match": 174,
+      "abstain": 1
+    }
+  },
+  "sources": [
+    {
+      "path": "outputs/raw/current/gemma3_12b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "3fb21cf3bd416a4b328c5c0aec6a5b8009eb8e50f71d46d30d98c646846045db",
+      "limited_snapshot": false,
+      "source_size_at_start": 63843360
+    },
+    {
+      "path": "outputs/raw/current/gemma3_4b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "ece3422459f302fad0200a227bc9fe03b523d2faffb72e5eaa1a50737f24f581",
+      "limited_snapshot": false,
+      "source_size_at_start": 77196637
+    },
+    {
+      "path": "outputs/raw/current/glm46v/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "70727d3113aceac2bdb77a1a8186cd554ae4e1974f1dc29fffc598025fc8f987",
+      "limited_snapshot": false,
+      "source_size_at_start": 92086941
+    },
+    {
+      "path": "outputs/raw/current/internvl35_8b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "8efbd0b0e1e9ba1a9964f903cbf0c0103862a45a9c6eea2fb0e4d9721b4a6ddd",
+      "limited_snapshot": false,
+      "source_size_at_start": 49835140
+    },
+    {
+      "path": "outputs/raw/current/llava15_13b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "b039ecd1cebfaa0b456307978eeb3639c249ad73ab3f5ddfb3f0dda244ed039b",
+      "limited_snapshot": false,
+      "source_size_at_start": 52239630
+    },
+    {
+      "path": "outputs/raw/current/llava15_7b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "6f91c11c34bb86769ecbd70fb782674c185ab13b10135a1f0977aad24fc8a142",
+      "limited_snapshot": false,
+      "source_size_at_start": 43783893
+    },
+    {
+      "path": "outputs/raw/current/llava16_mistral/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "2ee594b75de9b48144597077c525e98a3d23386227567d1057258931d433dfc4",
+      "limited_snapshot": false,
+      "source_size_at_start": 65702160
+    },
+    {
+      "path": "outputs/raw/current/llava16_vicuna/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "200377a1e7a96fdd0c6a445acbfc174b880af2d3b61e812f108f52170d0c1a4d",
+      "limited_snapshot": false,
+      "source_size_at_start": 46727639
+    },
+    {
+      "path": "outputs/raw/current/minicpm26/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "5d8e1635c0af30087e2f0b69616aba39553ac3f72f9e0dd15c7e2021e64b2cbe",
+      "limited_snapshot": false,
+      "source_size_at_start": 50262748
+    },
+    {
+      "path": "outputs/raw/current/minicpm45/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "2394501dfae1a6ad7fa6d271dfe32dc947f6683bcbdd756935da75d14692575c",
+      "limited_snapshot": false,
+      "source_size_at_start": 74131751
+    },
+    {
+      "path": "outputs/raw/current/onevision/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "600df1e000fdb2d679755a10e6993f5c8214da67a3dbaadb3e08e36a958c05de",
+      "limited_snapshot": false,
+      "source_size_at_start": 43811388
+    },
+    {
+      "path": "outputs/raw/current/phi35/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "1fd9ca176bef967537187917ec06a99ffa3ac9736c349ec4e4b6942544080469",
+      "limited_snapshot": false,
+      "source_size_at_start": 56320754
+    },
+    {
+      "path": "outputs/raw/current/qwen25vl/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "d089c5630547947ce73f473eef08817849a69b01900f9d5b27e4a5d67c1e6161",
+      "limited_snapshot": false,
+      "source_size_at_start": 52603491
+    },
+    {
+      "path": "outputs/raw/current/qwen35_4b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "fd1ed0f167aa7237bd49704983ae4a4ff5904c738a8c0bb2339d368b28e878e0",
+      "limited_snapshot": false,
+      "source_size_at_start": 43963596
+    },
+    {
+      "path": "outputs/raw/current/qwen35_9b/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "5363188b0f3996f113ac43181d1dd6c9eb1a2c38d5f1fe56f194ca4e03c66324",
+      "limited_snapshot": false,
+      "source_size_at_start": 47806650
+    },
+    {
+      "path": "outputs/raw/current/qwen3vl/census.jsonl",
+      "screened_rows": 18334,
+      "screened_bytes_sha256": "28185576ad71e75b4ce88e3aeca80188ab06e29569fe60256b25b5a35387c441",
+      "limited_snapshot": false,
+      "source_size_at_start": 45310470
+    }
+  ],
+  "rule_files_sha256": {
+    "workflows/quick_match_v1/match.py": "369fd05cb8171f06183120f6efdd54af19524b7128c1e6158cb776603176a5c0",
+    "configs/kdm/food_aliases.json": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "src/kdm/scoring.py": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862",
+    "src/kdm/models/official_vqa_normalizer.py": "86fea2fcd4c33d81423230cf3303475f683e6f6c3b646638f3d3ac051e5ec7fe"
+  },
+  "limits": "Full-string lexical matches only. Nonmatches remain unresolved, not wrong. Closed unique top1 accuracy is not an abstention GT rule. Ties unresolved. No semantic extraction, no human review, no paid API."
+}

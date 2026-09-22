@@ -1,0 +1,59 @@
+{
+  "host": "6403",
+  "scheduler_pid": 86374,
+  "jobs": {
+    "qwen3vl": {
+      "job_status": "running",
+      "pid": 86455,
+      "alive": true,
+      "gpus": [
+        1
+      ],
+      "status": "running",
+      "closed": 1265,
+      "reused": 1261,
+      "proof": {
+        "passed": true,
+        "model": "qwen3vl",
+        "sample_id": "food101:apple_pie_group_000.jpg",
+        "attempts": [],
+        "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+        "workflow_sha256": {
+          "admission.py": "eaae9245e465d7cdd5bfcb4112ede4a8104f1e0e6ad65f6298f833fbae0c1f9c",
+          "runner.py": "8f3dfb46b25a5bb531cfc7a3ef5427e1a64cf87475271f0647f0d0374d5ba94a",
+          "scheduler.py": "61a997b01dbfe766b99dbbf08f0478ac718cee0c3422355116ee0b31ce3fbe35"
+        },
+        "closed_max_score_error": 0.0,
+        "closed_gold_rank_equal": true
+      },
+      "error": null
+    },
+    "glm46v": {
+      "job_status": "running",
+      "pid": 86456,
+      "alive": true,
+      "gpus": [
+        0
+      ],
+      "status": "running",
+      "closed": 10,
+      "reused": 7,
+      "proof": {
+        "passed": true,
+        "model": "glm46v",
+        "sample_id": "food101:apple_pie_group_000.jpg",
+        "attempts": [],
+        "scope": "actual model exact-prefix memoization versus unchanged frozen functions",
+        "workflow_sha256": {
+          "admission.py": "eaae9245e465d7cdd5bfcb4112ede4a8104f1e0e6ad65f6298f833fbae0c1f9c",
+          "runner.py": "8f3dfb46b25a5bb531cfc7a3ef5427e1a64cf87475271f0647f0d0374d5ba94a",
+          "scheduler.py": "61a997b01dbfe766b99dbbf08f0478ac718cee0c3422355116ee0b31ce3fbe35"
+        },
+        "closed_max_score_error": 0.0,
+        "closed_gold_rank_equal": true
+      },
+      "error": null
+    }
+  },
+  "gpu_processes": "GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402, 86456, 20782 MiB\nGPU-5c45e961-7442-eb90-9b8c-295a1cf14995, 86455, 18012 MiB\n"
+}

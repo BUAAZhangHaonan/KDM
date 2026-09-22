@@ -1,0 +1,7 @@
+{
+  "model": "qwen35_9b",
+  "actual_verified_sample_id": "food101:cannoli_group_015.jpg",
+  "actual_record_key": "5394392a2c9c34dfdc16f60007244f6b8b6182205997b9a16e3188f9fc894fbc",
+  "record_identity": "0dfddbcf8a9ea21ed9b1990c330c2195bf622a5abf006770a8ed012af583f6c5",
+  "reason": "Proof header retained samples[0] while reused rows were skipped. Numeric comparison used this first newly computed row; original proof unchanged."
+}

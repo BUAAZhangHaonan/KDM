@@ -1,0 +1,7 @@
+{
+  "model": "gemma3_12b",
+  "actual_verified_sample_id": "food101:bibimbap_eval_024.jpg",
+  "actual_record_key": "c1927abe870da4234c0036c34eb3023723cc431b5a27517f743160023814c084",
+  "record_identity": "2d7205bcacc8e4232950571a1e0c922b5cb266589bec52409701715f92f19ee6",
+  "reason": "Proof header retained samples[0] while reused rows were skipped. Numeric comparison used this first newly computed row; original proof unchanged."
+}

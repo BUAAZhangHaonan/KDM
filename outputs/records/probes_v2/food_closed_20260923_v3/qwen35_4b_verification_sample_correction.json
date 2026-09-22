@@ -1,0 +1,7 @@
+{
+  "model": "qwen35_4b",
+  "actual_verified_sample_id": "food101:carrot_cake_eval_043.jpg",
+  "actual_record_key": "c589ac60000a61ff0e5b769e3f83c62b468d23f359700144180adc46fd37d139",
+  "record_identity": "a5ae0eb7c90b844868aa72cddc102b1874dc921c56eb3f3d1f3e35e059ee2d60",
+  "reason": "Proof header retained samples[0] while reused rows were skipped. Numeric comparison used this first newly computed row; original proof unchanged."
+}

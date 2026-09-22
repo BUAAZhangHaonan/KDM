@@ -1,0 +1,60 @@
+{
+  "schema": "quick_match_v1",
+  "automatic_preliminary_only": true,
+  "final_gt": false,
+  "api_requests": 0,
+  "gpu_used": false,
+  "human_reviewed": false,
+  "rows": 9,
+  "counts": {
+    "abstain": 1,
+    "needs_confirmation": 4,
+    "correct": 1,
+    "incorrect": 3
+  },
+  "groups": {
+    "qwen25vl|food101|dev|census|True": {
+      "abstain": 1,
+      "correct": 1
+    },
+    "qwen25vl|food101|dev|unguided|False": {
+      "needs_confirmation": 1
+    },
+    "gemma3_12b|food101|dev|independent_attempt|False": {
+      "needs_confirmation": 3
+    },
+    "gemma3_12b|food101|dev|closed|None": {
+      "incorrect": 3
+    }
+  },
+  "sources": [
+    {
+      "path": "outputs/raw/current/qwen25vl/census.jsonl",
+      "screened_rows": 3,
+      "screened_bytes_sha256": "4d0803b0728fac5200bea0e7c06d479aa3ca411e3aeb1f8733eeb0972311131a",
+      "limited_snapshot": true,
+      "source_size_at_start": 52603491
+    },
+    {
+      "path": "outputs/raw/probes_v2/all16_20260922_v2/gemma3_12b/independent.jsonl",
+      "screened_rows": 3,
+      "screened_bytes_sha256": "8f4c6dd82df717c96c2ccf94b47d6413435cc4195eebc5ed3df6e13a03ab496f",
+      "limited_snapshot": true,
+      "source_size_at_start": 9974823
+    },
+    {
+      "path": "outputs/raw/probes_v2/all16_20260922_v2/gemma3_12b/closed.jsonl",
+      "screened_rows": 3,
+      "screened_bytes_sha256": "80505536909269496dc55873b2847f293e41acd95e1c3bc3f62b1dd4be46d881",
+      "limited_snapshot": true,
+      "source_size_at_start": 4661357
+    }
+  ],
+  "rule_files_sha256": {
+    "workflows/quick_match_v1/match.py": "369fd05cb8171f06183120f6efdd54af19524b7128c1e6158cb776603176a5c0",
+    "configs/kdm/food_aliases.json": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "src/kdm/scoring.py": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862",
+    "src/kdm/models/official_vqa_normalizer.py": "86fea2fcd4c33d81423230cf3303475f683e6f6c3b646638f3d3ac051e5ec7fe"
+  },
+  "limits": "Full-string lexical matches only. Nonmatches remain unresolved, not wrong. Closed unique top1 accuracy is not an abstention GT rule. Ties unresolved. No semantic extraction, no human review, no paid API."
+}

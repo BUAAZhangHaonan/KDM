@@ -1,0 +1,7 @@
+{
+  "model": "qwen3vl",
+  "actual_verified_sample_id": "food101:crab_cakes_group_013.jpg",
+  "actual_record_key": "46b2dce9f4334b9e48787f38ff53553b697531e42f9653d752dbfe0b4d0d6528",
+  "record_identity": "94d4aeeeefadbc96786bb09b3273b63c9892dee3008f9ccb78da4c728632be45",
+  "reason": "v3 proof header retained original samples[0] after skipping reused rows; numeric comparison used this first newly computed row. Original proof retained unchanged."
+}

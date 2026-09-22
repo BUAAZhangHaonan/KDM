@@ -1,0 +1,7 @@
+{
+  "model": "glm46v",
+  "actual_verified_sample_id": "food101:apple_pie_group_007.jpg",
+  "actual_record_key": "39cf58fd3f3c163bfd01cf9c325572c4bf3d1f301dd36d3b0b63a49f6abb09f5",
+  "record_identity": "81a9f613f504522a60ea18eda8629ba69b7a24513608e37c9cb4845f6592e739",
+  "reason": "v3 proof header retained original samples[0] after skipping reused rows; numeric comparison used this first newly computed row. Original proof retained unchanged."
+}

@@ -1,0 +1,230 @@
+{
+  "reason": "User requested pause independent generation and switch all approved GPUs to Food101 closed-only scoring",
+  "stopped": [
+    {
+      "pid": 417944,
+      "command": "venv/bin/python -u workflows/all_model_probes_v2/scheduler.py --execute --host 4028 --name all16_20260922_v2 "
+    },
+    {
+      "pid": 418124,
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py --model gemma3_12b --run-dir outputs/records/probes_v2/all16_20260922_v2 "
+    },
+    {
+      "pid": 418120,
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py --model qwen35_4b --run-dir outputs/records/probes_v2/all16_20260922_v2 "
+    },
+    {
+      "pid": 418119,
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py --model qwen35_9b --run-dir outputs/records/probes_v2/all16_20260922_v2 "
+    }
+  ],
+  "still_alive": [],
+  "prior_status": {
+    "host": "4028",
+    "scheduler_pid": 417944,
+    "started_utc": "2026-09-22T08:56:21.136682+00:00",
+    "plan": {
+      "lanes": {
+        "remote_gpu1": {
+          "host": "6403",
+          "cards": [
+            1
+          ],
+          "models": [
+            "qwen3vl",
+            "glm46v"
+          ]
+        },
+        "gpu0": {
+          "host": "4028",
+          "cards": [
+            0
+          ],
+          "models": [
+            "qwen35_9b"
+          ]
+        },
+        "gpu1": {
+          "host": "4028",
+          "cards": [
+            1
+          ],
+          "models": [
+            "qwen35_4b",
+            "qwen25vl"
+          ]
+        },
+        "pair45": {
+          "host": "4028",
+          "cards": [
+            4,
+            5
+          ],
+          "models": [
+            "gemma3_12b",
+            "llava15_13b",
+            "internvl35_8b"
+          ]
+        },
+        "gpu4_after_pairs": {
+          "host": "4028",
+          "cards": [
+            4
+          ],
+          "models": [
+            "gemma3_4b",
+            "llava15_7b",
+            "onevision",
+            "llava16_mistral"
+          ]
+        },
+        "gpu5_after_pairs": {
+          "host": "4028",
+          "cards": [
+            5
+          ],
+          "models": [
+            "minicpm26",
+            "minicpm45",
+            "phi35",
+            "llava16_vicuna"
+          ]
+        }
+      },
+      "models": 16,
+      "samples_per_model": 9167,
+      "independent_per_model": 91670,
+      "closed_per_model": 4848,
+      "expected_independent_total": 1466720,
+      "expected_closed_total": 77568,
+      "expected_total_records": 1544288,
+      "independent_config": {
+        "temperature": 1.0,
+        "top_p": 1.0,
+        "max_tokens": 32,
+        "repeats": 10
+      },
+      "closed_classes": 101,
+      "splits": [
+        "dev",
+        "eval"
+      ],
+      "closed_scope": "food101 only; 101 label-sequence scores per image, not one forward pass",
+      "does_not_select_models": true,
+      "no_automatic_retry": true,
+      "failure_policy": "preserve failed model; allow independent model work to continue"
+    },
+    "complete": false,
+    "host_complete": false,
+    "amendment_path": "docs/current/PROTOCOL_AMENDMENT_20260922.md",
+    "amendment_sha256": "3b8a221bf106f9f28e53838945160c9a4390fc1af182a09cf0874480cd28360b",
+    "freeze_receipt_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+    "workflow_sha256": {
+      "runner.py": "efdd3bec9dd8ef4ed516c1238a212a03fcc5da4e39a85b0a9b563a8e2dbcf0ad",
+      "scheduler.py": "4f40dc32cd2417fa765de920656632ba4446cc97ff8324dd6058010baacc51a1",
+      "verify_workflow.py": "30076e444ed21e3911a01ef87ce20c1cb6c7e399d662514335f0be6634d78c9c"
+    },
+    "jobs": {
+      "gemma3_12b": {
+        "status": "running",
+        "lane": "pair45",
+        "physical_gpus": [
+          4,
+          5
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "4,5",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py",
+          "--model",
+          "gemma3_12b",
+          "--run-dir",
+          "outputs/records/probes_v2/all16_20260922_v2"
+        ],
+        "started_utc": "2026-09-22T08:56:21.144876+00:00",
+        "worker_pid": 418124
+      },
+      "gemma3_4b": {
+        "status": "not_started"
+      },
+      "internvl35_8b": {
+        "status": "not_started"
+      },
+      "llava15_13b": {
+        "status": "not_started"
+      },
+      "llava15_7b": {
+        "status": "not_started"
+      },
+      "llava16_mistral": {
+        "status": "not_started"
+      },
+      "llava16_vicuna": {
+        "status": "not_started"
+      },
+      "minicpm26": {
+        "status": "not_started"
+      },
+      "minicpm45": {
+        "status": "not_started"
+      },
+      "onevision": {
+        "status": "not_started"
+      },
+      "phi35": {
+        "status": "not_started"
+      },
+      "qwen25vl": {
+        "status": "not_started"
+      },
+      "qwen35_4b": {
+        "status": "running",
+        "lane": "gpu1",
+        "physical_gpus": [
+          1
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "1",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py",
+          "--model",
+          "qwen35_4b",
+          "--run-dir",
+          "outputs/records/probes_v2/all16_20260922_v2"
+        ],
+        "started_utc": "2026-09-22T08:56:21.144513+00:00",
+        "worker_pid": 418120
+      },
+      "qwen35_9b": {
+        "status": "running",
+        "lane": "gpu0",
+        "physical_gpus": [
+          0
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/scripts/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "0",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/all_model_probes_v2/runner.py",
+          "--model",
+          "qwen35_9b",
+          "--run-dir",
+          "outputs/records/probes_v2/all16_20260922_v2"
+        ],
+        "started_utc": "2026-09-22T08:56:21.143816+00:00",
+        "worker_pid": 418119
+      }
+    }
+  }
+}
