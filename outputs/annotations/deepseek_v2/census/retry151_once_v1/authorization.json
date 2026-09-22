@@ -1,0 +1,9 @@
+{
+  "user_authorization": "允许仅重试这 151 条一次",
+  "scope": "Only 151 remaining failures, once each, same API request bodies; preserve all previous records",
+  "parent_annotation_identity": "a96ffd2dc30ed1693d0b74732b0a3661ecb4ef1dab5321e7bb9b0f13ef64910c",
+  "parent_reconciliation_identity": "eff2c5a244ef3a69069e1848924b20731a5407041acc265df7ac61e8e8e4fd1d",
+  "previous_errors_sha256": "beef146e1429a54379390369e4c614cfce75982afe7404d0231f1c7fb7f7dd72",
+  "authorized_count": 151,
+  "request_bodies_exactly_match_original": true
+}

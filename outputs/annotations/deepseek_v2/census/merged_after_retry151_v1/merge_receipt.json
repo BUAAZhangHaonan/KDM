@@ -1,0 +1,20 @@
+{
+  "identity": "e70fd973b5d2aef240d4ea0e013603d41d12761fff31334a3393f8fa23dbb75d",
+  "expected": 293344,
+  "previous_validated": 293193,
+  "retry_requests": 151,
+  "retry_success": 43,
+  "retry_failed": 108,
+  "validated_labels": 293236,
+  "unresolved": 108,
+  "unresolved_error_types": {
+    "ValueError: Evidence must be an exact original substring": 9,
+    "ValueError: Endorsed answer must be a nonempty exact original substring": 97,
+    "JSONDecodeError: Expecting ',' delimiter: line 1 column 177 (char 176)": 1,
+    "ValueError: Nonempty answer requires evidence": 1
+  },
+  "all_keys_accounted_for": true,
+  "all_annotations_complete": false,
+  "further_retries_performed": false,
+  "reconstruction": "Use previous reconciled label archive plus labels_delta.jsonl; change only provenance identity fields as this script specifies. Original labels and all failed attempts preserved."
+}

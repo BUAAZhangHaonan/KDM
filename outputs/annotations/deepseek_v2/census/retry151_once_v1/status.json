@@ -1,0 +1,199 @@
+{
+  "identity": "e419cd1175d98ab8ee6a4cdd0e94149244224df3f705515659dd4d13682efa47",
+  "updated_utc": "2026-09-22T12:22:49.615078+00:00",
+  "pid": 425451,
+  "state": "finished",
+  "expected": 151,
+  "success": 43,
+  "failed": 108,
+  "attempted": 151,
+  "inflight": 0,
+  "peak_concurrency": 151,
+  "journaled_indeterminate": 0,
+  "not_started": 0,
+  "all_inputs_attempted": true,
+  "all_annotations_complete": false,
+  "stop_reason": null,
+  "groups": {
+    "gemma3_12b|vizwiz|False": {
+      "error": 7
+    },
+    "gemma3_4b|vizwiz|False": {
+      "error": 9,
+      "ok": 3,
+      "answer_assertive": 3
+    },
+    "internvl35_8b|vizwiz|False": {
+      "ok": 2,
+      "answer_assertive": 2,
+      "error": 2
+    },
+    "qwen25vl|food101|True": {
+      "ok": 3,
+      "abstain": 2,
+      "answer_assertive": 1
+    },
+    "minicpm45|vizwiz|True": {
+      "error": 2,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "qwen35_4b|vizwiz|True": {
+      "ok": 3,
+      "answer_assertive": 2,
+      "answer_uncertain": 1,
+      "error": 1
+    },
+    "glm46v|food101|True": {
+      "error": 1
+    },
+    "gemma3_4b|vizwiz|True": {
+      "ok": 2,
+      "answer_assertive": 2,
+      "error": 7
+    },
+    "minicpm45|food101|False": {
+      "error": 5
+    },
+    "gemma3_12b|vizwiz|True": {
+      "error": 9,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "phi35|vizwiz|False": {
+      "error": 1
+    },
+    "onevision|vizwiz|False": {
+      "error": 2,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "llava15_7b|vizwiz|False": {
+      "error": 4,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "internvl35_8b|vizwiz|True": {
+      "error": 3,
+      "ok": 3,
+      "answer_assertive": 3
+    },
+    "phi35|vizwiz|True": {
+      "error": 1,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "llava16_vicuna|vizwiz|False": {
+      "error": 7
+    },
+    "llava15_13b|vizwiz|False": {
+      "error": 6,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "qwen25vl|vizwiz|False": {
+      "ok": 1,
+      "answer_assertive": 1,
+      "error": 4
+    },
+    "llava15_13b|vizwiz|True": {
+      "error": 2,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "qwen35_9b|vizwiz|True": {
+      "error": 1,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "minicpm26|vizwiz|False": {
+      "error": 2,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "qwen35_9b|vizwiz|False": {
+      "error": 3,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "qwen3vl|food101|True": {
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "qwen25vl|vizwiz|True": {
+      "error": 5
+    },
+    "llava16_mistral|vizwiz|False": {
+      "error": 3,
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "gemma3_12b|food101|False": {
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "llava16_mistral|food101|False": {
+      "error": 2
+    },
+    "qwen3vl|food101|False": {
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "minicpm45|vizwiz|False": {
+      "error": 4,
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "glm46v|vizwiz|True": {
+      "error": 2
+    },
+    "llava16_mistral|vizwiz|True": {
+      "error": 1
+    },
+    "llava15_13b|food101|False": {
+      "error": 3
+    },
+    "phi35|food101|False": {
+      "ok": 2,
+      "answer_assertive": 2
+    },
+    "gemma3_4b|food101|True": {
+      "error": 1
+    },
+    "qwen3vl|vizwiz|True": {
+      "ok": 1,
+      "answer_assertive": 1
+    },
+    "glm46v|vizwiz|False": {
+      "error": 2
+    },
+    "qwen25vl|food101|False": {
+      "ok": 1,
+      "answer_uncertain": 1
+    },
+    "gemma3_4b|food101|False": {
+      "error": 1
+    },
+    "llava16_vicuna|vizwiz|True": {
+      "error": 4
+    },
+    "llava15_7b|vizwiz|True": {
+      "error": 1
+    }
+  },
+  "usage": {
+    "prompt_tokens": 76456,
+    "completion_tokens": 7151,
+    "total_tokens": 83607,
+    "prompt_cache_hit_tokens": 44596,
+    "prompt_cache_miss_tokens": 31860
+  },
+  "error_types": {
+    "ValueError: Evidence must be an exact original substring": 9,
+    "ValueError: Endorsed answer must be a nonempty exact original substring": 97,
+    "JSONDecodeError: Expecting ',' delimiter: line 1 column 177 (char 176)": 1,
+    "ValueError: Nonempty answer requires evidence": 1
+  },
+  "human_review_completed": false,
+  "model_selection_performed": false
+}
