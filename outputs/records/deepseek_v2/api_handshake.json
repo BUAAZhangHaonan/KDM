@@ -1,0 +1,53 @@
+{
+  "status_code": 200,
+  "elapsed_s": 0.5973618030548096,
+  "request": {
+    "model": "deepseek-flash",
+    "messages": [
+      {
+        "role": "system",
+        "content": "Classify the behavior of the supplied answer, not its factual correctness. JSON only: label (abstain, answer_uncertain, answer_assertive, invalid), evidence (exact span of answer), answer_text (exact endorsed short answer or empty for abstain/invalid). Missing image is irrelevant; never answer the question yourself."
+      },
+      {
+        "role": "user",
+        "content": "{\"question\": \"What specific food is shown in this image?\", \"answer\": \"ribs\"}"
+      }
+    ],
+    "response_format": {
+      "type": "json_object"
+    },
+    "thinking": {
+      "type": "disabled"
+    },
+    "temperature": 0,
+    "max_tokens": 256
+  },
+  "response": {
+    "id": "a0ec1edc-9dc4-4c41-9b48-56f84f30d41a",
+    "object": "chat.completion",
+    "created": 1790067097,
+    "model": "deepseek-flash",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "{\"label\": \"answer_assertive\", \"evidence\": \"ribs\", \"answer_text\": \"ribs\"}"
+        },
+        "logprobs": null,
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 117,
+      "completion_tokens": 24,
+      "total_tokens": 141,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 117
+    },
+    "system_fingerprint": "aeb56401ca74e127821c4f9126dcb669"
+  }
+}

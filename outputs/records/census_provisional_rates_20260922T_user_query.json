@@ -1,0 +1,440 @@
+{
+  "created_utc": "2026-09-22T08:31:12.105181+00:00",
+  "status": "provisional_automatic_labels_not_human_validated",
+  "scope": "Six models with completed first-pass annotation; all dev and eval census inputs; unresolved entries bounded 0 to 1; no model selection or formal result claims",
+  "limitations": "Ranges cover missing annotations only, not errors in accepted semantic labels. VizWiz accuracy is official consensus credit; abstain/invalid credit zero.",
+  "rows": [
+    {
+      "model": "qwen3vl",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 125,
+      "abstain": 1003,
+      "correct_credit": 2556.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        20.68894389438944,
+        23.26732673267327
+      ],
+      "accuracy_percent_range": [
+        52.722772277227726,
+        55.30115511551155
+      ]
+    },
+    {
+      "model": "qwen3vl",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 157,
+      "abstain": 5,
+      "correct_credit": 2764.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.10313531353135313,
+        3.3415841584158414
+      ],
+      "accuracy_percent_range": [
+        57.01320132013201,
+        60.2516501650165
+      ]
+    },
+    {
+      "model": "qwen3vl",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 111,
+      "abstain": 1964,
+      "correct_credit": 1196.9999999999968,
+      "invalid": 0,
+      "abstention_percent_range": [
+        45.47348923361889,
+        48.04352859458208
+      ],
+      "accuracy_percent_range": [
+        27.71474878444077,
+        30.284788145403954
+      ]
+    },
+    {
+      "model": "qwen3vl",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 339,
+      "abstain": 278,
+      "correct_credit": 1575.1999999999912,
+      "invalid": 4,
+      "abstention_percent_range": [
+        6.436675156286177,
+        14.285714285714286
+      ],
+      "accuracy_percent_range": [
+        36.471405417920614,
+        44.32044454734872
+      ]
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 97,
+      "abstain": 988,
+      "correct_credit": 2328.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        20.379537953795378,
+        22.38036303630363
+      ],
+      "accuracy_percent_range": [
+        48.01980198019802,
+        50.02062706270627
+      ]
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 206,
+      "abstain": 2,
+      "correct_credit": 2616.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.041254125412541254,
+        4.29042904290429
+      ],
+      "accuracy_percent_range": [
+        53.960396039603964,
+        58.20957095709571
+      ]
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 249,
+      "abstain": 1687,
+      "correct_credit": 1221.9999999999966,
+      "invalid": 8,
+      "abstention_percent_range": [
+        39.05996758508914,
+        44.82519101643899
+      ],
+      "accuracy_percent_range": [
+        28.293586478351394,
+        34.05880990970124
+      ]
+    },
+    {
+      "model": "qwen35_4b",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 441,
+      "abstain": 38,
+      "correct_credit": 1595.899999999993,
+      "invalid": 9,
+      "abstention_percent_range": [
+        0.8798332947441537,
+        11.090530215327622
+      ],
+      "accuracy_percent_range": [
+        36.95068302847865,
+        47.16137994906212
+      ]
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 85,
+      "abstain": 1299,
+      "correct_credit": 2369.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        26.794554455445546,
+        28.54785478547855
+      ],
+      "accuracy_percent_range": [
+        48.865511551155116,
+        50.618811881188115
+      ]
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 112,
+      "abstain": 3,
+      "correct_credit": 2803.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.06188118811881188,
+        2.372112211221122
+      ],
+      "accuracy_percent_range": [
+        57.81765676567657,
+        60.12788778877888
+      ]
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 227,
+      "abstain": 1593,
+      "correct_credit": 1212.599999999996,
+      "invalid": 4,
+      "abstention_percent_range": [
+        36.88353785598518,
+        42.13938411669368
+      ],
+      "accuracy_percent_range": [
+        28.075943505440982,
+        33.33178976614948
+      ]
+    },
+    {
+      "model": "qwen35_9b",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 428,
+      "abstain": 103,
+      "correct_credit": 1350.599999999994,
+      "invalid": 18,
+      "abstention_percent_range": [
+        2.384811298911785,
+        12.294512618661727
+      ],
+      "accuracy_percent_range": [
+        31.271127575827595,
+        41.18082889557754
+      ]
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 144,
+      "abstain": 2841,
+      "correct_credit": 1466.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        58.601485148514854,
+        61.57178217821782
+      ],
+      "accuracy_percent_range": [
+        30.239273927392738,
+        33.20957095709571
+      ]
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 366,
+      "abstain": 4,
+      "correct_credit": 1986.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.08250825082508251,
+        7.632013201320132
+      ],
+      "accuracy_percent_range": [
+        40.96534653465346,
+        48.51485148514851
+      ]
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 79,
+      "abstain": 3134,
+      "correct_credit": 575.1999999999999,
+      "invalid": 0,
+      "abstention_percent_range": [
+        72.56309330863625,
+        74.39222042139384
+      ],
+      "accuracy_percent_range": [
+        13.317897661495715,
+        15.147024774253298
+      ]
+    },
+    {
+      "model": "qwen25vl",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 558,
+      "abstain": 274,
+      "correct_credit": 1098.8999999999955,
+      "invalid": 4,
+      "abstention_percent_range": [
+        6.344061125260477,
+        19.263718453345682
+      ],
+      "accuracy_percent_range": [
+        25.443389673535435,
+        38.36304700162064
+      ]
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 40,
+      "abstain": 7,
+      "correct_credit": 2186.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.1443894389438944,
+        0.9694719471947195
+      ],
+      "accuracy_percent_range": [
+        45.09075907590759,
+        45.915841584158414
+      ]
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 96,
+      "abstain": 4,
+      "correct_credit": 1854.0,
+      "invalid": 0,
+      "abstention_percent_range": [
+        0.08250825082508251,
+        2.062706270627063
+      ],
+      "accuracy_percent_range": [
+        38.242574257425744,
+        40.222772277227726
+      ]
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 324,
+      "abstain": 1025,
+      "correct_credit": 673.3999999999992,
+      "invalid": 3,
+      "abstention_percent_range": [
+        23.732345450335725,
+        31.23408196341746
+      ],
+      "accuracy_percent_range": [
+        15.591572123176642,
+        23.093308636258374
+      ]
+    },
+    {
+      "model": "gemma3_12b",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 569,
+      "abstain": 106,
+      "correct_credit": 605.1999999999992,
+      "invalid": 9,
+      "abstention_percent_range": [
+        2.4542718221810604,
+        15.628617735586941
+      ],
+      "accuracy_percent_range": [
+        14.012502894188453,
+        27.186848807594338
+      ]
+    },
+    {
+      "model": "glm46v",
+      "dataset": "food101",
+      "guided": true,
+      "n": 4848,
+      "unresolved": 575,
+      "abstain": 11,
+      "correct_credit": 2281.0,
+      "invalid": 1,
+      "abstention_percent_range": [
+        0.2268976897689769,
+        12.087458745874587
+      ],
+      "accuracy_percent_range": [
+        47.0503300330033,
+        58.91089108910891
+      ]
+    },
+    {
+      "model": "glm46v",
+      "dataset": "food101",
+      "guided": false,
+      "n": 4848,
+      "unresolved": 550,
+      "abstain": 4,
+      "correct_credit": 2031.0,
+      "invalid": 3,
+      "abstention_percent_range": [
+        0.08250825082508251,
+        11.427392739273927
+      ],
+      "accuracy_percent_range": [
+        41.89356435643565,
+        53.23844884488449
+      ]
+    },
+    {
+      "model": "glm46v",
+      "dataset": "vizwiz",
+      "guided": true,
+      "n": 4319,
+      "unresolved": 558,
+      "abstain": 904,
+      "correct_credit": 1025.3999999999971,
+      "invalid": 51,
+      "abstention_percent_range": [
+        20.93077101180829,
+        33.8504283398935
+      ],
+      "accuracy_percent_range": [
+        23.741606853438228,
+        36.661264181523435
+      ]
+    },
+    {
+      "model": "glm46v",
+      "dataset": "vizwiz",
+      "guided": false,
+      "n": 4319,
+      "unresolved": 850,
+      "abstain": 142,
+      "correct_credit": 973.2999999999977,
+      "invalid": 65,
+      "abstention_percent_range": [
+        3.287798101412364,
+        22.9682796943737
+      ],
+      "accuracy_percent_range": [
+        22.535309099328494,
+        42.21579069228983
+      ]
+    }
+  ]
+}

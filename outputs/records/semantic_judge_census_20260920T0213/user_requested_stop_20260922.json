@@ -1,0 +1,23 @@
+{
+  "time_utc": "2026-09-22T08:49:05Z",
+  "reason": "User replaces local annotation judge with DeepSeek API and authorizes new full-data independent probes",
+  "processes": [
+    {
+      "name": "client",
+      "pid": 410560,
+      "children_terminated": [
+        410561
+      ],
+      "signal": "SIGTERM",
+      "command": "bash -c venv/bin/python -u scripts/annotate_responses.py --root \"$PWD\" --queue outputs/annotations/current/census_completed_batch05_queue.jsonl --endpoint http://127.0.0.1:18765/v1 --judge-model kdm-semantic-ministral3-8b-20260919 --judge-spec configs/runtime/semantic_judge.json --out outputs/annotations/current/census_completed_batch05_labels.jsonl; rc=$?; printf \"%s\\n\" \"$rc\" > outputs/records/semantic_judge_census_20260920T0213/batch05.exit_code; exit \"$rc\" "
+    },
+    {
+      "name": "service",
+      "pid": 351106,
+      "children_terminated": [],
+      "signal": "SIGTERM",
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python -u scripts/serve_annotation_judge.py --spec configs/runtime/semantic_judge.json --run-dir outputs/records/semantic_judge_census_20260920T0213 "
+    }
+  ],
+  "old_outputs_preserved": true
+}
