@@ -7,7 +7,7 @@ Authority: docs/current/PROTOCOL_AMENDMENT_20260923_ACCELERATION.md. The fixed p
 - 6403 GPU1: qwen35_4b vLLM closed scores, run panel5_engine_v2; then MiniCPM v3 integration/preflight and closed production only if its real reference gate passes.
 - 6403 GPU0: qwen25vl vLLM closed scores, run panel5_engine_v2; then LLaVA v5, then Gemma v6 with corrected attention-backend selection, each gated before production.
 - Engine queue: outputs/records/acceleration_v4/engine_queue_status_v3.json on6403, with exact commands in engine_queue_config_v3.json. Linux pidfd waits, no busy polling and no retries. A failed lane stops; old evidence stays.
-- 4028 physical GPU0/1/4/5: original formal methods for Qwen2.5/LLaVA/MiniCPM/Gemma respectively, run panel5_food_formal_v4. Qwen3.5 formal is queued after Qwen2.5 on GPU0. Formal queue status: formal_queue_status_v2.json.
+- 4028 physical GPU0/1/4/5: original formal methods for Qwen2.5/LLaVA/MiniCPM/Gemma respectively, run panel5_food_formal_v4. Qwen3.5 formal has moved to4029 GPU4/5/6/7 in four disjoint shards (panel5_food_formal_4029_v1). The old4028 CPU waiting queue was deliberately stopped; its old status file is historical. See workflows/acceleration_4029_v1/README.md.
 - Old v3 schedulers and old selected/nonselected slow candidate workers have been deliberately paused. Old status.json may still say running; use actual PIDs and handover receipts.
 
 ## Entrypoints and identities

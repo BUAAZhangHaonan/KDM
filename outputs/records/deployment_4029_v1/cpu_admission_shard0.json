@@ -1,0 +1,103 @@
+{
+  "migration_definition": {
+    "schema": "kdm_qwen35_4b_4029_relocation_v1",
+    "host": "4029",
+    "hostname": "WS-4029GP-TRT",
+    "root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+    "model": "qwen35_4b",
+    "physical_gpu_uuids": {
+      "4": "GPU-61ea2925-9905-7f56-cd64-7a792a32efef",
+      "5": "GPU-9b75e96c-6e9c-a160-def5-b2d5dd70bdc4",
+      "6": "GPU-29f1d73d-b468-c7bc-3bcf-50be58b67d33",
+      "7": "GPU-56668d27-36e1-c40a-c1c2-272ef76b13a1"
+    },
+    "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+    "model_reference_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/models/Qwen3.5-4B",
+    "allowed_read_only_model_target": "/home/hdd3/zhanghaonan/projects/holocue/models/Qwen3.5-4B",
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0",
+      "tokenizers": "0.23.2",
+      "numpy": "2.3.5",
+      "Pillow": "12.0.0",
+      "safetensors": "0.8.0",
+      "accelerate": "1.12.0",
+      "scipy": "1.17.0",
+      "torchvision": "0.24.0+cu128"
+    },
+    "method_parameters_changed": false,
+    "source_spec_modified": false,
+    "n_shards": 4,
+    "shard_to_gpu": {
+      "0": "4",
+      "1": "5",
+      "2": "6",
+      "3": "7"
+    }
+  },
+  "cpu_plan": {
+    "model": "qwen35_4b",
+    "shard": 0,
+    "n_shards": 4,
+    "full_eval_questions": 2424,
+    "shard_eval_questions": 617,
+    "expected_generation_rows": 39488,
+    "stage_expected": {
+      "unknown_main": 3085,
+      "unknown_controls": 3085,
+      "prompt_matrix": 33318
+    },
+    "method_expected": {
+      "main/direct": 2468,
+      "main/vcd": 9872,
+      "main/m3id": 9872,
+      "main/dola": 2468,
+      "main/deco": 2468,
+      "reference_instruction_removed/vcd": 2468,
+      "reference_instruction_removed/m3id": 2468,
+      "instruction_preserving/instruction_vcd": 2468,
+      "instruction_preserving/instruction_m3id": 2468,
+      "instruction_preserving/cda_visual": 2468
+    },
+    "ordered_task_keys_sha256": "945d3148337359f4e4e05a942e924ba035a386747eb9ec0cf28d15161c450108",
+    "full_model_expected": 155136,
+    "annotation_admission": {
+      "source": "existing automatic DeepSeek labels bound to original census",
+      "human_review_claimed": false,
+      "new_api_calls": 0,
+      "annotation_identity": "e70fd973b5d2aef240d4ea0e013603d41d12761fff31334a3393f8fa23dbb75d",
+      "labels_sha256": "8a1e73b433d1d814a05a1d1d588267eddadef9d3815a24ce585e2c46f1f70057",
+      "metrics_sha256": "7609154cf47a3a27fa34a8710909fc143b59170b2fa02136a27a737fe200e23f",
+      "identity_sha256": "261e66bb130fe680b80c3b97d79bff3c92eafc112153234800f9e735bf845492",
+      "sources_sha256": "10855cffba1d13ac10350572943562e0329672cc86e81b0820c7952cc1e3517f",
+      "census_source": {
+        "path": "outputs/raw/current/qwen35_4b/census.jsonl",
+        "sha256": "fd1ed0f167aa7237bd49704983ae4a4ff5904c738a8c0bb2339d368b28e878e0",
+        "identity_path": "outputs/raw/current/qwen35_4b/census.identity.json",
+        "identity_sha256": "38f016964b1bc5aee911429cf128f265343d606369e70a2214b40d5673626600",
+        "identity": "4ee256b838e36159206eb8b8fcc78f8efcec3003466d165c9f68d4b021e1cbd7",
+        "rows": 18334
+      },
+      "food_census_rows": 9696,
+      "valid_food_labels": 9696,
+      "unresolved_food_keys": [],
+      "guided_counts": {
+        "dev_valid": 2424,
+        "dev_abstain": 490,
+        "eval_valid": 2424,
+        "eval_abstain": 498
+      },
+      "selection": "Fixed resource-limited panel; positive observed original abstention; no intervention outcomes used"
+    },
+    "checks": {
+      "frozen_sources": true,
+      "native_and_method_proofs": true,
+      "panel_sources": true,
+      "automatic_label_raw_binding": true,
+      "unique_task_keys": true,
+      "no_gpu_initialized": true
+    },
+    "limitations": "CPU admission/coverage checks only; no model execution or research completion"
+  },
+  "gpu_started": false
+}

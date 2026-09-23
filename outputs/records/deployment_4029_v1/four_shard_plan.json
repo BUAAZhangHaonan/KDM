@@ -1,0 +1,33 @@
+{
+  "model": "qwen35_4b",
+  "full_tasks": 155136,
+  "shards": [
+    {
+      "shard": 0,
+      "gpu": 4,
+      "questions": 617,
+      "tasks": 39488
+    },
+    {
+      "shard": 1,
+      "gpu": 5,
+      "questions": 605,
+      "tasks": 38720
+    },
+    {
+      "shard": 2,
+      "gpu": 6,
+      "questions": 615,
+      "tasks": 39360
+    },
+    {
+      "shard": 3,
+      "gpu": 7,
+      "questions": 587,
+      "tasks": 37568
+    }
+  ],
+  "double_filter_idempotent": true,
+  "disjoint_complete": true,
+  "gpu_started": false
+}

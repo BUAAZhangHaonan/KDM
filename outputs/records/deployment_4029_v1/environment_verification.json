@@ -1,0 +1,22 @@
+{
+  "python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+  "base_prefix": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/base311",
+  "versions": {
+    "torch": "2.9.0+cu128",
+    "transformers": "5.17.0",
+    "tokenizers": "0.23.2",
+    "numpy": "2.3.5",
+    "Pillow": "12.0.0",
+    "safetensors": "0.8.0",
+    "accelerate": "1.12.0",
+    "scipy": "1.17.0",
+    "torchvision": "0.24.0+cu128"
+  },
+  "module_paths": {
+    "torch": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/base311/lib/python3.11/site-packages/torch/__init__.py",
+    "transformers": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/lib/python3.11/site-packages/transformers/__init__.py"
+  },
+  "cuda_initialized": false,
+  "copied_exact_base_and_overlay": true,
+  "time_unix": 1790141626.2031484
+}

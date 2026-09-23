@@ -1,0 +1,9 @@
+{
+  "verified_unix": 1790141552.753064,
+  "dataset": "food101",
+  "images": 4848,
+  "exact_content_matches": true,
+  "catalog_sha256": "4021e893d8f9b9c74d9d98470bda7a887ce922c4edf8d657e1bfd3d69aaf858d",
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "vizwiz_not_deployed": true
+}

@@ -1,0 +1,17 @@
+{
+  "time_unix": 1790141398.1939535,
+  "queue_pid": 453774,
+  "queue_cmdline": "python3 workflows/acceleration_v4/adopt_queue.py --config /home/g203-4028/projects/knowledge-deficit-mitigation/outputs/records/acceleration_v4/formal_queue_config_v2.json ",
+  "queue_stopped": true,
+  "model": "qwen35_4b",
+  "original_formal_never_started": true,
+  "new_host": "4029",
+  "new_root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+  "physical_gpus": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "strategy": "Four disjoint sample-hash shards; preserve existing4028 model jobs and all prior results. New dispatch pending exact environment/data/admission validation."
+}

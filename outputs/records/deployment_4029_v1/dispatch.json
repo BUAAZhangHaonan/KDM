@@ -1,0 +1,106 @@
+{
+  "started_unix": 1790141670.2763636,
+  "host": "4029",
+  "run": "panel5_food_formal_4029_v1",
+  "shards": [
+    {
+      "model": "qwen35_4b",
+      "shard": 0,
+      "physical_gpu": 4,
+      "pid": 3054820,
+      "command": [
+        "bash",
+        "workflows/acceleration_4029_v1/worker.sh",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+        "4",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "-u",
+        "workflows/acceleration_4029_v1/runner.py",
+        "--model",
+        "qwen35_4b",
+        "--shard",
+        "0",
+        "--n-shards",
+        "4",
+        "--run-name",
+        "panel5_food_formal_4029_v1"
+      ],
+      "log": "outputs/records/deployment_4029_v1/shard_0.log"
+    },
+    {
+      "model": "qwen35_4b",
+      "shard": 1,
+      "physical_gpu": 5,
+      "pid": 3054821,
+      "command": [
+        "bash",
+        "workflows/acceleration_4029_v1/worker.sh",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+        "5",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "-u",
+        "workflows/acceleration_4029_v1/runner.py",
+        "--model",
+        "qwen35_4b",
+        "--shard",
+        "1",
+        "--n-shards",
+        "4",
+        "--run-name",
+        "panel5_food_formal_4029_v1"
+      ],
+      "log": "outputs/records/deployment_4029_v1/shard_1.log"
+    },
+    {
+      "model": "qwen35_4b",
+      "shard": 2,
+      "physical_gpu": 6,
+      "pid": 3054823,
+      "command": [
+        "bash",
+        "workflows/acceleration_4029_v1/worker.sh",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+        "6",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "-u",
+        "workflows/acceleration_4029_v1/runner.py",
+        "--model",
+        "qwen35_4b",
+        "--shard",
+        "2",
+        "--n-shards",
+        "4",
+        "--run-name",
+        "panel5_food_formal_4029_v1"
+      ],
+      "log": "outputs/records/deployment_4029_v1/shard_2.log"
+    },
+    {
+      "model": "qwen35_4b",
+      "shard": 3,
+      "physical_gpu": 7,
+      "pid": 3054825,
+      "command": [
+        "bash",
+        "workflows/acceleration_4029_v1/worker.sh",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation",
+        "7",
+        "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "-u",
+        "workflows/acceleration_4029_v1/runner.py",
+        "--model",
+        "qwen35_4b",
+        "--shard",
+        "3",
+        "--n-shards",
+        "4",
+        "--run-name",
+        "panel5_food_formal_4029_v1"
+      ],
+      "log": "outputs/records/deployment_4029_v1/shard_3.log"
+    }
+  ],
+  "expected_total": 155136,
+  "old4028_queue_stopped": true,
+  "no_automatic_retry": true
+}

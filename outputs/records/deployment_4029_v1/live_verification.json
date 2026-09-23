@@ -1,0 +1,91 @@
+{
+  "time_unix": 1790141837.8539133,
+  "host": "4029",
+  "run": "panel5_food_formal_4029_v1",
+  "shards": [
+    {
+      "shard": 0,
+      "physical_gpu": 4,
+      "pid": 3054820,
+      "raw_rows_snapshot": 89,
+      "status": "running",
+      "identity": "cdfef2d0fdb1c9de76fbc4cd4a792de5a946b3c25a4ee3c614168e78c9aa261b",
+      "admission_versions_exact": {
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "tokenizers": "0.23.2",
+        "numpy": "2.3.5",
+        "Pillow": "12.0.0",
+        "safetensors": "0.8.0",
+        "accelerate": "1.12.0",
+        "scipy": "1.17.0",
+        "torchvision": "0.24.0+cu128"
+      },
+      "frozen_source_proofs": true
+    },
+    {
+      "shard": 1,
+      "physical_gpu": 5,
+      "pid": 3054821,
+      "raw_rows_snapshot": 98,
+      "status": "running",
+      "identity": "b9d2c5afa2fdd0037745fe1ead5b193001207859b719254b1eb9dc43f1cdf859",
+      "admission_versions_exact": {
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "tokenizers": "0.23.2",
+        "numpy": "2.3.5",
+        "Pillow": "12.0.0",
+        "safetensors": "0.8.0",
+        "accelerate": "1.12.0",
+        "scipy": "1.17.0",
+        "torchvision": "0.24.0+cu128"
+      },
+      "frozen_source_proofs": true
+    },
+    {
+      "shard": 2,
+      "physical_gpu": 6,
+      "pid": 3054823,
+      "raw_rows_snapshot": 84,
+      "status": "running",
+      "identity": "fd5da50c57cdd53fe2c10eda7b9a3b693f4509f746c2ed00a5924a0fde2b8285",
+      "admission_versions_exact": {
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "tokenizers": "0.23.2",
+        "numpy": "2.3.5",
+        "Pillow": "12.0.0",
+        "safetensors": "0.8.0",
+        "accelerate": "1.12.0",
+        "scipy": "1.17.0",
+        "torchvision": "0.24.0+cu128"
+      },
+      "frozen_source_proofs": true
+    },
+    {
+      "shard": 3,
+      "physical_gpu": 7,
+      "pid": 3054825,
+      "raw_rows_snapshot": 83,
+      "status": "running",
+      "identity": "4171d0291f2ada9a29388398efcc0121fc3be41d523883398e978071ab6f545a",
+      "admission_versions_exact": {
+        "torch": "2.9.0+cu128",
+        "transformers": "5.17.0",
+        "tokenizers": "0.23.2",
+        "numpy": "2.3.5",
+        "Pillow": "12.0.0",
+        "safetensors": "0.8.0",
+        "accelerate": "1.12.0",
+        "scipy": "1.17.0",
+        "torchvision": "0.24.0+cu128"
+      },
+      "frozen_source_proofs": true
+    }
+  ],
+  "all_shards_have_real_rows": true,
+  "no_new_model_failure": true,
+  "raw_rows_snapshot_total": 354,
+  "cache_note": "Created project CUDA JIT disk-cache directory after warning; no process restart or method/kernel change. Existing process-local caches remain. Reference causal_conv1d implementation matches copied source environment."
+}
