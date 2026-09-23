@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "reviewed_entry_validate_executed": true,
+  "native_pixel_binding_checked": true,
+  "actual_cpu_prepare_checked": 16,
+  "GPU_inference_launched": false,
+  "weights_loaded": false,
+  "review_sha256": "ac5d2fb1cc3785869205b618e3ac84088043073acd4e75a1603a04c210bc3a6c",
+  "proof": {
+    "native_reference_sha256": "2d85f214de5fdee7be6ea0dfc6fb53d94acdd73eb6ce8eea69729a2bad891b34",
+    "verification_sha256": "1271276bfb57e6972a60f17166a9bc69056f6c0e97ad814033505ac910e6b02f",
+    "review_sha256": "ac5d2fb1cc3785869205b618e3ac84088043073acd4e75a1603a04c210bc3a6c",
+    "review_entry_sha256": "c60fc7aee313174065bf24a73fc1b7fb75f7fae4184fb496b261960ef7f50768",
+    "versions": {
+      "vllm": "0.24.0",
+      "torch": "2.11.0",
+      "transformers": "5.12.1"
+    },
+    "eos_token_ids": [
+      1,
+      106
+    ],
+    "source_spec_sha256": "6a85635a1c0fe2b9bc88c5536c54c24c869b4449f80f2245a70675e8cffa772a",
+    "exact_greedy_equivalence": false,
+    "greedy_mismatch_count": 6,
+    "separate_engine_cohort": true
+  }
+}

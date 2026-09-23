@@ -1,0 +1,43 @@
+{
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "pilot_batch": 1,
+  "pilot_accepted": true,
+  "coverage_total_batches": 499,
+  "status": "dispatched_incomplete",
+  "assignments": [
+    {
+      "subagent": "/root/luna_independent_pilot_v2",
+      "batch_ranges": [
+        [
+          2,
+          167
+        ],
+        [
+          334,
+          416
+        ]
+      ]
+    },
+    {
+      "subagent": "/root/luna_independent_168_333",
+      "batch_ranges": [
+        [
+          168,
+          333
+        ],
+        [
+          417,
+          499
+        ]
+      ]
+    }
+  ],
+  "execution_parts": "execution_parts/batches_START_END.json",
+  "progress": "progress/batches_START_END.json",
+  "rejected_third_agent": "agent thread limit reached; unstarted work redistributed to the two actual Luna agents",
+  "instructions": "Only genuine completed result files count. Merge execution part receipts with batch001 receipt only when all499 complete and validated. No duplicate relabeling or assumed agent success. Preserve unresolved and versioned corrections.",
+  "created_utc": "2026-09-23T14:23:35.251616+00:00",
+  "human_reviewed": false,
+  "final_gt": false
+}

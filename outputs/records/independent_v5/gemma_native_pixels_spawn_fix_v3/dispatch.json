@@ -1,0 +1,24 @@
+{
+  "pid": 255536,
+  "command": [
+    "bash",
+    "workflows/food_closed_v3/worker.sh",
+    "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "1",
+    "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+    "-u",
+    "workflows/independent_v5/gemma_native_pixels_entry_v3.py",
+    "verify",
+    "--model",
+    "gemma3_4b",
+    "--native-reference",
+    "outputs/records/independent_v5/native16_v2/gemma3_4b/reference.json",
+    "--out",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_spawn_v3/gemma3_4b"
+  ],
+  "started_utc": "2026-09-23T14:04:20.172512+00:00",
+  "reason": "Versioned engineering correction: fork after CUDA initialization fails; spawn same as existing verified K100 entry. No model/sampling/input changes. Audit only; production still requires review.",
+  "old_entry_sha256": "5e01acaf76d86c61895bff567cc0c48215043e0c30136fa2c03cc18733613bf5",
+  "new_entry_sha256": "989aa2025fac9df2090b270588ad7eb4bacd544a78ef58119882fff6d32c5694",
+  "original_failure": "outputs/records/independent_v5/engine_verify_gemma_pixels_v1/gemma3_4b/failure.json"
+}

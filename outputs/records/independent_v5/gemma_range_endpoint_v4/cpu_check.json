@@ -1,0 +1,286 @@
+{
+  "passed": true,
+  "gpu_used": false,
+  "original_receipt_sha256": "fed301d69d837462645deb23444410f29e9803a340684c0c3dfad445be963d98",
+  "native_reference_sha256": "2d85f214de5fdee7be6ea0dfc6fb53d94acdd73eb6ce8eea69729a2bad891b34",
+  "native_rows": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:baby_back_ribs_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:baklava_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:beef_carpaccio_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:beef_tartare_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:beet_salad_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:beignets_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:bibimbap_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:bread_pudding_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:breakfast_burrito_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:bruschetta_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:caesar_salad_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:cannoli_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:caprese_salad_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:carrot_cake_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    },
+    {
+      "sample_id": "food101:ceviche_group_000.jpg",
+      "token_type_sha256": "bca291c8ab763d7ff0a44bbb3fc1c8e1a1a293bc0455c35f64d2034a5914a8e7",
+      "half_open_ranges": [
+        [
+          5,
+          261
+        ]
+      ],
+      "nonzero_tokens": 256
+    }
+  ],
+  "pass": {
+    "receipt_sha256": "fed301d69d837462645deb23444410f29e9803a340684c0c3dfad445be963d98",
+    "expected_native_ranges": [
+      [
+        5,
+        261
+      ]
+    ],
+    "metadata_ranges_checked": true,
+    "kernel_execution_claimed": false,
+    "native_half_open_ranges": [
+      [
+        5,
+        261
+      ]
+    ],
+    "raw_vllm_inclusive_ranges": {
+      "0": [
+        [
+          5,
+          260
+        ]
+      ]
+    },
+    "raw_vllm_inclusive_tensor_ranges": [
+      [
+        [
+          5,
+          260
+        ]
+      ]
+    ],
+    "vllm_converted_half_open_ranges": [
+      [
+        5,
+        261
+      ]
+    ],
+    "endpoint_audit": {
+      "schema": "gemma_attention_range_endpoint_audit_v1",
+      "module_sha256": "3f7882eb2934b266dc002a11ef92ce0ff1609303fac47b6ba98eb21306e095e5",
+      "vllm_root": "/home/team/lvshuyang/anaconda3/envs/ST_LORA/lib/python3.12/site-packages/vllm",
+      "source_sha256": {
+        "v1/attention/ops/triton_attention_helpers.py": "98cb76f662dabc7005c0ad61e201d239eb1c46d8a10a5839bbc8e0065356fab8",
+        "v1/attention/backends/triton_attn.py": "1219c4d1820b56e99ef6686de8a49c8c5aa57707794bcabf3322023799a03605",
+        "v1/attention/backends/utils.py": "f1375ec8e3a2d5c77ab15773eef2c00a4117826a3c238ceb5bcd4efe9fa55381",
+        "v1/worker/gpu_model_runner.py": "d2b8ec101122749e1a2610383d2ab74c5a21605e9d7995eb68192bc769986694",
+        "multimodal/inputs.py": "18f8549124fab2c0012b3a1f49aeec10d4abc8423d66378124049ea776092c37"
+      },
+      "native_convention": "[start,end)",
+      "vllm_convention": "[start,end]",
+      "source_lines": {
+        "multimodal/inputs.py": [
+          179,
+          202
+        ],
+        "v1/attention/ops/triton_attention_helpers.py": [
+          335,
+          352
+        ],
+        "v1/worker/gpu_model_runner.py": [
+          2329,
+          2336
+        ]
+      },
+      "mask_modified": false
+    },
+    "mask_modified": false
+  },
+  "rejected_ranges": [
+    [
+      [
+        5,
+        260
+      ]
+    ],
+    [
+      [
+        6,
+        261
+      ]
+    ],
+    [
+      [
+        5,
+        262
+      ]
+    ],
+    [
+      [
+        5,
+        261
+      ],
+      [
+        270,
+        275
+      ]
+    ],
+    []
+  ],
+  "entry_sha256": "8d35946232cc76469b301eb7398ada745367da5176d5d765a40793ee99c040d4",
+  "old_base_sha256": "eb1ac01829a1ef9200cf58ca5c98a8ba6dd793e41a14f923c0fae23ae77b6bdf"
+}

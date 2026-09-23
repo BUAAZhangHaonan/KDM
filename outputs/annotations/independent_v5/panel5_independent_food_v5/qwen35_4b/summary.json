@@ -1,0 +1,68 @@
+{
+  "schema": "kdm_independent_food_free_summary_v1",
+  "model": "qwen35_4b",
+  "generated_answers": 48480,
+  "screened_answers": 48480,
+  "counts": {
+    "correct": 15890,
+    "incorrect": 2131,
+    "abstain": 0,
+    "invalid": 1,
+    "unresolved": 30458
+  },
+  "questions": 4848,
+  "question_states": {
+    "independent_correct_answer_observed": 3325,
+    "unresolved_independent_answers": 1065,
+    "closed_rank_one_no_joint_support": 457,
+    "joint_deficit_supported_by_free_screening": 1
+  },
+  "per_split": {
+    "dev": {
+      "independent_correct_answer_observed": 1667,
+      "unresolved_independent_answers": 529,
+      "closed_rank_one_no_joint_support": 228
+    },
+    "eval": {
+      "unresolved_independent_answers": 536,
+      "independent_correct_answer_observed": 1658,
+      "closed_rank_one_no_joint_support": 229,
+      "joint_deficit_supported_by_free_screening": 1
+    }
+  },
+  "source": {
+    "record": "outputs/records/acceleration_v4/panel5_independent_food_v5/qwen35_4b",
+    "raw": "outputs/raw/acceleration_v4/panel5_independent_food_v5/qwen35_4b/independent.jsonl",
+    "raw_sha256": "214ce9c24da6c9f2a8ba2f4f8fdf989b5ddb6c7948ddfe4670f4847dd8c7ffad",
+    "identity": "375950975edfcfee4d17630edc17fc430cb8ce0abfe803ad35351863cd4da769",
+    "sidecar_sha256": "5cb20067294a6464d4c3f4ffc86d93bc6fefb535a6635cf76c5cfd5574118a78",
+    "complete_sha256": "2c4c7eb7d7399e49f941e3a3940b880766230bed83830bd1ec62fc47f91b929b"
+  },
+  "closed_source": {
+    "record": "outputs/records/acceleration_v4/panel5_engine_v2/qwen35_4b",
+    "raw": "outputs/raw/acceleration_v4/panel5_engine_v2/qwen35_4b/closed.jsonl",
+    "raw_sha256": "8454f1abcd7165161297fbd34526115608ff866732f9260568091685fdc83bfd",
+    "sidecar_sha256": "f8d76722f8aff40914f18bb60badfbaccd4cff42eaccbf45c5961626063b19e2",
+    "receipt_sha256": "3d3d4ff9d640227a51484b625cf0830d55870a85c0a69736ce5037a690f0e6c9",
+    "identity": "ea271139d939a7e3b58b9d0c1957d9c7ddc5bd55d26c0e867938401bbc87bff0"
+  },
+  "rules_sha256": {
+    "workflows/independent_v5/postprocess.py": "43c8e757958369df62af9d250cb74f03544def19d70c538a741e896185626736",
+    "workflows/quick_match_v1/match.py": "369fd05cb8171f06183120f6efdd54af19524b7128c1e6158cb776603176a5c0",
+    "configs/kdm/food_aliases.json": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "src/kdm/scoring.py": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862",
+    "src/kdm/analysis.py": "1c40ec4dbe944a5ade8ac1b92c29a9e7bdcb348c0766dddeef383ab2ba6f4b05",
+    "src/kdm/reports.py": "55f3d5d9b496ac711cbc31591dc7a5748568d593ce3982b267f3429b6636c3dc"
+  },
+  "outputs_sha256": {
+    "labels.jsonl": "a0aa78351e0a348d0a1b1399ad700421ca5e78ea025198b8648e9ec8c2a4f9b4",
+    "questions.jsonl": "2f2665bc080662429186580318413f160b4fb9dfd041a19937bb7701d6245d41"
+  },
+  "rule": "Food: ten attempts mean correctness = 0 AND original mean-logprob gold rank > 1",
+  "final_gt": false,
+  "automatic_preliminary_only": true,
+  "human_reviewed": false,
+  "api_requests": 0,
+  "gpu_used": false,
+  "limits": "Whole-answer aliases and exact lexical markers only. Nonmatches stay unresolved. Empty invalid answers receive frozen zero credit. Rank-one ties use the frozen strict-greater rank rule. A negative joint warrant is not a claim of general answerability. Separate vLLM cohort; no NumPy random-draw equivalence. No semantic or human review claimed."
+}

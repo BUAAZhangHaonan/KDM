@@ -1,0 +1,15 @@
+{
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "human_reviewed": false,
+  "final_gt": false,
+  "batches": [
+    {
+      "input_file": "batches/input_001.jsonl",
+      "input_sha256": "55bef734df5469d199afe98e347f6ff409b1aaaacefe180cafd346e64ad8f4e7",
+      "result_file": "results/batch_001.jsonl",
+      "result_sha256": "20ffdf698f718b847043ae2c709bc95958350d9321a90e7dd05428405462800d",
+      "subagent_identifier": "/root/luna_independent_pilot_v2"
+    }
+  ]
+}

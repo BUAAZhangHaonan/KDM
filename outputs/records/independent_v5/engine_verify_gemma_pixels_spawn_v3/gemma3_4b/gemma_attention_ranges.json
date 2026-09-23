@@ -1,0 +1,33 @@
+{
+  "backend": "TRITON_ATTN",
+  "scope": "real_metadata_builder_output_not_kernel_execution_proof",
+  "shape": [
+    1,
+    1,
+    2
+  ],
+  "ranges": {
+    "0": [
+      [
+        5,
+        260
+      ]
+    ]
+  },
+  "tensor_ranges": [
+    [
+      [
+        5,
+        260
+      ]
+    ]
+  ],
+  "physical_gpu": "1",
+  "cuda_visible_devices": "1",
+  "local_rank": 0,
+  "pid": 256444,
+  "recorded_at": "2026-09-23T14:06:24.152007+00:00",
+  "module_sha256": "810dad3ff533c0c09b6769327a8a555191c4356f3bec1cba6437da50d926ff4b",
+  "num_actual_tokens": 288,
+  "nonempty_real_ranges": true
+}

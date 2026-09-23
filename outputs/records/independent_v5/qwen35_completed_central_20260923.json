@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "model": "qwen35_4b",
+  "rows": 48480,
+  "questions": 4848,
+  "raw_sha256": "214ce9c24da6c9f2a8ba2f4f8fdf989b5ddb6c7948ddfe4670f4847dd8c7ffad",
+  "source_summary_sha256": "76b642b0f0666cece791d1141b1428a924a7cf5c38f4b9f4112c8794987f75e4",
+  "postprocess_repeated": false,
+  "semantic_pending_rows": 30458,
+  "final_gt": false
+}

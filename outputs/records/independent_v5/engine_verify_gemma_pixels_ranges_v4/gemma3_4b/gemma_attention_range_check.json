@@ -1,0 +1,69 @@
+{
+  "receipt_sha256": "c6b94d24cfcc32c0d2b95b7d1014c6d40389446aae45e207ceb88a01fdbc114d",
+  "expected_native_ranges": [
+    [
+      5,
+      261
+    ]
+  ],
+  "metadata_ranges_checked": true,
+  "kernel_execution_claimed": false,
+  "native_half_open_ranges": [
+    [
+      5,
+      261
+    ]
+  ],
+  "raw_vllm_inclusive_ranges": {
+    "0": [
+      [
+        5,
+        260
+      ]
+    ]
+  },
+  "raw_vllm_inclusive_tensor_ranges": [
+    [
+      [
+        5,
+        260
+      ]
+    ]
+  ],
+  "vllm_converted_half_open_ranges": [
+    [
+      5,
+      261
+    ]
+  ],
+  "endpoint_audit": {
+    "schema": "gemma_attention_range_endpoint_audit_v1",
+    "module_sha256": "3f7882eb2934b266dc002a11ef92ce0ff1609303fac47b6ba98eb21306e095e5",
+    "vllm_root": "/home/team/lvshuyang/anaconda3/envs/ST_LORA/lib/python3.12/site-packages/vllm",
+    "source_sha256": {
+      "v1/attention/ops/triton_attention_helpers.py": "98cb76f662dabc7005c0ad61e201d239eb1c46d8a10a5839bbc8e0065356fab8",
+      "v1/attention/backends/triton_attn.py": "1219c4d1820b56e99ef6686de8a49c8c5aa57707794bcabf3322023799a03605",
+      "v1/attention/backends/utils.py": "f1375ec8e3a2d5c77ab15773eef2c00a4117826a3c238ceb5bcd4efe9fa55381",
+      "v1/worker/gpu_model_runner.py": "d2b8ec101122749e1a2610383d2ab74c5a21605e9d7995eb68192bc769986694",
+      "multimodal/inputs.py": "18f8549124fab2c0012b3a1f49aeec10d4abc8423d66378124049ea776092c37"
+    },
+    "native_convention": "[start,end)",
+    "vllm_convention": "[start,end]",
+    "source_lines": {
+      "multimodal/inputs.py": [
+        179,
+        202
+      ],
+      "v1/attention/ops/triton_attention_helpers.py": [
+        335,
+        352
+      ],
+      "v1/worker/gpu_model_runner.py": [
+        2329,
+        2336
+      ]
+    },
+    "mask_modified": false
+  },
+  "mask_modified": false
+}

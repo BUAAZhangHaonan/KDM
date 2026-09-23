@@ -1,0 +1,39 @@
+{
+  "pid": 268743,
+  "command": [
+    "bash",
+    "workflows/food_closed_v3/worker.sh",
+    "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "1",
+    "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+    "-u",
+    "workflows/independent_v5/gemma_native_pixels_entry_v4.py",
+    "generate",
+    "--model",
+    "gemma3_4b",
+    "--closed-record",
+    "outputs/records/acceleration_v4/panel5_engine_v6/gemma3_4b",
+    "--native-reference",
+    "outputs/records/independent_v5/native16_v2/gemma3_4b/reference.json",
+    "--verification",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/check.json",
+    "--execute",
+    "--run",
+    "panel5_independent_food_v5"
+  ],
+  "postprocess_pid": 268744,
+  "postprocess_command": [
+    "python3",
+    "workflows/independent_v5/after_gemma_generation_once_v3.py",
+    "--model",
+    "gemma3_4b",
+    "--pid",
+    "268743",
+    "--closed-record",
+    "outputs/records/acceleration_v4/panel5_engine_v6/gemma3_4b"
+  ],
+  "started_utc": "2026-09-23T14:18:13.132581+00:00",
+  "source_gpu": 1,
+  "generation_complete": false,
+  "final_gt": false
+}

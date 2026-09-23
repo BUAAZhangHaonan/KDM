@@ -1,0 +1,76 @@
+{
+  "error": "Gemma real engine image ranges differ from native token_type_ids",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/verify_engine.py\", line 59, in run\n    attempts=sc.generate_ten(s,native['eos_token_ids'])\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/independent.py\", line 167, in generate_ten\n    self.attention_audit=check_gemma_attention_receipt(self.audit_path,image_ranges(types[0].tolist()),os.environ[\"CUDA_VISIBLE_DEVICES\"])\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/independent.py\", line 113, in check_gemma_attention_receipt\n    raise ValueError(\"Gemma real engine image ranges differ from native token_type_ids\")\nValueError: Gemma real engine image ranges differ from native token_type_ids\n",
+  "retry_performed": false,
+  "native_pixels_bridge": {
+    "schema": "kdm_gemma_native_pixels_execution_binding_v1",
+    "multiprocessing_start_method": "spawn",
+    "entry_sha256": "989aa2025fac9df2090b270588ad7eb4bacd544a78ef58119882fff6d32c5694",
+    "bridge_identity": {
+      "schema": "kdm_gemma_native_pixels_bridge_v1",
+      "bridge_sha256": "bf3b766bb3353c63b691c7c47fb58bb5780254b76a28f6b4186dddb23759a185",
+      "native_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "versions": {
+        "torch": "2.6.0+cu124",
+        "torchvision": "0.21.0+cu124",
+        "transformers": "5.5.3",
+        "tokenizers": "0.22.2",
+        "accelerate": "1.6.0",
+        "numpy": "2.2.4",
+        "Pillow": "11.1.0",
+        "sentencepiece": "0.2.0",
+        "timm": "1.0.19",
+        "safetensors": "0.5.3",
+        "einops": "0.8.1",
+        "scipy": "1.17.0",
+        "requests": "2.32.5"
+      },
+      "checkpoint": "/home/team/lvshuyang/Models/gemma-3-4b-it",
+      "processor_files": {
+        "tokenizer.json": "4667f2089529e8e7657cfb6d1c19910ae71ff5f28aa7ab2ff2763330affad795",
+        "processor_config.json": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53",
+        "preprocessor_config.json": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d",
+        "tokenizer_config.json": "bfe25c2735e395407beb78456ea9a6984a1f00d8c16fa04a8b75f2a614cf53e1"
+      },
+      "native_processor_class": "<class 'transformers.models.gemma3.image_processing_gemma3.Gemma3ImageProcessor'>",
+      "native_code_sha256": {
+        "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/image_processing_backends.py": "976bf4de3c2cfad7b8cc11db7db842ea052cdb5554159932781f4762c4718d8b",
+        "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/gemma3/image_processing_gemma3.py": "e8450028ceb6eb1f4d44255ebfaa27c75e3921a5acf0bd741e139f306ec08a56"
+      },
+      "processor_config": {
+        "do_convert_rgb": null,
+        "do_normalize": true,
+        "do_rescale": true,
+        "do_resize": true,
+        "image_mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "image_processor_type": "Gemma3ImageProcessor",
+        "image_seq_length": 256,
+        "image_std": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "resample": 2,
+        "rescale_factor": 0.00392156862745098,
+        "size": {
+          "height": 896,
+          "width": 896
+        }
+      },
+      "device": "cpu",
+      "model_weights_loaded": false
+    },
+    "cpu_proof": "outputs/records/independent_v5/gemma_native_pixels_cpu_v1/audit.json",
+    "cpu_proof_sha256": "872e0f1ac44110c85eff1f18f887aa0a788cb45e61f45bc70d6a3376f1ede7d6",
+    "cpu_audit_source_sha256": "c5f86c489197b4d286496ad8451538693f8f0ba3b6bc71d7779b4b1d884affb7",
+    "engine_verifier_sha256": "cc3efda048ccbffd0177385fb202be3aa66e12beca579e2de869446d3fdb5a30",
+    "review_entry_sha256": "c60fc7aee313174065bf24a73fc1b7fb75f7fae4184fb496b261960ef7f50768",
+    "independent_source_sha256": "eb1ac01829a1ef9200cf58ca5c98a8ba6dd793e41a14f923c0fae23ae77b6bdf",
+    "closed_preparer_sha256": "91fd30a36e345a8b93e759aa5427fa94227d22b8ccf4a492b1f2ac0f7febe8b0"
+  },
+  "native_pixels_bridge_binding_sha256": "a64ddbf60486e28a44b5c9c9b16141669147289ac38b676f5ffe43e68cdd7178"
+}
