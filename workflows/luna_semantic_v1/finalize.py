@@ -50,9 +50,27 @@ def collect():
   if r.get('status')!='unresolved':parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
  return meta,byid,results,files,original_errors
 
-def run(check_only=False,export_name="validated_v2"):
- assert export_name in {"validated_v2"},"Original provisional v1 remains preserved"
- meta,queue,results,files,original_errors=collect();mapping=read(BASE/'source_mapping.jsonl');assert len(mapping)==9047
+def run(check_only=False,export_name="validated_v3"):
+ assert export_name in {"validated_v3"},"Original provisional v1 remains preserved"
+ meta,queue,results,files,original_errors=collect()
+ review_receipts={};reviewed=set()
+ for name,expected in [('second_pass_review_001_007.json',set(range(1,701))),('second_pass_review_008_019.json',set(range(701,1869)))]:
+  receipt=BASE/name;review=json.loads(receipt.read_text())
+  assert review['model']=='gpt-6-luna' and review['reasoning_effort']=='medium'
+  assert review['human_reviewed'] is False and review['final_gt'] is False
+  ids=review['reviewed_ids'];assert len(ids)==len(expected) and set(ids)==expected and not reviewed.intersection(ids)
+  reviewed.update(ids)
+  for field in ['input_sha256','original_batch_sha256','correction_sha256']:
+   for path,expected_sha in review[field].items():assert sha(BASE/path)==expected_sha,'Second pass evidence changed'
+  review_receipts[name]=sha(receipt)
+ assert reviewed==set(queue)
+ minimal_path=BASE/'minimal_span_review_47.json';minimal=json.loads(minimal_path.read_text())
+ expected_minimal={r['id'] for r in read(BASE/'minimal_span_candidate_review.jsonl')}
+ assert len(expected_minimal)==47 and len(minimal['reviewed_ids'])==47 and set(minimal['reviewed_ids'])==expected_minimal
+ assert minimal['model']=='gpt-6-luna' and minimal['reasoning_effort']=='medium' and minimal['human_reviewed'] is False
+ review_receipts['minimal_span_review_47.json']=sha(minimal_path)
+ review_receipts['minimal_span_candidate_review.jsonl']=sha(BASE/'minimal_span_candidate_review.jsonl')
+ mapping=read(BASE/'source_mapping.jsonl');assert len(mapping)==9047
  aliases=json.loads((ROOT/'configs/kdm/food_aliases.json').read_text())
  source_labels=[];raws={};source_proofs=[]
  for source in meta['sources']:
@@ -72,7 +90,7 @@ def run(check_only=False,export_name="validated_v2"):
   assert nbytes==proof['source_prefix_bytes'] and h.hexdigest()==proof['source_prefix_sha256']
   source_proofs.append(proof)
  assert len(source_labels)==len(raws)==26664
- definition={'schema':'kdm_luna_semantic_9047_v1','model':'gpt-6-luna','reasoning_effort':'medium','subagent':'/root/luna_semantic_9047','queue_manifest_sha256':sha(BASE/'manifest.json'),'result_files_sha256':files,'original_batch_validation_errors_preserved':original_errors,'effective_annotations_validated':True,'rubric_sha256':meta['rubric_sha256'],'source_mapping_sha256':meta['mapping_sha256'],'scoring_sha256':sha(ROOT/'src/kdm/scoring.py'),'aliases_sha256':sha(ROOT/'configs/kdm/food_aliases.json'),'finalizer_sha256':sha(Path(__file__)),'human_reviewed':False,'final_gt':False,'separate_api_calls':0}
+ definition={'schema':'kdm_luna_semantic_9047_v1','model':'gpt-6-luna','reasoning_effort':'medium','subagent':'/root/luna_semantic_9047','second_pass_subagents':['/root/luna_semantic_9047','/root/luna_span_008_013'],'second_pass_receipts_sha256':review_receipts,'queue_manifest_sha256':sha(BASE/'manifest.json'),'result_files_sha256':files,'original_batch_validation_errors_preserved':original_errors,'effective_annotations_validated':True,'rubric_sha256':meta['rubric_sha256'],'source_mapping_sha256':meta['mapping_sha256'],'scoring_sha256':sha(ROOT/'src/kdm/scoring.py'),'aliases_sha256':sha(ROOT/'configs/kdm/food_aliases.json'),'finalizer_sha256':sha(Path(__file__)),'human_reviewed':False,'final_gt':False,'separate_api_calls':0}
  identity=digest(definition);annotations=[];by_pair={}
  for m in mapping:
   l=m['source_label'];pair=(l['model'],l['key']);raw=raws[pair];q=queue[m['id']];r=results[m['id']]

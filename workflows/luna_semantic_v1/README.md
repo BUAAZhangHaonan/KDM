@@ -18,3 +18,7 @@ The preparation and finalization scripts do not perform semantic classification.
 ## Provisional v1 quality hold
 
 The first schema-valid export had overbroad endorsed-answer spans: most full answers were copied verbatim, including side-dish descriptions. This yielded zero added exact-alias correct matches and is not evidence that all new answers are wrong. `QUALITY_HOLD_v1.json` marks `validated_v1` provisional and superseded pending a second blinded Luna semantic span review of all 1868 groups. The original export and judgments remain intact. Versioned semantic corrections will feed separate `validated_v2`; no alias expansion or truth-aware answer selection is authorized.
+
+## Accepted automatic annotation export
+
+`latest.json` selects `validated_v3`: all 9047 original rows are covered, 9045 have valid behavior labels and 2 remain unresolved (DON'T and The Celti). The 1868 exact input groups received complete second-pass blinded span review by two GPT-6 Luna medium subagents, followed by a targeted 47-group review. Coverage, original source hashes and literal evidence spans pass; semantic judgment error is still possible. The first two exports remain preserved intermediate results and are not the active statistics. Original source responses, frozen aliases and initial lexical labels are unchanged.

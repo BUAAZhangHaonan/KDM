@@ -1,0 +1,8 @@
+{
+  "affected_export": "validated_v2",
+  "status": "provisional_pending_targeted_minimal_span_review",
+  "reason": "Targeted review found articles, portion phrases and some image-description frames still included in endorsed spans. 47 blind groups flagged for actual semantic re-review, not automatic rewriting.",
+  "candidate_review_file": "minimal_span_candidate_review.jsonl",
+  "next_export": "validated_v3",
+  "original_files_preserved": true
+}

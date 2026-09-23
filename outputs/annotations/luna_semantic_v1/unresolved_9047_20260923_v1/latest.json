@@ -1,0 +1,15 @@
+{
+  "schema": "kdm_luna_semantic_latest_v1",
+  "active_export": "validated_v3",
+  "source_rows": 9047,
+  "annotated": 9045,
+  "unresolved": 2,
+  "summary_sha256": "5f0a57c69f2688f79d0431497962382683fd52875cbd8cb24991513b4c756f0d",
+  "identity_sha256": "19e08ceec5390206cd022b232a804fce7d52ac4ce1e79da1a3c84582e35fbe04",
+  "superseded_exports": [
+    "validated_v1",
+    "validated_v2"
+  ],
+  "human_reviewed": false,
+  "final_gt": false
+}
