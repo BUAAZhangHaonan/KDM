@@ -20,7 +20,7 @@ def collect():
  meta=json.loads((BASE/'manifest.json').read_text())
  assert sha(BASE/'blind_queue.jsonl')==meta['queue_sha256'] and sha(BASE/'source_mapping.jsonl')==meta['mapping_sha256']
  assert sha(BASE/'RUBRIC.txt')==meta['rubric_sha256']
- queue=read(BASE/'blind_queue.jsonl');byid={r['id']:r for r in queue};results={};files={}
+ queue=read(BASE/'blind_queue.jsonl');byid={r['id']:r for r in queue};results={};files={};original_errors=[]
  inputs=list(sorted((BASE/'batches').glob('input_*.jsonl')))
  for p in inputs:
   expected={r['id'] for r in read(p)};result=BASE/'results'/p.name.replace('input_','batch_')
@@ -33,7 +33,8 @@ def collect():
     assert isinstance(r.get('reason'),str) and r['reason'].strip() and 'annotation' not in r
    else:
     assert isinstance(r.get('annotation'),dict)
-    parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
+    try:parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
+    except ValueError as exc:original_errors.append({'id':i,'file':str(result.relative_to(BASE)),'error':str(exc)})
    results[i]=r
  assert len(results)==len(queue)==meta['exact_question_answer_groups']
  for correction_path in sorted((BASE/'results').glob('corrections_v*.jsonl'),key=lambda p:int(p.stem.rsplit('_v',1)[1])):
@@ -45,14 +46,18 @@ def collect():
    if r.get('status')=='unresolved':assert 'annotation' not in r
    else:parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
    changed.add(i);results[i]=r
- return meta,byid,results,files
+ for i,r in results.items():
+  if r.get('status')!='unresolved':parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
+ return meta,byid,results,files,original_errors
 
 def run(check_only=False):
- meta,queue,results,files=collect();mapping=read(BASE/'source_mapping.jsonl');assert len(mapping)==9047
+ meta,queue,results,files,original_errors=collect();mapping=read(BASE/'source_mapping.jsonl');assert len(mapping)==9047
  aliases=json.loads((ROOT/'configs/kdm/food_aliases.json').read_text())
  source_labels=[];raws={};source_proofs=[]
  for source in meta['sources']:
   p=ROOT/source['screening_directory'];assert sha(p/'labels.jsonl')==source['labels_sha256'] and sha(p/'summary.json')==source['summary_sha256']
+  original_summary=json.loads((p/'summary.json').read_text())
+  for rule_path,expected_sha in original_summary['rules_sha256'].items():assert sha(ROOT/rule_path)==expected_sha,'Original scoring/screening rule changed'
   labels=read(p/'labels.jsonl');source_labels+=labels;byline={r['source_line']:r for r in labels}
   proof=source['source_prefix'];raw=ROOT/proof['source_path'];h=hashlib.sha256();nbytes=0
   with raw.open('rb') as f:
@@ -66,7 +71,7 @@ def run(check_only=False):
   assert nbytes==proof['source_prefix_bytes'] and h.hexdigest()==proof['source_prefix_sha256']
   source_proofs.append(proof)
  assert len(source_labels)==len(raws)==26664
- definition={'schema':'kdm_luna_semantic_9047_v1','model':'gpt-6-luna','reasoning_effort':'medium','subagent':'/root/luna_semantic_9047','queue_manifest_sha256':sha(BASE/'manifest.json'),'result_files_sha256':files,'rubric_sha256':meta['rubric_sha256'],'source_mapping_sha256':meta['mapping_sha256'],'scoring_sha256':sha(ROOT/'src/kdm/scoring.py'),'aliases_sha256':sha(ROOT/'configs/kdm/food_aliases.json'),'finalizer_sha256':sha(Path(__file__)),'human_reviewed':False,'final_gt':False,'separate_api_calls':0}
+ definition={'schema':'kdm_luna_semantic_9047_v1','model':'gpt-6-luna','reasoning_effort':'medium','subagent':'/root/luna_semantic_9047','queue_manifest_sha256':sha(BASE/'manifest.json'),'result_files_sha256':files,'original_batch_validation_errors_preserved':original_errors,'effective_annotations_validated':True,'rubric_sha256':meta['rubric_sha256'],'source_mapping_sha256':meta['mapping_sha256'],'scoring_sha256':sha(ROOT/'src/kdm/scoring.py'),'aliases_sha256':sha(ROOT/'configs/kdm/food_aliases.json'),'finalizer_sha256':sha(Path(__file__)),'human_reviewed':False,'final_gt':False,'separate_api_calls':0}
  identity=digest(definition);annotations=[];by_pair={}
  for m in mapping:
   l=m['source_label'];pair=(l['model'],l['key']);raw=raws[pair];q=queue[m['id']];r=results[m['id']]

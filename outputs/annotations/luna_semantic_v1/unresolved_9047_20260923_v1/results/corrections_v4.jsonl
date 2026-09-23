@@ -1,0 +1,1 @@
+{"id": 1339, "group_sha256": "7ef478507b0e2cadff264297a23611bb6346fa89c3015c8d677e0b20b7d3361b", "annotation": {"label": "answer_assertive", "evidence_span": "donkeys", "answer_text": "donkeys"}, "reason": "An odd or likely incorrect noun candidate remains an endorsed answer; it is not empty, corrupted text, or irrelevant."}
