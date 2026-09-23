@@ -1,0 +1,132 @@
+{
+  "schema": "formal_v4_completed_stage_screening",
+  "completed_stage": "unknown_controls",
+  "stage_complete_for_input_shards": true,
+  "full_model_generation_claimed": false,
+  "final_gt": false,
+  "semantic_labeling_complete": false,
+  "human_reviewed": false,
+  "gpu_used": false,
+  "api_requests": 0,
+  "rows": 12120,
+  "matched": 7474,
+  "matched_answer_correct": 3318,
+  "matched_answer_incorrect": 752,
+  "exact_abstention": 3404,
+  "unresolved": 4646,
+  "conditions": [
+    {
+      "model": "llava16_mistral",
+      "stage": "unknown_controls",
+      "kind": "instruction_preserving",
+      "method": "cda_visual",
+      "marker": "UNKNOWN",
+      "reference_marker": "UNKNOWN",
+      "reference_guided": false,
+      "rows": 2424,
+      "matched": 861,
+      "matched_answer_correct": 699,
+      "matched_answer_incorrect": 161,
+      "exact_abstention": 1,
+      "unresolved": 1563
+    },
+    {
+      "model": "llava16_mistral",
+      "stage": "unknown_controls",
+      "kind": "instruction_preserving",
+      "method": "instruction_m3id",
+      "marker": "UNKNOWN",
+      "reference_marker": "UNKNOWN",
+      "reference_guided": false,
+      "rows": 2424,
+      "matched": 1401,
+      "matched_answer_correct": 791,
+      "matched_answer_incorrect": 208,
+      "exact_abstention": 402,
+      "unresolved": 1023
+    },
+    {
+      "model": "llava16_mistral",
+      "stage": "unknown_controls",
+      "kind": "instruction_preserving",
+      "method": "instruction_vcd",
+      "marker": "UNKNOWN",
+      "reference_marker": "UNKNOWN",
+      "reference_guided": false,
+      "rows": 2424,
+      "matched": 1179,
+      "matched_answer_correct": 861,
+      "matched_answer_incorrect": 223,
+      "exact_abstention": 95,
+      "unresolved": 1245
+    },
+    {
+      "model": "llava16_mistral",
+      "stage": "unknown_controls",
+      "kind": "reference_instruction_removed",
+      "method": "m3id",
+      "marker": "UNKNOWN",
+      "reference_marker": "UNKNOWN",
+      "reference_guided": false,
+      "rows": 2424,
+      "matched": 1862,
+      "matched_answer_correct": 631,
+      "matched_answer_incorrect": 125,
+      "exact_abstention": 1106,
+      "unresolved": 562
+    },
+    {
+      "model": "llava16_mistral",
+      "stage": "unknown_controls",
+      "kind": "reference_instruction_removed",
+      "method": "vcd",
+      "marker": "UNKNOWN",
+      "reference_marker": "UNKNOWN",
+      "reference_guided": false,
+      "rows": 2424,
+      "matched": 2171,
+      "matched_answer_correct": 336,
+      "matched_answer_incorrect": 35,
+      "exact_abstention": 1800,
+      "unresolved": 253
+    }
+  ],
+  "model_stage_coverage": {
+    "llava16_mistral": {
+      "included_shards": [
+        0
+      ],
+      "n_shards": 1,
+      "full_model_stage_present": true,
+      "full_model_generation_claimed": false
+    }
+  },
+  "sources": [
+    {
+      "record_directory": "outputs/records/acceleration_v4/panel5_food_formal_v4/llava16_mistral/shard_000_of_001",
+      "source_path": "outputs/raw/acceleration_v4/panel5_food_formal_v4/llava16_mistral/shard_000_of_001/formal.jsonl",
+      "model": "llava16_mistral",
+      "shard": 0,
+      "n_shards": 1,
+      "stage": "unknown_controls",
+      "sidecar_sha256": "4d8b8809a39b649a46efda512b60847ed96e23e57ea1a63e0f4dda267e28491f",
+      "source_identity": "33d47e6c54b165cf70c76b25609026ba2da20b5cd608bb08da01704d1e57f757",
+      "admission_sha256": "888d52c689442a71bdc11573e4da62268b2007cb64df2e4d3920640e520567b5",
+      "stage_counter_observed": 12120,
+      "full_model_generation_claimed": false,
+      "rows": 12120,
+      "source_prefix_bytes": 74216790,
+      "source_prefix_sha256": "5d578742b33878c310b5d5f834d8c1e83e7c920e27003ac8c9d3de6489788a8b",
+      "source_last_line": 26664,
+      "later_file_growth_allowed": true
+    }
+  ],
+  "full_panel_stage_present": false,
+  "rules_sha256": {
+    "workflows/acceleration_v4/formal_stage_postprocess.py": "27e221b60f4c71d0ca5e013703bb61c6eb460a616a411a900bef705300f0103a",
+    "workflows/quick_match_v1/match.py": "369fd05cb8171f06183120f6efdd54af19524b7128c1e6158cb776603176a5c0",
+    "configs/kdm/food_aliases.json": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "src/kdm/scoring.py": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862"
+  },
+  "limits": "Only the exact completed stage of included shards. Future appends excluded. Character matching is preliminary; unresolved is neither correct nor incorrect."
+}

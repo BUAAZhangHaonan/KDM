@@ -1,0 +1,9 @@
+# Monitoring update at 2026-09-23 22:00 UTC
+
+LLaVA formal unknown_controls completed12120 tasks. Exact stage keys, sample/input identity and immutable completed prefix were verified by the unchanged formal_stage_postprocess. Free screening:3318 matched correct,752 matched incorrect,3404 exact abstentions,4646 unresolved. Output: outputs/annotations/acceleration_v4/llava16_mistral_unknown_controls_20260924_v1. Remaining prompt matrix continues on4028 GPU1; this is not full formal completion.
+
+Completed3 Luna queue has373 produced batches,37276 groups, at this snapshot; global499-batch semantic acceptance/export remains pending. Agent168_333 finished168–333 and417–499. Pilot finished002–124. New mutually exclusive assignment: pilot125–167, agent168_333 handles334–416. Both received explicit instructions. Dispatch: outputs/annotations/luna_independent_v2/completed3_20260923_v1/dispatch_rebalance_20260924_v2.json. Use real disk checkpoints after this snapshot.
+
+Additional batches454–499 had escaped newline serialization. Original authored objects are preserved under results/failed_serialization. The agent repaired only delimiters; root independently parsed all4576 old objects and verified exact equality with new JSONL objects, source IDs, group hashes and literal spans. Receipt: outputs/records/independent_sync_20260924/luna_serialization_repair_454_499_verified.json. This is structural verification, not human semantic review. Retain original failures and do not rerun interpretation for a formatting-only repair.
+
+4028 GPUs0/1/4/5 still run authorized formal methods with increasing raw files and no new inference failure.6403 remains free of KDM inference. K100 has no KDM generation process; other workload memory is not permission to stop or change it.4029 not accessed. No inference/API relaunch. Continue two-hour event-only monitoring and retain the full research completion requirements.
