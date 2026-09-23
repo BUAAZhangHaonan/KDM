@@ -1,0 +1,35 @@
+[
+  {
+    "model": "qwen25vl",
+    "watcher_pid": 245458,
+    "target_pid": 228002,
+    "status": "waiting_for_target_exit",
+    "alive": true,
+    "wait_mechanism": "pidfd_poll_no_periodic_polling",
+    "wchan": "do_poll.constprop.0",
+    "pidfd_open": true,
+    "output_exists": false
+  },
+  {
+    "model": "minicpm26",
+    "watcher_pid": 245459,
+    "target_pid": 228003,
+    "status": "waiting_for_target_exit",
+    "alive": true,
+    "wait_mechanism": "pidfd_poll_no_periodic_polling",
+    "wchan": "do_poll.constprop.0",
+    "pidfd_open": true,
+    "output_exists": false
+  },
+  {
+    "model": "qwen35_4b",
+    "watcher_pid": 245460,
+    "target_pid": 235044,
+    "status": "waiting_for_target_exit",
+    "alive": true,
+    "wait_mechanism": "pidfd_poll_no_periodic_polling",
+    "wchan": "do_poll.constprop.0",
+    "pidfd_open": true,
+    "output_exists": false
+  }
+]

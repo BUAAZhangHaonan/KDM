@@ -1,0 +1,5 @@
+{
+  "error": "",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/verify_engine.py\", line 40, in run\n    assert all(impl.closed.summarize(inp[k])==impl.closed.core_summary(v) for k,v in row['processor_summary'].items())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "retry_performed": false
+}

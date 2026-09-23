@@ -1,0 +1,25 @@
+{
+  "pid": 228003,
+  "command": [
+    "bash",
+    "workflows/food_closed_v3/worker.sh",
+    "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "1",
+    "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+    "-u",
+    "workflows/independent_v5/reviewed_entry.py",
+    "--model",
+    "minicpm26",
+    "--closed-record",
+    "outputs/records/acceleration_v4/panel5_engine_v3/minicpm26",
+    "--native-reference",
+    "outputs/records/independent_v5/native16_v2/minicpm26/reference.json",
+    "--verification",
+    "outputs/records/independent_v5/engine_verify_v1/minicpm26/check.json",
+    "--execute",
+    "--run",
+    "panel5_independent_food_v5"
+  ],
+  "gpu": "1",
+  "host": "6403"
+}

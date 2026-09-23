@@ -1,0 +1,9 @@
+{
+  "pid": 235044,
+  "parent_generation_pid": 228002,
+  "physical_gpu": "0",
+  "config_sha256": "c579222623ec0ed8ff63e2e099883c0b9048c0064e2d934236421b122c55734e",
+  "successor_model": "qwen35_4b",
+  "one_attempt_only": true,
+  "created_unix": 1790163691.8222263
+}

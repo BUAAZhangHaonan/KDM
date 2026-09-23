@@ -1,0 +1,19 @@
+{
+  "accepted_separate_cohort": true,
+  "engine_check_sha256": "21282efcd2b1c24151b609482267a9f66fc0f498556acb2f84339abb4134740a",
+  "review_entry_sha256": "c60fc7aee313174065bf24a73fc1b7fb75f7fae4184fb496b261960ef7f50768",
+  "user_authorization": "2026-09-23 use vLLM if differences are normal backend variation",
+  "input_sampling_checkpoint_configuration_reviewed": true,
+  "greedy_check_temperature": 0.0,
+  "production_temperature": 1.0,
+  "production_top_p": 1.0,
+  "repetition_penalty": 1.0,
+  "max_tokens": 32,
+  "quantization": null,
+  "dtype": "bfloat16",
+  "greedy_mismatch_count": 5,
+  "exact_greedy_equivalence_claimed": false,
+  "rationale": "Exact prompt IDs, model-dtype visual tensors, checkpoint configuration, native EOS and neutral sampling settings checked. Native generate equals frozen native decoder on16. No configuration mismatch found. Different BF16 engine kernels/PyTorch versions can change logits; no single-kernel causal attribution proven. Substantive greedy differences retained, not described as bitwise equivalence or cosmetic-only changes. Use as explicitly separate vLLM measurement cohort.",
+  "zero_cache_reason": "vllm024_qwen35_align_minimum528_exceeds_prompt",
+  "cache_limitation": "vLLM 0.24 Qwen3.5 hybrid Mamba cache align mode requires minimum 528 tokens, longer than these unchanged prompts; all 16 measured cache hits zero. Parallel independent generation retained, no prompt padding, no claim of cache speedup."
+}

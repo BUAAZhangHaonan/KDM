@@ -1,0 +1,44 @@
+{
+  "schema": "kdm_free_postprocess_dispatch_v1",
+  "started_unix": 1790163843.9383214,
+  "script_sha256": "873258459a7c746c76d180b4edefeeb9d82bdf10b6fa625fb81f10ea3599c540",
+  "processes": [
+    {
+      "model": "qwen25vl",
+      "watcher_pid": 237451,
+      "target_pid": 228002,
+      "command": [
+        "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+        "-u",
+        "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/after_generation_once.py",
+        "--model",
+        "qwen25vl",
+        "--pid",
+        "228002",
+        "--closed-record",
+        "outputs/records/acceleration_v4/panel5_engine_v2/qwen25vl"
+      ],
+      "log": "outputs/records/independent_v5/free_postprocess_qwen25vl_v1.log"
+    },
+    {
+      "model": "minicpm26",
+      "watcher_pid": 237452,
+      "target_pid": 228003,
+      "command": [
+        "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+        "-u",
+        "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/independent_v5/after_generation_once.py",
+        "--model",
+        "minicpm26",
+        "--pid",
+        "228003",
+        "--closed-record",
+        "outputs/records/acceleration_v4/panel5_engine_v3/minicpm26"
+      ],
+      "log": "outputs/records/independent_v5/free_postprocess_minicpm26_v1.log"
+    }
+  ],
+  "api_requests": 0,
+  "gpu_tasks_started": 0,
+  "retries": 0
+}

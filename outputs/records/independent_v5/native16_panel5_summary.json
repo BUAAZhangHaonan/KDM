@@ -1,0 +1,63 @@
+{
+  "schema": "kdm_panel5_native_independent_reference_summary_v1",
+  "models": [
+    {
+      "model": "qwen25vl",
+      "reference": "outputs/records/independent_v5/native16_v1/qwen25vl/reference.json",
+      "sha256": "3656e569489e7bda1bd823f7afeb8fd476a9a63fc38fb106891100dc1db172d7",
+      "count": 16,
+      "greedy_backend_equal": true,
+      "sum_native_generation_wall_s": 3.561775667985785,
+      "workflow_sha256": "7595743b1147e3ecc6a9e35f0cfdb520924f7ea422e2d311faea1087f49cbe4c"
+    },
+    {
+      "model": "minicpm26",
+      "reference": "outputs/records/independent_v5/native16_v2/minicpm26/reference.json",
+      "sha256": "8ea8234fd83ed0c57649dbd399e62124bc6c74dc4e47420c5f7971c7e84505c3",
+      "count": 16,
+      "greedy_backend_equal": true,
+      "sum_native_generation_wall_s": 8.19570876499347,
+      "workflow_sha256": "3b2d632d391fa83c4853751ea2257b04a78f1d91d36e6008917fed1f4724c8a3"
+    },
+    {
+      "model": "gemma3_4b",
+      "reference": "outputs/records/independent_v5/native16_v2/gemma3_4b/reference.json",
+      "sha256": "2d85f214de5fdee7be6ea0dfc6fb53d94acdd73eb6ce8eea69729a2bad891b34",
+      "count": 16,
+      "greedy_backend_equal": true,
+      "sum_native_generation_wall_s": 24.329162983995047,
+      "workflow_sha256": "3b2d632d391fa83c4853751ea2257b04a78f1d91d36e6008917fed1f4724c8a3"
+    },
+    {
+      "model": "qwen35_4b",
+      "reference": "outputs/records/independent_v5/native16_v3/qwen35_4b/reference.json",
+      "sha256": "1482382105f24ee111f85d7ea28a7e0b1a4e447adc8bcb2b88eca23b78c013f7",
+      "count": 16,
+      "greedy_backend_equal": true,
+      "sum_native_generation_wall_s": 46.077902877979795,
+      "workflow_sha256": "29ef0def983f4c9e3bd8b21a8a8ee6ee94ba1c963bdd104901f7dd708619bc6b"
+    },
+    {
+      "model": "llava16_mistral",
+      "reference": "outputs/records/independent_v5/native16_v3/llava16_mistral/reference.json",
+      "sha256": "f1690f138cbcfe2357ed3cb16026fc67a6eac33a3c96c5513779874d1c49c5a5",
+      "count": 16,
+      "greedy_backend_equal": true,
+      "sum_native_generation_wall_s": 7.251297493989114,
+      "workflow_sha256": "29ef0def983f4c9e3bd8b21a8a8ee6ee94ba1c963bdd104901f7dd708619bc6b"
+    }
+  ],
+  "actual_native_examples": 80,
+  "paid_api_requests": 0,
+  "fast_engine_validation_claimed": false,
+  "independent10_production_claimed": false,
+  "environment_copies": [
+    ".environments/mprisk-tf553",
+    ".environments/native311",
+    ".environments/base311"
+  ],
+  "implementation_failures_preserved": [
+    "native16_v1/minicpm26/error.json",
+    "native16_v2/qwen35_4b/interrupted_environment_isolation.json"
+  ]
+}

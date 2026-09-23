@@ -1,0 +1,28 @@
+{
+  "import_passed": true,
+  "checked_closed": {
+    "qwen25vl": {
+      "rows": 4848,
+      "raw_sha256": "61dc3a8a4079f6eb2b0b248f7abbbcfe50059e211ff9cd938a406fd876bacffc"
+    },
+    "qwen35_4b": {
+      "rows": 4848,
+      "raw_sha256": "8454f1abcd7165161297fbd34526115608ff866732f9260568091685fdc83bfd"
+    },
+    "llava16_mistral": {
+      "rows": 4848,
+      "raw_sha256": "32192efe7dfffaf86c95582802d788e428685558b8ee14806da21e39da53f121"
+    },
+    "minicpm26": {
+      "rows": 4848,
+      "raw_sha256": "904dee0918b70d4b08ac12eca1952e0f0c69714d62240213f0e76233d4e2db03"
+    },
+    "gemma3_4b": {
+      "rows": 4848,
+      "raw_sha256": "a1154ab2334a76fbb4de93cfa195cac81b68d355fbe54eb85f0abf34a55dd116"
+    }
+  },
+  "api_requests": 0,
+  "gpu_used": false,
+  "implementation_sha256": "43c8e757958369df62af9d250cb74f03544def19d70c538a741e896185626736"
+}

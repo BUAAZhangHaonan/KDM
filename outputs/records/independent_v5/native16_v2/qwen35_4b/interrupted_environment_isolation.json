@@ -1,0 +1,12 @@
+{
+  "reason": "user-site numpy/Pillow shadow exact project-local base; stopped own queue for implementation fix; prior outputs not accepted",
+  "last_recorded_progress": {
+    "model": "qwen35_4b",
+    "pid": 207737,
+    "status": "running",
+    "completed": 0,
+    "expected": 16,
+    "started_unix": 1790162275.5318089
+  },
+  "at_unix": 1790162338.3051672
+}

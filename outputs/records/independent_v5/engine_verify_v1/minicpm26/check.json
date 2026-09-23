@@ -1,0 +1,1680 @@
+{
+  "schema": "kdm_vllm_independent_reference_check_v1",
+  "model": "minicpm26",
+  "passed": false,
+  "native_reference_sha256": "8ea8234fd83ed0c57649dbd399e62124bc6c74dc4e47420c5f7971c7e84505c3",
+  "implementation_sha256": "eb1ac01829a1ef9200cf58ca5c98a8ba6dd793e41a14f923c0fae23ae77b6bdf",
+  "closed_preparer_sha256": "91fd30a36e345a8b93e759aa5427fa94227d22b8ccf4a492b1f2ac0f7febe8b0",
+  "versions": {
+    "vllm": "0.24.0",
+    "torch": "2.11.0",
+    "transformers": "5.12.1"
+  },
+  "rows": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "engine_greedy_tokens": [
+        26567,
+        4349,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        26567,
+        4349,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.27419355511665344,
+        -0.8549284338951111,
+        -0.21565508842468262,
+        -1.4066597032069694e-05
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.08214097707296725,
+      "matched_prefix_tokens": 4,
+      "matched_prefix_max_abs_logprob_error": 0.08214097707296725,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "3c01b3f3626b472ed02a05acc7e93b0dc6a15e24d942c53c0cf4f93ec8971be7"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "043f95e84bf40ec261bc033af90f20e6d4d4b9e3aad23f40535b24c7b1838a19"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 864,
+      "ten_request_wall_s": 2.6190062109963037,
+      "greedy_wall_s": 0.10166671399201732,
+      "unique_generated_sequences": 8,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:baby_back_ribs_group_000.jpg",
+      "engine_greedy_tokens": [
+        6464,
+        4374,
+        55149,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        6464,
+        4374,
+        55149,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.5565614104270935,
+        -0.00031549722189083695,
+        -0.832740843296051,
+        -0.9449560642242432,
+        -5.8412379075889476e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.08975891375647005,
+      "matched_prefix_tokens": 5,
+      "matched_prefix_max_abs_logprob_error": 0.08975891375647005,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "ca95d62c9ff2872a550783574075f4aa44a5b605dee2dd7e00d30a4535b860c0"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "e8644033e7e798609f0daa9226ce19c79bcd0f652eb7e4020d9a792c32e716a0"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 864,
+      "ten_request_wall_s": 0.41306959399662446,
+      "greedy_wall_s": 0.12047391101077665,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:baklava_group_000.jpg",
+      "engine_greedy_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.6688160300254822,
+        -0.0015387610765174031,
+        -7.807903602952138e-05,
+        -0.00218878872692585,
+        -0.20431233942508698,
+        -1.645074735279195e-05
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.09209507842617581,
+      "matched_prefix_tokens": 6,
+      "matched_prefix_max_abs_logprob_error": 0.09209507842617581,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "ebee00586cbc818f549334c89af35447214de8c68eed41ed06d68f4476573d3d"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "5ab73c90dcc03b887f0ce6919e4054a4be7f0cace240007ffa12c1f7a4f88e94"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "26a355a1191c48a768e2a41e2444a25257832af2cb1736e0daf74cd2b3d91046"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.4144404920079978,
+      "greedy_wall_s": 0.145777783007361,
+      "unique_generated_sequences": 6,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:beef_carpaccio_group_000.jpg",
+      "engine_greedy_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.1672346591949463,
+        -1.1444026313256472e-05,
+        -0.12807419896125793,
+        -0.7297985553741455,
+        -8.4638240878121e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.044665767417004565,
+      "matched_prefix_tokens": 5,
+      "matched_prefix_max_abs_logprob_error": 0.044665767417004565,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "ca5f4aee05ab962955b3d8abf7f7d06a36e02cb5ea93ce2b7228c6255b389e05"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "627eb5a44f468dd01cd82b0f0cf33ad81d26ed72f76a264fe8cf814e56401a44"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "24870894c04504af9ffe0847037c94a0642839b839775d1b3d930879c2196be7"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.0444094059930649,
+      "greedy_wall_s": 0.12760699099453632,
+      "unique_generated_sequences": 9,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:beef_tartare_group_000.jpg",
+      "engine_greedy_tokens": [
+        16001,
+        370,
+        19145,
+        448,
+        264,
+        3193,
+        3854,
+        18636,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        16001,
+        370,
+        19145,
+        448,
+        264,
+        3193,
+        3854,
+        18636,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.7121387720108032,
+        -0.0014300844632089138,
+        -0.24150937795639038,
+        -0.33299368619918823,
+        -0.6488221883773804,
+        -0.22895634174346924,
+        -3.6954811548639555e-06,
+        -0.0008217295398935676,
+        -0.31090331077575684,
+        -9.059865078597795e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.11701866265160477,
+      "matched_prefix_tokens": 10,
+      "matched_prefix_max_abs_logprob_error": 0.11701866265160477,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "fe5db767f665c1ebd9ef2e79c9341a3eba94bba999fdcdb461a80e418bdeb554"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "043f95e84bf40ec261bc033af90f20e6d4d4b9e3aad23f40535b24c7b1838a19"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 864,
+      "ten_request_wall_s": 0.5365800059953472,
+      "greedy_wall_s": 0.21771151300345082,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:beet_salad_group_000.jpg",
+      "engine_greedy_tokens": [
+        785,
+        3607,
+        6839,
+        304,
+        279,
+        2168,
+        7952,
+        311,
+        387,
+        264,
+        12000,
+        315,
+        48012,
+        2888,
+        32466,
+        476,
+        264,
+        48012,
+        2888,
+        5980,
+        29068,
+        3135,
+        13,
+        576,
+        32976,
+        24932,
+        31598,
+        1894,
+        315,
+        279,
+        48012,
+        2888
+      ],
+      "native_greedy_tokens": [
+        785,
+        3607,
+        6839,
+        304,
+        279,
+        2168,
+        7952,
+        311,
+        387,
+        264,
+        943,
+        315,
+        48012,
+        32466,
+        476,
+        48012,
+        5980,
+        12000,
+        13,
+        576,
+        32976,
+        24932,
+        31598,
+        1894,
+        315,
+        279,
+        3607,
+        374,
+        28583,
+        315,
+        387,
+        1415
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.8202158212661743,
+        -0.7697687745094299,
+        -0.6277087330818176,
+        -0.017271820455789566,
+        -0.16022521257400513,
+        -0.0002731903805397451,
+        -0.17159153521060944,
+        -5.960462772236497e-07,
+        -6.472854875028133e-05,
+        -0.048297490924596786,
+        -0.893203616142273,
+        -1.008718729019165,
+        -0.43547362089157104,
+        -0.2820402681827545,
+        -0.3962692618370056,
+        -0.7734164595603943,
+        -0.779159665107727,
+        -0.5672479867935181,
+        -0.2412373423576355,
+        -0.06950918585062027,
+        -1.2361712455749512,
+        -6.794698856538162e-05,
+        -0.5926464200019836,
+        -0.8825120329856873,
+        -1.2384264469146729,
+        -0.4131743907928467,
+        -1.0689952373504639,
+        -0.2502003312110901,
+        -0.4621421694755554,
+        -4.6132929128361866e-05,
+        -1.6093038320541382,
+        -0.0032170468475669622
+      ],
+      "greedy_tokens_equal": false,
+      "max_abs_selected_logprob_error": null,
+      "matched_prefix_tokens": 10,
+      "matched_prefix_max_abs_logprob_error": 0.18066490352444042,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "f115971d0ae6d270e2f811e771fd4e1dfcce3339bfcce3663eb7536c071344e6"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "c196a09dae856655d45cdcfdeec51d48aa39eeb23d0d6a5d87ce6f2fc60e5cba"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "35e019aefaea5e0f51c188be95a8c9236498871ef0fc1d2e44a9fdb28168d46d"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.4241989639995154,
+      "greedy_wall_s": 0.6442305849923287,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:beignets_group_000.jpg",
+      "engine_greedy_tokens": [
+        34,
+        39335,
+        13163,
+        30352,
+        63766,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        34,
+        39335,
+        13163,
+        30352,
+        63766,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.4476982355117798,
+        -0.1792491376399994,
+        -0.2844950258731842,
+        -0.4217485189437866,
+        -0.18278729915618896,
+        -0.10604439675807953,
+        -1.5139465176616795e-05
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.0492918593859884,
+      "matched_prefix_tokens": 7,
+      "matched_prefix_max_abs_logprob_error": 0.0492918593859884,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "b9e51a8c59c0666edadf62668e73f308dbb0fce323e64742c46466582ab3b1ae"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "d70d71e0c4f0180538421285bfa71bd0fdbe47a2c90e4cbc6b2a915310b81087"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "5a3f16b05e383e4e9d88767fa9cbcda163acef0db2ac9ef24f3dd126fad9a259"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.3916958250047173,
+      "greedy_wall_s": 0.1673231259919703,
+      "unique_generated_sequences": 9,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:bibimbap_group_000.jpg",
+      "engine_greedy_tokens": [
+        48336,
+        14604,
+        619,
+        73,
+        343,
+        5918,
+        151645
+      ],
+      "native_greedy_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        279,
+        2168,
+        7952,
+        311,
+        387,
+        264,
+        943,
+        315,
+        16134,
+        12000,
+        3881,
+        438,
+        330,
+        16193,
+        826,
+        2408,
+        65030,
+        1335,
+        892,
+        374,
+        264,
+        9255,
+        45795,
+        273,
+        19174,
+        13,
+        1096
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.9134843349456787,
+        -0.0001685477327555418,
+        -0.20949676632881165,
+        -0.00415094243362546,
+        -0.0035437659826129675,
+        0.0,
+        -0.6752866506576538
+      ],
+      "greedy_tokens_equal": false,
+      "max_abs_selected_logprob_error": null,
+      "matched_prefix_tokens": 0,
+      "matched_prefix_max_abs_logprob_error": null,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "3469478b5f02a14b18d4f0f23e85da7c878ff7aeadcad57922edadd06ce74d45"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "c2082c3b5bfc96e274e889f1fd378aa9af8480b48a92cd4e1aa9ef9f8a8e131b"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "4a18de5302641552221a737ccc17b4a71cf6979aba054ba0bfd72d5cdb076635"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.9146745869948063,
+      "greedy_wall_s": 0.1670364419987891,
+      "unique_generated_sequences": 8,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:bread_pudding_group_000.jpg",
+      "engine_greedy_tokens": [
+        43197,
+        22405,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        43197,
+        9609,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.19748559594154358,
+        -0.634338915348053,
+        -0.5277500748634338,
+        -9.65590606938349e-06
+      ],
+      "greedy_tokens_equal": false,
+      "max_abs_selected_logprob_error": null,
+      "matched_prefix_tokens": 1,
+      "matched_prefix_max_abs_logprob_error": 0.02656535498027965,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "dd9633c2fa4386be66f498fd787f5921b712f9bd8353c4b7a8968dc30039d1e7"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "6173bae47a54c84da077cd04bbdbfaec184ddabb7ee3f68a095540f6f0e36e37"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "629709227873cb17f9861c030c2d171efff06b9651921886aac51fd736794528"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.8577524699940113,
+      "greedy_wall_s": 0.10576084199419711,
+      "unique_generated_sequences": 8,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:breakfast_burrito_group_000.jpg",
+      "engine_greedy_tokens": [
+        36,
+        14398,
+        6502,
+        448,
+        64664,
+        4016,
+        19187,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        36,
+        14398,
+        6502,
+        448,
+        64664,
+        4016,
+        19187,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.5561245083808899,
+        -0.44321560859680176,
+        -1.2587947845458984,
+        -0.6700759530067444,
+        -0.7775290012359619,
+        -5.960462772236497e-07,
+        -0.03058633953332901,
+        -0.11571142077445984,
+        -3.6954811548639555e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.10391686848290016,
+      "matched_prefix_tokens": 9,
+      "matched_prefix_max_abs_logprob_error": 0.10391686848290016,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "919d5f4515ef5b860857db7c9fdb4811083820cdfc2752e3782f2aebec373d46"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "b32cb7abc66bcf275db19d013e0b69b9fe837d2653f99c43428812dd36b4f1b5"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "b4d7926ad74896eb3f836475bc786e5ddde8aa115db21f20e25a4d70c69d6ebb"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.0333894369978225,
+      "greedy_wall_s": 0.2048366579983849,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:bruschetta_group_000.jpg",
+      "engine_greedy_tokens": [
+        6828,
+        51078,
+        26527,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        6828,
+        51078,
+        26527,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.680122971534729,
+        -5.543078441405669e-05,
+        -8.594620157964528e-05,
+        -0.7405430674552917,
+        -1.4185804502631072e-05
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.11325112457393782,
+      "matched_prefix_tokens": 5,
+      "matched_prefix_max_abs_logprob_error": 0.11325112457393782,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "8e25d750c9d934ec3c1fff289d65fec4c565b366ab668b9a260e4a65eb2bdd8a"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "ba4b0fe57e87b2b5c28c7a7b8fd17f67b21a0fe537b8d990589e5fa95b678560"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "392d2cd0bd9137aebe4d97df59121fe949f3801444cb6576597e5b65d8a06b5e"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.5411265130096581,
+      "greedy_wall_s": 0.12488747600582428,
+      "unique_generated_sequences": 9,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:caesar_salad_group_000.jpg",
+      "engine_greedy_tokens": [
+        22571,
+        32240,
+        32466,
+        448,
+        60633,
+        16158,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        22571,
+        32240,
+        32466,
+        448,
+        60633,
+        16158,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.5070168972015381,
+        -2.753696753643453e-05,
+        -0.0027580340392887592,
+        -0.2634204030036926,
+        -0.326340913772583,
+        -0.006992985028773546,
+        -0.0400967113673687,
+        -1.6689286894688848e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.02100757038280976,
+      "matched_prefix_tokens": 8,
+      "matched_prefix_max_abs_logprob_error": 0.02100757038280976,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "53acaf73e9ece383d7c3df16ec59fab18e9ab83c318ca454390f35ed7c2fd07a"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "72fb1154ce5159aefe378bf63e7d747f8d20088c4d548cffc008c5e62d936696"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "e31b6f14963d36b2241f1dc371ba0e7c3ccb6b9186c40e4da49e4c580342f29e"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.499711060008849,
+      "greedy_wall_s": 0.1835464469913859,
+      "unique_generated_sequences": 4,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:cannoli_group_000.jpg",
+      "engine_greedy_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.9391297101974487,
+        -0.002592656761407852,
+        -0.0005853846669197083,
+        -0.4547457993030548,
+        -4.792098479811102e-05
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.055577394773966615,
+      "matched_prefix_tokens": 5,
+      "matched_prefix_max_abs_logprob_error": 0.055577394773966615,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "c9b7436f505bdf8fe27dd87f816c10fe0b88b784050fe005fd7c8009ac6a2c18"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "043f95e84bf40ec261bc033af90f20e6d4d4b9e3aad23f40535b24c7b1838a19"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 864,
+      "ten_request_wall_s": 0.854963632998988,
+      "greedy_wall_s": 0.11938534199725837,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:caprese_salad_group_000.jpg",
+      "engine_greedy_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -0.60688716173172,
+        -3.576272320060525e-06,
+        -0.7904430627822876,
+        -0.10224854946136475,
+        -9.059865078597795e-06
+      ],
+      "greedy_tokens_equal": true,
+      "max_abs_selected_logprob_error": 0.07869341139130281,
+      "matched_prefix_tokens": 5,
+      "matched_prefix_max_abs_logprob_error": 0.07869341139130281,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "77ecdc634660d352f20f62a795c21f2011187636e1b2d217a34999f5b7c6b2f0"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "20348c63e38c13305cefc79b6fa0be9a23d8338b097c8b2759035e6945d45c91"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "6e7f40d26784fa1084cec205427ca9c117c83227451b207fb7e535798a0f1f94"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.878149341995595,
+      "greedy_wall_s": 0.12471248701331206,
+      "unique_generated_sequences": 7,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:carrot_cake_group_000.jpg",
+      "engine_greedy_tokens": [
+        785,
+        2168,
+        4933,
+        264,
+        42749,
+        429,
+        7952,
+        311,
+        387,
+        264,
+        943,
+        315,
+        9853,
+        12644,
+        476,
+        19690,
+        42749,
+        11,
+        59916,
+        3304,
+        448,
+        1128,
+        5868,
+        1075,
+        72524,
+        40352,
+        476,
+        264,
+        40352,
+        12276,
+        75386,
+        60276
+      ],
+      "native_greedy_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        7952,
+        311,
+        387,
+        264,
+        42749,
+        11,
+        4363,
+        264,
+        943,
+        315,
+        9853,
+        12644,
+        476,
+        19690,
+        54475,
+        11,
+        39801,
+        448,
+        1128,
+        5868,
+        1075,
+        58711,
+        1506,
+        40352,
+        13
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.390648365020752,
+        -1.1752954721450806,
+        -0.3176426887512207,
+        -0.3386506140232086,
+        -0.7176837921142578,
+        -0.42026135325431824,
+        -0.07572108507156372,
+        -9.65590606938349e-06,
+        -0.011380871757864952,
+        -0.1577392816543579,
+        -2.253152370452881,
+        -6.079655122448457e-06,
+        -2.1507160663604736,
+        -0.00023541064001619816,
+        -0.12856385111808777,
+        -0.9348143935203552,
+        -1.177884578704834,
+        -0.5521656274795532,
+        -0.9557280540466309,
+        -1.9073468138230965e-06,
+        -0.0022425521165132523,
+        -0.8251466155052185,
+        -0.11021386086940765,
+        -0.018156399950385094,
+        -1.4795761108398438,
+        -0.7125418186187744,
+        -1.1165571212768555,
+        -0.7569584846496582,
+        -0.6353187561035156,
+        -0.6063680052757263,
+        -0.007439172826707363,
+        -0.2932381331920624
+      ],
+      "greedy_tokens_equal": false,
+      "max_abs_selected_logprob_error": null,
+      "matched_prefix_tokens": 1,
+      "matched_prefix_max_abs_logprob_error": 0.08780049107995103,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "464abd0dd986234d1289700c3c279ade974bac76ba7c77ddb5edb463935bd3e8"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "d166f1f2e5882fda983f04a9d8d4a0a23e9ea14b5b09f45c5b7bffff81f026e2"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "3bd39ea061c4916cf2b4d53f751fa7d99f7854e52371f40a0d04178a80ea54d9"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 1.393360374000622,
+      "greedy_wall_s": 0.6282410380081274,
+      "unique_generated_sequences": 10,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    },
+    {
+      "sample_id": "food101:ceviche_group_000.jpg",
+      "engine_greedy_tokens": [
+        50,
+        41826,
+        448,
+        23595,
+        13,
+        151645
+      ],
+      "native_greedy_tokens": [
+        50,
+        41826,
+        448,
+        16426,
+        6241,
+        23595,
+        13,
+        151645
+      ],
+      "engine_greedy_selected_log_probabilities": [
+        -1.0371829271316528,
+        -0.006968954112380743,
+        -0.6118755340576172,
+        -0.644136369228363,
+        -0.1154000386595726,
+        -3.3378546504536644e-06
+      ],
+      "greedy_tokens_equal": false,
+      "max_abs_selected_logprob_error": null,
+      "matched_prefix_tokens": 3,
+      "matched_prefix_max_abs_logprob_error": 0.08866560112943611,
+      "engine_expanded_prompt_ids_equal": true,
+      "engine_processor_tensor_parity": {
+        "pixel_values": true,
+        "tgt_sizes": true
+      },
+      "actual_engine_processor_tensors": {
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "85e822eb908894147f0082980c2538bed5f565b293533a437abfefd55ce4e911"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "a02c9b66ae38108600b564a3938846cc0c69ad0b85b4b2acbac0905c98bf43ae"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "d96c36436d8d65055ed9fac2ca356ab4489c850b9ee48e26377f09fe0a0eac9b"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906"
+            }
+          ]
+        ],
+        "tgt_sizes": {
+          "shape": [
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83"
+        }
+      },
+      "ten_distinct_stable_seeds": true,
+      "native_eos_handling": true,
+      "finite_selected_logprobs": true,
+      "num_cached_tokens": 2160,
+      "ten_request_wall_s": 0.5886224269925151,
+      "greedy_wall_s": 0.13988397900538985,
+      "unique_generated_sequences": 9,
+      "distribution_scope": "raw selected-token log probabilities; not full-vocabulary equivalence"
+    }
+  ],
+  "eos_token_ids": [
+    151643,
+    151645
+  ],
+  "sampling_cohort": "vllm_separate_from_numpy",
+  "numerical_difference_review": "pending",
+  "pid": 217430,
+  "physical_gpu": "1",
+  "checks_passed": false,
+  "ten_answer_seconds": 16.405150340986438,
+  "answers_per_second": 9.753034667427452,
+  "throughput_scope": "inference_only; excludes prepare and disk writes; production elapsed progress required for ETA"
+}

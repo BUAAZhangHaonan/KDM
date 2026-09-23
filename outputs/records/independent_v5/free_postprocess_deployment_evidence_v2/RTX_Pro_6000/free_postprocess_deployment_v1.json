@@ -1,0 +1,26 @@
+{
+  "schema": "kdm_free_postprocess_deployment_v1",
+  "source_host": "4028",
+  "verified_sha256": {
+    "workflows/independent_v5/postprocess.py": "43c8e757958369df62af9d250cb74f03544def19d70c538a741e896185626736",
+    "workflows/quick_match_v1/match.py": "369fd05cb8171f06183120f6efdd54af19524b7128c1e6158cb776603176a5c0",
+    "src/kdm/decoding.py": "595701df08e34257d1ce97050402016eaa4938403b341b99de388792b1b193bf",
+    "src/kdm/io.py": "6a87859d6640773ea48e53132b8ff75f2f7fe58260601626ceaa50610e7275ac",
+    "src/kdm/pipeline.py": "16a0f486e926e83bb5f8fe81bab532ff916c003686aade9976e01e3443bb5f02",
+    "src/kdm/prompts.py": "6580303ffe1c98da60d687698558e17f95cc5ff48115d9bc606609127fded976",
+    "src/kdm/scoring.py": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862",
+    "src/kdm/analysis.py": "1c40ec4dbe944a5ade8ac1b92c29a9e7bdcb348c0766dddeef383ab2ba6f4b05",
+    "src/kdm/reports.py": "55f3d5d9b496ac711cbc31591dc7a5748568d593ce3982b267f3429b6636c3dc",
+    "src/kdm/models/official_vqa_normalizer.py": "86fea2fcd4c33d81423230cf3303475f683e6f6c3b646638f3d3ac051e5ec7fe",
+    "configs/kdm/food_aliases.json": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "outputs/records/acceleration_v4/panel5_engine_v2/qwen25vl/completed_verification_20260923.json": "3baf6547d837341d0bc4654112bb36b7d3755588949f9a2d4a5cd1e5f91f17bf",
+    "outputs/records/acceleration_v4/panel5_engine_v2/qwen35_4b/completed_verification_20260923.json": "3d3d4ff9d640227a51484b625cf0830d55870a85c0a69736ce5037a690f0e6c9",
+    "outputs/records/acceleration_v4/panel5_engine_v2/llava16_mistral/completed_verification_20260923.json": "e958989c538cf95dda61de9737f279dba9279d0be8c7de6dd45a1353a136ff4d",
+    "outputs/records/acceleration_v4/panel5_engine_v3/minicpm26/completed_verification_20260923.json": "bad044b95d0f70c43fb20e3a6a6d7451099a436a45e9503b97838bc5efac1390",
+    "outputs/records/acceleration_v4/panel5_engine_v6/gemma3_4b/completed_verification_20260923.json": "3a92111f9c6fa6a522174c3839d76630823571c741be98ca31d4cb83d54e4919"
+  },
+  "added_files": [
+    "workflows/independent_v5/postprocess.py"
+  ],
+  "no_raw_files_changed": true
+}

@@ -1,0 +1,6 @@
+{
+  "reason": "v1 exporter erroneously bound unused SID dependency; Mini failed before generation; actual dependency check matches original validate_native_runtime_files, full frozen sources still validated",
+  "prior_failure": "outputs/records/independent_v5/native16_v1/minicpm26/error.json",
+  "unchanged_scientific_parameters": true,
+  "implementation_sha256": "3b2d632d391fa83c4853751ea2257b04a78f1d91d36e6008917fed1f4724c8a3"
+}
