@@ -1,0 +1,22 @@
+{
+  "census": {
+    "expected": 293344,
+    "previous_validated": 293236,
+    "new_luna_validated": 108,
+    "validated_labels": 293344,
+    "unresolved": 0,
+    "all_keys_accounted_for": true,
+    "automatic_behavior_annotation_complete": true,
+    "human_reviewed": false,
+    "api_requests": 0
+  },
+  "formal_fragments": {
+    "zero_credit": 2,
+    "behavior_unresolved": 0
+  },
+  "census_output": "outputs/annotations/luna_census_remaining_v1/remaining108_plus2_20260924/census_merged_v1",
+  "formal_output": "outputs/annotations/luna_census_remaining_v1/remaining108_plus2_20260924/formal_fragments_resolved_v1",
+  "human_reviewed": false,
+  "final_gt": false,
+  "api_requests": 0
+}

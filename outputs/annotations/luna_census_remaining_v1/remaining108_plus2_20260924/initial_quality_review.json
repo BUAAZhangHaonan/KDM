@@ -1,0 +1,9 @@
+{
+  "status": "requires_compound_question_span_review",
+  "reason": "Root read all110 pairs and found incomplete answer spans for compound questions (e.g. both brands, object and color). Initial results remain preserved; use versioned Luna corrections only after review.",
+  "reviewed_inputs": 110,
+  "results_sha256": "fd51d2a24da5c9566afcd0fc1da4c32eb4121e5ec75329aa3e4be59723c1a322",
+  "source_reply_regeneration": false,
+  "human_reviewed": false,
+  "final_gt": false
+}

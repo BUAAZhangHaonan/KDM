@@ -1,0 +1,15 @@
+{
+  "expected_census": 108,
+  "formal_fragments": 2,
+  "input_sha256": "ee73528e378c842a71ca12fdafca7c7d1be0aefa168d3e9aa2a0c6631a9f1edd",
+  "mapping_sha256": "b825303d5caa9a5d4a293cca3fc90fcac853219382127630cd2f084abd89f8bc",
+  "rubric_sha256": "d0572cc8cdac6a3d5365be7ba5aa1b4c3f2014154de274ec62900797631fffb9",
+  "parent_labels_sha256": "8a1e73b433d1d814a05a1d1d588267eddadef9d3815a24ce585e2c46f1f70057",
+  "parent_identity_sha256": "261e66bb130fe680b80c3b97d79bff3c92eafc112153234800f9e735bf845492",
+  "errors_sha256": "54d07bbd733ee647c28abb145607ce4b0e53e646f5f678707426dffb076925cf",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "human_reviewed": false,
+  "final_gt": false,
+  "api_requests": 0
+}

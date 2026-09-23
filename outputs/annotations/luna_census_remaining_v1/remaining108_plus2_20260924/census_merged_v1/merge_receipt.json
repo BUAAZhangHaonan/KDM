@@ -1,0 +1,11 @@
+{
+  "expected": 293344,
+  "previous_validated": 293236,
+  "new_luna_validated": 108,
+  "validated_labels": 293344,
+  "unresolved": 0,
+  "all_keys_accounted_for": true,
+  "automatic_behavior_annotation_complete": true,
+  "human_reviewed": false,
+  "api_requests": 0
+}

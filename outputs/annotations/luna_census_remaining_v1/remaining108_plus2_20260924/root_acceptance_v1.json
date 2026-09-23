@@ -1,0 +1,8 @@
+{
+  "reviewer": "root_assistant",
+  "human_reviewed": false,
+  "read_scope": "All 110 originals in initial review and all 74 corrected annotations, including a separate read of IDs 41-64 after output truncation",
+  "correction_sha256": "36d202e8859b8fe30ce27a8bdfdd97acf85df688757891085d8329ad6bec700a",
+  "accepted": true,
+  "notes": "Compound questions retain requested components and multiple proposed foods are not selectively reduced to a matching class. Exact contiguous spans necessarily retain intervening text. DON'T and The Celti are invalid, not explicit abstention; correctness is zero. Dataset scoring remains frozen."
+}
