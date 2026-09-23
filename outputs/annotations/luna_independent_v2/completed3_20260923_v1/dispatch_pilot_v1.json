@@ -1,0 +1,15 @@
+{
+  "phase": "pilot_only",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "subagent": "/root/luna_independent_pilot_v2",
+  "batches": [
+    1
+  ],
+  "status": "dispatched_not_complete",
+  "created_utc": "2026-09-23T14:12:27.977216+00:00",
+  "prior_dispatch_attempts": "Two attempts rejected by agent thread limit; no judgments produced by rejected attempts",
+  "api_requests": 0,
+  "human_reviewed": false,
+  "final_gt": false
+}
