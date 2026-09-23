@@ -1,0 +1,28 @@
+{
+  "schema": "completed_closed_verification_v1",
+  "verified": true,
+  "model": "gemma3_4b",
+  "rows": 4848,
+  "classes_per_row": 101,
+  "unique_full_manifest_coverage": true,
+  "finite_scores_and_mean_and_gold_rank_verified": true,
+  "raw_sha256": "a1154ab2334a76fbb4de93cfa195cac81b68d355fbe54eb85f0abf34a55dd116",
+  "sidecar_sha256": "395c75141d876cdc920e4f7a80df41d8fb14a190f8f6df01c60043b97f0284c9",
+  "source_identity": "19525fed4fae685ca982b3eabceca37bc55c9a870151c50da1dcb3362a0f3832",
+  "splits": {
+    "dev": {
+      "rows": 2424,
+      "gold_rank_gt_1": 796,
+      "gold_rank_1": 1628
+    },
+    "eval": {
+      "rows": 2424,
+      "gold_rank_gt_1": 798,
+      "gold_rank_1": 1626
+    }
+  },
+  "numerically_identical_to_transformers": false,
+  "final_abstention_gt": false,
+  "independent_answers_complete": false,
+  "api_requests": 0
+}

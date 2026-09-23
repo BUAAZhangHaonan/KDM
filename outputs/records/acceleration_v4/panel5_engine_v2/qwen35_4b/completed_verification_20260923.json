@@ -1,0 +1,28 @@
+{
+  "schema": "completed_closed_verification_v1",
+  "verified": true,
+  "model": "qwen35_4b",
+  "rows": 4848,
+  "classes_per_row": 101,
+  "unique_full_manifest_coverage": true,
+  "finite_scores_and_mean_and_gold_rank_verified": true,
+  "raw_sha256": "8454f1abcd7165161297fbd34526115608ff866732f9260568091685fdc83bfd",
+  "sidecar_sha256": "f8d76722f8aff40914f18bb60badfbaccd4cff42eaccbf45c5961626063b19e2",
+  "source_identity": "ea271139d939a7e3b58b9d0c1957d9c7ddc5bd55d26c0e867938401bbc87bff0",
+  "splits": {
+    "dev": {
+      "rows": 2424,
+      "gold_rank_gt_1": 1087,
+      "gold_rank_1": 1337
+    },
+    "eval": {
+      "rows": 2424,
+      "gold_rank_gt_1": 1105,
+      "gold_rank_1": 1319
+    }
+  },
+  "numerically_identical_to_transformers": false,
+  "final_abstention_gt": false,
+  "independent_answers_complete": false,
+  "api_requests": 0
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "completed_closed_verification_v1",
+  "verified": true,
+  "model": "minicpm26",
+  "rows": 4848,
+  "classes_per_row": 101,
+  "unique_full_manifest_coverage": true,
+  "finite_scores_and_mean_and_gold_rank_verified": true,
+  "raw_sha256": "904dee0918b70d4b08ac12eca1952e0f0c69714d62240213f0e76233d4e2db03",
+  "sidecar_sha256": "0d6112f39df3b4cc76639ea93f49e8cad7e22ff996c7ff14231cf9d00d222a45",
+  "source_identity": "03f4c3a29696f8c6176924d039e5d4048ff1bf05c51fbe5551b76d89fba9062a",
+  "splits": {
+    "dev": {
+      "rows": 2424,
+      "gold_rank_1": 1342,
+      "gold_rank_gt_1": 1082
+    },
+    "eval": {
+      "rows": 2424,
+      "gold_rank_gt_1": 1073,
+      "gold_rank_1": 1351
+    }
+  },
+  "numerically_identical_to_transformers": false,
+  "final_abstention_gt": false,
+  "independent_answers_complete": false,
+  "api_requests": 0
+}
