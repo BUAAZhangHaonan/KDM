@@ -50,7 +50,8 @@ def collect():
   if r.get('status')!='unresolved':parse_label(json.dumps(r['annotation'],ensure_ascii=False),byid[i]['answer'])
  return meta,byid,results,files,original_errors
 
-def run(check_only=False):
+def run(check_only=False,export_name="validated_v2"):
+ assert export_name in {"validated_v2"},"Original provisional v1 remains preserved"
  meta,queue,results,files,original_errors=collect();mapping=read(BASE/'source_mapping.jsonl');assert len(mapping)==9047
  aliases=json.loads((ROOT/'configs/kdm/food_aliases.json').read_text())
  source_labels=[];raws={};source_proofs=[]
@@ -99,7 +100,7 @@ def run(check_only=False):
   d=dict(c);n=c['rows'];u=c['unresolved'];d.update(accuracy_lower=c['correct_score_sum']/n,accuracy_upper=(c['correct_score_sum']+u)/n,abstention_lower=c['abstain']/n,abstention_upper=(c['abstain']+u)/n);return d
  summary={'schema':'kdm_luna_semantic_9047_summary_v1','annotation_identity':identity,'source_unresolved_rows':9047,'unique_question_answer_groups':len(queue),'semantic_judgments':dict(Counter(r.get('annotation',{}).get('label','unresolved') for r in results.values())),'expanded_labels':dict(Counter(r.get('label','unresolved') for r in annotations)),'semantic_rows_annotated':sum(r['status']=='annotated' for r in annotations),'semantic_rows_unresolved':sum(r['status']=='unresolved' for r in annotations),'full_stage_rows':26664,'full_stage_counts':metrics(counts),'conditions':[{**dict(zip(fields,k)),**metrics(v)} for k,v in sorted(groups.items())],'source_proofs':source_proofs,'human_reviewed':False,'final_gt':False,'separate_api_calls':0,'limits':'Only the 9047 unresolved rows received blinded Luna behavior judgments. Other rows retain exact-match screening. Correctness follows the frozen Food alias rule applied to extracted answer spans; the judge did not receive ground truth. Bounds cover remaining unresolved judgments, not semantic judge errors. No human review or justified-abstention GT claimed.'}
  if check_only:print(json.dumps({'valid':True,'source_rows':9047,'groups':len(queue),'annotated':summary['semantic_rows_annotated'],'unresolved':summary['semantic_rows_unresolved']}));return
- out=BASE/'validated_v1';out.mkdir(exist_ok=False)
+ out=BASE/export_name;out.mkdir(exist_ok=False)
  write(out/'identity.json',{'identity':identity,'definition':definition});jsonl(out/'semantic_labels.jsonl',annotations);jsonl(out/'merged_stage_labels.jsonl',merged)
  summary['output_sha256']={name:sha(out/name) for name in ['semantic_labels.jsonl','merged_stage_labels.jsonl']};write(out/'summary.json',summary)
  lines=['# Luna automatic semantic annotation','',f"Requested source rows: 9047. Exact blinded groups: {len(queue)}.",f"Annotated source rows: {summary['semantic_rows_annotated']}. Remaining unresolved: {summary['semantic_rows_unresolved']}.",'', '| Behavior | Source rows |','|---|---:|']

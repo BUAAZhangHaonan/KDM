@@ -1,0 +1,12 @@
+{
+  "schema": "luna_semantic_quality_hold_v1",
+  "affected_export": "validated_v1",
+  "status": "superseded_pending_full_blinded_answer_span_review",
+  "reason": "8932 of 8981 endorsed source answers reused the full answer; overly broad spans can lose credit under frozen exact aliases. Zero new correct matches is not evidence all answers are wrong.",
+  "new_correct_matches_in_provisional_export": 0,
+  "source_rows": 9047,
+  "blind_groups_for_re_review": 1868,
+  "labels_human_reviewed": false,
+  "next_export": "validated_v2",
+  "original_files_preserved": true
+}

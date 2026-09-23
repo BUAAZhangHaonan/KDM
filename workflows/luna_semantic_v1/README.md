@@ -14,3 +14,7 @@ Run final validation and export once all batches and corrections are final:
     venv/bin/python workflows/luna_semantic_v1/finalize.py
 
 The preparation and finalization scripts do not perform semantic classification. They only verify, map and score the agent-authored labels. A successful schema/span check does not prove every semantic judgment correct. This workflow makes no separate API requests; the requested Codex subagent consumes normal Codex usage.
+
+## Provisional v1 quality hold
+
+The first schema-valid export had overbroad endorsed-answer spans: most full answers were copied verbatim, including side-dish descriptions. This yielded zero added exact-alias correct matches and is not evidence that all new answers are wrong. `QUALITY_HOLD_v1.json` marks `validated_v1` provisional and superseded pending a second blinded Luna semantic span review of all 1868 groups. The original export and judgments remain intact. Versioned semantic corrections will feed separate `validated_v2`; no alias expansion or truth-aware answer selection is authorized.
