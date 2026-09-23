@@ -1,0 +1,33 @@
+{
+  "schema": "completed_formal_stage_transfer_v1",
+  "sources": [
+    {
+      "raw": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_000_of_004/formal.jsonl",
+      "prefix_rows": 6170,
+      "prefix_bytes": 14459219,
+      "sha256": "8f5a4b5062a4b927043c938e3ea773c7ec4a48300c35dc87ee82aedfea1c95cc",
+      "later_matrix_excluded": true
+    },
+    {
+      "raw": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_001_of_004/formal.jsonl",
+      "prefix_rows": 6050,
+      "prefix_bytes": 14227632,
+      "sha256": "7e313fc6ab25d7b17344dc1757e18df56d4ff8d156c0f81e6d28124a125680be",
+      "later_matrix_excluded": true
+    },
+    {
+      "raw": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_002_of_004/formal.jsonl",
+      "prefix_rows": 6150,
+      "prefix_bytes": 14327901,
+      "sha256": "7b7bf060d9528100d58dd1be13f44a9c68cc616fc12792fc25f9bfce26c81141",
+      "later_matrix_excluded": true
+    },
+    {
+      "raw": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_003_of_004/formal.jsonl",
+      "prefix_rows": 5870,
+      "prefix_bytes": 13740345,
+      "sha256": "63dfc8ea6e97b95c10f63ee45e889b24e8ad0941c7d9d5457d46bd8279ffb803",
+      "later_matrix_excluded": true
+    }
+  ]
+}

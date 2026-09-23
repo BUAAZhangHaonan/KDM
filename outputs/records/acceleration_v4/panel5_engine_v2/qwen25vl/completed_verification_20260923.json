@@ -1,0 +1,29 @@
+{
+  "schema": "completed_closed_verification_v1",
+  "verified": true,
+  "model": "qwen25vl",
+  "rows": 4848,
+  "classes_per_row": 101,
+  "unique_full_manifest_coverage": true,
+  "finite_scores_and_mean_and_gold_rank_verified": true,
+  "raw_sha256": "61dc3a8a4079f6eb2b0b248f7abbbcfe50059e211ff9cd938a406fd876bacffc",
+  "sidecar_sha256": "ef792a880096423c9f4d529f7ab9493cdefb9b2734e53362e0eac4a801ebe7af",
+  "source_identity": "de6639ef7f8d43bfb8817f39cbc7e7109064e20c47874953c4570146d203a979",
+  "native_reference": "outputs/records/acceleration_v4/native_reference/qwen25vl.json",
+  "splits": {
+    "dev": {
+      "rows": 2424,
+      "gold_rank_gt_1": 648,
+      "gold_rank_1": 1776
+    },
+    "eval": {
+      "rows": 2424,
+      "gold_rank_gt_1": 648,
+      "gold_rank_1": 1776
+    }
+  },
+  "numerically_identical_to_transformers": false,
+  "final_abstention_gt": false,
+  "independent_answers_complete": false,
+  "api_requests": 0
+}
