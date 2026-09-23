@@ -1,0 +1,45 @@
+{
+  "verified": true,
+  "model": "gemma3_4b",
+  "generated_answers": 48480,
+  "questions": 4848,
+  "replicates_per_question": 10,
+  "source_host": "6403",
+  "archive_sha256": "a139253bb43250ffdeb805e42d0557602fe7acd6cc146bd1682abb8f511beafb",
+  "files_sha256": {
+    "outputs/raw/acceleration_v4/panel5_independent_food_v5/gemma3_4b/independent.identity.json": "b280e9b95032d7690f6f4ace597f72dd22e491574e73329d549d0b86c9068c1f",
+    "outputs/raw/acceleration_v4/panel5_independent_food_v5/gemma3_4b/independent.jsonl": "3e20780eb8ffeacc1ed13d1ccc0bc1eee444a7de7074e9e6aa98b98cfd519e2f",
+    "outputs/records/independent_v5/free_postprocess_followup_gemma_v3/gemma3_4b/status.json": "18376ef7bb454a669bb6ff2dec1a88cfcff55aa203677c04ca53be0007c1d7ce",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/attempts.jsonl": "17c450a475cc832d4ab0f153244653b986629a955eceaf7d8620eda7b6fd0eb7",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/partial.json": "b0512fef9263d4ca89a5886d52085708eff07971c8d63bb60e48cfd3e601eb19",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/check.json": "1271276bfb57e6972a60f17166a9bc69056f6c0e97ad814033505ac910e6b02f",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/review_validation.json": "79df8e35bd479a5f703c4567622aa162e62aeb166f1228bd15d9e550f96254e8",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/gemma_attention_range_check.json": "149dcdde9f9b6136a0790ba7d56861d91be07990a4c1dba4b9bf08e94191f008",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/gemma_attention_ranges.json": "c6b94d24cfcc32c0d2b95b7d1014c6d40389446aae45e207ceb88a01fdbc114d",
+    "outputs/records/independent_v5/engine_verify_gemma_pixels_ranges_v4/gemma3_4b/review.json": "ac5d2fb1cc3785869205b618e3ac84088043073acd4e75a1603a04c210bc3a6c",
+    "outputs/records/independent_v5/gemma_production_v4/dispatch.json": "a644fafa05371c2245c6fc8e4af0e6a255168b33c4cdbac77f10e650b2842373",
+    "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/complete.json": "99a0c08ac2ac21232e5e3fe48aa8535aa0755e186a2f5883d0a7871b3cb3b810",
+    "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/progress.json": "563bdb31c010ced807e0132ea9711609632bb7da58cff146c39a934a9ac694d1",
+    "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/gemma_attention_range_check.json": "5d3fd4221cced778d653c2b67b2e20be3375c516efde235109d0650ba081cf8b",
+    "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/identity.json": "b280e9b95032d7690f6f4ace597f72dd22e491574e73329d549d0b86c9068c1f",
+    "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/gemma_attention_ranges.json": "2de8a620d0ac152a97098011e368d3b3c0b3a6c9455fa369e472cf53e93659ce",
+    "outputs/annotations/independent_v5/panel5_independent_food_v5/gemma3_4b/questions.jsonl": "dc11a409a7ea5536ac1371ea612bdafef6fea839569db65bb61ba552fd3eb44f",
+    "outputs/annotations/independent_v5/panel5_independent_food_v5/gemma3_4b/labels.jsonl": "4cd550e794652a0bdf074b8ab6eb9c9e1d9e76632343d3b1c2e3d098fef7c0c8",
+    "outputs/annotations/independent_v5/panel5_independent_food_v5/gemma3_4b/summary.json": "d3e3bd4130c185f7024d55f3cb2c44b10de9ad91c6e6a1939c9f3b41d1394da7"
+  },
+  "snapshot_only": [
+    "outputs/records/independent_v5/gemma_production_v4/follower.log",
+    "outputs/records/independent_v5/gemma_production_v4/production.log"
+  ],
+  "snapshot_note": "Ancillary source logs differ from earlier copied live snapshots; preserved separately, canonical prior files not overwritten. Initial install preflight rejected these differences before copying.",
+  "screening_counts": {
+    "correct": 5711,
+    "incorrect": 103,
+    "abstain": 0,
+    "invalid": 0,
+    "unresolved": 42666
+  },
+  "postprocess_repeated": false,
+  "final_gt": false,
+  "human_reviewed": false
+}

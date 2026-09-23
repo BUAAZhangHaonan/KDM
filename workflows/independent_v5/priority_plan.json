@@ -25,7 +25,7 @@
   "attempts_per_question": 10,
   "primary_answers": 242400,
   "remaining_answers_if_all_admitted": 533280,
-  "generation": "Reviewed separate vLLM cohort. Four primary models completed 48480 each; Gemma admitted via native-pixel/range-audit v4 and producing on 6403 GPU1. Frozen sampling/input unchanged.",
+  "generation": "All five primary Food cohorts completed and centrally verified: 48480 answers per model, 242400 total. Source Gemma completion and one-time free screening verified 2026-09-24; no rerun.",
   "labeling": "Free matching and exact valid-label reuse first, then authorized GPT-6 Luna medium batch semantic judgments. No DeepSeek or Ministral.",
   "resources": {
     "6403": [
@@ -44,7 +44,7 @@
       5
     ]
   },
-  "admission_status": "Qwen25, Qwen35, Mini and K100 LLaVA generation complete; Gemma production v4 active. 6403 GPU0 and K100 have no KDM inference running. 4029 retired from scheduling.",
+  "admission_status": "Primary generation complete. 6403 GPU0/1 and K100 have no KDM inference. 4028 GPUs0/1/4/5 continue formal experiments. 4029 withdrawn.",
   "source_host_status_entries": {
     "6403": [
       "outputs/records/independent_v5/gemma_production_v4/dispatch.json",
@@ -58,5 +58,6 @@
   },
   "excluded_hosts": {
     "4029": "User removed from available resource queue on 2026-09-24; completed evidence retained centrally. No further dispatch or routine monitoring."
-  }
+  },
+  "semantic_followup_ready": "outputs/annotations/luna_independent_v3/qwen35_gemma_ready_20260924/manifest.json"
 }

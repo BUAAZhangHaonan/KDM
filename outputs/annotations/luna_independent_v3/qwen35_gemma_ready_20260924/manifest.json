@@ -1,0 +1,35 @@
+{
+  "status": "ready_await_existing_luna_batch_for_exact_reuse",
+  "sources": [
+    {
+      "model": "qwen35_4b",
+      "summary": "outputs/annotations/independent_v5/panel5_independent_food_v5/qwen35_4b/summary.json",
+      "summary_sha256": "76b642b0f0666cece791d1141b1428a924a7cf5c38f4b9f4112c8794987f75e4",
+      "raw_sha256": "214ce9c24da6c9f2a8ba2f4f8fdf989b5ddb6c7948ddfe4670f4847dd8c7ffad",
+      "generated": 48480,
+      "unresolved": 30458
+    },
+    {
+      "model": "gemma3_4b",
+      "summary": "outputs/annotations/independent_v5/panel5_independent_food_v5/gemma3_4b/summary.json",
+      "summary_sha256": "d3e3bd4130c185f7024d55f3cb2c44b10de9ad91c6e6a1939c9f3b41d1394da7",
+      "raw_sha256": "3e20780eb8ffeacc1ed13d1ccc0bc1eee444a7de7074e9e6aa98b98cfd519e2f",
+      "generated": 48480,
+      "unresolved": 42666
+    }
+  ],
+  "unresolved_rows": 73124,
+  "unique_question_answer_groups": 49307,
+  "groups_already_in_active_batch": 1994,
+  "rows_depending_on_active_batch": 10653,
+  "pending_other_groups_before_validated_reuse": 47313,
+  "files_sha256": {
+    "blind_groups.jsonl": "854334c0e9d44c09a94ef5092c13cf0f4baf44938ad36fc6303f8aeffce9efea",
+    "source_mapping.jsonl": "80912ff40d088249a8bb40a2350a02bf2dd7cd0902481b32aaf494113aa0ae1d"
+  },
+  "active_queue_sha256": "6c50844e71bf18c794d3b755810225be9bcd70c8c545e191b5f3d4ab4f80c999",
+  "new_judgments_launched": false,
+  "human_reviewed": false,
+  "final_gt": false,
+  "api_requests": 0
+}

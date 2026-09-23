@@ -1,0 +1,11 @@
+# Five-model independent generation complete
+
+All five Food101 cohorts have 48480 unique answers each: 4848 original questions with ten distinct fixed attempts, total242400. Gemma completion, raw/sidecar identity, token/EOS/seed/config checks, label-to-raw hashes and original101-class scores were checked on4028 after exact source evidence transfer from6403. Receipt: outputs/records/independent_sync_20260924/gemma_completed_central_verification.json. The existing source-host free postprocessor completed once; it was not rerun. Ancillary log snapshots that differed from earlier live copies are retained separately.
+
+Gemma free matching:5711 correct,103 incorrect,42666 unresolved. Qwen3.5 has30458 unresolved. Combined73124 unresolved rows are prepared under outputs/annotations/luna_independent_v3/qwen35_gemma_ready_20260924. They collapse to49307 exact question-answer groups;1994 groups covering10653 rows already belong to the ongoing three-model Luna queue. Wait for its validated results, reuse exact valid judgments, then batch remaining unseen groups with actual GPT-6 Luna medium. Preparation is not annotation completion. Do not repeatedly submit these dependencies or copy source correctness into another target.
+
+Gemma formal unknown_main also completed12120 rows with exact frozen task/identity coverage, now screened at outputs/annotations/acceleration_v4/gemma3_4b_unknown_main_20260924_v1:3261 matched correct,89 matched incorrect,8770 unresolved. Remaining formal controls and full matrix are still running; no full-model completion claim.
+
+Luna batches423-438 had literal escaped newline separators despite complete authored100-object contents. Original bytes were preserved under results/failed_serialization. The agent corrected serialization; root independently decoded the old object stream and compared every object and input ID/hash/span with the fixed files. No semantic content changed. Verification: outputs/records/independent_sync_20260924/luna_serialization_repair_verified.json. This does not replace semantic quality review or whole-batch completion checks.
+
+No new GPU job, paid API, extra monitor, source parameter change or4029 access. Continue two-hour monitoring. Automatic labels, preliminary joint evidence and final should-abstain GT remain distinct.
