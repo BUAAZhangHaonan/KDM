@@ -1,0 +1,13 @@
+{
+  "status": "held_not_applied",
+  "reason": "Late duplicate semantic rereview after finalized commit 51b20d04. Some spans and uncertainty labels differ; not accepted as a replacement and no statistics regenerated. Annotator confirmed stopping edits to completed batch.",
+  "preserved_files": [
+    "execution.json",
+    "corrections_v2.jsonl",
+    "review_v2.txt"
+  ],
+  "accepted_execution_restored_from": "51b20d04",
+  "accepted_execution_sha256": "d4f7d8041876c40829734dba1b1bc83254bbf084001b2be2a1a48feec0dfce74",
+  "accepted_output_hashes_verified": true,
+  "human_reviewed": false
+}
