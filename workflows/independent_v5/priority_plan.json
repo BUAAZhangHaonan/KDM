@@ -25,8 +25,8 @@
   "attempts_per_question": 10,
   "primary_answers": 242400,
   "remaining_answers_if_all_admitted": 533280,
-  "generation": "Separately reviewed vLLM cohort authorized 2026-09-23; exact inputs/EOS/sampling required, original greedy mismatch evidence preserved. Qwen35 has documented zero cache hits; Gemma requires native-pixel bridge and pending GPU audit.",
-  "labeling": "free character matching, unresolved preserved; no new paid API",
+  "generation": "Reviewed separate vLLM cohort. Four primary models completed 48480 each; Gemma admitted via native-pixel/range-audit v4 and producing on 6403 GPU1. Frozen sampling/input unchanged.",
+  "labeling": "Free matching and exact valid-label reuse first, then authorized GPT-6 Luna medium batch semantic judgments. No DeepSeek or Ministral.",
   "resources": {
     "6403": [
       0,
@@ -42,23 +42,21 @@
       1,
       4,
       5
-    ],
-    "4029": [
-      4,
-      5,
-      6,
-      7
     ]
   },
-  "admission_status": "Qwen25 and Mini producing real records on 6403; LLaVA producing real records on K100 with versioned spawn startup fix and separate fresh run; Qwen35 one-shot successor queued; Gemma GPU audit queued after Mini, production not yet admitted.",
+  "admission_status": "Qwen25, Qwen35, Mini and K100 LLaVA generation complete; Gemma production v4 active. 6403 GPU0 and K100 have no KDM inference running. 4029 retired from scheduling.",
   "source_host_status_entries": {
     "6403": [
-      "outputs/records/independent_v5/qwen35_after_qwen25_status_v1.json",
-      "outputs/records/independent_v5/gemma_native_pixels_handoff_v2/status.json"
+      "outputs/records/independent_v5/gemma_production_v4/dispatch.json",
+      "outputs/records/acceleration_v4/panel5_independent_food_v5/gemma3_4b/progress.json",
+      "outputs/records/independent_v5/free_postprocess_followup_gemma_v3/gemma3_4b/status.json"
     ],
     "RTX_Pro_6000": [
       "outputs/records/independent_k100_v1",
       "outputs/records/acceleration_v4/panel5_independent_food_v5_spawn1/llava16_mistral"
     ]
+  },
+  "excluded_hosts": {
+    "4029": "User removed from available resource queue on 2026-09-24; completed evidence retained centrally. No further dispatch or routine monitoring."
   }
 }

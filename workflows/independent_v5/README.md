@@ -6,7 +6,7 @@ This is a separate vLLM measurement cohort, authorized on 2026-09-23 after the u
 
 Prioritize qwen25vl, qwen35_4b, llava16_mistral, minicpm26 and gemma3_4b on all 4,848 Food-101 questions (2,424 dev and 2,424 eval): 48,480 independent answers each, 242,400 total. The original broader research scope including VizWiz is retained; this Food-first batch does not complete it. The remaining 11 models are opportunistic only after primary needs are satisfied; they require their own engine admission.
 
-6403 GPU 0/1 and RTX_Pro_6000 (K100) GPU 0 are the independent-generation resources. Existing formal method experiments continue on 4028 GPU 0/1/4/5 and 4029 GPU 4/5/6/7. Never start a duplicate process based on copied status files; inspect the originating host and GPU locks.
+6403 GPU 0/1 and RTX_Pro_6000 (K100) GPU 0 are the independent-generation resources. Existing formal method experiments continue on 4028 GPU 0/1/4/5. As of 2026-09-24,4029 is removed from future dispatch and monitoring; its completed formal evidence is preserved on4028. Never start a duplicate process based on copied status files; inspect the originating host and GPU locks.
 
 ## Admission and sources
 

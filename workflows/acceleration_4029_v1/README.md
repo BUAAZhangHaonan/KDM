@@ -1,3 +1,5 @@
+> Retired from available resources by user on2026-09-24. Historical reproduction documentation only; do not launch or routinely monitor4029. See docs/current/PROTOCOL_AMENDMENT_20260924_RESOURCES.md.
+
 # Exact native4029 relocation, qwen35_4b first
 
 Authority: docs/current/PROTOCOL_AMENDMENT_20260923_4029.md. User-authorized physical GPUs4/5/6/7 only. The original4028 queued Qwen3.5 formal job is retired; do not restart it.
