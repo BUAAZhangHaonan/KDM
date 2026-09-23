@@ -1,0 +1,37 @@
+{
+  "gpu_calls": false,
+  "setup": "same actual independent Generator.prepare on frozen16, then CPU zeros(128,32768) in child",
+  "parent_threads": 445,
+  "cases": {
+    "fork": {
+      "pid": 139528,
+      "elapsed_s": 15.019814140003291,
+      "events": [
+        {
+          "stage": "before_cpu_zeros",
+          "pid": 139528
+        }
+      ],
+      "alive_after_15s": true,
+      "wchan": "futex_wait_queue_me",
+      "our_test_child_terminated": true,
+      "exit_code": -15
+    },
+    "spawn": {
+      "pid": 139546,
+      "elapsed_s": 2.2674051039939513,
+      "events": [
+        {
+          "stage": "before_cpu_zeros",
+          "pid": 139546
+        },
+        {
+          "stage": "after_cpu_zeros",
+          "sum": 0
+        }
+      ],
+      "alive_after_15s": false,
+      "exit_code": 0
+    }
+  }
+}

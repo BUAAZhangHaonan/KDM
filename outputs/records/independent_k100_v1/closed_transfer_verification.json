@@ -1,0 +1,7 @@
+{
+  "source_host": "4028",
+  "files": 50,
+  "all_sha256_equal": true,
+  "source_manifest": "outputs/records/independent_k100_v1/closed_source_hashes.json",
+  "semantics": "Transfer bytes check; scientific validity remains tied to source verification and independent stage gates"
+}

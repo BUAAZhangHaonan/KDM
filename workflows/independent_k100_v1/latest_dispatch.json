@@ -1,0 +1,21 @@
+{
+  "schema": "kdm_k100_latest_dispatch_index_v1",
+  "updated_utc": "2026-09-23T11:53:16.164922+00:00",
+  "model": "llava16_mistral",
+  "run": "panel5_independent_food_v5_spawn1",
+  "dispatch": "outputs/records/independent_v5/llava16_dispatch_v2.json",
+  "generation_record": "outputs/records/acceleration_v4/panel5_independent_food_v5_spawn1/llava16_mistral",
+  "generation_raw": "outputs/raw/acceleration_v4/panel5_independent_food_v5_spawn1/llava16_mistral/independent.jsonl",
+  "postprocess_output": "outputs/annotations/independent_v5/panel5_independent_food_v5_spawn1/llava16_mistral",
+  "worker": "workflows/independent_k100_v1/worker_v3.sh",
+  "entry": "workflows/independent_k100_v1/entry_v3.py",
+  "supervisor": "workflows/independent_k100_v1/run_llava_food_v2.py",
+  "source_closed_record": "outputs/records/acceleration_v4/panel5_engine_v2/llava16_mistral",
+  "source_reference": "outputs/records/independent_v5/native16_v3/llava16_mistral/reference.json",
+  "source_engine_check": "outputs/records/independent_v5/engine_verify_v2/llava16_mistral/check.json",
+  "review": "outputs/records/independent_v5/engine_verify_v2/llava16_mistral/review.json",
+  "prior_zero_record_interruption": "outputs/records/independent_v5/llava16_startup_interruption_v1.json",
+  "gpu": "0",
+  "gpu_uuid": "GPU-4320e83b-1158-0546-73c5-b715c4dbe1ea",
+  "followup": "Exactly one free CPU postprocess only after complete.json confirms48480; do not create a duplicate annotation worker."
+}

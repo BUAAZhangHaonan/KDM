@@ -1,0 +1,11 @@
+{
+  "model": "llava16_mistral",
+  "pid": 213321,
+  "status": "complete",
+  "completed": 16,
+  "expected": 16,
+  "started_unix": 1790162443.442058,
+  "last_sample_id": "food101:ceviche_group_000.jpg",
+  "updated_unix": 1790162472.621003,
+  "finished_unix": 1790162472.650372
+}

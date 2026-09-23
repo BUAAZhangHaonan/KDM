@@ -1,0 +1,37 @@
+{
+  "at_utc": "2026-09-23T11:51:35.061614+00:00",
+  "reason": "Startup hang consistent with inherited CPU threadpool lock after actual processor preflight; same-setup CPU fork reproducer stalls at torch.zeros and spawn succeeds",
+  "direct_live_stack_available": false,
+  "live_stack_limit": "ptrace denied; no host ptrace policy changed",
+  "progress_before": {
+    "model": "llava16_mistral",
+    "pid": 137195,
+    "status": "loading",
+    "independent": 0,
+    "expected": 48480,
+    "output": "outputs/raw/acceleration_v4/panel5_independent_food_v5/llava16_mistral/independent.jsonl",
+    "final_gt": false,
+    "automatic_labels_complete": false
+  },
+  "raw_bytes_before": 0,
+  "our_processes": {
+    "137195": {
+      "cmd": "/home/k100/projects/knowledge-deficit-mitigation/.environments/vllm024/bin/python workflows/independent_k100_v1/entry_v2.py generate --model llava16_mistral --closed-record outputs/records/acceleration_v4/panel5_engine_v2/llava16_mistral --native-reference outputs/records/independent_v5/native16_v3/llava16_mistral/reference.json --verification outputs/records/independent_v5/engine_verify_v2/llava16_mistral/check.json --execute --run panel5_independent_food_v5 ",
+      "wchan": "do_poll.constprop.0",
+      "status": "Name:\tpython\nUmask:\t0002\nState:\tS (sleeping)\nTgid:\t137195\nNgid:\t137195\nPid:\t137195\nPPid:\t137194\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t256\nGroups:\t4 24 27 30 46 122 134 135 1000 \nNStgid:\t137195\nNSpid:\t137195\nNSpgid:\t137194\nNSsid:\t137194\nVmPeak:\t40520828 kB\nVmSize:\t38414488 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t 1170796 kB\nVmRSS:\t 1169408 kB\nRssAnon:\t  806656 kB\nRssFile:\t  362752 kB\nRssShmem:\t       0 kB\nVmData:\t23004936 kB\nVmStk:\t     132 kB\nVmExe:\t    2276 kB\nVmLib:\t 2089620 kB\nVmPTE:\t    5724 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nThreads:\t198\nSigQ:\t1/1547049\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000100000402\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\tffffffff,ffffffff,ffffffff,ffffffff\nCpus_allowed_list:\t0-127\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,000000bb\nMems_allowed_list:\t0-1,3-5,7\nvoluntary_ctxt_switches:\t348\nnonvoluntary_ctxt_switches:\t196\n"
+    },
+    "137677": {
+      "cmd": "VLLM::EngineCore                                                                                                                                                                                                                                                                                                                                                                                                                                                                ",
+      "wchan": "futex_wait_queue_me",
+      "status": "Name:\tVLLM::EngineCor\nUmask:\t0002\nState:\tS (sleeping)\nTgid:\t137677\nNgid:\t0\nPid:\t137677\nPPid:\t137195\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t128\nGroups:\t4 24 27 30 46 122 134 135 1000 \nNStgid:\t137677\nNSpid:\t137677\nNSpgid:\t137194\nNSsid:\t137194\nVmPeak:\t51984272 kB\nVmSize:\t51984272 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t 1027964 kB\nVmRSS:\t 1027964 kB\nRssAnon:\t  847208 kB\nRssFile:\t  170516 kB\nRssShmem:\t   10240 kB\nVmData:\t23068336 kB\nVmStk:\t     132 kB\nVmExe:\t    2276 kB\nVmLib:\t 2238684 kB\nVmPTE:\t    4716 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nThreads:\t39\nSigQ:\t1/1547049\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000100000402\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\tffffffff,ffffffff,ffffffff,ffffffff\nCpus_allowed_list:\t0-127\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,000000bb\nMems_allowed_list:\t0-1,3-5,7\nvoluntary_ctxt_switches:\t48\nnonvoluntary_ctxt_switches:\t10\n"
+    }
+  },
+  "cpu_reproducer": "outputs/records/independent_v5/cpu_fork_diagnosis_v1.json",
+  "only_our_kdm_pids_to_terminate": [
+    137195,
+    137677
+  ],
+  "unrelated_safa_pid_untouched": 117655,
+  "next_action": "new worker_v3 spawn and fresh run; no research parameter change",
+  "original_results_preserved": true
+}

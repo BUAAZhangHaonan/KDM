@@ -50,7 +50,7 @@
       7
     ]
   },
-  "admission_status": "Qwen25 and Mini production running on 6403; LLaVA production started on K100; Qwen35 one-shot successor queued; Gemma GPU audit queued after Mini, production not yet admitted.",
+  "admission_status": "Qwen25 and Mini producing real records on 6403; LLaVA producing real records on K100 with versioned spawn startup fix and separate fresh run; Qwen35 one-shot successor queued; Gemma GPU audit queued after Mini, production not yet admitted.",
   "source_host_status_entries": {
     "6403": [
       "outputs/records/independent_v5/qwen35_after_qwen25_status_v1.json",
@@ -58,7 +58,7 @@
     ],
     "RTX_Pro_6000": [
       "outputs/records/independent_k100_v1",
-      "outputs/records/acceleration_v4/panel5_independent_food_v5/llava16_mistral"
+      "outputs/records/acceleration_v4/panel5_independent_food_v5_spawn1/llava16_mistral"
     ]
   }
 }

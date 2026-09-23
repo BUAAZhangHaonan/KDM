@@ -1,0 +1,44 @@
+{
+  "ninja": {
+    "path": "/home/k100/projects/knowledge-deficit-mitigation/.environments/vllm024/bin/ninja",
+    "version": [
+      "1.13.2.git.kitware.jobserver-pipe-1"
+    ]
+  },
+  "gcc": {
+    "path": "/usr/bin/gcc",
+    "version": [
+      "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "Copyright (C) 2021 Free Software Foundation, Inc.",
+      "This is free software; see the source for copying conditions.  There is NO",
+      "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    ]
+  },
+  "g++": {
+    "path": "/usr/bin/g++",
+    "version": [
+      "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "Copyright (C) 2021 Free Software Foundation, Inc.",
+      "This is free software; see the source for copying conditions.  There is NO",
+      "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+    ]
+  },
+  "nvcc": {
+    "path": "/usr/local/cuda/bin/nvcc",
+    "version": [
+      "nvcc: NVIDIA (R) Cuda compiler driver",
+      "Copyright (c) 2005-2025 NVIDIA Corporation",
+      "Built on Tue_Dec_16_07:23:41_PM_PST_2025",
+      "Cuda compilation tools, release 13.1, V13.1.115"
+    ]
+  },
+  "ninja_cpp_build": "[1/1] g++ main.cc -o main\n",
+  "cpu_executable": "kdm-compiler-ok",
+  "cuda_compile_sm120_object_bytes": 12848,
+  "gpu_kernel_launched": false,
+  "gpu_inference_retried": false,
+  "old_failure_preserved": "outputs/records/independent_v5/llava16_engine_verify_v1.log",
+  "worker": "workflows/independent_k100_v1/worker_v2.sh",
+  "worker_sha256": "303dbe6e2bab313b93ffe972e3db97336eb4c455aee22c02d997e797fb452452",
+  "change": "PATH adds existing project venv bin and read-only system CUDA bin; no package/precision/research parameter changes"
+}
