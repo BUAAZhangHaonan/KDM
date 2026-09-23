@@ -1,0 +1,228 @@
+{
+  "model": "qwen35_4b",
+  "cpu_only": true,
+  "script_sha256": "be0c068437e517817719d997ed6fa6ced5cf7c33dfc4765dae53038eab4b49f6",
+  "rows": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "cd8b9a556c3005f4aab8ac6356f44dcd2f7c4212591931f37fccfc379444e9de",
+          "values": [
+            [
+              1,
+              24,
+              32
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            768,
+            1536
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "0b34322b6d21ce6f6420435ecb2147e28e29eb54cebe1b4d7ffedb933e2533f1"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 4,
+            "length": 192,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:ceviche_group_010.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "6b22d409c1f71cff57659dabf3466c4fdddbd09ea868720f111dcfadac676118",
+          "values": [
+            [
+              1,
+              22,
+              32
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            704,
+            1536
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "d52185e546b5f1445ea072d3c0334377c9425cfacd89d9a3b0b40e94c1abba2a"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 4,
+            "length": 176,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:deviled_eggs_group_020.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "cd8b9a556c3005f4aab8ac6356f44dcd2f7c4212591931f37fccfc379444e9de",
+          "values": [
+            [
+              1,
+              24,
+              32
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            768,
+            1536
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "792e0b727978aae53aceffb466cf2715184598937bb4e4fb86e3bb87c0ac22f3"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 4,
+            "length": 192,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:frozen_yogurt_eval_029.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "d81f013662b39955f8ca3299653c5325169b877a936a6d44bf79c33c78be9d76",
+          "values": [
+            [
+              1,
+              32,
+              24
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            768,
+            1536
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "80dcbaca0311c1e7bd9c8a2ed9fc1c0525c2e0093b4972e8f274b85a4220e6cf"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 4,
+            "length": 192,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    }
+  ],
+  "reference_sha256": "f0b394c896eb1ae5f99f6201e47dabf11400d1c3cc68d7d4e7606a2d255c8e9f",
+  "model_config_is_mm_prefix_lm": false,
+  "model_type": "qwen3_5",
+  "vllm_processor_class": "Qwen3VLMultiModalProcessor",
+  "status": "complete"
+}

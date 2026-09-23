@@ -1,0 +1,4 @@
+{
+  "error": "KeyError: 'source_blobs'",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/acceleration_v4/vllm_closed.py\", line 128, in main\n    'source_blobs':ref['source_blobs'],'native_reference_sha256':file_hash(ROOT/a.reference),'benchmark_sha256':file_hash(run/'benchmark.json'),\n                   ~~~^^^^^^^^^^^^^^^^\nKeyError: 'source_blobs'\n"
+}

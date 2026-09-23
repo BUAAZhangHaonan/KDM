@@ -1,0 +1,22 @@
+{
+  "model": "llava16_mistral",
+  "pid": 452949,
+  "physical_gpu": 1,
+  "command": [
+    "bash",
+    "scripts/worker.sh",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation",
+    "1",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "-u",
+    "workflows/acceleration_v4/formal_runner.py",
+    "--model",
+    "llava16_mistral",
+    "--run-name",
+    "panel5_food_formal_v4",
+    "--shard",
+    "0",
+    "--n-shards",
+    "1"
+  ]
+}

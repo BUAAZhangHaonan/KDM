@@ -1,0 +1,7 @@
+{
+  "pid": 431781,
+  "cmdline": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py --model qwen35_4b --run-dir outputs/records/probes_v2/food_closed_20260923_v3 ",
+  "reason": "User-authorized replacement: vLLM v2 passed four real references and has production rows on6403 GPU1; preserve old partial output",
+  "signal": "SIGTERM",
+  "when_unix": 1790139665.7919126
+}

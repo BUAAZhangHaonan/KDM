@@ -1,0 +1,91 @@
+{
+  "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+  "status_path": "outputs/records/acceleration_v4/engine_queue_status_v2.json",
+  "lanes": [
+    {
+      "gpu": "0",
+      "pid": 139936,
+      "complete_path": "outputs/records/acceleration_v4/panel5_engine_v2/qwen25vl/complete.json",
+      "pending": [
+        {
+          "command": [
+            "bash",
+            "workflows/food_closed_v3/worker.sh",
+            "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+            "0",
+            "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+            "-u",
+            "workflows/acceleration_v4/vllm_closed_v2.py",
+            "--model",
+            "llava16_mistral",
+            "--reference",
+            "outputs/records/acceleration_v4/native_reference/llava16_mistral.json",
+            "--run",
+            "panel5_engine_v2",
+            "--execute"
+          ],
+          "env": {
+            "VLLM_WORKER_MULTIPROC_METHOD": "spawn"
+          },
+          "log": "outputs/records/acceleration_v4/llava16_mistral_queued_engine.log",
+          "complete_path": "outputs/records/acceleration_v4/panel5_engine_v2/llava16_mistral/complete.json"
+        },
+        {
+          "command": [
+            "bash",
+            "workflows/food_closed_v3/worker.sh",
+            "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+            "0",
+            "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+            "-u",
+            "workflows/acceleration_v4/vllm_closed_v4.py",
+            "--model",
+            "gemma3_4b",
+            "--reference",
+            "outputs/records/acceleration_v4/native_reference/gemma3_4b.json",
+            "--run",
+            "panel5_engine_v4",
+            "--execute"
+          ],
+          "env": {
+            "VLLM_WORKER_MULTIPROC_METHOD": "spawn"
+          },
+          "log": "outputs/records/acceleration_v4/gemma3_4b_engine_triton_v4.log",
+          "complete_path": "outputs/records/acceleration_v4/panel5_engine_v4/gemma3_4b/complete.json"
+        }
+      ]
+    },
+    {
+      "gpu": "1",
+      "pid": 137848,
+      "complete_path": "outputs/records/acceleration_v4/panel5_engine_v2/qwen35_4b/complete.json",
+      "pending": [
+        {
+          "command": [
+            "bash",
+            "workflows/food_closed_v3/worker.sh",
+            "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+            "1",
+            "/home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python",
+            "-u",
+            "workflows/acceleration_v4/vllm_closed_v3.py",
+            "--model",
+            "minicpm26",
+            "--reference",
+            "outputs/records/acceleration_v4/native_reference/minicpm26.json",
+            "--run",
+            "panel5_engine_v3",
+            "--execute"
+          ],
+          "env": {
+            "VLLM_WORKER_MULTIPROC_METHOD": "spawn"
+          },
+          "log": "outputs/records/acceleration_v4/minicpm26_queued_engine.log",
+          "complete_path": "outputs/records/acceleration_v4/panel5_engine_v3/minicpm26/complete.json"
+        }
+      ]
+    }
+  ],
+  "no_retry": true,
+  "gemma_fix": "vLLM child config loses MM prefix flag and auto selects FA2 lacking image bidirectional mask. Explicit TRITON restores existing image prefix ranges; unchanged four-reference gate must pass."
+}

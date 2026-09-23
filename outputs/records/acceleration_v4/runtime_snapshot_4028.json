@@ -1,0 +1,62 @@
+{
+  "captured_unix": 1790140128.234815,
+  "host": "4028",
+  "models": {
+    "qwen25vl": {
+      "pid": 451559,
+      "status": "running",
+      "completed": 663,
+      "expected": 193920,
+      "stage": "unknown_main",
+      "stage_expected": {
+        "unknown_main": 14544,
+        "unknown_controls": 12120,
+        "prompt_matrix": 167256
+      },
+      "started_utc": "2026-09-23T04:59:12.194819+00:00",
+      "updated_utc": "2026-09-23T05:08:40.110529+00:00"
+    },
+    "llava16_mistral": {
+      "pid": 452949,
+      "status": "running",
+      "completed": 274,
+      "expected": 193920,
+      "stage": "unknown_main",
+      "stage_expected": {
+        "unknown_main": 14544,
+        "unknown_controls": 12120,
+        "prompt_matrix": 167256
+      },
+      "started_utc": "2026-09-23T05:01:36.988272+00:00",
+      "updated_utc": "2026-09-23T05:08:41.805779+00:00"
+    },
+    "minicpm26": {
+      "pid": 451557,
+      "status": "running",
+      "completed": 562,
+      "expected": 155136,
+      "stage": "unknown_main",
+      "stage_expected": {
+        "unknown_main": 12120,
+        "unknown_controls": 12120,
+        "prompt_matrix": 130896
+      },
+      "started_utc": "2026-09-23T04:59:10.208361+00:00",
+      "updated_utc": "2026-09-23T05:08:39.173603+00:00"
+    },
+    "gemma3_4b": {
+      "pid": 451556,
+      "status": "running",
+      "completed": 154,
+      "expected": 155136,
+      "stage": "unknown_main",
+      "stage_expected": {
+        "unknown_main": 12120,
+        "unknown_controls": 12120,
+        "prompt_matrix": 130896
+      },
+      "started_utc": "2026-09-23T04:59:12.810848+00:00",
+      "updated_utc": "2026-09-23T05:08:39.414407+00:00"
+    }
+  }
+}

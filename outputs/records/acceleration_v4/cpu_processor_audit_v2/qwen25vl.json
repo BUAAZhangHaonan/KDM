@@ -1,0 +1,228 @@
+{
+  "model": "qwen25vl",
+  "cpu_only": true,
+  "script_sha256": "be0c068437e517817719d997ed6fa6ced5cf7c33dfc4765dae53038eab4b49f6",
+  "rows": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "0389ee0aa8af7755b73a426d7cf6642804a564fb57acb13bdc7d12b7b333b8c0",
+          "values": [
+            [
+              1,
+              28,
+              36
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            1008,
+            1176
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "0cd40808334e1bde622d0e4937d8bedcbba2a2c3a465f62d95192026da84376e"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 15,
+            "length": 252,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:edamame_eval_032.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "195be4ff81bf435d29b7d17bbcd9e444e3d8ead3d20570a7c92db0411d2a8892",
+          "values": [
+            [
+              1,
+              36,
+              36
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            1296,
+            1176
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c0bcf047bc289bc784c1bd233d4d2c73d132842e1623bdc42af9f9f811cff38e"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 15,
+            "length": 324,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:omelette_group_016.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "0389ee0aa8af7755b73a426d7cf6642804a564fb57acb13bdc7d12b7b333b8c0",
+          "values": [
+            [
+              1,
+              28,
+              36
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            1008,
+            1176
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "0c6e0a0221aeedbaf9d9f5629c61d9bfe118f6c05821199532b44362f2cb4f52"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 15,
+            "length": 252,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:waffles_eval_047.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "image_grid_thw": true,
+        "pixel_values": false
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "mm_token_type_ids": true,
+        "pixel_values": true,
+        "image_grid_thw": true
+      },
+      "after_model_dtype_cast_parity": {
+        "image_grid_thw": true,
+        "pixel_values": true
+      },
+      "actual_processor_tensors": {
+        "image_grid_thw": {
+          "shape": [
+            1,
+            3
+          ],
+          "dtype": "torch.int64",
+          "sha256": "1da2d6f9854f29be93c29858c984c29543598cb4777b538ebc4a99493a02dab3",
+          "values": [
+            [
+              1,
+              24,
+              36
+            ]
+          ]
+        },
+        "pixel_values": {
+          "shape": [
+            864,
+            1176
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "761a3bbaeca3fbc885a5e2948cf1c0af2480ddfd35de640057fd0776f70ca805"
+        }
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 15,
+            "length": 216,
+            "is_embed": null
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    }
+  ],
+  "reference_sha256": "39fd0b19c9252d1264a66da3f09427b8d7f158b112754de47e9ab382ee8dadac",
+  "model_config_is_mm_prefix_lm": false,
+  "model_type": "qwen2_5_vl",
+  "vllm_processor_class": "Qwen2_5_VLMultiModalProcessor",
+  "status": "complete"
+}

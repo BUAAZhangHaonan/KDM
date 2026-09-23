@@ -1,0 +1,71 @@
+[
+  {
+    "model": "gemma3_4b",
+    "physical_gpu": "5",
+    "pid": 451556,
+    "command": [
+      "bash",
+      "scripts/worker.sh",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "5",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "-u",
+      "workflows/acceleration_v4/formal_runner.py",
+      "--model",
+      "gemma3_4b",
+      "--run-name",
+      "panel5_food_formal_v4",
+      "--shard",
+      "0",
+      "--n-shards",
+      "1"
+    ],
+    "log": "outputs/records/acceleration_v4/gemma3_4b_formal_v1.log"
+  },
+  {
+    "model": "minicpm26",
+    "physical_gpu": "4",
+    "pid": 451557,
+    "command": [
+      "bash",
+      "scripts/worker.sh",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "4",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "-u",
+      "workflows/acceleration_v4/formal_runner.py",
+      "--model",
+      "minicpm26",
+      "--run-name",
+      "panel5_food_formal_v4",
+      "--shard",
+      "0",
+      "--n-shards",
+      "1"
+    ],
+    "log": "outputs/records/acceleration_v4/minicpm26_formal_v1.log"
+  },
+  {
+    "model": "qwen25vl",
+    "physical_gpu": "0",
+    "pid": 451559,
+    "command": [
+      "bash",
+      "scripts/worker.sh",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "0",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+      "-u",
+      "workflows/acceleration_v4/formal_runner.py",
+      "--model",
+      "qwen25vl",
+      "--run-name",
+      "panel5_food_formal_v4",
+      "--shard",
+      "0",
+      "--n-shards",
+      "1"
+    ],
+    "log": "outputs/records/acceleration_v4/qwen25vl_formal_v1.log"
+  }
+]

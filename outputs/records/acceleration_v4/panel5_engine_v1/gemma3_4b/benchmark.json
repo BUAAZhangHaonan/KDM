@@ -1,0 +1,2590 @@
+{
+  "input_parity": true,
+  "finite_101_class_scores": true,
+  "top1_parity_on_reference": false,
+  "numerically_identical": false,
+  "scope": "small engineering reference only; vLLM results form a separate complete backend cohort, not mixed with old scores",
+  "checks": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "old_wall_s": 37.03153425292112,
+      "wall_s": 34.87734618499235,
+      "top1_equal": false,
+      "gold_rank": 43,
+      "old_gold_rank": 42,
+      "max_mean_logp_error": 5.679032388878124,
+      "mean_abs_error": 1.2232453343590115,
+      "num_cached_tokens": 90816,
+      "requested_prompt_tokens": 93163,
+      "new": {
+        "status": "ok",
+        "model": "gemma3_4b",
+        "sample": {
+          "id": "food101:apple_pie_group_000.jpg",
+          "cluster": "apple_pie",
+          "dataset": "food101",
+          "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images/apple_pie_group_000.jpg",
+          "question": "What specific food is shown in this image?",
+          "gold": [
+            "apple_pie"
+          ],
+          "class": "apple_pie",
+          "split": "dev",
+          "source_record": "apple_pie_group_000.jpg",
+          "source_part": "group"
+        },
+        "prompt": "What specific food is shown in this image?\nChoose the best matching name from the following list. Reply with the name only.\napple_pie; baby_back_ribs; baklava; beef_carpaccio; beef_tartare; beet_salad; beignets; bibimbap; bread_pudding; breakfast_burrito; bruschetta; caesar_salad; cannoli; caprese_salad; carrot_cake; ceviche; cheese_plate; cheesecake; chicken_curry; chicken_quesadilla; chicken_wings; chocolate_cake; chocolate_mousse; churros; clam_chowder; club_sandwich; crab_cakes; creme_brulee; croque_madame; cup_cakes; deviled_eggs; donuts; dumplings; edamame; eggs_benedict; escargots; falafel; filet_mignon; fish_and_chips; foie_gras; french_fries; french_onion_soup; french_toast; fried_calamari; fried_rice; frozen_yogurt; garlic_bread; gnocchi; greek_salad; grilled_cheese_sandwich; grilled_salmon; guacamole; gyoza; hamburger; hot_and_sour_soup; hot_dog; huevos_rancheros; hummus; ice_cream; lasagna; lobster_bisque; lobster_roll_sandwich; macaroni_and_cheese; macarons; miso_soup; mussels; nachos; omelette; onion_rings; oysters; pad_thai; paella; pancakes; panna_cotta; peking_duck; pho; pizza; pork_chop; poutine; prime_rib; pulled_pork_sandwich; ramen; ravioli; red_velvet_cake; risotto; samosa; sashimi; scallops; seaweed_salad; shrimp_and_grits; spaghetti_bolognese; spaghetti_carbonara; spring_rolls; steak; strawberry_shortcake; sushi; tacos; takoyaki; tiramisu; tuna_tartare; waffles",
+        "target": "apple_pie",
+        "candidate_scores": [
+          {
+            "label": "apple_pie",
+            "sum_logp": -27.164673805236816,
+            "mean_logp": -13.582336902618408,
+            "n_tokens": 2
+          },
+          {
+            "label": "baby_back_ribs",
+            "sum_logp": -36.71725368499756,
+            "mean_logp": -12.239084561665853,
+            "n_tokens": 3
+          },
+          {
+            "label": "baklava",
+            "sum_logp": -15.414671897888184,
+            "mean_logp": -7.707335948944092,
+            "n_tokens": 2
+          },
+          {
+            "label": "beef_carpaccio",
+            "sum_logp": -49.47726821899414,
+            "mean_logp": -16.492422739664715,
+            "n_tokens": 3
+          },
+          {
+            "label": "beef_tartare",
+            "sum_logp": -40.41476821899414,
+            "mean_logp": -13.47158940633138,
+            "n_tokens": 3
+          },
+          {
+            "label": "beet_salad",
+            "sum_logp": -37.2896728515625,
+            "mean_logp": -18.64483642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "beignets",
+            "sum_logp": -16.914673447608777,
+            "mean_logp": -5.638224482536259,
+            "n_tokens": 3
+          },
+          {
+            "label": "bibimbap",
+            "sum_logp": -29.4146728515625,
+            "mean_logp": -9.804890950520834,
+            "n_tokens": 3
+          },
+          {
+            "label": "bread_pudding",
+            "sum_logp": -18.2896761149168,
+            "mean_logp": -9.1448380574584,
+            "n_tokens": 2
+          },
+          {
+            "label": "breakfast_burrito",
+            "sum_logp": -39.789676666259766,
+            "mean_logp": -19.894838333129883,
+            "n_tokens": 2
+          },
+          {
+            "label": "bruschetta",
+            "sum_logp": -28.91467356681801,
+            "mean_logp": -14.457336783409005,
+            "n_tokens": 2
+          },
+          {
+            "label": "caesar_salad",
+            "sum_logp": -42.03976631164551,
+            "mean_logp": -21.019883155822754,
+            "n_tokens": 2
+          },
+          {
+            "label": "cannoli",
+            "sum_logp": -26.1646728515625,
+            "mean_logp": -13.08233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "caprese_salad",
+            "sum_logp": -39.6646873950958,
+            "mean_logp": -13.221562465031932,
+            "n_tokens": 3
+          },
+          {
+            "label": "carrot_cake",
+            "sum_logp": -32.28967571258545,
+            "mean_logp": -16.144837856292725,
+            "n_tokens": 2
+          },
+          {
+            "label": "ceviche",
+            "sum_logp": -30.6021728515625,
+            "mean_logp": -15.30108642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheese_plate",
+            "sum_logp": -23.477174162864685,
+            "mean_logp": -11.738587081432343,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheesecake",
+            "sum_logp": -15.164671897888184,
+            "mean_logp": -5.0548906326293945,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_curry",
+            "sum_logp": -41.164676666259766,
+            "mean_logp": -20.582338333129883,
+            "n_tokens": 2
+          },
+          {
+            "label": "chicken_quesadilla",
+            "sum_logp": -45.649051666259766,
+            "mean_logp": -15.216350555419922,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_wings",
+            "sum_logp": -43.977176666259766,
+            "mean_logp": -21.988588333129883,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_cake",
+            "sum_logp": -31.602187156677246,
+            "mean_logp": -15.801093578338623,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_mousse",
+            "sum_logp": -31.477187156677246,
+            "mean_logp": -15.738593578338623,
+            "n_tokens": 2
+          },
+          {
+            "label": "churros",
+            "sum_logp": -16.878632701933384,
+            "mean_logp": -5.626210900644462,
+            "n_tokens": 3
+          },
+          {
+            "label": "clam_chowder",
+            "sum_logp": -52.03975868225098,
+            "mean_logp": -17.346586227416992,
+            "n_tokens": 3
+          },
+          {
+            "label": "club_sandwich",
+            "sum_logp": -49.7896728515625,
+            "mean_logp": -24.89483642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "crab_cakes",
+            "sum_logp": -35.4771785736084,
+            "mean_logp": -17.7385892868042,
+            "n_tokens": 2
+          },
+          {
+            "label": "creme_brulee",
+            "sum_logp": -27.789685249328613,
+            "mean_logp": -6.947421312332153,
+            "n_tokens": 4
+          },
+          {
+            "label": "croque_madame",
+            "sum_logp": -32.57091952487826,
+            "mean_logp": -10.856973174959421,
+            "n_tokens": 3
+          },
+          {
+            "label": "cup_cakes",
+            "sum_logp": -23.789693355560303,
+            "mean_logp": -11.894846677780151,
+            "n_tokens": 2
+          },
+          {
+            "label": "deviled_eggs",
+            "sum_logp": -49.1646728515625,
+            "mean_logp": -16.388224283854168,
+            "n_tokens": 3
+          },
+          {
+            "label": "donuts",
+            "sum_logp": -29.6646728515625,
+            "mean_logp": -14.83233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "dumplings",
+            "sum_logp": -24.1646728515625,
+            "mean_logp": -12.08233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "edamame",
+            "sum_logp": -29.539796225566533,
+            "mean_logp": -9.84659874185551,
+            "n_tokens": 3
+          },
+          {
+            "label": "eggs_benedict",
+            "sum_logp": -39.4771785736084,
+            "mean_logp": -13.159059524536133,
+            "n_tokens": 3
+          },
+          {
+            "label": "escargots",
+            "sum_logp": -33.4146728515625,
+            "mean_logp": -11.138224283854166,
+            "n_tokens": 3
+          },
+          {
+            "label": "falafel",
+            "sum_logp": -37.2271728515625,
+            "mean_logp": -18.61358642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "filet_mignon",
+            "sum_logp": -43.60228252410889,
+            "mean_logp": -14.534094174702963,
+            "n_tokens": 3
+          },
+          {
+            "label": "fish_and_chips",
+            "sum_logp": -39.10217702388758,
+            "mean_logp": -13.034059007962526,
+            "n_tokens": 3
+          },
+          {
+            "label": "foie_gras",
+            "sum_logp": -43.91468441486358,
+            "mean_logp": -14.63822813828786,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_fries",
+            "sum_logp": -48.227176666259766,
+            "mean_logp": -24.113588333129883,
+            "n_tokens": 2
+          },
+          {
+            "label": "french_onion_soup",
+            "sum_logp": -51.49137735366821,
+            "mean_logp": -17.163792451222736,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_toast",
+            "sum_logp": -39.91467571258545,
+            "mean_logp": -19.957337856292725,
+            "n_tokens": 2
+          },
+          {
+            "label": "fried_calamari",
+            "sum_logp": -49.2896728515625,
+            "mean_logp": -16.429890950520832,
+            "n_tokens": 3
+          },
+          {
+            "label": "fried_rice",
+            "sum_logp": -42.0396728515625,
+            "mean_logp": -21.01983642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "frozen_yogurt",
+            "sum_logp": -41.85218048095703,
+            "mean_logp": -20.926090240478516,
+            "n_tokens": 2
+          },
+          {
+            "label": "garlic_bread",
+            "sum_logp": -37.41476058959961,
+            "mean_logp": -12.47158686319987,
+            "n_tokens": 3
+          },
+          {
+            "label": "gnocchi",
+            "sum_logp": -26.1646728515625,
+            "mean_logp": -13.08233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "greek_salad",
+            "sum_logp": -46.35217475891113,
+            "mean_logp": -23.176087379455566,
+            "n_tokens": 2
+          },
+          {
+            "label": "grilled_cheese_sandwich",
+            "sum_logp": -44.66724967956543,
+            "mean_logp": -14.88908322652181,
+            "n_tokens": 3
+          },
+          {
+            "label": "grilled_salmon",
+            "sum_logp": -50.008493423461914,
+            "mean_logp": -25.004246711730957,
+            "n_tokens": 2
+          },
+          {
+            "label": "guacamole",
+            "sum_logp": -31.094138860702515,
+            "mean_logp": -15.547069430351257,
+            "n_tokens": 2
+          },
+          {
+            "label": "gyoza",
+            "sum_logp": -33.66467380523636,
+            "mean_logp": -11.221557935078787,
+            "n_tokens": 3
+          },
+          {
+            "label": "hamburger",
+            "sum_logp": -33.6021728515625,
+            "mean_logp": -33.6021728515625,
+            "n_tokens": 1
+          },
+          {
+            "label": "hot_and_sour_soup",
+            "sum_logp": -53.765230752522484,
+            "mean_logp": -13.441307688130621,
+            "n_tokens": 4
+          },
+          {
+            "label": "hot_dog",
+            "sum_logp": -64.2115478515625,
+            "mean_logp": -32.10577392578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "huevos_rancheros",
+            "sum_logp": -45.41472053527832,
+            "mean_logp": -11.35368013381958,
+            "n_tokens": 4
+          },
+          {
+            "label": "hummus",
+            "sum_logp": -27.2896728515625,
+            "mean_logp": -13.64483642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "ice_cream",
+            "sum_logp": -31.53972339630127,
+            "mean_logp": -15.769861698150635,
+            "n_tokens": 2
+          },
+          {
+            "label": "lasagna",
+            "sum_logp": -30.0396728515625,
+            "mean_logp": -15.01983642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_bisque",
+            "sum_logp": -50.727176666259766,
+            "mean_logp": -25.363588333129883,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_roll_sandwich",
+            "sum_logp": -60.72572302818298,
+            "mean_logp": -20.241907676060993,
+            "n_tokens": 3
+          },
+          {
+            "label": "macaroni_and_cheese",
+            "sum_logp": -37.04025109001668,
+            "mean_logp": -9.26006277250417,
+            "n_tokens": 4
+          },
+          {
+            "label": "macarons",
+            "sum_logp": -28.80214300751686,
+            "mean_logp": -9.600714335838953,
+            "n_tokens": 3
+          },
+          {
+            "label": "miso_soup",
+            "sum_logp": -36.56706690788269,
+            "mean_logp": -12.189022302627563,
+            "n_tokens": 3
+          },
+          {
+            "label": "mussels",
+            "sum_logp": -40.94135284423828,
+            "mean_logp": -20.47067642211914,
+            "n_tokens": 2
+          },
+          {
+            "label": "nachos",
+            "sum_logp": -32.1646728515625,
+            "mean_logp": -16.08233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "omelette",
+            "sum_logp": -30.4146728515625,
+            "mean_logp": -15.20733642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "onion_rings",
+            "sum_logp": -46.78967571258545,
+            "mean_logp": -23.394837856292725,
+            "n_tokens": 2
+          },
+          {
+            "label": "oysters",
+            "sum_logp": -37.477757930755615,
+            "mean_logp": -18.738878965377808,
+            "n_tokens": 2
+          },
+          {
+            "label": "pad_thai",
+            "sum_logp": -43.2896728515625,
+            "mean_logp": -21.64483642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "paella",
+            "sum_logp": -30.8711479306221,
+            "mean_logp": -15.43557396531105,
+            "n_tokens": 2
+          },
+          {
+            "label": "pancakes",
+            "sum_logp": -45.03968620300293,
+            "mean_logp": -15.01322873433431,
+            "n_tokens": 3
+          },
+          {
+            "label": "panna_cotta",
+            "sum_logp": -36.414689659987744,
+            "mean_logp": -9.103672414996936,
+            "n_tokens": 4
+          },
+          {
+            "label": "peking_duck",
+            "sum_logp": -40.88580718636513,
+            "mean_logp": -13.628602395455042,
+            "n_tokens": 3
+          },
+          {
+            "label": "pho",
+            "sum_logp": -34.7896728515625,
+            "mean_logp": -34.7896728515625,
+            "n_tokens": 1
+          },
+          {
+            "label": "pizza",
+            "sum_logp": -27.5396728515625,
+            "mean_logp": -27.5396728515625,
+            "n_tokens": 1
+          },
+          {
+            "label": "pork_chop",
+            "sum_logp": -68.47719192504883,
+            "mean_logp": -22.82573064168294,
+            "n_tokens": 3
+          },
+          {
+            "label": "poutine",
+            "sum_logp": -62.0396842956543,
+            "mean_logp": -31.01984214782715,
+            "n_tokens": 2
+          },
+          {
+            "label": "prime_rib",
+            "sum_logp": -40.41467571258545,
+            "mean_logp": -20.207337856292725,
+            "n_tokens": 2
+          },
+          {
+            "label": "pulled_pork_sandwich",
+            "sum_logp": -46.469499960541725,
+            "mean_logp": -11.617374990135431,
+            "n_tokens": 4
+          },
+          {
+            "label": "ramen",
+            "sum_logp": -31.97724806979386,
+            "mean_logp": -15.98862403489693,
+            "n_tokens": 2
+          },
+          {
+            "label": "ravioli",
+            "sum_logp": -33.1646728515625,
+            "mean_logp": -16.58233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "red_velvet_cake",
+            "sum_logp": -33.94993922114372,
+            "mean_logp": -11.316646407047907,
+            "n_tokens": 3
+          },
+          {
+            "label": "risotto",
+            "sum_logp": -33.1646728515625,
+            "mean_logp": -16.58233642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "samosa",
+            "sum_logp": -34.91666030883789,
+            "mean_logp": -11.63888676961263,
+            "n_tokens": 3
+          },
+          {
+            "label": "sashimi",
+            "sum_logp": -35.66666030883789,
+            "mean_logp": -11.88888676961263,
+            "n_tokens": 3
+          },
+          {
+            "label": "scallops",
+            "sum_logp": -26.7897131434911,
+            "mean_logp": -8.9299043811637,
+            "n_tokens": 3
+          },
+          {
+            "label": "seaweed_salad",
+            "sum_logp": -42.1828981526196,
+            "mean_logp": -14.0609660508732,
+            "n_tokens": 3
+          },
+          {
+            "label": "shrimp_and_grits",
+            "sum_logp": -32.66488789750963,
+            "mean_logp": -8.166221974377407,
+            "n_tokens": 4
+          },
+          {
+            "label": "spaghetti_bolognese",
+            "sum_logp": -39.85232734680176,
+            "mean_logp": -13.284109115600586,
+            "n_tokens": 3
+          },
+          {
+            "label": "spaghetti_carbonara",
+            "sum_logp": -43.41482734680176,
+            "mean_logp": -10.85370683670044,
+            "n_tokens": 4
+          },
+          {
+            "label": "spring_rolls",
+            "sum_logp": -40.4146728515625,
+            "mean_logp": -20.20733642578125,
+            "n_tokens": 2
+          },
+          {
+            "label": "steak",
+            "sum_logp": -22.1646728515625,
+            "mean_logp": -22.1646728515625,
+            "n_tokens": 1
+          },
+          {
+            "label": "strawberry_shortcake",
+            "sum_logp": -32.289671897888184,
+            "mean_logp": -10.763223965962728,
+            "n_tokens": 3
+          },
+          {
+            "label": "sushi",
+            "sum_logp": -22.16666078567505,
+            "mean_logp": -11.083330392837524,
+            "n_tokens": 2
+          },
+          {
+            "label": "tacos",
+            "sum_logp": -38.03967237472534,
+            "mean_logp": -19.01983618736267,
+            "n_tokens": 2
+          },
+          {
+            "label": "takoyaki",
+            "sum_logp": -35.6646728515625,
+            "mean_logp": -11.888224283854166,
+            "n_tokens": 3
+          },
+          {
+            "label": "tiramisu",
+            "sum_logp": -26.664672374725342,
+            "mean_logp": -8.888224124908447,
+            "n_tokens": 3
+          },
+          {
+            "label": "tuna_tartare",
+            "sum_logp": -21.664695143699305,
+            "mean_logp": -5.416173785924826,
+            "n_tokens": 4
+          },
+          {
+            "label": "waffles",
+            "sum_logp": -25.79022582975449,
+            "mean_logp": -12.895112914877245,
+            "n_tokens": 2
+          }
+        ],
+        "gold_rank": 43,
+        "ranking_rule": "mean_log_probability",
+        "wall_s": 34.87734618499235,
+        "num_cached_tokens": 90816,
+        "requested_prompt_tokens": 93163
+      }
+    },
+    {
+      "sample_id": "food101:edamame_eval_032.jpg",
+      "old_wall_s": 36.016060985042714,
+      "wall_s": 0.906867138997768,
+      "top1_equal": true,
+      "gold_rank": 1,
+      "old_gold_rank": 1,
+      "max_mean_logp_error": 3.2488669768996736,
+      "mean_abs_error": 0.5312313499223079,
+      "num_cached_tokens": 90816,
+      "requested_prompt_tokens": 93163,
+      "new": {
+        "status": "ok",
+        "model": "gemma3_4b",
+        "sample": {
+          "id": "food101:edamame_eval_032.jpg",
+          "cluster": "edamame",
+          "dataset": "food101",
+          "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images/edamame_eval_032.jpg",
+          "question": "What specific food is shown in this image?",
+          "gold": [
+            "edamame"
+          ],
+          "class": "edamame",
+          "split": "eval",
+          "source_record": "edamame_eval_032.jpg",
+          "source_part": "eval"
+        },
+        "prompt": "What specific food is shown in this image?\nChoose the best matching name from the following list. Reply with the name only.\napple_pie; baby_back_ribs; baklava; beef_carpaccio; beef_tartare; beet_salad; beignets; bibimbap; bread_pudding; breakfast_burrito; bruschetta; caesar_salad; cannoli; caprese_salad; carrot_cake; ceviche; cheese_plate; cheesecake; chicken_curry; chicken_quesadilla; chicken_wings; chocolate_cake; chocolate_mousse; churros; clam_chowder; club_sandwich; crab_cakes; creme_brulee; croque_madame; cup_cakes; deviled_eggs; donuts; dumplings; edamame; eggs_benedict; escargots; falafel; filet_mignon; fish_and_chips; foie_gras; french_fries; french_onion_soup; french_toast; fried_calamari; fried_rice; frozen_yogurt; garlic_bread; gnocchi; greek_salad; grilled_cheese_sandwich; grilled_salmon; guacamole; gyoza; hamburger; hot_and_sour_soup; hot_dog; huevos_rancheros; hummus; ice_cream; lasagna; lobster_bisque; lobster_roll_sandwich; macaroni_and_cheese; macarons; miso_soup; mussels; nachos; omelette; onion_rings; oysters; pad_thai; paella; pancakes; panna_cotta; peking_duck; pho; pizza; pork_chop; poutine; prime_rib; pulled_pork_sandwich; ramen; ravioli; red_velvet_cake; risotto; samosa; sashimi; scallops; seaweed_salad; shrimp_and_grits; spaghetti_bolognese; spaghetti_carbonara; spring_rolls; steak; strawberry_shortcake; sushi; tacos; takoyaki; tiramisu; tuna_tartare; waffles",
+        "target": "edamame",
+        "candidate_scores": [
+          {
+            "label": "apple_pie",
+            "sum_logp": -60.750932693481445,
+            "mean_logp": -30.375466346740723,
+            "n_tokens": 2
+          },
+          {
+            "label": "baby_back_ribs",
+            "sum_logp": -61.93841454386711,
+            "mean_logp": -20.646138181289036,
+            "n_tokens": 3
+          },
+          {
+            "label": "baklava",
+            "sum_logp": -36.250911712646484,
+            "mean_logp": -18.125455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "beef_carpaccio",
+            "sum_logp": -53.43850231170654,
+            "mean_logp": -17.81283410390218,
+            "n_tokens": 3
+          },
+          {
+            "label": "beef_tartare",
+            "sum_logp": -54.18850231170654,
+            "mean_logp": -18.06283410390218,
+            "n_tokens": 3
+          },
+          {
+            "label": "beet_salad",
+            "sum_logp": -56.62591361999512,
+            "mean_logp": -28.31295680999756,
+            "n_tokens": 2
+          },
+          {
+            "label": "beignets",
+            "sum_logp": -54.25091552734375,
+            "mean_logp": -18.083638509114582,
+            "n_tokens": 3
+          },
+          {
+            "label": "bibimbap",
+            "sum_logp": -43.125911712646484,
+            "mean_logp": -14.375303904215494,
+            "n_tokens": 3
+          },
+          {
+            "label": "bread_pudding",
+            "sum_logp": -58.625911712646484,
+            "mean_logp": -29.312955856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "breakfast_burrito",
+            "sum_logp": -63.938435554504395,
+            "mean_logp": -31.969217777252197,
+            "n_tokens": 2
+          },
+          {
+            "label": "bruschetta",
+            "sum_logp": -46.750911712646484,
+            "mean_logp": -23.375455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "caesar_salad",
+            "sum_logp": -62.50093364715576,
+            "mean_logp": -31.25046682357788,
+            "n_tokens": 2
+          },
+          {
+            "label": "cannoli",
+            "sum_logp": -51.38114653341472,
+            "mean_logp": -25.69057326670736,
+            "n_tokens": 2
+          },
+          {
+            "label": "caprese_salad",
+            "sum_logp": -59.000914692878716,
+            "mean_logp": -19.666971564292904,
+            "n_tokens": 3
+          },
+          {
+            "label": "carrot_cake",
+            "sum_logp": -58.18856430053711,
+            "mean_logp": -29.094282150268555,
+            "n_tokens": 2
+          },
+          {
+            "label": "ceviche",
+            "sum_logp": -52.344661712646484,
+            "mean_logp": -26.172330856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheese_plate",
+            "sum_logp": -60.250959396362305,
+            "mean_logp": -30.125479698181152,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheesecake",
+            "sum_logp": -42.750913381575174,
+            "mean_logp": -14.250304460525058,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_curry",
+            "sum_logp": -54.75096035003662,
+            "mean_logp": -27.37548017501831,
+            "n_tokens": 2
+          },
+          {
+            "label": "chicken_quesadilla",
+            "sum_logp": -59.407209396362305,
+            "mean_logp": -19.80240313212077,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_wings",
+            "sum_logp": -57.063459396362305,
+            "mean_logp": -28.531729698181152,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_cake",
+            "sum_logp": -55.563425064086914,
+            "mean_logp": -27.781712532043457,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_mousse",
+            "sum_logp": -56.563425064086914,
+            "mean_logp": -28.281712532043457,
+            "n_tokens": 2
+          },
+          {
+            "label": "churros",
+            "sum_logp": -46.71005916595459,
+            "mean_logp": -15.570019721984863,
+            "n_tokens": 3
+          },
+          {
+            "label": "clam_chowder",
+            "sum_logp": -56.87592697143555,
+            "mean_logp": -18.958642323811848,
+            "n_tokens": 3
+          },
+          {
+            "label": "club_sandwich",
+            "sum_logp": -61.875914573669434,
+            "mean_logp": -30.937957286834717,
+            "n_tokens": 2
+          },
+          {
+            "label": "crab_cakes",
+            "sum_logp": -55.50094223022461,
+            "mean_logp": -27.750471115112305,
+            "n_tokens": 2
+          },
+          {
+            "label": "creme_brulee",
+            "sum_logp": -55.576026029884815,
+            "mean_logp": -13.894006507471204,
+            "n_tokens": 4
+          },
+          {
+            "label": "croque_madame",
+            "sum_logp": -63.398147106170654,
+            "mean_logp": -21.132715702056885,
+            "n_tokens": 3
+          },
+          {
+            "label": "cup_cakes",
+            "sum_logp": -66.25117492675781,
+            "mean_logp": -33.125587463378906,
+            "n_tokens": 2
+          },
+          {
+            "label": "deviled_eggs",
+            "sum_logp": -64.50091171264648,
+            "mean_logp": -21.500303904215496,
+            "n_tokens": 3
+          },
+          {
+            "label": "donuts",
+            "sum_logp": -47.063411712646484,
+            "mean_logp": -23.531705856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "dumplings",
+            "sum_logp": -25.250911712646484,
+            "mean_logp": -12.625455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "edamame",
+            "sum_logp": -0.0009114163694903255,
+            "mean_logp": -0.00030380545649677515,
+            "n_tokens": 3
+          },
+          {
+            "label": "eggs_benedict",
+            "sum_logp": -61.75093364715576,
+            "mean_logp": -20.58364454905192,
+            "n_tokens": 3
+          },
+          {
+            "label": "escargots",
+            "sum_logp": -45.56293559074402,
+            "mean_logp": -15.187645196914673,
+            "n_tokens": 3
+          },
+          {
+            "label": "falafel",
+            "sum_logp": -46.313411712646484,
+            "mean_logp": -23.156705856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "filet_mignon",
+            "sum_logp": -63.813456535339355,
+            "mean_logp": -21.271152178446453,
+            "n_tokens": 3
+          },
+          {
+            "label": "fish_and_chips",
+            "sum_logp": -56.250914692878716,
+            "mean_logp": -18.75030489762624,
+            "n_tokens": 3
+          },
+          {
+            "label": "foie_gras",
+            "sum_logp": -56.3759527202601,
+            "mean_logp": -18.791984240086702,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_fries",
+            "sum_logp": -60.625993728637695,
+            "mean_logp": -30.312996864318848,
+            "n_tokens": 2
+          },
+          {
+            "label": "french_onion_soup",
+            "sum_logp": -69.06420563149732,
+            "mean_logp": -23.021401877165772,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_toast",
+            "sum_logp": -69.1259937286377,
+            "mean_logp": -34.56299686431885,
+            "n_tokens": 2
+          },
+          {
+            "label": "fried_calamari",
+            "sum_logp": -59.31342887878418,
+            "mean_logp": -19.771142959594727,
+            "n_tokens": 3
+          },
+          {
+            "label": "fried_rice",
+            "sum_logp": -45.625929832458496,
+            "mean_logp": -22.812964916229248,
+            "n_tokens": 2
+          },
+          {
+            "label": "frozen_yogurt",
+            "sum_logp": -52.06342697143555,
+            "mean_logp": -26.031713485717773,
+            "n_tokens": 2
+          },
+          {
+            "label": "garlic_bread",
+            "sum_logp": -53.250935554504395,
+            "mean_logp": -17.750311851501465,
+            "n_tokens": 3
+          },
+          {
+            "label": "gnocchi",
+            "sum_logp": -48.000911712646484,
+            "mean_logp": -24.000455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "greek_salad",
+            "sum_logp": -61.43843650817871,
+            "mean_logp": -30.719218254089355,
+            "n_tokens": 2
+          },
+          {
+            "label": "grilled_cheese_sandwich",
+            "sum_logp": -59.22621464729309,
+            "mean_logp": -19.742071549097698,
+            "n_tokens": 3
+          },
+          {
+            "label": "grilled_salmon",
+            "sum_logp": -61.75092124938965,
+            "mean_logp": -30.875460624694824,
+            "n_tokens": 2
+          },
+          {
+            "label": "guacamole",
+            "sum_logp": -42.50091731546718,
+            "mean_logp": -21.25045865773359,
+            "n_tokens": 2
+          },
+          {
+            "label": "gyoza",
+            "sum_logp": -44.125911712646484,
+            "mean_logp": -14.708637237548828,
+            "n_tokens": 3
+          },
+          {
+            "label": "hamburger",
+            "sum_logp": -46.563411712646484,
+            "mean_logp": -46.563411712646484,
+            "n_tokens": 1
+          },
+          {
+            "label": "hot_and_sour_soup",
+            "sum_logp": -52.00376129045617,
+            "mean_logp": -13.000940322614042,
+            "n_tokens": 4
+          },
+          {
+            "label": "hot_dog",
+            "sum_logp": -63.064096450805664,
+            "mean_logp": -31.532048225402832,
+            "n_tokens": 2
+          },
+          {
+            "label": "huevos_rancheros",
+            "sum_logp": -71.74330151081028,
+            "mean_logp": -17.93582537770257,
+            "n_tokens": 4
+          },
+          {
+            "label": "hummus",
+            "sum_logp": -40.500911712646484,
+            "mean_logp": -20.250455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "ice_cream",
+            "sum_logp": -54.125962257385254,
+            "mean_logp": -27.062981128692627,
+            "n_tokens": 2
+          },
+          {
+            "label": "lasagna",
+            "sum_logp": -45.813411712646484,
+            "mean_logp": -22.906705856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_bisque",
+            "sum_logp": -62.50154399871826,
+            "mean_logp": -31.25077199935913,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_roll_sandwich",
+            "sum_logp": -64.37872302532196,
+            "mean_logp": -21.459574341773987,
+            "n_tokens": 3
+          },
+          {
+            "label": "macaroni_and_cheese",
+            "sum_logp": -54.25189584441233,
+            "mean_logp": -13.562973961103083,
+            "n_tokens": 4
+          },
+          {
+            "label": "macarons",
+            "sum_logp": -55.37875466083642,
+            "mean_logp": -18.459584886945475,
+            "n_tokens": 3
+          },
+          {
+            "label": "miso_soup",
+            "sum_logp": -45.876190185546875,
+            "mean_logp": -15.292063395182291,
+            "n_tokens": 3
+          },
+          {
+            "label": "mussels",
+            "sum_logp": -68.25091171264648,
+            "mean_logp": -34.12545585632324,
+            "n_tokens": 2
+          },
+          {
+            "label": "nachos",
+            "sum_logp": -51.250911712646484,
+            "mean_logp": -25.625455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "omelette",
+            "sum_logp": -49.750911712646484,
+            "mean_logp": -24.875455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "onion_rings",
+            "sum_logp": -66.87591457366943,
+            "mean_logp": -33.43795728683472,
+            "n_tokens": 2
+          },
+          {
+            "label": "oysters",
+            "sum_logp": -42.96669912338257,
+            "mean_logp": -21.483349561691284,
+            "n_tokens": 2
+          },
+          {
+            "label": "pad_thai",
+            "sum_logp": -52.75092315673828,
+            "mean_logp": -26.37546157836914,
+            "n_tokens": 2
+          },
+          {
+            "label": "paella",
+            "sum_logp": -50.56341183185577,
+            "mean_logp": -25.281705915927883,
+            "n_tokens": 2
+          },
+          {
+            "label": "pancakes",
+            "sum_logp": -48.01151084899902,
+            "mean_logp": -16.00383694966634,
+            "n_tokens": 3
+          },
+          {
+            "label": "panna_cotta",
+            "sum_logp": -67.38652360439295,
+            "mean_logp": -16.846630901098237,
+            "n_tokens": 4
+          },
+          {
+            "label": "peking_duck",
+            "sum_logp": -56.87594115733941,
+            "mean_logp": -18.95864705244647,
+            "n_tokens": 3
+          },
+          {
+            "label": "pho",
+            "sum_logp": -52.563411712646484,
+            "mean_logp": -52.563411712646484,
+            "n_tokens": 1
+          },
+          {
+            "label": "pizza",
+            "sum_logp": -50.563411712646484,
+            "mean_logp": -50.563411712646484,
+            "n_tokens": 1
+          },
+          {
+            "label": "pork_chop",
+            "sum_logp": -51.1367392539978,
+            "mean_logp": -17.0455797513326,
+            "n_tokens": 3
+          },
+          {
+            "label": "poutine",
+            "sum_logp": -57.63651084899902,
+            "mean_logp": -28.81825542449951,
+            "n_tokens": 2
+          },
+          {
+            "label": "prime_rib",
+            "sum_logp": -63.438411712646484,
+            "mean_logp": -31.719205856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "pulled_pork_sandwich",
+            "sum_logp": -57.750924348818444,
+            "mean_logp": -14.437731087204611,
+            "n_tokens": 4
+          },
+          {
+            "label": "ramen",
+            "sum_logp": -40.000911712646484,
+            "mean_logp": -20.000455856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "ravioli",
+            "sum_logp": -55.063411712646484,
+            "mean_logp": -27.531705856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "red_velvet_cake",
+            "sum_logp": -55.25092637532998,
+            "mean_logp": -18.41697545844333,
+            "n_tokens": 3
+          },
+          {
+            "label": "risotto",
+            "sum_logp": -46.125911712646484,
+            "mean_logp": -23.062955856323242,
+            "n_tokens": 2
+          },
+          {
+            "label": "samosa",
+            "sum_logp": -47.50286018848362,
+            "mean_logp": -15.834286729494542,
+            "n_tokens": 3
+          },
+          {
+            "label": "sashimi",
+            "sum_logp": -33.00285929441452,
+            "mean_logp": -11.000953098138174,
+            "n_tokens": 3
+          },
+          {
+            "label": "scallops",
+            "sum_logp": -39.515104544349015,
+            "mean_logp": -13.171701514783004,
+            "n_tokens": 3
+          },
+          {
+            "label": "seaweed_salad",
+            "sum_logp": -55.500932693481445,
+            "mean_logp": -18.50031089782715,
+            "n_tokens": 3
+          },
+          {
+            "label": "shrimp_and_grits",
+            "sum_logp": -45.905727962031904,
+            "mean_logp": -11.476431990507976,
+            "n_tokens": 4
+          },
+          {
+            "label": "spaghetti_bolognese",
+            "sum_logp": -48.62633270400693,
+            "mean_logp": -16.208777568002308,
+            "n_tokens": 3
+          },
+          {
+            "label": "spaghetti_carbonara",
+            "sum_logp": -53.37633270400693,
+            "mean_logp": -13.344083176001732,
+            "n_tokens": 4
+          },
+          {
+            "label": "spring_rolls",
+            "sum_logp": -56.62591743469238,
+            "mean_logp": -28.31295871734619,
+            "n_tokens": 2
+          },
+          {
+            "label": "steak",
+            "sum_logp": -42.750911712646484,
+            "mean_logp": -42.750911712646484,
+            "n_tokens": 1
+          },
+          {
+            "label": "strawberry_shortcake",
+            "sum_logp": -58.813422203063965,
+            "mean_logp": -19.60447406768799,
+            "n_tokens": 3
+          },
+          {
+            "label": "sushi",
+            "sum_logp": -35.002859354019165,
+            "mean_logp": -17.501429677009583,
+            "n_tokens": 2
+          },
+          {
+            "label": "tacos",
+            "sum_logp": -39.051674365997314,
+            "mean_logp": -19.525837182998657,
+            "n_tokens": 2
+          },
+          {
+            "label": "takoyaki",
+            "sum_logp": -39.500911712646484,
+            "mean_logp": -13.166970570882162,
+            "n_tokens": 3
+          },
+          {
+            "label": "tiramisu",
+            "sum_logp": -39.801674365997314,
+            "mean_logp": -13.267224788665771,
+            "n_tokens": 3
+          },
+          {
+            "label": "tuna_tartare",
+            "sum_logp": -45.926796879593894,
+            "mean_logp": -11.481699219898474,
+            "n_tokens": 4
+          },
+          {
+            "label": "waffles",
+            "sum_logp": -44.251383550901664,
+            "mean_logp": -22.125691775450832,
+            "n_tokens": 2
+          }
+        ],
+        "gold_rank": 1,
+        "ranking_rule": "mean_log_probability",
+        "wall_s": 0.906867138997768,
+        "num_cached_tokens": 90816,
+        "requested_prompt_tokens": 93163
+      }
+    },
+    {
+      "sample_id": "food101:omelette_group_016.jpg",
+      "old_wall_s": 35.60678893805016,
+      "wall_s": 0.9042327740025939,
+      "top1_equal": true,
+      "gold_rank": 1,
+      "old_gold_rank": 1,
+      "max_mean_logp_error": 3.141666704613522,
+      "mean_abs_error": 0.4503758752350054,
+      "num_cached_tokens": 90816,
+      "requested_prompt_tokens": 93163,
+      "new": {
+        "status": "ok",
+        "model": "gemma3_4b",
+        "sample": {
+          "id": "food101:omelette_group_016.jpg",
+          "cluster": "omelette",
+          "dataset": "food101",
+          "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images/omelette_group_016.jpg",
+          "question": "What specific food is shown in this image?",
+          "gold": [
+            "omelette"
+          ],
+          "class": "omelette",
+          "split": "dev",
+          "source_record": "omelette_group_016.jpg",
+          "source_part": "group"
+        },
+        "prompt": "What specific food is shown in this image?\nChoose the best matching name from the following list. Reply with the name only.\napple_pie; baby_back_ribs; baklava; beef_carpaccio; beef_tartare; beet_salad; beignets; bibimbap; bread_pudding; breakfast_burrito; bruschetta; caesar_salad; cannoli; caprese_salad; carrot_cake; ceviche; cheese_plate; cheesecake; chicken_curry; chicken_quesadilla; chicken_wings; chocolate_cake; chocolate_mousse; churros; clam_chowder; club_sandwich; crab_cakes; creme_brulee; croque_madame; cup_cakes; deviled_eggs; donuts; dumplings; edamame; eggs_benedict; escargots; falafel; filet_mignon; fish_and_chips; foie_gras; french_fries; french_onion_soup; french_toast; fried_calamari; fried_rice; frozen_yogurt; garlic_bread; gnocchi; greek_salad; grilled_cheese_sandwich; grilled_salmon; guacamole; gyoza; hamburger; hot_and_sour_soup; hot_dog; huevos_rancheros; hummus; ice_cream; lasagna; lobster_bisque; lobster_roll_sandwich; macaroni_and_cheese; macarons; miso_soup; mussels; nachos; omelette; onion_rings; oysters; pad_thai; paella; pancakes; panna_cotta; peking_duck; pho; pizza; pork_chop; poutine; prime_rib; pulled_pork_sandwich; ramen; ravioli; red_velvet_cake; risotto; samosa; sashimi; scallops; seaweed_salad; shrimp_and_grits; spaghetti_bolognese; spaghetti_carbonara; spring_rolls; steak; strawberry_shortcake; sushi; tacos; takoyaki; tiramisu; tuna_tartare; waffles",
+        "target": "omelette",
+        "candidate_scores": [
+          {
+            "label": "apple_pie",
+            "sum_logp": -43.62825870513916,
+            "mean_logp": -21.81412935256958,
+            "n_tokens": 2
+          },
+          {
+            "label": "baby_back_ribs",
+            "sum_logp": -56.27140403725207,
+            "mean_logp": -18.75713467908402,
+            "n_tokens": 3
+          },
+          {
+            "label": "baklava",
+            "sum_logp": -39.753227829932996,
+            "mean_logp": -19.876613914966498,
+            "n_tokens": 2
+          },
+          {
+            "label": "beef_carpaccio",
+            "sum_logp": -50.06573963165283,
+            "mean_logp": -16.68857987721761,
+            "n_tokens": 3
+          },
+          {
+            "label": "beef_tartare",
+            "sum_logp": -51.31573963165238,
+            "mean_logp": -17.105246543884125,
+            "n_tokens": 3
+          },
+          {
+            "label": "beet_salad",
+            "sum_logp": -46.87824726104736,
+            "mean_logp": -23.43912363052368,
+            "n_tokens": 2
+          },
+          {
+            "label": "beignets",
+            "sum_logp": -41.50825595855713,
+            "mean_logp": -13.836085319519043,
+            "n_tokens": 3
+          },
+          {
+            "label": "bibimbap",
+            "sum_logp": -43.87822723388672,
+            "mean_logp": -14.626075744628906,
+            "n_tokens": 3
+          },
+          {
+            "label": "bread_pudding",
+            "sum_logp": -51.065749168395996,
+            "mean_logp": -25.532874584197998,
+            "n_tokens": 2
+          },
+          {
+            "label": "breakfast_burrito",
+            "sum_logp": -39.87822914123535,
+            "mean_logp": -19.939114570617676,
+            "n_tokens": 2
+          },
+          {
+            "label": "bruschetta",
+            "sum_logp": -41.94072723388672,
+            "mean_logp": -20.97036361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "caesar_salad",
+            "sum_logp": -49.1282377243042,
+            "mean_logp": -24.5641188621521,
+            "n_tokens": 2
+          },
+          {
+            "label": "cannoli",
+            "sum_logp": -46.57247715815902,
+            "mean_logp": -23.28623857907951,
+            "n_tokens": 2
+          },
+          {
+            "label": "caprese_salad",
+            "sum_logp": -56.0032320022583,
+            "mean_logp": -18.667744000752766,
+            "n_tokens": 3
+          },
+          {
+            "label": "carrot_cake",
+            "sum_logp": -50.06587219238281,
+            "mean_logp": -25.032936096191406,
+            "n_tokens": 2
+          },
+          {
+            "label": "ceviche",
+            "sum_logp": -41.62822723388672,
+            "mean_logp": -20.81411361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheese_plate",
+            "sum_logp": -41.75325965881348,
+            "mean_logp": -20.87662982940674,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheesecake",
+            "sum_logp": -34.75413876934908,
+            "mean_logp": -11.584712923116362,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_curry",
+            "sum_logp": -47.6907434463501,
+            "mean_logp": -23.84537172317505,
+            "n_tokens": 2
+          },
+          {
+            "label": "chicken_quesadilla",
+            "sum_logp": -45.37824356555938,
+            "mean_logp": -15.126081188519793,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_wings",
+            "sum_logp": -49.253244400024414,
+            "mean_logp": -24.626622200012207,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_cake",
+            "sum_logp": -44.12823963165283,
+            "mean_logp": -22.064119815826416,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_mousse",
+            "sum_logp": -47.50323963165283,
+            "mean_logp": -23.751619815826416,
+            "n_tokens": 2
+          },
+          {
+            "label": "churros",
+            "sum_logp": -35.47795605659485,
+            "mean_logp": -11.825985352198282,
+            "n_tokens": 3
+          },
+          {
+            "label": "clam_chowder",
+            "sum_logp": -58.62824058532715,
+            "mean_logp": -19.542746861775715,
+            "n_tokens": 3
+          },
+          {
+            "label": "club_sandwich",
+            "sum_logp": -54.12822723388672,
+            "mean_logp": -27.06411361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "crab_cakes",
+            "sum_logp": -56.69075870513916,
+            "mean_logp": -28.34537935256958,
+            "n_tokens": 2
+          },
+          {
+            "label": "creme_brulee",
+            "sum_logp": -42.2722864151001,
+            "mean_logp": -10.568071603775024,
+            "n_tokens": 4
+          },
+          {
+            "label": "croque_madame",
+            "sum_logp": -43.50326156616211,
+            "mean_logp": -14.501087188720703,
+            "n_tokens": 3
+          },
+          {
+            "label": "cup_cakes",
+            "sum_logp": -56.38072967529297,
+            "mean_logp": -28.190364837646484,
+            "n_tokens": 2
+          },
+          {
+            "label": "deviled_eggs",
+            "sum_logp": -55.37822723388672,
+            "mean_logp": -18.45940907796224,
+            "n_tokens": 3
+          },
+          {
+            "label": "donuts",
+            "sum_logp": -41.87822723388672,
+            "mean_logp": -20.93911361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "dumplings",
+            "sum_logp": -42.94072759151453,
+            "mean_logp": -21.470363795757265,
+            "n_tokens": 2
+          },
+          {
+            "label": "edamame",
+            "sum_logp": -43.44072723388672,
+            "mean_logp": -14.480242411295572,
+            "n_tokens": 3
+          },
+          {
+            "label": "eggs_benedict",
+            "sum_logp": -33.75322723388672,
+            "mean_logp": -11.251075744628906,
+            "n_tokens": 3
+          },
+          {
+            "label": "escargots",
+            "sum_logp": -39.25322878360645,
+            "mean_logp": -13.084409594535485,
+            "n_tokens": 3
+          },
+          {
+            "label": "falafel",
+            "sum_logp": -44.50322723388672,
+            "mean_logp": -22.25161361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "filet_mignon",
+            "sum_logp": -47.25326061248779,
+            "mean_logp": -15.751086870829264,
+            "n_tokens": 3
+          },
+          {
+            "label": "fish_and_chips",
+            "sum_logp": -52.87824523440213,
+            "mean_logp": -17.62608174480071,
+            "n_tokens": 3
+          },
+          {
+            "label": "foie_gras",
+            "sum_logp": -46.62830448150635,
+            "mean_logp": -15.542768160502115,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_fries",
+            "sum_logp": -54.12823486328125,
+            "mean_logp": -27.064117431640625,
+            "n_tokens": 2
+          },
+          {
+            "label": "french_onion_soup",
+            "sum_logp": -58.81644557486288,
+            "mean_logp": -19.60548185828763,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_toast",
+            "sum_logp": -46.87823486328125,
+            "mean_logp": -23.439117431640625,
+            "n_tokens": 2
+          },
+          {
+            "label": "fried_calamari",
+            "sum_logp": -59.69072723388672,
+            "mean_logp": -19.89690907796224,
+            "n_tokens": 3
+          },
+          {
+            "label": "fried_rice",
+            "sum_logp": -49.628228187561035,
+            "mean_logp": -24.814114093780518,
+            "n_tokens": 2
+          },
+          {
+            "label": "frozen_yogurt",
+            "sum_logp": -53.3782320022583,
+            "mean_logp": -26.68911600112915,
+            "n_tokens": 2
+          },
+          {
+            "label": "garlic_bread",
+            "sum_logp": -51.690917015075684,
+            "mean_logp": -17.230305671691895,
+            "n_tokens": 3
+          },
+          {
+            "label": "gnocchi",
+            "sum_logp": -36.00322723388672,
+            "mean_logp": -18.00161361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "greek_salad",
+            "sum_logp": -53.50323009490967,
+            "mean_logp": -26.751615047454834,
+            "n_tokens": 2
+          },
+          {
+            "label": "grilled_cheese_sandwich",
+            "sum_logp": -48.15940874814987,
+            "mean_logp": -16.05313624938329,
+            "n_tokens": 3
+          },
+          {
+            "label": "grilled_salmon",
+            "sum_logp": -53.62824249267578,
+            "mean_logp": -26.81412124633789,
+            "n_tokens": 2
+          },
+          {
+            "label": "guacamole",
+            "sum_logp": -34.50322723388672,
+            "mean_logp": -17.25161361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "gyoza",
+            "sum_logp": -43.69072723388672,
+            "mean_logp": -14.563575744628906,
+            "n_tokens": 3
+          },
+          {
+            "label": "hamburger",
+            "sum_logp": -34.37822723388672,
+            "mean_logp": -34.37822723388672,
+            "n_tokens": 1
+          },
+          {
+            "label": "hot_and_sour_soup",
+            "sum_logp": -51.8798646821524,
+            "mean_logp": -12.9699661705381,
+            "n_tokens": 4
+          },
+          {
+            "label": "hot_dog",
+            "sum_logp": -55.942203521728516,
+            "mean_logp": -27.971101760864258,
+            "n_tokens": 2
+          },
+          {
+            "label": "huevos_rancheros",
+            "sum_logp": -44.50325870513916,
+            "mean_logp": -11.12581467628479,
+            "n_tokens": 4
+          },
+          {
+            "label": "hummus",
+            "sum_logp": -37.25322723388672,
+            "mean_logp": -18.62661361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "ice_cream",
+            "sum_logp": -49.37825393676758,
+            "mean_logp": -24.68912696838379,
+            "n_tokens": 2
+          },
+          {
+            "label": "lasagna",
+            "sum_logp": -40.81572723388672,
+            "mean_logp": -20.40786361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_bisque",
+            "sum_logp": -57.628235816955566,
+            "mean_logp": -28.814117908477783,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_roll_sandwich",
+            "sum_logp": -63.201829764992,
+            "mean_logp": -21.067276588330667,
+            "n_tokens": 3
+          },
+          {
+            "label": "macaroni_and_cheese",
+            "sum_logp": -49.87838900051048,
+            "mean_logp": -12.46959725012762,
+            "n_tokens": 4
+          },
+          {
+            "label": "macarons",
+            "sum_logp": -65.9081346988678,
+            "mean_logp": -21.969378232955933,
+            "n_tokens": 3
+          },
+          {
+            "label": "miso_soup",
+            "sum_logp": -45.5041347702645,
+            "mean_logp": -15.1680449234215,
+            "n_tokens": 3
+          },
+          {
+            "label": "mussels",
+            "sum_logp": -49.128315925598145,
+            "mean_logp": -24.564157962799072,
+            "n_tokens": 2
+          },
+          {
+            "label": "nachos",
+            "sum_logp": -40.75322723388672,
+            "mean_logp": -20.37661361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "omelette",
+            "sum_logp": -0.003226790577173233,
+            "mean_logp": -0.0016133952885866165,
+            "n_tokens": 2
+          },
+          {
+            "label": "onion_rings",
+            "sum_logp": -51.003233909606934,
+            "mean_logp": -25.501616954803467,
+            "n_tokens": 2
+          },
+          {
+            "label": "oysters",
+            "sum_logp": -24.712407112121582,
+            "mean_logp": -12.356203556060791,
+            "n_tokens": 2
+          },
+          {
+            "label": "pad_thai",
+            "sum_logp": -53.003241539001465,
+            "mean_logp": -26.501620769500732,
+            "n_tokens": 2
+          },
+          {
+            "label": "paella",
+            "sum_logp": -41.37822723388672,
+            "mean_logp": -20.68911361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "pancakes",
+            "sum_logp": -34.691489458084106,
+            "mean_logp": -11.563829819361368,
+            "n_tokens": 3
+          },
+          {
+            "label": "panna_cotta",
+            "sum_logp": -63.44149792194366,
+            "mean_logp": -15.860374480485914,
+            "n_tokens": 4
+          },
+          {
+            "label": "peking_duck",
+            "sum_logp": -60.01490783691406,
+            "mean_logp": -20.004969278971355,
+            "n_tokens": 3
+          },
+          {
+            "label": "pho",
+            "sum_logp": -39.37822723388672,
+            "mean_logp": -39.37822723388672,
+            "n_tokens": 1
+          },
+          {
+            "label": "pizza",
+            "sum_logp": -33.62822723388672,
+            "mean_logp": -33.62822723388672,
+            "n_tokens": 1
+          },
+          {
+            "label": "pork_chop",
+            "sum_logp": -59.1916618347168,
+            "mean_logp": -19.730553944905598,
+            "n_tokens": 3
+          },
+          {
+            "label": "poutine",
+            "sum_logp": -56.191490173339844,
+            "mean_logp": -28.095745086669922,
+            "n_tokens": 2
+          },
+          {
+            "label": "prime_rib",
+            "sum_logp": -49.378228187561035,
+            "mean_logp": -24.689114093780518,
+            "n_tokens": 2
+          },
+          {
+            "label": "pulled_pork_sandwich",
+            "sum_logp": -59.06586169428192,
+            "mean_logp": -14.76646542357048,
+            "n_tokens": 4
+          },
+          {
+            "label": "ramen",
+            "sum_logp": -41.50322747230527,
+            "mean_logp": -20.751613736152635,
+            "n_tokens": 2
+          },
+          {
+            "label": "ravioli",
+            "sum_logp": -46.62822723388672,
+            "mean_logp": -23.31411361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "red_velvet_cake",
+            "sum_logp": -58.1907507178621,
+            "mean_logp": -19.396916905954033,
+            "n_tokens": 3
+          },
+          {
+            "label": "risotto",
+            "sum_logp": -40.56572723388672,
+            "mean_logp": -20.28286361694336,
+            "n_tokens": 2
+          },
+          {
+            "label": "samosa",
+            "sum_logp": -43.37844514846256,
+            "mean_logp": -14.459481716154187,
+            "n_tokens": 3
+          },
+          {
+            "label": "sashimi",
+            "sum_logp": -39.37844181060791,
+            "mean_logp": -13.126147270202637,
+            "n_tokens": 3
+          },
+          {
+            "label": "scallops",
+            "sum_logp": -36.514276266097994,
+            "mean_logp": -12.171425422032664,
+            "n_tokens": 3
+          },
+          {
+            "label": "seaweed_salad",
+            "sum_logp": -56.62831664083296,
+            "mean_logp": -18.87610554694432,
+            "n_tokens": 3
+          },
+          {
+            "label": "shrimp_and_grits",
+            "sum_logp": -48.37856573189458,
+            "mean_logp": -12.094641432973646,
+            "n_tokens": 4
+          },
+          {
+            "label": "spaghetti_bolognese",
+            "sum_logp": -44.50325870513916,
+            "mean_logp": -14.83441956837972,
+            "n_tokens": 3
+          },
+          {
+            "label": "spaghetti_carbonara",
+            "sum_logp": -48.50325870513916,
+            "mean_logp": -12.12581467628479,
+            "n_tokens": 4
+          },
+          {
+            "label": "spring_rolls",
+            "sum_logp": -52.065752029418945,
+            "mean_logp": -26.032876014709473,
+            "n_tokens": 2
+          },
+          {
+            "label": "steak",
+            "sum_logp": -31.50322723388672,
+            "mean_logp": -31.50322723388672,
+            "n_tokens": 1
+          },
+          {
+            "label": "strawberry_shortcake",
+            "sum_logp": -58.75322914123535,
+            "mean_logp": -19.584409713745117,
+            "n_tokens": 3
+          },
+          {
+            "label": "sushi",
+            "sum_logp": -30.878441906766966,
+            "mean_logp": -15.439220953383483,
+            "n_tokens": 2
+          },
+          {
+            "label": "tacos",
+            "sum_logp": -29.008461461868137,
+            "mean_logp": -14.504230730934069,
+            "n_tokens": 2
+          },
+          {
+            "label": "takoyaki",
+            "sum_logp": -49.44072937965268,
+            "mean_logp": -16.480243126550892,
+            "n_tokens": 3
+          },
+          {
+            "label": "tiramisu",
+            "sum_logp": -53.758460998535156,
+            "mean_logp": -17.91948699951172,
+            "n_tokens": 3
+          },
+          {
+            "label": "tuna_tartare",
+            "sum_logp": -54.38362383826461,
+            "mean_logp": -13.595905959566153,
+            "n_tokens": 4
+          },
+          {
+            "label": "waffles",
+            "sum_logp": -39.62830209451931,
+            "mean_logp": -19.814151047259656,
+            "n_tokens": 2
+          }
+        ],
+        "gold_rank": 1,
+        "ranking_rule": "mean_log_probability",
+        "wall_s": 0.9042327740025939,
+        "num_cached_tokens": 90816,
+        "requested_prompt_tokens": 93163
+      }
+    },
+    {
+      "sample_id": "food101:waffles_eval_047.jpg",
+      "old_wall_s": 34.98630809201859,
+      "wall_s": 0.9043754150043242,
+      "top1_equal": true,
+      "gold_rank": 1,
+      "old_gold_rank": 1,
+      "max_mean_logp_error": 4.812318370486054,
+      "mean_abs_error": 1.249063821629361,
+      "num_cached_tokens": 90816,
+      "requested_prompt_tokens": 93163,
+      "new": {
+        "status": "ok",
+        "model": "gemma3_4b",
+        "sample": {
+          "id": "food101:waffles_eval_047.jpg",
+          "cluster": "waffles",
+          "dataset": "food101",
+          "image_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images/waffles_eval_047.jpg",
+          "question": "What specific food is shown in this image?",
+          "gold": [
+            "waffles"
+          ],
+          "class": "waffles",
+          "split": "eval",
+          "source_record": "waffles_eval_047.jpg",
+          "source_part": "eval"
+        },
+        "prompt": "What specific food is shown in this image?\nChoose the best matching name from the following list. Reply with the name only.\napple_pie; baby_back_ribs; baklava; beef_carpaccio; beef_tartare; beet_salad; beignets; bibimbap; bread_pudding; breakfast_burrito; bruschetta; caesar_salad; cannoli; caprese_salad; carrot_cake; ceviche; cheese_plate; cheesecake; chicken_curry; chicken_quesadilla; chicken_wings; chocolate_cake; chocolate_mousse; churros; clam_chowder; club_sandwich; crab_cakes; creme_brulee; croque_madame; cup_cakes; deviled_eggs; donuts; dumplings; edamame; eggs_benedict; escargots; falafel; filet_mignon; fish_and_chips; foie_gras; french_fries; french_onion_soup; french_toast; fried_calamari; fried_rice; frozen_yogurt; garlic_bread; gnocchi; greek_salad; grilled_cheese_sandwich; grilled_salmon; guacamole; gyoza; hamburger; hot_and_sour_soup; hot_dog; huevos_rancheros; hummus; ice_cream; lasagna; lobster_bisque; lobster_roll_sandwich; macaroni_and_cheese; macarons; miso_soup; mussels; nachos; omelette; onion_rings; oysters; pad_thai; paella; pancakes; panna_cotta; peking_duck; pho; pizza; pork_chop; poutine; prime_rib; pulled_pork_sandwich; ramen; ravioli; red_velvet_cake; risotto; samosa; sashimi; scallops; seaweed_salad; shrimp_and_grits; spaghetti_bolognese; spaghetti_carbonara; spring_rolls; steak; strawberry_shortcake; sushi; tacos; takoyaki; tiramisu; tuna_tartare; waffles",
+        "target": "waffles",
+        "candidate_scores": [
+          {
+            "label": "apple_pie",
+            "sum_logp": -42.00000762939453,
+            "mean_logp": -21.000003814697266,
+            "n_tokens": 2
+          },
+          {
+            "label": "baby_back_ribs",
+            "sum_logp": -54.25209152698517,
+            "mean_logp": -18.084030508995056,
+            "n_tokens": 3
+          },
+          {
+            "label": "baklava",
+            "sum_logp": -39.50016223129933,
+            "mean_logp": -19.750081115649664,
+            "n_tokens": 2
+          },
+          {
+            "label": "beef_carpaccio",
+            "sum_logp": -62.6250057220459,
+            "mean_logp": -20.875001907348633,
+            "n_tokens": 3
+          },
+          {
+            "label": "beef_tartare",
+            "sum_logp": -64.6875057220459,
+            "mean_logp": -21.562501907348633,
+            "n_tokens": 3
+          },
+          {
+            "label": "beet_salad",
+            "sum_logp": -63.000003814697266,
+            "mean_logp": -31.500001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "beignets",
+            "sum_logp": -30.000001907348633,
+            "mean_logp": -10.000000635782877,
+            "n_tokens": 3
+          },
+          {
+            "label": "bibimbap",
+            "sum_logp": -47.000003814697266,
+            "mean_logp": -15.666667938232422,
+            "n_tokens": 3
+          },
+          {
+            "label": "bread_pudding",
+            "sum_logp": -52.1250057220459,
+            "mean_logp": -26.06250286102295,
+            "n_tokens": 2
+          },
+          {
+            "label": "breakfast_burrito",
+            "sum_logp": -37.500003814697266,
+            "mean_logp": -18.750001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "bruschetta",
+            "sum_logp": -43.500003814697266,
+            "mean_logp": -21.750001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "caesar_salad",
+            "sum_logp": -54.87503910064697,
+            "mean_logp": -27.437519550323486,
+            "n_tokens": 2
+          },
+          {
+            "label": "cannoli",
+            "sum_logp": -38.75000464916195,
+            "mean_logp": -19.375002324580976,
+            "n_tokens": 2
+          },
+          {
+            "label": "caprese_salad",
+            "sum_logp": -58.812509536743164,
+            "mean_logp": -19.604169845581055,
+            "n_tokens": 3
+          },
+          {
+            "label": "carrot_cake",
+            "sum_logp": -48.375017166137695,
+            "mean_logp": -24.187508583068848,
+            "n_tokens": 2
+          },
+          {
+            "label": "ceviche",
+            "sum_logp": -44.375003814697266,
+            "mean_logp": -22.187501907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheese_plate",
+            "sum_logp": -44.50002956390381,
+            "mean_logp": -22.250014781951904,
+            "n_tokens": 2
+          },
+          {
+            "label": "cheesecake",
+            "sum_logp": -34.750003814697266,
+            "mean_logp": -11.583334604899088,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_curry",
+            "sum_logp": -47.75003623962402,
+            "mean_logp": -23.87501811981201,
+            "n_tokens": 2
+          },
+          {
+            "label": "chicken_quesadilla",
+            "sum_logp": -46.125036478042574,
+            "mean_logp": -15.375012159347525,
+            "n_tokens": 3
+          },
+          {
+            "label": "chicken_wings",
+            "sum_logp": -44.93753623962402,
+            "mean_logp": -22.46876811981201,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_cake",
+            "sum_logp": -39.25002956390381,
+            "mean_logp": -19.625014781951904,
+            "n_tokens": 2
+          },
+          {
+            "label": "chocolate_mousse",
+            "sum_logp": -40.50002956390381,
+            "mean_logp": -20.250014781951904,
+            "n_tokens": 2
+          },
+          {
+            "label": "churros",
+            "sum_logp": -31.12500476836749,
+            "mean_logp": -10.37500158945583,
+            "n_tokens": 3
+          },
+          {
+            "label": "clam_chowder",
+            "sum_logp": -62.18753910064697,
+            "mean_logp": -20.729179700215656,
+            "n_tokens": 3
+          },
+          {
+            "label": "club_sandwich",
+            "sum_logp": -56.12500476837158,
+            "mean_logp": -28.06250238418579,
+            "n_tokens": 2
+          },
+          {
+            "label": "crab_cakes",
+            "sum_logp": -52.62504196166992,
+            "mean_logp": -26.31252098083496,
+            "n_tokens": 2
+          },
+          {
+            "label": "creme_brulee",
+            "sum_logp": -39.772528290748596,
+            "mean_logp": -9.943132072687149,
+            "n_tokens": 4
+          },
+          {
+            "label": "croque_madame",
+            "sum_logp": -45.1254850057594,
+            "mean_logp": -15.041828335253134,
+            "n_tokens": 3
+          },
+          {
+            "label": "cup_cakes",
+            "sum_logp": -56.750099182128906,
+            "mean_logp": -28.375049591064453,
+            "n_tokens": 2
+          },
+          {
+            "label": "deviled_eggs",
+            "sum_logp": -51.375003814697266,
+            "mean_logp": -17.125001271565754,
+            "n_tokens": 3
+          },
+          {
+            "label": "donuts",
+            "sum_logp": -31.875001907348633,
+            "mean_logp": -15.937500953674316,
+            "n_tokens": 2
+          },
+          {
+            "label": "dumplings",
+            "sum_logp": -44.37500393390655,
+            "mean_logp": -22.187501966953274,
+            "n_tokens": 2
+          },
+          {
+            "label": "edamame",
+            "sum_logp": -47.25000393390655,
+            "mean_logp": -15.750001311302183,
+            "n_tokens": 3
+          },
+          {
+            "label": "eggs_benedict",
+            "sum_logp": -46.87500190734863,
+            "mean_logp": -15.625000635782877,
+            "n_tokens": 3
+          },
+          {
+            "label": "escargots",
+            "sum_logp": -50.43750584125314,
+            "mean_logp": -16.81250194708438,
+            "n_tokens": 3
+          },
+          {
+            "label": "falafel",
+            "sum_logp": -43.000003814697266,
+            "mean_logp": -21.500001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "filet_mignon",
+            "sum_logp": -47.12516117095947,
+            "mean_logp": -15.70838705698649,
+            "n_tokens": 3
+          },
+          {
+            "label": "fish_and_chips",
+            "sum_logp": -57.250003814697266,
+            "mean_logp": -19.08333460489909,
+            "n_tokens": 3
+          },
+          {
+            "label": "foie_gras",
+            "sum_logp": -47.50011789790278,
+            "mean_logp": -15.83337263263426,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_fries",
+            "sum_logp": -40.12500762939453,
+            "mean_logp": -20.062503814697266,
+            "n_tokens": 2
+          },
+          {
+            "label": "french_onion_soup",
+            "sum_logp": -46.19855831936002,
+            "mean_logp": -15.399519439786673,
+            "n_tokens": 3
+          },
+          {
+            "label": "french_toast",
+            "sum_logp": -32.000006675720215,
+            "mean_logp": -16.000003337860107,
+            "n_tokens": 2
+          },
+          {
+            "label": "fried_calamari",
+            "sum_logp": -64.62500381469727,
+            "mean_logp": -21.541667938232422,
+            "n_tokens": 3
+          },
+          {
+            "label": "fried_rice",
+            "sum_logp": -54.750003814697266,
+            "mean_logp": -27.375001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "frozen_yogurt",
+            "sum_logp": -47.625003814697266,
+            "mean_logp": -23.812501907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "garlic_bread",
+            "sum_logp": -46.87503433227539,
+            "mean_logp": -15.625011444091797,
+            "n_tokens": 3
+          },
+          {
+            "label": "gnocchi",
+            "sum_logp": -43.250003814697266,
+            "mean_logp": -21.625001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "greek_salad",
+            "sum_logp": -49.12501907348633,
+            "mean_logp": -24.562509536743164,
+            "n_tokens": 2
+          },
+          {
+            "label": "grilled_cheese_sandwich",
+            "sum_logp": -56.737854957580566,
+            "mean_logp": -18.912618319193523,
+            "n_tokens": 3
+          },
+          {
+            "label": "grilled_salmon",
+            "sum_logp": -59.59375762939453,
+            "mean_logp": -29.796878814697266,
+            "n_tokens": 2
+          },
+          {
+            "label": "guacamole",
+            "sum_logp": -39.62510227672465,
+            "mean_logp": -19.812551138362323,
+            "n_tokens": 2
+          },
+          {
+            "label": "gyoza",
+            "sum_logp": -51.312516808425244,
+            "mean_logp": -17.104172269475082,
+            "n_tokens": 3
+          },
+          {
+            "label": "hamburger",
+            "sum_logp": -42.125003814697266,
+            "mean_logp": -42.125003814697266,
+            "n_tokens": 1
+          },
+          {
+            "label": "hot_and_sour_soup",
+            "sum_logp": -53.312669628423464,
+            "mean_logp": -13.328167407105866,
+            "n_tokens": 4
+          },
+          {
+            "label": "hot_dog",
+            "sum_logp": -56.12501335144043,
+            "mean_logp": -28.062506675720215,
+            "n_tokens": 2
+          },
+          {
+            "label": "huevos_rancheros",
+            "sum_logp": -54.12502098083496,
+            "mean_logp": -13.53125524520874,
+            "n_tokens": 4
+          },
+          {
+            "label": "hummus",
+            "sum_logp": -41.500003814697266,
+            "mean_logp": -20.750001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "ice_cream",
+            "sum_logp": -45.375020027160645,
+            "mean_logp": -22.687510013580322,
+            "n_tokens": 2
+          },
+          {
+            "label": "lasagna",
+            "sum_logp": -38.750003814697266,
+            "mean_logp": -19.375001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_bisque",
+            "sum_logp": -59.50000762939453,
+            "mean_logp": -29.750003814697266,
+            "n_tokens": 2
+          },
+          {
+            "label": "lobster_roll_sandwich",
+            "sum_logp": -64.75088715553284,
+            "mean_logp": -21.58362905184428,
+            "n_tokens": 3
+          },
+          {
+            "label": "macaroni_and_cheese",
+            "sum_logp": -55.654770374298096,
+            "mean_logp": -13.913692593574524,
+            "n_tokens": 4
+          },
+          {
+            "label": "macarons",
+            "sum_logp": -40.654762983322115,
+            "mean_logp": -13.551587661107371,
+            "n_tokens": 3
+          },
+          {
+            "label": "miso_soup",
+            "sum_logp": -71.50310039520264,
+            "mean_logp": -23.83436679840088,
+            "n_tokens": 3
+          },
+          {
+            "label": "mussels",
+            "sum_logp": -59.50071144104004,
+            "mean_logp": -29.75035572052002,
+            "n_tokens": 2
+          },
+          {
+            "label": "nachos",
+            "sum_logp": -44.187503814697266,
+            "mean_logp": -22.093751907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "omelette",
+            "sum_logp": -36.750003814697266,
+            "mean_logp": -18.375001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "onion_rings",
+            "sum_logp": -60.312506675720215,
+            "mean_logp": -30.156253337860107,
+            "n_tokens": 2
+          },
+          {
+            "label": "oysters",
+            "sum_logp": -46.1253662109375,
+            "mean_logp": -23.06268310546875,
+            "n_tokens": 2
+          },
+          {
+            "label": "pad_thai",
+            "sum_logp": -49.500078201293945,
+            "mean_logp": -24.750039100646973,
+            "n_tokens": 2
+          },
+          {
+            "label": "paella",
+            "sum_logp": -39.88647684827447,
+            "mean_logp": -19.943238424137235,
+            "n_tokens": 2
+          },
+          {
+            "label": "pancakes",
+            "sum_logp": -19.500001907348633,
+            "mean_logp": -6.500000635782878,
+            "n_tokens": 3
+          },
+          {
+            "label": "panna_cotta",
+            "sum_logp": -71.75000381469727,
+            "mean_logp": -17.937500953674316,
+            "n_tokens": 4
+          },
+          {
+            "label": "peking_duck",
+            "sum_logp": -55.56072425842285,
+            "mean_logp": -18.520241419474285,
+            "n_tokens": 3
+          },
+          {
+            "label": "pho",
+            "sum_logp": -45.125003814697266,
+            "mean_logp": -45.125003814697266,
+            "n_tokens": 1
+          },
+          {
+            "label": "pizza",
+            "sum_logp": -35.000003814697266,
+            "mean_logp": -35.000003814697266,
+            "n_tokens": 1
+          },
+          {
+            "label": "pork_chop",
+            "sum_logp": -77.93750762939453,
+            "mean_logp": -25.979169209798176,
+            "n_tokens": 3
+          },
+          {
+            "label": "poutine",
+            "sum_logp": -63.50000190734863,
+            "mean_logp": -31.750000953674316,
+            "n_tokens": 2
+          },
+          {
+            "label": "prime_rib",
+            "sum_logp": -56.12500476837158,
+            "mean_logp": -28.06250238418579,
+            "n_tokens": 2
+          },
+          {
+            "label": "pulled_pork_sandwich",
+            "sum_logp": -53.13918388914317,
+            "mean_logp": -13.284795972285792,
+            "n_tokens": 4
+          },
+          {
+            "label": "ramen",
+            "sum_logp": -41.000003814697266,
+            "mean_logp": -20.500001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "ravioli",
+            "sum_logp": -43.875003814697266,
+            "mean_logp": -21.937501907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "red_velvet_cake",
+            "sum_logp": -48.42360785603523,
+            "mean_logp": -16.14120261867841,
+            "n_tokens": 3
+          },
+          {
+            "label": "risotto",
+            "sum_logp": -43.500003814697266,
+            "mean_logp": -21.750001907348633,
+            "n_tokens": 2
+          },
+          {
+            "label": "samosa",
+            "sum_logp": -49.970187783130314,
+            "mean_logp": -16.656729261043438,
+            "n_tokens": 3
+          },
+          {
+            "label": "sashimi",
+            "sum_logp": -41.34517288208008,
+            "mean_logp": -13.781724294026693,
+            "n_tokens": 3
+          },
+          {
+            "label": "scallops",
+            "sum_logp": -41.12908554077137,
+            "mean_logp": -13.709695180257123,
+            "n_tokens": 3
+          },
+          {
+            "label": "seaweed_salad",
+            "sum_logp": -52.75254764826968,
+            "mean_logp": -17.58418254942323,
+            "n_tokens": 3
+          },
+          {
+            "label": "shrimp_and_grits",
+            "sum_logp": -50.00203225575387,
+            "mean_logp": -12.500508063938467,
+            "n_tokens": 4
+          },
+          {
+            "label": "spaghetti_bolognese",
+            "sum_logp": -50.375028729438775,
+            "mean_logp": -16.79167624314626,
+            "n_tokens": 3
+          },
+          {
+            "label": "spaghetti_carbonara",
+            "sum_logp": -55.687528729438775,
+            "mean_logp": -13.921882182359694,
+            "n_tokens": 4
+          },
+          {
+            "label": "spring_rolls",
+            "sum_logp": -52.250006675720215,
+            "mean_logp": -26.125003337860107,
+            "n_tokens": 2
+          },
+          {
+            "label": "steak",
+            "sum_logp": -35.875003814697266,
+            "mean_logp": -35.875003814697266,
+            "n_tokens": 1
+          },
+          {
+            "label": "strawberry_shortcake",
+            "sum_logp": -39.37500190734863,
+            "mean_logp": -13.125000635782877,
+            "n_tokens": 3
+          },
+          {
+            "label": "sushi",
+            "sum_logp": -30.845172621309757,
+            "mean_logp": -15.422586310654879,
+            "n_tokens": 2
+          },
+          {
+            "label": "tacos",
+            "sum_logp": -27.648163601756096,
+            "mean_logp": -13.824081800878048,
+            "n_tokens": 2
+          },
+          {
+            "label": "takoyaki",
+            "sum_logp": -46.250003814697266,
+            "mean_logp": -15.416667938232422,
+            "n_tokens": 3
+          },
+          {
+            "label": "tiramisu",
+            "sum_logp": -34.14816379547119,
+            "mean_logp": -11.382721265157064,
+            "n_tokens": 3
+          },
+          {
+            "label": "tuna_tartare",
+            "sum_logp": -56.39824223518144,
+            "mean_logp": -14.09956055879536,
+            "n_tokens": 4
+          },
+          {
+            "label": "waffles",
+            "sum_logp": -2.3841832827997678e-06,
+            "mean_logp": -1.1920916413998839e-06,
+            "n_tokens": 2
+          }
+        ],
+        "gold_rank": 1,
+        "ranking_rule": "mean_log_probability",
+        "wall_s": 0.9043754150043242,
+        "num_cached_tokens": 90816,
+        "requested_prompt_tokens": 93163
+      }
+    }
+  ],
+  "speedup": 3.8209606644814205
+}

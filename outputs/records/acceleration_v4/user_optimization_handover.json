@@ -1,0 +1,125 @@
+{
+  "reason": "User resumed and requested inference optimization and 4-5 representative model scope; stop dispatch of old all16 queue, release Qwen3VL GPU1 for benchmark; other active workers continue temporarily",
+  "host": "4028",
+  "stopped": [
+    {
+      "pid": 431648,
+      "command": "venv/bin/python -u workflows/food_closed_v3/scheduler.py --host 4028 --name food_closed_20260923_v3 "
+    }
+  ],
+  "prior_status": {
+    "host": "4028",
+    "scheduler_pid": 431648,
+    "started_utc": "2026-09-22T16:34:29.317407+00:00",
+    "host_complete": false,
+    "scope": "Food101 closed only; independent generation paused by user",
+    "expected_per_model": 4848,
+    "amendment_sha256": "c9b7b57be864a124a8a16694c087dde1c3ebdf5faccca1eb4db5c36a52026096",
+    "workflow_sha256": {
+      "worker.sh": "95e25336b9f69d19a322df6043fde4e5b74f0fe043dcfc371ce20ae52d23133f",
+      "runner.py": "8f3dfb46b25a5bb531cfc7a3ef5427e1a64cf87475271f0647f0d0374d5ba94a",
+      "README.md": "1e961d7702c1dfb6134becd2093006aae2ebd3dd5fddc4e2285d97496503a48a",
+      "scheduler.py": "61a997b01dbfe766b99dbbf08f0478ac718cee0c3422355116ee0b31ce3fbe35",
+      "admission.py": "eaae9245e465d7cdd5bfcb4112ede4a8104f1e0e6ad65f6298f833fbae0c1f9c"
+    },
+    "jobs": {
+      "qwen35_9b": {
+        "status": "running",
+        "physical_gpus": [
+          0
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "0",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py",
+          "--model",
+          "qwen35_9b",
+          "--run-dir",
+          "outputs/records/probes_v2/food_closed_20260923_v3"
+        ],
+        "worker_pid": 431778,
+        "started_utc": "2026-09-22T16:34:29.335535+00:00"
+      },
+      "qwen35_4b": {
+        "status": "running",
+        "physical_gpus": [
+          1
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "1",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py",
+          "--model",
+          "qwen35_4b",
+          "--run-dir",
+          "outputs/records/probes_v2/food_closed_20260923_v3"
+        ],
+        "worker_pid": 431781,
+        "started_utc": "2026-09-22T16:34:29.342055+00:00"
+      },
+      "qwen25vl": {
+        "status": "not_started"
+      },
+      "gemma3_4b": {
+        "status": "not_started"
+      },
+      "llava15_7b": {
+        "status": "not_started"
+      },
+      "onevision": {
+        "status": "not_started"
+      },
+      "llava16_mistral": {
+        "status": "not_started"
+      },
+      "minicpm26": {
+        "status": "not_started"
+      },
+      "minicpm45": {
+        "status": "not_started"
+      },
+      "phi35": {
+        "status": "not_started"
+      },
+      "llava16_vicuna": {
+        "status": "not_started"
+      },
+      "gemma3_12b": {
+        "status": "running",
+        "physical_gpus": [
+          4,
+          5
+        ],
+        "command": [
+          "bash",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/worker.sh",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation",
+          "4,5",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+          "-u",
+          "/home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py",
+          "--model",
+          "gemma3_12b",
+          "--run-dir",
+          "outputs/records/probes_v2/food_closed_20260923_v3"
+        ],
+        "worker_pid": 431784,
+        "started_utc": "2026-09-22T16:34:29.348699+00:00"
+      },
+      "llava15_13b": {
+        "status": "not_started"
+      },
+      "internvl35_8b": {
+        "status": "not_started"
+      }
+    }
+  }
+}

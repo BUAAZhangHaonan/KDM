@@ -1,0 +1,10 @@
+{
+  "cpu_only": true,
+  "compile_pass": true,
+  "import_pass": true,
+  "worker_subclass_pass": true,
+  "skip_empty_pass": true,
+  "valid_range_and_once_receipt_pass": true,
+  "cuda_initialized": false,
+  "synthetic_test_receipt": "attention_hook_cpu_test_v1.json"
+}

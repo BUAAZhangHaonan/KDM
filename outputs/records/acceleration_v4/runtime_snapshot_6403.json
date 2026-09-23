@@ -1,0 +1,42 @@
+{
+  "captured_unix": 1790140067.3178759,
+  "host": "6403",
+  "models": {
+    "qwen35_4b": {
+      "progress": {
+        "model": "qwen35_4b",
+        "pid": 137848,
+        "status": "running",
+        "expected": 4848,
+        "closed": 206,
+        "output": "outputs/raw/acceleration_v4/panel5_engine_v2/qwen35_4b/closed.jsonl",
+        "last_sample_id": "food101:beef_tartare_group_013.jpg",
+        "last_wall_s": 2.2760251669969875,
+        "updated_unix": 1790140065.9684408
+      },
+      "benchmark_speedup": 4.931310346522795,
+      "benchmark_input_check": true,
+      "small_reference_top1_parity": true,
+      "recent_mean_wall_s": 2.1598315655390614,
+      "raw_count_snapshot": 206
+    },
+    "qwen25vl": {
+      "progress": {
+        "model": "qwen25vl",
+        "pid": 139936,
+        "status": "running",
+        "expected": 4848,
+        "closed": 538,
+        "output": "outputs/raw/acceleration_v4/panel5_engine_v2/qwen25vl/closed.jsonl",
+        "last_sample_id": "food101:caesar_salad_group_009.jpg",
+        "last_wall_s": 0.6996356259915046,
+        "updated_unix": 1790140067.2973988
+      },
+      "benchmark_speedup": 7.015405693913077,
+      "benchmark_input_check": true,
+      "small_reference_top1_parity": true,
+      "recent_mean_wall_s": 0.6822694381405018,
+      "raw_count_snapshot": 538
+    }
+  }
+}

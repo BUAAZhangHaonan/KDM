@@ -1,0 +1,15 @@
+{
+  "reason": "User requested representative 4-5 model full pipeline rather than all16 slow scoring; keep old outputs, release nonpanel GPUs for acceleration work",
+  "stopped": [
+    {
+      "model": "qwen35_9b",
+      "pid": 431778,
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py --model qwen35_9b --run-dir outputs/records/probes_v2/food_closed_20260923_v3 "
+    },
+    {
+      "model": "gemma3_12b",
+      "pid": 431784,
+      "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python -u /home/g203-4028/projects/knowledge-deficit-mitigation/workflows/food_closed_v3/runner.py --model gemma3_12b --run-dir outputs/records/probes_v2/food_closed_20260923_v3 "
+    }
+  ]
+}

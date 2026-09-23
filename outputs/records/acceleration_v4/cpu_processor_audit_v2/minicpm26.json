@@ -1,0 +1,799 @@
+{
+  "model": "minicpm26",
+  "cpu_only": true,
+  "script_sha256": "be0c068437e517817719d997ed6fa6ced5cf7c33dfc4765dae53038eab4b49f6",
+  "rows": [
+    {
+      "sample_id": "food101:apple_pie_group_000.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "tgt_sizes": false,
+        "pixel_values": false,
+        "image_sizes": true
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "pixel_values": true,
+        "image_sizes": true,
+        "image_bound": true,
+        "tgt_sizes": true,
+        "position_ids": true
+      },
+      "after_model_dtype_cast_parity": {
+        "tgt_sizes": false,
+        "pixel_values": true,
+        "image_sizes": true
+      },
+      "actual_processor_tensors": {
+        "tgt_sizes": {
+          "shape": [
+            1,
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47",
+          "values": [
+            [
+              [
+                28,
+                37
+              ]
+            ]
+          ]
+        },
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "3c01b3f3626b472ed02a05acc7e93b0dc6a15e24d942c53c0cf4f93ec8971be7"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "043f95e84bf40ec261bc033af90f20e6d4d4b9e3aad23f40535b24c7b1838a19",
+              "values": [
+                512,
+                384
+              ]
+            }
+          ]
+        ]
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 14,
+            "length": 69,
+            "is_embed": {
+              "shape": [
+                69
+              ],
+              "dtype": "torch.bool",
+              "sha256": "a75613fb3468a59ee3b79d04e48e6067cae368eaa3ca485236fa3a24ea8a5e4e",
+              "values": [
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+              ]
+            }
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:edamame_eval_032.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "tgt_sizes": false,
+        "pixel_values": false,
+        "image_sizes": true
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "pixel_values": true,
+        "image_sizes": true,
+        "image_bound": true,
+        "tgt_sizes": true,
+        "position_ids": true
+      },
+      "after_model_dtype_cast_parity": {
+        "tgt_sizes": false,
+        "pixel_values": true,
+        "image_sizes": true
+      },
+      "actual_processor_tensors": {
+        "tgt_sizes": {
+          "shape": [
+            1,
+            3,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "e2ddad55542b3cd09375a6605cbdae686663ad23e1faad4cd9bd1a218bc74a83",
+          "values": [
+            [
+              [
+                32,
+                32
+              ],
+              [
+                23,
+                45
+              ],
+              [
+                23,
+                45
+              ]
+            ]
+          ]
+        },
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14336
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "ef63283400a7f59bb3208490fd1c610cb2c705396ee8866842f38fc854bc69a3"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "8ea406ed2d4787f26de565577273d2f4ab5425b120a342ff6e19962b6f7e0ce8"
+            },
+            {
+              "shape": [
+                3,
+                14,
+                14490
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "d0dc7c2a230ba787318aea37d4c40f745ac3540e43e558e13e6134b16f33ca1f"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "31693741a12f4dd38e923200e6a72d5f585ad52b74addd0d3e84d90c1196a906",
+              "values": [
+                512,
+                512
+              ]
+            }
+          ]
+        ]
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 14,
+            "length": 202,
+            "is_embed": {
+              "shape": [
+                202
+              ],
+              "dtype": "torch.bool",
+              "sha256": "881cd8b7648ea002940f882a59ae8c26c4a6b1a0f02f9b2bb74553de3a880076",
+              "values": [
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+              ]
+            }
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:omelette_group_016.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "tgt_sizes": false,
+        "pixel_values": false,
+        "image_sizes": true
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "pixel_values": true,
+        "image_sizes": true,
+        "image_bound": true,
+        "tgt_sizes": true,
+        "position_ids": true
+      },
+      "after_model_dtype_cast_parity": {
+        "tgt_sizes": false,
+        "pixel_values": true,
+        "image_sizes": true
+      },
+      "actual_processor_tensors": {
+        "tgt_sizes": {
+          "shape": [
+            1,
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "8456717e8a8a2e4a0c34993cbf03f4feb9d063d063ef8a14e47f8a67ec57bf47",
+          "values": [
+            [
+              [
+                28,
+                37
+              ]
+            ]
+          ]
+        },
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14504
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "e81ff3bee0dbd5aeca958084a5f2400963597f3d53dcd8ac9e87f7e8771f227a"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "043f95e84bf40ec261bc033af90f20e6d4d4b9e3aad23f40535b24c7b1838a19",
+              "values": [
+                512,
+                384
+              ]
+            }
+          ]
+        ]
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 14,
+            "length": 69,
+            "is_embed": {
+              "shape": [
+                69
+              ],
+              "dtype": "torch.bool",
+              "sha256": "a75613fb3468a59ee3b79d04e48e6067cae368eaa3ca485236fa3a24ea8a5e4e",
+              "values": [
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+              ]
+            }
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    },
+    {
+      "sample_id": "food101:waffles_eval_047.jpg",
+      "expanded_prompt_ids_equal": true,
+      "common_tensor_parity": {
+        "tgt_sizes": false,
+        "pixel_values": false,
+        "image_sizes": true
+      },
+      "external_native_matches": {
+        "input_ids": true,
+        "attention_mask": true,
+        "pixel_values": true,
+        "image_sizes": true,
+        "image_bound": true,
+        "tgt_sizes": true,
+        "position_ids": true
+      },
+      "after_model_dtype_cast_parity": {
+        "tgt_sizes": false,
+        "pixel_values": true,
+        "image_sizes": true
+      },
+      "actual_processor_tensors": {
+        "tgt_sizes": {
+          "shape": [
+            1,
+            1,
+            2
+          ],
+          "dtype": "torch.int64",
+          "sha256": "f2ead63f789f75baca07f55089c1b091f4274a906d141172179f1b706bed8456",
+          "values": [
+            [
+              [
+                26,
+                39
+              ]
+            ]
+          ]
+        },
+        "pixel_values": [
+          [
+            {
+              "shape": [
+                3,
+                14,
+                14196
+              ],
+              "dtype": "torch.bfloat16",
+              "sha256": "4127d188e741a865472f889b9189fa67dd033297ef2b24cbfd86db07917ef166"
+            }
+          ]
+        ],
+        "image_sizes": [
+          [
+            {
+              "shape": [
+                2
+              ],
+              "dtype": "torch.int64",
+              "sha256": "136b02f2e6043890382db31f5488f877feafc6b1c04d135e74767c97cf62f92d",
+              "values": [
+                512,
+                341
+              ]
+            }
+          ]
+        ]
+      },
+      "mm_placeholders": {
+        "image": [
+          {
+            "offset": 14,
+            "length": 69,
+            "is_embed": {
+              "shape": [
+                69
+              ],
+              "dtype": "torch.bool",
+              "sha256": "a75613fb3468a59ee3b79d04e48e6067cae368eaa3ca485236fa3a24ea8a5e4e",
+              "values": [
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                false
+              ]
+            }
+          }
+        ]
+      },
+      "native_image_token_ranges": null
+    }
+  ],
+  "reference_sha256": "4481b2a871043483a5c933d01d82efbea4488f0e47d4e1d186946a73aec44b0e",
+  "model_config_is_mm_prefix_lm": false,
+  "model_type": "minicpmv",
+  "vllm_processor_class": "MiniCPMVMultiModalProcessor",
+  "status": "complete"
+}

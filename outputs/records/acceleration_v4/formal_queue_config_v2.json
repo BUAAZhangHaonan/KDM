@@ -1,0 +1,36 @@
+{
+  "root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+  "status_path": "outputs/records/acceleration_v4/formal_queue_status_v2.json",
+  "no_retry": true,
+  "lanes": [
+    {
+      "gpu": "0",
+      "pid": 451559,
+      "complete_path": "outputs/records/acceleration_v4/panel5_food_formal_v4/qwen25vl/shard_000_of_001/complete.json",
+      "pending": [
+        {
+          "command": [
+            "bash",
+            "scripts/worker.sh",
+            "/home/g203-4028/projects/knowledge-deficit-mitigation",
+            "0",
+            "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+            "-u",
+            "workflows/acceleration_v4/formal_runner.py",
+            "--model",
+            "qwen35_4b",
+            "--run-name",
+            "panel5_food_formal_v4",
+            "--shard",
+            "0",
+            "--n-shards",
+            "1"
+          ],
+          "log": "outputs/records/acceleration_v4/qwen35_4b_formal_queued.log",
+          "complete_path": "outputs/records/acceleration_v4/panel5_food_formal_v4/qwen35_4b/shard_000_of_001/complete.json"
+        }
+      ]
+    }
+  ],
+  "reason": "Place fifth model after the faster measured Qwen2.5 formal lane; no model process interrupted."
+}

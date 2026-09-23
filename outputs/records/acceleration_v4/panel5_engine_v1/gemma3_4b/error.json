@@ -1,0 +1,4 @@
+{
+  "error": "ValueError: Reference top1 differs; stop for discrepancy review, no production launch",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/workflows/acceleration_v4/vllm_closed.py\", line 124, in main\n    if not eligible:raise ValueError('Reference top1 differs; stop for discrepancy review, no production launch')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Reference top1 differs; stop for discrepancy review, no production launch\n"
+}

@@ -1,0 +1,582 @@
+{
+  "schema": "kdm_resource_limited_acceleration_panel_v4",
+  "date": "2026-09-23",
+  "status": "first_panel_fixed_benchmark_and_schedule_pending",
+  "models": [
+    {
+      "key": "qwen25vl",
+      "rationale": "Earlier Qwen VL generation; high baseline abstention; registered Food SID support.",
+      "method_plan": [
+        "vcd",
+        "m3id",
+        "dola",
+        "deco",
+        "sid"
+      ],
+      "guided_food_baseline": [
+        {
+          "split": "all",
+          "expected": 4848,
+          "annotated": 4848,
+          "unresolved": 0,
+          "abstain": 2841,
+          "correct_score_sum": 1467.0,
+          "abstention_rate_lower": 0.5860148514851485,
+          "abstention_rate_upper": 0.5860148514851485,
+          "accuracy_lower": 0.3025990099009901,
+          "accuracy_upper": 0.3025990099009901
+        },
+        {
+          "split": "dev",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 1423,
+          "correct_score_sum": 727.0,
+          "abstention_rate_lower": 0.5870462046204621,
+          "abstention_rate_upper": 0.5870462046204621,
+          "accuracy_lower": 0.2999174917491749,
+          "accuracy_upper": 0.2999174917491749
+        },
+        {
+          "split": "eval",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 1418,
+          "correct_score_sum": 740.0,
+          "abstention_rate_lower": 0.584983498349835,
+          "abstention_rate_upper": 0.584983498349835,
+          "accuracy_lower": 0.30528052805280526,
+          "accuracy_upper": 0.30528052805280526
+        }
+      ],
+      "stage_five_eval_generation_tasks": 193920,
+      "stage_five_task_matrix": [
+        {
+          "kind": "main",
+          "method": "direct",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "vcd",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "vcd",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "m3id",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "m3id",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "dola",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "deco",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "sid",
+          "count": 38784
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_vcd",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_m3id",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "cda_visual",
+          "count": 9696
+        }
+      ]
+    },
+    {
+      "key": "qwen35_4b",
+      "rationale": "Newer Qwen generation and 4B scale; distinct attention structure; registered SID exclusion retained.",
+      "method_plan": [
+        "vcd",
+        "m3id",
+        "dola",
+        "deco"
+      ],
+      "guided_food_baseline": [
+        {
+          "split": "all",
+          "expected": 4848,
+          "annotated": 4848,
+          "unresolved": 0,
+          "abstain": 988,
+          "correct_score_sum": 2343.0,
+          "abstention_rate_lower": 0.2037953795379538,
+          "abstention_rate_upper": 0.2037953795379538,
+          "accuracy_lower": 0.4832920792079208,
+          "accuracy_upper": 0.4832920792079208
+        },
+        {
+          "split": "dev",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 490,
+          "correct_score_sum": 1161.0,
+          "abstention_rate_lower": 0.20214521452145215,
+          "abstention_rate_upper": 0.20214521452145215,
+          "accuracy_lower": 0.47896039603960394,
+          "accuracy_upper": 0.47896039603960394
+        },
+        {
+          "split": "eval",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 498,
+          "correct_score_sum": 1182.0,
+          "abstention_rate_lower": 0.20544554455445543,
+          "abstention_rate_upper": 0.20544554455445543,
+          "accuracy_lower": 0.4876237623762376,
+          "accuracy_upper": 0.4876237623762376
+        }
+      ],
+      "stage_five_eval_generation_tasks": 155136,
+      "stage_five_task_matrix": [
+        {
+          "kind": "main",
+          "method": "direct",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "vcd",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "vcd",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "m3id",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "m3id",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "dola",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "deco",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_vcd",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_m3id",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "cda_visual",
+          "count": 9696
+        }
+      ]
+    },
+    {
+      "key": "llava16_mistral",
+      "rationale": "LLaVA family with Mistral language backbone; registered Food SID support.",
+      "method_plan": [
+        "vcd",
+        "m3id",
+        "dola",
+        "deco",
+        "sid"
+      ],
+      "guided_food_baseline": [
+        {
+          "split": "all",
+          "expected": 4848,
+          "annotated": 4848,
+          "unresolved": 0,
+          "abstain": 947,
+          "correct_score_sum": 1516.0,
+          "abstention_rate_lower": 0.19533828382838284,
+          "abstention_rate_upper": 0.19533828382838284,
+          "accuracy_lower": 0.3127062706270627,
+          "accuracy_upper": 0.3127062706270627
+        },
+        {
+          "split": "dev",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 465,
+          "correct_score_sum": 760.0,
+          "abstention_rate_lower": 0.19183168316831684,
+          "abstention_rate_upper": 0.19183168316831684,
+          "accuracy_lower": 0.31353135313531355,
+          "accuracy_upper": 0.31353135313531355
+        },
+        {
+          "split": "eval",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 482,
+          "correct_score_sum": 756.0,
+          "abstention_rate_lower": 0.19884488448844884,
+          "abstention_rate_upper": 0.19884488448844884,
+          "accuracy_lower": 0.3118811881188119,
+          "accuracy_upper": 0.3118811881188119
+        }
+      ],
+      "stage_five_eval_generation_tasks": 193920,
+      "stage_five_task_matrix": [
+        {
+          "kind": "main",
+          "method": "direct",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "vcd",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "vcd",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "m3id",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "m3id",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "dola",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "deco",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "sid",
+          "count": 38784
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_vcd",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_m3id",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "cda_visual",
+          "count": 9696
+        }
+      ]
+    },
+    {
+      "key": "minicpm26",
+      "rationale": "MiniCPM visual-input family; intermediate baseline abstention; registered SID exclusion retained.",
+      "method_plan": [
+        "vcd",
+        "m3id",
+        "dola",
+        "deco"
+      ],
+      "guided_food_baseline": [
+        {
+          "split": "all",
+          "expected": 4848,
+          "annotated": 4848,
+          "unresolved": 0,
+          "abstain": 384,
+          "correct_score_sum": 1917.0,
+          "abstention_rate_lower": 0.07920792079207921,
+          "abstention_rate_upper": 0.07920792079207921,
+          "accuracy_lower": 0.39542079207920794,
+          "accuracy_upper": 0.39542079207920794
+        },
+        {
+          "split": "dev",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 184,
+          "correct_score_sum": 964.0,
+          "abstention_rate_lower": 0.07590759075907591,
+          "abstention_rate_upper": 0.07590759075907591,
+          "accuracy_lower": 0.3976897689768977,
+          "accuracy_upper": 0.3976897689768977
+        },
+        {
+          "split": "eval",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 200,
+          "correct_score_sum": 953.0,
+          "abstention_rate_lower": 0.08250825082508251,
+          "abstention_rate_upper": 0.08250825082508251,
+          "accuracy_lower": 0.39315181518151815,
+          "accuracy_upper": 0.39315181518151815
+        }
+      ],
+      "stage_five_eval_generation_tasks": 155136,
+      "stage_five_task_matrix": [
+        {
+          "kind": "main",
+          "method": "direct",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "vcd",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "vcd",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "m3id",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "m3id",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "dola",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "deco",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_vcd",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_m3id",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "cda_visual",
+          "count": 9696
+        }
+      ]
+    },
+    {
+      "key": "gemma3_4b",
+      "rationale": "Gemma family and 4B scale; near-zero baseline abstention boundary; prompt improves baseline accuracy, retained rather than selected away.",
+      "method_plan": [
+        "vcd",
+        "m3id",
+        "dola",
+        "deco"
+      ],
+      "guided_food_baseline": [
+        {
+          "split": "all",
+          "expected": 4848,
+          "annotated": 4847,
+          "unresolved": 1,
+          "abstain": 2,
+          "correct_score_sum": 1658.0,
+          "abstention_rate_lower": 0.00041254125412541255,
+          "abstention_rate_upper": 0.0006188118811881188,
+          "accuracy_lower": 0.341996699669967,
+          "accuracy_upper": 0.34220297029702973
+        },
+        {
+          "split": "dev",
+          "expected": 2424,
+          "annotated": 2423,
+          "unresolved": 1,
+          "abstain": 1,
+          "correct_score_sum": 832.0,
+          "abstention_rate_lower": 0.00041254125412541255,
+          "abstention_rate_upper": 0.0008250825082508251,
+          "accuracy_lower": 0.3432343234323432,
+          "accuracy_upper": 0.34364686468646866
+        },
+        {
+          "split": "eval",
+          "expected": 2424,
+          "annotated": 2424,
+          "unresolved": 0,
+          "abstain": 1,
+          "correct_score_sum": 826.0,
+          "abstention_rate_lower": 0.00041254125412541255,
+          "abstention_rate_upper": 0.00041254125412541255,
+          "accuracy_lower": 0.34075907590759075,
+          "accuracy_upper": 0.34075907590759075
+        }
+      ],
+      "stage_five_eval_generation_tasks": 155136,
+      "stage_five_task_matrix": [
+        {
+          "kind": "main",
+          "method": "direct",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "vcd",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "vcd",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "m3id",
+          "count": 38784
+        },
+        {
+          "kind": "reference_instruction_removed",
+          "method": "m3id",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "dola",
+          "count": 9696
+        },
+        {
+          "kind": "main",
+          "method": "deco",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_vcd",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "instruction_m3id",
+          "count": 9696
+        },
+        {
+          "kind": "instruction_preserving",
+          "method": "cda_visual",
+          "count": 9696
+        }
+      ]
+    }
+  ],
+  "selection_basis": "Resource-limited family, generation, size and baseline-abstention coverage after observing census; no intervention outcomes used. Not claimed as original preregistered five-model selection.",
+  "dataset": {
+    "name": "food101",
+    "all": 4848,
+    "dev": 2424,
+    "eval": 2424,
+    "classes": 101
+  },
+  "counts": {
+    "closed_records_all_splits": 24240,
+    "independent_answers_all_food_if_resumed_at_10_per_question": 242400,
+    "stage_five_eval_generation_tasks": 853248,
+    "count_scope": "Generation task expansion only; excludes independent probes, scoring, replay, finite-response audits and derived comparators. Existing validated same-identity rows may be reused."
+  },
+  "markers": [
+    "UNKNOWN",
+    "UNCLEAR",
+    "UNSURE",
+    "I cannot identify it"
+  ],
+  "retained_scope": [
+    "direct",
+    "vcd_full_4x4",
+    "m3id_full_4x4",
+    "dola",
+    "deco",
+    "sid_full_4x4_where_registered",
+    "reference_instruction_removed_vcd",
+    "reference_instruction_removed_m3id",
+    "instruction_vcd",
+    "instruction_m3id",
+    "cda_visual",
+    "copy_original_abstention_comparator",
+    "matched_prefix_mechanism",
+    "finite_response_audit",
+    "original_metrics_and_bootstrap"
+  ],
+  "resources": {
+    "4028_allowed_physical_gpus": [
+      0,
+      1,
+      4,
+      5
+    ],
+    "6403_allowed_physical_gpus": [
+      0,
+      1
+    ],
+    "dispatch": "Not specified until benchmark and input/logit consistency verification; host/model admission must be recorded before dispatch."
+  },
+  "annotation": "Zero-API character matching first; unresolved records remain unresolved. Existing paid census labels retained; no new paid submission authorized by this amendment.",
+  "gt_limit": "Closed-class rank alone is not the original joint evidence. Do not claim zero independent successes AND rank greater than 1 before both are available.",
+  "sources": {
+    "src/kdm/pipeline.py": "16a0f486e926e83bb5f8fe81bab532ff916c003686aade9976e01e3443bb5f02",
+    "configs/kdm/method_plan.json": "ae5f47a1d01366e779f7863b0bbcd5a36608d49e76dea091fcce4a7bb03af68c",
+    "data/current/all.jsonl": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+    "outputs/annotations/deepseek_v2/census/merged_after_retry151_v1/metrics.json": "7609154cf47a3a27fa34a8710909fc143b59170b2fa02136a27a737fe200e23f"
+  }
+}

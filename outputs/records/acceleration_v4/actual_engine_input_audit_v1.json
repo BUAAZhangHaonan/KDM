@@ -1,0 +1,246 @@
+{
+  "cpu_only": true,
+  "scope": "actual engine multimodal processor and prompt; does not validate GPU mask or numerical score parity",
+  "models": {
+    "gemma3_4b": {
+      "source": "outputs/records/acceleration_v4/cpu_processor_audit_v2/gemma3_4b.json",
+      "source_sha256": "360a30764548a7e2d58ea67ea3c4a86a0c5ad3e39954522de2ffd926e5daf0f2",
+      "actual_engine_input_pass": true,
+      "adjustment": null,
+      "rows": [
+        {
+          "sample_id": "food101:apple_pie_group_000.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:edamame_eval_032.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:omelette_group_016.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:waffles_eval_047.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        }
+      ]
+    },
+    "qwen35_4b": {
+      "source": "outputs/records/acceleration_v4/cpu_processor_audit_v2/qwen35_4b.json",
+      "source_sha256": "4d9e65333b8234becbc2b41b49a81f60aecf9e8f66d21845b2101d3ed9bbbca7",
+      "actual_engine_input_pass": true,
+      "adjustment": null,
+      "rows": [
+        {
+          "sample_id": "food101:apple_pie_group_000.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:ceviche_group_010.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:deviled_eggs_group_020.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:frozen_yogurt_eval_029.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        }
+      ]
+    },
+    "qwen25vl": {
+      "source": "outputs/records/acceleration_v4/cpu_processor_audit_v2/qwen25vl.json",
+      "source_sha256": "075d95fdda2b24fdaf09b17c2e1f62e9bd82f7278e368a797431c82f831e2207",
+      "actual_engine_input_pass": true,
+      "adjustment": null,
+      "rows": [
+        {
+          "sample_id": "food101:apple_pie_group_000.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:edamame_eval_032.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:omelette_group_016.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:waffles_eval_047.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_grid_thw": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        }
+      ]
+    },
+    "minicpm26": {
+      "source": "outputs/records/acceleration_v4/cpu_processor_audit_v3/minicpm26.json",
+      "source_sha256": "4a8e3732223bb633b57e9e60c12607600d8fd104c20537fa93577d3af24c21f1",
+      "actual_engine_input_pass": true,
+      "adjustment": "normalize [Tensor(n,2)] to Tensor(1,n,2) only for audit comparison",
+      "rows": [
+        {
+          "sample_id": "food101:apple_pie_group_000.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true,
+            "image_sizes": true,
+            "tgt_sizes": true
+          },
+          "tgt_sizes_layout_normalization_pass": true
+        },
+        {
+          "sample_id": "food101:edamame_eval_032.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true,
+            "image_sizes": true,
+            "tgt_sizes": true
+          },
+          "tgt_sizes_layout_normalization_pass": true
+        },
+        {
+          "sample_id": "food101:omelette_group_016.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true,
+            "image_sizes": true,
+            "tgt_sizes": true
+          },
+          "tgt_sizes_layout_normalization_pass": true
+        },
+        {
+          "sample_id": "food101:waffles_eval_047.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "pixel_values": true,
+            "image_sizes": true,
+            "tgt_sizes": true
+          },
+          "tgt_sizes_layout_normalization_pass": true
+        }
+      ]
+    },
+    "llava16_mistral": {
+      "source": "outputs/records/acceleration_v4/cpu_processor_audit_v4/llava16_mistral.json",
+      "source_sha256": "231a9baa69a08d4fd82789d29e3ce5a9df89dcc95348edc1c4bc38b9bbd71a86",
+      "actual_engine_input_pass": true,
+      "adjustment": "prepend verified native BOS to engine-only unexpanded prompt",
+      "rows": [
+        {
+          "sample_id": "food101:apple_pie_group_000.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_sizes": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:edamame_eval_032.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_sizes": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:omelette_group_016.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_sizes": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        },
+        {
+          "sample_id": "food101:waffles_eval_047.jpg",
+          "actual_engine_input_pass": true,
+          "expanded_prompt_ids_equal": true,
+          "fields_after_native_model_dtype_cast": {
+            "image_sizes": true,
+            "pixel_values": true
+          },
+          "tgt_sizes_layout_normalization_pass": null
+        }
+      ]
+    }
+  }
+}
