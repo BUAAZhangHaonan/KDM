@@ -47,12 +47,13 @@
   "admission_status": "Vicuna and Qwen3VL complete. LLaVA15 independent admission passed; closed engine stalled. Do not count initialization as production. Qwen35/Gemma semantic batch012/013 hold is independent of inference scheduling.",
   "source_host_status_entries": {
     "6403": [
-      "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/dispatch.json",
-      "outputs/records/acceleration_v4/remaining11_llava15_7b_closed_20260924_spawn_v2/llava15_7b/progress.json",
+      "outputs/records/remaining11_onevision_v1/after_native.json",
+      "outputs/records/acceleration_v4/remaining11_onevision_closed_20260924_v1/onevision/progress.json",
       "outputs/records/probes_v2/glm_native_remaining_20260924_v1/glm46v_progress.json"
     ],
     "RTX_Pro_6000": [
-      "outputs/records/independent_k100_llava15_v1/production_dispatch.json"
+      "outputs/records/independent_k100_onevision_v1/production_dispatch.json",
+      "outputs/records/acceleration_v4/extra11_independent_food_onevision_v1/onevision/progress.json"
     ]
   },
   "excluded_hosts": {
@@ -63,16 +64,15 @@
   "inference_waits_for_luna_acceptance": false,
   "remaining_model_initial_assignments": {
     "6403:0": {
-      "model": "llava15_7b",
+      "model": "onevision",
       "measurement": "closed",
-      "state": "LLaVA15 candidate4848 complete verified and joined to existing labels; next OneVision admission owned by remaining_next_gpu, inspect live dispatch.",
-      "entry_pid": 396389,
-      "engine_pid": 396564,
+      "state": "actual16 input/rank gate and agent review accepted; production92/4848 observed",
+      "entry_pid": 407912,
+      "engine_pid": 408823,
       "registered_dtype": "float16",
-      "run": "remaining11_llava15_7b_closed_20260924_spawn_v2",
-      "dispatch": "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/dispatch.json",
-      "startup": "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/startup_verified.json",
-      "original_failure_retained": true
+      "run": "remaining11_onevision_closed_20260924_v1",
+      "dispatch": "outputs/records/remaining11_onevision_v1/after_native.json",
+      "startup": "outputs/records/remaining11_onevision_v1/startup_verified.json"
     },
     "6403:1": {
       "model": "glm46v",
@@ -83,15 +83,21 @@
       "vllm_glm_and_qwen35_9b_gate_failures_preserved": true
     },
     "RTX_Pro_6000:0": {
-      "model": "llava15_7b",
+      "model": "onevision",
       "measurement": "independent",
-      "state": "LLaVA15 independent48480 complete; next OneVision dedicated admission owned by remaining_next_gpu, inspect live dispatch.",
-      "records": "outputs/records/independent_k100_llava15_v1",
-      "receipt": "outputs/records/remaining11_sync_20260924/llava15_independent_complete/central_receipt.json",
-      "annotations": "outputs/annotations/remaining11_v1/llava15_independent_free_20260924_v1"
+      "state": "actual16/160 input/EOS/seed/cache audit and separate-backend review accepted; production850/48480 observed",
+      "supervisor_pid": 261368,
+      "worker_pid": 261369,
+      "engine_pid": 261855,
+      "run": "extra11_independent_food_onevision_v1",
+      "records": "outputs/records/independent_k100_onevision_v1",
+      "dispatch": "outputs/records/independent_k100_onevision_v1/production_dispatch.json",
+      "greedy_mismatch_retained": 1,
+      "exact_equivalence_claimed": false
     }
   },
-  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_2230.md",
+  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260925_0030.md",
   "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md",
-  "latest_remaining_update": "docs/current/REMAINING_LLAVA15_20260924.md"
+  "latest_remaining_update": "docs/current/REMAINING_ONEVISION_20260924.md",
+  "semantic_overwrite_incident": "Resolved by exact original-byte recovery and original80-batch execution SHA; receipt recovery_original_012_013_v1/root_recovery_receipt.json. Whole semantic export pending."
 }

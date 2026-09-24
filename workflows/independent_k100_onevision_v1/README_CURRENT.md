@@ -1,0 +1,5 @@
+# OneVision independent admission, K100
+
+Versioned from the successfully verified LLaVA1.5 independent engine pipeline. Model original onevision FP16, exact registered checkpoint copied under project cache and full SHA checked. Resolved original context capacity32768, hard no-truncation guard. Actual llava_onevision processor must match original pixel_values andimage_sizes and expanded tokens on16 original images. Native EOS/ten seeds/temperature1/top_p1/32 tokens/cache and raw selected probabilities must be audited via160 real samples. Review after audit precedes48480 production. Native source is6403 outputs/records/remaining11_onevision_v1/independent_native16. Independent generation may precede candidate completion; identity explicitly marks pending candidate and no jointGT.
+
+Entry.py guarded spawn plus physicalK100GPU0 lock/UUID and image-byte verification. User-authorized700MB resident safa remains untouched. Failures preserved, no automatic retry. Read actual verify/production dispatch files, not this preparation description, for current stage.
