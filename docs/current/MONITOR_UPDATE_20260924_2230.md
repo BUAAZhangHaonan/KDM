@@ -1,0 +1,15 @@
+# Monitor update 2026-09-24 14:20 UTC
+
+LLaVA15 candidate spawn cohort completed4848. Source-host full unique Food coverage and101 finite class scores verified;41 files synchronized with bundle SHA78c40f90fb6ee241845adbf93e3c8b3c7c4dd6c900469f046056256e5032ead8. Central receipt outputs/records/remaining11_sync_20260924/llava15_closed_complete/central_receipt.json. Original sidecars and old snapshots preserved.
+
+Versioned workflows/remaining11_v1/join_llava15_existing_labels_v1.py verified all raw row hashes against the already completed48480 initial labels, without repeating label classification, then bound the independently complete candidate cohort and emitted outputs/annotations/remaining11_v1/llava15_joint_existing_free_20260924_v1. Existing counts retained:7685correct,6369incorrect,16abstain,1invalid,34409unresolved.4848 question initial states:1797 observed correct independent answer,641 closed rank-one,17 free-screening joint support,2393 unresolved. These are preliminary automatic evidence, not semantic completion or finalGT. NoAPI/GPU used for joining.
+
+Compact source snapshot:4028 original four workers healthy;Qwen25 100062/193920,LLaVA56335/193920,Mini113431/155136,Gemma27044/155136. All are in prompt_matrix; no newly complete formal stage.6403GLM3458/4848 still native.6403GPU0 released after LLaVA15 candidate complete;K100 GPU0 only authorized722MB resident.
+
+Inference agent remaining_next_gpu owns next OneVision7B measurement admission on6403GPU0/K100GPU0.4028 full-range formal workers have no safely frozen transferable shard, so they remain untouched. Original registeredFP16, existing6403weights, native16 references and dedicated K100160-answer gate required; verify real dispatch before production claims. No failed gate retries, no4029.
+
+Luna pilot continues only absent092-101;resume271 continues absent310-319 after parser failures that wrote no310 result.302 correction receipt is complete and parser accepted effective spans;303-309 already done. Files are not semantic acceptance.012/013 hold remains unresolved, original bytes not recovered. Do not export or reuse held groups; do not overwrite old results or reissue stale checkpoints. Full-source semantic reading and exact multi-candidate spans remain required.
+
+All earlier scientific boundaries and two-hour schedule unchanged;first-three accepted operationalGTs remain3947positive/10597negative/zero unresolved, not human review. First-five Qwen35/Gemma semantic queue incomplete.
+
+Actual next-model admission startup: OneVision6403 native driver405056 and one-shot pidfd follower405560 started; registeredFP16 references candidate16 then independent16. K100 copied16.06GB checkpoint and fullSHA verification process258315 started; dedicated160-response admission awaits complete native reference. This is admission/preparation, not yet claimed production. OriginalAutoConfig resolved context32768; no truncation or research change. Engineer remaining_next_gpu continues actual gates/review and central dispatch sync after this heartbeat.
