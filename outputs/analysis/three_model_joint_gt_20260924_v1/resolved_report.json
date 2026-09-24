@@ -1,0 +1,933 @@
+{
+  "gt_definition": "no correct in10 independent answers AND gold candidate rank>1; unknown retained",
+  "rows": [
+    {
+      "model": "llava16_mistral",
+      "split": "all",
+      "guided": false,
+      "n": 4848,
+      "gt_positive": 1859,
+      "gt_unknown": 0,
+      "actual_abstain": 11,
+      "abstain_right": 7,
+      "abstain_wrong": 4,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.6363636363636364,
+      "precision_lower": 0.6363636363636364,
+      "precision_upper": 0.6363636363636364,
+      "gt_positive_but_correct": 36,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "llava16_mistral",
+      "split": "all",
+      "guided": true,
+      "n": 4848,
+      "gt_positive": 1859,
+      "gt_unknown": 0,
+      "actual_abstain": 947,
+      "abstain_right": 563,
+      "abstain_wrong": 384,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5945089757127772,
+      "precision_lower": 0.5945089757127772,
+      "precision_upper": 0.5945089757127772,
+      "gt_positive_but_correct": 23,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "llava16_mistral",
+      "split": "dev",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 923,
+      "gt_unknown": 0,
+      "actual_abstain": 2,
+      "abstain_right": 1,
+      "abstain_wrong": 1,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5,
+      "precision_lower": 0.5,
+      "precision_upper": 0.5,
+      "gt_positive_but_correct": 16,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "llava16_mistral",
+      "split": "dev",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 923,
+      "gt_unknown": 0,
+      "actual_abstain": 465,
+      "abstain_right": 276,
+      "abstain_wrong": 189,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5935483870967742,
+      "precision_lower": 0.5935483870967742,
+      "precision_upper": 0.5935483870967742,
+      "gt_positive_but_correct": 12,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "llava16_mistral",
+      "split": "eval",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 936,
+      "gt_unknown": 0,
+      "actual_abstain": 9,
+      "abstain_right": 6,
+      "abstain_wrong": 3,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.6666666666666666,
+      "precision_lower": 0.6666666666666666,
+      "precision_upper": 0.6666666666666666,
+      "gt_positive_but_correct": 20,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "llava16_mistral",
+      "split": "eval",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 936,
+      "gt_unknown": 0,
+      "actual_abstain": 482,
+      "abstain_right": 287,
+      "abstain_wrong": 195,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5954356846473029,
+      "precision_lower": 0.5954356846473029,
+      "precision_upper": 0.5954356846473029,
+      "gt_positive_but_correct": 11,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "all",
+      "guided": false,
+      "n": 4848,
+      "gt_positive": 1281,
+      "gt_unknown": 0,
+      "actual_abstain": 7,
+      "abstain_right": 6,
+      "abstain_wrong": 1,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.8571428571428571,
+      "precision_lower": 0.8571428571428571,
+      "precision_upper": 0.8571428571428571,
+      "gt_positive_but_correct": 32,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "all",
+      "guided": true,
+      "n": 4848,
+      "gt_positive": 1281,
+      "gt_unknown": 0,
+      "actual_abstain": 384,
+      "abstain_right": 215,
+      "abstain_wrong": 169,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5598958333333334,
+      "precision_lower": 0.5598958333333334,
+      "precision_upper": 0.5598958333333334,
+      "gt_positive_but_correct": 51,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "dev",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 633,
+      "gt_unknown": 0,
+      "actual_abstain": 4,
+      "abstain_right": 3,
+      "abstain_wrong": 1,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.75,
+      "precision_lower": 0.75,
+      "precision_upper": 0.75,
+      "gt_positive_but_correct": 11,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "dev",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 633,
+      "gt_unknown": 0,
+      "actual_abstain": 184,
+      "abstain_right": 108,
+      "abstain_wrong": 76,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.5869565217391305,
+      "precision_lower": 0.5869565217391305,
+      "precision_upper": 0.5869565217391305,
+      "gt_positive_but_correct": 26,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "eval",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 648,
+      "gt_unknown": 0,
+      "actual_abstain": 3,
+      "abstain_right": 3,
+      "abstain_wrong": 0,
+      "abstain_unknown": 0,
+      "precision_resolved": 1.0,
+      "precision_lower": 1.0,
+      "precision_upper": 1.0,
+      "gt_positive_but_correct": 21,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "minicpm26",
+      "split": "eval",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 648,
+      "gt_unknown": 0,
+      "actual_abstain": 200,
+      "abstain_right": 107,
+      "abstain_wrong": 93,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.535,
+      "precision_lower": 0.535,
+      "precision_upper": 0.535,
+      "gt_positive_but_correct": 25,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "all",
+      "guided": false,
+      "n": 4848,
+      "gt_positive": 807,
+      "gt_unknown": 0,
+      "actual_abstain": 2,
+      "abstain_right": 2,
+      "abstain_wrong": 0,
+      "abstain_unknown": 0,
+      "precision_resolved": 1.0,
+      "precision_lower": 1.0,
+      "precision_upper": 1.0,
+      "gt_positive_but_correct": 13,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "all",
+      "guided": true,
+      "n": 4848,
+      "gt_positive": 807,
+      "gt_unknown": 0,
+      "actual_abstain": 2841,
+      "abstain_right": 713,
+      "abstain_wrong": 2128,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.2509679690249912,
+      "precision_lower": 0.2509679690249912,
+      "precision_upper": 0.2509679690249912,
+      "gt_positive_but_correct": 2,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "dev",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 406,
+      "gt_unknown": 0,
+      "actual_abstain": 2,
+      "abstain_right": 2,
+      "abstain_wrong": 0,
+      "abstain_unknown": 0,
+      "precision_resolved": 1.0,
+      "precision_lower": 1.0,
+      "precision_upper": 1.0,
+      "gt_positive_but_correct": 7,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "dev",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 406,
+      "gt_unknown": 0,
+      "actual_abstain": 1423,
+      "abstain_right": 353,
+      "abstain_wrong": 1070,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.24806746310611386,
+      "precision_lower": 0.24806746310611386,
+      "precision_upper": 0.24806746310611386,
+      "gt_positive_but_correct": 1,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "eval",
+      "guided": false,
+      "n": 2424,
+      "gt_positive": 401,
+      "gt_unknown": 0,
+      "actual_abstain": 0,
+      "abstain_right": 0,
+      "abstain_wrong": 0,
+      "abstain_unknown": 0,
+      "precision_resolved": null,
+      "precision_lower": null,
+      "precision_upper": null,
+      "gt_positive_but_correct": 6,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "qwen25vl",
+      "split": "eval",
+      "guided": true,
+      "n": 2424,
+      "gt_positive": 401,
+      "gt_unknown": 0,
+      "actual_abstain": 1418,
+      "abstain_right": 360,
+      "abstain_wrong": 1058,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.2538787023977433,
+      "precision_lower": 0.2538787023977433,
+      "precision_upper": 0.2538787023977433,
+      "gt_positive_but_correct": 1,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "all",
+      "guided": false,
+      "n": 14544,
+      "gt_positive": 3947,
+      "gt_unknown": 0,
+      "actual_abstain": 20,
+      "abstain_right": 15,
+      "abstain_wrong": 5,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.75,
+      "precision_lower": 0.75,
+      "precision_upper": 0.75,
+      "gt_positive_but_correct": 81,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "all",
+      "guided": true,
+      "n": 14544,
+      "gt_positive": 3947,
+      "gt_unknown": 0,
+      "actual_abstain": 4172,
+      "abstain_right": 1491,
+      "abstain_wrong": 2681,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.3573825503355705,
+      "precision_lower": 0.3573825503355705,
+      "precision_upper": 0.3573825503355705,
+      "gt_positive_but_correct": 76,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "dev",
+      "guided": false,
+      "n": 7272,
+      "gt_positive": 1962,
+      "gt_unknown": 0,
+      "actual_abstain": 8,
+      "abstain_right": 6,
+      "abstain_wrong": 2,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.75,
+      "precision_lower": 0.75,
+      "precision_upper": 0.75,
+      "gt_positive_but_correct": 34,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "dev",
+      "guided": true,
+      "n": 7272,
+      "gt_positive": 1962,
+      "gt_unknown": 0,
+      "actual_abstain": 2072,
+      "abstain_right": 737,
+      "abstain_wrong": 1335,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.3556949806949807,
+      "precision_lower": 0.3556949806949807,
+      "precision_upper": 0.3556949806949807,
+      "gt_positive_but_correct": 39,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "eval",
+      "guided": false,
+      "n": 7272,
+      "gt_positive": 1985,
+      "gt_unknown": 0,
+      "actual_abstain": 12,
+      "abstain_right": 9,
+      "abstain_wrong": 3,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.75,
+      "precision_lower": 0.75,
+      "precision_upper": 0.75,
+      "gt_positive_but_correct": 47,
+      "gt_unknown_but_correct": 0
+    },
+    {
+      "model": "ALL",
+      "split": "eval",
+      "guided": true,
+      "n": 7272,
+      "gt_positive": 1985,
+      "gt_unknown": 0,
+      "actual_abstain": 2100,
+      "abstain_right": 754,
+      "abstain_wrong": 1346,
+      "abstain_unknown": 0,
+      "precision_resolved": 0.35904761904761906,
+      "precision_lower": 0.35904761904761906,
+      "precision_upper": 0.35904761904761906,
+      "gt_positive_but_correct": 37,
+      "gt_unknown_but_correct": 0
+    }
+  ],
+  "question_states": {
+    "independent_correct_answer_observed": 9228,
+    "joint_deficit_supported_by_automatic_residual_review": 3947,
+    "closed_rank_one_no_joint_support": 1369
+  },
+  "residual_groups": 188,
+  "residual_rows": 192,
+  "residual_label_counts": {
+    "incorrect": 180,
+    "invalid": 10,
+    "abstain": 2
+  },
+  "question_changes": [
+    {
+      "model": "minicpm26",
+      "sample_id": "food101:tiramisu_group_020.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "minicpm26",
+      "sample_id": "food101:tuna_tartare_group_002.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "minicpm26",
+      "sample_id": "food101:tuna_tartare_eval_029.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "minicpm26",
+      "sample_id": "food101:tuna_tartare_eval_043.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "minicpm26",
+      "sample_id": "food101:tuna_tartare_eval_045.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:apple_pie_eval_046.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:baby_back_ribs_group_022.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:beef_carpaccio_eval_032.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:beef_tartare_group_007.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:bread_pudding_group_000.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:bread_pudding_eval_029.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:bread_pudding_eval_043.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:bread_pudding_eval_044.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:breakfast_burrito_eval_029.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:caprese_salad_group_006.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:carrot_cake_eval_030.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:carrot_cake_eval_044.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:ceviche_group_014.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:cheese_plate_group_012.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:cheese_plate_eval_034.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_curry_group_003.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_curry_group_010.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_curry_group_023.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_curry_eval_032.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_curry_eval_039.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_quesadilla_group_021.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_quesadilla_group_022.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chicken_quesadilla_eval_045.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chocolate_cake_group_014.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chocolate_cake_eval_037.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chocolate_mousse_group_008.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:chocolate_mousse_eval_035.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:churros_eval_030.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:clam_chowder_eval_040.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:club_sandwich_group_015.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:crab_cakes_group_004.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:crab_cakes_group_009.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:crab_cakes_eval_046.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:creme_brulee_group_003.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:gyoza_group_011.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:gyoza_eval_037.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hamburger_eval_030.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hot_and_sour_soup_group_006.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hot_and_sour_soup_group_007.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hot_and_sour_soup_group_011.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:huevos_rancheros_group_021.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hummus_group_020.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:hummus_eval_042.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:mussels_group_008.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:pad_thai_group_012.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:panna_cotta_eval_040.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:peking_duck_group_010.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:pork_chop_eval_036.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:pork_chop_eval_037.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:poutine_eval_027.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:prime_rib_group_006.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:prime_rib_group_017.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:prime_rib_eval_040.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:prime_rib_eval_045.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:ravioli_group_019.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:red_velvet_cake_group_016.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:risotto_group_005.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:risotto_group_016.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:risotto_eval_031.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:risotto_eval_043.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:samosa_eval_030.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:samosa_eval_032.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:sashimi_group_018.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:scallops_group_017.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:seaweed_salad_group_003.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:seaweed_salad_group_022.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:spaghetti_carbonara_eval_044.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:takoyaki_group_003.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:takoyaki_group_018.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:takoyaki_eval_033.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:takoyaki_eval_034.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:takoyaki_eval_039.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:tiramisu_group_015.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:tiramisu_eval_027.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:tuna_tartare_group_018.jpg",
+      "old_gt": null,
+      "new_gt": true
+    },
+    {
+      "model": "llava16_mistral",
+      "sample_id": "food101:tuna_tartare_eval_044.jpg",
+      "old_gt": null,
+      "new_gt": true
+    }
+  ],
+  "conflict_unique_questions": 130,
+  "baseline_sources_sha256": {
+    "outputs/annotations/luna_census_remaining_v1/remaining108_plus2_20260924/census_merged_v1/labels.jsonl": "f8a5e10f2d7a79d8257e71c04e3ae3fdd63bf37c2197b9b10fc2ba9d87fe4e38",
+    "outputs/annotations/luna_independent_v2/completed3_20260923_v1/validated_v1/questions.jsonl": "295edeb52a12e4ad7f048ca833d5b940d903311d4df7c3e5ba61e8c1fca549b2",
+    "outputs/annotations/luna_independent_v2/completed3_20260923_v1/validated_v1/merged_independent_labels.jsonl": "29aa2e57079ab28aade8f9df50f8770d8274a146be28927a6be43b019b25824f",
+    "outputs/raw/current/llava16_mistral/census.jsonl": "2ee594b75de9b48144597077c525e98a3d23386227567d1057258931d433dfc4",
+    "outputs/raw/current/minicpm26/census.jsonl": "5d8e1635c0af30087e2f0b69616aba39553ac3f72f9e0dd15c7e2021e64b2cbe",
+    "outputs/raw/current/qwen25vl/census.jsonl": "d089c5630547947ce73f473eef08817849a69b01900f9d5b27e4a5d67c1e6161"
+  },
+  "new_sources_sha256": {
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/blind.jsonl": "35c97c1c407474743e70f65b30302c05c8b951e30947195c02eff45b4e825ceb",
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/mapping.jsonl": "b97ea02815acf25c18339aca57fecc4e05e4a7e95829956a84ddae156784a981",
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/results.jsonl": "ad65a27eaeaca9fe2d1f42b65d65d7758d7eb8b8d99b101d645284da64640b18",
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/execution.json": "99384ff9465e219bba39539e9b3683bb4631ed3639ff7c90eabdd69f36cf5a10",
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/corrections_v1.jsonl": "9c0a5fd807c68e97230ca8c2dcf68c546760660172891971cdaee4ceb00d60f4",
+    "outputs/annotations/luna_independent_residual_v1/remaining192_20260924/correction_execution_v1.json": "688d2290fd0fdb31e2442199f626c009c166185826a95c8f5c7a1f4caae93c66"
+  },
+  "human_reviewed": false,
+  "user_requested_operational_gt": true,
+  "scientific_limit": "Fixed ten stochastic answers and candidate rank are operational reference, not proof of inability. Native census and vLLM independent backend differences retained."
+}
