@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 from kdm.io import atomic_json,file_hash,read_jsonl
-from workflows.remaining11_llava15_v1 import closed_scorer as core
+from workflows.remaining11_llava15_v1 import closed_scorer_spawn_v2 as core
 core.PATHS['llava15_7b']='/home/team/lvshuyang/Models/llava-1.5-7b-hf'
 BASE=ROOT/'outputs/records/remaining11_llava15_v1/engine_spawn_v2'
 REF=ROOT/'outputs/records/remaining11_llava15_v1/native_closed16_reference.json'

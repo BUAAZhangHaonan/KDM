@@ -47,7 +47,8 @@
   "admission_status": "Vicuna and Qwen3VL complete. LLaVA15 independent admission passed; closed engine stalled. Do not count initialization as production. Qwen35/Gemma semantic batch012/013 hold is independent of inference scheduling.",
   "source_host_status_entries": {
     "6403": [
-      "outputs/records/remaining11_llava15_v1/engine",
+      "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/dispatch.json",
+      "outputs/records/acceleration_v4/remaining11_llava15_7b_closed_20260924_spawn_v2/llava15_7b/progress.json",
       "outputs/records/probes_v2/glm_native_remaining_20260924_v1/glm46v_progress.json"
     ],
     "RTX_Pro_6000": [
@@ -64,9 +65,14 @@
     "6403:0": {
       "model": "llava15_7b",
       "measurement": "closed",
-      "state": "native references complete; candidate engine initialization stalled, no production; preserve failure and no automatic restart",
-      "records": "outputs/records/remaining11_llava15_v1",
-      "original_registered_precision": "float16"
+      "state": "Explicitly authorized spawn recovery passed actual16 gate and review; real production33/4848 observed",
+      "entry_pid": 396389,
+      "engine_pid": 396564,
+      "registered_dtype": "float16",
+      "run": "remaining11_llava15_7b_closed_20260924_spawn_v2",
+      "dispatch": "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/dispatch.json",
+      "startup": "outputs/records/remaining11_llava15_v1/authorized_restart_spawn_v2/startup_verified.json",
+      "original_failure_retained": true
     },
     "6403:1": {
       "model": "glm46v",
@@ -79,11 +85,13 @@
     "RTX_Pro_6000:0": {
       "model": "llava15_7b",
       "measurement": "independent",
-      "state": "LLaVA15 independent48480 complete, fully synchronized and independent-only initial screening complete; candidate pending; resource released.",
+      "state": "Complete48480, central21-file verification and independent-only free screening complete; candidate pending, no joint GT",
       "records": "outputs/records/independent_k100_llava15_v1",
-      "dispatch": "outputs/records/independent_k100_llava15_v1/production_dispatch.json"
+      "receipt": "outputs/records/remaining11_sync_20260924/llava15_independent_complete/central_receipt.json",
+      "annotations": "outputs/annotations/remaining11_v1/llava15_independent_free_20260924_v1"
     }
   },
   "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_2030.md",
-  "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md"
+  "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md",
+  "latest_remaining_update": "docs/current/REMAINING_LLAVA15_20260924.md"
 }
