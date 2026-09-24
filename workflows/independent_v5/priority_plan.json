@@ -44,16 +44,15 @@
       5
     ]
   },
-  "admission_status": "Vicuna and Qwen3VL complete. LLaVA15 independent admission passed; closed engine stalled. Do not count initialization as production. Qwen35/Gemma semantic batch012/013 hold is independent of inference scheduling.",
+  "admission_status": "Qwen3VL, Vicuna, LLaVA15 and OneVision both measurements completed. MiniCPM-V4.5 native reference failed scalar metadata digest; engineering repair CPU-tested and not restarted.",
   "source_host_status_entries": {
     "6403": [
-      "outputs/records/remaining11_onevision_v1/after_native.json",
-      "outputs/records/acceleration_v4/remaining11_onevision_closed_20260924_v1/onevision/progress.json",
+      "outputs/records/remaining11_minicpm45_v1/native_sequence.json",
+      "outputs/records/remaining11_minicpm45_v1/native_error.json",
       "outputs/records/probes_v2/glm_native_remaining_20260924_v1/glm46v_progress.json"
     ],
     "RTX_Pro_6000": [
-      "outputs/records/independent_k100_onevision_v1/production_dispatch.json",
-      "outputs/records/acceleration_v4/extra11_independent_food_onevision_v1/onevision/progress.json"
+      "outputs/records/independent_k100_minicpm45_v1/checkpoint_full_sha256.json"
     ]
   },
   "excluded_hosts": {
@@ -64,15 +63,15 @@
   "inference_waits_for_luna_acceptance": false,
   "remaining_model_initial_assignments": {
     "6403:0": {
-      "model": "onevision",
-      "measurement": "closed",
-      "state": "actual16 input/rank gate and agent review accepted; production92/4848 observed",
-      "entry_pid": 407912,
-      "engine_pid": 408823,
-      "registered_dtype": "float16",
-      "run": "remaining11_onevision_closed_20260924_v1",
-      "dispatch": "outputs/records/remaining11_onevision_v1/after_native.json",
-      "startup": "outputs/records/remaining11_onevision_v1/startup_verified.json"
+      "model": "minicpm45",
+      "measurement": "native_reference_then_closed",
+      "state": "failed_native_scalar_metadata_serialization_no_retry",
+      "registered_dtype": "bfloat16",
+      "native_driver_pid_exited": 415207,
+      "follower_pid_exited": 415979,
+      "records": "outputs/records/remaining11_minicpm45_v1",
+      "repair_prepared": "workflows/remaining11_minicpm45_v1/scalar_repair_prepared_v2.json",
+      "production_started": false
     },
     "6403:1": {
       "model": "glm46v",
@@ -83,21 +82,17 @@
       "vllm_glm_and_qwen35_9b_gate_failures_preserved": true
     },
     "RTX_Pro_6000:0": {
-      "model": "onevision",
+      "model": "minicpm45",
       "measurement": "independent",
-      "state": "actual16/160 input/EOS/seed/cache audit and separate-backend review accepted; production850/48480 observed",
-      "supervisor_pid": 261368,
-      "worker_pid": 261369,
-      "engine_pid": 261855,
-      "run": "extra11_independent_food_onevision_v1",
-      "records": "outputs/records/independent_k100_onevision_v1",
-      "dispatch": "outputs/records/independent_k100_onevision_v1/production_dispatch.json",
-      "greedy_mismatch_retained": 1,
-      "exact_equivalence_claimed": false
+      "state": "checkpoint_full_hash_passed_waits_for_native_reference",
+      "registered_dtype": "bfloat16",
+      "records": "outputs/records/independent_k100_minicpm45_v1",
+      "weights_bytes": 17391890184,
+      "production_started": false
     }
   },
-  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260925_0030.md",
+  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260925_0230.md",
   "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md",
-  "latest_remaining_update": "docs/current/REMAINING_ONEVISION_20260924.md",
+  "latest_remaining_update": "docs/current/REMAINING_ONEVISION_COMPLETE_MINICPM45_BLOCKED_20260925.md",
   "semantic_overwrite_incident": "Resolved by exact original-byte recovery and original80-batch execution SHA; receipt recovery_original_012_013_v1/root_recovery_receipt.json. Whole semantic export pending."
 }
