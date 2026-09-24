@@ -25,7 +25,7 @@
   "attempts_per_question": 10,
   "primary_answers": 242400,
   "remaining_answers_if_all_admitted": 533280,
-  "generation": "All five primary Food cohorts completed and centrally verified: 48480 answers per model, 242400 total. Source Gemma completion and one-time free screening verified 2026-09-24; no rerun.",
+  "generation": "All five priority Food101 independent runs completed: 242400 answers, with one-time free screening. Remaining-model inference can proceed independently of semantic-label acceptance.",
   "labeling": "Free matching and exact valid-label reuse first, then authorized GPT-6 Luna medium batch semantic judgments. No DeepSeek or Ministral.",
   "resources": {
     "6403": [
@@ -44,7 +44,7 @@
       5
     ]
   },
-  "admission_status": "Primary generation complete. 6403 GPU0/1 and K100 have no KDM inference. 4028 GPUs0/1/4/5 continue formal experiments. 4029 withdrawn.",
+  "admission_status": "First five generation complete. 2026-09-24 resource utilization amendment dispatches Qwen3VL closed/independent and GLM closed admissions; inspect source-host versioned dispatch and real outputs, never assume queued means complete.",
   "source_host_status_entries": {
     "6403": [
       "outputs/records/independent_v5/gemma_production_v4/dispatch.json",
@@ -59,5 +59,29 @@
   "excluded_hosts": {
     "4029": "User removed from available resource queue on 2026-09-24; completed evidence retained centrally. No further dispatch or routine monitoring."
   },
-  "semantic_followup_ready": "outputs/annotations/luna_independent_v3/qwen35_gemma_ready_20260924/manifest.json"
+  "semantic_followup_ready": "outputs/annotations/luna_independent_v3/qwen35_gemma_ready_20260924/manifest.json",
+  "resource_utilization_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_RESOURCE_UTILIZATION.md",
+  "inference_waits_for_luna_acceptance": false,
+  "remaining_model_initial_assignments": {
+    "6403:0": {
+      "model": "qwen3vl",
+      "measurement": "closed",
+      "dispatch": "outputs/records/remaining11_v1/qwen3vl_closed_food_20260924_v1/dispatch.json"
+    },
+    "6403:1": {
+      "model": "glm46v",
+      "measurement": "closed_native_missing_only",
+      "dispatch": "outputs/records/remaining11_closed_v1/glm_native_remaining_v1/dispatch.json",
+      "reuse": 1895,
+      "new_expected": 2953,
+      "vllm_glm_and_qwen35_9b_gate_failures_preserved": true
+    },
+    "RTX_Pro_6000:0": {
+      "model": "qwen3vl",
+      "measurement": "independent",
+      "state": "actual engine16/160 accepted, production and raw growth verified",
+      "run": "extra11_independent_food_qwen3vl_v1",
+      "records": "outputs/records/independent_k100_qwen3vl_v1"
+    }
+  }
 }
