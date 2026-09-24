@@ -44,30 +44,29 @@
       5
     ]
   },
-  "admission_status": "First five generation complete. 2026-09-24 resource utilization amendment dispatches Qwen3VL closed/independent and GLM closed admissions; inspect source-host versioned dispatch and real outputs, never assume queued means complete.",
+  "admission_status": "Vicuna and Qwen3VL complete. LLaVA15 independent admission passed; closed engine stalled. Do not count initialization as production. Qwen35/Gemma semantic batch012/013 hold is independent of inference scheduling.",
   "source_host_status_entries": {
     "6403": [
-      "outputs/records/remaining11_closed_v1/llava16_vicuna_v2/engine_dispatch.json",
+      "outputs/records/remaining11_llava15_v1/engine",
       "outputs/records/probes_v2/glm_native_remaining_20260924_v1/glm46v_progress.json"
     ],
     "RTX_Pro_6000": [
-      "outputs/records/independent_k100_qwen3vl_v1/completed_sync_20260924/receipt.json"
+      "outputs/records/independent_k100_llava15_v1/production_dispatch.json"
     ]
   },
   "excluded_hosts": {
     "4029": "User removed from available resource queue on 2026-09-24; completed evidence retained centrally. No further dispatch or routine monitoring."
   },
-  "semantic_followup_ready": "outputs/annotations/luna_independent_v3/qwen35_gemma_semantic_20260924_v1/dispatch_full_v1.json",
+  "semantic_followup_ready": "outputs/annotations/luna_independent_v3/qwen35_gemma_semantic_20260924_v1/dispatch_rebalance_20260924_1220.json",
   "resource_utilization_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_RESOURCE_UTILIZATION.md",
   "inference_waits_for_luna_acceptance": false,
   "remaining_model_initial_assignments": {
     "6403:0": {
-      "model": "llava16_vicuna",
+      "model": "llava15_7b",
       "measurement": "closed",
-      "state": "native16 and vLLM admission passed; production active PID371341, GPU engine371400",
-      "records": "outputs/records/acceleration_v4/remaining11_llava16_vicuna_closed_20260924_v2/llava16_vicuna",
-      "original_registered_precision": "float16",
-      "dispatch": "outputs/records/remaining11_closed_v1/llava16_vicuna_v2/engine_dispatch.json"
+      "state": "native references complete; candidate engine initialization stalled, no production; preserve failure and no automatic restart",
+      "records": "outputs/records/remaining11_llava15_v1",
+      "original_registered_precision": "float16"
     },
     "6403:1": {
       "model": "glm46v",
@@ -78,13 +77,13 @@
       "vllm_glm_and_qwen35_9b_gate_failures_preserved": true
     },
     "RTX_Pro_6000:0": {
-      "model": "llava16_vicuna",
+      "model": "llava15_7b",
       "measurement": "independent",
-      "state": "Actual GPU native16/160-answer vLLM admission running PID226983; authorized sharing with resident process",
-      "records": "outputs/records/independent_k100_vicuna_v1",
-      "dispatch": "outputs/records/independent_k100_vicuna_v1/verify_dispatch.json"
+      "state": "LLaVA15 independent48480 complete, fully synchronized and independent-only initial screening complete; candidate pending; resource released.",
+      "records": "outputs/records/independent_k100_llava15_v1",
+      "dispatch": "outputs/records/independent_k100_llava15_v1/production_dispatch.json"
     }
   },
-  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_1400.md",
+  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_2030.md",
   "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md"
 }
