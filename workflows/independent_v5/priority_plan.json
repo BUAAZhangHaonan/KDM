@@ -78,10 +78,11 @@
       "vllm_glm_and_qwen35_9b_gate_failures_preserved": true
     },
     "RTX_Pro_6000:0": {
-      "model": "qwen3vl",
+      "model": "llava16_vicuna",
       "measurement": "independent",
-      "state": "Qwen3VL complete; user authorizes reuse alongside approximately700MB resident safa-facegen process. Next admitted remaining-model independent run being configured; no duplicate launch.",
-      "records": "outputs/records/independent_k100_qwen3vl_v1/completed_sync_20260924"
+      "state": "Actual GPU native16/160-answer vLLM admission running PID226983; authorized sharing with resident process",
+      "records": "outputs/records/independent_k100_vicuna_v1",
+      "dispatch": "outputs/records/independent_k100_vicuna_v1/verify_dispatch.json"
     }
   },
   "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_1400.md",
