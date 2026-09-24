@@ -1,0 +1,14 @@
+{
+  "status": "held",
+  "batch": 161,
+  "ids": [
+    16001,
+    16100
+  ],
+  "requires": "Actual blinded GPT-6 Luna medium re-adjudication of all100 inputs with explicit per-ID labels, source-span validation and root acceptance",
+  "expected_correction_file": "results/corrections_v900161.jsonl",
+  "original_results_preserved": true,
+  "reason": "Agent disclosed marker-based programmatic behavior labels in original161. Single correction is insufficient to attest full semantic procedure.",
+  "full_export_allowed": false,
+  "human_reviewed": false
+}

@@ -1,0 +1,9 @@
+{
+  "batch335_serialization_verified": true,
+  "old_sha256": "6b8437f4a9a46b6d63de253ea113d1adc49cb09194b820c456a4357673cabd4f",
+  "new_sha256": "9ca1e284f5de21dec49780f7442668156d6c447235b184987bb4a1e83fbfa7ec",
+  "semantic_objects_unchanged": true,
+  "batch161_status": "held_pending_full_100_item_blind_luna_readjudication",
+  "reason": "Agent disclosed initial marker-based programmatic behavior labeling; one changed label does not establish original protocol compliance. Full explicit per-item fresh semantic judgments requested; original evidence preserved.",
+  "human_reviewed": false
+}
