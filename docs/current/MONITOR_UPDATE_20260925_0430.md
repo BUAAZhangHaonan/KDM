@@ -1,0 +1,9 @@
+# Compact monitor 2026-09-24 20:22 UTC
+
+No newly completed GPU stage or new GPU failure. All4028 formal workers healthy:Qwen25116641/193920,LLaVA66680/193920,Mini134483/155136,Gemma31847/155136, all prompt_matrix.6403 nativeGLM4430/4848;GPU0 remains unused pending the already asked MiniCPM45 recovery authorization. Do not repeat the question or restart without answer. K100 sourceGPU1120MiB/11% at snapshot; noKDM process, existing shared task not touched. No4029 access, no extra polling or timers.
+
+Actual Luna v3 source checkpoint:pilot191 results,192 absent;resume331,332 next. Continuation instructions sent only for absent192-201 and332-341, actualgpt6luna/medium, no repeats. Root actually read and accepted ID12714 correction_v100128: full omelette with herbs, meatloaf, and/or potato bisque preserved, earlier error retained.
+
+Batch189 missing execution provenance resolved without relabeling or result mutation. Root recovered originalsession01a0d205-8191-7d23-a7e8-0314733b47ed toolcall_jLwjKZxJiEjNZghhZ51U5AJm at19:02UTC. Previous tooloutput contained all100 exact original question/answer objects and matched input189 row-for-row; actualLuna medium authoring call/output and originalresultSHA48ba9a2f8f142e863bcff68f8f74cb25ab854220a33be3f1f2a494fba13d1bdf verified. Saved only relevant actual tool events/model context, not unrelated session data, to execution_parts/recovered189_actual_session_tools.json. Separate merge-ready execution_parts/recovered_batch189_v1.json supplies batch189; do NOT also add189 into pilot continuation part. This is provenance recovery, not new annotation or semantic quality acceptance. Overall471 batches remain incomplete.
+
+012/013 exact original recovery remains resolved; all original research, resource and annotation boundaries unchanged. No user action beyond already pending Mini recovery approval is newly required. Stay quiet for this routine progress.
