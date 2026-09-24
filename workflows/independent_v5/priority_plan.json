@@ -80,9 +80,10 @@
     "RTX_Pro_6000:0": {
       "model": "qwen3vl",
       "measurement": "independent",
-      "state": "complete48480 centrally verified; GPU now occupied by unrelated safa-facegen PID204268, do not interfere",
+      "state": "Qwen3VL complete; user authorizes reuse alongside approximately700MB resident safa-facegen process. Next admitted remaining-model independent run being configured; no duplicate launch.",
       "records": "outputs/records/independent_k100_qwen3vl_v1/completed_sync_20260924"
     }
   },
-  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_1400.md"
+  "latest_monitor_update": "docs/current/MONITOR_UPDATE_20260924_1400.md",
+  "k100_co_use_amendment": "docs/current/PROTOCOL_AMENDMENT_20260924_K100_CO_USE.md"
 }
