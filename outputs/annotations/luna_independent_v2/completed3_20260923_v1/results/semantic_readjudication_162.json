@@ -1,0 +1,24 @@
+{
+  "batch": 161,
+  "correction_revision": 900162,
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "subagent": "/root/luna_independent_pilot_v2",
+  "input_file": "batches/input_161.jsonl",
+  "input_sha256": "23f016f3260395a61045de306781bdc111992ccd63215cdf354a62d5e6e6a8c1",
+  "rubric_file": "RUBRIC.txt",
+  "rubric_sha256": "d0572cc8cdac6a3d5365be7ba5aa1b4c3f2014154de274ec62900797631fffb9",
+  "corrections_file": "results/corrections_v900162.jsonl",
+  "corrections_sha256": "dad27a8f9b7b6344683f34b54a3abfbd6412af1a09c7cc742b70f5ce151bfaae",
+  "reviewed_ids": [
+    16046,
+    16061,
+    16083,
+    16095
+  ],
+  "reviewed_count": 4,
+  "no_programmatic_labeling": true,
+  "human_reviewed": false,
+  "final_gt": false,
+  "status": "targeted_semantic_completeness_review_for_parent_QA"
+}

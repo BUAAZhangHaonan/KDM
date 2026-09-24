@@ -1,0 +1,11 @@
+{
+  "batch161_hold_resolved_by": "root_acceptance_161_v1.json",
+  "full_export_allowed": false,
+  "remaining_gate": "168-333 actual execution evidence recovery",
+  "evidence_note": "Current166-batch hash inventory explicitly does not attest authorship/semantic reading. The original local subagent session has been found and assigned for focused recovery before export.",
+  "source_log_session": "01a0cea2-c6c5-7122-a0fb-c75e4ad4d7df",
+  "all499_structural_checks_passed": true,
+  "new_groups": 49876,
+  "human_reviewed": false,
+  "final_gt": false
+}
