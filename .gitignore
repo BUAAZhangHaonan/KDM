@@ -1,48 +1,24 @@
-# virtual environments
-venv/
+# Local Python environments and downloaded model assets
+/venv/
+/venv_sid/
+/.environments/
+/cache/
+/reference_repos/
 
-# caches (HF / torch / matplotlib / nltk), redirected into project at runtime
-cache/
+# Dataset images and downloaded external assets
+/data/images/
+/data/assets/
+/data/vizwiz/
+/references/papers/
 
-# python artifacts
+# Python caches and local run artifacts
 __pycache__/
-*.pyc
-
-# run logs (durations recorded in run_manifest.json; raw evidence in outputs/raw)
+*.py[cod]
+/.pytest_cache/
+/outputs/locks/
 /logs/
-
-# dataset images: not tracked, regenerate with
-#   code/prepare_data.py (food101) / code/stage3_prepare_dogs.py (dogs)
-#   code/stage1_build_dataset.py (LVIS v1 on COCO 2017)
-data/images/
-data/dogs_images/
-data/lvis_v1_*.json*
-
-# local history-rewrite backups (removed after verification)
-.git-backup-*/
-reference_repos/
-outputs/raw/*_s6_firstdist_*.npz
-venv_sid/
-
-# misc local artifacts (editors, shell spillover)
 *.log
 *.tmp
 nohup.out
 .DS_Store
 *.swp
-
-# stage9 POPE reference images (downloaded+verified at prepare time, not tracked)
-data/stage9/pope/images/
-
-# Current research: large downloaded assets and project-local runtime files
-/data/assets/
-/data/vizwiz/
-/references/papers/
-/outputs/locks/
-/.pytest_cache/
-/.environments/
-
-# Complete SID layer-index traces remain on disk; compact receipts are tracked.
-outputs/verification/*_sid_reference.json
-outputs/verification/*_sid_reference_v[0-9]*.json
-!outputs/verification/*_sid_reference*_summary.json
