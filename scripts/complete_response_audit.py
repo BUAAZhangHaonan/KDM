@@ -55,6 +55,7 @@ def donor_measurement_status(pool):
 
 def execution_identity(root,spec,model,out,gpu):
     from kdm.protocol import validate_runtime,validate_freeze
+    from kdm.frozen import canonical_contract_sha256
     if spec.get('purpose')=='CPU_TEST_ONLY':
         if not out.is_relative_to(root/'outputs/verification'):
             raise ValueError('Synthetic model outputs must remain in outputs/verification')
@@ -65,7 +66,7 @@ def execution_identity(root,spec,model,out,gpu):
     execution=validate_runtime(root,spec,model,cards)
     freeze=validate_freeze(root)
     return {'source_blobs':freeze['source_blobs'],'execution':execution,
-            'freeze_receipt_sha256':file_hash(root/'outputs/records/preregistration_freeze.json')}
+            'freeze_receipt_sha256':freeze.get('_canonical_contract_sha256',canonical_contract_sha256(root))}
 
 
 def validate_input_ledgers(paths,spec_sha,formal):
@@ -101,7 +102,8 @@ def main():
         from kdm.protocol import validate_method_runtime
         from kdm.human_review import validate_human_review
         from kdm.task_provenance import validate_task_inputs,validate_measurement_methods
-        freeze=json.loads((root/'outputs/records/preregistration_freeze.json').read_text())
+        from kdm.frozen import load_contract
+        _manifest,freeze=load_contract(root)
         input_provenance=validate_task_inputs(root,a.records,freeze,stages={'experiment'},model=a.model)
         if spec_sha!=freeze['files'][f'configs/runtime/{a.model}.json']:raise ValueError('Measurement backend differs from frozen producing spec')
         validate_measurement_methods(root,input_provenance,methods)

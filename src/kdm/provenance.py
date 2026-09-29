@@ -21,11 +21,12 @@ def validate_census_inputs(root, paths, manifest_path, freeze, require_complete_
     verification too. This function performs no writes and never loads a model.
     """
     root=Path(root).resolve()
+    from .frozen import frozen_path, canonical_contract_sha256
     if freeze.get('status')!='frozen' or not isinstance(freeze.get('source_blobs'),list) or not freeze['source_blobs']:
         raise ValueError('Census provenance requires a validated frozen source anchor')
     frozen=freeze.get('files',{})
     def frozen_file(relative):
-        path=within(root,relative)
+        path=frozen_path(root,relative)
         if relative not in frozen or file_hash(path)!=frozen[relative]:
             raise ValueError('Census frozen input changed or is unregistered: '+relative)
         return path
@@ -39,7 +40,7 @@ def validate_census_inputs(root, paths, manifest_path, freeze, require_complete_
     if not samples or len({s['id'] for s in samples})!=len(samples):raise ValueError('Census manifest is empty or duplicated')
     paths=[within(root,path) for path in paths]
     if not paths or len(set(paths))!=len(paths):raise ValueError('Empty or duplicate census input path')
-    freeze_sha=file_hash(root/'outputs/records/preregistration_freeze.json')
+    freeze_sha=canonical_contract_sha256(root)
     expected_config=asdict(DecodeConfig())
     models={};sources=[];specs={}
     for path in paths:

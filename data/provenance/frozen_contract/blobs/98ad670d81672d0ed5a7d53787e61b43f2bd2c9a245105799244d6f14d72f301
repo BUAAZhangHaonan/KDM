@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "hosts": {
+    "4028": {
+      "hostname": "4028",
+      "root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "allowed_gpus": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "gpu_uuids": {
+        "0": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3",
+        "1": "GPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e",
+        "4": "GPU-8d98e481-b89b-2166-b474-c33d59e0fd3d",
+        "5": "GPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d"
+      }
+    },
+    "6403": {
+      "hostname": "oem-PowerEdge-T640",
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "allowed_gpus": [
+        1
+      ],
+      "gpu_uuids": {
+        "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
+      }
+    }
+  },
+  "model_hosts": {
+    "gemma3_4b": "4028",
+    "gemma3_12b": "4028",
+    "glm46v": "6403",
+    "internvl35_8b": "4028",
+    "llava15_7b": "4028",
+    "onevision": "4028",
+    "minicpm26": "4028",
+    "minicpm45": "4028",
+    "phi35": "4028",
+    "qwen25vl": "4028",
+    "qwen3vl": "6403",
+    "qwen35_4b": "4028",
+    "qwen35_9b": "4028",
+    "llava16_mistral": "4028",
+    "llava15_13b": "4028",
+    "llava16_vicuna": "4028"
+  },
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json"
+}

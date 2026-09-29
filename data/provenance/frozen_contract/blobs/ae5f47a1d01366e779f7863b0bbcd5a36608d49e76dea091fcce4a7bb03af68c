@@ -1,0 +1,243 @@
+{
+  "gemma3_4b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "gemma3_12b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "glm46v": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "internvl35_8b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "llava15_7b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "onevision": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "minicpm26": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "minicpm45": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "phi35": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "qwen25vl": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "qwen3vl": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "qwen35_4b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "qwen35_9b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco"
+    ]
+  },
+  "llava16_mistral": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "llava15_13b": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  },
+  "llava16_vicuna": {
+    "food101": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ],
+    "vizwiz": [
+      "vcd",
+      "m3id",
+      "dola",
+      "deco",
+      "sid"
+    ]
+  }
+}

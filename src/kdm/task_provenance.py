@@ -24,14 +24,15 @@ def validate_task_inputs(root, paths, freeze, *, stages, model=None):
     fragments of one scope may differ only in shard. Every row and sidecar hash
     is preserved in the returned source receipt.
     """
-    root=Path(root).resolve(); stages=set(stages)
+    root=Path(root).resolve()
+    from .frozen import frozen_path as resolve_frozen_path, canonical_contract_sha256; stages=set(stages)
     if not stages or not stages <= {'experiment','probe','closed'}:
         raise ValueError('Unsupported task provenance stage')
     if freeze.get('status')!='frozen' or not freeze.get('source_blobs'):
         raise ValueError('Task provenance requires a validated frozen source anchor')
     frozen=freeze['files']
     def frozen_path(relative):
-        path=within(root,relative)
+        path=resolve_frozen_path(root,relative)
         if relative not in frozen or file_hash(path)!=frozen[relative]:
             raise ValueError('Task frozen input changed or is unregistered: '+relative)
         return path
@@ -40,7 +41,7 @@ def validate_task_inputs(root, paths, freeze, *, stages, model=None):
     candidates={r['key'] for r in panel}
     plan=json.loads(frozen_path('configs/kdm/method_plan.json').read_text())
     names=sorted(json.loads(frozen_path('configs/kdm/food_aliases.json').read_text()))
-    freeze_sha=file_hash(root/'outputs/records/preregistration_freeze.json')
+    freeze_sha=canonical_contract_sha256(root)
     paths=[within(root,p) for p in paths]
     if not paths or len(paths)!=len(set(paths)):raise ValueError('Empty or duplicate task input path')
     groups={};sources=[];seen_global=set();specs={}

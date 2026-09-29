@@ -113,7 +113,8 @@ def main(argv=None):
         freeze=validate_freeze(root)
         if file_hash(a.model_spec)!=freeze['files'][f'configs/runtime/{a.model}.json']:
             raise ValueError('Execution backend differs from frozen model spec')
-        task_plan_identity['freeze_receipt_sha256']=file_hash(root/'outputs/records/preregistration_freeze.json')
+        from .frozen import canonical_contract_sha256
+        task_plan_identity['freeze_receipt_sha256']=freeze.get('_canonical_contract_sha256',canonical_contract_sha256(root))
         if a.command=='run' and a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
             raise ValueError('Census manifest differs from the frozen full original manifest')
         if a.command in {'mechanism','replay'}:

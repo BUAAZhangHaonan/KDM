@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from kdm.io import atomic_json, file_hash, read_jsonl, within
 from kdm.protocol import validate_freeze
+from kdm.frozen import canonical_contract_sha256
 from kdm.execution import local_host, read_registry
 
 LANES = {
@@ -61,7 +62,6 @@ def execute(run_dir, host):
     active={name:lane for name,lane in LANES.items() if lane['host']==host}
     specs={key:specs[key] for lane in active.values() for key in lane['models']}
     if not specs:raise ValueError('No fixed models assigned to this host')
-    freeze_path = ROOT / 'outputs/records/preregistration_freeze.json'
     freeze = validate_freeze(ROOT)
     sources = freeze['source_blobs']
     target = within(ROOT, run_dir)
@@ -74,7 +74,7 @@ def execute(run_dir, host):
         mutex = threading.Lock()
         dispatch_lock = threading.Lock()
         report = {'started_utc': now(), 'scheduler_pid': os.getpid(), 'schedule': schedule,
-                  'freeze_receipt_sha256': file_hash(freeze_path), 'source_blobs': sources,
+                  'freeze_receipt_sha256': freeze.get('_canonical_contract_sha256', canonical_contract_sha256(ROOT)), 'source_blobs': sources,
                   'host':host,'jobs': {key: {'status': 'not_started'} for key in specs}, 'host_complete':False,'complete': False,
                   'completion_scope':'host subset only; use --verify-panel after syncing all sixteen original ledgers and sidecars'}
 

@@ -1,0 +1,1583 @@
+{
+  "script_sha256": "5e0fefa95aec4e415f2839afff0f29d41401d1d80477ed453a8fd3972d6dc84c",
+  "command": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python verification/check_full_visual_counts.py qwen3vl",
+  "key": "qwen3vl",
+  "spec": {
+    "key": "qwen3vl",
+    "hf_model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": {
+      "status": "passed",
+      "record": "outputs/verification/qwen3vl_final16.json",
+      "scope": "fixed16 native greedy token equivalence and six-condition state isolation"
+    },
+    "versions": {
+      "torch": "2.9.0+cu128",
+      "transformers": "5.17.0"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 4902275944,
+        "mtime_ns": 1768890948906243838,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "d5d0aef0eb170fc7453a296c43c0849a56f510555d3588e4fd662bb35490aefa",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 4915962496,
+        "mtime_ns": 1768890969998967264,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "8be88fb5501e4d5719a6d4cc212e6a13480330e74f3e8c77daa1a68f199106b5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4999831048,
+        "mtime_ns": 1768891222361237154,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "83de00eafe6e0d57ccd009dbcf71c9974d74df2f016c27afb7e95aafd16b2192",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 2716270024,
+        "mtime_ns": 1768890850850509175,
+        "hub_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+        "hub_recorded_sha256": "0a88b98e9f96270973f567e6a2c103ede6ccdf915ca3075e21c755604d0377a5",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "5cd452860dc1e9c29dd71cc3cef7f39b338b7a40793f7a260655c2d3568f3661",
+    "processor": {
+      "path": "/home/g203-4028/Models/Qwen3-VL-8B-Instruct",
+      "files": {
+        "tokenizer.json": "a5d85b6dcc535e6b93115a9ef287e6132fdbf30270da6218194ba742261173c7",
+        "preprocessor_config.json": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+        "tokenizer_config.json": "c2da771801886ad9ae98181793ffd3dfb7f1af30f6f7c6a4e15d7dbba52e2399"
+      }
+    },
+    "adapter_source_sha256": {
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "projection_verified_only",
+      "deco_layers": "projection_verified_only",
+      "sid_reference": {
+        "status": "passed",
+        "record": "outputs/verification/qwen3vl_sid_reference_v2_summary.json",
+        "scope": "Fixed official selection and causal-mask source on the same native backbone; 14 matched-prefix visits, independent/interleaved states, and unchanged native clean logits; shared hook transport, not the complete legacy fork."
+      },
+      "text_only_condition": "passed_fixed16_state_isolation"
+    }
+  },
+  "scope": "full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward",
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "header_record": "outputs/records/sid_visual_image_headers.json",
+  "header_record_sha256": "1a3a31b1d4efac1ff31c150f183e3a8356a2482ccd62b628274786bbbf70cf2b",
+  "processor_class": "Qwen3VLProcessor",
+  "image_processor_class": "Qwen2VLImageProcessor",
+  "image_processor_config": {
+    "size": {
+      "longest_edge": 16777216,
+      "shortest_edge": 65536
+    },
+    "patch_size": 16,
+    "temporal_patch_size": 2,
+    "merge_size": 2,
+    "image_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_processor_type": "Qwen2VLImageProcessor",
+    "do_convert_rgb": true,
+    "do_resize": true,
+    "resample": 3,
+    "do_rescale": true,
+    "rescale_factor": 0.00392156862745098,
+    "do_normalize": true
+  },
+  "installed_source_sha256": {
+    "venv/lib/python3.11/site-packages/transformers/models/qwen3_vl/processing_qwen3_vl.py": "8ce525e56e0ddade5a665a70f0727b5576f6f51610d068ddfaf4cc60333415f0",
+    "venv/lib/python3.11/site-packages/transformers/models/qwen2_vl/image_processing_qwen2_vl.py": "4e1da45f9e7e157ca08aa88243fcc1495ea6a333e40e0c5035ef17ef2747a97d"
+  },
+  "total_images": 9167,
+  "unique_dimensions": 181,
+  "shape_errors": [],
+  "groups": [
+    {
+      "dataset": "food101",
+      "split": "dev",
+      "n": 2424,
+      "minimum": 128,
+      "maximum": 256,
+      "below100": 0
+    },
+    {
+      "dataset": "food101",
+      "split": "eval",
+      "n": 2424,
+      "minimum": 128,
+      "maximum": 256,
+      "below100": 0
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "dev",
+      "n": 818,
+      "minimum": 70,
+      "maximum": 4860,
+      "below100": 10
+    },
+    {
+      "dataset": "vizwiz",
+      "split": "eval",
+      "n": 3501,
+      "minimum": 64,
+      "maximum": 4860,
+      "below100": 37
+    }
+  ],
+  "below100_count": 47,
+  "below100": [
+    {
+      "id": "vizwiz:VizWiz_val_00000001.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 162,
+      "width": 121,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000020.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 162,
+      "width": 121,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000064.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 64,
+      "width": 48,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000089.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000121.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 81,
+      "width": 61,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000185.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 60,
+      "width": 45,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000217.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 128,
+      "width": 96,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000324.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000330.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000356.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001253.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 106,
+      "width": 120,
+      "visual_tokens": 72
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001320.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001333.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001384.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 30,
+      "width": 23,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001425.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001527.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001547.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 50,
+      "width": 50,
+      "visual_tokens": 64
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001641.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 81,
+      "width": 61,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001902.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001989.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 29,
+      "width": 150,
+      "visual_tokens": 76
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002022.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 240,
+      "width": 320,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002031.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002106.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002158.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002229.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 256,
+      "width": 192,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002257.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002348.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002573.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002699.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 128,
+      "width": 96,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002707.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002731.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002782.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 240,
+      "width": 160,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00002807.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 41,
+      "width": 31,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003207.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 256,
+      "width": 192,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003370.jpg",
+      "dataset": "vizwiz",
+      "split": "dev",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003440.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003443.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 256,
+      "width": 192,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003492.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 201,
+      "width": 202,
+      "visual_tokens": 72
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003557.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 320,
+      "width": 240,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003572.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 162,
+      "width": 121,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003667.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 25,
+      "width": 60,
+      "visual_tokens": 78
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003803.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 128,
+      "width": 96,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003924.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 81,
+      "width": 61,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004052.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004131.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 102,
+      "width": 77,
+      "visual_tokens": 70
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004181.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004307.jpg",
+      "dataset": "vizwiz",
+      "split": "eval",
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    }
+  ],
+  "shape_formula_counts": [
+    {
+      "height": 25,
+      "width": 60,
+      "visual_tokens": 78
+    },
+    {
+      "height": 29,
+      "width": 150,
+      "visual_tokens": 76
+    },
+    {
+      "height": 30,
+      "width": 23,
+      "visual_tokens": 80
+    },
+    {
+      "height": 41,
+      "width": 31,
+      "visual_tokens": 70
+    },
+    {
+      "height": 50,
+      "width": 50,
+      "visual_tokens": 64
+    },
+    {
+      "height": 60,
+      "width": 45,
+      "visual_tokens": 70
+    },
+    {
+      "height": 64,
+      "width": 48,
+      "visual_tokens": 70
+    },
+    {
+      "height": 81,
+      "width": 61,
+      "visual_tokens": 70
+    },
+    {
+      "height": 102,
+      "width": 77,
+      "visual_tokens": 70
+    },
+    {
+      "height": 106,
+      "width": 120,
+      "visual_tokens": 72
+    },
+    {
+      "height": 128,
+      "width": 96,
+      "visual_tokens": 70
+    },
+    {
+      "height": 162,
+      "width": 121,
+      "visual_tokens": 70
+    },
+    {
+      "height": 201,
+      "width": 202,
+      "visual_tokens": 72
+    },
+    {
+      "height": 240,
+      "width": 160,
+      "visual_tokens": 70
+    },
+    {
+      "height": 240,
+      "width": 180,
+      "visual_tokens": 70
+    },
+    {
+      "height": 240,
+      "width": 320,
+      "visual_tokens": 80
+    },
+    {
+      "height": 241,
+      "width": 512,
+      "visual_tokens": 128
+    },
+    {
+      "height": 256,
+      "width": 192,
+      "visual_tokens": 70
+    },
+    {
+      "height": 266,
+      "width": 512,
+      "visual_tokens": 128
+    },
+    {
+      "height": 278,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 287,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 288,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 289,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 294,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 300,
+      "width": 512,
+      "visual_tokens": 144
+    },
+    {
+      "height": 304,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 306,
+      "width": 306,
+      "visual_tokens": 100
+    },
+    {
+      "height": 306,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 307,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 308,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 310,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 316,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 319,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 320,
+      "width": 240,
+      "visual_tokens": 80
+    },
+    {
+      "height": 321,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 324,
+      "width": 242,
+      "visual_tokens": 80
+    },
+    {
+      "height": 336,
+      "width": 512,
+      "visual_tokens": 160
+    },
+    {
+      "height": 337,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 339,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 340,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 341,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 342,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 343,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 346,
+      "width": 450,
+      "visual_tokens": 154
+    },
+    {
+      "height": 346,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 348,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 349,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 352,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 355,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 357,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 358,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 360,
+      "width": 480,
+      "visual_tokens": 165
+    },
+    {
+      "height": 360,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 362,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 364,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 366,
+      "width": 512,
+      "visual_tokens": 176
+    },
+    {
+      "height": 368,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 369,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 370,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 372,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 375,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 376,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 377,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 378,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 380,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 381,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 382,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 383,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 384,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 385,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 388,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 390,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 395,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 396,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 397,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 398,
+      "width": 512,
+      "visual_tokens": 192
+    },
+    {
+      "height": 400,
+      "width": 300,
+      "visual_tokens": 108
+    },
+    {
+      "height": 403,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 405,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 408,
+      "width": 306,
+      "visual_tokens": 130
+    },
+    {
+      "height": 408,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 409,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 410,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 412,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 417,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 420,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 421,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 422,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 428,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 430,
+      "width": 512,
+      "visual_tokens": 208
+    },
+    {
+      "height": 432,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 434,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 443,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 449,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 450,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 453,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 456,
+      "width": 512,
+      "visual_tokens": 224
+    },
+    {
+      "height": 469,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 471,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 474,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 475,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 480,
+      "width": 320,
+      "visual_tokens": 150
+    },
+    {
+      "height": 480,
+      "width": 360,
+      "visual_tokens": 165
+    },
+    {
+      "height": 482,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 485,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 486,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 488,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 489,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 491,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 492,
+      "width": 512,
+      "visual_tokens": 240
+    },
+    {
+      "height": 497,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 498,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 500,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 503,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 504,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 505,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 506,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 507,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 508,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 509,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 510,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 511,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 287,
+      "visual_tokens": 144
+    },
+    {
+      "height": 512,
+      "width": 288,
+      "visual_tokens": 144
+    },
+    {
+      "height": 512,
+      "width": 289,
+      "visual_tokens": 144
+    },
+    {
+      "height": 512,
+      "width": 306,
+      "visual_tokens": 160
+    },
+    {
+      "height": 512,
+      "width": 307,
+      "visual_tokens": 160
+    },
+    {
+      "height": 512,
+      "width": 332,
+      "visual_tokens": 160
+    },
+    {
+      "height": 512,
+      "width": 333,
+      "visual_tokens": 160
+    },
+    {
+      "height": 512,
+      "width": 339,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 340,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 341,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 342,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 343,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 354,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 358,
+      "visual_tokens": 176
+    },
+    {
+      "height": 512,
+      "width": 378,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 380,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 381,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 382,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 383,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 384,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 385,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 386,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 388,
+      "visual_tokens": 192
+    },
+    {
+      "height": 512,
+      "width": 417,
+      "visual_tokens": 208
+    },
+    {
+      "height": 512,
+      "width": 419,
+      "visual_tokens": 208
+    },
+    {
+      "height": 512,
+      "width": 427,
+      "visual_tokens": 208
+    },
+    {
+      "height": 512,
+      "width": 433,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 438,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 439,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 442,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 445,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 446,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 454,
+      "visual_tokens": 224
+    },
+    {
+      "height": 512,
+      "width": 477,
+      "visual_tokens": 240
+    },
+    {
+      "height": 512,
+      "width": 493,
+      "visual_tokens": 240
+    },
+    {
+      "height": 512,
+      "width": 498,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 506,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 508,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 509,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 510,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 511,
+      "visual_tokens": 256
+    },
+    {
+      "height": 512,
+      "width": 512,
+      "visual_tokens": 256
+    },
+    {
+      "height": 568,
+      "width": 320,
+      "visual_tokens": 180
+    },
+    {
+      "height": 640,
+      "width": 480,
+      "visual_tokens": 300
+    },
+    {
+      "height": 648,
+      "width": 484,
+      "visual_tokens": 300
+    },
+    {
+      "height": 720,
+      "width": 960,
+      "visual_tokens": 660
+    },
+    {
+      "height": 744,
+      "width": 728,
+      "visual_tokens": 529
+    },
+    {
+      "height": 768,
+      "width": 1024,
+      "visual_tokens": 768
+    },
+    {
+      "height": 816,
+      "width": 612,
+      "visual_tokens": 494
+    },
+    {
+      "height": 960,
+      "width": 540,
+      "visual_tokens": 510
+    },
+    {
+      "height": 968,
+      "width": 1296,
+      "visual_tokens": 1200
+    },
+    {
+      "height": 1024,
+      "width": 768,
+      "visual_tokens": 768
+    },
+    {
+      "height": 1152,
+      "width": 1152,
+      "visual_tokens": 1296
+    },
+    {
+      "height": 1166,
+      "width": 1232,
+      "visual_tokens": 1368
+    },
+    {
+      "height": 1224,
+      "width": 1632,
+      "visual_tokens": 1938
+    },
+    {
+      "height": 1296,
+      "width": 968,
+      "visual_tokens": 1200
+    },
+    {
+      "height": 1536,
+      "width": 2048,
+      "visual_tokens": 3072
+    },
+    {
+      "height": 1632,
+      "width": 1224,
+      "visual_tokens": 1938
+    },
+    {
+      "height": 1936,
+      "width": 2592,
+      "visual_tokens": 4860
+    }
+  ],
+  "boundary_checks": [
+    {
+      "id": "vizwiz:VizWiz_val_00001547.jpg",
+      "height": 50,
+      "width": 50,
+      "formula_tokens": 64,
+      "native_visual_position_count": 64,
+      "image_grid_thw": [
+        1,
+        16,
+        16
+      ],
+      "grid_count": 64,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000003.jpg",
+      "height": 1936,
+      "width": 2592,
+      "formula_tokens": 4860,
+      "native_visual_position_count": 4860,
+      "image_grid_thw": [
+        1,
+        120,
+        162
+      ],
+      "grid_count": 4860,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00000089.jpg",
+      "height": 324,
+      "width": 242,
+      "formula_tokens": 80,
+      "native_visual_position_count": 80,
+      "image_grid_thw": [
+        1,
+        20,
+        16
+      ],
+      "grid_count": 80,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00004059.jpg",
+      "height": 306,
+      "width": 306,
+      "formula_tokens": 100,
+      "native_visual_position_count": 100,
+      "image_grid_thw": [
+        1,
+        20,
+        20
+      ],
+      "grid_count": 100,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00003667.jpg",
+      "height": 25,
+      "width": 60,
+      "formula_tokens": 78,
+      "native_visual_position_count": 78,
+      "image_grid_thw": [
+        1,
+        12,
+        26
+      ],
+      "grid_count": 78,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001384.jpg",
+      "height": 30,
+      "width": 23,
+      "formula_tokens": 80,
+      "native_visual_position_count": 80,
+      "image_grid_thw": [
+        1,
+        20,
+        16
+      ],
+      "grid_count": 80,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "food101:apple_pie_group_002.jpg",
+      "height": 512,
+      "width": 512,
+      "formula_tokens": 256,
+      "native_visual_position_count": 256,
+      "image_grid_thw": [
+        1,
+        32,
+        32
+      ],
+      "grid_count": 256,
+      "visual_positions_contiguous": true,
+      "equal": true
+    },
+    {
+      "id": "vizwiz:VizWiz_val_00001989.jpg",
+      "height": 29,
+      "width": 150,
+      "formula_tokens": 76,
+      "native_visual_position_count": 76,
+      "image_grid_thw": [
+        1,
+        8,
+        38
+      ],
+      "grid_count": 76,
+      "visual_positions_contiguous": true,
+      "equal": true
+    }
+  ],
+  "boundary_checks_passed": true,
+  "all_images_at_least100": false,
+  "exif_orientation_record": {
+    "path": "outputs/records/sid_image_exif_orientation_check.json",
+    "sha256": "19c16944f9ec73b8018f0bd2af8ca0e7508afa88b9f50659f64a379d53c5d6af",
+    "counts": {
+      "1": 8790,
+      "6": 377
+    }
+  },
+  "count_invariant_under_exif_90_degree_swap": true,
+  "gpu_initialized": false
+}

@@ -1,0 +1,63 @@
+{
+  "recorded_at_utc": "2026-09-19T10:47:49.049659+00:00",
+  "source": "Explicit user replies in Codex task 01a0b8ea-e971-7590-acc9-a827401e0519",
+  "food_alias_confirmation": {
+    "user_statement": "已逐类查看，确认当前名称表",
+    "confirmed": true,
+    "classes": 101,
+    "names": 147,
+    "alias_file": "configs/kdm/food_aliases.json",
+    "alias_sha256": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f",
+    "review_table": "docs/current/FOOD_ALIAS_REVIEW_TABLE.md",
+    "review_table_commit": "df400091",
+    "review_time_provided_by_user": null,
+    "scope": "Current unchanged class-name table only; this is not human adjudication of generated responses"
+  },
+  "cda_definition": {
+    "user_statement": "严格采用正文公式，允许实际出现负残余权重并记录",
+    "calibration": "r=max(H_input-H_null,0)/H_null",
+    "weights": "wp=rp**2/(rp+rc); wc=rc**2/(rp+rc); wa=1-wp-wc",
+    "negative_residual_weight_allowed": true,
+    "negative_weight_must_be_recorded": true,
+    "momentum": false
+  },
+  "internvl_recovery": {
+    "user_statement": "允许按上述双卡方案核验",
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "scope": "Explicit two-card mapping with unchanged checkpoint, precision, images and SID settings; revalidate native16 and SID"
+  },
+  "glm_recovery": {
+    "user_statement": "允许 GLM 按上述双卡方案核验",
+    "recorded_at_utc": "2026-09-19T11:46:01.320856+00:00",
+    "physical_gpus": [
+      4,
+      5
+    ],
+    "layer_partition": [
+      20,
+      20
+    ],
+    "proposal": "outputs/verification/glm46v_dual_gpu_resource_proposal_v1.json",
+    "scope": "Explicit proposed mapping only; unchanged BF16, checkpoint, processor, input and algorithm; repeat native16, Food SID and three maximum-visual-input resource groups; preserve single-card failures",
+    "authorization_does_not_imply_verification_passed": true
+  },
+  "remote_recovery_6403": {
+    "user_statement": "失败的模型运行在6403服务器的GPU 1上跑，目前是空闲的，模型和环境都是现成的",
+    "directory_user_statement": "允许使用该隔离目录",
+    "recorded_at_utc": "2026-09-19T12:26:22.011893+00:00",
+    "host": "6403",
+    "physical_gpu": 1,
+    "scope_models": [
+      "qwen3vl",
+      "glm46v"
+    ],
+    "write_root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+    "existing_model_environment_policy": "read-only reuse; no shared-environment modification",
+    "central_evidence_root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+    "supersedes": "pending Qwen3 4028 dual proposal and future GLM 4028 dual SID/resource stages; already running native record remains historical evidence",
+    "requires_fresh_native_sid_resource_evidence": true
+  }
+}

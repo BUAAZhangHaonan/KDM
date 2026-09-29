@@ -18,7 +18,8 @@ processor_execution=validate_processor_runtime(ROOT,spec)
 config=json.loads((Path(spec['kwargs']['model_path'])/'config.json').read_text())
 processor_kwargs={'num_crops':4} if a.key=='phi35' else {}
 proc=AutoProcessor.from_pretrained(spec['kwargs']['model_path'],trust_remote_code=True,local_files_only=True,**processor_kwargs)
-headers_path=ROOT/'outputs/records/sid_visual_image_headers.json';headers=json.loads(headers_path.read_text())
+from kdm.frozen import frozen_path, supporting_path
+headers_path=frozen_path(ROOT,'outputs/records/sid_visual_image_headers.json');headers=json.loads(headers_path.read_text())
 assert len(headers['rows'])==9167 and not headers['errors']
 assert headers['manifest_sha256']==hashlib.sha256((ROOT/'data/current/all.jsonl').read_bytes()).hexdigest()
 count_by_size={};errors=[]
@@ -46,10 +47,11 @@ for id,dataset,split,h,w in headers['rows']:
 sources={}
 for obj in [type(proc),type(proc.image_processor)]:
  path=Path(inspect.getfile(obj));sources[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
-record={'processor_execution':processor_execution,'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'command':spec['environment_python']+' verification/check_full_visual_counts.py '+a.key,'key':a.key,'spec':spec,'scope':'full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward','manifest_sha256':headers['manifest_sha256'],'header_record':str(headers_path.relative_to(ROOT)),'header_record_sha256':hashlib.sha256(headers_path.read_bytes()).hexdigest(),'processor_class':type(proc).__name__,'image_processor_class':type(proc.image_processor).__name__,'image_processor_config':proc.image_processor.to_dict(),'installed_source_sha256':sources,'total_images':len(headers['rows']),'unique_dimensions':len(count_by_size),'shape_errors':errors,'groups':[{'dataset':d,'split':s,'n':len(v),'minimum':min(v),'maximum':max(v),'below100':sum(n<100 for n in v)} for (d,s),v in sorted(bygroup.items())],'below100_count':len(bad),'below100':bad,'shape_formula_counts':[{'height':h,'width':w,'visual_tokens':v} for (h,w),v in sorted(count_by_size.items())],'boundary_checks':[],'boundary_checks_passed':False,'all_images_at_least100':False}
+record={'processor_execution':processor_execution,'script_sha256':hashlib.sha256(frozen_path(ROOT,'verification/check_full_visual_counts.py').read_bytes()).hexdigest(),'entrypoint_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'command':spec['environment_python']+' verification/check_full_visual_counts.py '+a.key,'key':a.key,'spec':spec,'scope':'full-manifest image-header enumeration with installed native processor count formula, checked against actual boundary processor outputs; not model forward','manifest_sha256':headers['manifest_sha256'],'header_record':'outputs/records/sid_visual_image_headers.json','header_record_sha256':hashlib.sha256(headers_path.read_bytes()).hexdigest(),'processor_class':type(proc).__name__,'image_processor_class':type(proc.image_processor).__name__,'image_processor_config':proc.image_processor.to_dict(),'installed_source_sha256':sources,'total_images':len(headers['rows']),'unique_dimensions':len(count_by_size),'shape_errors':errors,'groups':[{'dataset':d,'split':s,'n':len(v),'minimum':min(v),'maximum':max(v),'below100':sum(n<100 for n in v)} for (d,s),v in sorted(bygroup.items())],'below100_count':len(bad),'below100':bad,'shape_formula_counts':[{'height':h,'width':w,'visual_tokens':v} for (h,w),v in sorted(count_by_size.items())],'boundary_checks':[],'boundary_checks_passed':False,'all_images_at_least100':False}
 from kdm.io import within
 out=within(ROOT,a.output or f'outputs/verification/{a.key}_sid_full_visual_count.json')
 if not out.is_relative_to(ROOT/'outputs/verification'):raise ValueError('Visual-count evidence must stay in outputs/verification')
+out.parent.mkdir(parents=True,exist_ok=True)
 if out.exists():
  raise FileExistsError(f'Refusing to overwrite existing visual-count evidence: {out}')
 out.write_text(json.dumps(record,ensure_ascii=False,indent=2,default=str)+'\n')
@@ -68,7 +70,7 @@ for key in [lambda x:x[0],lambda x:x[1],lambda x:max(x)/min(x),lambda x:x[0]*x[1
 manifest={x['id']:x for x in map(json.loads,(ROOT/'data/current/all.jsonl').read_text().splitlines())}
 engine_class=MiniCPMModel if a.key.startswith('minicpm') else PhiVisionModel if a.key=='phi35' else FamilyModel
 engine=engine_class.__new__(engine_class);engine.proc=proc;engine.device='cpu';engine.mt=config['model_type'];engine.model_path=Path(spec['kwargs']['model_path'])
-exif_path=ROOT/'outputs/records/sid_image_exif_orientation_check.json'
+exif_path=supporting_path(ROOT,'outputs/records/sid_image_exif_orientation_check.json')
 exif=json.loads(exif_path.read_text())
 record['exif_orientation_record']={'path':str(exif_path.relative_to(ROOT)),
     'sha256':hashlib.sha256(exif_path.read_bytes()).hexdigest(),'counts':exif['orientations']}

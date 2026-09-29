@@ -1,0 +1,496 @@
+{
+  "manifest_sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c",
+  "all_headers_valid": true,
+  "n": 9167,
+  "records": [
+    {
+      "key": "llava15_7b",
+      "guaranteed_visual_lower_bound": 576,
+      "reason": "336x336 center crop; 14x14 patches; processor adds CLS1 and default selector subtracts1: (336/14)^2=576",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 576
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-7b-hf/config.json",
+          "sha256": "0bde54495c54bcc346064a0d314b010d1c4d3ca7f7e583b6f711949a35352c0f"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-7b-hf/preprocessor_config.json",
+          "sha256": "a8d5e64ee5c07ff6d70142856d178ac39d0563da3612e32110fa824f5337b7a1"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-7b-hf/processor_config.json",
+          "sha256": "fef918d6ba333f72a066877965bc4a162308568ba62aa90c806caedf7b45d64e"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/llava/processing_llava.py",
+          "sha256": "c85153b4aefb55d97fb11e51f220dd5c1ca73baa8376ce069e7deef47216dbee",
+          "line_evidence": [
+            {
+              "line": 112,
+              "text": "num_image_tokens = (height // self.patch_size) * ("
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "llava15_13b",
+      "guaranteed_visual_lower_bound": 576,
+      "reason": "Same fixed 336 crop and patch14/default selector as registered LLaVA1.5-7B",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 576
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-13b-hf/config.json",
+          "sha256": "f05ac8e73de4140edcd801eb4b235ab659ac47c0c79a8b7b3a47e4ba2eff2572"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-13b-hf/preprocessor_config.json",
+          "sha256": "a8d5e64ee5c07ff6d70142856d178ac39d0563da3612e32110fa824f5337b7a1"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-1.5-13b-hf/processor_config.json",
+          "sha256": "fef918d6ba333f72a066877965bc4a162308568ba62aa90c806caedf7b45d64e"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/llava/processing_llava.py",
+          "sha256": "c85153b4aefb55d97fb11e51f220dd5c1ca73baa8376ce069e7deef47216dbee",
+          "line_evidence": [
+            {
+              "line": 112,
+              "text": "num_image_tokens = (height // self.patch_size) * ("
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "llava16_mistral",
+      "guaranteed_visual_lower_bound": 576,
+      "reason": "Anyres feature packing preserves base_image_feature of 336/14 squared tokens; additional unpadded patch features are concatenated, never replace the base",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 576
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf/config.json",
+          "sha256": "ddf45e24cea7da06747d67a2f377b8fe65e672f61180c50adae7fd9c0392ab6e"
+        },
+        {
+          "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf/preprocessor_config.json",
+          "sha256": "ecef425c1d3ee91f5e05144c4d107389f9fefd04a424d5cbfc3fb6e0525b8c55"
+        },
+        {
+          "path": "/home/g203-4028/Models/llava-v1.6-mistral-7b-hf/processor_config.json",
+          "sha256": "7cd8bff508772b8b4e6b0678550bf856a7f28abd0f8b237235ac83bfcb9b1c36"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/lib/python3.11/site-packages/transformers/models/llava_next/modeling_llava_next.py",
+          "sha256": "03903490a4e6871590918b9b14feb535c975ea27ddb653f5638bb424436a53a4",
+          "line_evidence": [
+            {
+              "line": 287,
+              "text": "base_image_feature = image_feature[0]"
+            },
+            {
+              "line": 322,
+              "text": "image_feature = torch.cat((base_image_feature, image_feature), dim=0)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "llava16_vicuna",
+      "guaranteed_visual_lower_bound": 576,
+      "reason": "Anyres feature packing preserves the 576-token base image before added unpadded features/newline",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 576
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 576
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf/config.json",
+          "sha256": "3ea1ed765b0b79834892d8060cb46162121ef01596e56ca6e168a48a8da08336"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf/preprocessor_config.json",
+          "sha256": "ecef425c1d3ee91f5e05144c4d107389f9fefd04a424d5cbfc3fb6e0525b8c55"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-v1.6-vicuna-7b-hf/processor_config.json",
+          "sha256": "7cd8bff508772b8b4e6b0678550bf856a7f28abd0f8b237235ac83bfcb9b1c36"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/llava_next/modeling_llava_next.py",
+          "sha256": "2ca1cbfc127e8f04ced34593089c4db0e7ccdde5811ef8a5c69b2a54426b6402",
+          "line_evidence": [
+            {
+              "line": 299,
+              "text": "base_image_feature = image_feature[0]"
+            },
+            {
+              "line": 334,
+              "text": "image_feature = torch.cat((base_image_feature, image_feature), dim=0)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "onevision",
+      "guaranteed_visual_lower_bound": 729,
+      "reason": "Registered processor num_image_tokens729/full selection; 384//14 squared base feature always remains in anyres concatenation",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 729
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 729
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 729
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 729
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf/config.json",
+          "sha256": "69277c2c9ba8a4f61d2e72f79fbe02e043b8c3af670858a606818527f971a0c2"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf/preprocessor_config.json",
+          "sha256": "3644c108b9f0fa53e62ff422a9be6639642f0e64dab4a71f961c7911d4386384"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/llava-onevision-qwen2-7b-ov-hf/processor_config.json",
+          "sha256": "04e9899e93f2a412c94e153cab4081457c9a44defb3b2c0b9df673d42c42cdd0"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/llava_onevision/modeling_llava_onevision.py",
+          "sha256": "f5454403c473031746b4a034ba5d4b96eed36e63261e9250a2645f27ffa378a6",
+          "line_evidence": [
+            {
+              "line": 314,
+              "text": "base_image_feature = image_feature[0]"
+            },
+            {
+              "line": 347,
+              "text": "image_feature = torch.cat((base_image_feature, image_feature), dim=0)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "internvl35_8b",
+      "guaranteed_visual_lower_bound": 256,
+      "reason": "Native dynamic_preprocess produces at least one448 tile; model.num_image_token=int((448//14)^2*0.5^2)=256 per tile, thumbnail can only add a tile",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 256
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/Models/InternVL3_5-8B/config.json",
+          "sha256": "e849152d81a9eb158475d493d6c5ba1fc935d35ed01429bbd0182582416bb963"
+        },
+        {
+          "path": "/home/g203-4028/Models/InternVL3_5-8B/preprocessor_config.json",
+          "sha256": "af09ffbe57900d5ae07f93f4c20693559a272e32fa6c5f816132cb71985aac98"
+        },
+        {
+          "path": "/home/g203-4028/Models/InternVL3_5-8B/processor_config.json",
+          "sha256": "3511f4ae65c2fa5c1ab6a0fb2bb2fe767d6f0ee53ba412953b33acc892327c2a"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/internvl_preprocessing.py",
+          "sha256": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+          "line_evidence": [
+            {
+              "line": 34,
+              "text": "def dynamic_preprocess(image, min_num=1, max_num=12, image_size=448, use_thumbnail=False):"
+            },
+            {
+              "line": 41,
+              "text": "i * j <= max_num and i * j >= min_num)"
+            }
+          ]
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/src/kdm/models/backbone.py",
+          "sha256": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+          "line_evidence": [
+            {
+              "line": 94,
+              "text": "self.num_image_token = int(self.model.num_image_token)"
+            },
+            {
+              "line": 118,
+              "text": "image_tokens='<img>'+'<IMG_CONTEXT>'*(self.num_image_token*patches)+'</img>'"
+            }
+          ]
+        },
+        {
+          "path": "/home/g203-4028/Models/InternVL3_5-8B/modeling_internvl_chat.py",
+          "sha256": "ec972dd3d1c7f5da06455034d5cfe54968a9555dff60804edee9a7fb5759db34",
+          "line_evidence": [
+            {
+              "line": 58,
+              "text": "self.num_image_token = int((image_size // patch_size) ** 2 * (config.downsample_ratio ** 2))"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "gemma3_4b",
+      "guaranteed_visual_lower_bound": 256,
+      "reason": "Registered processor image_seq_length256 replaces each image placeholder; pan-and-scan may add images, never removes the original256",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 256
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it/config.json",
+          "sha256": "9059f680f4dbd1957f35cb44b9fdd6948f4792db7a7a35ee353ea42e68adf7ff"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it/preprocessor_config.json",
+          "sha256": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-4b-it/processor_config.json",
+          "sha256": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/gemma3/processing_gemma3.py",
+          "sha256": "e696cdbdaad23fb4ba18f68a382ed820929ee32b8183fd6c4cc487c1923162a8",
+          "line_evidence": [
+            {
+              "line": 47,
+              "text": "image_seq_length: int = 256,"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "gemma3_12b",
+      "guaranteed_visual_lower_bound": 256,
+      "reason": "Same registered image_seq_length256; count condition alone does not resolve incompatible native image/sliding mask",
+      "counts_by_dataset_split": [
+        {
+          "dataset": "food101",
+          "split": "dev",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "food101",
+          "split": "eval",
+          "n": 2424,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "dev",
+          "n": 818,
+          "all_at_least": 256
+        },
+        {
+          "dataset": "vizwiz",
+          "split": "eval",
+          "n": 3501,
+          "all_at_least": 256
+        }
+      ],
+      "proof_type": "static bound from actual config/processor/model packing source; not empirical enumeration of every full processor output",
+      "sources": [
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it/config.json",
+          "sha256": "39172c4124d3470341bbbb25f2926fd97edf68f0fe3a9fa4cde6acb9b7ed2cc6"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it/preprocessor_config.json",
+          "sha256": "f688d6bb20c5017601c4011de7ca656da8485b540b05013efdaf986c0fcc918d"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/gemma-3-12b-it/processor_config.json",
+          "sha256": "3ffd5f11778dc73e2b69b3c00535e4121e1badf7018136263cd17b5b34fbaa53"
+        },
+        {
+          "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/lib/python3.11/site-packages/transformers/models/gemma3/processing_gemma3.py",
+          "sha256": "e696cdbdaad23fb4ba18f68a382ed820929ee32b8183fd6c4cc487c1923162a8",
+          "line_evidence": [
+            {
+              "line": 47,
+              "text": "image_seq_length: int = 256,"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "visual count lower bound only; not a complete SID compatibility claim"
+}

@@ -8,18 +8,20 @@ def main():
  from kdm.io import within
  out=within(ROOT,a.output)
  if not out.is_relative_to(ROOT/'outputs/verification'):raise ValueError('Resource evidence must stay in outputs/verification')
+ out.parent.mkdir(parents=True,exist_ok=True)
  if out.exists():raise FileExistsError(out)
  from kdm.io import within
- spec=json.loads((ROOT/a.spec).read_text());key=spec['key'];countpath=within(ROOT,spec.get('visual_count_verification',{}).get('record',f'outputs/verification/{key}_sid_full_visual_count.json'));counts=json.loads(countpath.read_text())
+ from kdm.frozen import canonical_runtime_spec, frozen_path
+ spec=json.loads((ROOT/a.spec).read_text());key=spec['key'];original_spec=spec;spec=canonical_runtime_spec(ROOT,spec);count_record=original_spec.get('visual_count_verification',{}).get('record',f'outputs/verification/{key}_sid_full_visual_count.json');countpath=frozen_path(ROOT,count_record);counts=json.loads(countpath.read_text())
  if key in ('qwen3vl','glm46v') and spec.get('visual_count_verification',{}).get('status')!='passed':raise ValueError('Migrated runtime requires current full visual-count proof')
- headers=json.loads((ROOT/counts['header_record']).read_text())
+ headers=json.loads(frozen_path(ROOT,counts['header_record']).read_text())
  manifest=ROOT/'data/current/all.jsonl'
  if sha(manifest)!=counts['manifest_sha256']:raise ValueError('manifest count identity changed')
  samples=[json.loads(l) for l in manifest.read_text().splitlines()]
  maximum=max(g['maximum'] for g in counts['groups'] if g['dataset']=='vizwiz')
  selected=next(c for c in counts['boundary_checks'] if c['formula_tokens']==maximum and c['id'].startswith('vizwiz:'))
  sample=next(s for s in samples if s['id']==selected['id'])
- record={'scope':'Maximum-count actual VizWiz image; resource-only fixed prefixes, no generated answers or scientific scores; independent process per actual session group','passed':False,'spec':spec,'stage':a.stage,'script_sha256':sha(__file__),'command':sys.argv,'pid':os.getpid(),'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'sample':{k:sample[k] for k in ['id','dataset','split','image_path']},'image_size':[selected['width'],selected['height']],'expected_visual_tokens':maximum,'manifest_sha256':sha(manifest),'count_record':str(countpath.relative_to(ROOT)),'count_record_sha256':sha(countpath),'runtime_adapter_sha256':{n:sha(ROOT/'src/kdm/models'/n) for n in ['hf.py','backbone.py']},'visits':[],'branch_input_shapes':{},'phase':'imports'}
+ record={'scope':'Maximum-count actual VizWiz image; resource-only fixed prefixes, no generated answers or scientific scores; independent process per actual session group','passed':False,'spec':spec,'stage':a.stage,'script_sha256':sha(__file__),'command':sys.argv,'pid':os.getpid(),'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'sample':{k:sample[k] for k in ['id','dataset','split','image_path']},'image_size':[selected['width'],selected['height']],'expected_visual_tokens':maximum,'manifest_sha256':sha(manifest),'count_record':count_record,'count_record_sha256':sha(countpath),'runtime_adapter_sha256':{n:sha(ROOT/'src/kdm/models'/n) for n in ['hf.py','backbone.py']},'visits':[],'branch_input_shapes':{},'phase':'imports'}
  start=time.monotonic();torch=None
  try:
   import torch,numpy as np

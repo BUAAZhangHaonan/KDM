@@ -102,7 +102,7 @@ def test_formal_census_without_freeze_cannot_reach_backend(tmp_path,monkeypatch)
     monkeypatch.setenv('CUDA_VISIBLE_DEVICES','0')
     monkeypatch.setattr(protocol,'validate_runtime',lambda *args:None)
     monkeypatch.setattr(pipeline,'make_backend',lambda *args:pytest.fail('Unfrozen census loaded model'))
-    with pytest.raises(FileNotFoundError,match='preregistration_freeze'):
+    with pytest.raises(FileNotFoundError,match='frozen_contract/manifest.json'):
         cli.main(['--root',str(tmp_path),'run','--mode','census','--manifest','unused','--model-spec',str(spec),'--model','m','--gpu','0','--out','formal.jsonl'])
 
 

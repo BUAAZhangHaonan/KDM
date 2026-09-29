@@ -1,0 +1,744 @@
+{
+  "verification_script_sha256": "06c6332c86c8712d54b871339bf10e9240bbb3b905419e1b19d07f13b5e83596",
+  "layer_projection_check": {
+    "status": "passed",
+    "sample_id": "food101:apple_pie_group_000.jpg",
+    "raw_layers": 36,
+    "normalized_layers": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "head_final_error": 0.0,
+    "raw_projection_error": 0.0,
+    "norm_projection_error": 0.0,
+    "scope": "layer projection interface only; method formulas and SID need separate validation"
+  },
+  "runtime_adapter_sha256": {
+    "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+    "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+    "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+    "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+  },
+  "spec": {
+    "key": "minicpm45",
+    "hf_model_id": "openbmb/MiniCPM-V-4_5",
+    "availability": "resolved",
+    "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments/mprisk-tf553/bin/python",
+    "factory": "kdm.models.hf:HFBackend",
+    "kwargs": {
+      "model_path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-4_5",
+      "dtype": "bfloat16"
+    },
+    "dtype": "bfloat16",
+    "thinking_mode": "disabled",
+    "gpu_count": 1,
+    "interface_verification": "pending",
+    "versions": {
+      "torch": "2.6.0+cu124",
+      "torchvision": "0.21.0+cu124",
+      "transformers": "5.5.3",
+      "tokenizers": "0.22.2",
+      "accelerate": "1.6.0",
+      "numpy": "2.2.4",
+      "Pillow": "11.1.0",
+      "sentencepiece": "0.2.0",
+      "timm": "1.0.19",
+      "safetensors": "0.5.3",
+      "einops": "0.8.1",
+      "scipy": "1.17.0",
+      "requests": "2.32.5"
+    },
+    "weights": [
+      {
+        "filename": "model-00001-of-00004.safetensors",
+        "size_bytes": 5286612176,
+        "mtime_ns": 1778231814000000000,
+        "hub_revision": "fd3209b2e0580e346fc33d2c6f85b6e9332eecda",
+        "hub_recorded_sha256": "22643c1760b755c3c83b8631cd767fd667cb8aaababee5e4b3113210cd6177f0",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00002-of-00004.safetensors",
+        "size_bytes": 5301855088,
+        "mtime_ns": 1778231816000000000,
+        "hub_revision": "fd3209b2e0580e346fc33d2c6f85b6e9332eecda",
+        "hub_recorded_sha256": "8be1ef2c54e913ef8824520cfa9b4e604c2afcf089907992b340048bf502896a",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00003-of-00004.safetensors",
+        "size_bytes": 4546851120,
+        "mtime_ns": 1778231766000000000,
+        "hub_revision": "fd3209b2e0580e346fc33d2c6f85b6e9332eecda",
+        "hub_recorded_sha256": "9a2bd9a7b254f0671bccb84953876111fa64b889507dc12e22e98a1143b64fd7",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      },
+      {
+        "filename": "model-00004-of-00004.safetensors",
+        "size_bytes": 2256571800,
+        "mtime_ns": 1778231496000000000,
+        "hub_revision": "fd3209b2e0580e346fc33d2c6f85b6e9332eecda",
+        "hub_recorded_sha256": "f425aa9a351f9e9f600d1235e9a583ff6931a5225e7b2b02a159248b32bd522e",
+        "fingerprint_source": "existing_huggingface_download_metadata_not_rehashed"
+      }
+    ],
+    "model_config_sha256": "1d6f6eb441da34dcb43db72cf3960254c7045cc2c595a3c836ae71136655ccc8",
+    "processor": {
+      "path": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/models/MiniCPM-V-4_5",
+      "files": {
+        "modeling_navit_siglip.py": "c71ca316fe7405325b7097364f98f71c317fff8c9f5c8820f30d3362b1ed5bfa",
+        "tokenization_minicpmv_fast.py": "770e4a934f2e74e0e88e85126bceea93e345d84b411d21e99b38c5cfd095f736",
+        "processing_minicpmv.py": "aeb292555aba3362108eb10827234c48b9fede526398cc15bdbec798ba2c7fdd",
+        "tokenizer.json": "c5a94a2c3913b8aa2175fffb5fd6cf4301958f323d06475bfd91037c13bdd74b",
+        "preprocessor_config.json": "5c0dbc92920ded2304e2ed6ad4251da56029aa1f3f69427117ac6df9bc68496e",
+        "configuration_minicpm.py": "bfdb65b291246e0d709831df2e10aaba96b94d2369f670f3ad831711d2f97e45",
+        "tokenizer_config.json": "8cbacbea273108831f02441518bbbc73627c15e34ddaa3fec6369e7bd07b720c",
+        "image_processing_minicpmv.py": "52888748938f40fec0827d187383b4a8fa857f4cffad5a0939e2e449051950d7",
+        "modeling_minicpmv.py": "da7e53e9fd1ee931f8888ea5d78a53a903edb97a5634f0961d3347571f411cc6",
+        "resampler.py": "9258b6e6e0b66fd5d3ce7127372fd82eff3659481602658045c253ae18e8d5be"
+      }
+    },
+    "adapter_source_sha256": {
+      "internvl_preprocessing.py": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25",
+      "backbone.py": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89",
+      "hf.py": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e",
+      "sid.py": "9f93811689ab04bb9fd2f8401ca6bf61f3b35031e4d24dfd302a9d6177d01ce5",
+      "remote.py": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+    },
+    "input_limits": {
+      "policy": "checkpoint_processor_defaults",
+      "max_new_tokens": 32
+    },
+    "census_api_port": null,
+    "mechanism_validation": {
+      "dola_layers": "not_verified",
+      "deco_layers": "not_verified",
+      "sid_reference": "not_verified",
+      "text_only_condition": "not_verified"
+    }
+  },
+  "spec_sha256": "09d9457eb74c3bed725345dc65f1726da6b231a976574ec423b5f8940d5a6316",
+  "manifest_sha256": "e3e12cba8a37cf7fbdfbe2af17cc357e1016ccdd0a3ef7ccd11db6bd2c77c4a4",
+  "completed": 16,
+  "expected": 16,
+  "passed": true,
+  "rows": [
+    {
+      "id": "food101:apple_pie_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        47,
+        482,
+        22377,
+        35841,
+        14875,
+        19145,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        47,
+        482,
+        22377,
+        35841,
+        14875,
+        19145,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Pineapple upside-down cake.",
+      "backend_text": "Pineapple upside-down cake."
+    },
+    {
+      "id": "food101:baby_back_ribs_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        49,
+        54341,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        49,
+        54341,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Ribs.",
+      "backend_text": "Ribs."
+    },
+    {
+      "id": "food101:baklava_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        33,
+        585,
+        75,
+        2907,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Baklava.",
+      "backend_text": "Baklava."
+    },
+    {
+      "id": "food101:beef_carpaccio_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        17245,
+        329,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        17245,
+        329,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Salad.",
+      "backend_text": "Salad."
+    },
+    {
+      "id": "food101:beef_tartare_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        20903,
+        585,
+        44815,
+        546,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        20903,
+        585,
+        44815,
+        546,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Steak tartare.",
+      "backend_text": "Steak tartare."
+    },
+    {
+      "id": "food101:beet_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        3430,
+        295,
+        32466,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        3430,
+        295,
+        32466,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Beet salad.",
+      "backend_text": "Beet salad."
+    },
+    {
+      "id": "food101:beignets_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        8002,
+        6128,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        8002,
+        6128,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Donuts.",
+      "backend_text": "Donuts."
+    },
+    {
+      "id": "food101:bibimbap_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        16134,
+        12000,
+        2598,
+        29445,
+        20828,
+        391,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        16134,
+        12000,
+        2598,
+        29445,
+        20828,
+        391,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "The specific food shown in this image is a Korean dish called Bibimbap.",
+      "backend_text": "The specific food shown in this image is a Korean dish called Bibimbap."
+    },
+    {
+      "id": "food101:bread_pudding_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        47,
+        757,
+        276,
+        4349,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        47,
+        757,
+        276,
+        4349,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Pecan pie.",
+      "backend_text": "Pecan pie."
+    },
+    {
+      "id": "food101:breakfast_burrito_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        17496,
+        7795,
+        28041,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        17496,
+        7795,
+        28041,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "The specific food shown in this image is a breakfast burrito.",
+      "backend_text": "The specific food shown in this image is a breakfast burrito."
+    },
+    {
+      "id": "food101:bruschetta_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        785,
+        2168,
+        4933,
+        264,
+        11968,
+        315,
+        60633,
+        16002,
+        11,
+        264,
+        2613,
+        12000,
+        315,
+        32113,
+        5590,
+        448,
+        293,
+        1127,
+        3991,
+        46105,
+        11,
+        323,
+        264,
+        19212,
+        315,
+        281,
+        3955,
+        409,
+        15369,
+        385,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        785,
+        2168,
+        4933,
+        264,
+        11968,
+        315,
+        60633,
+        16002,
+        11,
+        264,
+        2613,
+        12000,
+        315,
+        32113,
+        5590,
+        448,
+        293,
+        1127,
+        3991,
+        46105,
+        11,
+        323,
+        264,
+        19212,
+        315,
+        281,
+        3955,
+        409,
+        15369,
+        385,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "The image shows a plate of grilled bread, a small dish of olive oil with balsamic vinegar, and a bowl of pico de gallo.",
+      "backend_text": "The image shows a plate of grilled bread, a small dish of olive oil with balsamic vinegar, and a bowl of pico de gallo."
+    },
+    {
+      "id": "food101:caesar_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        22571,
+        32240,
+        32466,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        22571,
+        32240,
+        32466,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Caesar salad.",
+      "backend_text": "Caesar salad."
+    },
+    {
+      "id": "food101:cannoli_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Dessert.",
+      "backend_text": "Dessert."
+    },
+    {
+      "id": "food101:caprese_salad_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        12903,
+        70438,
+        32466,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Caprese salad.",
+      "backend_text": "Caprese salad."
+    },
+    {
+      "id": "food101:carrot_cake_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        35,
+        433,
+        529,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "Dessert.",
+      "backend_text": "Dessert."
+    },
+    {
+      "id": "food101:ceviche_group_000.jpg",
+      "checked_conditions": [
+        "guided_clean",
+        "guided_noise",
+        "unguided_clean",
+        "unguided_noise",
+        "guided_text_only",
+        "unguided_text_only"
+      ],
+      "condition_max_abs_error": 0.0,
+      "condition_state_equal": true,
+      "native_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        19212,
+        315,
+        73214,
+        10223,
+        448,
+        16426,
+        6241,
+        23595,
+        13,
+        151645
+      ],
+      "backend_tokens": [
+        785,
+        3151,
+        3607,
+        6839,
+        304,
+        419,
+        2168,
+        374,
+        264,
+        19212,
+        315,
+        73214,
+        10223,
+        448,
+        16426,
+        6241,
+        23595,
+        13,
+        151645
+      ],
+      "equal": true,
+      "native_text": "The specific food shown in this image is a bowl of salsa served with tortilla chips.",
+      "backend_text": "The specific food shown in this image is a bowl of salsa served with tortilla chips."
+    }
+  ]
+}

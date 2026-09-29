@@ -51,6 +51,39 @@ def scheduler(tmp_path,monkeypatch):
     freeze={'status':'frozen','source_blobs':['synthetic-committed-source'],'files':{name:file_hash(tmp_path/name) for name in names}}
     write('outputs/records/preregistration_freeze.json',json.dumps(freeze))
     (tmp_path/'outputs/locks').mkdir()
+    # This fixture is a deliberately small legacy-shaped test contract. The
+    # production repository uses validate_canonical_freeze and its full
+    # content-addressed bundle; validate the fixture's equivalent gates here.
+    def validate_fixture_freeze(test_root):
+        from kdm.reports import validated_method_plan
+        from kdm.protocol import validate_method_runtime,validate_native_runtime_files
+        receipt=test_root/'outputs/records/preregistration_freeze.json'
+        if not receipt.is_file():raise FileNotFoundError(receipt)
+        contract=json.loads(receipt.read_text())
+        if contract.get('status')!='frozen':raise ValueError('Contract is not frozen')
+        if contract.get('source_blobs')!=['synthetic-committed-source']:
+            raise ValueError('Synthetic source identity differs')
+        if not set(names)<=set(contract.get('files',{})):
+            raise ValueError('Fixture contract omits required files')
+        for relative,digest in contract.get('files',{}).items():
+            path=test_root/relative
+            if not path.is_file() or file_hash(path)!=digest:
+                raise ValueError('Frozen file identity differs: '+relative)
+        panel=json.loads((test_root/'configs/kdm/models.json').read_text())
+        keys=[row['key'] for row in panel]
+        plan=json.loads((test_root/'configs/kdm/method_plan.json').read_text())
+        methods=validated_method_plan(plan,[(key,dataset) for key in keys for dataset in ('food101','vizwiz')])
+        for key in keys:
+            runtime=json.loads((test_root/f'configs/runtime/{key}.json').read_text())
+            requested={method for group in methods[key].values() for method in group}
+            if 'sid' in requested:
+                sid=runtime.get('mechanism_validation',{}).get('sid_reference',{})
+                if sid.get('record') not in contract.get('files',{}):
+                    raise ValueError('Frozen contract omits independent SID proof')
+            validate_native_runtime_files(test_root,runtime,key)
+            validate_method_runtime(test_root,runtime,requested)
+        return contract
+    monkeypatch.setattr(mod,'validate_freeze',validate_fixture_freeze)
     return mod,tmp_path,freeze
 
 

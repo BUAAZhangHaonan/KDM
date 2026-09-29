@@ -1,0 +1,644 @@
+{
+  "schema": "kdm_final_runtime_path_closure",
+  "canonical_contract_sha256": "b64faa9fce9cf9ec569c160cc637aa83c7b7e1439850df19a319b13fee70fde5",
+  "proof_manifest_sha256": "f318b5b9c8a39fab0c33ed6b2dce6dd9398333c11f8e9df8ea7d3c0ba70cf6c7",
+  "supporting_manifest_sha256": "5af8db2c64c33b07885f90df9e054e50eda7722b9523683691478503110c3e3a",
+  "proof_files_verified": 95,
+  "proof_bytes_verified": 25010573,
+  "algorithm_source_commit": "239ce4bed2c6fc60c395b0a8fcf681827b459e6a",
+  "historical_algorithm_blobs_current_sha_verified": true,
+  "active_frozen_inputs_sha_verified": [
+    "configs/kdm/assets.json",
+    "configs/kdm/food_aliases.json",
+    "configs/kdm/method_plan.json",
+    "configs/kdm/model_spec.example.json",
+    "configs/kdm/model_spec_api.example.json",
+    "configs/kdm/model_spec_mock.json",
+    "configs/kdm/models.json",
+    "configs/kdm/study.json",
+    "configs/runtime/environments.json",
+    "configs/runtime/gemma3_12b.json",
+    "configs/runtime/gemma3_4b.json",
+    "configs/runtime/glm46v.json",
+    "configs/runtime/hosts.json",
+    "configs/runtime/internvl35_8b.json",
+    "configs/runtime/llava15_13b.json",
+    "configs/runtime/llava15_7b.json",
+    "configs/runtime/llava16_mistral.json",
+    "configs/runtime/llava16_vicuna.json",
+    "configs/runtime/minicpm26.json",
+    "configs/runtime/minicpm45.json",
+    "configs/runtime/model_inventory.json",
+    "configs/runtime/onevision.json",
+    "configs/runtime/phi35.json",
+    "configs/runtime/qwen25vl.json",
+    "configs/runtime/qwen35_4b.json",
+    "configs/runtime/qwen35_9b.json",
+    "configs/runtime/qwen3vl.json",
+    "configs/runtime/semantic_judge.json",
+    "data/current/all.jsonl",
+    "data/current/interface16.jsonl"
+  ],
+  "active_migration_files": [
+    "docs/PROTOCOL.md",
+    "docs/PROTOCOL_REGISTER.md",
+    "docs/REPRODUCIBILITY.md",
+    "docs/THEORY.md",
+    "scripts/complete_response_audit.py",
+    "scripts/render_figures.py",
+    "scripts/run_census_panel.py",
+    "src/kdm/cli.py",
+    "src/kdm/frozen.py",
+    "src/kdm/protocol.py",
+    "src/kdm/provenance.py",
+    "src/kdm/task_provenance.py",
+    "verification/check_full_visual_counts.py",
+    "verification/max_input_resource_check.py",
+    "workflows/formal/generate.py",
+    "workflows/formal/verify_provenance.py"
+  ],
+  "current_code_identity": [
+    {
+      "path": "configs/kdm/assets.json",
+      "sha256": "7b1b4419f0d410b8bb07e4a53c38dfe93ba00ed5a1378f35a1651f2901f28470"
+    },
+    {
+      "path": "configs/kdm/food_aliases.json",
+      "sha256": "f34c7f292a52cd6dad9eff26c8cf0e3d63d4e24a87a852cf68cbdc03c53e795f"
+    },
+    {
+      "path": "configs/kdm/method_plan.json",
+      "sha256": "ae5f47a1d01366e779f7863b0bbcd5a36608d49e76dea091fcce4a7bb03af68c"
+    },
+    {
+      "path": "configs/kdm/model_spec.example.json",
+      "sha256": "aa01734bb8957e4febe48178fbd2e962eaadd1cdb73aad11d80feeeab2e0b668"
+    },
+    {
+      "path": "configs/kdm/model_spec_api.example.json",
+      "sha256": "e89a3f560cc9e8a126e2ee93ca386332223029bd7cdc956c9bb3e1d9fa95d1a4"
+    },
+    {
+      "path": "configs/kdm/model_spec_mock.json",
+      "sha256": "99a52a112f93dbb1c655c5a3f336f51ff66af94e59a3a0223aaf750771cef9ec"
+    },
+    {
+      "path": "configs/kdm/models.json",
+      "sha256": "6886805bd4fa1701d5bbccd39ca16a78b625fb5331883de1cafaa410cd5a8f46"
+    },
+    {
+      "path": "configs/kdm/study.json",
+      "sha256": "9259f8c52ce4dae907875b552f6b6d48f1eddcc068019e699f9207801f269b1c"
+    },
+    {
+      "path": "docs/PROTOCOL.md",
+      "sha256": "cfd1a22267ff6c9cc1d708382926ed2bd20bd7700db56ad68b882de5631b214e"
+    },
+    {
+      "path": "docs/PROTOCOL_REGISTER.md",
+      "sha256": "1a6b6ea8dc7111717b4ad7681f1751e6c571654a15e5701dc78a352d3b282baf"
+    },
+    {
+      "path": "docs/REPRODUCIBILITY.md",
+      "sha256": "58d54c9a828ff9964c090752198025ceb2d2541e0132158d28eb67367e9f09d7"
+    },
+    {
+      "path": "docs/THEORY.md",
+      "sha256": "faa59602aa462c89a46801113fcf36783f82f67cdc2ed4bdb6b30a8fe87bbbd7"
+    },
+    {
+      "path": "scripts/complete_response_audit.py",
+      "sha256": "fdf00bc50345187e35cfd96ea0d24dcbe4b6605f82366639a656a4a54e8ec42d"
+    },
+    {
+      "path": "scripts/render_figures.py",
+      "sha256": "1c9dd7781e3a621712f1ea6715df6bfa8622472687e0c53c7763507598ffc415"
+    },
+    {
+      "path": "scripts/run_census_panel.py",
+      "sha256": "d0486edf07f771f8fe08a1824d382148b6df45c0343d14e57fd39fbbe4b2ad7e"
+    },
+    {
+      "path": "src/kdm/__init__.py",
+      "sha256": "da6f019c7e46b7b16cca3a05818b6264eef63647fea619a3b809160bbdf26eb7"
+    },
+    {
+      "path": "src/kdm/analysis.py",
+      "sha256": "1c40ec4dbe944a5ade8ac1b92c29a9e7bdcb348c0766dddeef383ab2ba6f4b05"
+    },
+    {
+      "path": "src/kdm/annotation.py",
+      "sha256": "27cf9d8c7b88d38c4f15eb6763b0bd6a12202c9ae37c9ee6ba2cdbd25a962b23"
+    },
+    {
+      "path": "src/kdm/cda.py",
+      "sha256": "f513899081a75ee8b7588cf6cb816add4ed80ce1b5e64964145cd7d38c22b3b7"
+    },
+    {
+      "path": "src/kdm/cli.py",
+      "sha256": "24bbeba7f78cb53aa850d8b0bc9675f1dd8b4c00caa1a1ae1143761bf7c6969e"
+    },
+    {
+      "path": "src/kdm/data.py",
+      "sha256": "7f69ff6260546bb92ffd79aa9acdba0ea42dd6384a4cfe41725fada5140aada5"
+    },
+    {
+      "path": "src/kdm/decoding.py",
+      "sha256": "595701df08e34257d1ce97050402016eaa4938403b341b99de388792b1b193bf"
+    },
+    {
+      "path": "src/kdm/execution.py",
+      "sha256": "fc1c2c7d8e84a6ec74bffcf81ab20666a8738a52fd152a0d70f0b20a00ce39ee"
+    },
+    {
+      "path": "src/kdm/frozen.py",
+      "sha256": "b9560763b3ad88fafb04b7087d8ae6d2d6ee165ba9d228ed470930affe33010e"
+    },
+    {
+      "path": "src/kdm/human_review.py",
+      "sha256": "70750aee008d3ffe4522b583d0af8dc597e76139bc28e43246a2220106281e80"
+    },
+    {
+      "path": "src/kdm/io.py",
+      "sha256": "6a87859d6640773ea48e53132b8ff75f2f7fe58260601626ceaa50610e7275ac"
+    },
+    {
+      "path": "src/kdm/mechanism.py",
+      "sha256": "20a0d332ae1b4b4255dd665b7f40f4356677b8e08364522a8585e508187ac5d7"
+    },
+    {
+      "path": "src/kdm/models/__init__.py",
+      "sha256": "98836a8cf6d11f8ddd969e8b77d04424564ae9719306994f3044c1ce68c55b96"
+    },
+    {
+      "path": "src/kdm/models/api.py",
+      "sha256": "145ef40295a5ae162ae01d936ffd58705b27d2471559093b29971545cc0bbeaa"
+    },
+    {
+      "path": "src/kdm/models/backbone.py",
+      "sha256": "a597ec1d1b5ee140fb52577f47bad6e7dbcb5b21507fb01a82a5ceceee00ba89"
+    },
+    {
+      "path": "src/kdm/models/hf.py",
+      "sha256": "0b57d836eb5abf2e88d8e9af39f4665255a1b599f4ad65446051fb4acee2e11e"
+    },
+    {
+      "path": "src/kdm/models/internvl_dual.py",
+      "sha256": "7bcff705368cd43b4317c5287364c9c150fd05deec5cb7dcc04403f30c23500c"
+    },
+    {
+      "path": "src/kdm/models/internvl_preprocessing.py",
+      "sha256": "50728efe94a5394a8660f1db040d7f84a645c6c6a0cfe961cc806bc767aead25"
+    },
+    {
+      "path": "src/kdm/models/mock.py",
+      "sha256": "6bc14b222c3a875f3af83ddd2ea09efbd05b41cb3bc8f66614f3b64ab5082663"
+    },
+    {
+      "path": "src/kdm/models/official_vqa_normalizer.py",
+      "sha256": "86fea2fcd4c33d81423230cf3303475f683e6f6c3b646638f3d3ac051e5ec7fe"
+    },
+    {
+      "path": "src/kdm/models/remote.py",
+      "sha256": "1cf8022a831670d8d8bac23dabf4e8fe4bc016cca5567b326f49d4c6b3840ab3"
+    },
+    {
+      "path": "src/kdm/models/sid.py",
+      "sha256": "ea7217f932864101a8f2028e873af25428738e042969a0d2e053816d4e5d4037"
+    },
+    {
+      "path": "src/kdm/models/verify.py",
+      "sha256": "7b679b1351c84d1b38e6bef53309efbc58018bc6907d045be9dd3c0c8accfe0e"
+    },
+    {
+      "path": "src/kdm/pipeline.py",
+      "sha256": "16a0f486e926e83bb5f8fe81bab532ff916c003686aade9976e01e3443bb5f02"
+    },
+    {
+      "path": "src/kdm/probability.py",
+      "sha256": "151283f5774553cef272099347c414b3c540ea3be28b84da1823800b5678f23d"
+    },
+    {
+      "path": "src/kdm/prompts.py",
+      "sha256": "6580303ffe1c98da60d687698558e17f95cc5ff48115d9bc606609127fded976"
+    },
+    {
+      "path": "src/kdm/protocol.py",
+      "sha256": "4a609e868e99e4ff9170c586ccdfd5111a44485932b6b18b706f3f736274b766"
+    },
+    {
+      "path": "src/kdm/provenance.py",
+      "sha256": "4a436944e7dac7611e5af5f5f121b235a3a5d403babe44b581fbe5ca71fa324e"
+    },
+    {
+      "path": "src/kdm/reports.py",
+      "sha256": "55f3d5d9b496ac711cbc31591dc7a5748568d593ce3982b267f3429b6636c3dc"
+    },
+    {
+      "path": "src/kdm/scoring.py",
+      "sha256": "808d291a94f429ce697c8de709aa10363eb71363b9789a721acfa6bb44841862"
+    },
+    {
+      "path": "src/kdm/selection_provenance.py",
+      "sha256": "96f6d6890e20c6f4b12f5b981e5dbcfc21c24dfaf61ab6d1ea2d8ebdab3975f0"
+    },
+    {
+      "path": "src/kdm/statistics.py",
+      "sha256": "f06e33363dc8526fad40690df7ee8761ea8a37af1961e950f870866978a3122d"
+    },
+    {
+      "path": "src/kdm/task_provenance.py",
+      "sha256": "748d8927d88bccfcdbe0862e93ad8d6b653e2b8bebcabd1dc8ec21e5e17fd749"
+    },
+    {
+      "path": "src/kdm/visualization.py",
+      "sha256": "268bac09713401dcdc37a8dd9a9872956b23ed20179ffb36b75833fcd6f33eb5"
+    },
+    {
+      "path": "verification/check_full_visual_counts.py",
+      "sha256": "bdc57dd9d4ed1dfebf4628bbe6d36fd5dbe392ebccefebcd607606a6a5a61add"
+    },
+    {
+      "path": "verification/max_input_resource_check.py",
+      "sha256": "8599f5b1b2478fc40bdf54ef82d7b39b47dddb78c08c755f863e23963617c795"
+    },
+    {
+      "path": "workflows/formal/generate.py",
+      "sha256": "d3a11aa41c820050dc91b74f4f26571c329a7f13f3308f31c314fb14a2814560"
+    },
+    {
+      "path": "workflows/formal/verify_provenance.py",
+      "sha256": "1d64a40909824e0d6c49b59e16fddc4ea825b8162232c08ca984335b808bcbd8"
+    }
+  ],
+  "supporting_blobs": [
+    {
+      "original_path": "outputs/records/sid_image_exif_orientation_check.json",
+      "sha256": "19c16944f9ec73b8018f0bd2af8ca0e7508afa88b9f50659f64a379d53c5d6af",
+      "size_bytes": 30992,
+      "canonical_blob_path": "data/provenance/frozen_contract/blobs/19c16944f9ec73b8018f0bd2af8ca0e7508afa88b9f50659f64a379d53c5d6af"
+    }
+  ],
+  "stable_keep_roots": [
+    "data/current",
+    "data/provenance",
+    "data/responses",
+    "data/annotations",
+    "data/reference_gt",
+    "configs/kdm",
+    "configs/runtime",
+    "src/kdm",
+    "verification/check_full_visual_counts.py",
+    "verification/max_input_resource_check.py",
+    "verification/sid_reference_check.py",
+    "reference_repos/sid",
+    "workflows/formal",
+    "workflows/main_results",
+    "outputs/annotations/main_results",
+    "outputs/annotations/reference_gt",
+    "outputs/analysis/main_results",
+    "outputs/records/main_results"
+  ],
+  "archive_roots_after_parallel_results_close": [
+    "outputs/annotations/acceleration_v4",
+    "outputs/annotations/current",
+    "outputs/annotations/deepseek_v2",
+    "outputs/annotations/independent_v5",
+    "outputs/annotations/luna_census_remaining_v1",
+    "outputs/annotations/luna_independent_residual_v1",
+    "outputs/annotations/luna_independent_v2",
+    "outputs/annotations/luna_independent_v3",
+    "outputs/annotations/luna_panel5_formal_v1",
+    "outputs/annotations/luna_panel5_gemma_complete_v1",
+    "outputs/annotations/luna_panel5_incremental_v1",
+    "outputs/annotations/luna_panel5_k100_delta_v1",
+    "outputs/annotations/luna_semantic_v1",
+    "outputs/annotations/quick_match_v1",
+    "outputs/annotations/remaining11_v1",
+    "outputs/analysis/food_closed_vs_abstention_20260923_v1",
+    "outputs/analysis/main_results_closeout_20260928_v1",
+    "outputs/analysis/panel5_mechanism_path_scalars_20260928_v1",
+    "outputs/analysis/three_model_joint_gt_20260924_v1",
+    "outputs/records (except main_results) and all roots listed in historical_outputs_manifest.json"
+  ],
+  "historical_outputs_archive": {
+    "path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/historical_outputs.tar",
+    "sha256": "1be2bc3495964bf4d27c0d5adde497bd99c5bee4019808685e8e0b3c38e185df",
+    "file_count": 13045,
+    "source_bytes": 24068464640
+  },
+  "historical_code_docs_archive": {
+    "sha256": "ba96c369ef777837c8623a3b5fa4b6f907840299cedbbef9c749069ab42fa583",
+    "file_count": 517,
+    "source_retained": true
+  },
+  "old_freeze_paths": {
+    "docs/current/PREREGISTER.md": "canonical blob verified; stable counterpart docs/PROTOCOL_REGISTER.md",
+    "outputs/records/preregistration_freeze.json": "canonical contract verified; stable path data/provenance/frozen_contract/contract.json",
+    "outputs/verification": "all 41 frozen proof records have canonical blobs; three retained verification entrypoints resolve required proof inputs through canonical blobs",
+    "outputs/records/image_content_catalog.json": "canonical blob verified; registry consumer resolves by frozen_path",
+    "outputs/records/sid_image_exif_orientation_check.json": "supplemental canonical blob verified"
+  },
+  "validation": {
+    "focused_tests": "86 passed",
+    "formal_check_plan": {
+      "qwen25vl": 193920,
+      "qwen35_4b": 155136,
+      "llava16_mistral": 193920,
+      "minicpm26": 155136,
+      "gemma3_4b": 155136
+    },
+    "gpu_initialized": false,
+    "full_contract": {
+      "files_verified": 95,
+      "source_bytes_verified": 25010573,
+      "canonical_copies_verified": true
+    }
+  },
+  "retired_source_paths": [
+    "src/kdm/migration.py"
+  ],
+  "retired_entries": [
+    {
+      "path": "src/kdm/migration.py",
+      "role": "old research-bundle installer and AST source migrator",
+      "replacement": "canonical data/provenance package and stable docs/workflows",
+      "archive": "external historical code/docs/support archive"
+    },
+    {
+      "path": "scripts/install.py",
+      "role": "CLI for retired kdm.migration package installer",
+      "replacement": "none; project now uses the existing canonical repository"
+    },
+    {
+      "path": "tests/test_migration.py",
+      "role": "tests for retired repository migration/install path",
+      "replacement": "current provenance and final runner checks"
+    },
+    {
+      "path": "scripts/render_figures.py --examples",
+      "role": "synthetic data_example fixture generation and layout demo",
+      "replacement": "explicit --matrix/--tradeoff inputs with source note"
+    },
+    {
+      "path": "tests/test_visualization.py demo fixture inputs",
+      "role": "data_example-dependent reported-fates and mathematical-demo images",
+      "replacement": "main-results matrix and tradeoff render regression test"
+    },
+    {
+      "path": "data_example/",
+      "role": "synthetic/demo fixtures",
+      "replacement": "final response, review and analysis datasets"
+    }
+  ],
+  "verification_scripts": {
+    "verification/check_full_visual_counts.py": {
+      "reads": [
+        "data/current/all.jsonl",
+        "configs/runtime/<model>.json",
+        "canonical frozen blob outputs/records/sid_visual_image_headers.json",
+        "supplementary blob outputs/records/sid_image_exif_orientation_check.json",
+        "registered model weights"
+      ],
+      "writes": "outputs/verification/<model>_sid_full_visual_count.json (parent is created on demand)",
+      "proof_script_sha": "historical source bytes from canonical blob; current entrypoint SHA recorded separately"
+    },
+    "verification/max_input_resource_check.py": {
+      "reads": [
+        "configs/runtime/<model>.json",
+        "canonical frozen visual-count proof",
+        "canonical frozen image-header proof",
+        "data/current/all.jsonl",
+        "registered model weights"
+      ],
+      "writes": "caller-selected outputs/verification record (parent is created on demand)",
+      "proof_script_sha": "historical source bytes from canonical blob; current entrypoint SHA recorded separately"
+    },
+    "verification/sid_reference_check.py": {
+      "reads": [
+        "reference_repos/sid at commit 127dd412fa6b61ab1c9babf6979ec4da98002438",
+        "src/kdm SID adapters"
+      ],
+      "writes": "caller output",
+      "required_keep": "reference_repos/sid source repository"
+    }
+  },
+  "external_code_support_archive_receipt": "outputs/records/main_results/code_support_cleanup.json",
+  "external_code_support_archive_receipt_sha256": "7800103c9f6a64efb717f2f87f098102cc62543e6356648ae6bd62b8e75f90b6",
+  "retirement_inventory": {
+    "phase2_candidate_file": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/cleanup_preparation/archive_paths_phase2_candidate.json",
+    "phase2_candidate_sha256": "8f6971e07d9976c9d97d4b06eb9e49cac1bae77891a89bad0201112447bdab69",
+    "phase2_candidate_path_count": 134,
+    "additional_retired_preregister": "docs/current/PREREGISTER.md (archived separately after stable register migration)",
+    "historical_outputs_manifest": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/historical_outputs_manifest.json",
+    "historical_outputs_manifest_sha256": "85840b89f415c326070da86b63ee4959ab3e5969529f77b67a56961b47343470",
+    "historical_outputs_source_roots": [
+      "outputs/annotations/acceleration_v4",
+      "outputs/annotations/current",
+      "outputs/annotations/deepseek_v2",
+      "outputs/annotations/independent_v5",
+      "outputs/annotations/luna_census_remaining_v1",
+      "outputs/annotations/luna_independent_residual_v1",
+      "outputs/annotations/luna_independent_v2",
+      "outputs/annotations/luna_independent_v3",
+      "outputs/annotations/luna_panel5_formal_v1",
+      "outputs/annotations/luna_panel5_gemma_complete_v1",
+      "outputs/annotations/luna_panel5_incremental_v1",
+      "outputs/annotations/luna_panel5_k100_delta_v1",
+      "outputs/annotations/luna_semantic_v1",
+      "outputs/annotations/quick_match_v1",
+      "outputs/annotations/remaining11_v1",
+      "outputs/analysis/food_closed_vs_abstention_20260923_v1",
+      "outputs/analysis/main_results_closeout_20260928_v1",
+      "outputs/analysis/panel5_mechanism_path_scalars_20260928_v1",
+      "outputs/analysis/three_model_joint_gt_20260924_v1",
+      "outputs/records/6403_checkpoint_comparison_v1.json",
+      "outputs/records/6403_checkpoint_inventory_v1.json",
+      "outputs/records/6403_checkpoint_stat_final_v1.json",
+      "outputs/records/6403_environment_glm_inventory_v1.json",
+      "outputs/records/6403_environment_mprisk_inventory_v1.json",
+      "outputs/records/6403_environment_qwen_inventory_v1.json",
+      "outputs/records/6403_environment_registered_tf553_inventory_v1.json",
+      "outputs/records/6403_image_transfer_verification_v1.json",
+      "outputs/records/6403_image_transfer_verification_v1.log",
+      "outputs/records/6403_max_input_resource_summary_v1.json",
+      "outputs/records/6403_mprisk_processor_counts_v1.json",
+      "outputs/records/6403_mprisk_processor_inventory_v1.json",
+      "outputs/records/6403_readonly_inventory_summary_v1.json",
+      "outputs/records/6403_registered_environment_recommendation_v1.json",
+      "outputs/records/6403_visual_count_cpu_execution_v1.json",
+      "outputs/records/DeCo_range_header_diagnosis.json",
+      "outputs/records/DeCo_range_probe.json",
+      "outputs/records/DeCo_segmented_download.json",
+      "outputs/records/DeCo_v2_probe.json",
+      "outputs/records/DeCo_v2_segmented_download.json",
+      "outputs/records/acceleration_v4",
+      "outputs/records/adapter_verification_failures.json",
+      "outputs/records/assets_papers_20260919T091236.899364Z.json",
+      "outputs/records/assets_papers_20260919T094955.966576Z.json",
+      "outputs/records/assets_papers_20260919T095440.319488Z.json",
+      "outputs/records/assets_vizwiz_20260919T091226.659263Z.json",
+      "outputs/records/assets_vqa_code_20260919T091247.164253Z.json",
+      "outputs/records/assets_vqa_code_20260919T091431.841846Z.json",
+      "outputs/records/census_4028_frozen_v1",
+      "outputs/records/census_4028_frozen_v1.launch.log",
+      "outputs/records/census_4028_frozen_v1.scheduler.pid",
+      "outputs/records/census_6403_frozen_v1",
+      "outputs/records/census_completed_batch01_20260920.json",
+      "outputs/records/census_completed_batch02_20260920.json",
+      "outputs/records/census_completed_batch03_20260920.json",
+      "outputs/records/census_completed_batch04_20260920.json",
+      "outputs/records/census_completed_batch05_20260920.json",
+      "outputs/records/census_completed_batch06_20260920.json",
+      "outputs/records/census_completed_batch07_20260920.json",
+      "outputs/records/census_completed_batch08_20260921.json",
+      "outputs/records/census_completed_batch09_20260921.json",
+      "outputs/records/census_completed_batch10_20260921.json",
+      "outputs/records/census_completed_batch11_20260921.json",
+      "outputs/records/census_completed_batch12_20260921.json",
+      "outputs/records/census_completed_batch13_20260921.json",
+      "outputs/records/census_launch_20260919.json",
+      "outputs/records/census_panel_complete_20260921",
+      "outputs/records/census_provisional_rates_20260922T_user_query.json",
+      "outputs/records/condition_aligned_lexical_sensitivity_20260928_v1",
+      "outputs/records/data_asset_test_result.json",
+      "outputs/records/data_manifest_review.json",
+      "outputs/records/deepseek_v2",
+      "outputs/records/deployment_4029_v1",
+      "outputs/records/environment_builds",
+      "outputs/records/food_alias_review.json",
+      "outputs/records/formal_crosshost_sync_20260927",
+      "outputs/records/formal_crosshost_v2",
+      "outputs/records/formal_remaining_v1",
+      "outputs/records/gemma_execution_audit_20260927_v1",
+      "outputs/records/glm46v_dual_configuration_v1.json",
+      "outputs/records/glm46v_dual_execution_v1.json",
+      "outputs/records/glm46v_max_input_resource_v1_summary.json",
+      "outputs/records/glm46v_native16_completion.json",
+      "outputs/records/glm46v_sid_v2_completion.json",
+      "outputs/records/glm_audit_v2.tgz",
+      "outputs/records/glm_gpu_audit_failed_v2.tgz",
+      "outputs/records/glm_independent_audit_complete_v1.tar.gz",
+      "outputs/records/glm_independent_prepared_v1.tar.gz",
+      "outputs/records/glm_native_dispatch_v1.tgz",
+      "outputs/records/glm_native_started_v1.tgz",
+      "outputs/records/glm_snapshot_v2.tgz",
+      "outputs/records/hardware_inventory_20260919.json",
+      "outputs/records/image_content_catalog.json",
+      "outputs/records/image_content_catalog_creation_v1.json",
+      "outputs/records/image_content_catalog_creation_v1.log",
+      "outputs/records/independent_k100_llava15_v1",
+      "outputs/records/independent_k100_minicpm45_v1",
+      "outputs/records/independent_k100_onevision_v1",
+      "outputs/records/independent_k100_qwen35_9b_v1",
+      "outputs/records/independent_k100_qwen3vl_v1",
+      "outputs/records/independent_k100_v1",
+      "outputs/records/independent_k100_vicuna_complete_20260924.tgz",
+      "outputs/records/independent_k100_vicuna_v1",
+      "outputs/records/independent_qwen3vl_native_v1",
+      "outputs/records/independent_sync_20260923",
+      "outputs/records/independent_sync_20260924",
+      "outputs/records/independent_v5",
+      "outputs/records/independent_vicuna_native_v1",
+      "outputs/records/interface16_selection.json",
+      "outputs/records/internvl_failure_prepared_v2.tar.gz",
+      "outputs/records/llava13_native_start_20260926_v1.tar",
+      "outputs/records/llava15_closed_complete_20260924.tgz",
+      "outputs/records/luna_execution_audit_20260927_v1",
+      "outputs/records/luna_execution_audit_20260927_v2",
+      "outputs/records/luna_execution_audit_20260927_v3",
+      "outputs/records/luna_execution_audit_20260927_v4",
+      "outputs/records/luna_execution_audit_20260927_v5",
+      "outputs/records/luna_execution_audit_20260927_v6",
+      "outputs/records/luna_execution_audit_20260927_v7",
+      "outputs/records/luna_quality_recheck_20260928_v1",
+      "outputs/records/main_results_closeout_20260928_v1",
+      "outputs/records/max_input_resource_v1_qwen_summary.json",
+      "outputs/records/method_applicability_plan.json",
+      "outputs/records/minicpm45_closed_complete_v1.tar.gz",
+      "outputs/records/minicpm45_independent_complete_v1.tar.gz",
+      "outputs/records/model_transfer_complete.json",
+      "outputs/records/model_transfer_source_inventory.json",
+      "outputs/records/model_transfer_status.json",
+      "outputs/records/monitor_20260927_0248_v1",
+      "outputs/records/monitor_20260927_0449_v1",
+      "outputs/records/monitor_20260927_0650_v1",
+      "outputs/records/monitor_20260927_0851_v1",
+      "outputs/records/monitor_20260927_1052_v1",
+      "outputs/records/monitor_20260927_1253_v1",
+      "outputs/records/monitor_20260927_1454_v1",
+      "outputs/records/monitor_20260927_1654_v1",
+      "outputs/records/monitor_20260927_1854_v1",
+      "outputs/records/monitor_20260927_2054_v1",
+      "outputs/records/monitor_20260927_2255_v1",
+      "outputs/records/monitor_20260928_0056_v1",
+      "outputs/records/monitor_20260928_0257_v1",
+      "outputs/records/monitor_20260928_0459_v1",
+      "outputs/records/monitor_20260928_0700_v1",
+      "outputs/records/monitor_20260928_0902_v1",
+      "outputs/records/monitor_20260928_1103_v1",
+      "outputs/records/monitor_20260928_1304_v1",
+      "outputs/records/mprisk_runtime_discovery.json",
+      "outputs/records/mprisk_user_path_verification.json",
+      "outputs/records/native16_identity_audit.json",
+      "outputs/records/native16_status.json",
+      "outputs/records/phi35_independent_complete_v1.tar.gz",
+      "outputs/records/phi_mini_active_v1_snapshot.tar.gz",
+      "outputs/records/phi_mini_production_v2_snapshot.tar.gz",
+      "outputs/records/preregistration_freeze.json",
+      "outputs/records/probes_v2",
+      "outputs/records/protocol_user_decisions_20260919.json",
+      "outputs/records/quick_match_v1",
+      "outputs/records/qwen35_9b_complete_evidence_20260926.tar",
+      "outputs/records/qwen35_9b_cpu_v1.tgz",
+      "outputs/records/qwen35_9b_dispatch_v1.tgz",
+      "outputs/records/qwen35_9b_gpu_audit_v1.tgz",
+      "outputs/records/qwen35_9b_k100_admitted_v1.tar",
+      "outputs/records/qwen35_9b_k100_audit_start_v1.tar",
+      "outputs/records/qwen35_9b_k100_native_complete_v1.tar",
+      "outputs/records/qwen35_9b_k100_preparation_v1.tar",
+      "outputs/records/qwen35_9b_k100_production_start_v1.tar",
+      "outputs/records/qwen3vl_complete_20260924.tgz",
+      "outputs/records/raw_whole_response_lexical_diagnostic_20260928_v1",
+      "outputs/records/raw_whole_response_lexical_diagnostic_20260928_v2",
+      "outputs/records/recovery_sync_20260925",
+      "outputs/records/reference_asset_review.json",
+      "outputs/records/remaining11_closed_v1",
+      "outputs/records/remaining11_glm_independent_v1",
+      "outputs/records/remaining11_internvl35_dual_v1",
+      "outputs/records/remaining11_llava13_dual_v1",
+      "outputs/records/remaining11_llava15_v1",
+      "outputs/records/remaining11_minicpm45_v1",
+      "outputs/records/remaining11_minicpm45_v2",
+      "outputs/records/remaining11_onevision_v1",
+      "outputs/records/remaining11_phi35_v1",
+      "outputs/records/remaining11_phi35_v2",
+      "outputs/records/remaining11_sync_20260924",
+      "outputs/records/remaining11_sync_20260925",
+      "outputs/records/remaining11_sync_20260926",
+      "outputs/records/remaining11_v1",
+      "outputs/records/semantic_judge_census_20260920T0213",
+      "outputs/records/semantic_judge_census_20260920T0213.launch.log",
+      "outputs/records/semantic_judge_census_20260920T0213.pid",
+      "outputs/records/semantic_judge_tokenizer_review.json",
+      "outputs/records/sid_image_exif_orientation_check.json",
+      "outputs/records/sid_visual_image_headers.json",
+      "outputs/records/spec_history",
+      "outputs/records/strict_name_marker_inputs_20260928_v1",
+      "outputs/records/task_plan.json",
+      "outputs/records/vicuna_complete_and_independent_native.tgz",
+      "outputs/records/vicuna_deployment_v1.tgz",
+      "outputs/records/vicuna_deployment_v2.tgz",
+      "outputs/records/vicuna_k100_deployment_v1.tgz",
+      "outputs/records/vicuna_k100_production_started_v1.tgz",
+      "outputs/records/vicuna_started_v2.tgz",
+      "outputs/records/weight_fingerprints_missing_metadata.json",
+      "outputs/raw",
+      "outputs/tables",
+      "outputs/logs",
+      "outputs/figures",
+      "outputs/outputs"
+    ],
+    "archive_source_roots_retirable_after_A_C_closeout": true
+  }
+}
