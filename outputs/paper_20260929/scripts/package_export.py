@@ -77,7 +77,7 @@ The user-reported connector snapshot was `1684809caf5593798cee049f13f0714931d7cf
 
 ## Local files and source retention
 
-Tracked/index status at receipt capture: `{json.dumps(status_counts, ensure_ascii=False)}`. Untracked paths by first two components: `{json.dumps(top_counts, ensure_ascii=False)}`. The original 77 large local result payloads (1,030,098,652 bytes) were retained; their earlier byte-size inventory is recorded in git_commit_receipt.json. The export workspace contains the reusable SQLite join index and package artifacts. The final version receipt, manifest and archive are generated after the published code/data commit.
+Git working-tree status counts at receipt capture: `{json.dumps(status_counts, ensure_ascii=False)}`. Untracked paths by first two components: `{json.dumps(top_counts, ensure_ascii=False)}`. The original 77 large local result payloads (1,030,098,652 bytes) were retained; their earlier byte-size inventory is recorded in git_commit_receipt.json. The export workspace contains the reusable SQLite join index and package artifacts. The final version receipt, manifest and archive are generated after the published code/data commit.
 
 Source mappings are in sources.csv, prompts_and_configs.json and context/LARGE_ASSETS.json. The raw source and scoring files retained their existing paths/content. The export stores direct mappings and copied values; checks use counts, keys, source-line binding and image-byte comparisons.
 
