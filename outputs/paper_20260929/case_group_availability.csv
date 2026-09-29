@@ -1,0 +1,9 @@
+group,model,marker,available_inputs
+original_uniform_abstention_preserved,llava16_mistral,UNKNOWN,32
+original_uniform_abstention_preserved,minicpm26,UNCLEAR,10
+vcd_correction_retained,llava16_mistral,UNKNOWN,219
+vcd_correction_retained,minicpm26,UNCLEAR,212
+ip_vcd_new_correct,llava16_mistral,UNKNOWN,64
+ip_vcd_new_correct,minicpm26,UNCLEAR,54
+direct_correct_restored_by_ip,qwen25vl,UNKNOWN,47
+direct_correct_restored_by_ip,qwen35_4b,UNKNOWN,37

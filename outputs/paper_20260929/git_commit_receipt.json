@@ -1,0 +1,139 @@
+{
+  "schema": "kdm_preexisting_six_group_commit_receipt_v1",
+  "started_utc": "2026-09-29T12:50:18.905857+00:00",
+  "repository": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+  "branch": "master",
+  "before_head": "489e249d464c53407382a73b4b25cacf5e01b3b6",
+  "before_origin_master": "1684809caf5593798cee049f13f0714931d7cf25",
+  "scope": "Six preexisting groups only; no push. New paper exporter and paper outputs are reserved for root.",
+  "source_inventory": "outputs/paper_20260929/version_before.json",
+  "commits": [
+    {
+      "id": "canonical_runtime",
+      "commit": "98fb08a28d9e056b3217ed143d05ae8287e9b777",
+      "parent": "489e249d464c53407382a73b4b25cacf5e01b3b6",
+      "subject": "Preserve frozen protocol and provenance through canonical paths",
+      "path_count": 112,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "112 files changed, 338120 insertions(+), 83 deletions(-)",
+      "committed_utc": "2026-09-29T12:50:19.415706+00:00"
+    },
+    {
+      "id": "formal_entrypoints",
+      "commit": "a842ae827122897c1d4ab34571c2c62b9a703653",
+      "parent": "98fb08a28d9e056b3217ed143d05ae8287e9b777",
+      "subject": "Retain stable formal generation and provenance entrypoints",
+      "path_count": 3,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "3 files changed, 976 insertions(+)",
+      "committed_utc": "2026-09-29T12:50:19.572743+00:00"
+    },
+    {
+      "id": "analysis_entrypoints",
+      "commit": "b81fdafb078310e2fe7e15ea0f42e68566cc362e",
+      "parent": "a842ae827122897c1d4ab34571c2c62b9a703653",
+      "subject": "Finalize main-results scoring analysis and explicit figure inputs",
+      "path_count": 7,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "7 files changed, 1391 insertions(+), 41 deletions(-)",
+      "committed_utc": "2026-09-29T12:50:19.728821+00:00"
+    },
+    {
+      "id": "archived_retirement",
+      "commit": "e77b99d5f7730646e1186053967638384f1579c0",
+      "parent": "b81fdafb078310e2fe7e15ea0f42e68566cc362e",
+      "subject": "Record verified retirement of superseded project assets",
+      "path_count": 1819,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "1819 files changed, 60 insertions(+), 2056809 deletions(-)",
+      "committed_utc": "2026-09-29T12:50:25.216891+00:00"
+    },
+    {
+      "id": "research_documentation",
+      "commit": "48254087dcf8d82bd28356ab3c012a3abdc8cc77",
+      "parent": "e77b99d5f7730646e1186053967638384f1579c0",
+      "subject": "Publish final five-model manuscript and review documentation",
+      "path_count": 13,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "13 files changed, 879 insertions(+), 35 deletions(-)",
+      "committed_utc": "2026-09-29T12:50:25.267332+00:00"
+    },
+    {
+      "id": "compact_result_handoff",
+      "commit": "fe295ba32569dbd501b36bc0440f7774f510ec5a",
+      "parent": "48254087dcf8d82bd28356ab3c012a3abdc8cc77",
+      "subject": "Record final result tables figures manifests and acceptance receipts",
+      "path_count": 100,
+      "staged_pathset_matched": true,
+      "committed_pathset_matched": true,
+      "stat": "100 files changed, 11664 insertions(+)",
+      "committed_utc": "2026-09-29T12:50:25.759663+00:00"
+    }
+  ],
+  "skipped_groups": [],
+  "push_performed": false,
+  "tests_run": false,
+  "notes": [
+    "No blanket staging, reset, clean, force, branch change, amend or asset deletion performed.",
+    "The source inventory captured three concurrently-created paper exporter scripts outside the six groups; they are excluded here."
+  ],
+  "after_head": "fe295ba32569dbd501b36bc0440f7774f510ec5a",
+  "after_ahead_behind_local_origin_master": [
+    "18",
+    "0"
+  ],
+  "remaining_status": {
+    "tracked_uncommitted": [],
+    "staged_paths": [],
+    "untracked_files": 120,
+    "untracked_groups_depth2": {
+      "data/annotations": {
+        "files": 8,
+        "bytes": 324640959
+      },
+      "data/reference_gt": {
+        "files": 14,
+        "bytes": 31356981
+      },
+      "data/responses": {
+        "files": 47,
+        "bytes": 354865393
+      },
+      "outputs/analysis": {
+        "files": 1,
+        "bytes": 56878251
+      },
+      "outputs/annotations": {
+        "files": 7,
+        "bytes": 262357068
+      },
+      "outputs/paper_20260929": {
+        "files": 40,
+        "bytes": 786109202
+      },
+      "scripts/paper_20260929": {
+        "files": 3,
+        "bytes": 88969
+      }
+    },
+    "paper_export_scripts_uncommitted": [
+      "scripts/paper_20260929/export_cases.py",
+      "scripts/paper_20260929/export_runtime.py",
+      "scripts/paper_20260929/export_tables.py"
+    ]
+  },
+  "retained_preexisting_payload": {
+    "files": 77,
+    "bytes": 1030098652,
+    "all_exist_with_same_sizes": true,
+    "changes": [],
+    "validation_scope": "Existence and byte-size comparisons only; no new hashes of large streams."
+  },
+  "completed_utc": "2026-09-29T12:50:25.778002+00:00",
+  "completed": true
+}

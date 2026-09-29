@@ -1,0 +1,18 @@
+{
+  "review_package": "KDM_Review(1).zip",
+  "review_created_utc": "2026-09-29T08:13:14.669845+00:00",
+  "live_github_branch": "master",
+  "live_github_commit": "1684809caf5593798cee049f13f0714931d7cf25",
+  "live_commit_date_utc": "2026-09-24T02:08:12Z",
+  "github_read_date": "2026-09-29",
+  "results_authority": "Uploaded KDM_Review snapshot dated 2026-09-29",
+  "primary_reference_decision": "Use the existing five-model uniform_reference_gt for the first paper draft; retain accepted-reference sensitivity.",
+  "inputs": {
+    "condition_metrics.csv": "outputs/analysis/main_results/condition_metrics.csv",
+    "paired_comparisons.jsonl": "outputs/analysis/main_results/paired_comparisons.jsonl",
+    "copy_condition_metrics.jsonl": "outputs/analysis/main_results/controls/condition_metrics.jsonl",
+    "copy_instruction_pairs.jsonl": "outputs/analysis/main_results/controls/instruction_pairs.jsonl"
+  },
+  "source_identifiers": "Original identifiers remain unchanged. CSV line numbers include the header; JSONL line numbers start at 1.",
+  "current_execution": "Read-only GitHub inspection and CPU aggregation of existing result files."
+}

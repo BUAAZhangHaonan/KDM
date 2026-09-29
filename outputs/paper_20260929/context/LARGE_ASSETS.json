@@ -1,0 +1,66 @@
+{
+  "canonical_project": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+  "assets": [
+    {
+      "path": "data/responses/formal",
+      "purpose": "853248 formal source responses",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/responses/formal",
+      "bytes": null
+    },
+    {
+      "path": "data/responses/independent",
+      "purpose": "242400 independent source responses",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/responses/independent",
+      "bytes": null
+    },
+    {
+      "path": "data/responses/candidate",
+      "purpose": "24240 candidate records",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/responses/candidate",
+      "bytes": null
+    },
+    {
+      "path": "data/responses/census",
+      "purpose": "16-model census sources",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/responses/census",
+      "bytes": null
+    },
+    {
+      "path": "outputs/annotations/main_results/score_rows.jsonl.gz",
+      "purpose": "853248 per-row final scores",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/annotations/main_results/score_rows.jsonl.gz",
+      "bytes": 99166758
+    },
+    {
+      "path": "outputs/annotations/main_results/automatic_behavior.jsonl.gz",
+      "purpose": "per-row behavioral labels",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/annotations/main_results/automatic_behavior.jsonl.gz",
+      "bytes": 70124970
+    },
+    {
+      "path": "outputs/analysis/main_results/controls/selections.jsonl.gz",
+      "purpose": "484800 deterministic source selections",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/outputs/analysis/main_results/controls/selections.jsonl.gz",
+      "bytes": 56878251
+    },
+    {
+      "path": "data/images",
+      "purpose": "image assets",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images",
+      "bytes": null
+    },
+    {
+      "path": "cache",
+      "purpose": "downloaded model assets",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/cache",
+      "bytes": null
+    },
+    {
+      "path": ".environments",
+      "purpose": "registered project environments",
+      "authority": "/home/g203-4028/projects/knowledge-deficit-mitigation/.environments",
+      "bytes": null
+    }
+  ],
+  "complete_release_manifest": "outputs/records/main_results/release_manifest.json"
+}
