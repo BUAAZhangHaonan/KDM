@@ -1,0 +1,196 @@
+{
+  "schema": "formal_response_consolidation",
+  "source_manifest": "outputs/records/strict_name_marker_inputs_20260928_v1/input_manifest_v2.json",
+  "source_manifest_sha256": "a93cf7610c997de64f54954be878d654c25c85758407d9a822b504baf65a1735",
+  "total_rows": 853248,
+  "models": [
+    {
+      "model": "qwen35_4b",
+      "rows": 155136,
+      "unique_keys": 155136,
+      "raw_concat_sha256": "a555951ce8c2c7f7d8b88cd544766f8ff7ef3d18505d1b827ce84b719bab2899",
+      "sources": [
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_000_of_004/formal.jsonl",
+          "rows": 39488,
+          "bytes": 91677130,
+          "sha256": "8e9534d39ca4f6722439d329cd2dfb7535a8b2743f8bd42b3c9b2e6fa7dcee97"
+        },
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_001_of_004/formal.jsonl",
+          "rows": 38720,
+          "bytes": 90154797,
+          "sha256": "e7b356f087b49b6bd0f33eeff581cfd69b0701e343720cd8c9bf34e6b8bc4e3e"
+        },
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_002_of_004/formal.jsonl",
+          "rows": 39360,
+          "bytes": 91012280,
+          "sha256": "c398bf88fdee0a82b85e744fe273ddda6e3f4321bc193ac7454f907a18a3c4ab"
+        },
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_4029_v1/qwen35_4b/shard_003_of_004/formal.jsonl",
+          "rows": 37568,
+          "bytes": 87177719,
+          "sha256": "704e879b90ea32c149ae8717f07b45f7c1f4fdf553ebecb697e17297c5c19f42"
+        }
+      ],
+      "output_path": "data/responses/formal/qwen35_4b.jsonl.gz",
+      "output_sha256": "3b19b72d6114e21693b4925cf9c8e413a62409a0c23d65973f69f1bb45f03ed0",
+      "output_bytes": 28178125,
+      "decompressed_sha256": "a555951ce8c2c7f7d8b88cd544766f8ff7ef3d18505d1b827ce84b719bab2899"
+    },
+    {
+      "model": "minicpm26",
+      "rows": 155136,
+      "unique_keys": 155136,
+      "raw_concat_sha256": "5f7b0eab04c9abac2262cf78222fb3829f6994df87acda82ddc5231b8e635b42",
+      "sources": [
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_v4/minicpm26/shard_000_of_001/formal.jsonl",
+          "rows": 155136,
+          "bytes": 394035900,
+          "sha256": "5f7b0eab04c9abac2262cf78222fb3829f6994df87acda82ddc5231b8e635b42"
+        }
+      ],
+      "output_path": "data/responses/formal/minicpm26.jsonl.gz",
+      "output_sha256": "d6bc6632f4571780be68775e2ae0c7adcc713b97059089bac9aa08c5b3d1c254",
+      "output_bytes": 29154484,
+      "decompressed_sha256": "5f7b0eab04c9abac2262cf78222fb3829f6994df87acda82ddc5231b8e635b42"
+    },
+    {
+      "model": "gemma3_4b",
+      "rows": 155136,
+      "unique_keys": 155136,
+      "raw_concat_sha256": "b1701567fe6964f303ecf57061c4dc63a44fed7f8789504a5813617d41253ac1",
+      "sources": [
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_v4/gemma3_4b/shard_000_of_001/formal.jsonl",
+          "rows": 69795,
+          "bytes": 263097057,
+          "sha256": "b141c5ce019cf11ce5215228e30b31641d6df21904501df048101ec041e414c9"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_gemma_20260926_v3/gemma3_4b/part_000/formal.jsonl",
+          "rows": 19487,
+          "bytes": 70772021,
+          "sha256": "412b5cee9619e4c266f3a935e1838d339a13e80b89a42b4f133305920d9db93e"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_gemma_20260926_v3/gemma3_4b/part_001/formal.jsonl",
+          "rows": 19487,
+          "bytes": 71019739,
+          "sha256": "8db7ffd9615f6b6e796eb67a953eeef6599d59f62dd03b084ca8ffc4554354af"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_gemma_20260926_v3/gemma3_4b/part_002/formal.jsonl",
+          "rows": 19486,
+          "bytes": 70870437,
+          "sha256": "918836dad43c0c795dcf2cab69d6de76e706f3524807ab61a5b31ce657762040"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_gemma_20260926_v3/gemma3_4b/part_003/formal.jsonl",
+          "rows": 19486,
+          "bytes": 70613115,
+          "sha256": "2dd81d1fe394a15e5817fe4f1d17b69bc4da8e37cb8b2862a74173269667984b"
+        },
+        {
+          "path": "outputs/raw/formal_remaining_v1/20260926/gemma3_4b/part_000/formal.jsonl",
+          "rows": 2692,
+          "bytes": 11910724,
+          "sha256": "e478dff391b7d7d244fd3cff8d6a267fcba72e109358a2c33c7ca78a9ccc440c"
+        },
+        {
+          "path": "outputs/raw/formal_remaining_v1/20260926/gemma3_4b/part_001/formal.jsonl",
+          "rows": 4703,
+          "bytes": 16983569,
+          "sha256": "4ddb2353a10aa6a72d863ec2c4228638f16af965adcf90c5df1ec49d68865842"
+        }
+      ],
+      "output_path": "data/responses/formal/gemma3_4b.jsonl.gz",
+      "output_sha256": "23543ad76deda4f14c9eac7462c27c819875aa3d1f66505ecaf5a3bb3141dc29",
+      "output_bytes": 54042749,
+      "decompressed_sha256": "b1701567fe6964f303ecf57061c4dc63a44fed7f8789504a5813617d41253ac1"
+    },
+    {
+      "model": "llava16_mistral",
+      "rows": 193920,
+      "unique_keys": 193920,
+      "raw_concat_sha256": "6890b4d0edb7f27fcf6208eb46c1817276d41c65c2153eafc7fc0cdf6bf630d4",
+      "sources": [
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_v4/llava16_mistral/shard_000_of_001/formal.jsonl",
+          "rows": 131971,
+          "bytes": 360405960,
+          "sha256": "1c294f7b62ee22c185e0d625481c173ff8820cf41ce685cfbb574218d533ba3e"
+        },
+        {
+          "path": "outputs/raw/formal_remaining_v1/20260926/llava16_mistral/part_000/formal.jsonl",
+          "rows": 7054,
+          "bytes": 18693034,
+          "sha256": "b0ff8cbc5a2f626a52414d5b1b3734815de1850651703b6caefe832c2c38b830"
+        },
+        {
+          "path": "outputs/raw/formal_remaining_v1/20260926/llava16_mistral/part_001/formal.jsonl",
+          "rows": 6678,
+          "bytes": 17911727,
+          "sha256": "c3189c1078861c05db06675756a229d50a4b83d25e334051204af36649717979"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_llava_20260926_v2/llava16_mistral/part_000/formal.jsonl",
+          "rows": 43,
+          "bytes": 595857,
+          "sha256": "88c42c8af4903a953a59e1f138e369877e59d3c2690c926cbec463168ba95f3b"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_llava_20260926_v2/llava16_mistral/part_001/formal.jsonl",
+          "rows": 43,
+          "bytes": 573746,
+          "sha256": "9e3327f23caa3f44b3a570c1776e6d0090a30cac57ca423a3fc903ad329e82ce"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_llava_20260926_v3/llava16_mistral/part_000/formal.jsonl",
+          "rows": 11779,
+          "bytes": 31622425,
+          "sha256": "6dac8e1c998833fe89dd773c8be436a6def720edcedea0db14eebdbaff684040"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_llava_20260926_v3/llava16_mistral/part_001/formal.jsonl",
+          "rows": 11585,
+          "bytes": 30963184,
+          "sha256": "af35fa8c14d16e91511b284e67af572bf2b3867a565bac74b7ae34db682467c4"
+        },
+        {
+          "path": "outputs/raw/formal_crosshost_v2/sealed_llava_20260926_v2/llava16_mistral/part_002/formal.jsonl",
+          "rows": 24767,
+          "bytes": 67590907,
+          "sha256": "979cb9747308ac5c5a56f0d5e42707b771cc18c4e615030c219e0e3291df3e6b"
+        }
+      ],
+      "output_path": "data/responses/formal/llava16_mistral.jsonl.gz",
+      "output_sha256": "5574d4c610c65315e0de15899ab4d7483dc32958de10bb4aef94d527b9e8ea76",
+      "output_bytes": 41388899,
+      "decompressed_sha256": "6890b4d0edb7f27fcf6208eb46c1817276d41c65c2153eafc7fc0cdf6bf630d4"
+    },
+    {
+      "model": "qwen25vl",
+      "rows": 193920,
+      "unique_keys": 193920,
+      "raw_concat_sha256": "c0a94e7ebb2b0416ecbbda79014012e78f4b54af3b8161dbf7945c052296d2e4",
+      "sources": [
+        {
+          "path": "outputs/raw/acceleration_v4/panel5_food_formal_v4/qwen25vl/shard_000_of_001/formal.jsonl",
+          "rows": 193920,
+          "bytes": 499095346,
+          "sha256": "c0a94e7ebb2b0416ecbbda79014012e78f4b54af3b8161dbf7945c052296d2e4"
+        }
+      ],
+      "output_path": "data/responses/formal/qwen25vl.jsonl.gz",
+      "output_sha256": "30fb1d5765398d81cbacc39c6511130f7086b880694cbce29513018f559d7bfe",
+      "output_bytes": 37767741,
+      "decompressed_sha256": "c0a94e7ebb2b0416ecbbda79014012e78f4b54af3b8161dbf7945c052296d2e4"
+    }
+  ],
+  "byte_preservation": "gzip decompression is exact ordered concatenation of source JSONL line bytes per model",
+  "sources_retained": true
+}

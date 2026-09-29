@@ -1,0 +1,465 @@
+{
+  "created_utc": "2026-09-29T08:13:12.038661+00:00",
+  "retired_file_copies": 61,
+  "archived_bytes": 2985991,
+  "reports": {
+    "cleanup_receipt.json": {
+      "sha256": "96f369520091bb75c9e64cc7da316fcebcdbde2b5379bd5f2e9b535c1982555f",
+      "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/cleanup_receipt.json",
+      "receipt": {
+        "host": "4028",
+        "project": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+        "retirement_utc": "2026-09-29T08:10:27.718468+00:00",
+        "file_count": 43,
+        "bytes": 2951205,
+        "files": [
+          {
+            "path": "cache/incoming/KDM_research_refactor.zip",
+            "bytes": 1850513,
+            "sha256": "547755fd38a3959f0a8fa57cf6df651be61605ed157d8509d6cda512abf59e77",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/incoming/KDM_research_refactor.zip"
+          },
+          {
+            "path": "cache/incoming/goal-objective.md",
+            "bytes": 14174,
+            "sha256": "6c2063ef9ab23b5a47258918ddb18b1765e850e110c533df522b853b78578f98",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/incoming/goal-objective.md"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/acceleration_v4/extra11_independent_food_qwen3vl_v1/qwen3vl/identity.json",
+            "bytes": 10379,
+            "sha256": "e5087c8f5ab9aef3f7ee5bc163cdb4adaf9fcd4b09708ca265a6cc5739ba72e9",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/acceleration_v4/extra11_independent_food_qwen3vl_v1/qwen3vl/identity.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/checkpoint_full_sha256.json",
+            "bytes": 1304,
+            "sha256": "c0fb0b2367721e4078f5ab09f6ef5f1d0b01d44fd8deb27455a300dd69e44380",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/checkpoint_full_sha256.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/cpu_preflight.json",
+            "bytes": 754,
+            "sha256": "936adb85775b712fe4041d40b508595c62c6d43e397bf05601f996657f54b028",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/cpu_preflight.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/attempts.jsonl",
+            "bytes": 389031,
+            "sha256": "70796a57579f13440f29c51b325337fe341d15ba8dd1992db762507beca21409",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/attempts.jsonl"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/check.json",
+            "bytes": 31799,
+            "sha256": "2326d852c5dda1cbe5dc5c4290e74741e6f6c66e0447a6dcc2cd03c56a615ffe",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/check.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/partial.json",
+            "bytes": 31566,
+            "sha256": "ec8506cc2656d0dc3d96619e16fcbe4d36ec651bdcdee35794b2afe573a64093",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/partial.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/review.json",
+            "bytes": 1559,
+            "sha256": "0cf0aa700b7ede48120e7c80a167058331347e715ccc86e1361f3df16d19465f",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/engine16/review.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/production_growth_v1.json",
+            "bytes": 874,
+            "sha256": "3c9a1cc43df7b0411b97fc46a736aa21a30f9860b4ec5213fd2e3c0b1b07c412",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/production_growth_v1.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/verify_dispatch.json",
+            "bytes": 560,
+            "sha256": "ce64781104e8b37eb892a2064c0721cf872d487f16df1105c3717266cc81b600",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_k100_qwen3vl_v1/verify_dispatch.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/dispatch.json",
+            "bytes": 493,
+            "sha256": "30b2aa62cb51701cbff6c8713a0c952963c95cf8bc6c2bbfcc4c60f688e19395",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/dispatch.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/complete.json",
+            "bytes": 127,
+            "sha256": "9557cf2fe18b0257639140729d03c4d52b61718efd4f8a137fad8399148ef489",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/complete.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/progress.json",
+            "bytes": 270,
+            "sha256": "a9e4ccb30cac896f87950626d56ec670d986749f2ea115326726b23ed3e27ddc",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/progress.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/reference.json",
+            "bytes": 133383,
+            "sha256": "12241da1ce72eba026ce374c949b2465f846e23483fb36b9753502b6c9a16c7d",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/outputs/records/independent_qwen3vl_native_v1/native16/reference.json"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/README.md",
+            "bytes": 1570,
+            "sha256": "bd591fe339234776b0ccb0a49ff5f716c642f69ad906784b2fc31a4e410c9abd",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/README.md"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/admission.py",
+            "bytes": 5012,
+            "sha256": "860c624bfd8e2f7fc51aa13a8ea628fe6748878bd14639db2ff54031cbacb05f",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/admission.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/entry.py",
+            "bytes": 1106,
+            "sha256": "bc1f40419dcc35892756b6b37d824898bb4e650923931d194e67cde57443cc4f",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/entry.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/independent.py",
+            "bytes": 24162,
+            "sha256": "6959016711121f52f03a5624317bad07c8d357d325c2fef8c6bc2e18614cc0e5",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/independent.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/reviewed_entry.py",
+            "bytes": 4424,
+            "sha256": "c60fc7aee313174065bf24a73fc1b7fb75f7fae4184fb496b261960ef7f50768",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/reviewed_entry.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/run_production.py",
+            "bytes": 2703,
+            "sha256": "99a6f211f6a41d97e7260eae60e3b11a8dcc474817efc3cafbbb85c6b3019b51",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/run_production.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/verify_engine.py",
+            "bytes": 7433,
+            "sha256": "5cbe4aa354b49d9f82aca1eed7a0e9a3a775a6722d5f9b5269cf413c357aea90",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/verify_engine.py"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/worker.sh",
+            "bytes": 1278,
+            "sha256": "9e9301853d56c46d4896b14e1638aa2373e910888e177c189bad6c4beec2a4de",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_k100_qwen3vl_v1/worker.sh"
+          },
+          {
+            "path": "cache/qwen3vl_complete_sync_20260924/workflows/independent_qwen3vl_native_v1/export_native16.py",
+            "bytes": 8614,
+            "sha256": "a320a71bf7c67c2365a04b1daec457cbeb53aec7215c91854964c83c3cb4d9d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/qwen3vl_complete_sync_20260924/workflows/independent_qwen3vl_native_v1/export_native16.py"
+          },
+          {
+            "path": "cache/tmp/05_risk_coverage_check.jpg",
+            "bytes": 126688,
+            "sha256": "bfe370113ae3ea50c019d86cf62373577b66e9dc1d68ae0d6a3bb5a251c369fe",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/05_risk_coverage_check.jpg"
+          },
+          {
+            "path": "cache/tmp/06_evidence_control_check.jpg",
+            "bytes": 123698,
+            "sha256": "b3331c90cc00b5ccf4ab75528d3504f648cb67408e8947985df0720f3b900c9c",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/06_evidence_control_check.jpg"
+          },
+          {
+            "path": "cache/tmp/07_name_reachability_check.jpg",
+            "bytes": 139961,
+            "sha256": "1e6d2dbe6ba95f16dc2a44b1adebbe732cdfd384b486ad8bb1a90592f086f106",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/07_name_reachability_check.jpg"
+          },
+          {
+            "path": "cache/tmp/audit_excess.py",
+            "bytes": 3797,
+            "sha256": "7ffa96b0e16aac09ccdf4f91318ffd7ee94fcdf3adcd498dd4b4c58ac8db793d",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/audit_excess.py"
+          },
+          {
+            "path": "cache/tmp/audit_grader.py",
+            "bytes": 2940,
+            "sha256": "2e7de6a49d77052f95bf1e2f998a427a88c03055e93bb1d4c8d310223c606e73",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/audit_grader.py"
+          },
+          {
+            "path": "cache/tmp/behaviour.py",
+            "bytes": 4198,
+            "sha256": "8d2804728468797857b0f4c9d546bc2caee8da2689d9f1417559ec7f82e92f9f",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/behaviour.py"
+          },
+          {
+            "path": "cache/tmp/check_grader_srv.py",
+            "bytes": 1462,
+            "sha256": "ac64ca27ee838548e37a94e6a6425b4fa8a52634b3abb01b8065f95b6718c17e",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/check_grader_srv.py"
+          },
+          {
+            "path": "cache/tmp/rescore.py",
+            "bytes": 4771,
+            "sha256": "b998bb0ff3feb2c07616b05e3c56499c6e27888f9ba139428736e81118f56ae3",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/rescore.py"
+          },
+          {
+            "path": "cache/tmp/tmp2jd_rhbp/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmp2jd_rhbp/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpb537vgtq/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpb537vgtq/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpcsb7l30f/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpcsb7l30f/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpo5gkr0i7/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpo5gkr0i7/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpofhllp0b/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpofhllp0b/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpt4i8kf98/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpt4i8kf98/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpuu_7j_0a/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpuu_7j_0a/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "cache/tmp/tmpy1dt07nf/_remote_module_non_scriptable.py",
+            "bytes": 2355,
+            "sha256": "8205b16956fb264841ecd8644784a0d157f87df79b17c16825dc1163433ce5d8",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/tmp/tmpy1dt07nf/_remote_module_non_scriptable.py"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv",
+            "bytes": 437,
+            "sha256": "13b795d3283e48f9f8406d61a81793d2e3221093d4b2b0ae175e5ab91b3fc628",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv",
+            "bytes": 411,
+            "sha256": "e4baef0e69b06fe5ddaeee41686b3c23202a1c4ca8cfe78ed1112d797122504e",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/receipt.json",
+            "bytes": 914,
+            "sha256": "77c12455fa739c4b831f05d8843785e9695a83012f775d061397a35f912fe566",
+            "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/receipt.json"
+          }
+        ],
+        "archive_verified": true,
+        "retired_from_active_tree": true,
+        "metadata_provenance": {
+          "reconstructed_utc": "2026-09-29T08:12:33.231789+00:00",
+          "reason": "Local mirror receipt transfer reused the archive metadata filename; local receipt is retained as cleanup_local.json. This central inventory was reconstructed from verified archived bytes and checked against the successful retirement command output and absent active paths.",
+          "successful_retirement_command_output": "exec chunk c98042",
+          "original_reported_file_count": 43,
+          "original_reported_bytes": 2951205
+        }
+      }
+    },
+    "cleanup_6403.json": {
+      "sha256": "e82e7c88eb7df5040eb1cee3156ac24561daf037ea90665aeed23acaf5d1ed97",
+      "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/cleanup_6403.json",
+      "receipt": {
+        "host": "6403",
+        "project": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+        "created_utc": "2026-09-29T08:10:35.841203+00:00",
+        "file_count": 3,
+        "bytes": 1762,
+        "targets": [
+          "outputs/annotations/reference_gt/distribution"
+        ],
+        "files": [
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv",
+            "bytes": 437,
+            "sha256": "13b795d3283e48f9f8406d61a81793d2e3221093d4b2b0ae175e5ab91b3fc628",
+            "archive_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv",
+            "reason": "duplicate_final_gt_distribution"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv",
+            "bytes": 411,
+            "sha256": "e4baef0e69b06fe5ddaeee41686b3c23202a1c4ca8cfe78ed1112d797122504e",
+            "archive_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv",
+            "reason": "duplicate_final_gt_distribution"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/receipt.json",
+            "bytes": 914,
+            "sha256": "77c12455fa739c4b831f05d8843785e9695a83012f775d061397a35f912fe566",
+            "archive_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/receipt.json",
+            "reason": "duplicate_final_gt_distribution"
+          }
+        ],
+        "archive_verified": true,
+        "active_handles": [],
+        "retired_from_active_tree": true
+      }
+    },
+    "cleanup_k100.json": {
+      "sha256": "32f256ee5920c71417d4731fde37225b9bed09c00c618d25344ef08a9efa1f54",
+      "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/cleanup_k100.json",
+      "receipt": {
+        "host": "k100",
+        "project": "/home/k100/projects/knowledge-deficit-mitigation",
+        "created_utc": "2026-09-29T08:10:36.746848+00:00",
+        "file_count": 9,
+        "bytes": 31262,
+        "targets": [
+          "outputs/annotations/reference_gt/distribution",
+          "cache/compiler_check_k100_v2"
+        ],
+        "files": [
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv",
+            "bytes": 437,
+            "sha256": "13b795d3283e48f9f8406d61a81793d2e3221093d4b2b0ae175e5ab91b3fc628",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_bounds.csv",
+            "reason": "duplicate_final_gt_distribution"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv",
+            "bytes": 411,
+            "sha256": "e4baef0e69b06fe5ddaeee41686b3c23202a1c4ca8cfe78ed1112d797122504e",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/independent_correctness_distribution.csv",
+            "reason": "duplicate_final_gt_distribution"
+          },
+          {
+            "path": "outputs/annotations/reference_gt/distribution/receipt.json",
+            "bytes": 914,
+            "sha256": "77c12455fa739c4b831f05d8843785e9695a83012f775d061397a35f912fe566",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/outputs/annotations/reference_gt/distribution/receipt.json",
+            "reason": "duplicate_final_gt_distribution"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/.ninja_log",
+            "bytes": 63,
+            "sha256": "96731aa8cf1bf8d89cb872b473b90dd2564d0eeb31cc26889b5acd76d4430489",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/.ninja_log",
+            "reason": "retired_compiler_smoke_test"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/build.ninja",
+            "bytes": 61,
+            "sha256": "2895923dec779a8b876dc7bde0adfb52e827d8b4ac88a0e61aacdbf1f262913f",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/build.ninja",
+            "reason": "retired_compiler_smoke_test"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/kernel.cu",
+            "bytes": 78,
+            "sha256": "9aff66f0df10d223a0710eb50fc53991b0c5bdd7ec302ba788aa0d380daaee00",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/kernel.cu",
+            "reason": "retired_compiler_smoke_test"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/kernel.o",
+            "bytes": 12848,
+            "sha256": "47d8b6e4ab88114396873f51032cc36765408c04ee0cf26a7679b8acb3885241",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/kernel.o",
+            "reason": "retired_compiler_smoke_test"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/main",
+            "bytes": 16376,
+            "sha256": "fcfc74c994327472b9abe4d84f9d8c1498e860de59f76ae83773dfaee2e350bd",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/main",
+            "reason": "retired_compiler_smoke_test"
+          },
+          {
+            "path": "cache/compiler_check_k100_v2/main.cc",
+            "bytes": 74,
+            "sha256": "7b4dbddbc4c509d4b8131bb72eab1b05586eeb3e2a6170c4b6888e145233e14b",
+            "archive_path": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_files/cache/compiler_check_k100_v2/main.cc",
+            "reason": "retired_compiler_smoke_test"
+          }
+        ],
+        "archive_verified": true,
+        "active_handles": [],
+        "retired_from_active_tree": true
+      }
+    },
+    "cleanup_local.json": {
+      "sha256": "315b029811330fdda411da1f25fe08b4385804b9249a1d7a6e57e4676bd5ba7d",
+      "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/cleanup_local.json",
+      "receipt": {
+        "files": [
+          {
+            "sha256": "13B795D3283E48F9F8406D61A81793D2E3221093D4B2B0AE175E5AB91B3FC628",
+            "bytes": 437,
+            "archive": "E:\\OneDrive\\文档\\KDM-Archive\\20260929\\review_preparation\\retired_files\\outputs\\annotations\\reference_gt\\distribution\\independent_correctness_bounds.csv",
+            "path": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation\\outputs\\annotations\\reference_gt\\distribution\\independent_correctness_bounds.csv"
+          },
+          {
+            "sha256": "E4BAEF0E69B06FE5DDAEEE41686B3C23202A1C4CA8CFE78ED1112D797122504E",
+            "bytes": 411,
+            "archive": "E:\\OneDrive\\文档\\KDM-Archive\\20260929\\review_preparation\\retired_files\\outputs\\annotations\\reference_gt\\distribution\\independent_correctness_distribution.csv",
+            "path": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation\\outputs\\annotations\\reference_gt\\distribution\\independent_correctness_distribution.csv"
+          },
+          {
+            "sha256": "77C12455FA739C4B831F05D8843785E9695A83012F775D061397A35F912FE566",
+            "bytes": 914,
+            "archive": "E:\\OneDrive\\文档\\KDM-Archive\\20260929\\review_preparation\\retired_files\\outputs\\annotations\\reference_gt\\distribution\\receipt.json",
+            "path": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation\\outputs\\annotations\\reference_gt\\distribution\\receipt.json"
+          }
+        ],
+        "project": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation",
+        "archive_verified": true
+      }
+    },
+    "retired_locks/receipt.json": {
+      "sha256": "bbf7c71206d0a7f1fac5c7486a114cafde1d2549d04263e9ec21c1ccd985a877",
+      "archive_path": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_locks/receipt.json",
+      "receipt": {
+        "created_at": "2026-09-29T08:01:52.521349+00:00",
+        "retired_free_empty_queue_locks": [
+          "all_model_probes_v2.lock",
+          "food_closed_v3.lock",
+          "census_panel.lock"
+        ],
+        "retained_active_locks": [],
+        "persistent_gpu_locks": [
+          "gpu_5.lock",
+          "gpu_0.lock",
+          "gpu_4.lock",
+          "gpu_1.lock"
+        ],
+        "archive": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/review_preparation/retired_locks"
+      }
+    }
+  },
+  "preserved": [
+    "final code and regression tests",
+    "final source responses, annotations, GT, tables and figures",
+    "registered model weights, datasets and environments",
+    "project Git history"
+  ],
+  "verification": "Each retired file was copied and byte-hash verified before retirement; the final duplicate GT CSVs matched retained canonical files. Open-handle check passed on server cleanup targets."
+}

@@ -1,0 +1,60 @@
+{
+  "schema": "main_results_delivery",
+  "completed_at": "2026-09-28T19:58:25.674380+00:00",
+  "deadline": "2026-09-29T10:00:00+08:00",
+  "main_results": "complete",
+  "primary_score_rows": 853248,
+  "primary_unknown": 0,
+  "reference_gt_rows_per_table": 24240,
+  "reference_gt_unknown": 0,
+  "conditions": 352,
+  "main_paired_comparisons": 372,
+  "copy_control_conditions": 200,
+  "copy_control_instruction_comparisons": 40,
+  "deliverables": {
+    "README.md": "7827b641d921d4ca7cf03d2391246f3c35d52bf633c2f510b5abfdd5cba8070e",
+    "docs/RESULTS.md": "cc50ea3d5733cc297181cefd1ce97ab05836a4daefa750938978f7d29c2971da",
+    "docs/RETROSPECTIVE.md": "4c6f19864e6c4171d34fc1136c37d9c3acdd73664f45992e6f8f0f6c68ad72ee",
+    "docs/SCORING.md": "f4b8af18bf4caaae965117e9c49246c477c44d3ec1a5fb4abef3d442e43e7b72",
+    "docs/ARCHIVE.md": "43ff5ec978ca4b57e80275cf300df2e2f3289cda8dd856ab42ec38342a7c46d6",
+    "docs/REPRODUCIBILITY.md": "903ff93e23cf05bfd4306350daab252d6ddfa64a84b4f55fc0e071f1db84805f",
+    "paper/main.md": "370867811758cac5e7502ae392afc6d42489050edf98fc129eaf884e64cd2635",
+    "outputs/records/main_results/state.json": "7a20fe3c6877f0aada10e8f7d9f920168bdf19e29ddbb83946472460d63022a1",
+    "outputs/records/main_results/final_validation.json": "b1919b806b27eec6cb0d138a06d83c44cfdfbf97a2a8b572fddfd640cf72bbe7",
+    "outputs/records/main_results/cleanup_acceptance.json": "8277555969f6542672106e5811df168d9fc2e784a7f34ca5fa599dd23af60624",
+    "outputs/records/main_results/score_acceptance.json": "5f02a3cd58522b523cbd81578919bad3408b54804947cf96c21844aeadfda062",
+    "outputs/records/main_results/reference_gt_acceptance.json": "ed6fe6c67e83c006e2844f741b136c2779c03930807187e5f325bff6f3a6f8da",
+    "outputs/records/main_results/analysis_acceptance.json": "4fd7ac8dc9c3d9541c52713e2e7b55394a552cf30b504aa8cfb0939e1aa1bdba",
+    "outputs/records/main_results/copy_control_acceptance.json": "cd10a1f65b2312cccf5990d6b44ce102ce89a8a3f45c0fa9ff1be5d7cacc3d2a",
+    "outputs/analysis/main_results/summary.json": "7d389a873c1799c1b318130b1cb289434aa6fdc73b7e6da7dcbbb3ba144f0b9d"
+  },
+  "mirrors": {
+    "local": {
+      "root": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation",
+      "verified_files": 421,
+      "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/local_receipt.json",
+      "receipt_sha256": "57db7f2f02f27897d723979283874ea3c87bfee0e363002515f182cc0bb21911"
+    },
+    "6403": {
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "verified_files": 421,
+      "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/6403_receipt.json",
+      "receipt_sha256": "9c12baffcd5586f18067e41e3b0cf2a9100ce7db66e515ecb1cbbb65920e371c"
+    },
+    "K100": {
+      "root": "/home/k100/projects/knowledge-deficit-mitigation",
+      "verified_files": 421,
+      "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/k100_receipt.json",
+      "receipt_sha256": "6bc7cfae706bd02816ff31104634ae5189ae2b6d2580a4b8cd3502f5d4670314"
+    }
+  },
+  "release_manifest_sha256": "5550d1dfbe11f1af7b97d525d678b64292bc9de885e858c80dd8bed4eb95e63f",
+  "archive_sha256": "12e14a9510ba1d0294621707c969b1f30b960120e74c9f558b2e627ddd77c5d8",
+  "automation": {
+    "id": "automation",
+    "status": "deleted",
+    "reason": "main_results_and_first_full_manuscript_delivered"
+  },
+  "supplementary_mechanism": "deferred",
+  "cleanup_exception": "Local historical source copies retained following automatic approval policy rejection of bulk deletion; verified backup retained."
+}

@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1262" height="900" viewBox="0 0 1262 900">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="80" y="34" font-size="22" font-family="sans-serif" font-weight="bold">qwen35_4b: canonical primary-name accuracy by exact condition</text>
+<text x="80" y="58" font-size="12" font-family="sans-serif">Each bar is one of the exact 8-key condition cells (no pooling); denominator 2,424. Hover for full keys and counts.</text>
+<line x1="80" y1="490.0" x2="1242" y2="490.0" stroke="#d1d5db" stroke-width="1"/>
+<text x="68" y="494.0" text-anchor="end" font-size="11" font-family="sans-serif">0.00</text>
+<line x1="80" y1="392.5" x2="1242" y2="392.5" stroke="#d1d5db" stroke-width="1"/>
+<text x="68" y="396.5" text-anchor="end" font-size="11" font-family="sans-serif">0.25</text>
+<line x1="80" y1="295.0" x2="1242" y2="295.0" stroke="#d1d5db" stroke-width="1"/>
+<text x="68" y="299.0" text-anchor="end" font-size="11" font-family="sans-serif">0.50</text>
+<line x1="80" y1="197.5" x2="1242" y2="197.5" stroke="#d1d5db" stroke-width="1"/>
+<text x="68" y="201.5" text-anchor="end" font-size="11" font-family="sans-serif">0.75</text>
+<line x1="80" y1="100.0" x2="1242" y2="100.0" stroke="#d1d5db" stroke-width="1"/>
+<text x="68" y="104.0" text-anchor="end" font-size="11" font-family="sans-serif">1.00</text>
+<rect x="80" y="417.1" width="13" height="72.9" fill="#3b82f6"><title>model=qwen35_4b; method=cda_visual; kind=instruction_preserving; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=False; replicate=0; n=2424; correct=453; unknown=0; accuracy=0.186881</title></rect>
+<text transform="translate(86.5,506) rotate(60)" font-size="8" font-family="sans-serif">cda_visual|instruction_preserving|I cannot identify it:I cannot identify it|gTrueFalse|r0</text>
+<rect x="98" y="393.3" width="13" height="96.7" fill="#3b82f6"><title>model=qwen35_4b; method=cda_visual; kind=instruction_preserving; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=False; replicate=0; n=2424; correct=601; unknown=0; accuracy=0.247937</title></rect>
+<text transform="translate(104.5,506) rotate(60)" font-size="8" font-family="sans-serif">cda_visual|instruction_preserving|UNCLEAR:UNCLEAR|gTrueFalse|r0</text>
+<rect x="116" y="387.5" width="13" height="102.5" fill="#3b82f6"><title>model=qwen35_4b; method=cda_visual; kind=instruction_preserving; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=False; replicate=0; n=2424; correct=637; unknown=0; accuracy=0.262789</title></rect>
+<text transform="translate(122.5,506) rotate(60)" font-size="8" font-family="sans-serif">cda_visual|instruction_preserving|UNKNOWN:UNKNOWN|gTrueFalse|r0</text>
+<rect x="134" y="391.9" width="13" height="98.1" fill="#3b82f6"><title>model=qwen35_4b; method=cda_visual; kind=instruction_preserving; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=False; replicate=0; n=2424; correct=610; unknown=0; accuracy=0.251650</title></rect>
+<text transform="translate(140.5,506) rotate(60)" font-size="8" font-family="sans-serif">cda_visual|instruction_preserving|UNSURE:UNSURE|gTrueFalse|r0</text>
+<rect x="152" y="282.3" width="13" height="207.7" fill="#ef4444"><title>model=qwen35_4b; method=deco; kind=main; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=1291; unknown=0; accuracy=0.532591</title></rect>
+<text transform="translate(158.5,506) rotate(60)" font-size="8" font-family="sans-serif">deco|main|I cannot identify it:I cannot identify it|gTrueTrue|r0</text>
+<rect x="170" y="329.3" width="13" height="160.7" fill="#ef4444"><title>model=qwen35_4b; method=deco; kind=main; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=999; unknown=0; accuracy=0.412129</title></rect>
+<text transform="translate(176.5,506) rotate(60)" font-size="8" font-family="sans-serif">deco|main|UNCLEAR:UNCLEAR|gTrueTrue|r0</text>
+<rect x="188" y="318.2" width="13" height="171.8" fill="#ef4444"><title>model=qwen35_4b; method=deco; kind=main; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1068; unknown=0; accuracy=0.440594</title></rect>
+<text transform="translate(194.5,506) rotate(60)" font-size="8" font-family="sans-serif">deco|main|UNKNOWN:UNKNOWN|gTrueTrue|r0</text>
+<rect x="206" y="312.9" width="13" height="177.1" fill="#ef4444"><title>model=qwen35_4b; method=deco; kind=main; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1101; unknown=0; accuracy=0.454208</title></rect>
+<text transform="translate(212.5,506) rotate(60)" font-size="8" font-family="sans-serif">deco|main|UNSURE:UNSURE|gTrueTrue|r0</text>
+<rect x="224" y="281.8" width="13" height="208.2" fill="#10b981"><title>model=qwen35_4b; method=direct; kind=main; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=1294; unknown=0; accuracy=0.533828</title></rect>
+<text transform="translate(230.5,506) rotate(60)" font-size="8" font-family="sans-serif">direct|main|I cannot identify it:I cannot identify it|gTrueTrue|r0</text>
+<rect x="242" y="328.5" width="13" height="161.5" fill="#10b981"><title>model=qwen35_4b; method=direct; kind=main; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1004; unknown=0; accuracy=0.414191</title></rect>
+<text transform="translate(248.5,506) rotate(60)" font-size="8" font-family="sans-serif">direct|main|UNCLEAR:UNCLEAR|gTrueTrue|r0</text>
+<rect x="260" y="309.3" width="13" height="180.7" fill="#10b981"><title>model=qwen35_4b; method=direct; kind=main; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1123; unknown=0; accuracy=0.463284</title></rect>
+<text transform="translate(266.5,506) rotate(60)" font-size="8" font-family="sans-serif">direct|main|UNKNOWN:UNKNOWN|gTrueTrue|r0</text>
+<rect x="278" y="312.2" width="13" height="177.8" fill="#10b981"><title>model=qwen35_4b; method=direct; kind=main; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1105; unknown=0; accuracy=0.455858</title></rect>
+<text transform="translate(284.5,506) rotate(60)" font-size="8" font-family="sans-serif">direct|main|UNSURE:UNSURE|gTrueTrue|r0</text>
+<rect x="296" y="282.3" width="13" height="207.7" fill="#f59e0b"><title>model=qwen35_4b; method=dola; kind=main; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=1291; unknown=0; accuracy=0.532591</title></rect>
+<text transform="translate(302.5,506) rotate(60)" font-size="8" font-family="sans-serif">dola|main|I cannot identify it:I cannot identify it|gTrueTrue|r0</text>
+<rect x="314" y="328.0" width="13" height="162.0" fill="#f59e0b"><title>model=qwen35_4b; method=dola; kind=main; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1007; unknown=0; accuracy=0.415429</title></rect>
+<text transform="translate(320.5,506) rotate(60)" font-size="8" font-family="sans-serif">dola|main|UNCLEAR:UNCLEAR|gTrueTrue|r0</text>
+<rect x="332" y="308.2" width="13" height="181.8" fill="#f59e0b"><title>model=qwen35_4b; method=dola; kind=main; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1130; unknown=0; accuracy=0.466172</title></rect>
+<text transform="translate(338.5,506) rotate(60)" font-size="8" font-family="sans-serif">dola|main|UNKNOWN:UNKNOWN|gTrueTrue|r0</text>
+<rect x="350" y="312.1" width="13" height="177.9" fill="#f59e0b"><title>model=qwen35_4b; method=dola; kind=main; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1106; unknown=0; accuracy=0.456271</title></rect>
+<text transform="translate(356.5,506) rotate(60)" font-size="8" font-family="sans-serif">dola|main|UNSURE:UNSURE|gTrueTrue|r0</text>
+<rect x="368" y="280.8" width="13" height="209.2" fill="#8b5cf6"><title>model=qwen35_4b; method=instruction_m3id; kind=instruction_preserving; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=False; replicate=0; n=2424; correct=1300; unknown=0; accuracy=0.536304</title></rect>
+<text transform="translate(374.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_m3id|instruction_preserving|I cannot identify it:I cannot identify it|gTrueFalse|r0</text>
+<rect x="386" y="310.3" width="13" height="179.7" fill="#8b5cf6"><title>model=qwen35_4b; method=instruction_m3id; kind=instruction_preserving; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=False; replicate=0; n=2424; correct=1117; unknown=0; accuracy=0.460809</title></rect>
+<text transform="translate(392.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_m3id|instruction_preserving|UNCLEAR:UNCLEAR|gTrueFalse|r0</text>
+<rect x="404" y="295.3" width="13" height="194.7" fill="#8b5cf6"><title>model=qwen35_4b; method=instruction_m3id; kind=instruction_preserving; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=False; replicate=0; n=2424; correct=1210; unknown=0; accuracy=0.499175</title></rect>
+<text transform="translate(410.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_m3id|instruction_preserving|UNKNOWN:UNKNOWN|gTrueFalse|r0</text>
+<rect x="422" y="297.1" width="13" height="192.9" fill="#8b5cf6"><title>model=qwen35_4b; method=instruction_m3id; kind=instruction_preserving; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=False; replicate=0; n=2424; correct=1199; unknown=0; accuracy=0.494637</title></rect>
+<text transform="translate(428.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_m3id|instruction_preserving|UNSURE:UNSURE|gTrueFalse|r0</text>
+<rect x="440" y="287.6" width="13" height="202.4" fill="#06b6d4"><title>model=qwen35_4b; method=instruction_vcd; kind=instruction_preserving; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=False; replicate=0; n=2424; correct=1258; unknown=0; accuracy=0.518977</title></rect>
+<text transform="translate(446.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_vcd|instruction_preserving|I cannot identify it:I cannot identify it|gTrueFalse|r0</text>
+<rect x="458" y="322.4" width="13" height="167.6" fill="#06b6d4"><title>model=qwen35_4b; method=instruction_vcd; kind=instruction_preserving; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=False; replicate=0; n=2424; correct=1042; unknown=0; accuracy=0.429868</title></rect>
+<text transform="translate(464.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_vcd|instruction_preserving|UNCLEAR:UNCLEAR|gTrueFalse|r0</text>
+<rect x="476" y="306.3" width="13" height="183.7" fill="#06b6d4"><title>model=qwen35_4b; method=instruction_vcd; kind=instruction_preserving; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=False; replicate=0; n=2424; correct=1142; unknown=0; accuracy=0.471122</title></rect>
+<text transform="translate(482.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_vcd|instruction_preserving|UNKNOWN:UNKNOWN|gTrueFalse|r0</text>
+<rect x="494" y="314.0" width="13" height="176.0" fill="#06b6d4"><title>model=qwen35_4b; method=instruction_vcd; kind=instruction_preserving; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=False; replicate=0; n=2424; correct=1094; unknown=0; accuracy=0.451320</title></rect>
+<text transform="translate(500.5,506) rotate(60)" font-size="8" font-family="sans-serif">instruction_vcd|instruction_preserving|UNSURE:UNSURE|gTrueFalse|r0</text>
+<rect x="512" y="281.8" width="13" height="208.2" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=1294; unknown=0; accuracy=0.533828</title></rect>
+<text transform="translate(518.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|I cannot identify it:I cannot identify it|gTrueTrue|r0</text>
+<rect x="530" y="282.0" width="13" height="208.0" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=I cannot identify it; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1293; unknown=0; accuracy=0.533416</title></rect>
+<text transform="translate(536.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|I cannot identify it:UNCLEAR|gTrueTrue|r0</text>
+<rect x="548" y="284.1" width="13" height="205.9" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=I cannot identify it; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1280; unknown=0; accuracy=0.528053</title></rect>
+<text transform="translate(554.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|I cannot identify it:UNKNOWN|gTrueTrue|r0</text>
+<rect x="566" y="284.4" width="13" height="205.6" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=I cannot identify it; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1278; unknown=0; accuracy=0.527228</title></rect>
+<text transform="translate(572.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|I cannot identify it:UNSURE|gTrueTrue|r0</text>
+<rect x="584" y="344.2" width="13" height="145.8" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNCLEAR; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=906; unknown=0; accuracy=0.373762</title></rect>
+<text transform="translate(590.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNCLEAR:I cannot identify it|gTrueTrue|r0</text>
+<rect x="602" y="316.6" width="13" height="173.4" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1078; unknown=0; accuracy=0.444719</title></rect>
+<text transform="translate(608.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNCLEAR:UNCLEAR|gTrueTrue|r0</text>
+<rect x="620" y="320.4" width="13" height="169.6" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNCLEAR; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1054; unknown=0; accuracy=0.434818</title></rect>
+<text transform="translate(626.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNCLEAR:UNKNOWN|gTrueTrue|r0</text>
+<rect x="638" y="318.7" width="13" height="171.3" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNCLEAR; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1065; unknown=0; accuracy=0.439356</title></rect>
+<text transform="translate(644.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNCLEAR:UNSURE|gTrueTrue|r0</text>
+<rect x="656" y="342.8" width="13" height="147.2" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNKNOWN; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=915; unknown=0; accuracy=0.377475</title></rect>
+<text transform="translate(662.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNKNOWN:I cannot identify it|gTrueTrue|r0</text>
+<rect x="674" y="298.9" width="13" height="191.1" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNKNOWN; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1188; unknown=0; accuracy=0.490099</title></rect>
+<text transform="translate(680.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNKNOWN:UNCLEAR|gTrueTrue|r0</text>
+<rect x="692" y="298.9" width="13" height="191.1" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1188; unknown=0; accuracy=0.490099</title></rect>
+<text transform="translate(698.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNKNOWN:UNKNOWN|gTrueTrue|r0</text>
+<rect x="710" y="301.1" width="13" height="188.9" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNKNOWN; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1174; unknown=0; accuracy=0.484323</title></rect>
+<text transform="translate(716.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNKNOWN:UNSURE|gTrueTrue|r0</text>
+<rect x="728" y="333.5" width="13" height="156.5" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNSURE; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=973; unknown=0; accuracy=0.401403</title></rect>
+<text transform="translate(734.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNSURE:I cannot identify it|gTrueTrue|r0</text>
+<rect x="746" y="299.7" width="13" height="190.3" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNSURE; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1183; unknown=0; accuracy=0.488036</title></rect>
+<text transform="translate(752.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNSURE:UNCLEAR|gTrueTrue|r0</text>
+<rect x="764" y="304.0" width="13" height="186.0" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNSURE; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1156; unknown=0; accuracy=0.476898</title></rect>
+<text transform="translate(770.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNSURE:UNKNOWN|gTrueTrue|r0</text>
+<rect x="782" y="301.8" width="13" height="188.2" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=main; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1170; unknown=0; accuracy=0.482673</title></rect>
+<text transform="translate(788.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|main|UNSURE:UNSURE|gTrueTrue|r0</text>
+<rect x="800" y="284.7" width="13" height="205.3" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=reference_instruction_removed; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=False; replicate=0; n=2424; correct=1276; unknown=0; accuracy=0.526403</title></rect>
+<text transform="translate(806.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|reference_instruction_removed|I cannot identify it:I cannot identify it|gTrueFalse|r0</text>
+<rect x="818" y="340.5" width="13" height="149.5" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=reference_instruction_removed; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=False; replicate=0; n=2424; correct=929; unknown=0; accuracy=0.383251</title></rect>
+<text transform="translate(824.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|reference_instruction_removed|UNCLEAR:UNCLEAR|gTrueFalse|r0</text>
+<rect x="836" y="332.3" width="13" height="157.7" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=reference_instruction_removed; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=False; replicate=0; n=2424; correct=980; unknown=0; accuracy=0.404290</title></rect>
+<text transform="translate(842.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|reference_instruction_removed|UNKNOWN:UNKNOWN|gTrueFalse|r0</text>
+<rect x="854" y="328.8" width="13" height="161.2" fill="#f97316"><title>model=qwen35_4b; method=m3id; kind=reference_instruction_removed; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=False; replicate=0; n=2424; correct=1002; unknown=0; accuracy=0.413366</title></rect>
+<text transform="translate(860.5,506) rotate(60)" font-size="8" font-family="sans-serif">m3id|reference_instruction_removed|UNSURE:UNSURE|gTrueFalse|r0</text>
+<rect x="872" y="289.0" width="13" height="201.0" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=1249; unknown=0; accuracy=0.515264</title></rect>
+<text transform="translate(878.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|I cannot identify it:I cannot identify it|gTrueTrue|r0</text>
+<rect x="890" y="295.3" width="13" height="194.7" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=I cannot identify it; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1210; unknown=0; accuracy=0.499175</title></rect>
+<text transform="translate(896.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|I cannot identify it:UNCLEAR|gTrueTrue|r0</text>
+<rect x="908" y="296.6" width="13" height="193.4" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=I cannot identify it; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1202; unknown=0; accuracy=0.495875</title></rect>
+<text transform="translate(914.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|I cannot identify it:UNKNOWN|gTrueTrue|r0</text>
+<rect x="926" y="297.1" width="13" height="192.9" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=I cannot identify it; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1199; unknown=0; accuracy=0.494637</title></rect>
+<text transform="translate(932.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|I cannot identify it:UNSURE|gTrueTrue|r0</text>
+<rect x="944" y="428.1" width="13" height="61.9" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNCLEAR; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=385; unknown=0; accuracy=0.158828</title></rect>
+<text transform="translate(950.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNCLEAR:I cannot identify it|gTrueTrue|r0</text>
+<rect x="962" y="312.2" width="13" height="177.8" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1105; unknown=0; accuracy=0.455858</title></rect>
+<text transform="translate(968.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNCLEAR:UNCLEAR|gTrueTrue|r0</text>
+<rect x="980" y="404.2" width="13" height="85.8" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNCLEAR; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=533; unknown=0; accuracy=0.219884</title></rect>
+<text transform="translate(986.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNCLEAR:UNKNOWN|gTrueTrue|r0</text>
+<rect x="998" y="390.4" width="13" height="99.6" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNCLEAR; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=619; unknown=0; accuracy=0.255363</title></rect>
+<text transform="translate(1004.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNCLEAR:UNSURE|gTrueTrue|r0</text>
+<rect x="1016" y="400.2" width="13" height="89.8" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNKNOWN; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=558; unknown=0; accuracy=0.230198</title></rect>
+<text transform="translate(1022.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNKNOWN:I cannot identify it|gTrueTrue|r0</text>
+<rect x="1034" y="359.0" width="13" height="131.0" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNKNOWN; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=814; unknown=0; accuracy=0.335809</title></rect>
+<text transform="translate(1040.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNKNOWN:UNCLEAR|gTrueTrue|r0</text>
+<rect x="1052" y="300.8" width="13" height="189.2" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=1176; unknown=0; accuracy=0.485149</title></rect>
+<text transform="translate(1058.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNKNOWN:UNKNOWN|gTrueTrue|r0</text>
+<rect x="1070" y="368.5" width="13" height="121.5" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNKNOWN; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=755; unknown=0; accuracy=0.311469</title></rect>
+<text transform="translate(1076.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNKNOWN:UNSURE|gTrueTrue|r0</text>
+<rect x="1088" y="426.8" width="13" height="63.2" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNSURE; reference_marker=I cannot identify it; guided=True; reference_guided=True; replicate=0; n=2424; correct=393; unknown=0; accuracy=0.162129</title></rect>
+<text transform="translate(1094.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNSURE:I cannot identify it|gTrueTrue|r0</text>
+<rect x="1106" y="310.3" width="13" height="179.7" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNSURE; reference_marker=UNCLEAR; guided=True; reference_guided=True; replicate=0; n=2424; correct=1117; unknown=0; accuracy=0.460809</title></rect>
+<text transform="translate(1112.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNSURE:UNCLEAR|gTrueTrue|r0</text>
+<rect x="1124" y="349.1" width="13" height="140.9" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNSURE; reference_marker=UNKNOWN; guided=True; reference_guided=True; replicate=0; n=2424; correct=876; unknown=0; accuracy=0.361386</title></rect>
+<text transform="translate(1130.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNSURE:UNKNOWN|gTrueTrue|r0</text>
+<rect x="1142" y="300.6" width="13" height="189.4" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=main; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=True; replicate=0; n=2424; correct=1177; unknown=0; accuracy=0.485561</title></rect>
+<text transform="translate(1148.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|main|UNSURE:UNSURE|gTrueTrue|r0</text>
+<rect x="1160" y="302.2" width="13" height="187.8" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=reference_instruction_removed; marker=I cannot identify it; reference_marker=I cannot identify it; guided=True; reference_guided=False; replicate=0; n=2424; correct=1167; unknown=0; accuracy=0.481436</title></rect>
+<text transform="translate(1166.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|reference_instruction_removed|I cannot identify it:I cannot identify it|gTrueFalse|r0</text>
+<rect x="1178" y="428.7" width="13" height="61.3" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=reference_instruction_removed; marker=UNCLEAR; reference_marker=UNCLEAR; guided=True; reference_guided=False; replicate=0; n=2424; correct=381; unknown=0; accuracy=0.157178</title></rect>
+<text transform="translate(1184.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|reference_instruction_removed|UNCLEAR:UNCLEAR|gTrueFalse|r0</text>
+<rect x="1196" y="399.7" width="13" height="90.3" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=reference_instruction_removed; marker=UNKNOWN; reference_marker=UNKNOWN; guided=True; reference_guided=False; replicate=0; n=2424; correct=561; unknown=0; accuracy=0.231436</title></rect>
+<text transform="translate(1202.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|reference_instruction_removed|UNKNOWN:UNKNOWN|gTrueFalse|r0</text>
+<rect x="1214" y="426.4" width="13" height="63.6" fill="#64748b"><title>model=qwen35_4b; method=vcd; kind=reference_instruction_removed; marker=UNSURE; reference_marker=UNSURE; guided=True; reference_guided=False; replicate=0; n=2424; correct=395; unknown=0; accuracy=0.162954</title></rect>
+<text transform="translate(1220.5,506) rotate(60)" font-size="8" font-family="sans-serif">vcd|reference_instruction_removed|UNSURE:UNSURE|gTrueFalse|r0</text>
+<text x="20" y="295.0" transform="rotate(-90 20,295.0)" font-size="12" font-family="sans-serif">Canonical primary-name accuracy</text>
+<rect x="80" y="863" width="11" height="11" fill="#3b82f6"/><text x="95" y="873" font-size="10" font-family="sans-serif">cda_visual</text>
+<rect x="164" y="863" width="11" height="11" fill="#ef4444"/><text x="179" y="873" font-size="10" font-family="sans-serif">deco</text>
+<rect x="244" y="863" width="11" height="11" fill="#10b981"/><text x="259" y="873" font-size="10" font-family="sans-serif">direct</text>
+<rect x="324" y="863" width="11" height="11" fill="#f59e0b"/><text x="339" y="873" font-size="10" font-family="sans-serif">dola</text>
+<rect x="404" y="863" width="11" height="11" fill="#8b5cf6"/><text x="419" y="873" font-size="10" font-family="sans-serif">instruction_m3id</text>
+<rect x="524" y="863" width="11" height="11" fill="#06b6d4"/><text x="539" y="873" font-size="10" font-family="sans-serif">instruction_vcd</text>
+<rect x="638" y="863" width="11" height="11" fill="#f97316"/><text x="653" y="873" font-size="10" font-family="sans-serif">m3id</text>
+<rect x="718" y="863" width="11" height="11" fill="#64748b"/><text x="733" y="873" font-size="10" font-family="sans-serif">vcd</text>
+</svg>

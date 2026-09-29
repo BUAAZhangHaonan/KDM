@@ -1,0 +1,26 @@
+{
+  "schema": "reference_gt_rule_closure_receipt",
+  "n": 179,
+  "excluded_A_owned_n": 3,
+  "source_queue": "outputs/annotations/reference_gt/target_blind_gt_review_queue.jsonl",
+  "source_queue_sha256": "8d57b06669a00ae68ca43dff49a6b63b66412342346ff2f3351123484865d51f",
+  "decisions": "outputs/records/main_results/reference_gt_rule_closure_179.jsonl",
+  "decisions_sha256": "f3fbc999cfa41979e0eb490729b53708a4023f061a73e2dd6b00638cb0adb7e2",
+  "target_rank_condition": false,
+  "canonical_n": 132,
+  "outside_101_n": 44,
+  "multiple_primary_n": 3,
+  "unresolved_n": 0,
+  "excluded_qa_keys": [
+    "808451f9d9098e5c545ba076aa69c046ec4c0752ffcd2b56030bffe4d7a53df3",
+    "bc70f1a79ef6263e40957b8abc82aeb7dfc0e46f07c42283abe5acee0430c089",
+    "c540bac3297e6201597b03d72bf081dbd19719289e409995b9bfeb150f09b682"
+  ],
+  "policy": "single clear literal primary canonical class matches; unlisted primary is outside_101; coequal main foods are multiple_primary; component or side foods do not replace the dish head",
+  "decision_author_context": {
+    "agent": "luna_formal_c",
+    "model": "gpt-6-luna",
+    "reasoning_effort": "medium"
+  },
+  "rule_name": "agent_target_blind_rule_closure"
+}

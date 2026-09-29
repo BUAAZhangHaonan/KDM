@@ -1,0 +1,9 @@
+{
+  "archive": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/historical_outputs.tar",
+  "manifest": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/historical_outputs_manifest.json",
+  "archive_sha256": "1be2bc3495964bf4d27c0d5adde497bd99c5bee4019808685e8e0b3c38e185df",
+  "manifest_sha256": "85840b89f415c326070da86b63ee4959ab3e5969529f77b67a56961b47343470",
+  "verified_file_count": 13045,
+  "archive_bytes": 24068464640,
+  "source_retained": true
+}

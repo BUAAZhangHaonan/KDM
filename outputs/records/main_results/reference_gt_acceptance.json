@@ -1,0 +1,34 @@
+{
+  "status": "accepted_main_reference_GT_and_complete_independent_counts",
+  "rows": 24240,
+  "attempts": 242400,
+  "unique_model_sample": 24240,
+  "model_split_counts": {
+    "qwen25vl|eval": 2424,
+    "qwen25vl|dev": 2424,
+    "minicpm26|eval": 2424,
+    "minicpm26|dev": 2424,
+    "qwen35_4b|eval": 2424,
+    "qwen35_4b|dev": 2424,
+    "gemma3_4b|eval": 2424,
+    "gemma3_4b|dev": 2424,
+    "llava16_mistral|eval": 2424,
+    "llava16_mistral|dev": 2424
+  },
+  "GT_unknown": 0,
+  "independent_correct_count_ranges_pending": 0,
+  "independent_count_missing": 0,
+  "legacy_values_compared_unchanged": 14544,
+  "legacy_conflict_unique_model_sample": 130,
+  "legacy_to_uniform_transition": {
+    "False->False": 10286,
+    "True->True": 3547,
+    "True->False": 400,
+    "False->True": 311
+  },
+  "reference_gt_sha256": "0e22f25a3fe70f4411546e62559eb7aaa4ce74e756127e5c1ef72de2f958c269",
+  "uniform_reference_gt_sha256": "d5ac5762d1db797d8ae9fc4b6b2c242b6f91becb1543012d9e78f4f8508aeb04",
+  "GT_rule_checked_every_uniform_row": true,
+  "checked_at": "2026-09-28T19:14:44.698853+00:00",
+  "reviewer": "root"
+}

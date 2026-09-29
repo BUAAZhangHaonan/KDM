@@ -1,0 +1,140 @@
+{
+  "deadline": "2026-09-29T10:00:00+08:00",
+  "updated_at": "2026-09-28T19:58:25.674380+00:00",
+  "phase": "main_results_delivered",
+  "formal_rows": 853248,
+  "formal_conditions": 352,
+  "eval_rows_per_condition": 2424,
+  "formal_bundle_manifest": "data/responses/formal/manifest.json",
+  "formal_bundle_manifest_sha256": "f3a868f6032d9a3a63724cb2de0af6021e003cc8f27e80d6b4eeaac8174026e5",
+  "primary_rule": "canonical_name_in_primary",
+  "sensitivity_rule": "literal_extracted_name",
+  "multiple_primary": "explicit competing/coequal food answers score zero in single-label task",
+  "root_reviews": [
+    "outputs/records/main_results/followup_review.json",
+    "outputs/records/main_results/independent_gap_review.jsonl",
+    "outputs/records/main_results/rule_parser_review.jsonl",
+    "outputs/records/main_results/root_decisions.jsonl"
+  ],
+  "active_tasks": {},
+  "cleanup": {
+    "remote_docs_archived_verified_removed": 48,
+    "local_historical_files_archived_verified": 219,
+    "local_original_removal": "automatic_approval_policy_rejected_bulk_delete; originals retained",
+    "remote_historical_archive_files": 13045,
+    "remote_historical_archive_bytes": 24068464640,
+    "remote_historical_archive_sha256": "1be2bc3495964bf4d27c0d5adde497bd99c5bee4019808685e8e0b3c38e185df",
+    "remote_historical_archive_manifest_sha256": "85840b89f415c326070da86b63ee4959ab3e5969529f77b67a56961b47343470",
+    "remote_historical_originals": "204 retired roots archived; image_content_catalog retained as verified runtime dependency",
+    "remote_historical_code_documents_files": 517,
+    "remote_historical_code_documents_archive_sha256": "ba96c369ef777837c8623a3b5fa4b6f907840299cedbbef9c749069ab42fa583",
+    "remote_support_materials_archived": 6260,
+    "remote_support_materials_sha256": "0cb3ee97965a8e378bf07e391fe3bd97e4710cd4ec75be8b189ec4947e5f392d",
+    "remote_historical_admission_files": 456,
+    "remote_historical_admission_archive_sha256": "02cd9b615e42d0f6ac6526260dcdef7b6cddd54dd7f8e164df14bfe3a10f5bb5",
+    "remote_code_support_source_files_removed": 7234,
+    "remote_code_support_source_bytes_removed": 832721782,
+    "remote_historical_pre_removal_verification": {
+      "files": 13045,
+      "changed": 0,
+      "missing": 0,
+      "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/historical_outputs_pre_removal_check.json"
+    },
+    "root_acceptance": "outputs/records/main_results/cleanup_acceptance.json",
+    "root_acceptance_sha256": "8277555969f6542672106e5811df168d9fc2e784a7f34ca5fa599dd23af60624",
+    "historical_validation_attempt": "external archive validation_history/"
+  },
+  "sources": "data/responses/formal, data/responses/independent, data/responses/candidate",
+  "priority_order": [
+    "primary annotation_review_merge",
+    "reference_GT",
+    "condition_aligned_analysis_and_paper",
+    "additional_mechanism_experiments"
+  ],
+  "root_primary_name_review_unique_QA": 193,
+  "primary_scoring": {
+    "rows": 853248,
+    "conditions": 352,
+    "canonical_unknown_rows": 0,
+    "literal_unknown_rows": 0,
+    "abstention_unknown_rows": 0,
+    "score_rows_sha256": "39d0dc145207304abc7dc9a73f91413c8ed78acb1632b454ec666b8484e59dd1",
+    "replay_verification": "853248 records: six output fields exactly equal",
+    "root_acceptance": "outputs/records/main_results/score_acceptance.json"
+  },
+  "reference_gt_closeout": {
+    "uniform_rows": 24240,
+    "mixed_reference_rows": 24240,
+    "independent_attempts": 242400,
+    "unresolved": 0,
+    "independent_correct_count_ranges_pending": 0,
+    "legacy_retained_rows": 14544,
+    "legacy_conflict_unique_model_samples": 130,
+    "root_acceptance": "outputs/records/main_results/reference_gt_acceptance.json",
+    "current_work": "completed"
+  },
+  "analysis": {
+    "full_conditions": 352,
+    "paired_comparisons": 372,
+    "paired_sample_prompt_checks": 901728,
+    "bootstrap_per_pair": 2000,
+    "canonical_and_literal_and_abstention_unknown_rows": 0,
+    "registered_copy_original_abstention_control": {
+      "conditions": 200,
+      "source_selections": 484800,
+      "instruction_pairs": 40,
+      "status": "accepted"
+    },
+    "root_acceptance": "outputs/records/main_results/analysis_acceptance.json",
+    "control_acceptance": "outputs/records/main_results/copy_control_acceptance.json",
+    "final_summary_sha256": "7d389a873c1799c1b318130b1cb289434aa6fdc73b7e6da7dcbbb3ba144f0b9d"
+  },
+  "paper": {
+    "path": "paper/main.md",
+    "status": "English first full draft with actual methods, results, conclusions and references",
+    "sha256": "370867811758cac5e7502ae392afc6d42489050edf98fc129eaf884e64cd2635"
+  },
+  "conclusions": {
+    "path": "docs/RESULTS.md",
+    "sha256": "cc50ea3d5733cc297181cefd1ce97ab05836a4daefa750938978f7d29c2971da"
+  },
+  "validation": {
+    "path": "outputs/records/main_results/final_validation.json",
+    "sha256": "b1919b806b27eec6cb0d138a06d83c44cfdfbf97a2a8b572fddfd640cf72bbe7",
+    "cpu_tests_passed": 353,
+    "model_check_plans_passed": 5,
+    "proof_files_verified": 95
+  },
+  "supplementary_mechanism": "deferred_after_main_paper_results",
+  "automation": {
+    "id": "automation",
+    "status": "deleted",
+    "reason": "main_results_and_first_full_manuscript_delivered"
+  },
+  "release": {
+    "manifest": "outputs/records/main_results/release_manifest.json",
+    "manifest_sha256": "5550d1dfbe11f1af7b97d525d678b64292bc9de885e858c80dd8bed4eb95e63f",
+    "archive": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/main_results.tar.gz",
+    "archive_sha256": "12e14a9510ba1d0294621707c969b1f30b960120e74c9f558b2e627ddd77c5d8",
+    "mirrors": {
+      "local": {
+        "root": "E:\\OneDrive\\文档\\Playground\\knowledge-deficit-mitigation",
+        "verified_files": 421,
+        "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/local_receipt.json",
+        "receipt_sha256": "57db7f2f02f27897d723979283874ea3c87bfee0e363002515f182cc0bb21911"
+      },
+      "6403": {
+        "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+        "verified_files": 421,
+        "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/6403_receipt.json",
+        "receipt_sha256": "9c12baffcd5586f18067e41e3b0cf2a9100ce7db66e515ecb1cbbb65920e371c"
+      },
+      "K100": {
+        "root": "/home/k100/projects/knowledge-deficit-mitigation",
+        "verified_files": 421,
+        "receipt": "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/release/k100_receipt.json",
+        "receipt_sha256": "6bc7cfae706bd02816ff31104634ae5189ae2b6d2580a4b8cd3502f5d4670314"
+      }
+    }
+  }
+}

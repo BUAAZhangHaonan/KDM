@@ -1,0 +1,12 @@
+{
+  "paired_edges": 372,
+  "paired_sample_prompt_comparisons": 901728,
+  "main_prompt_sha_mismatch_count": 0,
+  "main_prompt_sha_missing_count": 0,
+  "seed_mismatch_count": 0,
+  "seed_missing_count": 0,
+  "bindings_from": "A final score_rows from canonical data/responses/formal/*.jsonl.gz",
+  "prompt_field": "main_prompt_sha256",
+  "seed_field": "seed",
+  "examples": []
+}

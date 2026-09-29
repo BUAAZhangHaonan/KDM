@@ -1,0 +1,10 @@
+{
+  "source_sha256": "e791bf075af5ed40b1f4b099dd07d446cc90a78f9b8a3c8dc0c905e411646875",
+  "decisions_sha256": "b17fcd9f8b0ff8d4571f9214f7443627a2f4017409d1e19ccdf057ba05089340",
+  "read_full_QA": 60,
+  "canonical_primary": 57,
+  "multiple_primary": 3,
+  "abstain_false": 60,
+  "reviewer": "root",
+  "source_tool_chunk": "afa9ec"
+}

@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-09-28T19:28:48.574182+00:00",
+  "reviewer": "root",
+  "score_fields": "canonical, literal, abstain",
+  "condition_rows_checked": 352,
+  "condition_total_rows": 853248,
+  "paired_rows_checked": 372,
+  "paired_accuracy_and_transition_checks": "all_pass",
+  "condition_conservation_and_ratios": "all_pass",
+  "instruction_pairs": 40,
+  "joint_accuracy_preservation_conditions": [
+    {
+      "model": "qwen35_4b",
+      "kind": "instruction_preserving",
+      "marker": "I cannot identify it",
+      "reference_marker": "I cannot identify it",
+      "guided": true,
+      "reference_guided": false,
+      "replicate": 0,
+      "method": "instruction_vcd"
+    },
+    {
+      "model": "minicpm26",
+      "kind": "instruction_preserving",
+      "marker": "UNCLEAR",
+      "reference_marker": "UNCLEAR",
+      "guided": true,
+      "reference_guided": false,
+      "replicate": 0,
+      "method": "instruction_vcd"
+    }
+  ],
+  "code_review": "condition and sample pairing, class-cluster paired accuracy bootstrap and micro numerator/denominator subgroup bootstrap read in full",
+  "source_sha256": {
+    "condition_metrics.csv": "64a0cb26e4a4320126fc60356f7272f5d296cfbbe942c62f8a0f4e48496ec40c",
+    "paired_comparisons.jsonl": "7d174de6d5de351043623f6c0ae6ebe0db1547c0f73b9b4979219fbd6787bcdd"
+  }
+}

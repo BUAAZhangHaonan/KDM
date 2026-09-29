@@ -1,0 +1,43 @@
+{
+  "schema": "main_results_stable_inputs_manifest",
+  "runtime": "workflows/main_results/score.py --run",
+  "source_manifest": "data/manifest.json",
+  "source_manifest_sha256": "cff27b7e17618a5b0aca1c79f8fcf17c0d2be18df7ba89f4c73a88e51b7002bf",
+  "reviewed_answers": "outputs/annotations/main_results/reviewed_answers.jsonl",
+  "reviewed_answers_sha256": "3a29fbb24167891c172efa04372701ccad65b0ddf7bdf687e519d6c1bb9296b0",
+  "reviewed_QA_count": 15273,
+  "automatic_behavior": "outputs/annotations/main_results/automatic_behavior.jsonl.gz",
+  "automatic_behavior_sha256": "65b3f3c827b6dab073107ff5d61aff26a5c5da0db3382f2019db3be98a503888",
+  "automatic_behavior_rows": 853248,
+  "automatic_behavior_unknown": 334,
+  "runtime_inputs": {
+    "data/manifest.json": "cff27b7e17618a5b0aca1c79f8fcf17c0d2be18df7ba89f4c73a88e51b7002bf",
+    "data/responses/formal/manifest.json": "f3a868f6032d9a3a63724cb2de0af6021e003cc8f27e80d6b4eeaac8174026e5",
+    "data/responses/formal/qwen35_4b.jsonl.gz": "3b19b72d6114e21693b4925cf9c8e413a62409a0c23d65973f69f1bb45f03ed0",
+    "data/responses/formal/minicpm26.jsonl.gz": "d6bc6632f4571780be68775e2ae0c7adcc713b97059089bac9aa08c5b3d1c254",
+    "data/responses/formal/gemma3_4b.jsonl.gz": "23543ad76deda4f14c9eac7462c27c819875aa3d1f66505ecaf5a3bb3141dc29",
+    "data/responses/formal/llava16_mistral.jsonl.gz": "5574d4c610c65315e0de15899ab4d7483dc32958de10bb4aef94d527b9e8ea76",
+    "data/responses/formal/qwen25vl.jsonl.gz": "30fb1d5765398d81cbacc39c6511130f7086b880694cbce29513018f559d7bfe",
+    "outputs/annotations/main_results/reviewed_answers.jsonl": "3a29fbb24167891c172efa04372701ccad65b0ddf7bdf687e519d6c1bb9296b0",
+    "outputs/annotations/main_results/automatic_behavior.jsonl.gz": "65b3f3c827b6dab073107ff5d61aff26a5c5da0db3382f2019db3be98a503888"
+  },
+  "reviewed_decision_lineage": {
+    "outputs/records/main_results/root_decisions.jsonl": "f21477687f8c7111575f6e4771c7c06cd2ea770d1f34d0b15a78134c740d0769",
+    "outputs/records/main_results/literal_name_decisions.jsonl": "fbcfe85a1e254b9d291387f7afe261985e36c9f6d53da68559f78260b79bc9a1",
+    "outputs/records/main_results/remaining_multiple_predictions.jsonl": "b670bec2003e932de563b39cb9d43b4fc366c868d2acc43be4b3a205db48cfa2",
+    "outputs/records/main_results/reference_gt_last_boundary_root.jsonl": "7d094651fcc112f64706df757cd6d034d52936431c4d7b8148746bdf1d611628",
+    "outputs/records/main_results/reference_gt_last_boundary_b.jsonl": "9ed2d5180268d63f35a66a83c4b1ea3feca794e3591058a068450043d91734e9",
+    "outputs/records/main_results/reference_gt_last_boundary_resolution.jsonl": "ad846fbf5c03c7a17b81b4ab8af43510a0e13aef6ad145cedca5ab51b63abbd2",
+    "outputs/records/main_results/reference_gt_final24_decisions.jsonl": "4fa2495020b8d8e61df75efdcdc7738ea4e3d490f00f0aa43a0e000efe80f38f",
+    "outputs/records/main_results/rule_parser_review.jsonl": "b17fcd9f8b0ff8d4571f9214f7443627a2f4017409d1e19ccdf057ba05089340",
+    "target_blind_250_archived_files": {
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/unresolved_qa_blind_queue.jsonl": "e6c47fa661fb316738880a08ac5a29681f0a7d4d43d848c5f50e39c6a275ec06",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/unresolved_qa_rule_decisions.jsonl": "04bc04577d6b08a39c6938d78d4e8bfa1a5bcd28f9f17778dff8e95bb405c13d",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/unresolved_qa_rule_decisions_corrected.jsonl": "38abd41e95ad66909cb180dccf2cb09a0cb551ece758df6b5ad8cf728a3db140",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/rule_candidates.jsonl": "4ec52872ab64e83b6ba711a3837a7f5bf6d029b06d80580f5e456060e4b557e2",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/rule_candidate_counts.json": "a0e6134057f848eb1783db1aff8c93352dd2ab8386e613a3c0ed15fab3171140",
+      "/home/g203-4028/projects/knowledge-deficit-mitigation-archive/20260929/scoring_diagnostics/target_blind_250/role_enum_edge_cases.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "data_manifest_bundle_sha256": "f3a868f6032d9a3a63724cb2de0af6021e003cc8f27e80d6b4eeaac8174026e5"
+}

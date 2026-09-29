@@ -1,0 +1,11 @@
+{
+  "review_files": {
+    "independent_gap_review.jsonl": "3341eee5e73f92990bf01284562e70ae008ac18eb221b008741ed4355dde4b19",
+    "rule_parser_review.jsonl": "b17fcd9f8b0ff8d4571f9214f7443627a2f4017409d1e19ccdf057ba05089340",
+    "cross_review_decisions.jsonl": "7f5785c0af7fdd1c8296e928773c9693853b2ee9464a0747dabf719bcf210bf4"
+  },
+  "review_rows": 140,
+  "unique_QA": 140,
+  "cross_file_class_binary_conflicts": 0,
+  "target_fields_used_for_decision": false
+}

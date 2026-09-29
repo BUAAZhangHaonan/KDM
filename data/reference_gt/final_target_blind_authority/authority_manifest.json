@@ -1,0 +1,44 @@
+{
+  "schema": "final_target_blind_reference_authority",
+  "status": "frozen_review_inputs",
+  "files": {
+    "data/reference_gt/final_target_blind_authority/compact_source_manifest.json": "30f186d31dc99d29673ebaeb42173cdfbf257155269e21c0c476c2c279d4bd9f",
+    "data/reference_gt/final_target_blind_authority/cross_review_decisions.jsonl": "7f5785c0af7fdd1c8296e928773c9693853b2ee9464a0747dabf719bcf210bf4",
+    "data/reference_gt/final_target_blind_authority/independent_gap_review.jsonl": "3341eee5e73f92990bf01284562e70ae008ac18eb221b008741ed4355dde4b19",
+    "data/reference_gt/final_target_blind_authority/reference_gt_a_overlap3.jsonl": "85ab073866bdcb71f60901887ae00c90daead2f0c915ea807667c9e47c836f45",
+    "data/reference_gt/final_target_blind_authority/reference_gt_correct_count_parser_pass.jsonl": "8d97a548a55aa4cb720f4296fc2accf4b029bf9e1813e11a4bc3f817802bda85",
+    "data/reference_gt/final_target_blind_authority/reference_gt_final24_decisions.jsonl": "4fa2495020b8d8e61df75efdcdc7738ea4e3d490f00f0aa43a0e000efe80f38f",
+    "data/reference_gt/final_target_blind_authority/reference_gt_last_boundary_b.jsonl": "9ed2d5180268d63f35a66a83c4b1ea3feca794e3591058a068450043d91734e9",
+    "data/reference_gt/final_target_blind_authority/reference_gt_last_boundary_resolution.jsonl": "ad846fbf5c03c7a17b81b4ab8af43510a0e13aef6ad145cedca5ab51b63abbd2",
+    "data/reference_gt/final_target_blind_authority/reference_gt_last_boundary_root.jsonl": "7d094651fcc112f64706df757cd6d034d52936431c4d7b8148746bdf1d611628",
+    "data/reference_gt/final_target_blind_authority/reference_gt_rule_closure_179.jsonl": "f3fbc999cfa41979e0eb490729b53708a4023f061a73e2dd6b00638cb0adb7e2",
+    "data/reference_gt/final_target_blind_authority/reviewed_answers.jsonl": "3a29fbb24167891c172efa04372701ccad65b0ddf7bdf687e519d6c1bb9296b0",
+    "data/reference_gt/final_target_blind_authority/root_decisions.jsonl": "f21477687f8c7111575f6e4771c7c06cd2ea770d1f34d0b15a78134c740d0769",
+    "data/reference_gt/final_target_blind_authority/rule_parser_review.jsonl": "b17fcd9f8b0ff8d4571f9214f7443627a2f4017409d1e19ccdf057ba05089340"
+  },
+  "canonical_food_classes": {
+    "path": "data/current/all.jsonl",
+    "sha256": "f622b7ebf3567a2ec40a3e6475b5e02620ace8b67d8baec98a7622a08594773c"
+  },
+  "legacy_reference_authorities": {
+    "legacy_accepted_reference_gt.jsonl": {
+      "path": "data/reference_gt/legacy_accepted_reference_gt.jsonl",
+      "sha256": "5b90a8b50d707d65cda53c126a643379b2986270e61370cd5b876971d02250f8"
+    },
+    "legacy_accepted_conflicts.jsonl": {
+      "path": "data/reference_gt/legacy_accepted_conflicts.jsonl",
+      "sha256": "00fb0902835fa02e070d9655110c4a89f7f1bea23e1e16b17964b4211d605763"
+    }
+  },
+  "code": {
+    "reference_gt_builder": {
+      "path": "workflows/main_results/reference_gt.py",
+      "sha256": "236ca0c36b37e1f8dfdd1106fdcc445aa57b608e5dfb1bd80d497ce4857604e0"
+    },
+    "target_blind_parser": {
+      "path": "workflows/main_results/score.py",
+      "sha256": "08184ca616d188fd761e5a13be42a0a1a074748e249a0021624aa7431b072e49"
+    }
+  },
+  "scope": "Target-blind exact-question/answer decision sources for the accepted five-model reference GT and independent 10-attempt correctness counts."
+}

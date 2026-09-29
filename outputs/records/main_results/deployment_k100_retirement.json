@@ -1,0 +1,36 @@
+{
+  "root": "/home/k100/projects/knowledge-deficit-mitigation",
+  "archive": "/home/k100/projects/knowledge-deficit-mitigation-archive/20260929/historical_deployment.tar",
+  "archive_sha256": "0adb9666197d6b676383348be73e325a84b4c3d99d6de05b67d4c57fad21424e",
+  "manifest_sha256": "5dae90c8c649ed70e34eea5c684bab4ad225d69d0879921d29d9e75af0fc391d",
+  "verified_present_regular_files": 700,
+  "preexisting_missing_archived_entries": 0,
+  "unarchived_paths": 0,
+  "changed_paths": 0,
+  "removed_roots": [
+    "workflows",
+    "pyproject.toml",
+    "scripts",
+    "outputs",
+    "README.md",
+    "source_materials",
+    "src",
+    ".gitignore",
+    "verification",
+    "configs",
+    "docs"
+  ],
+  "created_at": "2026-09-28T19:39:42.651268+00:00",
+  "retained_roots": [
+    ".git",
+    ".environments",
+    "cache",
+    "data/images",
+    "data/current",
+    "data/responses",
+    "data/provenance",
+    "data/reference_gt",
+    "data/annotations"
+  ],
+  "project_processes_at_removal": []
+}
