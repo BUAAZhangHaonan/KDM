@@ -55,17 +55,21 @@ def source_record(entry, line, row, line_sha):
             "original_source_identity": row.get("original_identity", row.get("identity"))}
 
 
-def selected_sources(run, manifest):
+def selected_sources(run, manifest, models=MODELS, received_manifests=()):
     selected = [dict(entry) for entry in manifest["sources"]
-                if entry["status"] in {"selected_complete", "selected_partial"}]
+                if entry["model"] in models and
+                entry["status"] in {"selected_complete", "selected_partial"}]
     for entry in selected:
         entry["keys"] = {row["key"] for _, row, _ in rows(entry["usable_keys_file"])}
         if len(entry["keys"]) != entry["selected_rows"]:
             raise ValueError("Selected source key count differs: " + entry["path"])
-    extra = run / "remote_completed/received_manifest.json"
-    if extra.exists():
+    default_extra = run / "remote_completed/received_manifest.json"
+    extras = ([default_extra] if default_extra.exists() else []) + list(received_manifests)
+    for extra in extras:
         received = json.loads(extra.read_text())
         for item in received["parts"]:
+            if item["model"] not in models:
+                continue
             entry = dict(item)
             entry["path"] = str(ROOT / item["received_raw_path"])
             entry["keys"] = None
@@ -76,6 +80,8 @@ def selected_sources(run, manifest):
             selected.append(entry)
     for path in sorted((run / "records").glob("*/*/*/*/*.complete.json")):
         receipt = json.loads(path.read_text())
+        if receipt["model"] not in models:
+            continue
         raw = ROOT / receipt["raw_path"]
         if receipt["generation_complete"] is not True or file_hash(raw) != receipt["raw_sha256"]:
             raise ValueError("Local completed part differs from its verified receipt")
@@ -84,6 +90,8 @@ def selected_sources(run, manifest):
                          "receipt_path": str(path), "cohort": "registered_native"})
     for path in sorted((run / "sealed_failed").glob("*/*/*.complete.json")):
         receipt = json.loads(path.read_text())
+        if receipt["model"] not in models:
+            continue
         raw = ROOT / receipt["raw_path"]
         if not receipt.get("part_validation_complete") or file_hash(raw) != receipt["raw_sha256"]:
             raise ValueError("Sealed successful prefix differs from its verified receipt")
@@ -259,7 +267,7 @@ def condition(row):
             **{name: row[name] for name in COND[3:]}}
 
 
-def score(run, output, decision_files):
+def score(run, output, decision_files, models=MODELS, received_manifests=()):
     output.mkdir(parents=True, exist_ok=False)
     manifest_path = run / "assets/asset_manifest.json"
     manifest = json.loads(manifest_path.read_text())
@@ -270,7 +278,7 @@ def score(run, output, decision_files):
         raise ValueError("Original complete Food-101 manifest is required")
     patterns = shared.compile_classes(classes)
     reviews, behavior, behavior_provenance, historical, decisions = load_authority(run, manifest, decision_files)
-    sources = selected_sources(run, manifest)
+    sources = selected_sources(run, manifest, models, received_manifests)
     qa_cache, seen, ranks, attempts, pending = {}, set(), {}, defaultdict(dict), {}
     counts, stats, source_counts = defaultdict(Counter), Counter(), []
     score_path = output / "score_rows.jsonl.gz"
@@ -391,7 +399,7 @@ def score(run, output, decision_files):
         for qkey in sorted(pending):
             stream.write(json.dumps(pending[qkey], ensure_ascii=False, separators=(",", ":")) + "\n")
     references = []
-    for model in MODELS:
+    for model in models:
         for sample_id, sample in sorted(samples.items()):
             key = model, sample_id
             rank = ranks.get(key)
@@ -422,6 +430,7 @@ def score(run, output, decision_files):
             writer.writerow({**item, "main_marker": item["marker"],
                              **{field: counter[field] for field in fields[len(COND) + 1:]}})
     summary = {"schema": "kdm_remaining11_main_score_v3", "updated_utc": datetime.now(timezone.utc).isoformat(),
+               "models": list(models),
                "rows": stats["formal_rows"] + stats["independent_rows"], **stats,
                "unique_scored_QA": len(qa_cache), "pending_boundary_questions": len(pending),
                "formal_condition_cells_observed": len(counts),
@@ -430,6 +439,8 @@ def score(run, output, decision_files):
                "reference_pending_rows": sum(not row["reference_complete"] for row in references),
                "reference_rule": "gold_rank>1 and all ten current-primary correct attempts=0",
                "source_manifest": str(manifest_path), "source_manifest_sha256": file_hash(manifest_path),
+               "additional_received_manifests": [{"path": str(path), "sha256": file_hash(path)}
+                                                for path in received_manifests],
                "selected_sources": source_counts, "decision_files": [str(path) for path in decision_files],
                "rule_authorship": "program rules using the frozen main-results scoring functions",
                "scorer_sha256": file_hash(Path(__file__)),
@@ -445,12 +456,17 @@ def main():
     parser.add_argument("--run", default="run_20260930_140337")
     parser.add_argument("--output-name", required=True)
     parser.add_argument("--decision-file", action="append", default=[], type=Path)
+    parser.add_argument("--models", nargs="+", choices=MODELS, default=list(MODELS))
+    parser.add_argument("--received-manifest", action="append", default=[], type=Path)
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_.-]+", args.output_name):
         raise ValueError("Invalid exclusive score checkpoint name")
     run = ROOT / "outputs/supplemental/remaining11" / args.run
     decisions = [path if path.is_absolute() else ROOT / path for path in args.decision_file]
-    score(run, run / "scores" / args.output_name, decisions)
+    if len(args.models) != len(set(args.models)):
+        raise ValueError("Duplicate scoring model selection")
+    received = [path if path.is_absolute() else ROOT / path for path in args.received_manifest]
+    score(run, run / "scores" / args.output_name, decisions, args.models, received)
 
 
 if __name__ == "__main__":
