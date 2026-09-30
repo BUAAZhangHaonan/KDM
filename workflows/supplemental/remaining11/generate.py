@@ -358,11 +358,22 @@ def claim_directory(args: argparse.Namespace, plan: dict, run: Path) -> Path:
     folder = run / "claims" / args.model / args.dataset / args.stage
     folder.mkdir(parents=True, exist_ok=True)
     claim = folder / args.claim_id
+    recovery_sources = []
     with (folder / "ownership.lock").open("a+") as stream:
         fcntl.flock(stream.fileno(), fcntl.LOCK_EX)
         for other in folder.iterdir():
             if not other.is_dir():
                 continue
+            release_path = other / 'released.json'
+            if release_path.is_file():
+                release = json.loads(release_path.read_text())
+                if release.get('replacement_claim_id') == args.claim_id:
+                    from workflows.supplemental.remaining11.dispatch import validate_import_release
+
+                    recovery_sources.append(validate_import_release(
+                        other, args.claim_id, plan['summary'],
+                        os.environ.get('CUDA_VISIBLE_DEVICES', '').split(','), args.owner))
+                    continue
             key_path = other / "keys.jsonl"
             if not key_path.is_file():
                 raise ValueError("Existing shard claim lacks a complete key ownership list")
@@ -381,6 +392,7 @@ def claim_directory(args: argparse.Namespace, plan: dict, run: Path) -> Path:
             "created_utc": now(), "model": args.model, "dataset": args.dataset,
             "stage": args.stage, "plan": plan["summary"],
             "keys_sha256": file_hash(claim / "keys.jsonl"),
+            "input_recovery_sources": recovery_sources,
         })
         fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
     return claim
@@ -503,6 +515,9 @@ def execute(args: argparse.Namespace) -> None:
         "main_marker_field": "marker", "no_automatic_retry": True,
         "human_review_claimed": False, "paid_api_calls": 0,
     }
+    recovered = json.loads((claim / 'owner.json').read_text())['input_recovery_sources']
+    if recovered:
+        identity['input_recovery_sources'] = recovered
     atomic_json(record / "admission.json", identity)
     progress = {
         "model": args.model, "dataset": args.dataset, "stage": args.stage,
