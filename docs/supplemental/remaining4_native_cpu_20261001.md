@@ -28,4 +28,23 @@
 
 当前 checkpoint 的 `verification.json` 为实际验收凭据；19392 个来源对象全部相同，8 个条件全部输入完整、评分已决，缺失任务和重复任务均为 0。最终 `score_rows.jsonl.gz` 的 SHA256 为 `6eba9425c29ccf4f3c36271c88481bb299dbf8ac4b46ce025bc9b4c1fe7adfd2`。
 
-旧 raw 未重新读取，本 CPU 子任务的 GPU 初始化和新增 API 调用均为 0；实际 Luna 调用由单独标注线程完成并保留执行回执。本检查点尚未连接参考 GT，InternVL/Phi 未完成的 uniform reference 缺口保留，参考精确率、召回率及方法效果未计算。原五模型资产及正文保持冻结。
+旧 raw 未重新读取，本 CPU 子任务的 GPU 初始化和新增 API 调用均为 0；实际 Luna 调用由单独标注线程完成并保留执行回执。原 v4 检查点只保存完整原生评分；后续参考连接另存独占目录。原五模型资产及正文保持冻结。
+
+## OneVision/Qwen3-VL 已有完整参考连接
+
+`native_cpu_20261001_0226/reference_join/one_qwen3_v1_20261001/receipt.json` 已实际核对原生评分键和 `selected4_v10_root46/reference_G.jsonl` 来源，两个模型各 2424 个 eval 参考完整；原 GT 未重新计算，原生评分字段未改变。`condition_metrics.csv` 包含八个条件及完整条件身份，四个条件参考已全连接，InternVL/Phi 四个条件的参考指标保持空值并标明 `pending_uniform_reference`。
+
+| 模型、原生方法 | 精确率 P 分子/分母 | 召回率 R 分子/分母 | Joint J 分子/2424 |
+| --- | ---: | ---: | ---: |
+| OneVision VCD | 0/0，空值 | 0/814 | 849/2424 |
+| OneVision M3ID | 0/0，空值 | 0/814 | 777/2424 |
+| Qwen3-VL VCD | 0/0，空值 | 0/364 | 1380/2424 |
+| Qwen3-VL M3ID | 1/2 | 1/364 | 1303/2424 |
+
+P 的零分母原因是该条件没有实际弃权；J=(主正确数+合理弃权 TP)/2424。上述为完整条件的实际描述指标，尚未计算 VCD/M3ID 配对方法效应。参考源 SHA256 为 `d2f577a3862be6e984ff8a1574983271ec8f5228f233a26faf9e5630cd4f7fb3`；逐样本连接与每条件分母在该独占目录保存。
+
+## InternVL 已封存十次试答 CPU 接续
+
+`reference_cpu_20261001_0325` 本阶段只接收 26 个不可变分片、12880 条原独立试答；原 claim、identity、raw 行 SHA、attempt/replicate、seed、完整回答与注册温度 1/top-p 1/32 tokens 保留。实际源验证为 `assets/received_source_verification.json`，未读取活动 raw。规则和既有精确 QA 先解决 12833 条；其余 42 个完整 QA、47 个来源成员经实际 Luna medium 和 root 逐项裁定，追加 `annotation/root_reviewed42_20261001/root_reviewed.jsonl`。
+
+`scores/v2_root42_closed/finite_execution_receipt.json` 实际确认 12880 条三类主标签未决均为 0；只更新 47 个评分对象，其余 12833 个对象逐键相同。root 裁定为 36 个多主答案、6 个唯一完整菜名，`canonical_override` 均为空，未扩展别名或修复字形。dev/eval 各已有完整十次试答样本 648/640；剩余注册试答 35600 条尚未接收。本阶段尚未接收 InternVL 排名，4848 个统一参考保持空值，不能由十次试答闭合推断缺失排名为阴性。
