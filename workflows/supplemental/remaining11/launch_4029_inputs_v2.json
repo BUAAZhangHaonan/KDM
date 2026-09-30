@@ -1,0 +1,17 @@
+{
+  "schema": "kdm_remaining11_bounded_launch_v1",
+  "jobs": [
+    {
+      "model": "llava15_7b", "stage": "formal", "cards": "1",
+      "claim": "4029_llava15_7b_formal_inputs_v2",
+      "missing_keys": "outputs/supplemental/remaining11/run_20260930_140337/assets/remaining_keys/llava15_7b_formal.jsonl",
+      "python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/tf553/bin/python"
+    },
+    {
+      "model": "phi35", "stage": "candidate", "cards": "2",
+      "claim": "4029_phi35_candidate_inputs_v2",
+      "missing_keys": "outputs/supplemental/remaining11/run_20260930_140337/assets/remaining_keys/phi35_candidate.jsonl",
+      "python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/phi443/bin/python"
+    }
+  ]
+}

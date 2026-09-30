@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "hosts": {
+    "6403": {
+      "hostname": "oem-PowerEdge-T640",
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "allowed_gpus": [0, 1],
+      "max_workers_per_gpu": 3,
+      "gpu_uuids": {
+        "0": "GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402",
+        "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
+      },
+      "minimum_free_mib_by_model": {"onevision": 28672, "qwen3vl": 28672, "phi35": 28672, "internvl35_8b": 22528},
+      "third_slot_food_budgets_mib": {"onevision": 28672, "qwen3vl": 28672, "phi35": 28672},
+      "dual_card_food_candidate_budgets_mib": {"internvl35_8b": 22528},
+      "capacity_evidence": "Original 6403 native Qwen3 max-input VCD reserved-memory proof reports 23.871 GiB with checkpoint processor defaults; registered Food visual inputs are at most 256 merged tokens. Original OneVision third-slot Food admission requires 28672 MiB free and previously produced source-bound native formal raw on this host. Each unchanged single-GPU native VCD/M3ID worker requires 28672 MiB free immediately before load, retains the existing three worker slots, and acquires the shared GPU lock plus an exclusive slot. This source-backed load guard does not declare a measured new unguided GPU peak. Human authorized coexistence with the finite core attribution work on 2026-09-30."
+    }
+  },
+  "model_hosts": {"onevision": "6403", "qwen3vl": "6403", "phi35": "6403", "internvl35_8b": "6403"},
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "6403": {
+      "onevision": {
+        "environment_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/remaining11_tf553_20260930/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/llava-onevision-qwen2-7b-ov-hf",
+        "source_evidence": "Original byte-bound OneVision native runtime admitted on 6403 in run_20260930_140337; unchanged float16 checkpoint, processor, package versions and source proofs checked again before the new native claim."
+      },
+      "qwen3vl": {
+        "environment_python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/Qwen3-VL-8B-Instruct",
+        "source_evidence": "Canonical configs/runtime/qwen3vl.json is the existing 6403 native16_v1 route; unchanged bfloat16, single-GPU device_map, original TF5.5.3 environment and native/method proof identities."
+      },
+      "phi35": {
+        "environment_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/phi443/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/Phi-3.5-vision-instruct",
+        "source_evidence": "Actual receipts/scope4_native_20260930/phi35_cpu_preparation.json passed original torch2.3.0+cu121, transformers4.43.0, bfloat16/eager, checkpoint and processor identities, and native VCD/M3ID 2424-key CPU plans. Require the same conservative Food 28672MiB loading guard before its actual operator gate."
+      },
+      "internvl35_8b": {
+        "environment_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "model_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/cache/models/remaining4_original_20261001/InternVL3_5-8B",
+        "source_evidence": "Byte-preserving checkpoint copy from d4030 already-verified original model into an exclusive 6403 project directory. Preserve torch2.9.0+cu128, transformers5.17.0, bfloat16 and the original 36-layer 18/18 explicit dual map with 22GiB max_memory per card. Actual CPU identity receipt and same-input original/cached 101-score GPU gate are required; shared rank loading retains max3 worker slots and at least22528MiB free per physical card."
+      }
+    }
+  },
+  "authorization": "Selected-four Food native VCD/M3ID only, one NONE/NONE unguided condition per method; original proofs, science parameters, claims and completed five-model results remain source-bound."
+}
