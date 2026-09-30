@@ -22,3 +22,8 @@ __pycache__/
 nohup.out
 .DS_Store
 *.swp
+
+# Remaining eleven-model supplemental data and host runtime copies
+/outputs/supplemental/remaining11/
+/supplemental/remaining11/
+/CURRENT_STATE.json
