@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "hosts": {
+    "4028": {
+      "hostname": "4028",
+      "root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "allowed_gpus": [0, 1, 4, 5],
+      "gpu_uuids": {
+        "0": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3",
+        "1": "GPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e",
+        "4": "GPU-8d98e481-b89b-2166-b474-c33d59e0fd3d",
+        "5": "GPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d"
+      }
+    },
+    "6403": {
+      "hostname": "oem-PowerEdge-T640",
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "allowed_gpus": [0, 1],
+      "gpu_uuids": {
+        "0": "GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402",
+        "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
+      }
+    },
+    "k100": {
+      "hostname": "k100-X785-H30",
+      "root": "/home/k100/projects/knowledge-deficit-mitigation",
+      "allowed_gpus": [0],
+      "gpu_uuids": {"0": "GPU-4320e83b-1158-0546-73c5-b715c4dbe1ea"}
+    },
+    "4029": {
+      "hostname": "WS-4029GP-TRT",
+      "root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930",
+      "allowed_gpus": [1, 2],
+      "gpu_uuids": {
+        "1": "GPU-7ba69fc7-12ac-3dfb-8265-3476ce2504b6",
+        "2": "GPU-dfaeaa7c-32c8-ebb4-aa59-ab7f829805f1"
+      }
+    }
+  },
+  "model_hosts": {
+    "gemma3_12b": "4028", "glm46v": "6403", "internvl35_8b": "4028",
+    "llava15_7b": "4028", "onevision": "4028", "minicpm45": "4028",
+    "phi35": "4028", "qwen3vl": "6403", "qwen35_9b": "4028",
+    "llava15_13b": "4028", "llava16_vicuna": "4028"
+  },
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "4029": {
+      "llava15_7b": {
+        "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/tf553/bin/python",
+        "model_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/cache/models/llava-1.5-7b-hf",
+        "source_evidence": "Byte-preserving transfer of registered central checkpoint, processor, source, and environment; prepare_4029.sh and runtime admission receipt"
+      },
+      "phi35": {
+        "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/phi443/bin/python",
+        "model_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/cache/models/Phi-3.5-vision-instruct",
+        "source_evidence": "Byte-preserving transfer of registered central Phi checkpoint, processor, source, and phi443 environment; runtime admission receipt"
+      }
+    }
+  },
+  "authorization": "User request dated 2026-09-30; supplemental remaining11 only; frozen science and five-model results retained"
+}

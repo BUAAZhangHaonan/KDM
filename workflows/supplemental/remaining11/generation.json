@@ -1,0 +1,25 @@
+{
+  "schema": "kdm_remaining11_generation_v1",
+  "models": [
+    "gemma3_12b",
+    "glm46v",
+    "internvl35_8b",
+    "llava15_7b",
+    "onevision",
+    "minicpm45",
+    "phi35",
+    "qwen3vl",
+    "qwen35_9b",
+    "llava15_13b",
+    "llava16_vicuna"
+  ],
+  "output_root": "outputs/supplemental/remaining11",
+  "formal_order": ["unknown_main", "unknown_controls", "prompt_matrix"],
+  "food_reference_splits": ["dev", "eval"],
+  "vizwiz_reference_splits": ["eval"],
+  "missing_key_selection": "explicit_manifest_only",
+  "seed_rule": "kdm.io.stable_seed(sample_id, model, replicate)",
+  "candidate_key_rule": "kdm.io.stable_hash([model, sample_id, closed])",
+  "automatic_retry": false,
+  "automatic_parameter_changes": false
+}
