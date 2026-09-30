@@ -14,6 +14,7 @@ import traceback
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'src'))
+sys.path.insert(0, str(ROOT))
 from kdm.io import atomic_json, file_hash, read_jsonl, stable_hash, within
 
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,95}')
@@ -362,6 +363,18 @@ def dispatch(args):
                                      'sha256': file_hash(plan_path),
                                      'expected_rows': plan['expected_generation_rows'],
                                      'ordered_keys_sha256': plan['ordered_selected_keys_sha256']}
+        if args.continuation_receipt:
+            from workflows.supplemental.remaining11.generate import load_plan
+            from workflows.supplemental.remaining11.retirement import validate_retirement
+            from types import SimpleNamespace
+            request = SimpleNamespace(model=args.model, dataset=args.dataset, stage=args.stage,
+                                      missing_keys=args.missing_keys, key_start=0, key_stop=None,
+                                      shard=args.shard, n_shards=args.n_shards)
+            selected = load_plan(request, ROOT)
+            receipt['administrative_continuation'] = validate_retirement(
+                ROOT, args.continuation_receipt, args.claim, plan, selected['selected_keys'],
+                args.cards.split(','), args.owner)
+            task_arguments.extend(['--continuation-receipt', args.continuation_receipt])
         command = [
             'bash', str(ROOT / 'workflows/supplemental/remaining11/worker.sh'),
             str(ROOT), args.cards, args.python,
@@ -407,6 +420,7 @@ def main():
     parser.add_argument('--n-shards', type=int, default=1)
     parser.add_argument('--owner', default='root')
     parser.add_argument('--recovery-from')
+    parser.add_argument('--continuation-receipt')
     parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args()
     if args.action == 'release-import-failure':

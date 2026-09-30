@@ -359,10 +359,28 @@ def claim_directory(args: argparse.Namespace, plan: dict, run: Path) -> Path:
     folder.mkdir(parents=True, exist_ok=True)
     claim = folder / args.claim_id
     recovery_sources = []
+    continuation = None
+    if getattr(args, 'continuation_receipt', None):
+        from workflows.supplemental.remaining11.retirement import validate_retirement
+        continuation = validate_retirement(ROOT, args.continuation_receipt, args.claim_id,
+            plan['summary'], plan['selected_keys'],
+            os.environ.get('CUDA_VISIBLE_DEVICES', '').split(','), args.owner)
     with (folder / "ownership.lock").open("a+") as stream:
         fcntl.flock(stream.fileno(), fcntl.LOCK_EX)
         for other in folder.iterdir():
             if not other.is_dir():
+                continue
+            if continuation is not None and other.name == continuation['source_claim_id']:
+                markers = [json.loads(path.read_text()) for path in other.glob('retired*.json')]
+                markers = [item for item in markers if item['retirement_sha256'] == continuation['retirement_sha256']]
+                if len(markers) != 1:
+                    raise ValueError('Original claim lacks a unique matching appended retirement')
+                retired = markers[0]
+                if (retired['retirement_sha256'] != continuation['retirement_sha256']
+                        or retired['source_owner_sha256'] != file_hash(other / 'owner.json')
+                        or retired['source_keys_sha256'] != file_hash(other / 'keys.jsonl')
+                        or args.claim_id not in retired['replacement_claim_ids']):
+                    raise ValueError('Original administrative retirement does not bind to this replacement')
                 continue
             release_path = other / 'released.json'
             if release_path.is_file():
@@ -393,6 +411,7 @@ def claim_directory(args: argparse.Namespace, plan: dict, run: Path) -> Path:
             "stage": args.stage, "plan": plan["summary"],
             "keys_sha256": file_hash(claim / "keys.jsonl"),
             "input_recovery_sources": recovery_sources,
+            "administrative_continuation": continuation,
         })
         fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
     return claim
@@ -518,6 +537,9 @@ def execute(args: argparse.Namespace) -> None:
     recovered = json.loads((claim / 'owner.json').read_text())['input_recovery_sources']
     if recovered:
         identity['input_recovery_sources'] = recovered
+    continued = json.loads((claim / 'owner.json').read_text()).get('administrative_continuation')
+    if continued is not None:
+        identity['administrative_continuation'] = continued
     atomic_json(record / "admission.json", identity)
     progress = {
         "model": args.model, "dataset": args.dataset, "stage": args.stage,
@@ -625,6 +647,7 @@ def main() -> None:
     parser.add_argument("--claim-id")
     parser.add_argument("--owner")
     parser.add_argument("--chunk-rows", type=int, default=512)
+    parser.add_argument("--continuation-receipt")
     parser.add_argument("--plan-output")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--check-plan", action="store_true")

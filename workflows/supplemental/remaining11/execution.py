@@ -93,6 +93,20 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
     if set(observed) != set(cards) or any(
             observed[card]['uuid'] != details['gpu_uuids'][card] for card in cards):
         raise ValueError('Physical GPU UUID changed')
+    candidate_capacity = None
+    model_capacity = details.get('minimum_free_mib_by_model', {}).get(model)
+    if model_capacity is not None and any(observed[card]['free_mib'] < model_capacity for card in cards):
+        raise ValueError('Unchanged model load requires its registered per-card free-memory budget')
+    if model == 'phi35' and stage == 'candidate' and os.environ.get('KDM_SUPPLEMENTAL_DATASET') == 'food101':
+        candidate_capacity = {
+            'minimum_free_mib': 16384,
+            'source': '2026-09-30 original Phi candidate PID2877080 on 4029 GPU2 used 10750 MiB; unchanged 101-label serial rank runtime',
+            'fixed_headroom_mib': 5634,
+            'scope': 'one unchanged Phi Food candidate worker per authorized physical card',
+            'new_gpu_peak_measured': False,
+        }
+        if len(cards) != 1 or any(observed[card]['free_mib'] < 16384 for card in cards):
+            raise ValueError('Phi Food candidate load requires 16384 MiB free from original usage plus fixed headroom')
     slots = [slot.split(':') for slot in os.environ.get('KDM_GPU_SLOTS', '').split(',') if slot]
     if any(int(slot[1]) >= 2 for slot in slots) and host == '6403':
         budget = details.get('third_slot_food_budgets_mib', {}).get(model)
@@ -124,14 +138,22 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
         'max_workers_per_gpu': details.get('max_workers_per_gpu', 1),
         'capacity_evidence': details.get('capacity_evidence'),
         'runtime_path_evidence': registry.get('runtime_overrides', {}).get(host, {}).get(model),
+        'candidate_capacity_guard': candidate_capacity,
+        'registered_model_minimum_free_mib': model_capacity,
     }
     return {'execution': receipt, 'runtime_spec': actual}
 
 
 def main():
+    global REGISTRY
     parser = argparse.ArgumentParser()
     parser.add_argument('--model', required=True)
+    parser.add_argument('--host-registry', default=REGISTRY)
     args = parser.parse_args()
+    selected_registry = (ROOT / args.host_registry).resolve()
+    REGISTRY = str(selected_registry.relative_to(ROOT))
+    if not selected_registry.is_file():
+        raise ValueError('Explicit runtime host registry is unavailable')
     spec = json.loads((ROOT / f'configs/runtime/{args.model}.json').read_text())
     actual = runtime_spec(ROOT, spec, args.model)
     print(json.dumps({'runtime_spec': actual, 'environment': validate_environment(actual),
