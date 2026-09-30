@@ -93,6 +93,18 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
     if set(observed) != set(cards) or any(
             observed[card]['uuid'] != details['gpu_uuids'][card] for card in cards):
         raise ValueError('Physical GPU UUID changed')
+    slots = [slot.split(':') for slot in os.environ.get('KDM_GPU_SLOTS', '').split(',') if slot]
+    if any(int(slot[1]) >= 2 for slot in slots) and host == '6403':
+        budget = details.get('third_slot_food_budgets_mib', {}).get(model)
+        if (budget is None or len(cards) != 1
+                or os.environ.get('KDM_SUPPLEMENTAL_DATASET') != 'food101'
+                or any(observed[card]['free_mib'] < budget for card in cards)):
+            raise ValueError('Third A100 slot requires the admitted single-GPU Food capacity budget')
+    if host == 'k100' and os.environ.get('KDM_SUPPLEMENTAL_DATASET') == 'vizwiz':
+        budget = details.get('vizwiz_independent_budgets_mib', {}).get(model)
+        if (budget is None or stage != 'independent' or len(cards) != 1
+                or any(observed[card]['free_mib'] < budget for card in cards)):
+            raise ValueError('K100 VizWiz independent generation requires its registered free-memory budget')
     actual = runtime_spec(root, spec, model)
     environment = validate_environment(actual)
     checkpoint = checkpoint_identity(actual)
