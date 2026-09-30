@@ -108,6 +108,9 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
         'model': model, 'stage': stage, 'claim_id': claim_id, 'owner': owner,
         'environment': environment, 'checkpoint': checkpoint,
         'gpu_sharing_authorized': True,
+        'gpu_worker_slots': os.environ.get('KDM_GPU_SLOTS', ''),
+        'max_workers_per_gpu': details.get('max_workers_per_gpu', 1),
+        'capacity_evidence': details.get('capacity_evidence'),
         'runtime_path_evidence': registry.get('runtime_overrides', {}).get(host, {}).get(model),
     }
     return {'execution': receipt, 'runtime_spec': actual}

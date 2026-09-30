@@ -16,6 +16,8 @@
       "hostname": "oem-PowerEdge-T640",
       "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
       "allowed_gpus": [0, 1],
+      "max_workers_per_gpu": 2,
+      "capacity_evidence": "Frozen GLM/Qwen3 maximum-input proofs: reserved 27.068/23.871 GiB; two workers fit the 80 GiB A100 with at least 25 GiB margin",
       "gpu_uuids": {
         "0": "GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402",
         "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
@@ -49,6 +51,23 @@
   },
   "image_catalog": "outputs/records/image_content_catalog.json",
   "runtime_overrides": {
+    "6403": {
+      "onevision": {
+        "environment_python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/llava-onevision-qwen2-7b-ov-hf",
+        "source_evidence": "Original native checkpoint/processor and algorithm identity; registered central package versions checked at actual 6403 load"
+      },
+      "minicpm45": {
+        "environment_python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/MiniCPM-V-4_5",
+        "source_evidence": "Original native checkpoint/processor and algorithm identity; registered central package versions checked at actual 6403 load"
+      },
+      "llava16_vicuna": {
+        "environment_python": "/home/team/zhanghaonan/.venvs/mprisk-kv-transformers-5.5.3/bin/python",
+        "model_path": "/home/team/lvshuyang/Models/llava-v1.6-vicuna-7b-hf",
+        "source_evidence": "Original native checkpoint/processor and algorithm identity; registered central package versions checked at actual 6403 load"
+      }
+    },
     "4029": {
       "llava15_7b": {
         "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/tf553/bin/python",
