@@ -124,7 +124,49 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
             raise ValueError('Third A100 slot requires the explicitly registered stage and model Food capacity budget')
     if host == 'k100' and os.environ.get('KDM_SUPPLEMENTAL_DATASET') == 'vizwiz':
         native_budget = details.get('vizwiz_native_m3id_budgets_mib', {}).get(model)
-        if stage == 'native_unguided' and os.environ.get('KDM_SUPPLEMENTAL_METHOD') == 'm3id' and native_budget is not None:
+        ip_budget = details.get('vizwiz_ip_m3id_budgets_mib', {}).get(model)
+        if stage == 'formal' and ip_budget is not None:
+            marker = os.environ.get('KDM_VIZ_IP_MARKER')
+            phase = os.environ.get('KDM_VIZ_IP_PHASE')
+            source_path = (root / os.environ.get('KDM_VIZ_IP_SOURCE', '')).resolve()
+            source_path.relative_to(root)
+            if (model != 'onevision' or len(cards) != 1
+                    or os.environ.get('KDM_SUPPLEMENTAL_METHOD') != 'instruction_m3id'
+                    or marker not in ('UNKNOWN', 'UNCLEAR', 'UNSURE')
+                    or marker not in details.get('vizwiz_ip_m3id_markers', [])
+                    or phase not in ('gate', 'production')
+                    or any(observed[card]['free_mib'] < ip_budget for card in cards)):
+                raise ValueError('K100 Viz IP-M3ID requires its exact OneVision marker/phase and separate capacity budget')
+            source = json.loads(source_path.read_text())
+            previous_path = root / source['previous_Food_software_gate_path']
+            previous = json.loads(previous_path.read_text())
+            first_keys_path = root / source['first8_keys_path']
+            if (source['schema'] != 'kdm_selected4_one_viz_ip_m3id_CPU_fixture_v1'
+                    or source['model'] != model or source['dataset'] != 'vizwiz'
+                    or source['method'] != 'instruction_m3id' or source['marker'] != marker
+                    or source['original_cuda_initialized']
+                    or file_hash(previous_path) != source['previous_Food_software_gate_sha256']
+                    or not previous['passed'] or not previous['production_allowed'] or previous['differences']
+                    or previous['software_compatibility']['marker_scope'] != [marker]
+                    or previous['software_compatibility']['dataset_scope'] != 'food101'
+                    or file_hash(first_keys_path) != source['first8_keys_sha256']
+                    or len(first_keys_path.read_text().splitlines()) != 8):
+                raise ValueError('K100 Viz IP-M3ID actual original-input/software source is absent')
+            if phase == 'production':
+                gate_path = (root / os.environ.get('KDM_VIZ_IP_GATE', '')).resolve()
+                gate_path.relative_to(root)
+                gate = json.loads(gate_path.read_text())
+                audit_path = root / gate['operator_audit_path']
+                audit = json.loads(audit_path.read_text())
+                if (not gate['passed'] or not gate['production_allowed'] or gate['completed_inputs'] != 8
+                        or gate['dataset'] != 'vizwiz' or gate['marker'] != marker
+                        or gate['method'] != 'instruction_m3id'
+                        or gate['original_CPU_source_sha256'] != file_hash(source_path)
+                        or file_hash(audit_path) != gate['operator_audit_sha256']
+                        or not audit['passed'] or audit['completed'] != 8
+                        or not audit['three_original_routes_per_input'] or audit['noise_called']):
+                    raise ValueError('K100 Viz IP-M3ID production requires this marker actual eight-input operator gate')
+        elif stage == 'native_unguided' and os.environ.get('KDM_SUPPLEMENTAL_METHOD') == 'm3id' and native_budget is not None:
             software_gate = root / details['native_m3id_software_gate']
             actual_gate = json.loads(software_gate.read_text())
             actual_operator_path = root / actual_gate['actual_operator_audit_path']
