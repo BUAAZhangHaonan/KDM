@@ -518,7 +518,12 @@ def execute(args: argparse.Namespace) -> None:
                                              args.stage, args.claim_id, args.owner)
     if not isinstance(admission.get("runtime_spec"), dict) or not isinstance(admission.get("execution"), dict):
         raise ValueError("Supplemental runtime admission lacks its actual spec or execution receipt")
-    run = within(ROOT, "outputs/supplemental/remaining11/" + args.run_name)
+    run_root = getattr(args, "run_root", None)
+    if run_root is not None and not run_root.startswith("outputs/supplemental/remaining4/"):
+        raise ValueError("Explicit selected-four output must remain in its supplemental directory")
+    run = within(ROOT, run_root or ("outputs/supplemental/remaining11/" + args.run_name))
+    if run_root is not None:
+        run.relative_to(ROOT / "outputs/supplemental/remaining4")
     claim = claim_directory(args, plan, run)
     output = run / "raw" / args.model / args.dataset / args.stage / args.claim_id
     record = run / "records" / args.model / args.dataset / args.stage / args.claim_id
@@ -540,6 +545,9 @@ def execute(args: argparse.Namespace) -> None:
     continued = json.loads((claim / 'owner.json').read_text()).get('administrative_continuation')
     if continued is not None:
         identity['administrative_continuation'] = continued
+    retained_ownership = getattr(args, 'retained_source_ownership', None)
+    if retained_ownership is not None:
+        identity['retained_source_ownership'] = retained_ownership
     atomic_json(record / "admission.json", identity)
     progress = {
         "model": args.model, "dataset": args.dataset, "stage": args.stage,
