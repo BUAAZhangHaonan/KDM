@@ -53,6 +53,8 @@ def load_viz_authority(paths):
                 continue
             if type(row.get("abstain")) is not bool:
                 raise ValueError("A Viz authority must contain actual complete QA and a resolved behavior")
+            if any(type(row.get(field, True)) is not bool for field in ("behavior_resolved", "quality_span_resolved")):
+                raise ValueError("The exact-QA authority resolution flags are not explicit booleans")
             text = row.get("answer_text")
             if text and (not isinstance(text, str) or text not in row["answer"]):
                 raise ValueError("A reused Viz answer must be an exact continuous original answer span")
@@ -144,6 +146,9 @@ def main():
                         "previous_inferred_decision_source": decision}
                     inferred = {**inferred, "decision": decision, "abstain": decision["abstain"],
                         "behavior_source": "actual_final_Viz_exact_QA_authority"}
+                    if decision.get("behavior_resolved") is False:
+                        inferred = {**inferred, "abstain": None,
+                            "behavior_source": "actual_Viz_behavior_finite_review_pending"}
                 elif decision is None:
                     registered_label = lexical_label(row["text"])
                     if registered_label is not None:
@@ -189,9 +194,10 @@ def main():
                 label = decision.get("label") if decision else None
                 if decision and decision.get("answer_text_span") and not answer_text:
                     answer_text = decision["answer_text_span"]
-                if not pending and (inferred["abstain"] is True or label == "invalid"):
+                quality_span_resolved = decision.get("quality_span_resolved", True) if decision else False
+                if not pending and quality_span_resolved and (inferred["abstain"] is True or label == "invalid"):
                     quality = 0.0
-                elif not pending and answer_text and answer_text in row["text"]:
+                elif not pending and quality_span_resolved and answer_text and answer_text in row["text"]:
                     quality = float(vqa_score(answer_text, refs, normalize))
                 else:
                     quality = None

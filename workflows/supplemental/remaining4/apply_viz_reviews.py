@@ -82,15 +82,23 @@ def main():
                     refs = record["official_answers"]
                     if len(refs) != 10:
                         raise ValueError("The frozen official ten answers are incomplete")
-                    quality = 0.0 if decision["label"] in {"abstain", "invalid"} else float(vqa_score(decision["answer_text"], refs, normalize))
-                    if not 0 <= quality <= 1:
+                    quality_resolved = decision.get("quality_span_resolved", True)
+                    behavior_resolved = decision.get("behavior_resolved", True)
+                    quality = (0.0 if decision["label"] in {"abstain", "invalid"}
+                               else float(vqa_score(decision["answer_text"], refs, normalize))) if quality_resolved else None
+                    if quality is not None and not 0 <= quality <= 1:
                         raise ValueError("Official continuous Viz quality is nonfinite or out of range")
                     thin = {k: decision[k] for k in ("qa_key", "question", "answer", "label", "abstain", "answer_text",
                             "annotation_author", "annotation_model", "annotation_effort", "annotation_call_id", "annotation_session_id")}
-                    thin.update(actual_authority_source=pointer, root_review_required=False, needs_root=False)
-                    record.update(abstain=decision["abstain"], behavior_source="actual_closed_exact_QA_review",
+                    thin.update(actual_authority_source=pointer, root_review_required=False, needs_root=False,
+                                quality_span_resolved=quality_resolved,
+                                behavior_resolved=behavior_resolved,
+                                quality_span_pending_reason=decision.get("quality_span_pending_reason"),
+                                span_selection_mode=decision.get("span_selection_mode"))
+                    record.update(abstain=decision["abstain"] if behavior_resolved else None,
+                        behavior_source="actual_closed_exact_QA_review" if behavior_resolved else "actual_review_finite_recheck_pending",
                         decision_source=thin, semantic_label=decision["label"], semantic_answer_text=decision["answer_text"],
-                        answer_quality_credit=quality, answer_quality_pending=False, answer_quality_source=thin)
+                        answer_quality_credit=quality, answer_quality_pending=not quality_resolved, answer_quality_source=thin)
                     if any(record[k] != value for k, value in original.items() if k not in FIELDS):
                         raise ValueError("Viz review application changed an input, condition, source, reference or raw official credit")
                     delta.append({"key": record["key"], "qa_key": qa, "input_score_source": str(source.relative_to(ROOT)),
@@ -104,8 +112,12 @@ def main():
                     target = pending.setdefault(qa, {"qa_key": qa, "question": record["question"], "answer": record["answer"],
                         "dataset": "vizwiz", "source_memberships": [], "needs_behavior": record["abstain"] is None,
                         "needs_answer_span": record["answer_quality_credit"] is None})
-                    target["source_memberships"].append({k: record[k] for k in
-                        ("model", "key", "sample_id", "source_path", "source_line", "source_identity", "raw_line_sha256", "seed", "replicate")})
+                    member = {k: record[k] for k in
+                        ("model", "key", "sample_id", "source_path", "source_line", "source_identity", "seed", "replicate")}
+                    member.update({k: record[k] for k in ("raw_line_sha256", "source_line_sha256") if k in record})
+                    if not member.get("raw_line_sha256", member.get("source_line_sha256")):
+                        raise ValueError("A pending Viz member lacks its original line evidence")
+                    target["source_memberships"].append(member)
             else:
                 raise ValueError("Received score dataset is outside the selected scope")
             scored.append(record)

@@ -69,6 +69,19 @@ def main():
         queue_sources.append({**entry, "actual_rows": count})
     if len(targets) != config["expected_unique_QA"]:
         raise ValueError("The actual finite target union differs from its explicit budget")
+    span_holds = {}
+    hold_entry = config.get("span_review_holds")
+    if hold_entry:
+        hold_path = within(ROOT, hold_entry["path"])
+        if file_hash(hold_path) != hold_entry["sha256"]:
+            raise ValueError("The finite span review scope changed")
+        for _line, hold, _sha in rows(hold_path):
+            qa = hold["qa_key"]
+            if qa not in targets or qa in span_holds:
+                raise ValueError("The span review scope repeats or exceeds the finite QA union")
+            span_holds[qa] = hold
+        if len(span_holds) != hold_entry["qa_count"]:
+            raise ValueError("The finite span review scope count differs")
     chosen, history, source_manifest, counts = {}, defaultdict(list), [], Counter()
     for entry in sorted(config["entries"], key=lambda e: (e["priority"], e["path"])):
         path = within(ROOT, entry["path"])
@@ -128,10 +141,19 @@ def main():
             span = ""
         if "A" in decision and (type(decision["A"]) is not bool or decision["A"] != behavior):
             counts["technical_A_alias_repairs"] += 1
+        span_hold = span_holds.get(qa)
+        actual_span_choice = (decision.get("span_selection_mode") == "actual_per_QA_model_choice"
+                              and decision.get("read_full_question_answer") is True)
+        quality_resolved = span_hold is None or actual_span_choice
+        behavior_resolved = (span_hold is None or not span_hold.get("needs_behavior")
+                             or actual_span_choice)
         record = {"qa_key": qa, "question": target["question"], "answer": target["answer"],
             "dataset": "vizwiz", "label": label, "abstain": behavior, "A": behavior,
             "answer_text": span, "answer_text_span": span, "annotation_complete": True,
-            "behavior_resolved": True, "quality_span_resolved": True, "needs_root": False,
+            "behavior_resolved": behavior_resolved, "quality_span_resolved": quality_resolved,
+            "quality_span_pending_reason": None if quality_resolved else span_hold["pending_reason"],
+            "span_selection_mode": decision.get("span_selection_mode", "source_span_selection_not_individually_attested"),
+            "needs_root": False,
             "needs_root_review": False, "root_review_required": False,
             "actual_annotation": decision, "authority_sources": history[qa], "selected_source": pointer,
             "source_memberships": target.get("source_memberships", []),
@@ -140,12 +162,14 @@ def main():
             "annotation_model": decision["annotation_model"],
             "annotation_effort": decision.get("annotation_effort", decision.get("effort")),
             "annotation_call_id": decision.get("annotation_call_id", decision.get("callID", "")),
-            "annotation_session_id": decision.get("annotation_session_id", decision.get("sessionID", "")),
+            "annotation_session_id": decision.get("annotation_session_id", decision.get("annotation_session", decision.get("sessionID", ""))),
             "reported_source_A": decision.get("A"), "reported_source_answer_text": decision.get("answer_text"),
             "actual_span_source_field": span_source_field,
             "full_reply_fallback_used": False, "new_scientific_judgment": False}
         accepted.append(record)
         counts[label] += 1
+        counts["quality_span_pending_QA"] += not quality_resolved
+        counts["behavior_review_pending_QA"] += not behavior_resolved
         counts["final_author:" + str(decision.get("annotation_author"))] += 1
         counts["source_memberships"] += len(record["source_memberships"])
     if len(accepted) + len(pending) != len(targets):
@@ -158,6 +182,7 @@ def main():
         "completed_utc": datetime.now(timezone.utc).isoformat(), "unique_QA": len(targets),
         "closed_QA": len(accepted), "pending_QA": len(pending), "counts": dict(counts),
         "target_queues": queue_sources, "source_config_sha256": file_hash(config_path),
+        "span_review_holds": hold_entry,
         "runner_sha256": file_hash(Path(__file__)), "original_annotations_preserved": True,
         "unknown_call_ids_invented": False, "new_scientific_judgments": 0,
         "unreviewed_labels_defaulted": False, "raw_reopened": False, "GPU_initialized": False,
