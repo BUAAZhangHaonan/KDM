@@ -93,6 +93,7 @@ def main():
                     thin.update(actual_authority_source=pointer, root_review_required=False, needs_root=False,
                                 quality_span_resolved=quality_resolved,
                                 behavior_resolved=behavior_resolved,
+                                source_annotation_provenance_valid=decision.get("source_annotation_provenance_valid", True),
                                 quality_span_pending_reason=decision.get("quality_span_pending_reason"),
                                 span_selection_mode=decision.get("span_selection_mode"))
                     record.update(abstain=decision["abstain"] if behavior_resolved else None,

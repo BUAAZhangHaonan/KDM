@@ -52,6 +52,13 @@ def main():
     config_path, output = (within(ROOT, x) for x in (args.sources, args.output))
     output.relative_to(ROOT / "outputs/supplemental/remaining4")
     config = json.loads(config_path.read_text())
+    declared_sources = {entry["path"]: entry["sha256"] for entry in config["entries"]}
+    invalid_read_sources = {}
+    for entry in config.get("invalid_actual_read_sources", []):
+        if (declared_sources.get(entry["path"]) != entry["sha256"]
+                or not entry.get("reason") or entry["path"] in invalid_read_sources):
+            raise ValueError("The finite invalid-read source list changed or repeats")
+        invalid_read_sources[entry["path"]] = entry["reason"]
     targets, queue_sources = {}, []
     for entry in config["target_queues"]:
         path = within(ROOT, entry["path"])
@@ -142,16 +149,20 @@ def main():
         if "A" in decision and (type(decision["A"]) is not bool or decision["A"] != behavior):
             counts["technical_A_alias_repairs"] += 1
         span_hold = span_holds.get(qa)
+        provenance_valid = pointer["path"] not in invalid_read_sources
         actual_span_choice = (decision.get("span_selection_mode") == "actual_per_QA_model_choice"
-                              and decision.get("read_full_question_answer") is True)
-        quality_resolved = span_hold is None or actual_span_choice
-        behavior_resolved = (span_hold is None or not span_hold.get("needs_behavior")
-                             or actual_span_choice)
+                              and decision.get("read_full_question_answer") is True and provenance_valid)
+        quality_resolved = provenance_valid and (span_hold is None or actual_span_choice)
+        behavior_resolved = provenance_valid and (span_hold is None or not span_hold.get("needs_behavior")
+                                                  or actual_span_choice)
+        pending_reason = (invalid_read_sources[pointer["path"]] if not provenance_valid
+                          else span_hold["pending_reason"] if span_hold else None)
         record = {"qa_key": qa, "question": target["question"], "answer": target["answer"],
             "dataset": "vizwiz", "label": label, "abstain": behavior, "A": behavior,
             "answer_text": span, "answer_text_span": span, "annotation_complete": True,
             "behavior_resolved": behavior_resolved, "quality_span_resolved": quality_resolved,
-            "quality_span_pending_reason": None if quality_resolved else span_hold["pending_reason"],
+            "quality_span_pending_reason": None if quality_resolved else pending_reason,
+            "source_annotation_provenance_valid": provenance_valid,
             "span_selection_mode": decision.get("span_selection_mode", "source_span_selection_not_individually_attested"),
             "needs_root": False,
             "needs_root_review": False, "root_review_required": False,
@@ -170,6 +181,7 @@ def main():
         counts[label] += 1
         counts["quality_span_pending_QA"] += not quality_resolved
         counts["behavior_review_pending_QA"] += not behavior_resolved
+        counts["invalid_actual_read_provenance_QA"] += not provenance_valid
         counts["final_author:" + str(decision.get("annotation_author"))] += 1
         counts["source_memberships"] += len(record["source_memberships"])
     if len(accepted) + len(pending) != len(targets):
