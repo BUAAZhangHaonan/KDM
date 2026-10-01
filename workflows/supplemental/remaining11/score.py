@@ -179,6 +179,21 @@ def infer_qa(question, answer, patterns, reviews, behavior, decisions):
                     if shared.role(r.get("role")) in {"main", "coequal", "competing"}]
         variant["endorsed_primary_names"] = list(dict.fromkeys(shared.names_of(variant) + relevant))
         variants = [variant]
+    normalized_variants = []
+    for original in variants:
+        variant = dict(original)
+        if isinstance(variant.get("name_relations"), dict):
+            variant["name_relations"] = [
+                {"name": name, "role": relation}
+                for name, relation in variant["name_relations"].items()
+            ]
+        if variant.get("multiple_primary") is True:
+            override = variant.get("canonical_override")
+            if override not in (None, "multiple_primary"):
+                raise ValueError("Explicit multiple-primary review conflicts with canonical override: " + qkey)
+            variant["canonical_override"] = "multiple_primary"
+        normalized_variants.append(variant)
+    variants = normalized_variants
     values = {v["abstain"] for v in variants if type(v.get("abstain")) is bool}
     binary_reason = None
     if values:
