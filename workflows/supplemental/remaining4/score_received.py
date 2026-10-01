@@ -32,9 +32,17 @@ def load_viz_authority(paths):
         receipt_path = path.parent / "receipt.json"
         if receipt_path.exists():
             receipt = json.loads(receipt_path.read_text())
-            if receipt.get("schema") == "kdm_finite_viz_exact_QA_authority_v1":
+            if receipt.get("schema") in {
+                "kdm_finite_viz_exact_QA_authority_v1",
+                "kdm_actual_finite_semantic_authority_v1",
+            }:
                 if not receipt.get("passed") or receipt["outputs"].get(path.name) != source_sha:
                     raise ValueError("The finite Viz authority differs from its passed source receipt")
+                if receipt["schema"] == "kdm_actual_finite_semantic_authority_v1" and (
+                    receipt["pending_QA"] != 0
+                    or receipt["closed_QA"] != receipt["unique_QA"]
+                ):
+                    raise ValueError("The actual annotation authority is not fully closed")
         for line, row, line_sha in rows(path):
             key = frozen.qah(row["question"], row["answer"])
             if row["qa_key"] != key:
@@ -131,8 +139,9 @@ def main():
             inferred = infer_qa(sample["question"], row["text"], patterns, reviews, behavior, decisions)
             decision = inferred["decision"]
             if sample["dataset"] == "vizwiz":
-                if decision is None and inferred["qa_key"] in viz_authority:
-                    decision = viz_authority[inferred["qa_key"]]
+                if inferred["qa_key"] in viz_authority:
+                    decision = {**viz_authority[inferred["qa_key"]],
+                        "previous_inferred_decision_source": decision}
                     inferred = {**inferred, "decision": decision, "abstain": decision["abstain"],
                         "behavior_source": "actual_final_Viz_exact_QA_authority"}
                 elif decision is None:
