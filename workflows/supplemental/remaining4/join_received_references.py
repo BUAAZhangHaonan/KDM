@@ -66,12 +66,21 @@ def main():
                         or record["literal_extracted_name_score"] not in (0, 1)
                         or type(record["abstain"]) is not bool):
                     raise ValueError("Food score/reference identity or resolved fields differ")
-                record.update(reference_G=reference["reference_G"], reference_complete=True,
-                    reference_join_source_path=str(reference_path.relative_to(ROOT)),
-                    reference_join_source_sha256=reference_sha, gold_rank=reference["gold_rank"],
-                    correct_count=reference["correct_count"], reference_join_original_score_path=str(path.relative_to(ROOT)),
-                    reference_join_original_score_line=line, reference_join_original_score_line_sha256=line_sha,
-                    reference_join_original_fields={k: original.get(k) for k in changed_reference_fields})
+                if original.get("reference_join_source_sha256") is not None:
+                    if (original["reference_join_source_sha256"] != reference_sha
+                            or original.get("reference_G") is not reference["reference_G"]
+                            or original.get("reference_complete") is not True
+                            or original.get("gold_rank") != reference["gold_rank"]
+                            or original.get("correct_count") != reference["correct_count"]):
+                        raise ValueError("An existing accepted reference binding conflicts with this source")
+                    counts["existing_reference_bindings_preserved"] += 1
+                else:
+                    record.update(reference_G=reference["reference_G"], reference_complete=True,
+                        reference_join_source_path=str(reference_path.relative_to(ROOT)),
+                        reference_join_source_sha256=reference_sha, gold_rank=reference["gold_rank"],
+                        correct_count=reference["correct_count"], reference_join_original_score_path=str(path.relative_to(ROOT)),
+                        reference_join_original_score_line=line, reference_join_original_score_line_sha256=line_sha,
+                        reference_join_original_fields={k: original.get(k) for k in changed_reference_fields})
                 if any(record[k] != v for k, v in original.items() if k not in changed_reference_fields):
                     raise ValueError("Reference join changed an original score or behavior field")
                 context = condition_of(record["model"], record["dataset"], record["stage"],
