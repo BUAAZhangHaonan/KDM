@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Execute explicit Food-101 native VCD/M3ID gaps for the selected four models."""
+"""Execute explicit registered native VCD/M3ID gaps for the selected four models."""
 from __future__ import annotations
 
 import argparse
@@ -31,6 +31,7 @@ MODELS = ("internvl35_8b", "onevision", "phi35", "qwen3vl")
 METHODS = ("vcd", "m3id")
 STAGE = "native_unguided"
 CONFIG = "configs/supplemental/remaining4/native_baselines.json"
+VIZWIZ_CONFIG = "configs/supplemental/remaining4/native_vizwiz.json"
 ALGORITHMS = ("src/kdm/pipeline.py", "src/kdm/decoding.py", "src/kdm/prompts.py",
               "src/kdm/probability.py", "src/kdm/models/hf.py", "src/kdm/models/backbone.py",
               "src/kdm/models/internvl_dual.py", "src/kdm/models/internvl_preprocessing.py",
@@ -47,13 +48,17 @@ def write_new_json(path, value):
     atomic_json(path, value)
 
 
-def source_inputs(model, method):
-    declaration = json.loads((ROOT / CONFIG).read_text(encoding="utf-8"))
+def source_inputs(model, method, dataset="food101"):
+    if dataset not in ("food101", "vizwiz"):
+        raise ValueError("Unregistered native baseline dataset")
+    config_path = CONFIG if dataset == "food101" else VIZWIZ_CONFIG
+    expected_n = 2424 if dataset == "food101" else 3501
+    declaration = json.loads((ROOT / config_path).read_text(encoding="utf-8"))
     fixed = {"schema": "kdm_remaining4_native_baselines_v1", "models": list(MODELS),
-             "dataset": "food101", "split": "eval", "methods": list(METHODS),
+             "dataset": dataset, "split": "eval", "methods": list(METHODS),
              "kind": STAGE, "marker": "NONE", "reference_marker": "NONE", "guided": False,
-             "reference_guided": False, "replicate": 0, "rows_per_condition": 2424,
-             "condition_count": 8, "planned_rows": 19392,
+             "reference_guided": False, "replicate": 0, "rows_per_condition": expected_n,
+             "condition_count": 8, "planned_rows": 8 * expected_n,
              "parameters_source": "configs/kdm/study.json", "methods_source": "configs/kdm/method_plan.json",
              "algorithm_source": "src/kdm/pipeline.py", "direct_source": "existing_exact_unguided_census",
              "output_root": "outputs/supplemental/remaining4", "automatic_retry": False,
@@ -72,17 +77,20 @@ def source_inputs(model, method):
                        max_tokens=study["max_new_tokens"])
     if not study["greedy"] or cfg != DecodeConfig(method=method):
         raise ValueError("Registered native decoding parameters differ from the frozen implementation")
-    registered = json.loads((ROOT / paths[1]).read_text(encoding="utf-8"))[model]["food101"]
+    registered = json.loads((ROOT / paths[1]).read_text(encoding="utf-8"))[model][dataset]
     if not set(METHODS) <= set(registered):
         raise ValueError("Requested native methods are absent from the original method registration")
     spec = json.loads((ROOT / paths[2]).read_text(encoding="utf-8"))
     if spec["key"] != model or spec["availability"] != "resolved" or spec.get("api"):
         raise ValueError("Native baseline runtime identity is unresolved or is an API")
     samples = [sample for sample in read_jsonl(ROOT / paths[3])
-               if sample["dataset"] == "food101" and sample["split"] == "eval"]
-    counts = Counter(sample["class"] for sample in samples)
-    if len(samples) != 2424 or len({sample["id"] for sample in samples}) != 2424 or len(counts) != 101 or set(counts.values()) != {24}:
-        raise ValueError("Full Food-101 eval keys and 101 by 24 quotas are required")
+               if sample["dataset"] == dataset and sample["split"] == "eval"]
+    if len(samples) != expected_n or len({sample["id"] for sample in samples}) != expected_n:
+        raise ValueError("Full registered eval key coverage is required")
+    if dataset == "food101":
+        counts = Counter(sample["class"] for sample in samples)
+        if len(counts) != 101 or set(counts.values()) != {24}:
+            raise ValueError("Food-101 eval requires 101 by 24 class quotas")
     recorded = {line.split("\t", 1)[1]: line.split(" ", 2)[1] for line in freeze["source_blobs"]}
     blobs = {}
     for relative in ALGORITHMS:
@@ -94,7 +102,7 @@ def source_inputs(model, method):
     proofs = validate_proofs(ROOT, spec, model, list(METHODS), "formal", manifest, freeze)
     provenance = {"frozen_contract_sha256": manifest["original_contract_sha256"],
                   "registered_input_sha256": hashes, "algorithm_git_blobs": blobs,
-                  "verified_model_proof_sha256": proofs, "native_config_sha256": file_hash(ROOT / CONFIG)}
+                  "verified_model_proof_sha256": proofs, "native_config_sha256": file_hash(ROOT / config_path)}
     return samples, spec, cfg, provenance
 
 
@@ -105,12 +113,14 @@ def native_tasks(samples, method):
 
 
 def key_row(model, task):
-    return {"key": task_id(model, task), "model": model, "stage": STAGE, "dataset": "food101",
+    return {"key": task_id(model, task), "model": model, "stage": STAGE, "dataset": task["sample"]["dataset"],
             "sample_id": task["sample"]["id"], "split": "eval",
             **{key: value for key, value in task.items() if key != "sample"}}
 
 
 def prepare_manifest(args):
+    dataset = args.dataset
+    expected_n = 2424 if dataset == "food101" else 3501
     destination = within(ROOT, args.manifest_dir)
     destination.mkdir(parents=True, exist_ok=False)
     sources, completed = [], set()
@@ -123,7 +133,7 @@ def prepare_manifest(args):
         rows = list(read_jsonl(path))
         model = meta["definition"]["model"]
         method = meta["definition"]["task_plan"]["method"]
-        samples, spec, cfg, provenance = source_inputs(model, method)
+        samples, spec, cfg, provenance = source_inputs(model, method, dataset)
         expected = {task_id(model, task): task for task in native_tasks(samples, method)}
         if meta["definition"]["source_provenance"] != provenance:
             raise ValueError("Completed source frozen inputs or algorithms differ")
@@ -140,7 +150,7 @@ def prepare_manifest(args):
     conditions, total = [], 0
     for model in MODELS:
         for method in METHODS:
-            samples, spec, cfg, provenance = source_inputs(model, method)
+            samples, spec, cfg, provenance = source_inputs(model, method, dataset)
             path = destination / f"{model}_{method}_missing_keys.jsonl"
             missing = [key_row(model, task) for task in native_tasks(samples, method)
                        if task_id(model, task) not in completed]
@@ -148,32 +158,35 @@ def prepare_manifest(args):
                 for row in missing:
                     stream.write(json.dumps(row, ensure_ascii=False) + "\n")
             total += len(missing)
-            conditions.append({"model": model, "dataset": "food101", "split": "eval", "method": method,
+            conditions.append({"model": model, "dataset": dataset, "split": "eval", "method": method,
                                "kind": STAGE, "main_marker": "NONE", "reference_marker": "NONE",
                                "guided": False, "reference_guided": False, "replicate": 0,
-                               "expected": 2424, "reused": 2424 - len(missing), "missing": len(missing),
+                               "expected": expected_n, "reused": expected_n - len(missing), "missing": len(missing),
                                "missing_keys_path": str(path.relative_to(ROOT)),
                                "missing_keys_sha256": file_hash(path), "base_config": asdict(cfg),
                                "source_provenance": provenance,
                                "registered_runtime": {key: spec[key] for key in ("key", "factory", "dtype", "gpu_count", "kwargs", "versions")}})
     result = {"schema": "kdm_remaining4_native_gap_manifest_v1", "created_utc": now(),
-              "conditions": conditions, "planned_rows": 19392, "reused_rows": len(completed),
+              "conditions": conditions, "planned_rows": 8 * expected_n, "reused_rows": len(completed),
               "missing_rows": total, "completed_raw_sources": sources,
               "runner_sha256": file_hash(Path(__file__)), "gpu_admission": "not_run",
               "checks": {"unique_task_keys": True, "frozen_inputs_and_proofs": True,
-                         "frozen_algorithm_blobs": True, "eval_101_by_24": True}}
+                         "frozen_algorithm_blobs": True, "registered_eval_key_coverage": True,
+                         "eval_101_by_24": dataset == "food101"}}
     write_new_json(destination / "manifest.json", result)
     print(json.dumps({"manifest": str((destination / "manifest.json").relative_to(ROOT)),
-                      "conditions": len(conditions), "planned_rows": 19392, "reused_rows": len(completed),
+                      "conditions": len(conditions), "planned_rows": 8 * expected_n, "reused_rows": len(completed),
                       "missing_rows": total, "gpu_admission": "not_run"}), flush=True)
 
 
 def load_plan(args):
+    dataset = args.dataset
+    expected_n = 2424 if dataset == "food101" else 3501
     if args.n_shards < 1 or not 0 <= args.shard < args.n_shards:
         raise ValueError("Invalid native sample shard")
-    samples, spec, cfg, provenance = source_inputs(args.model, args.method)
+    samples, spec, cfg, provenance = source_inputs(args.model, args.method, dataset)
     path = within(ROOT, args.missing_keys)
-    missing = read_missing_keys(path, args.model, STAGE, "food101")
+    missing = read_missing_keys(path, args.model, STAGE, dataset)
     stop = len(missing) if args.key_stop is None else args.key_stop
     if not 0 <= args.key_start < stop <= len(missing):
         raise ValueError("Native missing-key interval is outside the explicit manifest")
@@ -191,20 +204,20 @@ def load_plan(args):
         raise ValueError("Native missing manifest contains unregistered keys or the selected shard is empty")
     ordered_keys = [task_id(args.model, task) for task in tasks]
     summary = {"schema": "kdm_remaining4_native_generation_plan_v1", "model": args.model,
-               "dataset": "food101", "split": "eval", "stage": STAGE, "method": args.method,
+               "dataset": dataset, "split": "eval", "stage": STAGE, "method": args.method,
                "kind": STAGE, "main_marker": "NONE", "reference_marker": "NONE", "guided": False,
-               "reference_guided": False, "replicate": 0, "registered_condition_rows": 2424,
+               "reference_guided": False, "replicate": 0, "registered_condition_rows": expected_n,
                "missing_manifest_rows": len(missing), "missing_keys_path": str(path.relative_to(ROOT)),
                "missing_keys_sha256": file_hash(path), "key_start": args.key_start, "key_stop": stop,
                "shard": args.shard, "n_shards": args.n_shards, "expected_generation_rows": len(tasks),
                "ordered_selected_keys_sha256": hashlib.sha256(("\n".join(ordered_keys) + "\n").encode()).hexdigest(),
                "base_config": asdict(cfg), "source_provenance": provenance,
-               "class_counts": dict(Counter(task["sample"]["class"] for task in tasks)),
+               "class_counts": dict(Counter(task["sample"]["class"] for task in tasks)) if dataset == "food101" else {},
                "operator_audit_first_rows": min(8, len(tasks)), "gpu_admission": "not_run",
                "checks": {"original_input_bytes": True, "original_algorithm_blobs": True,
                           "native_and_method_proofs": True, "unique_registered_missing_keys": True,
-                          "registered_eval_class_quotas": True}}
-    return {"model": args.model, "dataset": "food101", "stage": STAGE, "spec": spec,
+                          "registered_eval_class_quotas": dataset == "food101"}}
+    return {"model": args.model, "dataset": dataset, "stage": STAGE, "spec": spec,
             "cfg": cfg, "tasks": tasks, "selected_keys": set(ordered_keys), "summary": summary}
 
 
@@ -243,7 +256,7 @@ def execute(args):
     plan = load_plan(args)
     execution.REGISTRY = str(within(ROOT, args.host_registry).relative_to(ROOT))
     cards = os.environ.get("CUDA_VISIBLE_DEVICES", "").split(",")
-    os.environ["KDM_SUPPLEMENTAL_DATASET"] = "food101"
+    os.environ["KDM_SUPPLEMENTAL_DATASET"] = plan["dataset"]
     admission = execution.validate_supplemental_runtime(ROOT, plan["spec"], args.model, cards,
                                                        STAGE, args.claim_id, args.owner)
     run = within(ROOT, "outputs/supplemental/remaining4/" + args.run_name)
@@ -253,7 +266,7 @@ def execute(args):
     output.mkdir(parents=True, exist_ok=False)
     record.mkdir(parents=True, exist_ok=False)
     identity = {"schema": "kdm_remaining4_native_generation_v1", "model": args.model, "method": args.method,
-                "dataset": "food101", "stage": STAGE, "claim_id": args.claim_id, "owner": args.owner,
+                "dataset": plan["dataset"], "stage": STAGE, "claim_id": args.claim_id, "owner": args.owner,
                 "backend": admission["runtime_spec"], "registered_backend": plan["spec"],
                 "runtime_admission": admission, "source_provenance": plan["summary"]["source_provenance"],
                 "task_plan": plan["summary"], "runner_sha256": file_hash(Path(__file__)),
@@ -336,6 +349,7 @@ def main():
     parser.add_argument("--manifest-dir")
     parser.add_argument("--completed-raw", action="append", default=[])
     parser.add_argument("--model", choices=MODELS)
+    parser.add_argument("--dataset", choices=("food101", "vizwiz"), default="food101")
     parser.add_argument("--method", choices=METHODS)
     parser.add_argument("--missing-keys")
     parser.add_argument("--key-start", type=int, default=0)

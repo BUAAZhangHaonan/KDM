@@ -1,0 +1,23 @@
+{
+  "schema": "kdm_remaining4_native_baselines_v1",
+  "models": ["internvl35_8b", "onevision", "phi35", "qwen3vl"],
+  "dataset": "vizwiz",
+  "split": "eval",
+  "methods": ["vcd", "m3id"],
+  "kind": "native_unguided",
+  "marker": "NONE",
+  "reference_marker": "NONE",
+  "guided": false,
+  "reference_guided": false,
+  "replicate": 0,
+  "rows_per_condition": 3501,
+  "condition_count": 8,
+  "planned_rows": 28008,
+  "parameters_source": "configs/kdm/study.json",
+  "methods_source": "configs/kdm/method_plan.json",
+  "algorithm_source": "src/kdm/pipeline.py",
+  "direct_source": "existing_exact_unguided_census",
+  "output_root": "outputs/supplemental/remaining4",
+  "automatic_retry": false,
+  "automatic_parameter_changes": false
+}
