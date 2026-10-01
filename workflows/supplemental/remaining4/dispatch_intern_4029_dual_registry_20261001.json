@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "hosts": {
+    "4029": {
+      "hostname": "WS-4029GP-TRT",
+      "root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930",
+      "allowed_gpus": [1, 2],
+      "max_workers_per_gpu": 1,
+      "gpu_uuids": {"1": "GPU-7ba69fc7-12ac-3dfb-8265-3476ce2504b6", "2": "GPU-dfaeaa7c-32c8-ebb4-aa59-ab7f829805f1"},
+      "minimum_free_mib_by_model": {"internvl35_8b": 22528},
+      "capacity_evidence": "Independent 4029 dual1/2 exclusive worker after both original Phi Food owners naturally complete. Original bfloat16,36layers18+18 and22GiB placement max_memory unchanged. Require22528MiB free on each physical card immediately before each load and an actual mixed retained-method first8 before the explicit s3of4 tail. Original shared3090 OOM source remains held and preserved; no automatic scientific retry."
+    }
+  },
+  "model_hosts": {"internvl35_8b": "4029"},
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "4029": {
+      "internvl35_8b": {
+        "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/intern_original311_20261001/venv/bin/python",
+        "model_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/cache/models/remaining4_original_20261001/InternVL3_5-8B",
+        "source_evidence": "Byte-copy from original d4030 accepted native311/checkpoint; exact original interpreter/processor/tokenizer/template identity and registered weight sizes required by a new target CPU receipt. Original canonical native/method proofs remain separate. New target GPU admission is not inferred from CPU or A100 proof."
+      }
+    }
+  },
+  "authorization": "Parent2026-10-01 explicitly permits CPU preparation and event-driven natural Phi completion followed by original dual-runtime first8 and true unclaimed s3of4 retained Food tail. No precision/map/batch/algorithm changes; no new guided VCD/M3ID grids."
+}
