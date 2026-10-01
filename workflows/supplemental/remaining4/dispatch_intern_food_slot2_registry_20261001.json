@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "hosts": {
+    "6403": {
+      "hostname": "oem-PowerEdge-T640",
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "allowed_gpus": [0, 1],
+      "max_workers_per_gpu": 3,
+      "gpu_uuids": {
+        "0": "GPU-6f5dc226-6850-9f93-d4b7-b6f2d618b402",
+        "1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"
+      },
+      "minimum_free_mib_by_model": {"internvl35_8b": 32768},
+      "dual_card_food_formal_budgets_mib": {"internvl35_8b": 32768},
+      "capacity_evidence": "Explicit independent Food formal third-slot registration after Qwen3 Viz native VCD completed and its shared slot released. Only the actual A100 s0of4 share: mixed8 then24046. Original bf16,36layers18+18,22GiB placement max_memory each card unchanged. Require32768MiB free on both physical cards immediately before each load; this is original conservative guard, not an assumed full-formal GPU peak. Mixed8 same-process allocated/reserved measurement must pass before its tail. Existing One/Qwen3 producers keep their slots/ranges; remaining three shares stay unclaimed pending actual host admission. Original shared3090 OOM44 remains held with source preserved."
+    }
+  },
+  "model_hosts": {"internvl35_8b": "6403"},
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "6403": {
+      "internvl35_8b": {
+        "environment_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "model_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/cache/models/remaining4_original_20261001/InternVL3_5-8B",
+        "source_evidence": "Original byte-preserving native311/checkpoint identity and actual4840 closed-rank source on this dual runtime. Actual retained-method mixed8 capacity admission remains separate; original OOM/owner/keys/raw/sealed44 retained through append-only capacity migration ownership."
+      }
+    }
+  },
+  "authorization": "Root2026-10-01 explicitly requests independent dual-Food-formal32768 stage guard before third-slot real8 admission. Selected-four retained scope; all four diagonal IP markers kept, no new plain guided grids, no scientific-failure retry."
+}

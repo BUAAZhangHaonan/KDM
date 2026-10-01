@@ -110,14 +110,18 @@ def validate_supplemental_runtime(root, spec, model, cards, stage, claim_id, own
     slots = [slot.split(':') for slot in os.environ.get('KDM_GPU_SLOTS', '').split(',') if slot]
     if any(int(slot[1]) >= 2 for slot in slots) and host == '6403':
         dual_budget = details.get('dual_card_food_candidate_budgets_mib', {}).get(model)
+        dual_formal_budget = details.get('dual_card_food_formal_budgets_mib', {}).get(model)
         if dual_budget is not None and stage == 'candidate' and len(cards) == spec['gpu_count'] == 2:
             budget = dual_budget
+        elif (dual_formal_budget is not None and stage == 'formal'
+              and model == 'internvl35_8b' and len(cards) == spec['gpu_count'] == 2):
+            budget = dual_formal_budget
         else:
             budget = details.get('third_slot_food_budgets_mib', {}).get(model) if len(cards) == 1 else None
         if (budget is None
                 or os.environ.get('KDM_SUPPLEMENTAL_DATASET') != 'food101'
                 or any(observed[card]['free_mib'] < budget for card in cards)):
-            raise ValueError('Third A100 slot requires the admitted single-GPU Food capacity budget')
+            raise ValueError('Third A100 slot requires the explicitly registered stage and model Food capacity budget')
     if host == 'k100' and os.environ.get('KDM_SUPPLEMENTAL_DATASET') == 'vizwiz':
         native_budget = details.get('vizwiz_native_m3id_budgets_mib', {}).get(model)
         if stage == 'native_unguided' and os.environ.get('KDM_SUPPLEMENTAL_METHOD') == 'm3id' and native_budget is not None:
