@@ -36,6 +36,7 @@ def main():
     parser.add_argument('--max-rows', type=int, default=250)
     parser.add_argument('--batches', type=int, default=2)
     parser.add_argument('--content-byte-budget', type=int, default=28672)
+    parser.add_argument('--answer-population', choices=('short', 'long'), default='short')
     args = parser.parse_args()
     if not 1 <= args.max_rows <= 250 or not 1 <= args.batches <= 3 or not 4096 <= args.content_byte_budget <= 28672:
         raise ValueError('The finite row/parallel/content budget differs')
@@ -62,9 +63,10 @@ def main():
             raise ValueError('A pending QA key differs from its complete input')
         if row['qa_key'] in excluded:
             continue
-        # This first throughput batch uses the already separate short-answer
-        # population. Length selection changes no text, label, score or GT.
-        if len(row['answer']) > 64 or '\n' in row['answer']:
+        # Length selection changes no text, label, score or GT. Long responses
+        # use their own measured batches; they are never truncated to fit.
+        is_short = len(row['answer']) <= 64 and '\n' not in row['answer']
+        if is_short != (args.answer_population == 'short'):
             continue
         candidates.append((row['qa_key'], line, line_sha, row))
     candidates.sort(key=lambda item: item[0])
@@ -105,7 +107,8 @@ def main():
         'source': str(source.relative_to(ROOT)), 'source_sha256': source_sha,
         'source_receipt_sha256': file_hash(receipt_path), 'batches': batches,
         'assigned_unique_QA': len(assigned), 'exclusions': exclusions,
-        'unowned_short_answer_QA_available': len(candidates),
+        'answer_population': args.answer_population,
+        'unowned_population_QA_available': len(candidates),
         'input_content_byte_budget': args.content_byte_budget,
         'exact_annotation_model_tokens_measured': False,
         'annotation_context_size_changed': False, 'questions_or_answers_truncated': 0,
