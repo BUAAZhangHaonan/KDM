@@ -108,7 +108,10 @@ def main():
         raise ValueError("This host has no completed registered main parts in the inventory")
     manifest = plan_root / "selected_parts.json"
     manifest.write_text(json.dumps({
-        "schema": "kdm_explicit_completed_main_receive_plan_v1", "parts": parts,
+        "schema": "kdm_explicit_completed_matrix_receive_plan_v1" if args.registered_mechanism_only else "kdm_explicit_completed_main_receive_plan_v1", "parts": parts,
+        "registered_mechanism_only": args.registered_mechanism_only,
+        "inventory_receive_command": [sys.executable, *sys.argv],
+        "inventory_adapter_sha256": file_hash(Path(__file__)),
         "original_producer_inventories": inputs,
         "created_utc": datetime.now(timezone.utc).isoformat(),
     }, indent=2) + "\n", encoding="utf-8")
