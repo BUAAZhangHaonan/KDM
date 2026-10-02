@@ -17,6 +17,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / "src")]
 from kdm.io import file_hash, within
 from workflows.main_results.score import qah
 from workflows.paper_core.assemble_nine_main_food import output_json
+from workflows.paper_core.recover_frozen_qa import load_recovered
 
 COND = ["model", "dataset", "split", "method", "kind", "marker",
         "reference_marker", "guided", "reference_guided", "replicate"]
@@ -42,6 +43,7 @@ def checked_parquet(frame, path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--main-panel", required=True)
+    parser.add_argument("--frozen-qa-recovery", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
     panel, output = (within(ROOT, p) for p in (args.main_panel, args.output))
@@ -71,7 +73,9 @@ def main():
     frozen = pd.read_parquet(frozen_path, columns=["qa_id", "correct_canonical", "correct_literal",
                                                   "abstain", "uniform_reference"])
     qa_path = frozen_path.with_name("qa.parquet")
-    old_qa = pd.read_parquet(qa_path, columns=["qa_id", "qa_key", "question", "answer"]).set_index("qa_id")
+    recovered_directory = within(ROOT, args.frozen_qa_recovery)
+    recovered, recovery_receipt = load_recovered(args.frozen_qa_recovery)
+    old_qa = recovered.set_index("qa_id")
     mask = frame.source_score_path.eq(manifest["frozen_scores"])
     indices = frame.loc[mask, "source_score_line"].astype("int64").to_numpy() - 1
     original = frozen.iloc[indices].copy()
@@ -118,6 +122,9 @@ def main():
         source = panel / name
         require(file_hash(source) == receipt["outputs"][name], "An accepted comparison table changed: " + name)
         shutil.copyfile(source, output / name)
+    shutil.copyfile(recovered_directory / "receipt.json", output / "frozen_QA_recovery_receipt.json")
+    shutil.copyfile(recovered_directory / "recovered_QA_source_bindings.parquet",
+                    output / "frozen_QA_raw_source_bindings.parquet")
     shutil.copyfile(receipt_path, output / "source_panel_receipt.json")
     output_json(output / "receipt.json", {
         "schema": "kdm_closed_main_compact_projection_v1", "passed": True,
@@ -126,6 +133,9 @@ def main():
         "scientific_fields_and_full_QA_exact_roundtrip": True, "new_scoring_or_annotation": 0,
         "source_parquet": str(path.relative_to(ROOT)), "source_sha256": file_hash(path),
         "source_receipt_sha256": file_hash(receipt_path), "frozen_QA_source_sha256": file_hash(qa_path),
+        "actual_full_QA_recovery_source": str(recovered_directory.relative_to(ROOT)),
+        "actual_full_QA_recovery_receipt_sha256": file_hash(recovered_directory / "receipt.json"),
+        "original_dictionary_QA_recovered_by_exact_raw_pointers": recovery_receipt["previously_missing_full_QA"],
         "source_line_semantics": "one-based original JSONL line or original parquet row; source file SHA retained",
         "source_only_fields": [c for c in frame if c not in {*scalar_fields, *COND, *source_fields,
                                                               "condition_id", "qa_key", "question", "answer"}],

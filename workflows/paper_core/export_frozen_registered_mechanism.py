@@ -15,11 +15,13 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT), str(ROOT / "src")]
 from kdm.io import file_hash, within
 from workflows.paper_core.assemble_nine_main_food import FIVE, output_json
+from workflows.paper_core.recover_frozen_qa import load_recovered
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--frozen-qa-recovery", required=True)
     args = parser.parse_args()
     output = within(ROOT, args.output)
     output.relative_to(ROOT / "outputs/paper_core_20261002_dev_viz")
@@ -49,10 +51,14 @@ def main():
               "abstain", "uniform_reference", "accepted_reference", "source_file_id", "source_line",
               "qa_id", "seed", "detail_id", "binding_id", "score_source_line"]
     compact = subset[fields].copy()
-    qa = pd.read_parquet(source / "qa.parquet", columns=["qa_id", "question", "answer"])
+    recovered_directory = within(ROOT, args.frozen_qa_recovery)
+    restored, recovery_receipt = load_recovered(args.frozen_qa_recovery)
+    qa = restored[["qa_id", "qa_key", "question", "answer", "raw_source_file_id", "raw_source_line"]].copy()
     qa = qa[qa.qa_id.isin(compact.qa_id)].copy()
     if compact.qa_id.isna().any() or not set(compact.qa_id).issubset(set(qa.qa_id)):
         raise ValueError("A mechanism source lacks its complete original QA")
+    if qa[["question", "answer"]].isna().any().any():
+        raise ValueError("A frozen mechanism QA has only a hash rather than full text")
     metadata = ("sources.csv", "prompts_and_configs.json", "bindings.json", "runtime_checks.json")
     for name in (*metadata, "runtime_records.csv"):
         if not (source / name).is_file():
@@ -64,6 +70,7 @@ def main():
     selected.to_csv(output / "conditions.csv", index=False)
     for name in metadata:
         shutil.copyfile(source / name, output / name)
+    shutil.copyfile(recovered_directory / "receipt.json", output / "frozen_QA_recovery_receipt.json")
     with (source / "runtime_records.csv").open("rb") as raw, (output / "runtime_records.csv.gz").open("wb") as target:
         with gzip.GzipFile(fileobj=target, mode="wb", filename="", mtime=0) as compressed:
             shutil.copyfileobj(raw, compressed)
@@ -80,6 +87,8 @@ def main():
         "source_scores_sha256": file_hash(source / "scores.parquet"),
         "source_conditions_sha256": file_hash(source / "conditions.csv"),
         "source_QA_sha256": file_hash(source / "qa.parquet"),
+        "full_original_QA_recovered_by_exact_raw_pointers": recovery_receipt["previously_missing_full_QA"],
+        "full_original_QA_recovery_receipt_sha256": file_hash(recovered_directory / "receipt.json"),
         "source_runtime_records_sha256": file_hash(source / "runtime_records.csv"),
         "runtime_records_transformation": "gzip compression with exact byte roundtrip; all original metadata retained",
         "source_only_original_fields": [name for name in subset if name not in fields],
