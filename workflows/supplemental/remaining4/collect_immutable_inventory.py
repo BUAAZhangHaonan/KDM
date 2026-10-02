@@ -15,7 +15,8 @@ from workflows.supplemental.remaining4 import collect_source_key_views as collec
 
 FIELDS = collector.FIELDS
 SCHEMAS = {"kdm_immutable_registered_food_main_and_matrix_source_manifest_v1",
-           "kdm_actual_sealed_registered_source_manifest_v1"}
+           "kdm_actual_sealed_registered_source_manifest_v1",
+           "kdm_actual_completed_registered_sources_delta_v1"}
 METHODS = {"instruction_vcd", "instruction_m3id", "cda_visual"}
 
 
