@@ -116,13 +116,77 @@ def paired(a, b, identity, draws, fixed_direct=None):
     return effects, transitions
 
 
+def validate_dev_panel(dev, models, dev_ids):
+    required = ["model", "method", "marker", "split", "sample_id", "correct_canonical", "abstain", "uniform_reference"]
+    if len(dev_ids) != 404:
+        raise ValueError("The registered dev roster must contain exactly 404 inputs")
+    if set(required) - set(dev.columns):
+        raise ValueError("The dev score panel lacks required identifiers or decisions")
+    if not dev.model.isin(MODELS).all():
+        raise ValueError("The dev score panel contains an unregistered model")
+    panel = dev[dev.model.isin(models)].copy()
+    if len(panel) != 6464 * len(models) or set(panel.model) != set(models):
+        raise ValueError("Every requested model requires its complete 6464-row dev panel")
+    if panel[required].isna().any().any():
+        raise ValueError("The requested dev models contain unresolved identifiers or decisions")
+    if set(panel.split) != {"dev"}:
+        raise ValueError("Dev selection must not read eval decisions")
+    if panel.duplicated(["model", "method", "marker", "sample_id"]).any():
+        raise ValueError("The requested dev panel contains duplicate decision keys")
+    groups = panel.groupby(["model", "method", "marker"])
+    expected = {(model, method, marker) for model in models for method in DEV_METHODS for marker in MARKERS}
+    if set(groups.groups) != expected:
+        raise ValueError("Each requested model requires the four-method four-phrase dev panel")
+    for key, group in groups:
+        if len(group) != 404 or set(group.sample_id) != dev_ids:
+            raise ValueError(f"The registered dev404 roster is incomplete for {key}")
+    return panel, required
+
+
+def preserve_frozen_selections(recomputed, frozen, models):
+    if not isinstance(frozen, list) or not frozen:
+        raise ValueError("Frozen selections must be a nonempty selected_configs JSON list")
+    indexed = {}
+    for row in frozen:
+        if not isinstance(row, dict):
+            raise ValueError("Each frozen selection must be a configuration record")
+        key = (row.get("model"), row.get("method"))
+        if key[0] not in MODELS or key[1] not in DEV_METHODS or row.get("marker") not in MARKERS or key in indexed:
+            raise ValueError("Frozen selections contain an unregistered or duplicate configuration")
+        indexed[key] = row
+    expected = {(model, method) for model in models for method in DEV_METHODS}
+    if {key for key in indexed if key[0] in models} != expected:
+        raise ValueError("Frozen selections must cover all methods of every requested model")
+    compare = ("model", "method", "marker", "n", "correct", "abstentions", "reference_positive", "tp", "successes",
+               "selection_utility", "accuracy", "precision", "recall", "marker_order", "selection_split", "selection_rule")
+    chosen = []
+    for current in recomputed:
+        previous = indexed[(current["model"], current["method"])]
+        if any(key not in previous or previous[key] != current[key] for key in compare):
+            raise ValueError(f"Frozen selection or dev counts changed for {current['model']}/{current['method']}")
+        if previous.get("selection") != "dev_selected" or any(
+                not isinstance(previous.get(key), str) or not previous[key]
+                for key in ("selection_frozen_at_utc", "source_scores", "source_scores_sha256")):
+            raise ValueError("Frozen selections lack their original selection time or score provenance")
+        chosen.append(dict(previous))
+    if len(chosen) != len(expected):
+        raise ValueError("Recomputed dev choices do not cover the requested frozen configurations")
+    return chosen
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dev-scores", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--native-scores", default=NATIVE)
     parser.add_argument("--direct-scores", default=DEFAULT_DIRECT + "/score_rows.jsonl.gz")
+    parser.add_argument("--models", nargs="+", choices=MODELS,
+                        help="Freeze only the complete dev panels of these registered models; default: all five")
+    parser.add_argument("--frozen-selections", help="Verify and retain a previously frozen selected_configs JSON")
     args = parser.parse_args()
+    models = args.models if args.models is not None else list(MODELS)
+    if len(models) != len(set(models)):
+        parser.error("--models must contain distinct registered models")
     if BOOT != 2000 or SEED != 20260929:
         raise ValueError("The preregistered paired bootstrap identity changed")
     out = within(ROOT, args.out)
@@ -131,20 +195,24 @@ def main():
     dev = pd.read_parquet(dev_path)
     rename = {"canonical_name_in_primary_score": "correct_canonical"}
     dev = dev.rename(columns={key: value for key, value in rename.items() if key in dev and value not in dev})
-    required = ["model", "method", "marker", "split", "sample_id", "correct_canonical", "abstain", "uniform_reference"]
     _, dev_samples = roster("dev404")
     dev_ids = {row["id"] for row in dev_samples}
-    if len(dev) != 32320 or set(dev.model) != set(MODELS) or set(dev.method) != set(DEV_METHODS):
-        raise ValueError("Dev selection requires the complete symmetric five-model four-method panel")
-    if set(dev.split) != {"dev"}:
-        raise ValueError("Dev selection must not read eval decisions")
+    source_dev_rows = len(dev)
+    dev, required = validate_dev_panel(dev, models, dev_ids)
     dev[required].to_csv(out / "dev_decisions.csv", index=False)
     dev_metrics, chosen = select(dev[required], dev_ids)
-    selected_at = datetime.now(timezone.utc).isoformat()
-    for row in chosen:
-        row.update(selection="dev_selected", selection_frozen_at_utc=selected_at,
-                   source_scores=str(dev_path.relative_to(ROOT)), source_scores_sha256=file_hash(dev_path))
-    if len(chosen) != 20:
+    analyzed_at = datetime.now(timezone.utc).isoformat()
+    dev_sha = file_hash(dev_path)
+    frozen_path = within(ROOT, args.frozen_selections) if args.frozen_selections else None
+    if frozen_path:
+        chosen = preserve_frozen_selections(chosen, json.loads(frozen_path.read_text(encoding="utf-8")), models)
+    else:
+        for row in chosen:
+            row.update(selection="dev_selected", selection_frozen_at_utc=analyzed_at,
+                       source_scores=str(dev_path.relative_to(ROOT)), source_scores_sha256=dev_sha)
+    selection_times = sorted({row["selection_frozen_at_utc"] for row in chosen})
+    selected_at = selection_times[0] if len(selection_times) == 1 else None
+    if len(chosen) != 4 * len(models):
         raise ValueError("Expected one dev-selected configuration per model and method")
     dev_metrics.to_csv(out / "dev_metrics.csv", index=False)
     atomic_json(out / "selected_configs.json", chosen)
@@ -155,6 +223,8 @@ def main():
     native = pd.DataFrame([row for _, row, _ in rows(within(ROOT, args.native_scores))]).rename(columns={
         "canonical_name_in_primary_score": "correct_canonical", "literal_extracted_name_score": "correct_literal"})
     direct_plain = pd.DataFrame([row for _, row, _ in rows(within(ROOT, args.direct_scores))])
+    native = native[native.model.isin(models)].copy()
+    direct_plain = direct_plain[direct_plain.model.isin(models)].copy()
     restored_direct_fields = []
     for key, value in {"marker": "NONE", "reference_marker": "NONE", "replicate": 0}.items():
         if key not in direct_plain:
@@ -162,10 +232,11 @@ def main():
             restored_direct_fields.append(key)
     direct_identity_source = "workflows/paper_core/score_native.py:comparison_tables:301:accepted_unguided_Direct_identity"
     reference_frame = pd.read_parquet(frozen_dir / "references.parquet")
-    reference = {(row.model, row.sample_id): bool(row.uniform_reference) for row in reference_frame.itertuples() if row.split == "eval"}
+    reference = {(row.model, row.sample_id): bool(row.uniform_reference) for row in reference_frame.itertuples()
+                 if row.split == "eval" and row.model in models}
     eval_ids = set(native.sample_id)
-    if len(eval_ids) != 2424 or len(native) != 12120:
-        raise ValueError("Native eval baseline is not the verified complete five-model result")
+    if len(eval_ids) != 2424 or len(native) != 2424 * len(models):
+        raise ValueError("Native eval baseline is incomplete for the requested models")
     draws = np.random.RandomState(SEED).randint(0, 101, size=(BOOT, 101))
     pool, direct_cache, native_cache, native_metadata, metrics_all = {}, {}, {}, {}, []
     selected_metrics, effects, transitions, best_rows, native_matched = [], [], [], [], []
@@ -188,7 +259,7 @@ def main():
         frame.attrs["condition_identity"] = {key: meta[key] for key in FIELDS}
         return meta, frame
 
-    for model in MODELS:
+    for model in models:
         model_spec = json.loads((ROOT / f"configs/runtime/{model}.json").read_text())
         checkpoint = model_spec["hf_model_id"]
         n = checked(native[native.model.eq(model)].copy(), eval_ids)
@@ -231,7 +302,9 @@ def main():
         identity, frame, metric = pool[(model, method, marker)]
         selected_metrics.append({**metric, "selection": "dev_selected", "dev_n": choice["n"],
                                  "dev_C": choice["correct"], "dev_TP": choice["tp"], "dev_J": choice["selection_utility"],
-                                 "selection_frozen_at_utc": selected_at})
+                                 "selection_frozen_at_utc": choice["selection_frozen_at_utc"],
+                                 "selection_source_scores": choice["source_scores"],
+                                 "selection_source_scores_sha256": choice["source_scores_sha256"]})
         fixed_direct = direct_cache[(model, marker)]
         native_matched.append({**metrics(native_cache[model], native_metadata[model], fixed_direct),
                                "matched_method": method, "dev_selected_marker": marker,
@@ -251,6 +324,7 @@ def main():
         for label, base, base_cid in pairs:
             context = {**identity, "comparison": label, "baseline_condition_id": base_cid,
                        "selection": "dev_selected", "paired_n": 2424,
+                       "selection_frozen_at_utc": choice["selection_frozen_at_utc"],
                        "fixed_set_direct_condition_id": fixed_direct.attrs["condition_id"]}
             pair_effects, pair_transitions = paired(frame, base, context, draws, fixed_direct)
             effects.extend(pair_effects)
@@ -279,16 +353,22 @@ def main():
     pd.DataFrame(effects).to_csv(out / "paired_effects.csv", index=False)
     pd.DataFrame(transitions).to_csv(out / "transitions.csv", index=False)
     atomic_json(out / "analysis_receipt.json", dict(passed=True, dev_rows=len(dev), selected_configs=len(chosen),
-                eval_selected_method_conditions=20, native_baseline_conditions=5, guided_direct_conditions=20,
-                guided_direct_selected_workpoints=5, native_matched_fixed_sets=len(native_matched), paired_comparisons=len(effects)//4,
+                models=models, registered_models=list(MODELS), full_five_model_panel=set(models) == set(MODELS),
+                source_dev_rows=source_dev_rows, expected_dev_rows=6464 * len(models), dev_scores_sha256=dev_sha,
+                eval_selected_method_conditions=4 * len(models), native_baseline_conditions=len(models), guided_direct_conditions=4 * len(models),
+                guided_direct_selected_workpoints=len(models), native_matched_fixed_sets=len(native_matched), paired_comparisons=len(effects)//4,
                 selection_frozen_at_utc=selected_at, dev_only_selection=True, bootstrap_replicates=BOOT, bootstrap_seed=SEED,
+                selection_frozen_times_utc=selection_times, analysis_created_at_utc=analyzed_at,
+                frozen_selections_verified=frozen_path is not None,
+                frozen_selections_source=str(frozen_path.relative_to(ROOT)) if frozen_path else None,
+                frozen_selections_source_sha256=file_hash(frozen_path) if frozen_path else None,
                 frozen_scores_sha256=file_hash(frozen_dir / "scores.parquet"), native_source_sha256=file_hash(within(ROOT, args.native_scores)),
                 direct_source_sha256=file_hash(within(ROOT, args.direct_scores)),
                 direct_condition_identity_restored_fields=restored_direct_fields,
                 direct_condition_identity_recovery_source=direct_identity_source,
                 direct_condition_identity_recovery_source_sha256=file_hash(ROOT / "workflows/paper_core/score_native.py"),
                 script_sha256=file_hash(Path(__file__)), new_model_generations=0, GPU_initialized=False))
-    print(json.dumps(dict(passed=True, selected_configs=20, output=str(out.relative_to(ROOT))), allow_nan=False))
+    print(json.dumps(dict(passed=True, models=models, selected_configs=len(chosen), output=str(out.relative_to(ROOT))), allow_nan=False))
 
 
 if __name__ == "__main__":
