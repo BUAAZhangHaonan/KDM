@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 from datetime import datetime, timezone
+import gzip
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -125,6 +127,24 @@ def main():
     shutil.copyfile(recovered_directory / "receipt.json", output / "frozen_QA_recovery_receipt.json")
     shutil.copyfile(recovered_directory / "recovered_QA_source_bindings.parquet",
                     output / "frozen_QA_raw_source_bindings.parquet")
+    decision_sources, decision_events = [], 0
+    with (output / "accepted_annotation_events.jsonl.gz").open("xb") as binary:
+        with gzip.GzipFile(fileobj=binary, mode="wb", filename="", mtime=0) as compressed:
+            for entry in manifest["actual_accepted_decision_sources"]:
+                source = within(ROOT, entry["path"])
+                require(file_hash(source) == entry["sha256"], "An accepted annotation source changed")
+                events = 0
+                with source.open("rb") as stream:
+                    for line_number, line in enumerate(stream, 1):
+                        require(line.endswith(b"\n"), "An accepted annotation event is incomplete")
+                        event = {"source_path": entry["path"], "source_sha256": entry["sha256"],
+                                 "source_line": line_number, "source_line_sha256": hashlib.sha256(line).hexdigest(),
+                                 "original_accepted_decision": json.loads(line)}
+                        compressed.write((json.dumps(event, ensure_ascii=False, separators=(",", ":")) + "\n").encode())
+                        events += 1
+                decision_sources.append({**entry, "events": events})
+                decision_events += events
+    output_json(output / "accepted_annotation_source_index.json", decision_sources)
     shutil.copyfile(receipt_path, output / "source_panel_receipt.json")
     output_json(output / "receipt.json", {
         "schema": "kdm_closed_main_compact_projection_v1", "passed": True,
@@ -136,6 +156,8 @@ def main():
         "actual_full_QA_recovery_source": str(recovered_directory.relative_to(ROOT)),
         "actual_full_QA_recovery_receipt_sha256": file_hash(recovered_directory / "receipt.json"),
         "original_dictionary_QA_recovered_by_exact_raw_pointers": recovery_receipt["previously_missing_full_QA"],
+        "accepted_annotation_events": decision_events, "original_decision_sources": len(decision_sources),
+        "actual_annotation_authors_models_efforts_and_history_preserved": True,
         "source_line_semantics": "one-based original JSONL line or original parquet row; source file SHA retained",
         "source_only_fields": [c for c in frame if c not in {*scalar_fields, *COND, *source_fields,
                                                               "condition_id", "qa_key", "question", "answer"}],
