@@ -403,7 +403,17 @@ def main():
     with gzip.open(output / "missing_or_pending_keys.jsonl.gz", "xt", encoding="utf-8", compresslevel=1) as stream:
         for row in missing:
             stream.write(json.dumps(row, ensure_ascii=False, allow_nan=False) + "\n")
-    pd.DataFrame(list(selected.values())).to_parquet(output / "main_score_rows.parquet", index=False)
+    score_frame = pd.DataFrame(list(selected.values()))
+    # Historical provider records use heterogeneous nested annotation schemas.
+    # Preserve their complete provenance as JSON instead of coercing those
+    # mixed list/scalar fields into an Arrow struct or changing any decision.
+    for name in ("applied_correction", "prior_ineligible_source"):
+        if name in score_frame:
+            score_frame[name + "_json"] = score_frame[name].map(
+                lambda value: json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
+                if isinstance(value, dict) else None)
+            score_frame.drop(columns=[name], inplace=True)
+    score_frame.to_parquet(output / "main_score_rows.parquet", index=False)
     output_json(output / "sources.json", source_summaries)
     output_json(output / "source_conflicts.json", conflicts)
     output_json(output / "duplicate_score_source_bindings.json", duplicates)
