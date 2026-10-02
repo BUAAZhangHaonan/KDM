@@ -156,10 +156,10 @@ def execute(args):
         execution.REGISTRY = "workflows/paper_core/host_registry_a100.json"
     cards = args.physical_gpus.split(",")
     frozen_spec = json.loads((ROOT / f"configs/runtime/{args.model}.json").read_text())
-    admission = execution.admit(ROOT, frozen_spec, args.model, cards)
-    spec = execution.runtime_spec(ROOT, frozen_spec, args.model)
     manifest, freeze = load_contract(ROOT)
     proofs = validate_proofs(ROOT, frozen_spec, args.model, list(DEV_METHODS), "formal", manifest, freeze)
+    admission = execution.admit(ROOT, frozen_spec, args.model, cards)
+    spec = execution.runtime_spec(ROOT, frozen_spec, args.model)
     tasks = read_missing(args.missing_keys, args.model, planned_tasks(args.model, args.stage, args.selected_configs))
     roster_path, samples = roster(args.stage)
     base = ROOT / "outputs/paper_core_20261002_dev_viz" / args.run_id / args.model
