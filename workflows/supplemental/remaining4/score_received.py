@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import csv
 from datetime import datetime, timezone
 import json
 import math
@@ -84,6 +85,8 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--decision-file", action="append", default=[])
     parser.add_argument("--viz-authority-file", action="append", default=[])
+    parser.add_argument("--registered-mechanism-only", action="store_true",
+                        help="Score only the registered Food VCD/M3ID matrices and ref-off; not main baselines")
     args = parser.parse_args()
     manifest_path, output = (within(ROOT, value) for value in (args.manifest, args.output))
     output.relative_to(ROOT / BASE)
@@ -120,6 +123,19 @@ def main():
     patterns = frozen.compile_classes(sorted({s["class"] for s in samples.values() if s["dataset"] == "food101"}))
     normalizer = VQAEval(None, None)
     normalize = lambda text: normalizer.processDigitArticle(normalizer.processPunctuation(text))
+    registered_matrix = set()
+    if args.registered_mechanism_only:
+        with (ROOT / "outputs/paper_20260929/conditions.csv").open(newline="") as stream:
+            for identity in csv.DictReader(stream):
+                if identity["method"] not in {"vcd", "m3id"} or identity["kind"] not in {"main", "reference_instruction_removed"}:
+                    continue
+                flags = [identity[name].lower() for name in ("guided", "reference_guided")]
+                if any(flag not in {"true", "false"} for flag in flags):
+                    raise ValueError("A frozen registered matrix identity lacks Boolean flags")
+                registered_matrix.add((identity["method"], identity["kind"], identity["marker"],
+                    identity["reference_marker"], flags[0] == "true", flags[1] == "true", int(identity["replicate"])))
+        if len(registered_matrix) != 40:
+            raise ValueError("The frozen registered 4x4/ref-off templates differ")
     scored, boundary, seen, counts = [], {}, set(), Counter()
     for part in manifest["parts"]:
         raw_path = within(ROOT, part["received_raw_path"])
@@ -134,7 +150,10 @@ def main():
                         for f in ("id", "dataset", "split", "question", "image_path", "class"))
                     or sample["dataset"] != part["dataset"] or not finite(row)):
                 raise ValueError("Actual part key, input, source identity or finite values differ")
-            if row["method"] in {"vcd", "m3id"} and (row["guided"] or row["reference_guided"]):
+            if args.registered_mechanism_only and (sample["dataset"] != "food101" or sample["split"] != "eval"
+                    or tuple(row[field] for field in FIELDS) not in registered_matrix):
+                raise ValueError("A mechanism-only row is outside the exact frozen registered matrix/ref-off identities")
+            if not args.registered_mechanism_only and row["method"] in {"vcd", "m3id"} and (row["guided"] or row["reference_guided"]):
                 raise ValueError("New plain guided VCD/M3ID generation is outside the current scope")
             seen.add(row["key"])
             part_rows += 1
@@ -244,6 +263,8 @@ def main():
         "unannotated_Viz_behavior_defaulted_to_answer_or_abstention": False,
         "runner_sha256": file_hash(Path(__file__)), "GPU_initialized": False, "new_generation": 0, "new_API_calls": 0,
         "reference_join_complete": False, "label_completion_claimed": not counts["label_pending_members"],
+        "registered_mechanism_only": args.registered_mechanism_only,
+        "registered_matrix_templates_sha256": file_hash(ROOT / "outputs/paper_20260929/conditions.csv") if args.registered_mechanism_only else None,
         "official_unanswerable_consensus_preserved": True,
         "outputs": {p.name: file_hash(p) for p in output.iterdir() if p.is_file()}}
     save_json(output / "receipt.json", receipt)
