@@ -7,10 +7,12 @@ from collections import Counter, defaultdict
 from dataclasses import asdict
 from datetime import datetime, timezone
 import csv
+import fcntl
 import json
 import math
 from pathlib import Path
 import re
+import shutil
 import sys
 import time
 
@@ -162,6 +164,8 @@ def execute(args):
     roster_path, samples = roster(args.stage)
     base = ROOT / "outputs/paper_core_20261002_dev_viz" / args.run_id / args.model
     base.mkdir(parents=True, exist_ok=True)
+    writer_lock = (base / "writer.lock").open("a")
+    fcntl.flock(writer_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     identity = dict(schema="kdm_core_dev_viz_identity_v1", stage=args.stage, model=args.model,
                     frozen_spec=frozen_spec, runtime_spec=spec, admission=admission["fixed_identity"], proofs=proofs,
                     roster_sha256=file_hash(roster_path), missing_keys_sha256=file_hash(within(ROOT, args.missing_keys)),
@@ -216,12 +220,22 @@ def execute(args):
         timing.append(detail)
         if args.mode == "full":
             atomic_json(raw.with_suffix(".complete.json"), dict(passed=True, identity=stable_hash(identity), **detail, completed_at_utc=now()))
+        else:
+            sealed = base / "sealed_pilot" / raw.name
+            sealed.parent.mkdir(parents=True, exist_ok=True)
+            if sealed.exists():
+                raise FileExistsError("An immutable completed pilot snapshot already exists")
+            shutil.copy2(raw, sealed)
+            shutil.copy2(raw.with_suffix(".identity.json"), sealed.with_suffix(".identity.json"))
+            atomic_json(sealed.with_suffix(".complete.json"), dict(passed=True, identity=stable_hash(identity), **{
+                **detail, "raw": str(sealed.relative_to(ROOT))}, completed_at_utc=now(), scope="pilot_only"))
         atomic_json(base / "CURRENT_STATE.json", dict(stage=args.stage, model=args.model, mode=args.mode,
                                                       conditions_completed=timing, required_missing=len(tasks), updated_utc=now()))
     receipt = dict(passed=True, identity=stable_hash(identity), model=args.model, stage=args.stage,
                    actual_rows=sum(row["rows"] for row in timing), required_missing=len(tasks), conditions=timing,
                    model_load_wall_s=load_wall, elapsed_s=time.perf_counter() - started, completed_at_utc=now())
     atomic_json(gate_path if args.mode == "pilot" else base / "complete_receipt.json", receipt)
+    writer_lock.close()
     print(json.dumps(receipt, allow_nan=False))
 
 
