@@ -1,4 +1,4 @@
-"""Receive completed IP/CDA parts from an explicit producer inventory."""
+"""Receive completed registered parts from an explicit producer inventory."""
 from __future__ import annotations
 
 import argparse
@@ -25,7 +25,10 @@ def main():
     parser.add_argument("--manifest", action="append", required=True)
     parser.add_argument("--source-host", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--registered-mechanism-only", action="store_true")
     args = parser.parse_args()
+    schemas = {"kdm_registered_matrix_immutable_delta_v1"} if args.registered_mechanism_only else SCHEMAS
+    methods = {"vcd", "m3id"} if args.registered_mechanism_only else METHODS
     output = within(ROOT, args.output)
     output.relative_to(ROOT / "outputs/supplemental/remaining4")
     plan_root = output.with_name(output.name + "_input_proof")
@@ -34,13 +37,13 @@ def main():
     for relative in args.manifest:
         path = within(ROOT, relative)
         inventory = json.loads(path.read_text(encoding="utf-8-sig"))
-        if inventory["schema"] not in SCHEMAS:
+        if inventory["schema"] not in schemas:
             raise ValueError("An explicit immutable producer inventory is required")
         inputs.append({"path": str(path), "sha256": file_hash(path)})
         for source in inventory["sources"]:
             if source["host"] != args.source_host:
                 continue
-            if not set(source["methods"]).issubset(METHODS):
+            if not set(source["methods"]).issubset(methods):
                 continue
             if source["immutable"] is not True or Path(source["root"]) != ROOT:
                 raise ValueError("The declared host/root or immutability differs")
@@ -78,8 +81,8 @@ def main():
                     if not line.endswith(b"\n"):
                         raise ValueError("A completed producer part has a partial line")
                     row = json.loads(line)
-                    if row["key"] in seen_keys or row["method"] not in METHODS:
-                        raise ValueError("A main part repeats a key or contains a matrix method")
+                    if row["key"] in seen_keys or row["method"] not in methods:
+                        raise ValueError("A part repeats a key or contains a method outside the explicit receive scope")
                     seen_keys.add(row["key"])
                     lines.append(number)
                     bindings.append({
