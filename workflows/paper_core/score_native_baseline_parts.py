@@ -149,7 +149,7 @@ def main():
                           "annotation_effort": inferred["annotation_effort"],
                           "annotation_call_id": inferred["annotation_call_id"]}
                 scored.append(record)
-                if canonical is None or inferred["abstain"] is None:
+                if canonical is None or literal is None or inferred["abstain"] is None:
                     p = pending.setdefault(qkey, {"qa_key": qkey, "question": s["question"],
                                                    "answer": row["text"], "reasons": [], "memberships": []})
                     p["reasons"] = sorted(set(p["reasons"] + [reason, inferred["behavior_source"]]))
