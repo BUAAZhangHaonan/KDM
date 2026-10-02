@@ -114,7 +114,7 @@ def main():
         ax.grid(axis="x", alpha=.17)
         ax.spines[["top", "right"]].set_visible(False)
     axes[0].invert_yaxis()
-    axes[1].legend(frameon=False, loc="lower right")
+    axes[1].legend(frameon=False, loc="upper right", bbox_to_anchor=(1, 1.18), ncol=2)
     fig.supxlabel("Saved paired 95% class-bootstrap intervals: 2,000 replicates, seed 20260929. Eval-observed phrase choices; dev-selected results are reported separately.", fontsize=8)
     for extension in ("png", "pdf"):
         fig.savefig(output / ("nine_model_joint_effects." + extension), dpi=220)
