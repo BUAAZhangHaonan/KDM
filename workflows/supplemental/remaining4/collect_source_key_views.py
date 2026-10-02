@@ -52,13 +52,29 @@ def main():
         original_receipt = within(ROOT, str(Path(part["source_part_receipt"]).relative_to(ROOT)))
         receipt = json.loads(original_receipt.read_text(encoding="utf-8-sig"))
         identity = json.loads(original_identity.read_text(encoding="utf-8-sig"))
+        sealed_index = part.get("sealed_receipt_part_index")
+        if sealed_index is None:
+            completion = receipt
+            receipt_part = receipt["part"]
+        else:
+            if (receipt["schema"] != "kdm_selected4_registered_sealed_prefix_v1"
+                    or receipt["whole_claim_complete"] is not False):
+                raise ValueError("A selected prefix lacks its real incomplete-claim receipt")
+            entry = receipt["parts"][sealed_index]
+            if within(ROOT, entry["path"]) != original_raw:
+                raise ValueError("The selected sealed part pointer differs")
+            completion = entry["completed_prefix_validation"]
+            receipt_part = sealed_index
+            for stem in ("original_owner", "original_keys", "admission", "completed_keys", "remaining_keys"):
+                if file_hash(within(ROOT, receipt[stem + "_path"])) != receipt[stem + "_sha256"]:
+                    raise ValueError("Original prefix ownership or admission evidence changed")
         actual_raw_sha = file_hash(original_raw)
-        if (receipt["generation_complete"] is not True or receipt["model"] != part["model"]
-                or actual_raw_sha != receipt["raw_sha256"]
-                or receipt["raw_sha256"] != part["raw_sha256_from_receipt"]):
+        if (completion["generation_complete"] is not True or receipt["model"] != part["model"]
+                or actual_raw_sha != completion["raw_sha256"]
+                or completion["raw_sha256"] != part["raw_sha256_from_receipt"]):
             raise ValueError("An original immutable raw part differs from its generation receipt")
-        if (file_hash(original_identity) != receipt["identity_sha256"]
-                or receipt["identity_sha256"] != part["identity_sha256_from_receipt"]
+        if (file_hash(original_identity) != completion["identity_sha256"]
+                or completion["identity_sha256"] != part["identity_sha256_from_receipt"]
                 or identity["identity"] != stable_hash(identity["definition"])
                 or identity["definition"]["model"] != part["model"]):
             raise ValueError("The original model identity or registered source fingerprint differs")
@@ -95,17 +111,20 @@ def main():
                     "received_line": count, "source_host": args.source_host,
                     "source_original_raw": str(original_raw), "source_original_line": source_line,
                     "raw_line_sha256": hashlib.sha256(raw_line).hexdigest(),
-                    "source_original_raw_sha256": receipt["raw_sha256"],
+                    "source_original_raw_sha256": completion["raw_sha256"],
                     "source_original_receipt": str(original_receipt),
                     "source_original_receipt_sha256": file_hash(copied_receipt),
-                    "source_identity_sha256": receipt["identity_sha256"]})
-        if visited != receipt["rows"] or count != len(requested):
+                    "source_identity_sha256": completion["identity_sha256"],
+                    "source_sealed_receipt_part_index": sealed_index})
+        if visited != completion["rows"] or count != len(requested):
             raise ValueError("Original complete count or actual selected-view coverage differs")
         total += count
         records.append({"model": part["model"], "dataset": "food101", "stage": "formal",
-            "claim_id": part["source_claim"], "part": receipt["part"], "rows": count,
+            "claim_id": part["source_claim"], "part": receipt_part, "rows": count,
             "original_complete_part_rows": visited, "derived_selected_view": True,
             "source_part_generation_complete": True, "received_raw_path": str(view.relative_to(ROOT)),
+            "source_sealed_receipt_part_index": sealed_index,
+            "original_claim_complete": receipt.get("whole_claim_complete") if sealed_index is not None else None,
             "received_identity_path": str(copied_identity.relative_to(ROOT)),
             "files": [{"received_path": str(p.relative_to(ROOT)), "sha256": file_hash(p)}
                       for p in (view, copied_identity, copied_receipt)]})
