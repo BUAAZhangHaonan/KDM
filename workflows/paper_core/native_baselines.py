@@ -329,6 +329,8 @@ def execute(args):
             raise ValueError("Native raw identity, probability, token or termination audit failed")
     receipt = {"schema": "kdm_native_baseline_part_receipt_v1", "phase": args.phase,
                "model": args.model, "method": args.method, "identity": stable_hash(identity),
+               "identity_scope": "runner_definition_before_run_tasks_ledger_envelope",
+               "ledger_identity": json.loads(raw.with_suffix(".identity.json").read_text())["identity"],
                "raw_path": str(raw), "raw_sha256": file_hash(raw),
                "identity_path": str(raw.with_suffix(".identity.json")),
                "identity_sha256": file_hash(raw.with_suffix(".identity.json")),
