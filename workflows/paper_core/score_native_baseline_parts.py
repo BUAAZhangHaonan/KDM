@@ -172,6 +172,10 @@ def main():
                "complete_conditions": sum(v["primary_complete"] for v in values),
                "source_parts": sources, "reference_sources": references,
                "accepted_native_authority_receipts": authority_receipts,
+               "actual_command": [sys.executable, *sys.argv],
+               "additional_decision_sources": [
+                   {"path": str(path.relative_to(ROOT)), "sha256": file_hash(path)}
+                   for path in decision_paths[len(existing_paths):]],
                "authority_manifest_sha256": file_hash(manifest_path),
                "canonical_scorer_sha256": canonical_sha, "runner_sha256": file_hash(Path(__file__)),
                "new_semantic_judgments_generated": 0, "GPU_initialized": False,
