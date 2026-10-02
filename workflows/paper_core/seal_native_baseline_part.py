@@ -50,7 +50,7 @@ def complete_lines(path):
 def execute(args):
     samples, _spec, provenance = inputs(args.model, args.method)
     directory = ROOT / OUTPUT / args.run_id
-    stem = f"{args.model}_{args.method}_0000_2424"
+    stem = f"{args.model}_{args.method}_{args.start:04d}_{args.stop:04d}"
     raw = directory / "raw" / (stem + ".jsonl")
     pilot = directory / (stem + ".pilot.json")
     claim = directory / (stem + ".claim.json")
@@ -63,7 +63,11 @@ def execute(args):
     ledger = json.loads(identity_path.read_text())
     if (not proof["passed"] or proof["completed"] != 8
             or owned["owner"] != args.owner or owned["identity"] != proof["identity"]
-            or ledger["identity"] != proof["ledger_identity"]):
+            or ledger["identity"] != proof["ledger_identity"]
+            or proof["start"] != args.start or proof["stop"] != args.stop
+            or ledger["definition"]["start"] != args.start
+            or ledger["definition"]["stop"] != args.stop
+            or owned["sample_ids"] != [s["id"] for s in samples[args.start:args.stop]]):
         raise ValueError("The exact owned source pilot/claim/ledger is not present")
     command = process(args.producer_pid)
     if (command is None or "workflows/paper_core/native_baselines.py " not in command
@@ -75,7 +79,7 @@ def execute(args):
     if Path(original_lock).parent != ROOT / "outputs/locks":
         raise ValueError("Owned producer lock belongs to another workspace")
     initial_bytes, initial_rows = complete_lines(raw)
-    if not 8 <= len(initial_rows) < 2416:
+    if not 8 <= len(initial_rows) < args.stop - args.start - 8:
         raise ValueError("Move requires an actual source prefix and at least eight remaining inputs")
     supervisor_command = process(args.supervisor_pid)
     if supervisor_command != "bash " + str(directory / "launch.sh") + " ":
@@ -100,7 +104,9 @@ def execute(args):
         persisted, rows = complete_lines(raw)
         if len(rows) <= len(initial_rows):
             raise ValueError("Ledger event did not add a complete generated input")
-        expected = [task_id(args.model, task(s, args.method)) for s in samples[:len(rows)]]
+        next_start = args.start + len(rows)
+        expected = [task_id(args.model, task(s, args.method))
+                    for s in samples[args.start:next_start]]
         if [row["key"] for row in rows] != expected or len(set(expected)) != len(rows):
             raise ValueError("Sealed source is not the exact ordered eval prefix")
         cfg = asdict(DecodeConfig(method=args.method))
@@ -127,9 +133,13 @@ def execute(args):
             "schema": "kdm_native_baseline_sealed_prefix_v1", "owner": args.owner,
             "model": args.model, "method": args.method, "dataset": "food101", "split": "eval",
             "whole_condition_complete": False, "completed": len(rows), "expected_full": 2424,
-            "start": 0, "stop": len(rows), "remaining_start": len(rows), "remaining_stop": 2424,
-            "remaining_sample_ids": [s["id"] for s in samples[len(rows):]],
-            "remaining_keys": [task_id(args.model, task(s, args.method)) for s in samples[len(rows):]],
+            "expected_original_part": args.stop - args.start,
+            "original_part_start": args.start, "original_part_stop": args.stop,
+            "start": args.start, "stop": next_start,
+            "remaining_start": next_start, "remaining_stop": args.stop,
+            "remaining_sample_ids": [s["id"] for s in samples[next_start:args.stop]],
+            "remaining_keys": [task_id(args.model, task(s, args.method))
+                               for s in samples[next_start:args.stop]],
             "completed_keys_sha256": stable_hash(expected), "raw_path": str(raw),
             "raw_sha256": file_hash(raw), "identity_path": str(identity_path),
             "identity_sha256": file_hash(identity_path), "ledger_identity": ledger["identity"],
@@ -155,6 +165,8 @@ def main():
     parser.add_argument("--model", choices=MODELS, required=True)
     parser.add_argument("--method", choices=("dola", "deco", "sid"), required=True)
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--start", type=int, default=0)
+    parser.add_argument("--stop", type=int, default=2424)
     parser.add_argument("--producer-pid", type=int, required=True)
     parser.add_argument("--supervisor-pid", type=int, required=True)
     parser.add_argument("--owner", default="/root/native_baselines")
@@ -162,6 +174,8 @@ def main():
     args = parser.parse_args()
     if not 1 <= args.wait_max_s <= 60:
         parser.error("Use one bounded close-event wait of at most 60 seconds")
+    if not 0 <= args.start < args.stop <= 2424:
+        parser.error("Use an explicit nonempty registered eval part")
     (ROOT / OUTPUT / args.run_id).resolve().relative_to(ROOT / OUTPUT)
     print(json.dumps(execute(args), indent=2))
 
