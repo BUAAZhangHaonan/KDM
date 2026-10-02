@@ -300,6 +300,8 @@ def viz_inferences(source_records, authority_manifest, decision_paths, viz_autho
     supplied = load_viz_authority(viz_authority_paths)
     inferred = {}
     lexical_sha = file_hash(ROOT / "src/kdm/scoring.py")
+    span_normalizer = VQAEval(None, None)
+    normalize_span = lambda text: span_normalizer.processDigitArticle(span_normalizer.processPunctuation(text))
     for qkey, (question, answer) in targets.items():
         label, span, abstain, source, reason = None, None, None, [], None
         if qkey in supplied:
@@ -331,6 +333,14 @@ def viz_inferences(source_records, authority_manifest, decision_paths, viz_autho
                 behaviors = {item["label"] == "abstain" for item in source}
                 abstain = next(iter(behaviors)) if len(behaviors) == 1 else None
                 reason = "actual_final_census_exact_QA_span_or_label_variants"
+                substantive = all(item["label"] in {"answer_assertive", "answer_uncertain"}
+                                  and item["answer_text"] and item["answer_text"] in answer for item in source)
+                if substantive:
+                    normalized_spans = {normalize_span(item["answer_text"]) for item in source}
+                    if len(normalized_spans) == 1 and next(iter(normalized_spans)):
+                        chosen = min(source, key=lambda item: (len(item["answer_text"]), item["source_line"]))
+                        label, span = chosen["label"], chosen["answer_text"]
+                        reason = "actual_final_census_VQA_equivalent_original_spans"
         else:
             label = lexical_label(answer)
             if label is not None:
