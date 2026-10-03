@@ -62,6 +62,19 @@ def resource(host,gpu,out):
     atomic_json(out/'claim.json',proof)
     return proof
 
+def claim_keys(model,keys,res,out):
+    """Serialize key admission, checking completed and live shards before load."""
+    directory=BASE/'generation'/model; path=directory/'key_admission.lock'
+    with open(path,'a+') as lock:
+        fcntl.flock(lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
+        for other in directory.glob('*/independent.jsonl'):
+            existing={r['key'] for r in read_jsonl(other)}
+            assert not existing.intersection(keys),'Already generated keys: '+str(other)
+        for other in directory.glob('*/key_claim.json'):
+            old=json.loads(other.read_text())
+            assert not set(old['keys']).intersection(keys),'Keys already claimed: '+str(other)
+        atomic_json(out/'key_claim.json',{'keys':sorted(keys),'pid':res['pid'],'starttick':res['starttick'],'host':res['host'],'gpu':res['gpu'],'created_unix':time.time()})
+
 def run(a):
     import independent as base
     old,history=evidence(a.model)
@@ -74,6 +87,7 @@ def run(a):
     out=BASE/'generation'/a.model/a.run;out.mkdir(parents=True,exist_ok=False);bridge=None
     try:
         res=resource(a.host,a.gpu,out)
+        claim_keys(a.model,keys,res,out)
         if a.host=='RTX_Pro_6000':
             sys.path.insert(0,str(ROOT/'workflows/independent_k100_v1'))
             import admission
@@ -98,9 +112,14 @@ def run(a):
         started=time.time();progress={'status':'loading','model':a.model,'expected':len(keys),'completed':0,'images':0,'started_unix':started}
         atomic_json(out/'progress.json',progress);sc.load();loaded=time.time();walls=[];cache=0
         with open(out/'inputs.jsonl','x') as proof:
+            prepare=sc.prepare
+            def captured_prepare(sample):
+                result=prepare(sample);_,prompt,base_ids,inp=result
+                proof.write(json.dumps({'sample_id':sample['id'],'prompt':prompt,'unexpanded_prompt_ids':base_ids,'expanded_prompt_ids':inp['input_ids'][0].tolist(),'processor_summary':base.closed.summarize(inp)},ensure_ascii=False)+'\n');proof.flush()
+                return result
+            sc.prepare=captured_prepare
             for sid in groups:
-                sample=samples[sid];_,prompt,base_ids,inp=sc.prepare(sample)
-                proof.write(json.dumps({'sample_id':sid,'prompt':prompt,'unexpanded_prompt_ids':base_ids,'expanded_prompt_ids':inp['input_ids'][0].tolist(),'processor_summary':base.closed.summarize(inp)},ensure_ascii=False)+'\n');proof.flush()
+                sample=samples[sid]
                 rows=sc.generate_ten(sample,eos)
                 assert {task_id(a.model,base.task(sample,r['replicate'])) for r in rows}==set(groups[sid])
                 assert len({r['seed'] for r in rows})==10
