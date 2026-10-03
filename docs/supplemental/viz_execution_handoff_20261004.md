@@ -1,6 +1,6 @@
 # 核心五模型 Viz 全量十答接续
 
-2026-10-04 01:27 北京时间。这里只报告新一轮 GPU 提取；语义标注仍是独立工作。
+2026-10-04 01:34 北京时间。这里只报告新一轮 GPU 提取；语义标注仍是独立工作。
 
 ## 已验证
 
@@ -14,12 +14,12 @@
 
 |服务器/卡|进程|实际工作|
 |---|---:|---|
-|6403 GPU1|supervisor2124049，worker2124050|Gemma `tail_s3of4`，01:27已230答，后续从共享有限queue取下一未claim尾片|
-|K100 GPU0|supervisor2929123|Mistral4个尾片，首片01:27已2540答，完整十答图吞吐含prepare/落盘约1.83秒/图|
-|6403 GPU0|仍归root的Gemma baseline/CDA|释放后启动下述同队列命令即可自动取下一互斥片|
+|6403 GPU1|supervisor2124049，worker2124050|Gemma `tail_s3of4`，01:34已1210答，后续从共享有限queue取下一未claim尾片|
+|K100 GPU0|supervisor2929123|Mistral4个尾片，首片01:32已4840答，完整十答图生成均值1.561秒/图|
+|6403 GPU0|supervisor2129421，worker2129422|机制exit0后已于01:32接Gemma `tail_s2of4`，01:34加载中0答|
 |K100完成后|pidfd事件等待进程2933428|Mistral35010答真正验收后，接已保留Mini `tail_s0of4` 8740答；先8个未生成图真实准入并计入本片|
 
-6403 GPU0真正释放后执行（无重复实验，无新增轮询）：
+6403 GPU0已执行以下命令，作为启动记录保留，**不要再次启动**。启动前UUID匹配、显存14MiB/利用率0、原机制进程已退出、GPU锁可取；新s2与s3及pilot键交集均0，回执 `a100_gpu0_join_receipt.json`。
 
 ```bash
 /home/team/lvshuyang/anaconda3/envs/ST_LORA/bin/python \
