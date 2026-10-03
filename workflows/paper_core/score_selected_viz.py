@@ -149,9 +149,25 @@ def completed_selected_sources(manifest_path,samples,roster_path):
             files[field]=path
         if files['authority']!=authority_path or files['selected_config']!=selected_path or files['roster']!=roster_path:
             raise ValueError('A part differs from the exact frozen selection/roster authority')
+        if files['raw'].name.startswith('full_'):
+            release_path=within(ROOT,source['budget_release'])
+            if file_hash(release_path)!=source['budget_release_sha256']:
+                raise ValueError('The actual full-production budget release changed')
+            release=json.loads(release_path.read_text());pilot_path=release_path.parent/'pilot_receipt.json'
+            pilot=json.loads(pilot_path.read_text())
+            if (release['released'] is not True or release['stage']!='viz512'
+                    or release['authority_sha256']!=manifest['authority_sha256']
+                    or release['actual_pilot_measured'] is not True
+                    or release['original_method_precision_batch_token_noise_parameters_preserved'] is not True
+                    or file_hash(pilot_path)!=release['pilot_receipt_sha256']
+                    or pilot['passed'] is not True or pilot['model']!=model or pilot['stage']!='viz512'):
+                raise ValueError('The real measured pilot and released original full-production scope differ')
         identity=json.loads(files['claim_identity'].read_text());plan=json.loads(files['claim_plan'].read_text())
+        expected_identity_plan=dict(plan)
+        if files['raw'].name.startswith('full_'):
+            expected_identity_plan['allocated_actual_gpu_seconds_including_load']=release['allocated_GPU_seconds_including_reused_pilot']
         configs=[c for c in authority['conditions']if c['model']==model]
-        if (identity['plan']!=plan or identity['stage']!='viz512' or plan['stage']!='viz512'
+        if (identity['plan']!=expected_identity_plan or identity['stage']!='viz512' or plan['stage']!='viz512'
                 or plan['schema']!='kdm_selected_main_Viz512_missing_claim_v1'
                 or plan['model']!=model or plan['claim_id']!=source['claim_id']
                 or plan['authority_sha256']!=manifest['authority_sha256']
