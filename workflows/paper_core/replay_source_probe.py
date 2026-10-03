@@ -17,11 +17,30 @@ from workflows.paper_core.cda_trace_replay import tensor_evidence,now
 
 def finite(value):return float(value) if np.isfinite(value) else None
 
+def clone_cpu(value):
+    import torch
+    if isinstance(value,torch.Tensor):return value.detach().cpu().clone()
+    if isinstance(value,dict):return {k:clone_cpu(v) for k,v in value.items()}
+    if isinstance(value,list):return [clone_cpu(v) for v in value]
+    if isinstance(value,tuple):return tuple(clone_cpu(v) for v in value)
+    if value is None or isinstance(value,(str,int,float,bool)):return value
+    raise TypeError(type(value))
+
+def shape_and_prompt_evidence(value):
+    if isinstance(value,dict):
+        return {k:shape_and_prompt_evidence(v) for k,v in value.items()
+                if not (k=='sha256' and value.get('dtype','').startswith(('torch.float','torch.bfloat')))}
+    if isinstance(value,list):return [shape_and_prompt_evidence(v) for v in value]
+    return value
+
 def execute(a):
     _,spec,proof=load_inputs(a.model,'vcd')
     source=within(ROOT,a.history);paths=list(read_jsonl(source))
     assert len(paths)=={'llava16_mistral':2,'minicpm26':3,'qwen35_4b':1}[a.model]
     assert all(row['model']==a.model for row in paths)
+    if a.sample_id:
+        paths=[row for row in paths if row['sample']['id']==a.sample_id]
+        assert len(paths)==1
     gate=json.loads(within(ROOT,a.cleanup_gate).read_text())
     assert gate['passed'] and gate['protected_scientific_source_changed'] is False
     identity={'model':a.model,'history_sha256':file_hash(source),'proof':proof,
@@ -30,6 +49,9 @@ def execute(a):
               'pipeline_sha256':file_hash(ROOT/'src/kdm/pipeline.py'),
               'HFSession_sha256':file_hash(ROOT/'src/kdm/models/hf.py'),
               'max_gpu_seconds':a.max_gpu_seconds}
+    if a.noise_fixture:
+        identity['noise_fixture_sha256']=file_hash(within(ROOT,a.noise_fixture))
+        identity['scope']='Fixed saved noise diagnostic; not production noise or a replacement historical generation'
     if a.plan:return identity
     cards=a.physical_gpus.split(',')
     actual,admitted=admit(spec,a.model,'vcd',a.registry,cards,a.run_id,a.owner,'core')
@@ -40,6 +62,10 @@ def execute(a):
                                 'owner':a.owner,'admission':admitted,'started_utc':now()})
     from PIL import Image
     started=time.perf_counter();backend=make_backend(actual,'cuda:0');load_s=time.perf_counter()-started
+    fixture=None
+    if a.noise_fixture:
+        import torch
+        fixture=torch.load(within(ROOT,a.noise_fixture),map_location='cpu',weights_only=True)
     results=[];completed=[]
     for original in paths:
         sid=original['sample']['id'];seed=original['seed']
@@ -57,6 +83,31 @@ def execute(a):
             if schedule=='four_view':order=('c','r','g','h')
             definitions={'g':(gprompt,'clean'),'h':(hprompt,'noise'),'c':(plain,'clean'),'r':(plain,'noise')}
             branches={name:backend.session(image,definitions[name][0],reference=definitions[name][1],seed=seed) for name in order}
+            if a.save_noise_fixture and schedule=='four_view':
+                assert a.sample_id and a.fixture_reference_dir
+                references=[]
+                for file in within(ROOT,a.fixture_reference_dir).glob('*.inputs.json'):
+                    item=json.loads(file.read_text())
+                    if item['sample_id']==sid and item['schedule']=='four_view':references.append((file,item))
+                assert len(references)==1
+                priorfile,priorinputs=references[0]
+                for name in ('r','h'):
+                    assert tensor_evidence(branches[name].inputs)==priorinputs['processed_inputs'][name]
+                import torch
+                payload={'sample_id':sid,'seed':seed,'prompts':{name:definitions[name][0] for name in ('r','h')},
+                         'branches':{name:clone_cpu(branches[name].inputs) for name in ('r','h')},
+                         'original_control_input_sha256':file_hash(priorfile)}
+                torch.save(payload,out/'noise_fixture.pt')
+                atomic_json(out/'noise_fixture_receipt.json',{'sample_id':sid,'sha256':file_hash(out/'noise_fixture.pt'),
+                           'original_control_input_sha256':file_hash(priorfile),'exact_original_3090_processed_noise_verified':True})
+            if fixture is not None:
+                assert fixture['sample_id']==sid and fixture['seed']==seed
+                from kdm.models.remote import move_inputs
+                for name in ('r','h'):
+                    if name not in branches:continue
+                    assert fixture['prompts'][name]==definitions[name][0]
+                    assert shape_and_prompt_evidence(tensor_evidence(branches[name].inputs))==shape_and_prompt_evidence(tensor_evidence(fixture['branches'][name]))
+                    branches[name].inputs=move_inputs(fixture['branches'][name],'cuda:0')
             stem=hashlib.sha256((sid+schedule).encode()).hexdigest()[:20]
             atomic_json(out/f'{stem}.inputs.json',{'sample_id':sid,'schedule':schedule,'creation_order':list(order),
                     'forward_order':list(order),'prompts':{name:definitions[name][0] for name in order},
@@ -64,7 +115,9 @@ def execute(a):
                     'seed':seed,'noise_timestep':500,'image_path':str(imagepath),'image_sha256':file_hash(imagepath),
                     'historical_source':original['historical_source'],'historical_config':original['config'],
                     'admission':admitted,'cache_policy':'separate HFSession caches advanced through the same saved tokens',
-                    'historical_reply':original['text'],'historical_tokens':original['tokens']})
+                    'historical_reply':original['text'],'historical_tokens':original['tokens'],
+                    'noise_fixture_sha256':identity.get('noise_fixture_sha256'),
+                    'production_noise_modified':False})
             saved={};events=[]
             for pos in range(max(original['target_positions'])+1):
                 prefix=tuple(original['tokens'][:pos])
@@ -101,7 +154,9 @@ def execute(a):
              'historical_token_agreements':sum(row['current_matches_historical'] for row in results),
              'model_load_seconds':load_s,'actual_GPU_seconds':(time.perf_counter()-started)*len(cards),
              'budget_GPU_seconds':a.max_gpu_seconds,'paths':completed,'completed_utc':now(),
-             'historical_unknown_inputs_recovered':False,'events_sha256':file_hash(out/'events.jsonl') if results else None}
+             'historical_unknown_inputs_recovered':False,'events_sha256':file_hash(out/'events.jsonl') if results else None,
+             'diagnostic_noise_fixture':bool(a.noise_fixture or a.save_noise_fixture),
+             'noise_fixture_sha256':identity.get('noise_fixture_sha256')}
     atomic_json(out/'complete.json',receipt)
     return receipt
 
@@ -111,5 +166,7 @@ if __name__=='__main__':
     p.add_argument('--physical-gpus',required=True);p.add_argument('--run-id',required=True);p.add_argument('--cleanup-gate',required=True)
     p.add_argument('--hardware-role',choices=('original_3090','previous_replay_hardware'),required=True)
     p.add_argument('--max-gpu-seconds',type=float,default=600);p.add_argument('--owner',default='/root/cleanup_verified')
+    p.add_argument('--sample-id');p.add_argument('--fixture-reference-dir')
+    fixture=p.add_mutually_exclusive_group();fixture.add_argument('--noise-fixture');fixture.add_argument('--save-noise-fixture',action='store_true')
     p.add_argument('--plan',action='store_true')
     print(json.dumps(execute(p.parse_args()),ensure_ascii=False,allow_nan=False))
