@@ -135,6 +135,9 @@ class MatrixObserver(NativeAuditBackend):
                 "full_vocab_finite_and_registered_operator_equal": True,
                 "cross_hardware_tokens_equal": all(record["tokens_equal_to_original_dual"] for record in self.records),
                 "cross_hardware_exact_tokens_required_for_operator_check": False,
+                "original_dual_processed_tensor_hashes": None,
+                "original_dual_noise_tensor_hashes": None,
+                "original_dual_tensor_hash_comparison": "unknown: original raw source does not contain these hashes",
                 "gate_generation_wall_s": sum(row["wall_s"] for row in rows)}
 
 
@@ -270,7 +273,8 @@ def main():
             "operator_audit_path": str(operator_path.relative_to(ROOT)),
             "operator_audit_sha256": file_hash(operator_path), "registry_sha256": file_hash(registry_path),
             "factory_sha256": file_hash(factory_path), "runner_sha256": file_hash(Path(__file__)),
-            "actual_hf_device_map": backend.model.hf_device_map,
+            "actual_hf_device_map": getattr(backend.model, "hf_device_map", None),
+            "actual_placement_evidence": backend.em.actual_placement_evidence,
             "peak_allocated_bytes": torch.cuda.max_memory_allocated(0),
             "peak_reserved_bytes": torch.cuda.max_memory_reserved(0),
             "finished_utc": generate.now(), "actual_identity": identity,

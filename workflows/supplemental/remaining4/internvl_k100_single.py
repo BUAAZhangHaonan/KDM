@@ -42,11 +42,40 @@ class InternVLK100SingleEngine(InternVLModel):
         self.model = AutoModel.from_pretrained(
             model_path, dtype=torch.bfloat16, trust_remote_code=True,
             device_map=device_map, max_memory=memory, low_cpu_mem_usage=True).eval()
-        if getattr(self.model, "hf_device_map", None) != device_map:
-            raise RuntimeError("Loaded InternVL modules differ from the explicit single map")
-        if any(parameter.device.type != "cuda" or parameter.device.index != 0
-               for parameter in self.model.parameters()):
-            raise RuntimeError("Every InternVL parameter must reside on logical GPU0")
+        actual_map = getattr(self.model, "hf_device_map", None)
+        # TF5.17 skips accelerate_dispatch when all requested values are one
+        # device, so its informational hf_device_map attribute can be absent.
+        # Observe every real parameter instead of manufacturing that attribute.
+        if actual_map is not None and (not isinstance(actual_map, dict)
+                                      or any(str(value) not in {"0", "cuda:0"}
+                                             for value in actual_map.values())):
+            raise RuntimeError(f"InternVL actual metadata contains another device: {actual_map!r}")
+        parameters = []
+        names = sorted(device_map, key=len, reverse=True)
+        for name, parameter in self.model.named_parameters():
+            matched = next((module for module in names if name == module or name.startswith(module + ".")), None)
+            if (matched is None or parameter.device.type != "cuda" or parameter.device.index != 0
+                    or parameter.dtype != torch.bfloat16):
+                raise RuntimeError(f"InternVL parameter violates the original module/GPU0/BF16 layout: {name}")
+            parameters.append({"name": name, "original_module": matched,
+                               "device": str(parameter.device), "dtype": str(parameter.dtype),
+                               "shape": list(parameter.shape)})
+        if not parameters:
+            raise RuntimeError("InternVL single map loaded no real parameters")
+        modules = []
+        for name in names:
+            module = self.model.get_submodule(name)
+            modules.append({"name": name, "requested_device": 0,
+                "parameter_devices": sorted({str(value.device) for value in module.parameters()}),
+                "parameter_dtypes": sorted({str(value.dtype) for value in module.parameters()}),
+                "buffer_devices": sorted({str(value.device) for value in module.buffers()}),
+                "buffer_dtypes": sorted({str(value.dtype) for value in module.buffers()}),
+                "parameter_or_buffer_free": not any(True for _ in module.parameters())
+                    and not any(True for _ in module.buffers())})
+        self.actual_placement_evidence = {"actual_hf_device_map": actual_map,
+            "explicit_requested_map": dict(device_map), "every_parameter_on_cuda0_BF16": True,
+            "original_module_resolution": modules, "parameters": parameters,
+            "metadata_note": "TF5.17 assigns hf_device_map through accelerate_dispatch only for more than one device or disk; missing metadata is retained as null, never invented"}
         self.ip = CLIPImageProcessor.from_pretrained(model_path)
         self.num_image_token = int(self.model.num_image_token)
         tokenizer = self.proc.tokenizer
