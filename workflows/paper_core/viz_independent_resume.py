@@ -84,7 +84,7 @@ def run(a):
     cp=checkpoint(a.model,path);samples,keys,groups=inputs(a.model,a.pieces,base)
     if a.plan:
         print(json.dumps({'model':a.model,'images':len(groups),'answers':len(keys),'history':history,'checkpoint':cp['checkpoint'],'generation_started':False}));return
-    out=BASE/'generation'/a.model/a.run;out.mkdir(parents=True,exist_ok=False);bridge=None
+    out=BASE/'generation'/a.model/a.run;out.mkdir(parents=True,exist_ok=False);bridge=None;sc=None
     try:
         res=resource(a.host,a.gpu,out)
         claim_keys(a.model,keys,res,out)
@@ -133,6 +133,8 @@ def run(a):
     except BaseException as e:
         atomic_json(out/'error.json',{'error':repr(e),'traceback':traceback.format_exc(),'no_automatic_retry':True});raise
     finally:
+        if sc is not None and hasattr(sc,'llm'):
+            sc.llm.llm_engine.engine_core.shutdown(timeout=30)
         if bridge is not None:bridge.close()
 
 if __name__=='__main__':
