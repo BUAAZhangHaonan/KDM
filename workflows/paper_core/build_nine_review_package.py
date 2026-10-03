@@ -96,6 +96,15 @@ def main():
     dev_table = dev[["model", "marker", "C", "W", "A", "TP", "FP", "J"]].copy()
     dev_table["J"] = dev_table.J.map(lambda x: f"{100*x:.2f}")
     dev_table.to_csv(output / "core5_actual_dev_selected_IP_VCD.csv", index=False)
+    native = baselines[baselines.method.eq("vcd")][["model", "condition_id", "J"]].rename(
+        columns={"condition_id": "native_condition_id", "J": "native_J"})
+    dev_native = dev.merge(native, on="model", validate="one_to_one")
+    if len(dev_native) != 5 or not dev_native.method.eq("instruction_vcd").all():
+        raise ValueError("The five actual dev-selected IP-VCD native comparisons differ")
+    dev_native["delta_J_pp"] = 100 * (dev_native.J - dev_native.native_J)
+    dev_native.to_csv(output / "core5_actual_dev_selected_vs_native_J.csv", index=False)
+    dev_native_higher = int(dev_native.delta_J_pp.gt(0).sum())
+    dev_native_mean_delta_pp = float(dev_native.delta_J_pp.mean())
 
     cda = pd.read_csv(output / "support/cda/CDA_UNKNOWN_weight_state_reference_summary.csv")
     cda = cda[(cda.panel == "full_eval") & (cda.aggregation == "condition_all")].copy()
@@ -175,6 +184,8 @@ necessary_and_unnecessary_abstention_changes.csv逐模型提供C/W/A/TP/FP/FN、
 {markdown(dev_table)}
 
 这五个IP-VCD配置确实仅用Food dev404选择并冻结，eval结果与best_observed分开。IP-M3ID及扩展四模型的dev选择尚未完成；相应主表使用明确标记的注册eval观测集合。registered_dev_decisions.parquet保存已完成32,320条开发记录与原来源，当前主表只采用上述五个实际IP-VCD工作点。
+
+这五个实际dev选定工作点相对原生VCD，在{dev_native_higher}/5模型提高eval J，五模型等权描述性平均提高{dev_native_mean_delta_pp:.2f}个百分点。core5_actual_dev_selected_vs_native_J.csv保留两侧条件身份、各项分子和真实差值；这个均值不作为跨模型显著性结论。
 
 其中Qwen2.5-VL的dev选定{q25_dev.marker}，eval J为{100*q25_dev.J:.2f}%；其eval最佳观测为{100*q25_observed.J:.2f}%。五个dev选定IP-VCD配置中，{same_selected_count}个与本轮eval最高J条件一致。两类选择分别记账。
 
