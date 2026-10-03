@@ -55,7 +55,7 @@ def main():
   gate=json.loads((base/'pilot_receipt.json').read_text());release=json.loads(within(ROOT,a.budget_release).read_text())
   assert gate['passed']and gate['authority_sha256']==a.authority_sha256 and gate['missing_keys_sha256']==file_hash(missingpath)
   assert release['released']and release['stage']=='viz512'and release['pilot_receipt_sha256']==file_hash(base/'pilot_receipt.json')and release['authority_sha256']==a.authority_sha256
-  assert release['allocated_GPU_seconds_including_reused_pilot']==a.allocated_gpu_seconds and release['estimated_GPU_hours']<=release['authorized_GPU_hours_cap']
+  assert release['allocated_GPU_seconds_including_reused_pilot']==a.allocated_gpu_seconds and release['actual_pilot_measured']and release['current_authorized_scope']=='registered21_main_Viz512_missing_keys_only'and release['estimated_GPU_hours']*3600<=a.allocated_gpu_seconds
  assert a.allocated_gpu_seconds>0
  if any(int(v.split(':')[1])>=2 for v in os.environ.get('KDM_GPU_SLOTS','').split(',')if v):raise ValueError('At most two authorized A100 slots')
  current_cap=a.allocated_gpu_seconds-(gate['GPU_seconds_including_load']if a.mode=='full'else 0);assert current_cap>0
@@ -66,7 +66,9 @@ def main():
   else:core.REGISTRY=a.host_registry;admitted=core.admit(ROOT,spec,a.model,cards);actual=core.runtime_spec(ROOT,spec,a.model)
   identity=dict(plan=plan,actual_admission=admitted,runtime_spec=actual,pid=os.getpid(),claimed_at_utc=now(),stage='viz512')
   if a.mode=='full':
-   old=json.loads((base/'identity.json').read_text());assert old['runtime_spec']==actual and old['plan']==plan
+   old=json.loads((base/'identity.json').read_text());assert old['runtime_spec']==actual
+   assert {k:v for k,v in old['plan'].items()if k!='allocated_actual_gpu_seconds_including_load'}=={k:v for k,v in plan.items()if k!='allocated_actual_gpu_seconds_including_load'}
+   write(base/'full_identity.json',identity)
   else:write(base/'identity.json',identity);write(base/'claim.json',plan)
   backend=make_backend(actual,'cuda:0');load=time.perf_counter()-started;backend=BudgetInputs(backend,started,len(cards),current_cap,base/'pilot_inputs.jsonl');done=[]
   excluded={k for d in gate['conditions']for k in d['completed_keys']}if a.mode=='full'else set()
