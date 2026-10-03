@@ -127,3 +127,14 @@ Food nine-model full panel remains accepted: 483 conditions / 1,170,792 rows. Th
 - All actual new 93/190/74/13/103/103 Viz semantic batches completed with real Luna medium; root finite review only its actually read subsets, with original decisions preserved. Official answerability166/346 and continuous official answer scores are unchanged.
 - Independent compact dev/J handoff: outputs/paper_core_20261002_dev_viz/nine_Food_dev_J_compact_handoff_20261003_2310.zip, 5,489,546 bytes, SHA6703896a78839284dfda53bed2b256ead6b5adba96e1ad68de874b107fc2bca3; local SHA/CRC checked. This supplements immutable full Food v5; Viz selected and finite extra diagnostic/cases are not yet claimed complete.
 - Main Viz continues on original admitted routes with disjoint claims; finite diagnostic/case gaps remain within their original per-model budget and follow main production priority.
+
+
+2026-10-03 23:26 CST GPU完成；23:33 CST CPU接续
+
+- 九模型Food：483条件、1170792正式eval行，评分/参考连接/全量键全部闭合；原352条件/853248行保持冻结。
+- 新Food dev21008行、52个404条件全部闭合；合旧核心5个IP-VCD选择共18个真实IP选点。主J比较69个同运行工作点。
+- 新Viz25条件12800行已全部实际评分闭合，官方连续质量与完整回复原始分数保留，语义未决0。旧core31/15872原样；最终56合并与包验收正在进行，尚不把写入中包计交付。
+- 21注册新Viz生成union10752键（native含精确复用），selected8704零缺失/重复。OneVision两次3090真实OOM保存失败来源；同原float16版本在A100三分支准入后只补真实缺键，未降参数。
+- 五台服务器13授权GPU已实际空闲；本任务GPU剩余0。有限四扩展103诊断/11案例22路径均在原2880 GPU秒/模型预算内，175实际候选对代数闭合通过；首位缓存精确复用。
+- 本轮Viz真正新Luna medium QA2341；root实际复核1791。814批发现误把错误/碎片/OCR当弃权后全批完整QA复核，原裁定不改、纠正追加并进入最后有效评分。
+- 原UNKNOWN有限机制与dev_selected工作点分别标记；One第三案例、CDA全词表Eq4、历史9个replay来源未知字段保留具体缺项，不新增探索。
