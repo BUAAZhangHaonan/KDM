@@ -22,13 +22,10 @@ from workflows.supplemental.remaining11.score import rows
 from workflows.supplemental.remaining4.score_native import save_json, save_rows
 
 BASE = "outputs/supplemental/remaining4"
-PAIR = BASE + "/ip_vcd_source_join_20261001_1900"
-REFERENCE = BASE + "/reference_full_20261001_1600/checkpoints/v2_reviewed_role_reference"
 NAMES = ("supported_abstention_recovered", "supported_abstention_preserved", "wrong_answer_corrected",
          "correct_answer_corrupted", "correct_answer_preserved", "unnecessary_abstention_introduced")
 PREDICATES = ("baseA and R and nextC", "baseA and R and nextA", "baseE and nextC", "baseC and nextE",
               "baseC and nextC", "not baseA and nextA and not R")
-OLD = BASE + "/detail_sources_20261001_qwen3vl"
 
 
 def state(record):
@@ -72,6 +69,11 @@ def oriented_pair(branches, left, right):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", choices=("internvl35_8b","onevision","phi35","qwen3vl"), required=True)
+    parser.add_argument("--accepted-main", required=True)
+    parser.add_argument("--accepted-main-sha256", required=True)
+    parser.add_argument("--reference-root", required=True)
+    parser.add_argument("--reference-complete", type=int, required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--strata-registration", required=True)
     parser.add_argument("--prior-budget", required=True)
@@ -81,26 +83,39 @@ def main():
         registration = list(csv.DictReader(stream))
     if not registration or not {row["stratum"] for row in registration} <= set(NAMES):
         raise ValueError("The original registration contains an unknown named diagnostic stratum")
-    pair_path = within(ROOT, PAIR) / "native_Direct_IP_sample_pairs.jsonl.gz"
-    pair_receipt = json.loads((pair_path.parent / "receipt.json").read_text())
-    ref_path = within(ROOT, REFERENCE) / "reference_G.jsonl"
-    ref_sha = file_hash(ref_path)
-    ref_receipt = json.loads((ref_path.parent / "receipt.json").read_text())
-    old_path = within(ROOT, OLD) / "selected_actual_sources.jsonl"
-    old_receipt = json.loads((old_path.parent / "source_receipt.json").read_text())
-    budget = json.loads(budget_path.read_text())
-    if (not pair_receipt["passed"] or file_hash(pair_path) != pair_receipt["outputs"][pair_path.name]
-            or not ref_receipt["passed"] or ref_receipt["reference_complete"] != 19392 or ref_receipt["reference_pending"]
-            or ref_sha != ref_receipt["outputs"][ref_path.name]
-            or not old_receipt["passed"] or file_hash(old_path) != old_receipt["outputs"][old_path.name]
-            or budget["model"] != "qwen3vl" or budget["gpu_count"] != 1 or not 0 <= budget["used_gpu_seconds"] < 2880):
-        raise ValueError("Actual original source, reference and cumulative budget proofs are required")
-    samples = {r["id"]: r for _line, r, _sha in rows(ROOT / "data/current/all.jsonl") if r["dataset"] == "food101" and r["split"] == "eval"}
-    references = {r["sample_id"]: r for _line, r, _sha in rows(ref_path) if r["model"] == "qwen3vl" and r["split"] == "eval"}
-    pairs = {r["sample_id"]: r for _line, r, _sha in rows(pair_path) if r["model"] == "qwen3vl"}
-    cache = {r["sample"]["id"]: r for _line, r, _sha in rows(old_path)}
-    if set(samples) != set(pairs) or set(samples) != set(references) or len(samples) != 2424:
-        raise ValueError("The actual three-path comparison does not cover the full registered eval population")
+    import pandas as pd
+    main_path=within(ROOT,args.accepted_main)
+    if file_hash(main_path)!=args.accepted_main_sha256:
+        raise ValueError("The accepted main score source SHA differs")
+    ref_path=within(ROOT,args.reference_root)/"reference_G.jsonl"
+    ref_sha=file_hash(ref_path)
+    ref_receipt=json.loads((ref_path.parent/"receipt.json").read_text())
+    budget=json.loads(budget_path.read_text())
+    if (not ref_receipt["passed"] or ref_receipt["reference_complete"]!=args.reference_complete
+            or ref_receipt["reference_pending"] or ref_receipt["outputs"][ref_path.name]!=ref_sha
+            or budget["model"]!=args.model or budget["gpu_count"]!=(2 if args.model=="internvl35_8b" else 1)
+            or not 0<=budget["used_gpu_seconds"]<2880):
+        raise ValueError("The final reference or original remaining per-model budget differs")
+    frame=pd.read_parquet(main_path)
+    frame=frame[(frame.model==args.model)&(frame.dataset=="food101")&(frame.split=="eval")&(frame.replicate==0)]
+    samples={x["id"]:x for _line,x,_sha in rows(ROOT/"data/current/all.jsonl")if x["dataset"]=="food101"and x["split"]=="eval"}
+    pairs={sid:{}for sid in samples};references={};main_records={}
+    configurations=(("native_vcd","vcd","native_unguided","NONE",False),("IP","instruction_vcd","instruction_preserving","UNKNOWN",True),("unguided_direct","direct","unguided","NONE",False))
+    for label,method,kind,marker,guided in configurations:
+        sub=frame[(frame.method==method)&(frame.kind==kind)&(frame.marker==marker)&(frame.reference_marker==marker)&(frame.guided==guided)&(~frame.reference_guided)]
+        if len(sub)!=2424 or sub.sample_id.nunique()!=2424 or set(sub.sample_id)!=set(samples):
+            raise ValueError("An accepted exact original UNKNOWN/native/unguided condition is not complete2424")
+        for accepted in sub.to_dict("records"):
+            sid=accepted["sample_id"]
+            if not accepted["reference_complete"]or not accepted["accepted_complete_decision"]:
+                raise ValueError("A selected population contains an unaccepted score/reference")
+            record={"canonical_name_in_primary_score":int(accepted["correct_canonical"]),"literal_extracted_name_score":int(accepted["correct_literal"]),"abstain":bool(accepted["abstain"])}
+            ref={"reference_G":bool(accepted["uniform_reference"]),"reference_complete":True,"gold_rank":None,"correct_count":None}
+            if sid in references and references[sid]["reference_G"]!=ref["reference_G"]:
+                raise ValueError("Accepted original three paths disagree on their final reference")
+            references[sid]=ref;pairs[sid][label]={"score":record};main_records[sid,label]=accepted
+    if len(samples)!=2424:
+        raise ValueError("The fixed Food eval population differs")
     populations, transitions = defaultdict(list), Counter()
     for sid in sorted(samples):
         base, nxt = state(pairs[sid]["native_vcd"]["score"]), state(pairs[sid]["IP"]["score"])
@@ -111,15 +126,34 @@ def main():
         for name in stratum_of(base, nxt, reference):
             populations[name].append(sid)
     selected = sorted({sid for name in NAMES for sid in populations[name][:8]})
+    score_requests=defaultdict(dict)
+    for sid in selected:
+        for label in ("native_vcd","IP","unguided_direct"):
+            meta=main_records[sid,label];score_requests[within(ROOT,meta["source_score_path"])][int(meta["source_score_line"])]=(sid,label,meta)
+    selected_score_reads=[]
+    for score_path,wanted in score_requests.items():
+        if len({meta["source_score_sha256"]for _sid,_label,meta in wanted.values()})!=1 or file_hash(score_path)!=next(iter(wanted.values()))[2]["source_score_sha256"]:
+            raise ValueError("An accepted score container differs from its exact main binding")
+        opener=gzip.open if score_path.suffix==".gz"else open;found=set()
+        with opener(score_path,"rb")as stream:
+            for line,data in enumerate(islice(stream,max(wanted)),1):
+                if line not in wanted:continue
+                sid,label,meta=wanted[line];original=json.loads(data)
+                if hashlib.sha256(data).hexdigest()!=meta["source_score_line_sha256"]or original["key"]!=meta["source_task_key"]or original["sample_id"]!=sid or original["model"]!=args.model:
+                    raise ValueError("A selected accepted score line/key/model differs")
+                record=dict(original)
+                record["accepted_main_original_score_fields"]={k:original.get(k)for k in ["canonical_name_in_primary_score","literal_extracted_name_score","abstain","reference_G"]}
+                record.update(canonical_name_in_primary_score=int(meta["correct_canonical"]),literal_extracted_name_score=int(meta["correct_literal"]),abstain=bool(meta["abstain"]),reference_G=bool(meta["uniform_reference"]),reference_complete=True)
+                record["accepted_main_binding"]={k:meta[k]for k in ["source_score_path","source_score_sha256","source_score_line","source_score_line_sha256","source_task_key","condition_id","qa_key","applied_correction_json"]}
+                record["accepted_main_binding"].update(path=args.accepted_main,sha256=args.accepted_main_sha256)
+                pairs[sid][label]["score"]=record
+                if label=="IP":references[sid].update(gold_rank=original.get("gold_rank"),correct_count=original.get("correct_count"))
+                found.add(line)
+        if found!=set(wanted):raise ValueError("A selected accepted score line is absent")
+        selected_score_reads.append({"path":str(score_path.relative_to(ROOT)),"selected_lines":sorted(found),"JSON_objects_parsed":len(found),"unselected_JSON_objects_parsed":0})
     branches_by_sample, requests, branch_locations = {}, defaultdict(dict), {}
     cached_count = 0
     for sid in selected:
-        if sid in cache:
-            if cache[sid]["sample"] != samples[sid] or cache[sid]["reference_sha256"] != ref_sha:
-                raise ValueError("An already verified finite raw source cache has a different sample/reference version")
-            branches_by_sample[sid] = cache[sid]["branches"]
-            cached_count += 3
-            continue
         for name, label in (("native_vcd", "native_vcd"), ("ip_vcd", "IP"), ("unguided_direct", "unguided_direct")):
             wrapped = pairs[sid][label]
             record, path = wrapped["score"], within(ROOT, wrapped["score"]["source_path"])
@@ -128,7 +162,7 @@ def main():
     extracted, source_reads = {}, []
     for path, requested in requests.items():
         exemplar = requested[min(requested)]["score"]
-        identity_path = within(ROOT, exemplar["source_identity_path"]) if exemplar["kind"] == "unguided" else path.with_suffix(".identity.json")
+        identity_path = within(ROOT, exemplar["source_identity_path"]) if exemplar.get("source_identity_path") else path.with_suffix(".identity.json")
         identity, identity_sha = json.loads(identity_path.read_text()), file_hash(identity_path)
         if identity["identity"] != stable_hash(identity["definition"]):
             raise ValueError("An original raw source identity definition differs")
@@ -143,7 +177,7 @@ def main():
                 record, sha = wrapped["score"], hashlib.sha256(actual).hexdigest()
                 if (sha != record["raw_line_sha256"] or raw["key"] != record["key"] or raw["identity"] != record["source_identity"]
                         or raw["identity"] != identity["identity"] or raw["sample"] != samples[record["sample_id"]]
-                        or raw["seed"] != stable_seed(record["sample_id"], "qwen3vl", 0) or raw["text"] != record["answer"]
+                        or raw["seed"] != stable_seed(record["sample_id"], args.model, 0) or raw["text"] != record["answer"]
                         or raw["terminated"] != record["terminated"] or not raw["tokens"]
                         or "config" in record and record["config"] != raw["config"]
                         or "config_sha256" in record and stable_hash(raw["config"]) != record["config_sha256"]):
@@ -172,10 +206,10 @@ def main():
             if pair is not None:
                 contrast.append(pair)
             else:
-                no_divergence.append({"model": "qwen3vl", "sample_id": sid, **missing})
+                no_divergence.append({"model": args.model, "sample_id": sid, **missing})
         ref = references[sid]
         memberships = [name for name in NAMES if sid in populations[name][:8]]
-        row = {"model": "qwen3vl", "sample": samples[sid], "seed": stable_seed(sid, "qwen3vl", 0), "marker": "UNKNOWN",
+        row = {"model": args.model, "sample": samples[sid], "seed": stable_seed(sid, args.model, 0), "marker": "UNKNOWN",
             "reference_version_bound": True, "reference_path": str(ref_path.relative_to(ROOT)), "reference_sha256": ref_sha,
             "reference_G": ref["reference_G"], "gold_rank": ref["gold_rank"], "correct_count": ref["correct_count"],
             "registered_strata": memberships, "comparison": "native_vcd_to_instruction_preserving_vcd",
@@ -206,7 +240,7 @@ def main():
             ("registered_six_strata_coverage.jsonl", coverage), ("selected_actual_sources.jsonl", pool),
             ("no_token_divergence.jsonl", no_divergence), ("missing_case_types.jsonl", absent)):
         save_rows(output / filename, data)
-    result = {"schema": "kdm_remaining4_registered_named_detail_sources_v2", "passed": True, "model": "qwen3vl",
+    result = {"schema": "kdm_remaining4_registered_named_detail_sources_v3_accepted_main_overlay", "passed": True, "model": args.model,
         "completed_utc": datetime.now(timezone.utc).isoformat(), "full_eval_population": 2424, "nine_grid_counts": dict(transitions),
         "registered_six_strata": coverage, "selected_unique_samples": len(selected), "diagnostic_inputs": len(diagnostics),
         "complete_case_inputs": len(cases), "actual_token_pairs": sum(len(row["pairs"]) for row in diagnostics),
@@ -215,7 +249,7 @@ def main():
         "original_strata_registration_path": str(registration_path.relative_to(ROOT)), "original_strata_registration_sha256": file_hash(registration_path),
         "original_core_comparison": "guided_vcd_to_instruction_preserving_vcd", "supplemental_comparison": "native_vcd_to_instruction_preserving_vcd",
         "reference_path": str(ref_path.relative_to(ROOT)), "reference_sha256": ref_sha,
-        "source_pair_sha256": file_hash(pair_path), "cached_real_raw_source_sha256": file_hash(old_path),
+        "accepted_main_score_rows_path":args.accepted_main,"accepted_main_score_rows_sha256":args.accepted_main_sha256,"selected_score_source_reads":selected_score_reads, "cached_real_raw_source_sha256": None,
         "prior_budget_path": str(budget_path.relative_to(ROOT)), "prior_budget_sha256": file_hash(budget_path),
         "prior_used_gpu_seconds": budget["used_gpu_seconds"], "old_outputs_overwritten": False,
         "termination_tokens_synthesized": False, "GPU_initialized": False, "mechanism_measurements_completed": False,
