@@ -5,10 +5,12 @@ from datetime import datetime, timezone
 import gzip
 import hashlib
 import json
+import math
 from pathlib import Path
 import shutil
 import subprocess
 import sys
+sys.dont_write_bytecode = True
 import zipfile
 import pandas as pd
 
@@ -95,7 +97,29 @@ def build(args):
     for cid,n in sorted(counts.items()):
         assert n['N']==2424
         metrics.append({**conditions[cid],**n,'W':2424-n['C']-n['A'],'FN':n['reference_positive']-n['TP'],'J':(n['C']+n['TP'])/2424,'accuracy':n['C']/2424,'precision':n['TP']/n['A'] if n['A'] else None,'recall':n['TP']/n['reference_positive'] if n['reference_positive'] else None,'precision_null_reason':None if n['A'] else 'no_abstentions','recall_null_reason':None if n['reference_positive'] else 'no_reference_positive','result_scope':'mechanism_only','selection':'none'})
-    pd.DataFrame(metrics).to_csv(folder/'metrics.csv',index=False)
+    metrics_frame=pd.DataFrame(metrics)
+    old_metrics=pd.read_csv(root/'outputs/paper_core_20261002_dev_viz/mechanism_acceptance/matrix_full337167_20261003_1615/full_condition_metrics.csv').set_index('condition_id')
+    current=metrics_frame.set_index('condition_id')
+    assert len(old_metrics)==124 and set(old_metrics.index)<=set(current.index)
+    for field in ('N','C','W','A','TP','FP','FN','reference_positive','J'):
+        if field=='J':
+            assert all(math.isclose(a,b,rel_tol=0,abs_tol=1e-12) for a,b in zip(old_metrics[field],current.loc[old_metrics.index,field])),field
+        else: assert old_metrics[field].eq(current.loc[old_metrics.index,field]).all(),field
+    shutil.copyfile(root/'outputs/paper_core_20261002_dev_viz/mechanism_acceptance/matrix_full337167_20261003_1615/full_condition_metrics.csv',folder/'previous124_accepted_metrics.csv')
+    metrics_frame.to_csv(folder/'metrics.csv',index=False)
+    frozen=pd.read_parquet(out/'mechanism/mechanism_scores.parquet')
+    frozen_conditions=pd.read_csv(out/'mechanism/conditions.csv').set_index('condition_id')
+    frozen_metrics=[]
+    for cid,g in frozen.groupby('condition_id'):
+        c=int(g.correct_canonical.sum());a=int(g.abstain.sum());tp=int((g.abstain & g.uniform_reference).sum());r=int(g.uniform_reference.sum())
+        frozen_metrics.append({'condition_id':cid,**frozen_conditions.loc[cid].to_dict(),'N':2424,'C':c,'W':2424-c-a,'A':a,'TP':tp,'FP':a-tp,'FN':r-tp,'reference_positive':r,'J':(c+tp)/2424,'result_scope':'mechanism_only','selection':'none'})
+    mechanism_all=pd.concat([pd.DataFrame(frozen_metrics),metrics_frame],ignore_index=True)
+    assert len(mechanism_all)==360 and not mechanism_all.condition_id.duplicated().any()
+    mechanism_all.to_csv(out/'mechanism/nine_model_all360_condition_metrics.csv',index=False)
+    main=pd.read_csv(out/'main/metrics_all_complete.csv');main['N']=main['n']
+    all_metrics=pd.concat([main,mechanism_all],ignore_index=True)
+    assert len(all_metrics)==483 and not all_metrics.condition_id.duplicated().any()
+    all_metrics.to_csv(out/'all_food_condition_metrics483.csv',index=False)
     shutil.copyfile(source/'receipt.json',folder/'source_acceptance_receipt.json')
     write(folder/'projection_receipt.json',{'passed':True,'rows':387840,'conditions':160,'source':str(source.relative_to(root)),'source_receipt_sha256':sha(source/'receipt.json'),'original_score_objects_modified':False,'full_raw_tokens_probabilities_and_semantic_decisions_recoverable_by_accepted_score_SHA_and_one_based_line':True,'GPU_initialized':False})
     shutil.copyfile(Path(__file__),out/'scripts/append_complete_food.py')
