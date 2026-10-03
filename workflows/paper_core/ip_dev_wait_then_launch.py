@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """One authorized missing-key claim after its owned predecessor actually completes."""
 import argparse
+import ctypes
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import select
 import subprocess
@@ -12,6 +14,17 @@ import time
 def write(path,value):
     path.parent.mkdir(parents=True,exist_ok=True)
     with path.open('x')as stream:json.dump(value,stream,indent=2);stream.write('\n')
+
+def pidfd_open(pid):
+    # The registered interpreters do not all expose Python's os.pidfd_open.
+    # This is the same Linux pidfd syscall, with no polling or change to inference.
+    if platform.system()!='Linux' or platform.machine()!='x86_64':
+        raise ValueError('The explicit Linux x86_64 event guardian is unavailable')
+    libc=ctypes.CDLL(None,use_errno=True)
+    libc.syscall.restype=ctypes.c_long
+    fd=libc.syscall(ctypes.c_long(434),ctypes.c_int(pid),ctypes.c_uint(0))
+    if fd<0:raise OSError(ctypes.get_errno(),os.strerror(ctypes.get_errno()))
+    return int(fd)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--schedule',required=True);args=p.parse_args()
@@ -23,7 +36,7 @@ def main():
             raise ValueError('Predecessor PID identity changed')
         if parent['definition']['claim'].encode()not in(proc/'cmdline').read_bytes().split(b'\0'):
             raise ValueError('Predecessor entry/claim changed')
-        fd=os.pidfd_open(parent['launch']['pid']);select.select([fd],[],[]);os.close(fd)
+        fd=pidfd_open(parent['launch']['pid']);select.select([fd],[],[]);os.close(fd)
     old=root/'outputs/paper_core_20261002_dev_viz'/parent['definition']['run']/parent['definition']['claim']
     receipt=json.loads((old/'complete_receipt.json').read_text());identity=json.loads((old/'identity.json').read_text())
     if (not receipt['passed'] or receipt['actual_rows']!=parent['definition']['n'] or (old/'failure.json').exists()
