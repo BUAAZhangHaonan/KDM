@@ -12,17 +12,20 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "outputs/paper_core_20261002_dev_viz"
+CURRENT_ARCHIVE = BASE / "final_review_package_complete_accepted_sources_v2_20261003/KDM_Nine_Complete_Review.zip"
+CURRENT_ARCHIVE_SHA = "f12f2c90e00e0f4134a9e8e4d7842c813d3001dcbbc8d8d1e3edaee1a39c1d48"
+MEMBER_MAP = ROOT / "configs/kdm/review_archive_members_20261004.json"
 ARCHIVES = (
     (
         "Food_v5",
-        BASE / "review_packages/KDM_Nine_Food_Full_20261003_2035_v5.zip",
-        "0e3b7e52c8d3d39555d5220167742ada5bde7e1d37a3771c4a9dc26164bdd174",
+        CURRENT_ARCHIVE,
+        CURRENT_ARCHIVE_SHA,
         ("README.zh.md", "ACTUAL_TASK_STATUS.json", "PACKAGE_RECEIPT.json", "PACKAGE_MANIFEST.json"),
     ),
     (
         "latest_dev_J",
-        BASE / "nine_Food_dev_J_columnar_handoff_20261003_2332.zip",
-        "e12838e39921d85172a8f4d3a9054cad3fb3343ba89e21ded3f491e261d918d2",
+        CURRENT_ARCHIVE,
+        CURRENT_ARCHIVE_SHA,
         ("README.md", "manifest.json", "dev_selection/receipt.json", "Food_eval_J/receipt.json"),
     ),
 )
@@ -42,39 +45,49 @@ def save_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def archive_checkpoint(role: str, path: Path, expected: str, metadata: tuple[str, ...], output: Path) -> dict:
-    actual = digest(path)
-    if actual != expected:
+def logical_archive_members(role: str, path: Path, expected: str):
+    """Read byte-identical historical input members from the retained final archive."""
+    if digest(path) != expected:
         raise ValueError(f"Source archive SHA differs: {path}")
+    mapping = json.loads(MEMBER_MAP.read_text(encoding="utf-8"))
+    if mapping["replacement_sha256"] != expected:
+        raise ValueError("Archive migration targets a different accepted package")
+    rows = mapping["roles"][role]["members"]
+    if len({row["original_member"] for row in rows}) != len(rows):
+        raise ValueError("Repeated logical source members")
     with zipfile.ZipFile(path) as archive:
-        entries = archive.infolist()
-        names = [entry.filename for entry in entries]
-        if len(names) != len(set(names)):
-            raise ValueError(f"Repeated archive names: {path}")
-        for name in names:
+        for row in rows:
+            name = row["original_member"]
             relative = PurePosixPath(name)
             if relative.is_absolute() or ".." in relative.parts or "\\" in name:
-                raise ValueError(f"Unsafe archive path: {name}")
-        broken = archive.testzip()
-        if broken is not None:
-            raise ValueError(f"Source CRC failed: {broken}")
-        copied = []
-        for name in metadata:
-            data = archive.read(name)
+                raise ValueError(f"Unsafe logical archive path: {name}")
+            data = archive.read(row["replacement_member"])
+            if len(data) != row["bytes"] or hashlib.sha256(data).hexdigest() != row["sha256"]:
+                raise ValueError(f"Migrated archive member differs: {name}")
+            yield row, data
+
+
+def archive_checkpoint(role: str, path: Path, expected: str, metadata: tuple[str, ...], output: Path) -> dict:
+    members = list(logical_archive_members(role, path, expected))
+    copied = []
+    for row, data in members:
+        name = row["original_member"]
+        if name in metadata:
             destination = output / "source_metadata" / role / name
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_bytes(data)
             copied.append({"member": name, "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)})
-        return {
-            "role": role, "path": str(path), "sha256": actual,
-            "zip_bytes": path.stat().st_size, "entries": len(entries), "CRC_passed": True,
-            "uncompressed_bytes": sum(entry.file_size for entry in entries),
-            "metadata_copied_byte_identically": copied,
-            "member_index": [
-                {"path": entry.filename, "bytes": entry.file_size, "compressed_bytes": entry.compress_size}
-                for entry in entries
-            ],
-        }
+    if {row["member"] for row in copied} != set(metadata):
+        raise ValueError(f"Missing requested source metadata: {role}")
+    return {
+        "role": role, "path": str(path), "sha256": expected,
+        "zip_bytes": path.stat().st_size, "entries": len(members), "CRC_passed": True,
+        "uncompressed_bytes": sum(len(data) for _, data in members),
+        "metadata_copied_byte_identically": copied,
+        "member_index": [{"path": row["original_member"], "bytes": len(data),
+                          "replacement_member": row["replacement_member"]} for row, data in members],
+        "migration_index": str(MEMBER_MAP),
+    }
 
 
 def main() -> None:

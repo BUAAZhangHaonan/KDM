@@ -18,7 +18,7 @@ import pyarrow.parquet as pq
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-from workflows.paper_core.assemble_nine_final_review import ARCHIVES, BASE, DETAILS, DETAILS_SHA, digest, save_json
+from workflows.paper_core.assemble_nine_final_review import ARCHIVES, BASE, DETAILS, DETAILS_SHA, digest, save_json, logical_archive_members
 
 MATH = BASE / "native_baselines/remaining4_original_finite_details_cpu_math_summary_20261003_2328/summary.json"
 MATH_SHA = "e50c9097f99b71a6f5f9c01f00b97345186c446fbcd9d5677c5f2c1293f01b0a"
@@ -59,32 +59,23 @@ def copy_bound(source: Path, target: Path, expected: str, provenance: list, purp
 
 
 def import_zip(role: str, source: Path, expected: str, package: Path, provenance: list) -> None:
-    require(digest(source) == expected, f"Input ZIP changed: {role}")
-    with zipfile.ZipFile(source) as archive:
-        entries = archive.infolist()
-        require(len({entry.filename for entry in entries}) == len(entries), "Repeated input ZIP members")
-        require(archive.testzip() is None, f"Input CRC failed: {role}")
-        for entry in entries:
-            original = PurePosixPath(entry.filename)
-            require(not original.is_absolute() and ".." not in original.parts and "\\" not in entry.filename,
-                    "Unsafe ZIP member")
-            if entry.is_dir():
-                continue
-            if role == "Food_v5":
-                relative = (Path("prior_snapshot/Food_v5") / entry.filename
-                            if entry.filename in PRIOR_ROOT else Path(entry.filename))
-            else:
-                relative = Path("dev_and_J") / entry.filename
-            target = package / relative
-            require(not target.exists(), f"Input namespaces collide: {relative}")
-            target.parent.mkdir(parents=True, exist_ok=True)
-            data = archive.read(entry)
-            target.write_bytes(data)
-            expected_member = hashlib.sha256(data).hexdigest()
-            require(digest(target) == expected_member, "Imported member changed")
-            provenance.append({"source_archive": str(source), "source_archive_sha256": expected,
-                               "source_member": entry.filename, "packaged_path": str(relative),
-                               "source_sha256": expected_member, "operation": "exact member byte copy"})
+    for row, data in logical_archive_members(role, source, expected):
+        name = row["original_member"]
+        if role == "Food_v5":
+            relative = (Path("prior_snapshot/Food_v5") / name
+                        if name in PRIOR_ROOT else Path(name))
+        else:
+            relative = Path("dev_and_J") / name
+        target = package / relative
+        require(not target.exists(), f"Input namespaces collide: {relative}")
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        expected_member = hashlib.sha256(data).hexdigest()
+        require(digest(target) == expected_member, "Imported member changed")
+        provenance.append({"source_archive": str(source), "source_archive_sha256": expected,
+                           "source_member": row["replacement_member"], "logical_source_member": name,
+                           "packaged_path": str(relative),
+                           "source_sha256": expected_member, "operation": "exact member byte copy"})
 
 
 def import_details(package: Path, provenance: list) -> dict:
