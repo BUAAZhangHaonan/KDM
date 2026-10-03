@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reuse frozen native VCD/CDA/dev-selected IP on the exact same 101 inputs."""
+"""Compare corrected baselines with frozen main methods on identical 101 inputs."""
 import argparse,csv,json,sys
 from collections import defaultdict
 from pathlib import Path
@@ -18,8 +18,8 @@ def main():
     with (ROOT/'workflows/paper_core/attribution_representative101.csv').open() as f:ids={r['sample_id'] for r in csv.DictReader(f)}
     if len(ids)!=101:raise ValueError('Representative IDs differ')
     selection=pd.read_csv(ROOT/SELECTION)
-    selection=selection[selection.method.isin(['vcd','cda_visual','instruction_vcd','instruction_m3id'])]
-    if len(selection)!=36 or selection.duplicated(['model','method']).any():raise ValueError('Actual dev selected/main configuration coverage differs')
+    selection=selection[selection.method.isin(['direct','deco','vcd','cda_visual','instruction_vcd','instruction_m3id'])]
+    if len(selection)!=54 or selection.duplicated(['model','method']).any():raise ValueError('Actual dev selected/main configuration coverage differs')
     frozen=pd.read_parquet(ROOT/FROZEN);scored=[];configuration=[]
     for condition in selection.to_dict('records'):
         group=frozen[(frozen.condition_id==condition['condition_id']) & frozen.sample_id.isin(ids)]
@@ -59,7 +59,7 @@ def main():
     paired=[]
     for (model,ip),iprows in by_key.items():
         if ip not in ('instruction_vcd','instruction_m3id'):continue
-        for baseline in ('vcd','cda_visual','dola','sid'):
+        for baseline in ('direct','deco','vcd','cda_visual','dola','sid'):
             other=by_key.get((model,baseline))
             if other is None:continue
             if any(iprows[k]['uniform_reference']!=other[k]['uniform_reference'] for k in ids):raise ValueError('Paired reference differs')
@@ -74,7 +74,7 @@ def main():
     pd.DataFrame(metrics).to_csv(out/'same101_J.csv',index=False)
     pd.DataFrame(paired).to_csv(out/'same101_IP_paired_changes.csv',index=False)
     atomic_json(out/'frozen_configurations.json',configuration)
-    atomic_json(out/'receipt.json',{'frozen_conditions':36,'new_conditions':len(groups)-36,
+    atomic_json(out/'receipt.json',{'frozen_conditions':54,'new_conditions':len(groups)-54,
         'frozen_score_sha256':file_hash(ROOT/FROZEN),'selection_sha256':file_hash(ROOT/SELECTION),
         'uniform_n':101,'GPU_initialized':False,'configuration_reselection':False,
         'scope':'same subset; original 2424-eval panel is not overwritten'})
