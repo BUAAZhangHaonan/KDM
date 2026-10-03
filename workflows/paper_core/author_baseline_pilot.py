@@ -117,7 +117,7 @@ def execute(args):
               'runner_sha256':file_hash(Path(__file__)),
               'study_settings_retained':{'dola_candidate_layers':'registered_all_early_layers',
                   'repetition_penalty':1.,'sid_keep_visual_tokens':100,
-                  'dtype':spec['kwargs']['dtype']},
+                  'dtype':spec['kwargs'].get('dtype',spec.get('dtype'))},
               'official_commits':{'dola':'805230e57e63ca561cb759994681b122ff6f81f0',
                                   'sid':'127dd412fa6b61ab1c9babf6979ec4da98002438'}}
     if args.plan:return {'identity':identity,'actual_gpu_generation':False}
