@@ -104,3 +104,16 @@ Food九模型483条件、1,170,792条已全量验收；每条件2424，101×24�
 其余缺项：额外IP dev选择21,008键，先8题小批；6403双卡Intern pilot运行。扩展Viz方法和有限诊断/完整案例尚未完整，源索引见CURRENT_STATE。core5 Viz512已31条件15,872条，不能称九模型两个数据集全部完成。
 
 下一步：完成Food审阅包离线验证与打包，依实测预算接续缺失dev/Viz。无重复Food生产，无新周期轮询。
+
+
+## 20:52 IP开发选择接续
+
+Food完整包已服务器全字段离线验收，并在本地校验ZIP CRC及152文件SHA：KDM_Nine_Food_Full_20261003_2035_v5.zip，23,722,821字节，SHA 0e3b7e52c8d3d39555d5220167742ada5bde7e1d37a3771c4a9dc26164bdd174。
+
+新dev21008键：416真pilot全部评分闭合；首268真full分片闭合（完整404条件仍0）。20:52实生成6138、未生成14870；13授权卡已实际投入，原416与旧32320互斥。按各条件8题实测与加载成本估算11.76 GPU小时，低于24小时既有上限，预算已释放。Intern分至A100/4029/d4030四双卡路由，4028跑Phi/One，K跑One并用pidfd接续Q35，A100共享槽跑Q3/Gemma并由完成事件接续原core待队列。初测末尾Gemma约22:10，真实空闲卡出现时拆分其未写键。CPU/边界标注与选择另计，不将生成量冒充已选配置。
+
+完整Viz方法与有限诊断尚未全部完成，不宣称九模型全阶段收口；旧core5主结果和正文不动。新增薄入口与已验CPU评分已细粒度推送，HEAD 845656a94eeda69e6cc381c4edccbc3aecc1dbd1。
+
+### 2026-10-03 21:26 actual continuation
+
+Food nine-model full panel remains accepted: 483 conditions / 1,170,792 rows. The verified 22.62 MiB full Food package has been delivered independently. New IP-dev generation at 21:14:55 was 14,029 / 21,008; InternVL generation complete. Closed CPU merge is 5,528 rows, zero duplicate/unresolved/reference changes, 9 / 52 complete 404 conditions. No new dev configuration selected before full coverage. Actual Luna medium has processed 59 new unique dev QA; root read and reviewed all 59 plus the separate pilot QA. The next 8,068-row scoring batch has final semantic authority ready, but its closure is not yet accepted. Remaining generation ETA was 21:48 before source-boundary redistribution; pending Viz and finite attribution remain separate. Linux pidfd event controller recovery preserved failed logs; K100 successor was actually observed. New selection code commit 87824ecb is pushed and exactly matches remote master.
