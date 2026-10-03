@@ -79,8 +79,9 @@ def run(a):
     import independent as base
     old,history=evidence(a.model)
     assert file_hash(ROOT/'data/current/all.jsonl')==old['manifest_sha256']
-    assert old['execution']['host']==a.host,(old['execution']['host'],a.host)
-    path=old['checkpoint_path'];base.closed.PATHS[a.model]=path
+    migration=(a.host=='RTX_Pro_6000' and a.model=='minicpm26')
+    assert old['execution']['host']==a.host or migration,(old['execution']['host'],a.host)
+    path=str(ROOT/'cache/models/MiniCPM-V-2_6_core20260930') if migration else old['checkpoint_path'];base.closed.PATHS[a.model]=path
     cp=checkpoint(a.model,path);samples,keys,groups=inputs(a.model,a.pieces,base)
     if a.plan:
         print(json.dumps({'model':a.model,'images':len(groups),'answers':len(keys),'history':history,'checkpoint':cp['checkpoint'],'generation_started':False}));return
@@ -91,8 +92,11 @@ def run(a):
         if a.host=='RTX_Pro_6000':
             sys.path.insert(0,str(ROOT/'workflows/independent_k100_v1'))
             import admission
-            current=admission.register(a.model);base.resolve_image_path=admission.image_resolver
-            base.closed.resolve_image_path=admission.image_resolver;res['original_k100_admission']=current
+            current=admission.register('llava16_mistral' if migration else a.model)
+            base.resolve_image_path=admission.image_resolver;base.closed.resolve_image_path=admission.image_resolver
+            res['original_k100_host_runtime_admission']=current
+            if migration:
+                res['model_admission']={'model':a.model,'checkpoint':cp,'source_host':old['execution']['host'],'target_host':a.host,'new_host_input_pilot_images':8,'numerical_equivalence_claimed':False}
         if a.model=='gemma3_4b':
             import gemma_native_pixels_v1 as pixels
             import gemma_range_audit_v1 as ranges
@@ -125,6 +129,9 @@ def run(a):
                 assert len({r['seed'] for r in rows})==10
                 for row in rows:ledger.add(task_id(a.model,base.task(sample,row['replicate'])),row)
                 walls.append(rows[0]['wall_s']);cache+=sum(r['num_cached_tokens'] for r in rows)
+                if migration and len(walls)==8:
+                    assert len(ledger.keys)==80 and cache>0
+                    atomic_json(out/'migration_admission8.json',{'model':a.model,'actual_images':8,'actual_answers':80,'input_expansion_native_eos_finite_logp_checked':True,'ten_unique_seeds_per_image':True,'num_cached_tokens':cache,'image_ids':list(groups)[:8],'counted_in_original_shard':True,'new_runtime_admission':res['model_admission'],'historical_source':history,'gpu':res,'warm_mean_image_s':sum(walls[1:])/7,'generation_parameters_changed':False})
                 progress.update(status='running',completed=len(ledger.keys),images=len(walls),last_sample_id=sid,group_wall_s=sum(walls),load_s=loaded-started,mean_image_s=sum(walls)/len(walls),remaining_estimate_s=(len(groups)-len(walls))*sum(walls)/len(walls),updated_unix=time.time())
                 atomic_json(out/'progress.json',progress)
         assert ledger.keys==set(keys) and cache>0
