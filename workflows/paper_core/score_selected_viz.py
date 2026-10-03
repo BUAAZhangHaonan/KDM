@@ -29,11 +29,17 @@ EXECUTOR={'agent':'/root/final_cpu_intake','model':'gpt-6.1-sol','effort':'max',
 def existing_sources(manifest_path,samples,roster_path):
     manifest=json.loads(manifest_path.read_text())
     if (manifest['schema']!='kdm_Viz512_existing_completed_main_source_index_v1' or manifest['passed'] is not True
-            or manifest['rows']!=3075 or manifest['native_reused']!=1027 or manifest['Direct_reused']!=2048
-            or manifest['old_core31_rescore'] is not False or manifest['active_raw_sources'] is not False
-            or manifest['new_generations']!=0 or manifest['roster_sha256']!=file_hash(roster_path)
-            or file_hash(within(ROOT,manifest['native_reuse_proof']))!=manifest['native_reuse_proof_sha256']):
+            or manifest['old_core31_rescore'] is not False or manifest['active_raw_sources']!=0
+            or manifest['roster_sha256']!=file_hash(roster_path)):
         raise ValueError('An explicit exact completed main Viz source index is required')
+    if 'native_reuse_proof' in manifest:
+        if (manifest['rows']!=3075 or manifest['native_reused']!=1027 or manifest['Direct_reused']!=2048
+                or manifest['new_generations']!=0
+                or file_hash(within(ROOT,manifest['native_reuse_proof']))!=manifest['native_reuse_proof_sha256']):
+            raise ValueError('The exact historical 3075 baseline scope changed')
+    elif (manifest['new_generations']!=manifest['rows'] or manifest['interpart_overlap']!=0
+            or manifest['prior_native1027_direct2048_overlap']!=0):
+        raise ValueError('New immutable native parts must have exact missing-key production evidence')
     selected,sources,seen=[],[],set()
     for source in manifest['sources']:
         model=source['model'];kind=source['source_type']
@@ -44,6 +50,23 @@ def existing_sources(manifest_path,samples,roster_path):
             path=within(ROOT,source[field])
             if file_hash(path)!=source[field+'_sha256']:raise ValueError('A received completed member changed: '+field)
             files[field]=path
+        if 'native_reuse_proof' not in manifest:
+            if kind!='original_native_complete_part_fixed512_exact_subset':
+                raise ValueError('Only the actual native missing-key completed event belongs to this cohort')
+            for field in ['operator_audit','admission','missing_keys']:
+                path=within(ROOT,source[field])
+                if file_hash(path)!=source[field+'_sha256']:raise ValueError('The original native gate changed: '+field)
+                files[field]=path
+            operator=json.loads(files['operator_audit'].read_text());admission=json.loads(files['admission'].read_text())
+            if (operator['schema']!='kdm_remaining4_native_operator_audit_v1' or operator['passed'] is not True
+                    or operator['model']!=model or operator['method']!='vcd'
+                    or operator['completed']!=operator['required'] or operator['required']!=8
+                    or admission['model']!=model or admission['method']!='vcd' or admission['dataset']!='vizwiz'
+                    or admission['stage']!='native_unguided'):
+                raise ValueError('The real native operator, model or task gate differs')
+            missing={r['key']for _,r,_ in rows(files['missing_keys'])}
+            if not set(source['completed_keys'])<=missing:
+                raise ValueError('A new native completed part falls outside its original missing-key claim')
         sidecar=json.loads(files['identity'].read_text());definition=sidecar['definition']
         spec=json.loads((ROOT/f'configs/runtime/{model}.json').read_text())
         backend=definition['backend']
@@ -84,7 +107,8 @@ def existing_sources(manifest_path,samples,roster_path):
                 raw_source_sha256=source['raw_sha256'],source_identity=row['identity'],generation_identity=row['identity'],
                 source_scope='existing_completed_exact_fixed512_subset',expected_n=512,source_raw_complete=True,
                 complete_source_path=str(files.get('complete','')),identity_source_path=str(files['identity']),
-                source_original_path=str(files['raw']),model_checkpoint=spec['hf_model_id'],model_dtype=spec['dtype'])))
+                source_original_path=complete['raw_path'] if kind.startswith('original_native') else str(files['raw']),
+                model_checkpoint=spec['hf_model_id'],model_dtype=spec['dtype'])))
         if set(actual)!=set(source['completed_keys']) or len(actual)!=source['rows']:
             raise ValueError('The actual received row/key coverage differs from its finite binding')
         sources.append({**{k:v for k,v in source.items() if k not in ['source_line_bindings','completed_keys']},
@@ -93,6 +117,95 @@ def existing_sources(manifest_path,samples,roster_path):
         raise ValueError('The received baseline source count differs')
     return selected,sources
 
+
+
+def completed_selected_sources(manifest_path,samples,roster_path):
+    from dataclasses import asdict
+    manifest=json.loads(manifest_path.read_text())
+    if (manifest['schema']!='kdm_selected_Viz512_completed_parts_source_index_v1' or manifest['passed'] is not True
+            or manifest['active_raw_sources']!=0 or manifest['completed_original_byte_sources_only'] is not True
+            or manifest['prior_exact_old3075_and_native1021_key_overlap']!=0 or manifest['prior_selected_delta_key_overlap']!=0
+            or manifest['roster_sha256']!=file_hash(roster_path)):
+        raise ValueError('Only an explicit immutable selected Viz512 source index is allowed')
+    authority_path=within(ROOT,manifest['authority']);selected_path=within(ROOT,manifest['selected_config'])
+    if file_hash(authority_path)!=manifest['authority_sha256'] or file_hash(selected_path)!=manifest['selected_config_sha256']:
+        raise ValueError('The real complete404 selection or Viz authority changed')
+    authority=json.loads(authority_path.read_text());choices=json.loads(selected_path.read_text())
+    if (authority['schema']!='kdm_nine_model_selected_viz512_main_gap_authority_v1' or authority['passed'] is not True
+            or authority['all52_new_IP_dev404_conditions_closed'] is not True or authority['authorized_main_configurations']!=21
+            or len(authority['conditions'])!=21 or len(choices)!=18 or authority['roster_sha256']!=file_hash(roster_path)):
+        raise ValueError('Viz production is not bound to the truly closed registered dev panel')
+    for binding in authority['source_bindings']:
+        if file_hash(within(ROOT,binding['path']))!=binding['sha256']:raise ValueError('An original authority source binding changed')
+    selected,sources,seen=[],[],set()
+    for source in manifest['sources']:
+        model=source['model'];allowed={'instruction_m3id'} if model in CORE else {'instruction_m3id','instruction_vcd','cda_visual'}
+        if model not in CORE+EXTRA or source['active_raw_source'] is not False:
+            raise ValueError('A foreign model or active raw entered the completed selected Viz panel')
+        files={}
+        for field in ['raw','identity','complete','claim_identity','claim_plan','missing_keys','authority','selected_config','roster']:
+            path=within(ROOT,source[field])
+            if file_hash(path)!=source[field+'_sha256']:raise ValueError('A received selected producer member changed: '+field)
+            files[field]=path
+        if files['authority']!=authority_path or files['selected_config']!=selected_path or files['roster']!=roster_path:
+            raise ValueError('A part differs from the exact frozen selection/roster authority')
+        identity=json.loads(files['claim_identity'].read_text());plan=json.loads(files['claim_plan'].read_text())
+        configs=[c for c in authority['conditions']if c['model']==model]
+        if (identity['plan']!=plan or identity['stage']!='viz512' or plan['stage']!='viz512'
+                or plan['schema']!='kdm_selected_main_Viz512_missing_claim_v1'
+                or plan['model']!=model or plan['claim_id']!=source['claim_id']
+                or plan['authority_sha256']!=manifest['authority_sha256']
+                or plan['missing_keys_sha256']!=source['missing_keys_sha256']
+                or plan['roster_sha256']!=file_hash(roster_path) or plan['registered_configurations']!=configs
+                or plan['scientific_parameters_changed'] is not False):
+            raise ValueError('The original selected Viz missing claim differs from its actual authority')
+        spec=json.loads((ROOT/f'configs/runtime/{model}.json').read_text());actual=identity['runtime_spec']
+        if actual['hf_model_id']!=spec['hf_model_id'] or actual['dtype']!=spec['dtype']:
+            raise ValueError('An actual selected runtime checkpoint or precision changed')
+        if model in EXTRA and identity['actual_admission']['runtime_spec']!=actual:
+            raise ValueError('The supplemental actual admission differs from its recorded runtime')
+        sidecar=json.loads(files['identity'].read_text());complete=json.loads(files['complete'].read_text())
+        if (sidecar['definition']!={**identity,'model':model,'shard':0,'n_shards':1,'base_config':asdict(DecodeConfig())}
+                or sidecar['identity']!=stable_hash(sidecar['definition'])
+                or complete['passed'] is not True or complete['scope']!='selected_main_viz512'
+                or complete['model']!=model or complete['method']not in allowed or complete['method']!=source['method']
+                or complete['marker']!=source['marker'] or not 1<=complete['rows']<=128
+                or complete['rows']!=source['rows'] or complete['raw_sha256']!=source['raw_sha256']
+                or complete['completed_keys']!=source['completed_keys']):
+            raise ValueError('The immutable selected completed part or Ledger identity differs')
+        missing=[r for _,r,_ in rows(files['missing_keys'])];keys={r['key']for r in missing}
+        if len(keys)!=len(missing) or len(keys)!=plan['expected_rows'] or keys.intersection(authority['exact_reused_keys']):
+            raise ValueError('The original missing-key claim repeats the exact reused panel')
+        actual_rows=list(rows(files['raw']))
+        if len(actual_rows)!=complete['rows'] or {r['key']for _,r,_ in actual_rows}!=set(complete['completed_keys']):
+            raise ValueError('The actual selected completed part differs from its declared keys')
+        for line,row,line_sha in actual_rows:
+            sample=samples.get(row['sample']['id']);matches=[c for c in configs if all(row[k]==c[k]for k in FIELDS)]
+            if (sample is None or len(matches)!=1 or row['identity']!=sidecar['identity']
+                    or row['key']in seen or row['key']not in keys or row['method']not in allowed):
+                raise ValueError('The actual selected raw falls outside its unique frozen condition and missing claim')
+            chosen=matches[0]
+            if row['method'].startswith('instruction_'):
+                point=[c for c in choices if c['model']==model and c['method']==row['method']]
+                if (len(point)!=1 or point[0]['n']!=404 or point[0]['marker']!=row['marker']
+                        or chosen['selection']!='dev_selected' or chosen['dev_n']!=404
+                        or chosen['selection_frozen_at_utc']!=point[0]['selection_frozen_at_utc']):
+                    raise ValueError('The generated IP expression is not the actual dev-selected frozen operating point')
+            elif (chosen['selection']!='original_single_registered_CDA' or row['marker']!='UNKNOWN'):
+                raise ValueError('CDA must remain its single original registered configuration')
+            audit_raw(row,sample,model);seen.add(row['key'])
+            selected.append((row,dict(source_path=str(files['raw']),source_line=line,raw_line_sha256=line_sha,
+                raw_source_sha256=source['raw_sha256'],source_identity=row['identity'],generation_identity=row['identity'],
+                source_scope='selected_registered_completed_part',expected_n=512,source_raw_complete=True,
+                complete_source_path=str(files['complete']),identity_source_path=str(files['identity']),
+                source_original_path=complete['raw'],model_checkpoint=spec['hf_model_id'],model_dtype=spec['dtype'],
+                source_claim=source['claim_id'],source_host=source['host'],
+                frozen_Viz_authority_path=str(authority_path),frozen_Viz_authority_sha256=manifest['authority_sha256'],
+                frozen_dev_selection_path=str(selected_path),frozen_dev_selection_sha256=manifest['selected_config_sha256'])))
+        sources.append({k:v for k,v in source.items()if k!='completed_keys'})
+    if len(selected)!=manifest['rows'] or len(sources)!=manifest['source_parts']:
+        raise ValueError('The completed selected source actual counts differ')
+    return selected,sources
 
 def old_closed_authorities():
     path=ROOT/OLD_VIZ;receipt=json.loads(path.read_text())
@@ -176,7 +289,9 @@ def main():
     started=time.perf_counter();output=within(ROOT,args.out);output.relative_to(ROOT/'outputs/paper_core_20261002_dev_viz')
     if output.exists():raise FileExistsError('A new immutable score result needs an exclusive directory')
     roster_path,roster_samples=roster('viz512');samples={s['id']:s for s in roster_samples}
-    manifest_path=within(ROOT,args.producer_manifest);source_records,sources=existing_sources(manifest_path,samples,roster_path)
+    manifest_path=within(ROOT,args.producer_manifest);schema=json.loads(manifest_path.read_text())['schema']
+    loader=completed_selected_sources if schema=='kdm_selected_Viz512_completed_parts_source_index_v1' else existing_sources
+    source_records,sources=loader(manifest_path,samples,roster_path)
     refs,reference_path=viz_references(samples);reference_map={r.sample_id:r for r in refs.itertuples()}
     decisions,viz,oldproof=old_closed_authorities()
     decisions += [within(ROOT,x) for x in args.decision_file];viz += [within(ROOT,x) for x in args.viz_authority_file]
