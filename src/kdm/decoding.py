@@ -30,10 +30,16 @@ class DecodeConfig:
     top_p:float=1.0
 
 
-def _js(lp,lq):
-    p,q=np.exp(lp),np.exp(lq);mid=(p+q)/2
-    a=p>0;b=q>0
-    return float(.5*(np.sum(p[a]*(lp[a]-np.log(mid[a])))+np.sum(q[b]*(lq[b]-np.log(mid[b])))))
+def _author_dola_divergence(lp,lq):
+    """Author F.kl_div(log(P), M) direction, with its vocabulary mean.
+
+    DoLa 805230e, generation/utils.py:2689-2690. This reverse-KL
+    quantity differs from mathematical JSD. Historical code is fixed in Git;
+    new result identities must identify this changed layer selector.
+    """
+    logmid=np.logaddexp(lp,lq)-np.log(2.)
+    mid=np.exp(logmid)
+    return float(.5*np.mean(mid*(logmid-lp)+mid*(logmid-lq)))
 
 
 def distribution(main:Step,reference:Step|None,cfg:DecodeConfig,t:int):
@@ -41,8 +47,12 @@ def distribution(main:Step,reference:Step|None,cfg:DecodeConfig,t:int):
     if cfg.method=="direct": return p,meta
     if cfg.method in {"vcd","icd","sid"}:
         if reference is None: raise ValueError("Reference session required")
-        out,keep=contrast(p,reference.logits,cfg.alpha,cfg.beta)
+        # SID 127dd412, vcd_sample.py:190-191 takes argmax of unmasked
+        # diffs in its greedy path. Its LLaVA wrapper uses alpha=.5.
+        sid_greedy=cfg.method=="sid" and cfg.temperature==0
+        out,keep=contrast(p,reference.logits,cfg.alpha,0. if sid_greedy else cfg.beta)
         meta.update(weight=cfg.alpha,active=cfg.alpha>0,n_retained=int(keep.sum()))
+        if cfg.method=="sid":meta.update(greedy_support="full" if sid_greedy else "clean_beta")
         return out,meta
     if cfg.method=="m3id":
         if reference is None: raise ValueError("M3ID needs its text-only reference")
@@ -53,12 +63,11 @@ def distribution(main:Step,reference:Step|None,cfg:DecodeConfig,t:int):
         return out,meta
     if cfg.method=="dola":
         if not main.early_raw: raise ValueError("Raw premature-layer logits required")
-        # Matches the project's declared JSD selection; all candidates are recorded.
         lps={i:log_normalize(z) for i,z in main.early_raw.items()}
-        layer=max(sorted(lps),key=lambda i:_js(p,lps[i]))
+        layer=max(sorted(lps),key=lambda i:_author_dola_divergence(p,lps[i]))
         keep=p>=p.max()+np.log(cfg.beta)
         score=p-lps[layer];score[~keep]=-np.inf
-        meta.update(weight=1.,active=True,layer=layer)
+        meta.update(weight=1.,active=True,layer=layer,layer_divergence="author_reverse_kl_mean")
         return log_normalize(score),meta
     if cfg.method=="deco":
         if not main.early_normalized: raise ValueError("Normalized selected-layer logits required")
@@ -144,7 +153,8 @@ def replay(main,reference,cfg,tokens,token_groups=None,neutral_main=None):
         if r is not None:
             q=log_normalize(r.logits);rec['reference_logp']=float(q[tok])
             if cfg.method in {"vcd","icd","sid","m3id"}:
-                w=meta['weight'];beta=0 if cfg.method=='m3id' else cfg.beta
+                w=meta['weight'];beta=0 if (cfg.method=='m3id' or
+                    (cfg.method=='sid' and cfg.temperature==0)) else cfg.beta
                 keep=np.isfinite(out)
                 from scipy.special import logsumexp
                 rec['log_normalizer']=float(logsumexp(((1+w)*p-w*q)[keep]))
