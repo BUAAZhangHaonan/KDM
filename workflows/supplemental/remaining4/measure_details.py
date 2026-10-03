@@ -106,6 +106,48 @@ def diagnostic_groups(row):
     return groups
 
 
+
+def cached_first_measurement(previous, row, token_pairs=()):
+    """Exact CPU reuse of cached four-view candidate rows; no new first measurement."""
+    import copy, math
+    record, provenance=previous
+    value=record["measured"]
+    if (record["source"]["sample"]!=row["sample"] or record["seed"]!=row["seed"]
+            or value["question"]!=row["sample"]["question"]
+            or record["source"]["native_vcd"]["tokens"]!=row["branches"]["native_vcd"]["tokens"]):
+        raise ValueError("An already measured first position differs; do not remeasure404")
+    result=copy.deepcopy(value);event=result["events"][0];candidates={x["token"]:x for x in event["candidate_rows"]}
+    existing={tuple(x)for x in result["candidate_pairs"]}
+    derived=[]
+    for a,b in token_pairs:
+        if (a,b)in existing:continue
+        if a not in candidates or b not in candidates or not event["math_pairs"]:
+            raise ValueError("Cached first position lacks a requested candidate; preserve gap, no remeasurement")
+        template=copy.deepcopy(event["math_pairs"][0]);pa,pb=candidates[a],candidates[b];lp_a=pa["logp"];lp_b=pb["logp"]
+        assert all(math.isfinite(x)for x in list(lp_a.values())+list(lp_b.values()))
+        dm={k:lp_a[k]-lp_b[k]for k in ['g','h','c','r']};alpha=template['alpha'];native=(1+alpha)*dm['c']-alpha*dm['r'];guided=(1+alpha)*dm['g']-alpha*dm['h'];ip=dm['g']+alpha*(dm['c']-dm['r']);interaction=alpha*((dm['g']-dm['c'])-(dm['h']-dm['r']))
+        template.update(candidate_a=a,candidate_b=b,logp_a=dict(lp_a),logp_b=dict(lp_b),base_pair_margins=dm,clean_guide_margin_change=dm['g']-dm['c'],reference_guide_margin_change=dm['h']-dm['r'],unguided_visual_margin_change=alpha*(dm['c']-dm['r']),native_pair_margin=native,guided_pair_margin=guided,ip_pair_margin=ip,interaction_pair_margin=interaction,ip_minus_guided_margin=ip-guided,pair_in_guided_support=pa['Sg_member']and pb['Sg_member'],pair_in_native_support=pa['Sc_member']and pb['Sc_member'],guided_support_a=pa['Sg_member'],guided_support_b=pb['Sg_member'],native_support_a=pa['Sc_member'],native_support_b=pb['Sc_member'],decomposition_closure=guided-native-(dm['g']-dm['c'])-interaction,ip_difference_closure=ip-guided+interaction)
+        for item in template['interpolation']:item['pair_margin']=ip+item['interaction_weight']*interaction
+        # Prefix-wide support/argmax/normalizers retain their actual cached full-vocabulary values.
+        template['CPU_derived_from_actual_cached_candidate_rows']=True;event['math_pairs'].append(template);result['candidate_pairs'].append([a,b]);derived.append([a,b])
+    result.update(cache_reused_from=provenance,CPU_derived_candidate_pairs=derived,diagnostic_source_meta={"input":row})
+    return result
+
+
+def case_with_cached_first(backend,image,row,name,previous):
+    """Replay saved nonzero prefixes and reuse the already measured first prefix."""
+    import copy
+    branch=row['branches'][name];tokens=branch['tokens'];first=cached_first_measurement(previous,row);event=copy.deepcopy(first['events'][0])
+    if tokens[0]not in {x['token']for x in event['candidate_rows']}:
+        raise ValueError('Cached case first token is absent; do not repeat404')
+    event.update(observed_token=tokens[0],cache_reused_from=previous[1],source_meta={"input":row,"path_name":name})
+    if len(tokens)>1:
+        result=measure_attribution(backend,image,row['sample']['question'],[tokens[:i]for i in range(1,len(tokens))],row['seed'],observed_tokens=tokens,observed_text=branch['text'],source_meta={"input":row,"path_name":name})
+        result['events'].insert(0,event);result['prefixes'].insert(0,[])
+    else:result=first;result['events']=[event];result.update(observed_tokens=tokens,observed_text=branch['text'])
+    result.update(response_tokens=tokens,response_text=branch['text'],terminated=bool(tokens[-1]in backend.eos),truncated=bool(tokens[-1]not in backend.eos and len(tokens)>=32),first_position_cache_reused_from=previous[1])
+    return result
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
@@ -127,10 +169,17 @@ def main():
     out.relative_to(ROOT / "outputs/supplemental/remaining4")
     rows = source_plan(args.model, inputs, args.phase)
     cache = {}
-    if args.phase == "diagnostic":
-        if not args.first_position_verification:
-            raise ValueError("Diagnostic planning requires the verified existing first-position sources")
-        cache = first_position_cache(args.model, within(ROOT, args.first_position_verification))
+    if not args.first_position_verification:
+        raise ValueError("Finite detail planning requires verified first-position sources; do not repeat404")
+    cache = first_position_cache(args.model, within(ROOT, args.first_position_verification))
+    for row in rows:
+        previous=cache.get(row["sample"]["id"])
+        if previous:
+            pairs=diagnostic_groups(row)[()] if args.phase=="diagnostic" else []
+            token_pairs=list(dict.fromkeys((row["branches"][x["path_a"]]["tokens"][0],row["branches"][x["path_b"]]["tokens"][0])for x in pairs))
+            value=cached_first_measurement(previous,row,token_pairs)
+            if args.phase=="cases"and any(row["branches"][name]["tokens"][0]not in {x["token"]for x in value["events"][0]["candidate_rows"]}for name in ("native_vcd","ip_vcd")):
+                raise ValueError("Cached case first token is absent; preserve gap without repeat404")
     cards = args.physical_gpus.split(",")
     prior = json.loads(prior_path.read_text())
     if (prior["model"] != args.model or prior["gpu_count"] != len(cards)
@@ -178,18 +227,10 @@ def main():
                             for pair in pairs))
                         previous = cache.get(sample["id"]) if not prefix else None
                         if previous:
-                            record, provenance = previous
-                            value = record["measured"]
-                            reusable = (record["source"]["sample"] == sample
-                                and record["seed"] == row["seed"]
-                                and value["question"] == sample["question"]
-                                and record["source"]["native_vcd"]["tokens"] == native["tokens"]
-                                and set(token_pairs) <= {tuple(pair) for pair in value["candidate_pairs"]})
-                            if reusable:
-                                measured.append({**value, "cache_reused_from": provenance,
-                                    "diagnostic_source_meta": {"input": row, "candidate_orientations": pairs}})
-                                reused_first += 1
-                                continue
+                            value=cached_first_measurement(previous,row,token_pairs)
+                            measured.append({**value,"diagnostic_source_meta":{"input":row,"candidate_orientations":pairs}})
+                            reused_first+=1
+                            continue
                         observed = row["branches"][pairs[0]["path_a"]]["tokens"] if pairs else native["tokens"]
                         measured.append(measure_attribution(
                             backend, image, sample["question"], [list(prefix)], row["seed"],
@@ -205,9 +246,9 @@ def main():
                 else:
                     for name in ("native_vcd", "ip_vcd"):
                         branch = row["branches"][name]
-                        measured.append(measure_case(
-                            backend, image, sample["question"], branch["tokens"], row["seed"],
-                            observed_text=branch["text"], source_meta={"input": row, "path_name": name}))
+                        previous=cache.get(sample["id"])
+                        if previous:measured.append(case_with_cached_first(backend,image,row,name,previous));reused_first+=1
+                        else:measured.append(measure_case(backend,image,sample["question"],branch["tokens"],row["seed"],observed_text=branch["text"],source_meta={"input":row,"path_name":name}))
             ledger.add(stable_hash([args.model, sample["id"], args.phase]),
                        {"model": args.model, "sample_id": sample["id"], "phase": args.phase,
                         "source": row, "measured": measured, "status": "ok"})
