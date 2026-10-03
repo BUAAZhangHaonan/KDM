@@ -15,7 +15,7 @@ def main():
  assert live()and(proc/'stat').read_text().split(') ',1)[1].split()[19]==a.start_tick
  cmd=(proc/'cmdline').read_bytes();assert str(ROOT/'workflows/paper_core/ip_dev_full.py').encode()in cmd and a.claim.encode()in cmd and identity['pid']==a.pid
  assert identity['plan']==plan and file_hash(ROOT/'workflows/paper_core/ip_dev_full.py')==plan['runner_sha256']
- launch=json.loads((b/'launch/actual_launch.json').read_text());started=datetime.datetime.fromisoformat(launch['launched_utc']);assert started.tzinfo is not None and launch['pid']==a.pid and launch['start_tick']==a.start_tick
+ launch=json.loads((b/'launch/actual_launch.json').read_text());started=(datetime.datetime.fromisoformat(launch['launched_utc'])if 'launched_utc'in launch else datetime.datetime.fromtimestamp(launch['launched_unix'],datetime.timezone.utc));assert started.tzinfo is not None and launch['pid']==a.pid and launch['start_tick']==a.start_tick
  gpus=identity['runtime_spec']['gpu_count'];assert isinstance(gpus,int)and gpus>0
  cards=identity['actual_admission']['physical_gpus'];assert len(cards)==gpus
  assert [os.readlink(proc/'fd'/str(20+i))for i in range(len(cards))]==[str(ROOT/'outputs/locks'/('gpu_'+g+'.lock'))for g in cards]
