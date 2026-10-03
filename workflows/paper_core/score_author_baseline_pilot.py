@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT),str(Path(__file__).parent)]
-from kdm.io import read_jsonl,file_hash,atomic_json,within
+from kdm.io import read_jsonl,file_hash,atomic_json,within,stable_hash
 from workflows.main_results import score as frozen
 from workflows.paper_core.score_native_baseline_parts import reference_map
 from workflows.paper_core.score_dev_viz import native_decisions,NATIVE_RECEIPT,AUTHORITY
@@ -52,6 +52,9 @@ def main():
                 inferred=cache[qkey];c,literal,reason=score_target(row['text'],s['class'],inferred,patterns)
                 abstain=inferred['abstain']
             rec={'model':row['model'],'method':row['method'],'sample_id':s['id'],'target_class':s['class'],
+                 'dataset':'food101','split':'eval',
+                 **{name:row[name] for name in ('kind','marker','reference_marker','guided',
+                     'reference_guided','replicate','implementation_revision')},
                  'question':s['question'],'answer':row['text'],'qa_key':qkey,'correct_canonical':c,
                  'correct_literal':literal,'abstain':abstain,'uniform_reference':reference,
                  'old_answer':prior['answer'],'old_correct_canonical':int(prior['correct_canonical']),
@@ -71,6 +74,8 @@ def main():
     metrics=[]
     for (model,method),group in sorted(groups.items()):
         n=len(group);complete=all(r['correct_canonical'] is not None and r['abstain'] is not None for r in group)
+        configs={stable_hash(r['new_config']) for r in group}
+        if len(configs)!=1:raise ValueError('Mixed new configurations in subset comparison')
         old_c=sum(r['old_correct_canonical'] for r in group);old_a=sum(r['old_abstain'] for r in group)
         old_tp=sum(r['old_abstain'] and r['uniform_reference'] for r in group)
         decided=[r for r in group if r['correct_canonical'] is not None and r['abstain'] is not None]
@@ -81,7 +86,13 @@ def main():
             before='A' if r['old_abstain'] else ('C' if r['old_correct_canonical'] else 'W')
             after='A' if r['abstain'] else ('C' if r['correct_canonical'] else 'W')
             transitions[before+'_'+after]+=1
-        metrics.append({'model':model,'method':method,'n':n,'decided':len(decided),'complete':complete,
+        metrics.append({'model':model,'method':method,'dataset':'food101','split':'eval',
+                        'implementation_revision':group[0]['implementation_revision'],
+                        'kind':group[0]['kind'],'marker':'NONE','reference_marker':'NONE',
+                        'guided':False,'reference_guided':False,'replicate':0,
+                        'config_json':json.dumps(group[0]['new_config'],sort_keys=True),
+                        'decoder_sha256':group[0]['decoder_sha256'],
+                        'n':n,'decided':len(decided),'complete':complete,
                         'old_C':old_c,'old_W':n-old_c-old_a,'old_A':old_a,'old_TP':old_tp,
                         'old_J':(old_c+old_tp)/n,
                         'new_C':c if complete else None,'new_A':a_count if complete else None,
