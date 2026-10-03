@@ -69,14 +69,45 @@ def preflight(args):
     if [row["key"] for row in read_jsonl(claim / "keys.jsonl")] != keys:
         raise ValueError("Original claim is not its exact ordered registered key list")
     command = process(args.producer_pid)
-    if command is None or not any(part.endswith(b"/remaining4/registered_matrix.py") for part in command):
+    entries = {
+        "registered": os.fsencode(ROOT / "workflows/supplemental/remaining4/registered_matrix.py"),
+        "k100_single": os.fsencode(ROOT / "workflows/supplemental/remaining4/k100_intern_registered_matrix.py"),
+    }
+    actual_entries = [name for name, path in entries.items() if command and command.count(path) == 1]
+    if command is None or len(actual_entries) != 1:
         raise ValueError("Producer PID is not the exact registered VCD/M3ID matrix entry")
     text = [part.decode() for part in command]
-    for flag, value in (("--model", args.model), ("--run-root", args.run_root),
+    for flag, value in (("--run-root", args.run_root),
             ("--claim-id", args.claim_id), ("--owner", args.owner)):
         if text.count(flag) != 1 or text[text.index(flag) + 1] != value:
             raise ValueError("Producer command differs from its owned source: " + flag)
+    if actual_entries[0] == "registered":
+        if text.count("--model") != 1 or text[text.index("--model") + 1] != args.model:
+            raise ValueError("Registered producer model differs from its owned source")
+    else:
+        backend = admitted["backend"]
+        if (ROOT != Path("/home/k100/projects/knowledge-deficit-mitigation")
+                or args.model != "internvl35_8b" or "--model" in text
+                or text.count("--phase") != 1 or text[text.index("--phase") + 1] != "production"
+                or text.count("--condition-gate") != 1 or text.count("--host-registry") != 1
+                or backend["factory"] != "workflows.supplemental.remaining4.internvl_k100_single:InternVLK100SingleBackend"
+                or backend["gpu_count"] != 1 or backend["dtype"] != "bfloat16"
+                or set(backend["kwargs"]["device_map"].values()) != {0}
+                or backend["kwargs"]["max_memory"] != {"0": "44GiB"}
+                or admitted["registered_backend"]["factory"] != "kdm.models.internvl_dual:InternVLDualBackend"):
+            raise ValueError("Source is not the explicitly admitted K100 single-card production route")
+        gate_path = within(ROOT, text[text.index("--condition-gate") + 1])
+        gate = json.loads(gate_path.read_text())
+        registry_path = within(ROOT, text[text.index("--host-registry") + 1])
+        if (gate.get("passed") is not True or gate.get("production_allowed") is not True
+                or gate.get("completed") != 8 or gate.get("scientific_unique_increment") != 0
+                or gate["runner_sha256"] != file_hash(Path(os.fsdecode(entries["k100_single"])))
+                or gate["factory_sha256"] != file_hash(ROOT / "workflows/supplemental/remaining4/internvl_k100_single.py")
+                or gate["registry_sha256"] != file_hash(registry_path)):
+            raise ValueError("Exact immutable single-card production gate or source identity changed")
     cards = admitted["runtime_admission"]["execution"]["physical_gpus"]
+    if actual_entries[0] == "k100_single" and [int(card) for card in cards] != [0]:
+        raise ValueError("K100 single-card source has an unexpected physical GPU")
     locks = [os.readlink(f"/proc/{args.producer_pid}/fd/{20 + offset}")
              for offset in range(len(cards))]
     if locks != [str(ROOT / "outputs/locks" / f"gpu_{card}.lock")
@@ -218,4 +249,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
