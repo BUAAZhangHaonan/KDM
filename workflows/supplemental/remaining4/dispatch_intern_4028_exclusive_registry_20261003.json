@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "hosts": {
+    "4028": {
+      "hostname": "4028",
+      "root": "/home/g203-4028/projects/knowledge-deficit-mitigation",
+      "allowed_gpus": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "max_workers_per_gpu": 1,
+      "gpu_uuids": {
+        "0": "GPU-5a0d331f-afba-237f-fde6-762a8b1ff2f3",
+        "1": "GPU-c6e6bac7-6035-192a-1e14-0c49903fbc4e",
+        "4": "GPU-8d98e481-b89b-2166-b474-c33d59e0fd3d",
+        "5": "GPU-a56bc7bd-eeab-b2a3-2d92-9f27816ffe6d"
+      },
+      "minimum_free_mib_by_model": {
+        "internvl35_8b": 22528
+      },
+      "capacity_evidence": "Root delegated 2026-10-03 existing exclusive dual-3090 recovery strategy after two authorized Phi producers genuinely complete and exit. Require22528 MiB actually free on each authorized physical card and one exclusive worker per card before loading. Original BF16,36-layer18+18 device_map,22GiB max_memory per logical card,image limits,parameters and stable seeds remain unchanged. This registration is preparation; it does not claim current new production/capacity acceptance or a retry of historical shared-OOM source. A100 existing-route transfer remains first priority."
+    }
+  },
+  "model_hosts": {
+    "internvl35_8b": "4028"
+  },
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "4028": {
+      "internvl35_8b": {
+        "environment_python": "/home/g203-4028/projects/knowledge-deficit-mitigation/venv/bin/python",
+        "model_path": "/home/g203-4028/Models/InternVL3_5-8B",
+        "source_evidence": "Existing actual central physical4/5 dual_final16 passed16/16; frozen canonical blob61799b54c722ebbefae419311579cb8ab72fb84d35b6f324ed32a6f16b0d4605. Actual original SID proof826f302c8511d7dad002a61630c47c01d96fed826d5153f8eb380410f1f64abc is preserved; this route authorizes only registered Food VCD/M3ID. CPU2026-10-03 confirmed originalTorch2.9+cu128/TF5.17,all four weight sizes and11 checkpoint/processor small identities. Historical shared-OOM receipt37e86e4197dcbd24e9e1f9a5374d81ba6cd7b2daf4ea3c79ce00053e62fb8d3c remains held and unchanged. No library/precision/algorithm/seed change or new GPU trial."
+      }
+    }
+  },
+  "authorization": "Root2026-10-03 explicitly allowed preparation of a separate original-central InternVL exclusive dual3090 path/capacity registration. Only already registered Food eval VCD16/M3ID16/ref-off4+4 genuinely ungenerated scientific keys, after complete-input sealing of self-owned old producer and verified disjoint remaining-key ownership. Actual two-card capacity and existing-source checks precede production. Existing owners are unchanged; no new GPU admission trials, baseline conditions,precision/parameter changes or historical failed-claim restarts."
+}
