@@ -9,7 +9,7 @@ import argparse
 from collections import Counter
 from dataclasses import asdict
 from datetime import datetime,timezone
-import csv,json,os,sys,time,math
+import csv,json,os,sys,time,math,hashlib
 from pathlib import Path
 import numpy as np
 
@@ -27,6 +27,7 @@ MODELS=('qwen25vl','qwen35_4b','llava16_mistral','minicpm26','gemma3_4b',
         'internvl35_8b','onevision','phi35','qwen3vl')
 SID_MODELS=('qwen25vl','llava16_mistral','internvl35_8b','onevision','phi35','qwen3vl')
 REVISION='author_greedy_core_20261004'
+AUTHORIZED_DECODER_SHA256='3381e2b09f206755fec1e90b182c5643a0c8b44609dd3e3cec494c273f922b88'
 
 
 def now():return datetime.now(timezone.utc).isoformat()
@@ -43,6 +44,15 @@ def load_inputs(model,method):
     if any(frozen['files'].get(p)!=v for p,v in hashes.items()):
         raise ValueError('Frozen input/runtime changed')
     spec=json.loads((ROOT/paths[-1]).read_text())
+    if file_hash(ROOT/'src/kdm/decoding.py')!=AUTHORIZED_DECODER_SHA256:
+        raise ValueError('Decoder is outside the reviewed author-core change')
+    recorded={line.split('\t',1)[1]:line.split(' ',2)[1] for line in frozen['source_blobs']}
+    algorithm_blobs={}
+    for name in ('src/kdm/pipeline.py','src/kdm/prompts.py','src/kdm/probability.py'):
+        data=(ROOT/name).read_bytes()
+        digest=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+        if recorded.get(name)!=digest:raise ValueError('Unchanged shared algorithm differs: '+name)
+        algorithm_blobs[name]=digest
     proof=validate_proofs(ROOT,spec,model,[method],'formal',manifest,frozen)
     samples=[s for s in read_jsonl(ROOT/paths[0]) if s['dataset']=='food101' and s['split']=='eval']
     assert len(samples)==2424 and len({s['id'] for s in samples})==2424
@@ -53,6 +63,8 @@ def load_inputs(model,method):
     selected=[by_id[r['sample_id']] for r in representatives]
     assert len(selected)==101 and len({s['class'] for s in selected})==101
     return selected,spec,{'frozen_input_sha256':hashes,'verified_method_proofs':proof,
+                         'unchanged_shared_algorithm_blobs':algorithm_blobs,
+                         'authorized_decoder_sha256':AUTHORIZED_DECODER_SHA256,
                          'representative_list_sha256':file_hash(listing),
                          'original_contract_sha256':manifest['original_contract_sha256']}
 
