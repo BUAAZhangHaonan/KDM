@@ -76,13 +76,21 @@ def main():
         decided=[r for r in group if r['correct_canonical'] is not None and r['abstain'] is not None]
         c=sum(r['correct_canonical'] for r in decided);a_count=sum(r['abstain'] for r in decided)
         tp=sum(r['abstain'] and r['uniform_reference'] for r in decided)
+        transitions=defaultdict(int)
+        for r in decided:
+            before='A' if r['old_abstain'] else ('C' if r['old_correct_canonical'] else 'W')
+            after='A' if r['abstain'] else ('C' if r['correct_canonical'] else 'W')
+            transitions[before+'_'+after]+=1
         metrics.append({'model':model,'method':method,'n':n,'decided':len(decided),'complete':complete,
-                        'old_C':old_c,'old_A':old_a,'old_J':(old_c+old_tp)/n,
+                        'old_C':old_c,'old_W':n-old_c-old_a,'old_A':old_a,'old_TP':old_tp,
+                        'old_J':(old_c+old_tp)/n,
                         'new_C':c if complete else None,'new_A':a_count if complete else None,
+                        'new_W':n-c-a_count if complete else None,'new_TP':tp if complete else None,
                         'new_J':(c+tp)/n if complete else None,'delta_C':c-old_c if complete else None,
                         'delta_A':a_count-old_a if complete else None,
                         'delta_J':(c+tp-old_c-old_tp)/n if complete else None,
                         'reference_positive':sum(r['uniform_reference'] for r in group),
+                        **{before+'_'+after:transitions[before+'_'+after] for before in 'CWA' for after in 'CWA'},
                         'scope':'paired fixed representative subset; no full-eval replacement'})
     for name,values in [('scores.jsonl',scored),('pending_complete_QA.jsonl',list(pending.values()))]:
         with (out/name).open('w') as f:
