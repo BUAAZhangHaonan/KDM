@@ -91,3 +91,16 @@
 16:13实际资源证据：native_baselines/MATRIX_ACTUAL_RESOURCE_SNAPSHOT_20261003_161319.json SHA256=28fc2beaefb34b0f741b32f5d28d778a606d5dafdea7d81e7c278ccd66f4e11e；新pair交接INTERN_MATRIX_D4030_PAIR23_1610_ACTUAL_HANDOFF_20261003.json SHA256=ce069913b781f88aedbb4330243917fc544931426a4dd87bcf0eaac630542bf9；实际生产证据INTERN_MATRIX_D4030_PAIR23_1610_PRODUCTION_EVIDENCE_20261003_161255.json SHA256=006cba933fa53540669dc368c3955760170cd86a6eb97de1bb12fa5ac231d050。
 
 16:18:39新增两队每方法均≥100真实回答，已有足量速度：d4030 2/3估19:22–19:25，6403续接slot1估18:07–18:17；其余4028 0/4估18:14–18:20、1/5估18:55–19:12；6403slot0估18:09–18:16；4029估17:53–18:24；d4030 0/1估18:39–19:39；K100估18:44–19:54。全部现有Food提取队列当前实测预计20:00前结束，仍按真实完成检查和必要重分。总科学已生成344,427、真余43,413，全为InternVL。资源source MATRIX_ACTUAL_RESOURCE_SNAPSHOT_20261003_161839.json SHA256=13957e25fb6892efd59c2dfb53d7f8c7814a991d8866b759002a48371ea97d59；新owner计时生产证据INTERN_MATRIX_D4030_PAIR23_1610_PRODUCTION_EVIDENCE_20261003_161831.json SHA256=3478384d6efc5064949fc9bd97817a9c501b64f9474845f62f2fdcc571b6e824。新4,332已完整接收，41组真实Luna边界正在裁定，100成员未决如实单列。
+
+
+## 20:00检查与Food完整验收
+
+更新时间：2026-10-03T12:24:29.629713+00:00。
+
+Food九模型483条件、1,170,792条已全量验收；每条件2424，101×24，评分/弃权/参考未决0。四扩展矩阵387,840条已连接冻结参考。GPU生产19:04完成，20:07十三授权卡空闲、锁可取，无Food长尾迁移。
+
+最后50,673条已收回并闭合：规则/精确QA优先，新增206唯一QA实际Luna medium和root完整复核。原始回执与纠正分别留存。
+
+其余缺项：额外IP dev选择21,008键，先8题小批；6403双卡Intern pilot运行。扩展Viz方法和有限诊断/完整案例尚未完整，源索引见CURRENT_STATE。core5 Viz512已31条件15,872条，不能称九模型两个数据集全部完成。
+
+下一步：完成Food审阅包离线验证与打包，依实测预算接续缺失dev/Viz。无重复Food生产，无新周期轮询。
