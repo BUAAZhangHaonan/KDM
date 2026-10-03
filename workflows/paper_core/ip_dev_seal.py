@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Seal one owned IP-dev ledger at the next persisted complete input."""
-import argparse,ctypes,json,os,pathlib,select,signal,sys,time
+import argparse,ctypes,datetime,json,os,pathlib,select,signal,sys,time
 ROOT=pathlib.Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT)]
 from workflows.paper_core.ip_dev_pilot import tasks_for,audit,write
@@ -15,7 +15,10 @@ def main():
  assert live()and(proc/'stat').read_text().split(') ',1)[1].split()[19]==a.start_tick
  cmd=(proc/'cmdline').read_bytes();assert str(ROOT/'workflows/paper_core/ip_dev_full.py').encode()in cmd and a.claim.encode()in cmd and identity['pid']==a.pid
  assert identity['plan']==plan and file_hash(ROOT/'workflows/paper_core/ip_dev_full.py')==plan['runner_sha256']
- cards=identity['actual_admission']['physical_gpus'];assert [os.readlink(proc/'fd'/str(20+i))for i in range(len(cards))]==[str(ROOT/'outputs/locks'/('gpu_'+g+'.lock'))for g in cards]
+ launch=json.loads((b/'launch/actual_launch.json').read_text());started=datetime.datetime.fromisoformat(launch['launched_utc']);assert started.tzinfo is not None and launch['pid']==a.pid and launch['start_tick']==a.start_tick
+ gpus=identity['runtime_spec']['gpu_count'];assert isinstance(gpus,int)and gpus>0
+ cards=identity['actual_admission']['physical_gpus'];assert len(cards)==gpus
+ assert [os.readlink(proc/'fd'/str(20+i))for i in range(len(cards))]==[str(ROOT/'outputs/locks'/('gpu_'+g+'.lock'))for g in cards]
  assert not any((b/n).exists()for n in ['complete_receipt.json','failure.json','sealed_partial_receipt.json'])
  inp=within(ROOT,plan['missing_keys_path']);assert file_hash(inp)==plan['missing_keys_sha256']
  original=[x['key']for x in read_jsonl(inp)];_,samples=roster('dev404');tasks={task_id(plan['model'],t):t for t in tasks_for(samples,plan['methods'],plan['markers'])}
@@ -55,8 +58,7 @@ def main():
    for x in remaining:stream.write(json.dumps(x)+'\n')
   receipt=dict(schema='kdm_IP_dev_owned_complete_input_seal_v1',passed=True,source_claim=a.claim,source_pid=a.pid,source_start_tick=a.start_tick,completed=len(keys),remaining=len(remaining),completed_keys=keys,remaining_keys=str((b/'sealed_remaining_keys.jsonl').relative_to(ROOT)),remaining_keys_sha256=file_hash(b/'sealed_remaining_keys.jsonl'),original_claim_sha256=file_hash(b/'claim.json'),original_identity_sha256=file_hash(b/'identity.json'),target_ready_sha256=file_hash(within(ROOT,a.target_ready)),parts=[dict(raw=str(raw.relative_to(ROOT)),raw_sha256=file_hash(raw),rows=len(rows))for raw,rows in parts],original_raw_modified=False,scientific_parameters_changed=False,stop_trigger='next actual ledger close then verified immutable complete-response rows',sealed_utc=now())
   # Actual source time is taken from its launch UTC, with loading included.
-  import datetime
-  started=datetime.datetime.fromisoformat(json.loads((b/'launch/actual_launch.json').read_text())['launched_utc']);receipt['actual_gpu_seconds_including_load']=(datetime.datetime.now(datetime.timezone.utc)-started).total_seconds()*identity['runtime_spec']['gpu_count']
+  receipt['actual_gpu_seconds_including_load']=(datetime.datetime.now(datetime.timezone.utc)-started).total_seconds()*gpus
   write(b/'sealed_partial_receipt.json',receipt);print(json.dumps({k:v for k,v in receipt.items()if k not in ['parts','completed_keys']}))
  finally:
   os.close(fd)
