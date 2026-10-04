@@ -6,8 +6,8 @@ agent is the actual GPT-5.6 Luna reviewer at medium effort.
 
 SSH alias: `4028-root`. Project:
 `/home/g203-4028/projects/knowledge-deficit-mitigation`.
-Local copy root:
-`E:/OneDrive/文档/Playground/kdm_remaining11_20260930_140337/general_vqa_direct_20261004`.
+The central server is the authoritative annotation location. Root exports the
+verified compact delivery to the local workspace after merging.
 
 Read each complete question and complete response, at most ten items at a time,
 then write the judgments. Finish and validate one batch before reading the next.
@@ -69,6 +69,6 @@ completed batch. Repair a failed check before reporting completion.
 
 Do not create a partial `ACTIVE.json`. Root merges any rereview patch with its
 complete original batch. Keep original decisions and correction provenance.
-Copy completed behavior files to local `annotations/<batch>_decisions.jsonl`
-and quality files to local `quality_annotations/<batch>/`, with their receipts.
+Keep completed decisions and receipts on the central server; do not create a
+separate local copy for each batch.
 Report row count, SHA256 and actual validation, including any remaining problem.
