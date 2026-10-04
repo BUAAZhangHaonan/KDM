@@ -108,6 +108,27 @@ def literal_choice(text, options):
     return chr(65 + indices[0]) if len(indices) == 1 else None
 
 
+def explicit_terminal_choice(answer, options):
+    """A final answer declaration must end in an exact original choice.
+
+    Paired bold markup is presentation only. A restated option list, an
+    unfinished declaration, or any trailing explanation is left for review.
+    """
+    plain = re.sub(r"\*\*(.*?)\*\*", r"\1", answer, flags=re.S)
+    markers = list(re.finditer(
+        r"\b(?:(?:the\s+)?(?:(?:correct|final|best)\s+)?(?:answer|option)\s+is\s*:?\s*|"
+        r"(?:final\s+)?answer\s*:\s*)", plain, re.I))
+    if not markers:
+        return None
+    prediction = literal_choice(plain[markers[-1].end():].strip(), options)
+    if prediction is None:
+        return None
+    return {"label": "answer_assertive", "abstain": False,
+            "answer_text": answer, "predicted_answer": prediction,
+            "evidence_span": answer,
+            "decision_source": "terminal_declared_original_choice_v1"}
+
+
 def rule_decision(sample, answer):
     """Only whole-response, unambiguous formats are automatic."""
     literal = lexical_label(answer)
@@ -142,6 +163,9 @@ def rule_decision(sample, answer):
             return {"label": "answer_assertive", "abstain": False, "answer_text": fragment,
                     "predicted_answer": prediction, "evidence_span": answer[last.start():].strip(),
                     "decision_source": "explicit_final_answer_matching_original_choice"}
+        terminal = explicit_terminal_choice(answer, options)
+        if terminal is not None:
+            return terminal
     if dataset == "mmmu" and sample.get("question_type") != "multiple-choice":
         if re.fullmatch(r"[-+]?\d+(?:\.\d+)?(?:\s*%)?", value):
             return {"label": "answer_assertive", "abstain": False, "answer_text": answer,
