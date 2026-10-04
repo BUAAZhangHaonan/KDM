@@ -29,10 +29,14 @@ def main():
     parser.add_argument("--cards", help="Explicit allowed physical GPU assignment for a transferred shard")
     parser.add_argument("--sample-ids", help="Project-relative, non-overlapping frozen sample assignment")
     parser.add_argument("--registry", default="workflows/general_vqa_direct/host_registry.json")
+    parser.add_argument("--native-fast", action="store_true", help="Explicit exact-eight-gated native greedy entry")
+    parser.add_argument("--reference-output", default="outputs/general_vqa_direct/run_20261004")
     parser.add_argument("--output", default="outputs/general_vqa_direct/run_20261004")
     args = parser.parse_args()
     if bool(args.host) != bool(args.cards) or (args.host and len(args.models) != 1):
         raise ValueError("A transferred shard needs one model and explicit host plus physical cards")
+    if args.native_fast and (not args.sample_ids or set(args.models) & {"minicpm26", "internvl35_8b"}):
+        raise ValueError("Native fast requires explicit supported-model sample IDs")
     if not args.phase.replace("_", "").isalnum():
         raise ValueError("Invalid phase")
     reg_path = ROOT / args.registry
@@ -51,8 +55,9 @@ def main():
         python = registry.get("runtime_overrides", {}).get(host, {}).get(model, {}).get(
             "environment_python", original["environment_python"])
         claim_id = f"{model}_{host}_{args.phase}"
+        entry = "native_fast.py" if args.native_fast else "generate.py"
         command = ["bash", str(ROOT / "workflows/supplemental/remaining4/worker_registered.sh"),
-                   str(ROOT), cards, python, str(reg_path), "workflows/general_vqa_direct/generate.py",
+                   str(ROOT), cards, python, str(reg_path), "workflows/general_vqa_direct/" + entry,
                    "--execute", "--model", model,
                    "--protocol", "data/general_vqa_direct_20261004/frozen/protocol.json",
                    "--datasets", *args.datasets, "--output", args.output,
@@ -62,6 +67,8 @@ def main():
             command.append("--k100-intern")
         if args.sample_ids:
             command.extend(["--sample-ids", args.sample_ids])
+        if args.native_fast:
+            command.extend(["--reference-output", args.reference_output])
         log_path = logs / (claim_id + ".log")
         receipt_path = logs / (claim_id + ".launch.json")
         if log_path.exists() or receipt_path.exists():
