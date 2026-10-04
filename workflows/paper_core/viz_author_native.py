@@ -49,7 +49,8 @@ def assigned_tasks(args,samples):
         for sample in samples:
             task=native_task(sample,method);key=task_id(args.model,task)
             if missing is not None and key not in missing:continue
-            if int(stable_hash(key)[:8],16)%args.parts!=args.part:continue
+            partition_key=[args.partition_salt,key] if args.partition_salt else key
+            if int(stable_hash(partition_key)[:8],16)%args.parts!=args.part:continue
             result[method].append(task)
     return result,source
 
@@ -64,6 +65,7 @@ def main():
     p.add_argument('--k100-intern',action='store_true')
     p.add_argument('--missing-keys');p.add_argument('--source-seal')
     p.add_argument('--parts',type=int,default=1);p.add_argument('--part',type=int,default=0)
+    p.add_argument('--partition-salt',default='')
     args=p.parse_args()
     if not 0<=args.part<args.parts:p.error('Invalid mutually exclusive partition')
     if bool(args.missing_keys)!=bool(args.source_seal):p.error('A remaining-key list requires its exact sealed-source receipt')
@@ -112,7 +114,7 @@ def main():
         expected=total,owner=args.owner,started_utc=now(),
         planned_keys=[task_id(args.model,t) for ts in assignments.values() for t in ts],
         source_seal=args.source_seal,source_seal_sha256=file_hash(within(ROOT,args.source_seal)) if args.source_seal else None,
-        partition=dict(parts=args.parts,part=args.part)))
+        partition=dict(parts=args.parts,part=args.part,salt=args.partition_salt)))
     started=time.perf_counter();completed=0
     try:
         backend=make_backend(actual,'cuda:0');load_s=time.perf_counter()-started
@@ -133,7 +135,7 @@ def main():
                     decoder_sha256=file_hash(ROOT/'src/kdm/decoding.py'),runner_sha256=file_hash(Path(__file__)),
                     pilot=start==0,pilot_in_full_denominator=True,full_expected_n=512,
                     source_seal_sha256=file_hash(within(ROOT,args.source_seal)) if args.source_seal else None,
-                    assigned_method_n=len(method_tasks),partition=dict(parts=args.parts,part=args.part))
+                    assigned_method_n=len(method_tasks),partition=dict(parts=args.parts,part=args.part,salt=args.partition_salt))
                 atomic_json(part/'identity.json',identity)
                 if start==0:
                     from PIL import Image
