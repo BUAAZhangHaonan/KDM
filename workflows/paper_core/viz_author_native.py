@@ -7,7 +7,7 @@ import numpy as np
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT),str(Path(__file__).parent)]
 from kdm.io import atomic_json,file_hash,read_jsonl,stable_hash,within
-from kdm.pipeline import make_backend,run_tasks
+from kdm.pipeline import make_backend,run_tasks,task_id
 from kdm.decoding import DecodeConfig
 from kdm.prompts import task_prompt
 from kdm.execution import resolve_image_path
@@ -24,6 +24,35 @@ K100_GATE='outputs/supplemental/remaining4/intern_k100_single_admission_launch2_
 K100_GATE_SHA='1ebd535c708a202be45f951bc9057e903b34263c77c126e271a2eb758a754336'
 def now():return datetime.now(timezone.utc).isoformat()
 
+def native_task(sample,method):
+    return dict(sample=sample,method=method,kind='native_unguided_author_core',marker='NONE',
+        reference_marker='NONE',guided=False,reference_guided=False,replicate=0,
+        implementation_revision=REVISION)
+
+def assigned_tasks(args,samples):
+    all_tasks={task_id(args.model,native_task(s,m)):native_task(s,m)
+               for m in ('dola','deco') for s in samples}
+    missing=None;source=None
+    if args.missing_keys:
+        source=json.loads(within(ROOT,args.source_seal).read_text())
+        assert source['passed'] and source['producer_exited'] and source['model']==args.model
+        path=within(ROOT,args.missing_keys)
+        assert file_hash(path)==source['remaining_keys_sha256']
+        rows=list(read_jsonl(path));missing={r['key'] for r in rows}
+        assert len(rows)==len(missing)==source['remaining'] and missing<=all_tasks.keys()
+        assert not missing & set(source['completed_keys'])
+        for row in rows:
+            task=all_tasks[row['key']]
+            assert row['model']==args.model and row['method']==task['method'] and row['sample_id']==task['sample']['id']
+    result={method:[] for method in args.methods}
+    for method in args.methods:
+        for sample in samples:
+            task=native_task(sample,method);key=task_id(args.model,task)
+            if missing is not None and key not in missing:continue
+            if int(stable_hash(key)[:8],16)%args.parts!=args.part:continue
+            result[method].append(task)
+    return result,source
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--model',choices=MODELS,required=True)
@@ -33,7 +62,12 @@ def main():
     p.add_argument('--owner',default='/root');p.add_argument('--plan',action='store_true')
     p.add_argument('--supplemental-location',action='store_true')
     p.add_argument('--k100-intern',action='store_true')
+    p.add_argument('--missing-keys');p.add_argument('--source-seal')
+    p.add_argument('--parts',type=int,default=1);p.add_argument('--part',type=int,default=0)
     args=p.parse_args()
+    if not 0<=args.part<args.parts:p.error('Invalid mutually exclusive partition')
+    if bool(args.missing_keys)!=bool(args.source_seal):p.error('A remaining-key list requires its exact sealed-source receipt')
+    if args.parts>1 and not args.missing_keys:p.error('Partition only actual sealed remaining keys')
     proofs={}
     for method in args.methods:
         _,spec,proofs[method]=load_inputs(args.model,'vcd' if method=='deco' else method)
@@ -41,8 +75,12 @@ def main():
             manifest,frozen=load_contract(ROOT)
             proofs[method]['deco_projection_proof']=validate_proofs(ROOT,spec,args.model,['deco'],'formal',manifest,frozen)
     listing,samples=roster('viz512');assert len(samples)==512
+    assignments,source_seal=assigned_tasks(args,samples)
+    total=sum(len(tasks) for tasks in assignments.values())
+    assert total>0
     if args.plan:
-        print(json.dumps(dict(model=args.model,methods=args.methods,missing=len(args.methods)*512,
+        print(json.dumps(dict(model=args.model,methods=args.methods,missing=total,
+          keys=[task_id(args.model,t) for ts in assignments.values() for t in ts],
           roster_sha256=file_hash(listing),dtype=spec['dtype'],proofs=proofs)));return
     cards=args.physical_gpus.split(',')
     if args.model in CORE and not args.supplemental_location:
@@ -71,23 +109,31 @@ def main():
     out=within(ROOT,args.output);out.mkdir(parents=True,exist_ok=False)
     atomic_json(out/'claim.json',dict(pid=os.getpid(),starttick=Path('/proc/self/stat').read_text().split()[21],
         host=socket.gethostname(),physical_gpus=cards,model=args.model,methods=args.methods,
-        expected=len(args.methods)*512,owner=args.owner,started_utc=now()))
+        expected=total,owner=args.owner,started_utc=now(),
+        planned_keys=[task_id(args.model,t) for ts in assignments.values() for t in ts],
+        source_seal=args.source_seal,source_seal_sha256=file_hash(within(ROOT,args.source_seal)) if args.source_seal else None,
+        partition=dict(parts=args.parts,part=args.part)))
     started=time.perf_counter();completed=0
     try:
         backend=make_backend(actual,'cuda:0');load_s=time.perf_counter()-started
         for method in args.methods:
+            method_tasks=assignments[method]
+            if not method_tasks:continue
             cfg=DecodeConfig(method=method)
             assert cfg.max_tokens==32 and cfg.temperature==0 and cfg.top_p==1
-            ranges=[(0,8)]+[(i,min(i+64,512)) for i in range(8,512,64)]
+            ranges=[(0,min(8,len(method_tasks)))]+[(i,min(i+64,len(method_tasks))) for i in range(8,len(method_tasks),64)]
             method_s=0.;method_n=0
             for start,stop in ranges:
-                selected=samples[start:stop]
+                tasks=method_tasks[start:stop]
+                selected=[t['sample'] for t in tasks]
                 part=out/f'{method}_{start:03d}_{stop:03d}';part.mkdir(exist_ok=False)
                 identity=dict(model=args.model,method=method,revision=REVISION,runtime_spec=actual,
                     runtime_admission=admitted,config=asdict(cfg),sample_ids=[s['id'] for s in selected],
                     roster_sha256=file_hash(listing),proof=proofs[method],
                     decoder_sha256=file_hash(ROOT/'src/kdm/decoding.py'),runner_sha256=file_hash(Path(__file__)),
-                    pilot=start==0,pilot_in_full_denominator=True,full_expected_n=512)
+                    pilot=start==0,pilot_in_full_denominator=True,full_expected_n=512,
+                    source_seal_sha256=file_hash(within(ROOT,args.source_seal)) if args.source_seal else None,
+                    assigned_method_n=len(method_tasks),partition=dict(parts=args.parts,part=args.part))
                 atomic_json(part/'identity.json',identity)
                 if start==0:
                     from PIL import Image
@@ -100,9 +146,6 @@ def main():
                         all_layer_projections_finite=True,actual_need_layers=True,
                         decoder_sha256=identity['decoder_sha256'],configured_operator=asdict(cfg)))
                     del session,step
-                tasks=[dict(sample=s,method=method,kind='native_unguided_author_core',marker='NONE',
-                    reference_marker='NONE',guided=False,reference_guided=False,replicate=0,
-                    implementation_revision=REVISION) for s in selected]
                 assert all(t['guided'] is False and t['reference_guided'] is False
                     and t['marker']==t['reference_marker']=='NONE' for t in tasks)
                 raw=part/'new_predictions.jsonl'
@@ -119,11 +162,11 @@ def main():
                     completed=len(rows),expected=len(rows),raw_sha256=file_hash(raw),
                     mean_sample_s=seconds/len(rows),pilot=start==0,completed_utc=now(),
                     identity_sha256=file_hash(part/'identity.json'),full_eval_source_denominator=512))
-                progress=dict(model=args.model,method=method,method_completed=method_n,method_expected=512,
-                    completed=completed,expected=len(args.methods)*512,mean_sample_s=method_s/method_n,
-                    method_eta_s=(512-method_n)*method_s/method_n,updated_utc=now(),load_s=load_s)
+                progress=dict(model=args.model,method=method,method_completed=method_n,method_expected=len(method_tasks),
+                    completed=completed,expected=total,mean_sample_s=method_s/method_n,
+                    method_eta_s=(len(method_tasks)-method_n)*method_s/method_n,updated_utc=now(),load_s=load_s)
                 atomic_json(out/'progress.json',progress);print(json.dumps(progress),flush=True)
-        atomic_json(out/'complete.json',dict(passed=True,completed=completed,expected=len(args.methods)*512,
+        atomic_json(out/'complete.json',dict(passed=True,completed=completed,expected=total,
             elapsed_s=time.perf_counter()-started,completed_utc=now(),sealed_parts=True))
     except BaseException as error:
         atomic_json(out/'failure.json',dict(error=repr(error),completed=completed,at_utc=now(),automatic_retry=False))
