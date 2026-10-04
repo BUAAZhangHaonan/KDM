@@ -9,8 +9,10 @@ SSH alias: `4028-root`. Project:
 Local copy root:
 `E:/OneDrive/文档/Playground/kdm_remaining11_20260930_140337/general_vqa_direct_20261004`.
 
-Read each complete question and complete response, at most five items at a time,
+Read each complete question and complete response, at most ten items at a time,
 then write the judgments. Finish and validate one batch before reading the next.
+Keep each tool result within its output budget; split the read if any full question,
+response, or reference would be truncated. Never shorten the source text for review.
 Do not replace semantic reading with keyword-generated decisions. Keep all text
 exactly as supplied. Read JSONL with UTF-8-sig where necessary. Write actual
 newlines using `chr(10).join(...)`, and reread each line with `json.loads`.
