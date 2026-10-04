@@ -64,3 +64,25 @@ Official source indices and frozen hashes are saved with the input manifests:
 [ScienceQA](https://github.com/lupantech/ScienceQA),
 [POPE](https://github.com/RUCAIBox/POPE),
 [HallusionBench](https://github.com/tianyi-lab/HallusionBench).
+
+## Accepted delivery, 2026-10-05
+
+The complete panel is sealed at
+`outputs/general_vqa_direct/scoring_snapshot_0041/scores.jsonl`, SHA256
+`76bb04b3510eefea75811f5f98ed43cd2f22ce4927f275c6b0b7b23733ac9bda`.
+All 35,559 unique responses and 36 model/dataset cells have resolved correctness
+and abstention, with zero missing keys, duplicate keys or pending reviews.
+Actual Luna medium semantic judgments and bounded root corrections retain their
+source bindings; the held superseded attempts are excluded from this score.
+
+`delivery_complete_20261005.zip` contains the Chinese/English reports, 36-cell
+metrics, all complete questions and responses with score provenance, the common
+3,951-input manifest, configurations, raw-source index and POPE parser comparison.
+`delivery_verification_20261005.json` records CSV row counts, file hashes and ZIP
+CRC verification. All task-owned GPU jobs have exited.
+
+MMMU's registered 128-token ceiling left 817/1,000 Qwen3.5, 395/1,000 Qwen3-VL and
+330/1,000 Gemma responses unterminated. The delivered tables separate this output
+status, invalid responses and semantic abstention; these scores describe the
+registered generation budget. HallusionBench reports the official full-reference
+question score with the actual Luna adjudicator.
