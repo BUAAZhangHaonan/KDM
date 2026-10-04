@@ -24,6 +24,10 @@ def main():
     for path in args.annotations.glob("*/pending_review.jsonl"):
         claimed.update(row["qa_key"] for row in load(path))
     for path in args.annotations.glob("*/decisions.jsonl"):
+        # The immutable assignment already reserves every key in a live batch.
+        # Its decision file can be in the middle of a write by the actual reviewer.
+        if path.with_name("pending_review.jsonl").exists():
+            continue
         claimed.update(row["qa_key"] for row in load(path))
     selected, estimate = [], 0
     for row in load(args.pending):

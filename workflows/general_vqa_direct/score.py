@@ -214,6 +214,14 @@ def write_rows(path, values):
     path.write_text("".join(json.dumps(row, ensure_ascii=False) + "\n" for row in values), encoding="utf-8")
 
 
+def check_selected_batch(path, key_field):
+    expected = [row[key_field] for _, row in rows(path.with_name("pending_review.jsonl"))]
+    observed = [row[key_field] for _, row in rows(path)]
+    if (len(expected) != len(set(expected)) or len(observed) != len(set(observed))
+            or set(expected) != set(observed)):
+        raise ValueError("Active selection must cover its complete assigned batch: " + str(path))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raw", action="append", type=Path, default=[])
@@ -236,6 +244,7 @@ def main():
                 path = original.parent / selected["filename"]
                 if path.parent != original.parent or hashlib.sha256(path.read_bytes()).hexdigest() != selected["sha256"]:
                     raise ValueError("Active annotation selection has a foreign path or mismatched hash")
+                check_selected_batch(path, "qa_key")
                 args.decisions.append(path)
                 continue
             corrected = original.with_name("decisions_corrected.jsonl")
@@ -258,6 +267,7 @@ def main():
                 path = original.parent / selected["filename"]
                 if path.parent != original.parent or hashlib.sha256(path.read_bytes()).hexdigest() != selected["sha256"]:
                     raise ValueError("Active quality selection has a foreign path or mismatched hash")
+                check_selected_batch(path, "quality_key")
             elif original.with_name("REJECTED.json").exists():
                 continue
             for line, record in rows(path):
