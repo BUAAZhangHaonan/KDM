@@ -117,6 +117,10 @@ def main():
         report.append('| ' + checkpoints[model]['hf_model_id'] + ' | ' + ' | '.join(values) + ' |')
     report += ['', 'MMMU and ScienceQA use fixed public-test subsets; POPE uses the fixed balanced original-COCO subset. '
         'HallusionBench covers all 951 image-bearing entries. Subset IDs, image paths, original questions and references are in sample_manifest.csv.', '',
+        'MMMU and ScienceQA multiple-choice accuracy compares the final extracted original option with the released answer. '
+        'MMMU open answers use the pinned official open-answer parser. Response interpretation uses deterministic rules, '
+        'exact full-QA reuse and actual GPT-5.6 Luna medium review, with bounded root adjudication. '
+        'Unfinished responses without an answer remain invalid; invalid and abstaining responses are counted separately.', '',
         'HallusionBench question accuracy uses its original full reference and score mapping, with actual GPT-5.6 Luna medium adjudication for semantic cases. '
         'It is a Luna-adjudicated visual-question score. Appropriate inability responses to an explicitly indeterminate reference can receive credit; '
         'abstention is also counted independently. POPE official text-parser predictions and scores are preserved alongside semantic answer extraction.', '',
