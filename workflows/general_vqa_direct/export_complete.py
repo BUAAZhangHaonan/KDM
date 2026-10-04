@@ -86,6 +86,17 @@ def main():
     # All completeness and source checks precede creation of the output directory.
     args.out.mkdir(parents=True, exist_ok=False)
     csv_write(args.out/'metrics.csv', metrics)
+    pope_comparison = []
+    for model in protocol['models']:
+        group = groups[(model, 'pope')]
+        assert all(row.get('official_parser_score') in (0, 1) for row in group)
+        n = len(group)
+        pope_comparison.append({'model': model, 'n': n,
+            'semantic_answer_accuracy': sum(row['score'] for row in group) / n,
+            'official_parser_accuracy': sum(row['official_parser_score'] for row in group) / n,
+            'score_disagreements': sum(row['score'] != row['official_parser_score'] for row in group),
+            'abstention_rate': sum(row['abstain'] for row in group) / n})
+    csv_write(args.out/'pope_parser_comparison.csv', pope_comparison)
     csv_write(args.out/'sample_manifest.csv', sample_rows)
     csv_write(args.out/'configurations.csv', configs)
     flat, sources = [], Counter()
@@ -123,10 +134,12 @@ def main():
         'Unfinished responses without an answer remain invalid; invalid and abstaining responses are counted separately.', '',
         'HallusionBench question accuracy uses its original full reference and score mapping, with actual GPT-5.6 Luna medium adjudication for semantic cases. '
         'It is a Luna-adjudicated visual-question score. Appropriate inability responses to an explicitly indeterminate reference can receive credit; '
-        'abstention is also counted independently. POPE official text-parser predictions and scores are preserved alongside semantic answer extraction.', '',
+        'abstention is also counted independently. POPE official text-parser predictions and scores are preserved alongside semantic answer extraction; '
+        'pope_parser_comparison.csv provides both aggregate accuracies and their disagreement counts. The main table uses semantic answer accuracy.', '',
         'Generation is native greedy Direct without abstention instructions. MMMU has a 128-token ceiling based on an author example; '
         'ScienceQA uses the author-example 512-token ceiling. POPE and HallusionBench use the registered 512-token ceiling. EOS ends generation early. '
-        'Nonterminated output counts are reported in metrics.csv. Original model precision and preprocessing are retained. '
+        'Nonterminated output and invalid-answer counts are reported separately in metrics.csv. A retained answer before a truncated ending is still scored; '
+        'unfinished reasoning without an answer does not count as abstention. Original model precision and preprocessing are retained. '
         'Some supported workers use native generation after an eight-input token/input/EOS equivalence check; per-response engine and source identity are retained.', '',
         'Files: metrics.csv (36 complete cells), per_sample_scores.csv (all responses and score provenance), '
         'sample_manifest.csv (3,951 common inputs), configurations.csv (36 model/dataset settings), sources.csv (immutable raw locations). '
