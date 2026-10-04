@@ -57,6 +57,8 @@ class SIDControl:
         tok = getattr(backend.em, 'img_ctx_id', None)
         if tok is None:
             tok = getattr(backend.model.config, 'image_token_id', None)
+        if tok is None:
+            tok = getattr(backend.model.config, 'image_token_index', None)
         if getattr(backend.model.config, 'model_type', None) == 'phi3_v':
             # Native Phi3ImageEmbedding.forward indexes exactly these expanded
             # positions before clamping ids and writing projected visual vectors.
@@ -78,6 +80,9 @@ class SIDControl:
         mask = inputs.get('attention_mask')
         if mask is not None and (mask.ndim != 2 or not bool(mask.all())):
             raise RuntimeError('SID fixed official mask comparison requires an unpadded single sequence')
+        if not hasattr(self.layers[1], 'self_attn'):
+            raise RuntimeError('SID aggregation block 2 has no softmax self-attention; '
+                               'linear/recurrent mixers require a separately defined method')
         self.attn_module = self.layers[1].self_attn
         if not hasattr(self.attn_module, 'config'):
             raise RuntimeError('SID second-layer attention has no configurable eager implementation')
@@ -187,7 +192,8 @@ class SIDControl:
 class SIDSession(HFSession):
     def __init__(self, backend, inputs):
         super().__init__(backend, inputs, False, False)
-        self.control = SIDControl(backend, inputs)
+        control = Gemma3SIDControl if getattr(backend.model.config, 'model_type', None) == 'gemma3' else SIDControl
+        self.control = control(backend, inputs)
         self._sid_kv_length = 0
 
     def _call(self, **kwargs):
@@ -201,3 +207,27 @@ class SIDSession(HFSession):
             result = super()._call(**kwargs)
         self._sid_kv_length = kv_length
         return result
+
+
+class Gemma3SIDControl(SIDControl):
+    """SID on native Gemma attention masks, including bidirectional image blocks.
+
+    Eager dispatch is scoped to the SID reference, before native mask creation.
+    This materializes the existing sliding/full masks without reconstructing them
+    as plain causal masks. Aggregation stays at block 2 with the fixed rank 100.
+    Full visual KV coverage is required; no truncated-cache approximation.
+    """
+    @contextmanager
+    def forward_scope(self, qlen, kv_length):
+        config = self.attn_module.config
+        window = getattr(self.attn_module, 'sliding_window', None)
+        if window and kv_length > window:
+            raise RuntimeError('Gemma SID requires the visual prefix in the aggregation '
+                               'layer sliding KV window; this input exceeds the admitted span')
+        previous = config._attn_implementation
+        config._attn_implementation = 'eager'
+        try:
+            with super().forward_scope(qlen, kv_length):
+                yield
+        finally:
+            config._attn_implementation = previous
