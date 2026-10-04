@@ -23,6 +23,29 @@ FROZEN_SCORES=[('support/vizwiz/core5_512/new_scores.parquet','0ba5aa7874b8a0ffc
 
 def now():return datetime.now(timezone.utc).isoformat()
 
+def sealed_part(part):
+    """Read either a finished part or the original bytes sealed at handoff."""
+    raw=part/'new_predictions.jsonl'; ip=part/'identity.json'
+    identity=json.loads(ip.read_text()); rows=[json.loads(s) for s in raw.read_text().splitlines()]
+    complete=part/'complete.json'
+    if complete.exists():
+        end=json.loads(complete.read_text())
+        assert end['passed'] and len(rows)==end['completed']==end['expected']
+        assert set(identity['sample_ids'])=={r['sample']['id'] for r in rows}
+    else:
+        complete=part.parent/'sealed_for_handoff.json'
+        seal=json.loads(complete.read_text())
+        assert seal['passed'] and seal['producer_exited'] and seal['zero_completed_remaining_intersection']
+        matches=[x for x in seal['source_parts'] if within(ROOT,x['raw'])==raw]
+        assert len(matches)==1
+        source=matches[0]
+        assert len(rows)==source['completed']>0
+        assert source['original_identity_sha256']==file_hash(ip)
+        assert {r['sample']['id'] for r in rows}<=set(identity['sample_ids'])
+        end={'raw_sha256':source['raw_sha256']}
+    assert file_hash(raw)==end['raw_sha256']
+    return raw,ip,identity,rows,end,complete
+
 def reuse(path):
     if path.exists():
         receipt=json.loads((path.parent/'receipt.json').read_text())
@@ -78,12 +101,8 @@ def main():
     refs,reference_path=viz_references(samples);reference_map={r.sample_id:r for r in refs.itertuples()}
     records=[];sources=[];keys=set()
     for item in args.part:
-        part=within(ROOT,item);raw=part/'new_predictions.jsonl';identity_path=part/'identity.json'
-        end=json.loads((part/'complete.json').read_text());identity=json.loads(identity_path.read_text())
-        assert end['passed'] and file_hash(raw)==end['raw_sha256']
-        rows=[json.loads(s) for s in raw.read_text().splitlines()]
-        assert len(rows)==end['completed']==end['expected']
-        assert set(identity['sample_ids'])=={r['sample']['id'] for r in rows}
+        part=within(ROOT,item)
+        raw,identity_path,identity,rows,end,complete_path=sealed_part(part)
         identity_sha=file_hash(identity_path)
         for line,row in enumerate(rows,1):
             sample=samples[row['sample']['id']]
@@ -104,11 +123,11 @@ def main():
             provenance=dict(source_path=str(raw),source_line=line,raw_source_sha256=end['raw_sha256'],
                 source_identity=identity_sha,generation_identity=identity_sha,expected_n=512,
                 source_raw_complete=True,model_checkpoint=spec['hf_model_id'],model_dtype=spec['dtype'],
-                identity_source_path=str(identity_path),complete_source_path=str(part/'complete.json'),
+                identity_source_path=str(identity_path),complete_source_path=str(complete_path),
                 implementation_revision=row.get('implementation_revision',identity.get('revision','')))
             records.append((row,provenance))
         sources.append(dict(path=str(raw),sha256=end['raw_sha256'],identity_sha256=identity_sha,n=len(rows),
-                            complete_path=str(part/'complete.json'),complete_sha256=file_hash(part/'complete.json')))
+                            complete_path=str(complete_path),complete_sha256=file_hash(complete_path)))
     cache=reuse(within(ROOT,args.reuse_cache))
     old_decisions,old_viz,oldproof=accepted.old_closed_authorities()
     # Frozen complete56 exact-QA authority is sufficient; ambiguous old duplicate
