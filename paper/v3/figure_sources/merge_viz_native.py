@@ -54,6 +54,8 @@ for name in ['all56_metrics.csv','main45_metrics.csv','condition_coverage56.csv'
 status=pd.read_csv(data/'DATA_STATUS.csv')
 for i,r in status[status.stage.eq('VizWiz_official_eval512_all')].iterrows():
  n=int(all79.model.eq(r.model).sum());status.loc[i,['condition_count','completed_rows','expected_rows','semantics_pending_rows','reference_pending_rows','source']]=[n,n*512,n*512,0,0,'vizwiz_final/all79_metrics.csv']
+status.loc[status.stage.eq('VizWiz_official_eval512_main'),['condition_count','completed_rows','expected_rows','source','scope']]=[68,34816,34816,'vizwiz_final/main68_metrics.csv','nine models seven primary methods plus five applicable original SID; 166 unanswerable and 346 answerable per condition']
+status.loc[status.stage.eq('VizWiz_official_eval512_mechanism'),'source']='vizwiz_final/all79_metrics.csv'
 status.to_csv(data/'DATA_STATUS.csv',index=False)
 na=pd.DataFrame([{'model':m,'dataset':'vizwiz','method':'sid','status':'not_applicable','reason':w} for m,w in {
  'qwen25vl':'7/512 inputs have fewer than the original fixed 100 visual tokens',
