@@ -29,7 +29,14 @@ real refusal or inability to answer. A clear answer that is not withdrawn remain
 an answer when later explanation is truncated; unfinished reasoning with no
 answer is invalid. Extract the final clear original option letter; unresolved
 competing answers get null. Binary extraction is `yes`, `no`, or JSON null,
-never the string `"null"`.
+never the string "null".
+
+An answer need not appear after a final-answer heading. For example, explicitly
+marking option C as true is an answer even when a later Final Answer: heading
+is empty. A complete Answer: (A) cannot be invalid. A clear assertion that none
+of the offered options applies is a content answer with null option extraction,
+unless the response retracts it into unresolved reasoning. Check these cases
+by reading the full response, not by labeling from headings or truncation alone.
 
 Keep `answer_text` as the full response and select a meaningful continuous
 original `evidence_span`. For invalid reasoning without a final answer, the full
