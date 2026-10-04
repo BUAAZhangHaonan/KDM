@@ -32,11 +32,9 @@ def main():
     parser.add_argument("--native-fast", action="store_true", help="Explicit exact-eight-gated native greedy entry")
     parser.add_argument("--reference-output", default="outputs/general_vqa_direct/run_20261004")
     parser.add_argument("--output", default="outputs/general_vqa_direct/run_20261004")
-    parser.add_argument("--chunk-rows", type=int, default=64,
+    parser.add_argument("--chunk-rows", type=int, choices=(64, 128), default=64,
                         help="Immutable output rows per seal; changes dispatch granularity, not inference batch size")
     args = parser.parse_args()
-    if not 1 <= args.chunk_rows <= 64:
-        raise ValueError("Output sealing chunk must contain between 1 and 64 completed inputs")
     if bool(args.host) != bool(args.cards) or (args.host and len(args.models) != 1):
         raise ValueError("A transferred shard needs one model and explicit host plus physical cards")
     if args.native_fast and (not args.sample_ids or set(args.models) & {"minicpm26", "internvl35_8b"}):
