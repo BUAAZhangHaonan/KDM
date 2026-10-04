@@ -28,7 +28,7 @@ def digest(value):
 
 
 def rows(path):
-    with path.open(encoding="utf-8") as stream:
+    with path.open(encoding="utf-8-sig") as stream:
         for number, line in enumerate(stream, 1):
             if line.strip():
                 yield number, json.loads(line)
@@ -94,6 +94,20 @@ def explicit_binary_decision(answer):
             "decision_source": "explicit_binary_full_reply_guard_v2"}
 
 
+def literal_choice(text, options):
+    value = formatted(text)
+    letter = re.fullmatch(r"\(?([A-Z])\)?", value, re.I)
+    if letter and 0 <= ord(letter[1].upper()) - 65 < len(options):
+        return letter[1].upper()
+    paired = re.fullmatch(r"\(?([A-Z])\)?[.:]?\s+(.+)", value, re.I)
+    if paired:
+        index = ord(paired[1].upper()) - 65
+        if 0 <= index < len(options) and formatted(paired[2]).casefold() == formatted(str(options[index])).casefold():
+            return chr(65 + index)
+    indices = [i for i, option in enumerate(options) if formatted(str(option)).casefold() == value.casefold()]
+    return chr(65 + indices[0]) if len(indices) == 1 else None
+
+
 def rule_decision(sample, answer):
     """Only whole-response, unambiguous formats are automatic."""
     literal = lexical_label(answer)
@@ -114,16 +128,20 @@ def rule_decision(sample, answer):
             return binary
     options = sample.get("options", [])
     if options:
-        match = re.fullmatch(r"(?:(?:The\s+(?:correct\s+)?answer\s+is|Answer\s*:|Option)\s*)?\(?([A-Z])\)?", value, re.I)
-        if match and 0 <= ord(match.group(1).upper()) - 65 < len(options):
+        prediction = literal_choice(value, options)
+        if prediction is not None:
             return {"label": "answer_assertive", "abstain": False, "answer_text": answer,
-                    "predicted_answer": match.group(1).upper(), "evidence_span": answer,
-                    "decision_source": "complete_literal_option_letter"}
-        indices = [i for i, option in enumerate(options) if formatted(str(option)).casefold() == value.casefold()]
-        if len(indices) == 1:
-            return {"label": "answer_assertive", "abstain": False, "answer_text": answer,
-                    "predicted_answer": chr(65 + indices[0]), "evidence_span": answer,
-                    "decision_source": "complete_unique_option_text"}
+                    "predicted_answer": prediction, "evidence_span": answer,
+                    "decision_source": "complete_literal_choice_letter_or_original_text"}
+        markers = list(re.finditer(r"\b(?:the\s+(?:(?:correct|final)\s+)?answer\s+is\s*:?|(?:final\s+)?answer\s*:|option\s+(?=\(?[A-Z]\)?\s*[.!]?\s*$))\s*", answer, re.I))
+        if markers:
+            last = markers[-1]
+            fragment = answer[last.end():].strip()
+            prediction = literal_choice(fragment, options)
+        if markers and prediction is not None:
+            return {"label": "answer_assertive", "abstain": False, "answer_text": fragment,
+                    "predicted_answer": prediction, "evidence_span": answer[last.start():].strip(),
+                    "decision_source": "explicit_final_answer_matching_original_choice"}
     if dataset == "mmmu" and sample.get("question_type") != "multiple-choice":
         if re.fullmatch(r"[-+]?\d+(?:\.\d+)?(?:\s*%)?", value):
             return {"label": "answer_assertive", "abstain": False, "answer_text": answer,
