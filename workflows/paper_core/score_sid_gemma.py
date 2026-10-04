@@ -87,7 +87,10 @@ def run(a):
              'missing_sample_ids':sorted(set(samples)-seen),'pending_unique_QA':len(pending),
              'primary_complete':len(scores)==2424 and not pending,'sources':sources,
              'reference_sources':ref_sources,'authority_receipts':authority_receipts,
-             'new_semantic_judgments':0,'extra_decisions':[{'path':str(p),'sha256':file_hash(p)} for p in extra],
+             'semantic_judgments_created_by_scoring_program':0,
+             'extra_semantic_decision_rows_loaded':sum(sum(1 for _ in read_jsonl(p)) for p in extra),
+             'extra_semantic_unique_QA_applied':len({r['qa_key'] for r in scores if r['decision'] and r['decision'].get('decision_source_path') in {str(p) for p in extra}}),
+             'extra_decisions':[{'path':str(p),'sha256':file_hash(p)} for p in extra],
              'canonical_scorer_sha256':file_hash(Path(frozen.__file__)),
              'outputs':{p.name:file_hash(p) for p in out.iterdir() if p.is_file() and p.name!='receipt.json'}}
     atomic_json(out/'receipt.json',receipt)
