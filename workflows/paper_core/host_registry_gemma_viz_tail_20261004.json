@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "purpose": "Original Gemma native DoLa/DeCo Viz512 location-only mutually exclusive remaining-key continuations",
+  "models": ["gemma3_4b"],
+  "hosts": {
+    "4029": {
+      "hostname": "WS-4029GP-TRT",
+      "root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930",
+      "allowed_gpus": [2],
+      "max_workers_per_gpu": 1,
+      "gpu_uuids": {"2": "GPU-dfaeaa7c-32c8-ebb4-aa59-ab7f829805f1"}
+    },
+    "6403": {
+      "hostname": "oem-PowerEdge-T640",
+      "root": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation",
+      "allowed_gpus": [1],
+      "max_workers_per_gpu": 1,
+      "gpu_uuids": {"1": "GPU-5c45e961-7442-eb90-9b8c-295a1cf14995"}
+    }
+  },
+  "model_hosts": {"gemma3_4b": "4029"},
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "4029": {
+      "gemma3_4b": {
+        "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/.environments/tf553/bin/python",
+        "model_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/cache/models/gemma-3-4b-it",
+        "source_evidence": "Original central checkpoint copied byte-for-byte; frozen config, tokenizer, processor and weight-size identity verified before load; unchanged Torch2.6+cu124 and Transformers5.5.3; exclusive3090 follows actual central Gemma admission"
+      }
+    },
+    "6403": {
+      "gemma3_4b": {
+        "environment_python": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/.environments/remaining11_tf553_20260930/bin/python",
+        "model_path": "/home/team/zhanghaonan/TAFFC/knowledge-deficit-mitigation/cache/models/formal_v2_gemma3_4b",
+        "source_evidence": "Existing frozen checkpoint at original host location, verified config/tokenizer/processor/weight-size identity and original Torch2.6+cu124/Transformers5.5.3 before load; exclusive A100, no method or generation parameter changes"
+      }
+    }
+  }
+}
