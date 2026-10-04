@@ -39,6 +39,8 @@ period and present the fragment as a complete span.
 Write complete `decisions.jsonl`. Validate unique full assigned-key coverage,
 exact question/answer bindings, every `score.check_decision`, and Hallusion
 `check_behavior_prediction` where applicable.
+Run the shared checker before writing the completion receipt:
+`venv/bin/python workflows/general_vqa_direct/check_behavior_batch.py --batch outputs/general_vqa_direct/annotations/<batch> --author <your-actual-canonical-agent-name>`.
 
 ## Hallusion reference-relative quality
 
@@ -63,6 +65,9 @@ reference bindings. Do not modify the independently assigned behavior labels.
 
 Use your actual canonical agent name as `author`, `model=gpt-5.6-luna`,
 `effort=medium`, and `call_id=null` when an actual call ID is unavailable.
+These four fields must be at the top level of every JSON record, beside
+`qa_key`, `question`, `answer`, and `decision`; metadata only inside `decision`
+does not satisfy the scoring schema.
 Only after all validation passes, write `write_receipt.json` with counts, SHA256,
 actual author/model/effort and completed checks. An in-progress file is not a
 completed batch. Repair a failed check before reporting completion.
