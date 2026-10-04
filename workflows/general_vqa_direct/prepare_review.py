@@ -18,6 +18,7 @@ def main():
     parser.add_argument("--owner", required=True)
     parser.add_argument("--max-rows", type=int, default=150)
     parser.add_argument("--input-token-estimate", type=int, default=16000)
+    parser.add_argument("--datasets", nargs="+", help="Limit this assignment to named datasets")
     args = parser.parse_args()
     claimed = set()
     for path in args.annotations.glob("*/pending_review.jsonl"):
@@ -26,9 +27,12 @@ def main():
         claimed.update(row["qa_key"] for row in load(path))
     selected, estimate = [], 0
     for row in load(args.pending):
+        if args.datasets and row["dataset"] not in args.datasets:
+            continue
         if row["qa_key"] in claimed:
             continue
         item = {name: row[name] for name in ("qa_key", "dataset", "question", "answer", "options")}
+        item["question_kind"] = row.get("question_kind")
         item["membership_count"] = len(row["memberships"])
         # Conservative character estimate plus question/key/schema overhead.
         cost = (len(json.dumps(item, ensure_ascii=False)) + 2) // 3 + 50

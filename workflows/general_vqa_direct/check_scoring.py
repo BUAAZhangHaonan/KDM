@@ -18,7 +18,7 @@ def main():
         ("No, actually yes. I was mistaken.", None),
         ("Yes. The animal is not a dog.", None),
         ("No. However, the correct answer is yes.", None),
-        ("Yes, there appears to be a dog.", None),
+        ("Yes, there appears to be a dog.", "yes"),
         ("I cannot answer from this image.", None),
     ]:
         decision = explicit_binary_decision(text)
