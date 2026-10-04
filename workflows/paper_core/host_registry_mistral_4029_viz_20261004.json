@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "purpose": "original Mistral SID Viz512 remaining504 after actual4028 pilot8; unchanged runtime path move",
+  "authorization": "root assigned4029 physical GPU1; original checkpoint copied from4028; no algorithm or generation parameter change",
+  "hosts": {
+    "4029": {
+      "hostname": "WS-4029GP-TRT",
+      "root": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930",
+      "allowed_gpus": [1],
+      "max_workers_per_gpu": 1,
+      "gpu_uuids": {"1": "GPU-7ba69fc7-12ac-3dfb-8265-3476ce2504b6"},
+      "capacity_evidence": "exclusive RTX3090, same hardware class as actual4028 pilot8; every actual512 input retains original preprocessing, and a new OOM stops the affected run without parameter reduction"
+    }
+  },
+  "model_hosts": {"llava16_mistral": "4029"},
+  "image_prefixes": {
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/data/images": "data/images",
+    "/home/g203-4028/projects/knowledge-deficit-mitigation/cache/assets/vizwiz/extracted/val": "cache/assets/vizwiz/extracted/val"
+  },
+  "image_catalog": "outputs/records/image_content_catalog.json",
+  "runtime_overrides": {
+    "4029": {
+      "llava16_mistral": {
+        "environment_python": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/.environments/native311/bin/python",
+        "model_path": "/home/hdd3/zhanghaonan/projects/knowledge-deficit-mitigation/supplemental/remaining11/runtime_20260930/cache/models/llava-v1.6-mistral-7b-hf",
+        "source_evidence": "byte-preserving SCP from registered /home/g203-4028/Models/llava-v1.6-mistral-7b-hf; frozen config, tokenizer, processor SHA and weight sizes and original Torch2.9+cu128/Transformers5.17 validated before model load; 8 actual central Viz SID inputs retained, no repeated input"
+      }
+    }
+  }
+}

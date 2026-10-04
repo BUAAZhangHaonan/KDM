@@ -12,7 +12,9 @@ Qwen2.5-VL's first real Viz input, `vizwiz:VizWiz_val_00000001.jpg`, is 121 by 1
 
 Source directory on central 4028: `outputs/paper_core_20261002_dev_viz/viz_native_baselines_20261004_1645/qwen25_viz512_CPU_token_scope/`; `native_visual_tokens.csv` gives every input and `complete.json` gives the full count. Frozen roster SHA256: `09431e8838ae86a0cb314484583f0601bda058bfb8cdd3b9354958188c67ad38`.
 
-MiniCPM-V2.6 and Qwen3.5 retain the existing architectural non-applicability notes. No SID algorithm adaptation is used to fill these cells. Qwen3-VL requires the same original-processor visual-token check before full-512 admission.
+Qwen3-VL's exact native-processor CPU check also covers all 512 inputs. Seven have fewer than 100 visual positions: 70 (6 inputs) and 72 (1). The remaining 505 have at least 100, and all 512 spans are contiguous. The first input above has 70 visual positions. The CPU check took 48.996 seconds without loading weights or initializing CUDA. Its full-512 SID denominator is likewise unavailable under the unchanged operator and preprocessing. The exact source directory `qwen3_viz512_CPU_token_scope/` was copied from the registered 6403 runtime into the central source directory alongside the Qwen2.5 result.
+
+MiniCPM-V2.6 and Qwen3.5 retain the existing architectural non-applicability notes. No SID algorithm adaptation is used to fill these cells. Neither Qwen2.5-VL nor Qwen3-VL runs a partial-505 SID condition.
 
 ## Current production sources
 
@@ -23,5 +25,6 @@ All directories below are relative to the corresponding project root, under `out
 | Gemma3-4B | 4028 / 5 | `gemma_sid_pilot8/` | `gemma_sid_full504/` |
 | InternVL3.5-8B | K100 / 0 | `intern_sid_pilot8_frozen_source/` | `intern_sid_full504/` |
 | Phi-3.5-Vision | 4029 / 2 | `phi_sid_pilot8/` | `phi_sid_full504/` |
+| LLaVA-Mistral | 4028 / 0 for pilot; 4029 / 1 for production | `mistral_sid_pilot8/` | `mistral_sid_full504/` |
 
 Each source directory contains the actual identity, PID/starttick ownership, predictions, progress and final receipt. Only directories with a passed `complete.json` are complete. CPU answer scoring and semantic abstention decisions are performed separately by the root process.

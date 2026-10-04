@@ -37,7 +37,7 @@ def task(sample):
 
 def admit(args, spec):
     cards = args.physical_gpus.split(',')
-    if args.model in CORE:
+    if args.model in CORE and not args.supplemental_location:
         return core_admission(spec, args.model, cards, args.registry)
     from workflows.supplemental.remaining11 import execution
     execution.REGISTRY = args.registry
@@ -223,6 +223,8 @@ if __name__=='__main__':
     parser.add_argument('--admission');parser.add_argument('--sample-list')
     parser.add_argument('--parts',type=int,default=1);parser.add_argument('--part',type=int,default=0)
     parser.add_argument('--k100-intern',action='store_true')
+    parser.add_argument('--supplemental-location',action='store_true',
+                        help='Use existing exclusive supplemental host admission for an unchanged runtime path move')
     args=parser.parse_args()
     if args.mode=='full' and not args.admission:parser.error('Full run requires its actual eight-input admission')
     if not 0<=args.part<args.parts:parser.error('Invalid exclusive partition')
