@@ -19,6 +19,19 @@ and linked to the completed-key ledger by hashes. `STOP_AFTER_CHUNK` releases on
 remaining keys after the current chunk is sealed. Transfer only released or never
 claimed keys, and verify their cross-host intersection before dispatch.
 
+A failure before the first input needs a separate transfer attestation: verify
+the original PID/start tick has exited, the failed claim contains no raw or
+pending rows, and all transferred keys equal the failed assignment. Keep the
+failure and owner files, record the replacement owner, and check intersection
+with every other live assignment. Do not describe this as a completed chunk.
+
+On 2026-10-05, Gemma's registered Torch 2.6/CUDA 12.4 build passed CPU identity
+checks on K100 but failed model loading with `no kernel image`. Its 185 untouched
+keys moved to compatible 4029 GPUs as disjoint 93/92 shards, with the same model,
+BF16 precision and registered runtime versions. CPU readiness alone does not
+establish GPU-kernel compatibility. The original failure and transfer evidence
+are in `outputs/general_vqa_direct/assignments/`.
+
 `native_fast.py` is an optional execution optimization. It must reproduce all
 tokens and EOS states for eight sealed original responses before claiming any
 production keys. Preserve a failed gate and its source bindings; do not relax
