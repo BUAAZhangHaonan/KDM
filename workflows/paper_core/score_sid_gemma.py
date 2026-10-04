@@ -75,7 +75,13 @@ def run(a):
         with temp.open('w') as f:
             for row in values:f.write(json.dumps(row,ensure_ascii=False,allow_nan=False)+'\n')
         temp.replace(out/name)
-    pd.DataFrame(scores).to_parquet(out/'score_rows.parquet',index=False)
+    compact=[]
+    for row in scores:
+        item=dict(row)
+        for field in ('decision','primary_extraction','behavior_history_sources','config'):
+            item[field+'_json']=json.dumps(item.pop(field),ensure_ascii=False,sort_keys=True)
+        compact.append(item)
+    pd.DataFrame(compact).to_parquet(out/'score_rows.parquet',index=False)
     pd.DataFrame(metrics).to_csv(out/'metrics_all.csv',index=False)
     receipt={'passed':True,'rows':len(scores),'expected':2424,'unique_keys':len(seen),
              'missing_sample_ids':sorted(set(samples)-seen),'pending_unique_QA':len(pending),
