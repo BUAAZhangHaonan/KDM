@@ -52,6 +52,10 @@ Read the full official reference as well as the full question and response.
 Check question polarity, the object, and the comparison. A matching first yes/no
 does not make a conflicting factual answer correct. Use incorrect for a conflict
 with the reference, and unclear for no clear answer or unresolved contradiction.
+The supplied reference controls this reference-relative judgment. Do not solve
+the geometry from the question alone and replace the reference with that answer.
+For example, a response claiming an angle equals 50 conflicts with a reference
+stating it is greater than 50, even if its geometric derivation sounds plausible.
 A later explicit final conclusion can resolve an earlier reversal; do not mark
 every reversal unclear. Truncation alone does not negate an earlier clear answer.
 Handle original `No answer` and inconsistent-reference items according to their
