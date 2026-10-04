@@ -25,6 +25,12 @@ SOURCE_SHA256 = {
 }
 SOURCE_URL = "https://raw.githubusercontent.com/tianyi-lab/HallusionBench/" + REVISION + "/HallusionBench.json"
 QUALITY_CODE = {"incorrect": 0, "correct": 1, "unclear": 2}
+
+
+def validate_review_author(author):
+    if not isinstance(author, str) or not re.fullmatch(r"/root(?:/[a-z0-9_]+)*", author):
+        raise ValueError("Review author must be the actual canonical agent name, not a placeholder")
+
 # Explicit census of the pinned original visual-input questions, not prediction
 # heuristics. Relative clauses containing 'which/when' are not open questions.
 OPEN_ANSWER_TYPES = {
@@ -182,6 +188,7 @@ class HallusionScoring:
         for field in ("author", "model", "effort", "reason"):
             if not isinstance(review.get(field), str) or not review[field].strip():
                 raise ValueError("Actual quality-review provenance/reason required: " + field)
+        validate_review_author(review["author"])
         if review["model"] != "gpt-5.6-luna" or review["effort"] != "medium":
             raise ValueError("Quality review requires actual gpt-5.6-luna with medium effort")
         if "call_id" not in review or (review["call_id"] is not None and (
@@ -249,7 +256,7 @@ def self_test(scoring):
         request = scoring.quality_request(sample, answer)
         return {**{k: request[k] for k in ("quality_key", "question", "answer", "gt_answer_details")},
             "quality_label": label, "answer_evidence": answer, "reference_evidence": request["gt_answer_details"],
-            "reason": "CPU test fixture only; not an actual model judgment", "author": "CPU_TEST_FIXTURE",
+            "reason": "CPU test fixture only; not an actual model judgment", "author": "/root/cpu_test_fixture",
             "model": "gpt-5.6-luna", "effort": "medium", "call_id": "CPU_TEST_FIXTURE"}
     country = by_id["VS/table/1/1/1/0"]
     check("open_gt1_wrong_country_is_not_yes", country["gt_answer"] == "1" and scoring.literal_binary_quality(country, "France") is None)
@@ -272,6 +279,7 @@ def self_test(scoring):
     unknown_call = copy.deepcopy(correct_record); unknown_call["call_id"] = None
     check("unknown_call_id_null_accepted", scoring.validate_quality(country, "Syria", unknown_call)["reviewer"]["call_id"] is None)
     for field, value, label in [("call_id", "", "empty_call_id_rejected"),
+            ("author", "canonicalagent", "placeholder_author_rejected"),
             ("call_id", 42, "nonstring_call_id_rejected"),
             ("model", "gpt-6-luna", "different_luna_model_rejected"),
             ("effort", "high", "different_effort_rejected")]:

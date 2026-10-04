@@ -19,7 +19,7 @@ import unicodedata
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "src"), str(ROOT)]
 from kdm.scoring import lexical_label
-from workflows.general_vqa_direct.hallusion_scoring import HallusionScoring, OPEN_ANSWER_TYPES
+from workflows.general_vqa_direct.hallusion_scoring import HallusionScoring, OPEN_ANSWER_TYPES, validate_review_author
 
 
 def digest(value):
@@ -273,6 +273,7 @@ def main():
                 raise ValueError("Conflicting semantic decisions require explicit root resolution")
             if not record.get("author") or not record.get("model") or not record.get("effort"):
                 raise ValueError("Actual semantic reviewer identity is required")
+            validate_review_author(record["author"])
             reviewed[key] = {**record, "decision_path": str(path), "decision_line": line}
     scores, pending, pending_quality, seen, totals = [], {}, {}, set(), defaultdict(Counter)
     for path in args.raw:
