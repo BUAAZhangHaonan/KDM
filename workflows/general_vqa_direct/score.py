@@ -173,6 +173,10 @@ def correctness(sample, answer, decision, mmmu):
         raise ValueError("Hallusion quality must use the full official reference independently of behavior")
     if decision["label"] in {"abstain", "invalid"}:
         return 0
+    if sample["dataset"] == "mmmu" and sample["question_type"] == "open":
+        # Open responses are parsed by the pinned official evaluator. They do
+        # not require the option-letter extraction used by multiple choice.
+        return int(mmmu.eval_open(sample["gold"], mmmu.parse_open_response(answer)))
     prediction = decision.get("predicted_answer")
     if prediction is None:
         return 0
