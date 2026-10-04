@@ -19,6 +19,18 @@ and linked to the completed-key ledger by hashes. `STOP_AFTER_CHUNK` releases on
 remaining keys after the current chunk is sealed. Transfer only released or never
 claimed keys, and verify their cross-host intersection before dispatch.
 
+`native_fast.py` is an optional execution optimization. It must reproduce all
+tokens and EOS states for eight sealed original responses before claiming any
+production keys. Preserve a failed gate and its source bindings; do not relax
+the equality test or count gate responses as new experimental observations.
+The primary `generate.py` Direct entry remains the registered implementation.
+Record any move back to this entry, keep the same ungenerated assignment and
+configuration, and measure its actual speed before further scheduling.
+
+An annotation `ACTIVE.json` selects a complete batch file, not a one-row patch.
+Merge a corrected row with the other original judgments, verify all assigned
+keys and full question/answer bindings, then select the merged file by hash.
+
 `score.py` extracts a declared answer before joining the gold label. It first uses
 whole-answer rules and identical QA review reuse; semantic boundary cases retain
 the complete question and response for actual Luna medium annotation. Unresolved
