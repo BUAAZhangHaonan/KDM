@@ -228,6 +228,8 @@ def check_selected_batch(path, key_field):
 
 def has_review_completion(path):
     """Read completed reviews only; a live writer may still have invalid spans."""
+    if path.with_name("REVIEW_HOLD.json").exists():
+        return False
     return any(path.with_name(name).is_file() for name in (
         "ACTIVE.json", "write_receipt.json", "quality_receipt.json",
         "receipt.json", "root_validation_receipt.json"))
@@ -298,6 +300,8 @@ def main():
                 quality_reviews[key] = {**record, "decision_path": str(path), "decision_line": line}
     reviewed = {}
     for path in args.decisions:
+        if path.with_name("REVIEW_HOLD.json").exists():
+            raise ValueError("A held review cannot be supplied explicitly: " + str(path))
         for line, record in rows(path):
             key = record["qa_key"]
             if key in reviewed and reviewed[key]["decision"] != record["decision"]:

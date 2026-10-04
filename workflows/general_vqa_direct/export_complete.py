@@ -30,6 +30,10 @@ def main():
     parser.add_argument('--tables', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
+    review_root = ROOT / 'outputs/general_vqa_direct'
+    holds = [path for folder in ('annotations', 'quality_annotations')
+             for path in (review_root/folder).glob('*/REVIEW_HOLD.json')]
+    assert not holds, f'Unresolved semantic review holds prevent final export: {len(holds)}'
     protocol_path = ROOT / 'data/general_vqa_direct_20261004/frozen/protocol.json'
     protocol = json.loads(protocol_path.read_text())
     acceptance = json.loads((args.tables/'CURRENT_STATE.json').read_text())

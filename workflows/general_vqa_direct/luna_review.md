@@ -9,10 +9,13 @@ SSH alias: `4028-root`. Project:
 The central server is the authoritative annotation location. Root exports the
 verified compact delivery to the local workspace after merging.
 
-Read each complete question and complete response, at most ten items at a time,
+Read each complete question and complete response, at most four items at a time,
 then write the judgments. Finish and validate one batch before reading the next.
 Keep each tool result within its output budget; split the read if any full question,
 response, or reference would be truncated. Never shorten the source text for review.
+Write explicit per-key judgments and case-specific reasons after each complete chunk;
+do not retain only row-index sets across reads. Scripts may serialize these judgments,
+but must not generate default labels for unread or unlisted records.
 Do not replace semantic reading with keyword-generated decisions. Keep all text
 exactly as supplied. Read JSONL with UTF-8-sig where necessary. Write actual
 newlines using `chr(10).join(...)`, and reread each line with `json.loads`.
