@@ -1,0 +1,27 @@
+check,passed,details
+raw_food_main_n,True,123 conditions
+raw_food_main_C,True,123 conditions
+raw_food_main_A,True,123 conditions
+raw_food_main_TP,True,123 conditions
+raw_food_main_FP,True,123 conditions
+raw_food_main_reference_positive,True,123 conditions
+raw_food_main_unique,True,
+raw_food_main_disjoint_correct_abstain,True,
+raw_food_main_allreferencecomplete,True,
+raw_food_mechanism_n,True,360 conditions
+raw_food_mechanism_C,True,360 conditions
+raw_food_mechanism_A,True,360 conditions
+raw_food_mechanism_TP,True,360 conditions
+raw_food_mechanism_FP,True,360 conditions
+raw_food_mechanism_reference_positive,True,360 conditions
+raw_food_mechanism_unique,True,
+raw_viz56_n,True,56 conditions
+raw_viz56_A,True,56 conditions
+raw_viz56_TP,True,56 conditions
+raw_viz56_FP,True,56 conditions
+raw_viz56_reference_positive,True,56 conditions
+raw_viz56_answer_quality_sum,True,56 conditions
+raw_viz56_official_raw_score_sum,True,56 conditions
+raw_viz_abstain_quality_zero,True,
+raw_viz_all_score_bounded,True,
+raw_viz_uniques,True,

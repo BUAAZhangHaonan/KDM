@@ -1,0 +1,10 @@
+model,proxies,native_admitted,guided_admitted,jointly_admitted,reference_suppression
+gemma3_4b,88,0,0,0,0
+internvl35_8b,101,0,5,2,0
+llava16_mistral,94,0,67,57,44
+minicpm26,94,0,20,12,7
+onevision,101,0,1,1,0
+phi35,101,0,6,3,2
+qwen25vl,96,0,84,52,44
+qwen35_4b,99,0,60,56,37
+qwen3vl,101,0,39,16,13

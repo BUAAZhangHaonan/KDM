@@ -1,0 +1,18 @@
+Design an elegant, publication-ready TWO-PANEL teaser figure for a top computer vision / NLP research paper, "Lost in Contrast". Wide landscape, approx 2.65:1, high resolution. White background, exceptionally clear visual hierarchy, consistent precise Helvetica-style lettering, restrained cobalt blue (#3569B2), teal (#258C83), terracotta (#C45A51), fine neutral separators. Flat scientific editorial illustration; no glossy dashboard, no shadows, no ornamental elements. Strong balanced typography, short labels; no Chinese, no caption. This will be printed at 174 mm wide.
+
+Layout: two panels side by side, left 61 percent of width, right 39 percent; a thin pale grey vertical separator. Generous outer white margins.
+
+LEFT PANEL:
+Small bold panel tag "a", then title "Recover a supported abstention" in dark navy.
+Below title, a blank pure white rectangular placeholder for the REAL PHOTO on the far left, occupying roughly x=3% to 24% and y=20% to 70% of whole canvas; no imagery inside it, only a very thin light grey border. It is intentionally blank for precise composition of the real input later. Do not invent a food photo.
+To its right place a tiny, orderly context line "LLaVA-Mistral" and below it "0 / 10 correct independent answers".
+Below, two well-spaced reply rows: "Guided VCD" with bold terracotta reply "Toast" and a small red cross; "IP-VCD" with bold teal reply "UNKNOWN" and a green checkmark. Clearly connected by a subtle down arrow, no clutter.
+Along the whole bottom of LEFT panel, a horizontal margin ruler: pale red negative region to left, pale teal positive region to right, vertical zero tick. The ruler extends roughly x=5% to 58%, y=84% of whole canvas. Arrow goes left-to-right, from the negative point −0.1875 to positive point +0.4219, visibly crossing zero. Render EXACT labels "−0.1875", "0", "+0.4219" under their ticks. These points are positioned quantitatively: axis from −0.30 to +0.55, so relative positions within ruler are .13235, .35294, .84926. Keep all minus signs and decimals intact. Above the ruler in small type "Abstention margin at the first token". Do not add any other numbers or plots.
+
+RIGHT PANEL:
+Small bold tag "b", then title "Preserve answer correction".
+Below, a blank pure white photo placeholder roughly x=64% to 80%, y=20% to 70%, very thin light grey border, no imagery.
+To its right at x=82%, place "Qwen3.5". Then a small "Guided VCD" label with the reply "apple strudel" in terracotta, a short downward arrow, and small "IP-VCD" label with the reply "APPLE PIE" in teal. Both replies must be fully legible and not touch border.
+At bottom right, one short two-line statement "Visual correction +\nnecessary abstention" in muted navy. This is the contribution summary.
+
+Do not add fake charts, invented numbers, alternative spellings, or stylized gibberish. These empty photo regions are intentional; leave them truly blank. All scientific labels exact and readable at the final page width. Use high-quality typographic alignment and white space, as in an excellent CVPR paper teaser.

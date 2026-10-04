@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-10-04T11:38:29.757191+00:00",
+  "new_rows": 11776,
+  "new_conditions": 23,
+  "new_pending": 0,
+  "VizWiz_all_conditions": 79,
+  "VizWiz_all_rows": 40448,
+  "VizWiz_main_points": 68,
+  "frozen45_unchanged": true,
+  "frozen56_scores_changed": false,
+  "Food_scores_changed": false,
+  "source_receipt_sha256": "60461a36c1ca8b227049408303ffb1eed080567babff4c639d45e3807dfef80c"
+}

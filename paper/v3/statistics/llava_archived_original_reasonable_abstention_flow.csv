@@ -1,0 +1,3 @@
+model,marker,method,cohort_N,retained_abstention,correct_answer,wrong_answer,full_N,full_C,source,audit_status
+llava16_mistral,UNKNOWN,Guided VCD,287,33,19,235,2424,852,KDM_v3_Final_20261003/tables/F4_original_abstention_flow.csv,archived_paired_summary; full-C and IP-retained/denominator corroborated; original guided-Direct sample membership absent
+llava16_mistral,UNKNOWN,IP-VCD,287,61,21,205,2424,852,KDM_v3_Final_20261003/tables/F4_original_abstention_flow.csv,archived_paired_summary; full-C and IP-retained/denominator corroborated; original guided-Direct sample membership absent

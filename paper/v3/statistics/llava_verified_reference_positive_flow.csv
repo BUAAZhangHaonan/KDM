@@ -1,0 +1,3 @@
+model,marker,method,cohort,cohort_N,retained_abstention,correct_answer,wrong_answer,full_N,full_correct
+llava16_mistral,UNKNOWN,Guided VCD,all_uniform_reference_positive,949,33,42,874,2424,852
+llava16_mistral,UNKNOWN,IP-VCD,all_uniform_reference_positive,949,66,39,844,2424,852
