@@ -5,7 +5,7 @@ import subprocess
 import sys
 from tempfile import TemporaryDirectory
 
-from score import check_selected_batch, write_rows
+from score import check_selected_batch, has_review_completion, write_rows
 
 
 def main():
@@ -27,11 +27,19 @@ def main():
                     raise AssertionError("Partial, duplicate or foreign selection was accepted")
             write_rows(selected, [{field: "two"}, {field: "one"}])
             check_selected_batch(selected, field)
+            assert not has_review_completion(selected)
+            for name in ("ACTIVE.json", "write_receipt.json", "quality_receipt.json",
+                         "receipt.json", "root_validation_receipt.json"):
+                receipt = batch / name
+                receipt.write_text('{}')
+                assert has_review_completion(selected)
+                receipt.unlink()
         annotations = root / "annotations"
         live = annotations / "live"
         live.mkdir(parents=True)
         write_rows(live / "pending_review.jsonl", [{"qa_key": "reserved"}])
         (live / "decisions.jsonl").write_text('{"unfinished":')
+        assert not has_review_completion(live / "decisions.jsonl")
         pending = root / "pending.jsonl"
         record = {"dataset": "pope", "question": "Is there a dog?", "answer": "No",
                   "options": [], "memberships": [{}]}
@@ -41,7 +49,7 @@ def main():
             "--batch-id", "next", "--owner", "/root/test"], check=True, capture_output=True)
         assigned = [json.loads(line) for line in (annotations / "next/pending_review.jsonl").read_text().splitlines()]
         assert [row["qa_key"] for row in assigned] == ["new"]
-    print("passed: complete selected batches and immutable live-claim exclusion")
+    print("passed: complete selected batches, completion evidence, and immutable live-claim exclusion")
 
 
 if __name__ == "__main__":

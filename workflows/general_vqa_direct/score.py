@@ -222,6 +222,13 @@ def check_selected_batch(path, key_field):
         raise ValueError("Active selection must cover its complete assigned batch: " + str(path))
 
 
+def has_review_completion(path):
+    """Read completed reviews only; a live writer may still have invalid spans."""
+    return any(path.with_name(name).is_file() for name in (
+        "ACTIVE.json", "write_receipt.json", "quality_receipt.json",
+        "receipt.json", "root_validation_receipt.json"))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--raw", action="append", type=Path, default=[])
@@ -238,6 +245,8 @@ def main():
         parser.error("At least one unique validated raw file is required")
     if args.annotations:
         for original in sorted(args.annotations.glob("*/decisions.jsonl")):
+            if not has_review_completion(original):
+                continue
             selection = original.with_name("ACTIVE.json")
             if selection.exists():
                 selected = json.loads(selection.read_text())
@@ -249,8 +258,12 @@ def main():
                 continue
             corrected = original.with_name("decisions_corrected.jsonl")
             if corrected.exists():
+                if corrected.with_name("pending_review.jsonl").exists():
+                    check_selected_batch(corrected, "qa_key")
                 args.decisions.append(corrected)
             elif not original.with_name("REJECTED.json").exists():
+                if original.with_name("pending_review.jsonl").exists():
+                    check_selected_batch(original, "qa_key")
                 args.decisions.append(original)
     if len(args.decisions) != len(set(args.decisions)):
         parser.error("A decision file was supplied twice")
@@ -260,6 +273,8 @@ def main():
     quality_reviews = {}
     if args.quality_annotations:
         for original in sorted(args.quality_annotations.glob("*/quality_decisions.jsonl")):
+            if not has_review_completion(original):
+                continue
             path = original
             selection = original.with_name("ACTIVE.json")
             if selection.exists():
@@ -270,6 +285,8 @@ def main():
                 check_selected_batch(path, "quality_key")
             elif original.with_name("REJECTED.json").exists():
                 continue
+            elif original.with_name("pending_review.jsonl").exists():
+                check_selected_batch(original, "quality_key")
             for line, record in rows(path):
                 key = record["quality_key"]
                 if key in quality_reviews:
