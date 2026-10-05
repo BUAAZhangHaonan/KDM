@@ -40,8 +40,13 @@ def cda_weights(prior,context,null_prior,null_context):
 
 
 def generate_cda(prior,context,abstention,null_prior,null_context,cfg,eos,decode,seed=0):
+    """Generate to EOS when max_tokens is None, keeping all five branches."""
+    if cfg.max_tokens is not None and cfg.max_tokens<=0:
+        raise ValueError("Positive token budget required")
+    if cfg.max_tokens is None and not eos:
+        raise ValueError("EOS-only generation requires an EOS token")
     tokens=[];trace=[];logps=[];rng=np.random.default_rng(seed)
-    for _ in range(cfg.max_tokens):
+    while cfg.max_tokens is None or len(tokens)<cfg.max_tokens:
         states=[s.next(tuple(tokens)).logits for s in (prior,context,abstention,null_prior,null_context)]
         try:calibration=cda_calibration(states[0],states[1],states[3],states[4])
         except CDAUndefinedError as exc:

@@ -25,7 +25,7 @@ class DecodeConfig:
     deco_alpha:float=.6
     deco_topk:int=20
     deco_topp:float=.9
-    max_tokens:int=32
+    max_tokens:int|None=32
     temperature:float=0.0
     top_p:float=1.0
 
@@ -119,9 +119,17 @@ def draw_token(logp,cfg,rng):
 
 
 def generate(main,reference,cfg,eos,decode,seed=0,neutral_main=None):
-    if cfg.max_tokens<=0: raise ValueError("Positive token budget required")
+    """Generate to EOS, or to the explicitly supplied positive token budget.
+
+    None means EOS-only generation; session/context failures propagate.
+    """
+    if cfg.max_tokens is not None and cfg.max_tokens<=0:
+        raise ValueError("Positive token budget required")
+    if cfg.max_tokens is None and not eos:
+        raise ValueError("EOS-only generation requires an EOS token")
     rng=np.random.default_rng(seed);tokens=[];lp_selected=[];trace=[]
-    for t in range(cfg.max_tokens):
+    while cfg.max_tokens is None or len(tokens)<cfg.max_tokens:
+        t=len(tokens)
         m=main.next(tuple(tokens));r=reference.next(tuple(tokens)) if reference else None
         neutral=neutral_main.next(tuple(tokens)) if neutral_main else None
         out,meta=step_distribution(m,r,cfg,t,neutral)
