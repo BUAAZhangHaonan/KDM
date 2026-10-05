@@ -1,5 +1,5 @@
 """Verify new immutable chunks, deduplicate exact transported copies, persist compact state."""
-import argparse,json,sys
+import argparse,json,sys,subprocess
 from pathlib import Path
 from argparse import Namespace
 from collections import defaultdict
@@ -79,7 +79,7 @@ def main():
    'remaining_to_cpu_admitted_upper_bound':64668-len(seen),'verified_raw_files':len(rawlist),
    'exact_transport_replica_chunks_skipped':replicas,'scoring':latest,
    'conditions':[{'model':m,'method':x,'completed':n,'expected':951} for (m,x),n in sorted(counts.items())],
-   'workers':workers,'commits':['1349cd51','446d154c','4db77df5'],'git_pushed':True,'generation_failures':[brief_failure(p) for folder in roots for p in folder.glob('*/claims/*/failed.json')]}
+   'workers':workers,'commits':subprocess.check_output(['git','log','-4','--format=%h'],cwd=ROOT,text=True).splitlines(),'git_pushed':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()==subprocess.check_output(['git','rev-parse','refs/remotes/origin/master'],cwd=ROOT,text=True).strip(),'generation_failures':[brief_failure(p) for folder in roots for p in folder.glob('*/claims/*/failed.json')]}
  atomic_json(b/'CURRENT_STATE.json',state)
  text='# HallusionBench 951盲测运行状态\n\n'
  text+=f"更新UTC：{state['updated_utc']}。完整EOS {len(seen)} / 候选64668；精确Direct复用{state['verified_reused_Direct']}；新生成验收{state['new_EOS_validated']}。\n\n"
