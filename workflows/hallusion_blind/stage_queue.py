@@ -3,7 +3,7 @@ import argparse,json,os,socket,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT)]
-from kdm.io import atomic_json
+from kdm.io import atomic_json,file_hash
 from workflows.general_vqa_direct.generate import now
 def alive(owner):
  path=Path('/proc')/str(owner['pid'])/'stat'
@@ -13,14 +13,23 @@ def alive(owner):
 def main():
  p=argparse.ArgumentParser();p.add_argument('--plan',required=True);a=p.parse_args()
  plan_path=ROOT/a.plan;plan=json.loads(plan_path.read_text());out=plan_path.with_suffix('.status.json')
- ownerpath=ROOT/plan['wait_owner'];owner=json.loads(ownerpath.read_text())
- if owner['hostname']!=socket.gethostname():raise ValueError('Successor must wait on its actual source host')
+ paths=plan.get('wait_owners') or [plan['wait_owner']]
+ ownerpaths=[ROOT/path for path in paths];owners=[json.loads(path.read_text()) for path in ownerpaths]
+ if not owners or len({(o['pid'],o['start_tick']) for o in owners})!=len(owners):raise ValueError('Distinct registered source identities required')
+ if any(o['hostname']!=socket.gethostname() for o in owners):raise ValueError('Successor must wait on its actual source host')
+ boot=Path('/proc/sys/kernel/random/boot_id').read_text().strip()
+ if any(o.get('boot_id',boot)!=boot for o in owners):raise ValueError('Source identity belongs to another host boot')
+ sources=[{'path':str(path.relative_to(ROOT)),'sha256':file_hash(path),'pid':o['pid'],
+   'start_tick':o['start_tick'],'kind':o.get('kind','generation_owner')} for path,o in zip(ownerpaths,owners)]
+ owner=owners[0]
  atomic_json(out,{'status':'waiting_on_registered_worker','pid':os.getpid(),'source_pid':owner['pid'],
-    'source_start_tick':owner['start_tick'],'created_utc':now(),'jobs':plan['jobs']})
- while alive(owner):time.sleep(5)
- if (ownerpath.parent/'released.json').exists():
+    'source_start_tick':owner['start_tick'],'sources':sources,'wait_policy':'all_sources_exited','created_utc':now(),'jobs':plan['jobs']})
+ while any(alive(o) for o in owners):
+  if any((path.parent/'released.json').exists() for path in ownerpaths):break
+  time.sleep(5)
+ if any((path.parent/'released.json').exists() for path in ownerpaths):
   atomic_json(out,{'status':'source_handoff_released_successors_held','updated_utc':now(),
-      'source_pid':owner['pid'],'reason':'root must bind successor tasks to the new target owner'})
+      'source_pid':owner['pid'],'sources':sources,'reason':'root must bind successor tasks to the new target owner'})
   return 0
  failures=[]
  for i,job in enumerate(plan['jobs']):
@@ -42,7 +51,8 @@ def main():
    proc=subprocess.Popen(cmd,cwd=ROOT,stdin=subprocess.DEVNULL,stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
   atomic_json(receipt,{'status':'dispatched_not_yet_accepted','model':model,'host':host,'physical_gpus':job['cards'],
        'pid':proc.pid,'started_utc':now(),'command':cmd,'log':str(log.relative_to(ROOT)),'claim_id':claim_id,
-       'queue_plan':a.plan,'source_exit_evidence':{'pid':owner['pid'],'start_tick':owner['start_tick'],'active':False}})
+       'queue_plan':a.plan,'source_exit_evidence':{'pid':owner['pid'],'start_tick':owner['start_tick'],'active':False,
+          'all_sources_exited':True,'sources':sources}})
   atomic_json(out,{'status':'running_successor','job':i,'claim_id':claim_id,'pid':proc.pid,'updated_utc':now()})
   code=proc.wait()
   if code:
