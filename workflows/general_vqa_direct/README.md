@@ -65,7 +65,7 @@ Official source indices and frozen hashes are saved with the input manifests:
 [POPE](https://github.com/RUCAIBox/POPE),
 [HallusionBench](https://github.com/tianyi-lab/HallusionBench).
 
-## Accepted delivery, 2026-10-05
+## Scored delivery under the original budget, 2026-10-05
 
 The complete panel is sealed at
 `outputs/general_vqa_direct/scoring_snapshot_0041/scores.jsonl`, SHA256
@@ -86,3 +86,20 @@ MMMU's registered 128-token ceiling left 817/1,000 Qwen3.5, 395/1,000 Qwen3-VL a
 status, invalid responses and semantic abstention; these scores describe the
 registered generation budget. HallusionBench reports the official full-reference
 question score with the actual Luna adjudicator.
+
+## Generation-budget audit, 2026-10-05
+
+The user requests completed replies before final metrics. The generation and
+annotation counts above describe processing completeness. A subsequent full-row
+audit found 1,887 responses stopped exactly at their token cap: MMMU1,589,
+ScienceQA133, POPE2 and HallusionBench163. These affect20of36cells, whose
+scientific final status is now budget_completion_required. The original replies,
+judgments and score snapshot remain source records for that budget.
+
+The audit and exact affected sample keys are in
+outputs/general_vqa_direct/truncation_audit_20261005/.
+MMMU's128-token value came from one LLaVA author example, not a universal MMMU
+requirement. Future production must establish a sufficient budget before
+reporting completed-response accuracy and abstention. MMMU-Pro is a proposed
+replacement; each public setting has1,730questions. Its setting and new generation
+budget are not yet registered, and this audit did not launch replacement jobs.
