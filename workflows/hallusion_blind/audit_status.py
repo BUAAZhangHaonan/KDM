@@ -78,6 +78,7 @@ def main():
    'new_EOS_validated':sum(newcounts.values()),'total_EOS_validated':len(seen),
    'remaining_to_cpu_admitted_upper_bound':64668-len(seen),'verified_raw_files':len(rawlist),
    'exact_transport_replica_chunks_skipped':replicas,'scoring':latest,
+   'rows_not_in_latest_scoring_snapshot':len(seen)-(latest['generated'] if latest else 0),
    'conditions':[{'model':m,'method':x,'completed':n,'expected':951} for (m,x),n in sorted(counts.items())],
    'workers':workers,'commits':subprocess.check_output(['git','log','-4','--format=%h'],cwd=ROOT,text=True).splitlines(),'git_pushed':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()==subprocess.check_output(['git','rev-parse','refs/remotes/origin/master'],cwd=ROOT,text=True).strip(),'generation_failures':[brief_failure(p) for folder in roots for p in folder.glob('*/claims/*/failed.json')]}
  atomic_json(b/'CURRENT_STATE.json',state)
