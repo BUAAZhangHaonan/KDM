@@ -3,10 +3,12 @@
 from __future__ import annotations
 import argparse,csv,json,sys
 from collections import Counter,defaultdict
+from dataclasses import asdict,replace
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT)]
 from kdm.io import file_hash,stable_hash
+from kdm.decoding import DecodeConfig
 from workflows.general_vqa_direct.score import rule_decision,check_decision,qa_key,rows,write_rows
 from workflows.general_vqa_direct.hallusion_scoring import HallusionScoring,validate_review_author
 
@@ -103,7 +105,33 @@ def csv_rows(path,values):
         writer.writerows({k:json.dumps(v,ensure_ascii=False,sort_keys=True) if isinstance(v,(dict,list)) else v
                          for k,v in r.items()} for r in values)
 
-def score_rows(raw_paths,conditions,hallusion,legacy_behavior,legacy_quality,reviews,root=ROOT):
+def validate_prediction_completion(row,condition,token_budget=None):
+    """Validate the declared generation budget; never infer semantic quality."""
+    if token_budget is None:
+        if row.get('terminated') is not True or row.get('status')!='ok' or not row.get('tokens'):
+            raise ValueError('Truncated/failed prediction is outside final Hall EOS scoring')
+        return
+    if token_budget!=128:raise ValueError('Only the explicitly authorized 128-token budget is supported')
+    tok=row.get('tokens')
+    if (row.get('status')!='ok' or not isinstance(tok,list) or not 1<=len(tok)<=token_budget
+        or any(type(t)is not int or t<0 for t in tok) or type(row.get('terminated')) is not bool
+        or type(row.get('truncated')) is not bool
+        or row.get('truncated') is row['terminated']
+        or row.get('generation_source') not in {'new_budget128','reused_budget128'}):
+        raise ValueError('Prediction is not a validated 128-token generation')
+    expected_finish='eos' if row['terminated'] else 'length'
+    if row.get('finish_reason')!=expected_finish or not row['terminated'] and len(tok)!=token_budget:
+        raise ValueError('Declared length/EOS termination differs from the 128-token output')
+    cfg=DecodeConfig(**{**condition['config'],'max_tokens':token_budget})
+    if cfg.method=='instruction_m3id':
+        offset=row.get('offset_prompt_tokens')
+        if not isinstance(offset,list) or any(type(t)is not int or t<0 for t in offset):
+            raise ValueError('Missing registered M3ID prompt offset')
+        cfg=replace(cfg,m3id_offset=len(offset))
+    if row.get('config')!=asdict(cfg):
+        raise ValueError('128-token generation config differs from the frozen Food operating point')
+
+def score_rows(raw_paths,conditions,hallusion,legacy_behavior,legacy_quality,reviews,root=ROOT,token_budget=None):
     new_behavior,new_quality,claimed=reviews
     condition_index={stable_hash(c):c for c in conditions}
     if len(condition_index)!=len(conditions):raise ValueError('Duplicate frozen conditions')
@@ -124,8 +152,7 @@ def score_rows(raw_paths,conditions,hallusion,legacy_behavior,legacy_quality,rev
             c=condition_index.get(row.get('condition_identity'))
             if c is None or any(row.get(f)!=c[f] for f in FIELDS):
                 raise ValueError('Generated condition outside frozen Food operating points')
-            if row.get('terminated') is not True or row.get('status')!='ok' or not row.get('tokens'):
-                raise ValueError('Truncated/failed prediction is outside final Hall EOS scoring')
+            validate_prediction_completion(row,c,token_budget)
             qa=qa_key(sample,answer);quality_key=hallusion.quality_key(sample,answer)
             joint=joint_key(qa,quality_key)
             b=new_behavior.get(qa) or legacy_behavior.get(qa)
@@ -162,13 +189,17 @@ def score_rows(raw_paths,conditions,hallusion,legacy_behavior,legacy_quality,rev
                 'condition':c,'config':row.get('config'),'identity':row['identity'],
                 'dataset_identity':row['dataset_identity'],'claim_identity':row['claim_identity'],
                 'question':sample['prompt'],'answer':answer,'gt_answer_details':sample['gt_answer_details'],
-                'qa_key':qa,'quality_key':quality_key,'joint_key':joint,'terminated':True,
+                'qa_key':qa,'quality_key':quality_key,'joint_key':joint,'terminated':row['terminated'],
+                'truncated':False if token_budget is None else row['truncated'],
+                'finish_reason':'eos' if token_budget is None else row['finish_reason'],
+                'output_token_budget':token_budget,'generation_source':row.get('generation_source'),
                 'n_tokens':len(row['tokens']),'wall_s':row['wall_s'],'score':None if quality is None else quality['score'],
                 'quality':quality,'quality_source':quality_source,'abstain':None if b is None else b['abstain'],
                 'label':None if b is None else b['label'],'behavior':None if b is None else behavior_of(b),
                 'behavior_source':None if b is None else b['source']}
             scores.append(out);counter=counters[row['condition_identity']]
             counter['generated']+=1;counter['pending_behavior']+=int(b is None)
+            counter['truncated']+=int(out['truncated']);counter['natural_eos']+=int(out['terminated'])
             counter['pending_quality']+=int(quality is None)
             resolved=b is not None and quality is not None;counter['resolved']+=int(resolved)
             if quality is not None:counter['correct']+=quality['score']
@@ -188,7 +219,10 @@ def score_rows(raw_paths,conditions,hallusion,legacy_behavior,legacy_quality,rev
         final=n==expected and counter['resolved']==expected
         metrics.append({**{f:c[f] for f in FIELDS},'condition_identity':cid,'checkpoint':c.get('checkpoint'),
             'split':'blind_test','expected_n':expected,'generated':n,'missing_generation':expected-n,
-            **{f:counter[f] for f in ('resolved','pending_behavior','pending_quality','correct','abstentions','C','W','A')},
+            **{f:counter[f] for f in ('resolved','pending_behavior','pending_quality','correct','abstentions','C','W','A','truncated','natural_eos')},
+            'output_token_budget':token_budget,
+            'truncation_rate':counter['truncated']/expected if final else None,
+            'observed_truncation_rate':counter['truncated']/n if n else None,
             'accuracy':counter['correct']/expected if final else None,
             'abstention_rate':counter['abstentions']/expected if final else None,
             'observed_accuracy':counter['correct']/n if n and not counter['pending_quality'] else None,
