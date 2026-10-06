@@ -32,15 +32,20 @@ def lock_identity(path):
     return f"{os.major(st.st_dev):02x}:{os.minor(st.st_dev):02x}:{st.st_ino}"
 
 
-def validate_lock_records(lines, pid, main_identity, slot_identity):
-    records = [line.split() for line in lines]
-    def matches(identity, access):
-        return any(len(row) >= 8 and row[1:4] == ["FLOCK", "ADVISORY", access]
-                   and row[4] == str(pid) and row[5] == identity
-                   and row[6:8] == ["0", "EOF"] for row in records)
-    if not matches(main_identity, "READ") or not matches(slot_identity, "WRITE"):
-        raise ValueError("Shared main lock and exclusive slot lock are both required")
-    return {"shared_main": True, "exclusive_slot": True}
+def validate_lock_records(main_lines, slot_lines, main_identity, slot_identity):
+    def owned_lock(lines, identity, access):
+        for line in lines:
+            row = line.split()
+            if row and row[0] == "lock:":
+                row = row[1:]
+            if (len(row) >= 8 and row[1:4] == ["FLOCK", "ADVISORY", access]
+                and row[5] == identity and row[6:8] == ["0", "EOF"]):
+                return int(row[4])
+        raise ValueError("Inherited descriptor does not own the required kernel flock")
+    main_creator = owned_lock(main_lines, main_identity, "READ")
+    slot_creator = owned_lock(slot_lines, slot_identity, "WRITE")
+    return {"shared_main": True, "exclusive_slot": True,
+            "main_lock_creator_pid": main_creator, "slot_lock_creator_pid": slot_creator}
 
 
 def check_process_locks(pid, card, slot, root=ROOT):
@@ -49,9 +54,15 @@ def check_process_locks(pid, card, slot, root=ROOT):
     for fd, expected in ((20, main), (100, slot_path)):
         if Path(os.readlink(f"/proc/{pid}/fd/{fd}")) != expected:
             raise ValueError("Actual inherited GPU/slot file descriptor differs")
-    proof = validate_lock_records(Path("/proc/locks").read_text().splitlines(),
-                                  pid, lock_identity(main), lock_identity(slot_path))
-    return {**proof, "main_path": str(main), "slot_path": str(slot_path)}
+    # External flock creates the lock before bash execs the producer. Linux
+    # keeps that creator PID; fdinfo proves ownership by the inherited open
+    # description instead of incorrectly requiring the producer PID.
+    proof = validate_lock_records(
+        Path(f"/proc/{pid}/fdinfo/20").read_text().splitlines(),
+        Path(f"/proc/{pid}/fdinfo/100").read_text().splitlines(),
+        lock_identity(main), lock_identity(slot_path))
+    return {**proof, "descriptor_owner_pid": pid,
+            "main_path": str(main), "slot_path": str(slot_path)}
 
 
 def prioritize(selected, priority):
