@@ -31,3 +31,6 @@ CPU tests: tests/test_eos_only_decoding.py and tests/test_hallusion_blind.py.
  stage_queue.py只等待已登记PID/starttick退出后运行明确登记的独立后继任务，按原GPU、精度、参数与EOS终止生成；无GPU轮询、自动重试或失败方法降参。它使用独立文件名，避免遮蔽Python标准库queue。跨机迁移先封存并验证真实未完成键。
 
 真实OOM保留原失败claim和完整来源，受影响方法停止。已生成自然EOS的未封存完整行可由root使用原sealer验收。其他独立方法以显式、零已生成交集的清单在runs_continuation继续；输出路径不改变注册身份，合并时仍检查全局条件—样本键唯一。
+
+
+CPU补封存：`venv/bin/python workflows/hallusion_blind/seal_failed_pending.py "$PWD"`。仅接续已经失败且真实PID/starttick退出的本机claim，将pending里已自然EOS的原回复交给原sealer。保留失败来源、owner与源码身份，追加恢复回执；既有实验不再生成、原claim不释放。
