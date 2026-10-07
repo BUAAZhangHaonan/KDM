@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT)]
 from kdm.io import file_hash,stable_hash
 from workflows.general_vqa_direct.score import write_rows
-from workflows.general_vqa_direct.hallusion_scoring import HallusionScoring
+from workflows.hallusion_blind.complete_response_quality import CompleteResponseScoring,RULE_VERSION
 from workflows.hallusion_blind.score_delta import (
     LEGACY,legacy_indices,read_review_batches,insert,score_rows,csv_rows)
 
@@ -60,7 +60,7 @@ def main():
         raise ValueError('Frozen registered/candidate condition counts differ from 70/68')
     old_behavior,old_quality=legacy_indices(args.reuse_scores)
     folders=args.reviews_dir or [OLD_BASE/'annotations',BASE/'annotations']
-    scored=score_rows(paths,eligible,HallusionScoring(ROOT),old_behavior,old_quality,
+    scored=score_rows(paths,eligible,CompleteResponseScoring(ROOT),old_behavior,old_quality,
                       review_indices(folders),token_budget=128)
     scores,metrics,ready,held,sources=scored
     args.out.mkdir(parents=True,exist_ok=False)
@@ -85,6 +85,9 @@ def main():
         'review_directories':[str(f) for f in folders],
         'scorer_sha256':file_hash(Path(__file__)),
         'shared_score_sha256':file_hash(ROOT/'workflows/hallusion_blind/score_delta.py')}
+    receipt.update({'complete_response_rule_version':RULE_VERSION,
+        'complete_response_rule_sha256':file_hash(ROOT/'workflows/hallusion_blind/complete_response_quality.py'),
+        'complete_response_rule_rows':sum(r['quality'] is not None and r['quality'].get('source')==RULE_VERSION for r in scores)})
     (args.out/'receipt.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(receipt,ensure_ascii=False))
 
