@@ -3,7 +3,7 @@ from workflows.general_vqa_direct.hallusion_scoring import (
     HallusionScoring, QUALITY_CODE, official_score,
 )
 
-RULE_VERSION = 'hallusion_complete_response_quality_v1'
+RULE_VERSION = 'hallusion_complete_response_quality_v2'
 COMPLETE_ABSTENTIONS = frozenset({
     'unknown', 'unknown.', 'unclear', 'unclear.', 'unsure', 'unsure.',
     'i cannot identify it', 'i cannot identify it.',
@@ -21,6 +21,8 @@ class CompleteResponseScoring(HallusionScoring):
         text = answer.strip().casefold()
         reference = record['gt_answer_details'].strip().casefold()
         if text in COMPLETE_ABSTENTIONS:
+            if 'we do not know for sure' in reference:
+                return None
             label = 'correct' if self.reference_kind(sample) in {
                 'no_answer', 'inconsistent_reference',
             } else 'unclear'
