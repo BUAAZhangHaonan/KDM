@@ -17,6 +17,8 @@ ROOT=Path(__file__).resolve().parents[2]
 def make_backend(spec,device):
     factory=spec.get('factory')
     if not factory: raise ValueError('Model factory is not configured')
+    if spec.get('purpose')=='CPU_TEST_ONLY' or str(factory).split(':',1)[0]=='kdm.models.mock':
+        raise ValueError('Synthetic/mock model backends are excluded from the research core')
     module,name=factory.split(':');cls=getattr(importlib.import_module(module),name)
     return cls(**spec.get('kwargs',{}),device=device) if not spec.get('api') else cls(**spec.get('kwargs',{}))
 

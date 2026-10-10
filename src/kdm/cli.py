@@ -45,7 +45,7 @@ def main(argv=None):
         if not census:return None
         freeze=validate_freeze(root)
         return validate_census_inputs(root,census,manifest or root/'data/current/all.jsonl',freeze,
-            require_complete_panel=complete,allow_mock=out.is_relative_to(root/'outputs/verification'))
+            require_complete_panel=complete,allow_mock=False)
 
     def provenance_receipt(receipt):
         if receipt is not None:
@@ -102,66 +102,62 @@ def main(argv=None):
     if a.command in {'mechanism','replay'}:
         a.records=[str(within(root,path)) for path in a.records]
     from .protocol import code_identity
-    if spec.get('purpose')=='CPU_TEST_ONLY':
-        if not out.is_relative_to(root/'outputs/verification'):
-            raise ValueError('Synthetic model outputs must remain in outputs/verification')
-        source_blobs={'software_fixture':True,'formal_evidence':False}
-    else:
-        from .protocol import validate_runtime
-        execution=validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
-        from .protocol import validate_freeze
-        freeze=validate_freeze(root)
-        if file_hash(a.model_spec)!=freeze['files'][f'configs/runtime/{a.model}.json']:
-            raise ValueError('Execution backend differs from frozen model spec')
-        from .frozen import canonical_contract_sha256
-        task_plan_identity['freeze_receipt_sha256']=freeze.get('_canonical_contract_sha256',canonical_contract_sha256(root))
-        if a.command=='run' and a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
-            raise ValueError('Census manifest differs from the frozen full original manifest')
-        if a.command in {'mechanism','replay'}:
-            from .task_provenance import validate_task_inputs
-            input_provenance=validate_task_inputs(root,a.records,freeze,stages={'experiment'},model=a.model)
-        if a.command=='run' and a.mode=='experiment':
-            if not a.method_plan:raise ValueError('Formal experiment requires the frozen model/dataset method plan')
-            plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
-            if freeze['files'].get(plan_relative)!=file_hash(plan_path) or file_hash(plan_path)!=freeze['files']['configs/kdm/method_plan.json']:
-                raise ValueError('Experiment method plan differs from frozen identity')
-            original=list(read_jsonl(root/'data/current/all.jsonl'))
-            if freeze['files'].get('data/current/all.jsonl')!=file_hash(root/'data/current/all.jsonl'):
-                raise ValueError('Experiment source manifest differs from frozen identity')
-            samples=list(read_jsonl(a.manifest));datasets={row['dataset'] for row in samples}
-            if len(datasets)!=1:raise ValueError('Formal experiment requires one complete dataset condition per manifest')
-            dataset=next(iter(datasets))
-            expected={row['id']:row for row in original if row['dataset']==dataset}
-            if not expected or len(samples)!=len(expected) or {row['id']:row for row in samples}!=expected:
-                raise ValueError('Experiment manifest must retain every original sample and split in its dataset condition')
-            from .reports import validated_method_plan
-            panel=json.loads((root/'configs/kdm/models.json').read_text())
-            conditions=[(m['key'],d) for m in panel for d in {row['dataset'] for row in original}]
-            plan=validated_method_plan(json.loads(plan_path.read_text()),conditions)
-            methods=tuple(a.methods.split(','))
-            if len(methods)!=len(set(methods)) or set(methods)!=set(plan[a.model][dataset]):
-                raise ValueError('Experiment methods differ from frozen model/dataset plan')
-            task_plan_identity.update(method_plan_sha256=file_hash(plan_path),planned_dataset=dataset,planned_methods=list(methods))
-        elif a.command=='mechanism':
-            methods=tuple(a.methods.split(','))
-        elif a.command=='replay':
-            methods=tuple(sorted({row['method'] for path in a.records for row in read_jsonl(path)} & {'vcd','m3id','dola','deco','sid'}))
-        else:methods=None
-        if methods is not None:
-            if input_provenance is not None:
-                from .task_provenance import validate_measurement_methods
-                validate_measurement_methods(root,input_provenance,methods)
-            from .protocol import validate_method_runtime
-            validate_method_runtime(root,spec,methods)
-        source_blobs=freeze['source_blobs'] if freeze is not None else code_identity(root)
+    if spec.get('purpose')=='CPU_TEST_ONLY' or str(spec.get('factory','')).split(':',1)[0]=='kdm.models.mock':
+        raise ValueError('Synthetic/mock model backends are excluded from the research core')
+    from .protocol import validate_runtime
+    execution=validate_runtime(root,spec,a.model,os.environ['CUDA_VISIBLE_DEVICES'].split(','))
+    from .protocol import validate_freeze
+    freeze=validate_freeze(root)
+    if file_hash(a.model_spec)!=freeze['files'][f'configs/runtime/{a.model}.json']:
+        raise ValueError('Execution backend differs from frozen model spec')
+    from .frozen import canonical_contract_sha256
+    task_plan_identity['freeze_receipt_sha256']=freeze.get('_canonical_contract_sha256',canonical_contract_sha256(root))
+    if a.command=='run' and a.mode=='census' and file_hash(a.manifest)!=freeze['files']['data/current/all.jsonl']:
+        raise ValueError('Census manifest differs from the frozen full original manifest')
+    if a.command in {'mechanism','replay'}:
+        from .task_provenance import validate_task_inputs
+        input_provenance=validate_task_inputs(root,a.records,freeze,stages={'experiment'},model=a.model)
+    if a.command=='run' and a.mode=='experiment':
+        if not a.method_plan:raise ValueError('Formal experiment requires the frozen model/dataset method plan')
+        plan_path=within(root,a.method_plan);plan_relative=str(plan_path.relative_to(root))
+        if freeze['files'].get(plan_relative)!=file_hash(plan_path) or file_hash(plan_path)!=freeze['files']['configs/kdm/method_plan.json']:
+            raise ValueError('Experiment method plan differs from frozen identity')
+        original=list(read_jsonl(root/'data/current/all.jsonl'))
+        if freeze['files'].get('data/current/all.jsonl')!=file_hash(root/'data/current/all.jsonl'):
+            raise ValueError('Experiment source manifest differs from frozen identity')
+        samples=list(read_jsonl(a.manifest));datasets={row['dataset'] for row in samples}
+        if len(datasets)!=1:raise ValueError('Formal experiment requires one complete dataset condition per manifest')
+        dataset=next(iter(datasets))
+        expected={row['id']:row for row in original if row['dataset']==dataset}
+        if not expected or len(samples)!=len(expected) or {row['id']:row for row in samples}!=expected:
+            raise ValueError('Experiment manifest must retain every original sample and split in its dataset condition')
+        from .reports import validated_method_plan
+        panel=json.loads((root/'configs/kdm/models.json').read_text())
+        conditions=[(m['key'],d) for m in panel for d in {row['dataset'] for row in original}]
+        plan=validated_method_plan(json.loads(plan_path.read_text()),conditions)
+        methods=tuple(a.methods.split(','))
+        if len(methods)!=len(set(methods)) or set(methods)!=set(plan[a.model][dataset]):
+            raise ValueError('Experiment methods differ from frozen model/dataset plan')
+        task_plan_identity.update(method_plan_sha256=file_hash(plan_path),planned_dataset=dataset,planned_methods=list(methods))
+    elif a.command=='mechanism':
+        methods=tuple(a.methods.split(','))
+    elif a.command=='replay':
+        methods=tuple(sorted({row['method'] for path in a.records for row in read_jsonl(path)} & {'vcd','m3id','dola','deco','sid'}))
+    else:methods=None
+    if methods is not None:
+        if input_provenance is not None:
+            from .task_provenance import validate_measurement_methods
+            validate_measurement_methods(root,input_provenance,methods)
+        from .protocol import validate_method_runtime
+        validate_method_runtime(root,spec,methods)
+    source_blobs=freeze['source_blobs'] if freeze is not None else code_identity(root)
     if a.command=='closed-probe' or (a.command=='run' and a.mode!='census'):
         from .task_provenance import manifest_identity
         samples=list(read_jsonl(a.manifest))
         manifest_fields=manifest_identity(samples)
-        if spec.get('purpose')!='CPU_TEST_ONLY':
-            original=list(read_jsonl(root/'data/current/all.jsonl'))
-            expected=[s for s in original if s['dataset'] in manifest_fields['datasets']]
-            if manifest_fields!=manifest_identity(expected):raise ValueError('Task manifest must retain complete frozen dataset contents')
+        original=list(read_jsonl(root/'data/current/all.jsonl'))
+        expected=[s for s in original if s['dataset'] in manifest_fields['datasets']]
+        if manifest_fields!=manifest_identity(expected):raise ValueError('Task manifest must retain complete frozen dataset contents')
         task_plan_identity.update(manifest_fields)
         task_plan_identity['stage']=a.mode if a.command=='run' else 'closed'
     backend=make_backend(spec,'cuda:0')

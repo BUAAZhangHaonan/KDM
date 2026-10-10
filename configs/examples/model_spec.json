@@ -1,0 +1,10 @@
+{
+  "factory": "kdm.models.hf:HFBackend",
+  "kwargs": {
+    "model_path": "/absolute/path/to/existing/checkpoint"
+  },
+  "checkpoint_revision": "MUST_RECORD",
+  "processor_revision": "MUST_RECORD",
+  "torch_version": "MUST_RECORD",
+  "transformers_version": "MUST_RECORD"
+}

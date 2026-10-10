@@ -1,27 +1,32 @@
-#!/usr/bin/env python3
-"""Snapshot and verify completed core native VCD sources on CPU."""
+"""Scientific provenance validation helpers. No job-launching entry point."""
+
 from __future__ import annotations
 
-import argparse
-from collections import Counter
-from dataclasses import asdict
-from datetime import datetime, timezone
-import json
-import math
-from pathlib import Path
-import socket
 import sys
 
+from collections import Counter
+
+from dataclasses import asdict
+
+import json
+
+import math
+
+from pathlib import Path
+
 ROOT = Path(__file__).resolve().parents[2]
+
 sys.path.insert(0, str(ROOT / "src"))
 
 from kdm.decoding import DecodeConfig
+
 from kdm.io import file_hash, read_jsonl, stable_hash, stable_seed, within
+
 from kdm.pipeline import task_id
+
 from kdm.prompts import task_prompt
 
 MODELS = ("qwen25vl", "qwen35_4b", "llava16_mistral", "minicpm26", "gemma3_4b")
-
 
 def source_paths(folder, model):
     paths = {"raw": folder / "raw" / f"{model}_native_vcd.jsonl",
@@ -34,25 +39,6 @@ def source_paths(folder, model):
     if replay.is_file():
         paths["replay_audit"] = replay
     return paths
-
-
-def source_snapshot(run_id, model):
-    folder = ROOT / "outputs/paper_core_20260930" / run_id
-    paths = source_paths(folder, model)
-    complete = json.loads(paths["complete"].read_text(encoding="utf-8"))
-    if complete["model"] != model or complete["rows"] != 2424 or complete["expected"] != 2424:
-        raise ValueError("Source lacks a complete immutable 2424-row receipt")
-    files = {}
-    for role, path in paths.items():
-        files[role] = {"relative_path": str(path.relative_to(ROOT)), "source_path": str(path),
-                       "bytes": path.stat().st_size, "sha256": file_hash(path)}
-    if files["raw"]["sha256"] != complete["raw_sha256"]:
-        raise ValueError("Completed source raw differs from its completion SHA")
-    return {"schema": "kdm_core_native_source_snapshot_v1", "model": model, "run_id": run_id,
-            "source_root": str(ROOT), "source_hostname": socket.gethostname(), "files": files,
-            "complete_receipt": complete, "snapshot_utc": datetime.now(timezone.utc).isoformat(),
-            "receiver_source_sha256": file_hash(Path(__file__)), "gpu_initialized": False}
-
 
 def validate_received(folder, model, source):
     paths = source_paths(folder, model)
@@ -118,44 +104,3 @@ def validate_received(folder, model, source):
             "received_identity_path": str(paths["identity"].relative_to(ROOT)),
             "raw_sha256": source["files"]["raw"]["sha256"], "cpu_validation_passed": True,
             "gpu_runtime_performed_by_receiver": False}
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--source-snapshot", action="store_true")
-    mode.add_argument("--verify-received", action="store_true")
-    parser.add_argument("--model", choices=MODELS)
-    parser.add_argument("--run-id")
-    parser.add_argument("--received-root")
-    parser.add_argument("--models", nargs="+", choices=MODELS)
-    parser.add_argument("--output-manifest")
-    args = parser.parse_args()
-    if args.source_snapshot:
-        if not args.model or not args.run_id:
-            parser.error("--source-snapshot requires --model and --run-id")
-        print(json.dumps(source_snapshot(args.run_id, args.model), ensure_ascii=False, indent=2))
-        return
-    if not args.received_root or not args.models or not args.output_manifest:
-        parser.error("--verify-received requires --received-root, --models and --output-manifest")
-    destination = within(ROOT, args.output_manifest)
-    if destination.exists() or len(args.models) != len(set(args.models)):
-        raise ValueError("Received manifest already exists or models are repeated")
-    received = within(ROOT, args.received_root)
-    parts = []
-    for model in args.models:
-        source = json.loads((received / model / "source_snapshot.json").read_text())
-        parts.append(validate_received(received / model, model, source))
-    manifest = {"schema": "kdm_core_native_received_v1", "created_utc": datetime.now(timezone.utc).isoformat(),
-                "parts": parts, "rows": sum(part["rows"] for part in parts),
-                "models": args.models, "receiver_source_sha256": file_hash(Path(__file__)),
-                "all_sources_complete": True, "cpu_validation_passed": True}
-    with destination.open("x", encoding="utf-8") as stream:
-        json.dump(manifest, stream, ensure_ascii=False, indent=2, allow_nan=False)
-        stream.write("\n")
-    print(json.dumps({"manifest": str(destination.relative_to(ROOT)), "models": args.models,
-                      "rows": manifest["rows"], "cpu_validation_passed": True}, indent=2))
-
-
-if __name__ == "__main__":
-    main()

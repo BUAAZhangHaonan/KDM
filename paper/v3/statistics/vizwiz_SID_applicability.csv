@@ -1,5 +1,0 @@
-model,dataset,method,status,reason
-qwen25vl,vizwiz,sid,not_applicable,7/512 inputs have fewer than the original fixed 100 visual tokens
-qwen3vl,vizwiz,sid,not_applicable,7/512 inputs have fewer than the original fixed 100 visual tokens
-qwen35_4b,vizwiz,sid,not_applicable,second block uses linear attention; original SID softmax-attention weights unavailable
-minicpm26,vizwiz,sid,not_applicable,visual-token count is below the original fixed 100; no architecture adaptation

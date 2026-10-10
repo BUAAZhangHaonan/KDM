@@ -1,8 +1,0 @@
-from_state,to_state,n
-A,A,29
-A,W,4
-C,C,33
-C,W,9
-W,A,37
-W,C,6
-W,W,831
